@@ -9,7 +9,9 @@ app.get('/', (_, res) => {
   res.redirect('/admin')
 })
 
-payload.init({
+async function start() {
+
+await payload.init({
   secret: process.env.PAYLOAD_SECRET,
   express: app,
   onInit: async () => {
@@ -17,5 +19,11 @@ payload.init({
   },
 })
 
-export default app
+  app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT}`)
+  })
+}
+
+start()
+
 
