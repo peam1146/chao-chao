@@ -5,7 +5,9 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "dev:cms": "pnpm --filter cms run dev",
+    "dev:web": "pnpm --filter store-web run dev"
   },
   "devDependencies": {
     "@chao-chao/eslint-config": "workspace:*",
