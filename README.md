@@ -17,7 +17,6 @@ Run `pnpm run dev:cms` to start the CMS server.
 
 Run `pnpm run dev:web` to start the web server.
 
-
 ## Stack
 
 - [Next.js](https://nextjs.org/)
