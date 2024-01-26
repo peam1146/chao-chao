@@ -1,20 +1,37 @@
+import { User } from 'payload/generated-types'
 import { CollectionConfig } from 'payload/types'
 
-import { admin } from './access/admin'
-import { adminAndSelf } from './access/adminAndSelf'
+import { checkRole, isAdmin, isAdminOrSelf } from '../../access/'
 import { ensureFirstUserIsAdmin } from './hooks/ensureFirstUserIsAdmin'
 
-const Users: CollectionConfig = {
+export const Users: CollectionConfig = {
   slug: 'users',
   auth: true,
   admin: {
     useAsTitle: 'email',
+    hidden: ({ user }) => !checkRole(['admin'], user as unknown as User),
   },
   access: {
-    // read: adminAndSelf,
-    // admin: admin,
+    update: isAdminOrSelf,
+    delete: isAdmin,
+    unlock: isAdmin,
   },
   fields: [
+    {
+      type: 'text',
+      name: 'phone',
+      label: {
+        th: 'เบอร์โทรศัพท์',
+        en: 'Phone',
+      },
+      required: true,
+      validate: (value) => {
+        if (!/^[0-9]{10}$/.test(value)) {
+          return "Phone number isn't valid"
+        }
+        return true
+      },
+    },
     {
       label: {
         th: 'บทบาท',
@@ -25,7 +42,7 @@ const Users: CollectionConfig = {
       hasMany: true,
       saveToJWT: true,
       access: {
-        update: admin,
+        update: isAdmin,
       },
       hooks: {
         beforeChange: [ensureFirstUserIsAdmin],
@@ -33,20 +50,20 @@ const Users: CollectionConfig = {
       required: true,
       options: [
         {
-          label: 'Admin',
+          label: {
+            th: 'ผู้ดูแลระบบ',
+            en: 'Admin',
+          },
           value: 'admin',
         },
         {
-          label: 'Renter',
-          value: 'renter',
-        },
-        {
-          label: 'Lessor',
-          value: 'lessor',
+          label: {
+            th: 'ผู้ใช้งานทั่วไป',
+            en: 'User',
+          },
+          value: 'User',
         },
       ],
     },
   ],
 }
-
-export default Users

@@ -1,18 +1,18 @@
-import path from 'path'
+import { User } from 'payload/generated-types'
 import { CollectionConfig } from 'payload/types'
 
-import { isAdminOrCreatedByUser } from '../../access'
+import { isAdmin } from '../../access'
+import { checkRole } from '../../access/check-role'
 
-export const Media: CollectionConfig = {
-  slug: 'medias',
-  upload: {
-    staticDir: path.resolve(__dirname, '../../media'),
-  },
+export const Tag: CollectionConfig = {
+  slug: 'tags',
   access: {
-    read: isAdminOrCreatedByUser,
+    update: isAdmin,
+    delete: isAdmin,
   },
   admin: {
     useAsTitle: 'name',
+    hidden: ({ user }) => !checkRole(['admin'], user as unknown as User),
   },
   fields: [
     {

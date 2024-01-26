@@ -6,9 +6,7 @@ import path from 'path'
 import { openapi, redoc } from 'payload-oapi'
 import { buildConfig } from 'payload/config'
 
-import Item from './collections/Item'
-import Media from './collections/Media'
-import Users from './collections/User'
+import { Item, Media, Tag, Users } from './collections'
 import { Logo } from './components/Logo'
 
 export default buildConfig({
@@ -21,8 +19,13 @@ export default buildConfig({
       },
     },
   },
+  // i18n: {
+  //   fallbackLng: 'en', // default
+  //   debug: true, // default
+  //   resources: i18n(),
+  // },
   editor: slateEditor({}),
-  collections: [Users, Item, Media],
+  collections: [Users, Item, Media, Tag],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
