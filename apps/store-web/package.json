@@ -10,10 +10,18 @@
   },
   "dependencies": {
     "@gqty/react": "3.0.0-alpha-7b21563c.0",
+    "@radix-ui/react-slot": "^1.0.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
     "gqty": "3.0.0-alpha-7b21563c.0",
+    "lucide-react": "^0.315.0",
     "next": "14.1.0",
+    "next-themes": "^0.2.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwind": "^4.0.0",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@chao-chao/eslint-config": "workspace:^",

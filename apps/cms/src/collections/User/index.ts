@@ -11,7 +11,8 @@ const Users: CollectionConfig = {
     useAsTitle: 'email',
   },
   access: {
-    admin: admin,
+    // read: adminAndSelf,
+    // admin: admin,
   },
   fields: [
     {
