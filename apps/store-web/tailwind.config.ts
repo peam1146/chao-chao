@@ -81,6 +81,18 @@ const config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      boxShadow: {
+        DEFAULT: 'var(--shadow-default)',
+        sm: 'var(--shadow-sm)',
+        md: 'var(--shadow-md)',
+        lg: 'var(--shadow-lg)',
+        xl: 'var(--shadow-xl)',
+        '2xl': 'var(--shadow-2xl)',
+        inner: 'var(--shadow-inner)',
+        'focused-primary': 'var(--shadow-primary)',
+        'focused-secondary': 'var(--shadow-secondary)',
+        'focused-error': 'var(--shadow-error)',
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },

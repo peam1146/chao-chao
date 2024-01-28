@@ -59,6 +59,17 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
+    --shadow-sm: 0px 1px 2px 0px rgba(30, 41, 59, 0.05);
+    --shadow-default: 0px 1px 2px 0px rgba(30, 41, 59, 0.06), 0px 1px 3px 0px rgba(30, 41, 59, 0.1);
+    --shadow-md: 0px 2px 4px -1px rgba(30, 41, 59, 0.06), 0px 4px 6px -1px rgba(30, 41, 59, 0.1);
+    --shadow-lg: 0px 4px 6px -2px rgba(30, 41, 59, 0.05), 0px 10px 15px -3px rgba(30, 41, 59, 0.1);
+    --shadow-xl: 0px 10px 10px -5px rgba(30, 41, 59, 0.04);
+    --shadow-2xl: 0px 25px 50px -12px rgba(30, 41, 59, 0.25);
+    --shadow-inner: inset 0px 2px 4px 0px rgba(30, 41, 59, 0.06);
+    --shadow-primary: 0px 0px 0px 4px rgba(27, 154, 251, 0.2);
+    --shadow-secondary: 0px 0px 0px 4px rgba(148, 163, 184, 0.2);
+    --shadow-error: 0px 0px 0px 4px rgba(239, 68, 68, 0.2);
+
     --radius: 0.5rem;
   }
 
