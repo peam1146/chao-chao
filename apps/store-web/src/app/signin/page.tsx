@@ -1,19 +1,43 @@
 'use client'
 
-import React from 'react'
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form'
 
-import Image from 'next/image'
-
-import SigninForm from './components/SigninForm'
+import { Button } from './components/button'
+import { Input } from './components/input'
 
 export default function SignInPage() {
   return (
-    <main className="container flex w-full bg-background min-h-[calc(100vh-64px)] lg:flex-row flex-col items-center justify-center">
-      <div className="flex lg:w-1/2 max-lg:h-[295px] aspect-auto justify-center">
-        <Image src="/login.svg" alt="Sign in picture" width={497} height={602} />
-      </div>
-      <div className="flex w-full lg:w-1/2 h-full items-center">
-        <SigninForm />
+    <main className="flex bg-[#030711] min-h-screen flex-col items-center justify-between p-24">
+      {/* <Form>
+        <form className="space-y-8">
+          <FormField
+            name="username"
+            // render={({ field }) => (
+            //   <FormItem>
+            //     <FormLabel>Username</FormLabel>
+            //     <FormControl>
+            //       <Input placeholder="shadcn" {...field} />
+            //     </FormControl>
+            //     <FormDescription>This is your public display name.</FormDescription>
+            //     <FormMessage />
+            //   </FormItem>
+            // )}
+          />
+          <Button type="submit">Submit</Button>
+        </form>
+      </Form> */}
+      <div className="flex-col items-center justify-center">
+        <Input type="email" placeholder="Email or Phone number"></Input>
+        <Input type="password" placeholder="Password"></Input>
+        <Button>Sign In</Button>
       </div>
     </main>
   )
