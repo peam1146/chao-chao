@@ -87,6 +87,9 @@ importers:
       '@gqty/react':
         specifier: 3.0.0-alpha-7b21563c.0
         version: 3.0.0-alpha-7b21563c.0(gqty@3.0.0-alpha-7b21563c.0)(graphql@16.8.1)(react-dom@18.2.0)(react@18.2.0)
+      '@phosphor-icons/react':
+        specifier: ^2.0.15
+        version: 2.0.15(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.0.2(@types/react@18.2.46)(react@18.2.0)
@@ -2694,6 +2697,17 @@ packages:
     transitivePeerDependencies:
       - react-dom
       - react-native
+    dev: false
+
+  /@phosphor-icons/react@2.0.15(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-PQKNcRrfERlC8gJGNz0su0i9xVmeubXSNxucPcbCLDd9u0cwJVTEyYK87muul/svf0UXFdL2Vl6bbeOhT1Mwow==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>= 16.8'
+      react-dom: '>= 16.8'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@pkgjs/parseargs@0.11.0:
