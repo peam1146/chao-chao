@@ -1,66 +1,31 @@
 'use client'
 
-import React from 'react'
-
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import Typography from '@/components/ui/typography'
 import { Key, UserCircle } from '@phosphor-icons/react'
-import Link from 'next/link'
 
-import { userLogin } from '../actions/userLogin'
+import { Button } from './button'
+import { Input } from './input'
 
 export default function SigninForm() {
   return (
-    <div className="w-full h-[339px]">
-      <form className="w-full h-full" action={userLogin}>
-        <div className="w-full h-full flex flex-col items-center lg:justify-center gap-y-12 justify-between">
-          <div className="w-full flex flex-col items-center justify-center lg:gap-y-12 gap-y-4">
-            <Typography variant="h3" fontWeight="bold" className="self-start lg:self-center lg:h2">
-              Sign in
-            </Typography>
-            <div className="w-full flex flex-col items-center lg:justify-center lg:gap-y-5 gap-y-4">
-              <div className="w-full relative">
-                <div className="absolute h-full flex items-center justify-center ml-3">
-                  <UserCircle size={20} className="text-muted-foreground" />
-                </div>
-                <Input
-                  type="text"
-                  placeholder="Email or Phone number"
-                  name="email"
-                  className="pl-8"
-                  required
-                />
-              </div>
-              <div className="w-full">
-                <div className="w-full relative pb-1">
-                  <div className="absolute h-full flex items-center justify-center ml-3">
-                    <Key size={20} className="text-muted-foreground" />
-                  </div>
-                  <Input
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    className="pl-8"
-                    required
-                  />
-                </div>
-                <Link href="/forget" className="text-h6 font-regular text-start">
-                  Forget Password?
-                </Link>
-              </div>
+    <div className="w-[449px] h-[339px]">
+      <form className="w-full h-full">
+        <div className="w-full h-full flex flex-col justify-between">
+          <div className="w-full text-h2 font-bold text-center">Sign in</div>
+          <div className="w-full h-1/3 flex flex-col items-center justify-between">
+            <div className="w-full relative">
+              <UserCircle className="absolute ml-3 mt-3" size={20} />
+              <Input type="email" placeholder="Email or Phone number"></Input>
+            </div>
+            <div className="w-full">
+              <Input type="password" placeholder="Password"></Input>
+              <div className="text-h6 font-regular">Forget Password?</div>
             </div>
           </div>
-          <div className="w-full flex flex-col justify-center items-center gap-y-2">
-            <Button type="submit" className="w-full lg:w-[108px]">
-              Sign In
-            </Button>
-            <Typography variant="h6" className="flex gap-1">
-              Don't have an account?
-              <Link href="/signup" className="text-primary">
-                Sign up
-              </Link>
-            </Typography>
+          <div className="w-full flex flex-col justify-center items-center">
+            <Button>Sign In</Button>
+            <div>
+              Don't have an account? <span>Sign up</span>
+            </div>
           </div>
         </div>
       </form>
