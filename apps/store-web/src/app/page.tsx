@@ -1,4 +1,6 @@
+import logo from '@/assets/images/logo.svg'
 import Typography from '@/components/ui/typography'
+import Image from 'next/image'
 
 import { resolve } from '../../gqty'
 
@@ -8,9 +10,10 @@ export default async function Home() {
   })
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <Typography variant="h1" fontWeight="bold">
-          Welcome to ChaoChao
+      <div className="flex flex-row w-full items-center">
+        <Typography variant="h1" fontWeight="bold" className="flex flex-row gap-4">
+          Welcome to
+          <Image src={logo} width={100} height={100} alt="logo" />
           {data.email && <span>{data.email}</span>}
         </Typography>
       </div>
