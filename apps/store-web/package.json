@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.11.0",
     "@hookform/resolvers": "^3.3.4",
     "@gqty/react": "3.0.0-alpha-7b21563c.0",
+    "@hookform/resolvers": "^3.3.4",
     "@phosphor-icons/react": "^2.0.15",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.0.2",
