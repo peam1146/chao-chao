@@ -3,6 +3,7 @@
  */
 import { createReactClient } from '@gqty/react'
 import { Cache, GQtyError, type QueryFetcher, createClient } from 'gqty'
+import { cookies } from 'next/headers'
 
 import { type GeneratedSchema, generatedSchema, scalarsEnumsHash } from './schema.generated'
 
@@ -10,11 +11,24 @@ const queryFetcher: QueryFetcher = async function (
   { query, variables, operationName },
   fetchOptions
 ) {
+  const cookieStore = cookies()
+  const payloadCookie = cookieStore.getAll().reduce(
+    (acc, { name, value }) => {
+      if (name.startsWith('payload')) {
+        acc[name] = value
+      }
+      return acc
+    },
+    {} as Record<string, string>
+  )
   // Modify "/api/graphql" if needed
   const response = await fetch('http://localhost:3001/api/graphql', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Cookie: Object.entries(payloadCookie)
+        .map(([name, value]) => `${name}=${value}`)
+        .join('; '),
     },
     body: JSON.stringify({
       query,
