@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -11,7 +11,17 @@ import Link from 'next/link'
 
 import { userLogin } from '../actions/userLogin'
 
+interface IFormInput {
+  email: string
+  password: string
+}
+
 export default function SigninForm() {
+  const { register, handleSubmit } = useForm<IFormInput>()
+  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+  // const [login, { isLoading }] = useMutation((mutation, { username, password }) => {
+  //   return mutation.loginUser()
+  // })
   return (
     <div className="w-full h-[339px]">
       <form className="w-full h-full" action={userLogin}>
