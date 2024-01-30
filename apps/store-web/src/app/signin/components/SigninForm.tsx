@@ -11,6 +11,11 @@ import Link from 'next/link'
 import { userLogin } from '../actions/userLogin'
 
 export default function SigninForm() {
+  const { register, handleSubmit } = useForm<IFormInput>()
+  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+  // const [login, { isLoading }] = useMutation((mutation, { username, password }) => {
+  //   return mutation.loginUser()
+  // })
   return (
     <div className="w-full h-[339px]">
       <form className="w-full h-full" action={userLogin}>
