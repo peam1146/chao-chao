@@ -8,15 +8,21 @@ import Typography from '@/components/ui/typography'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Key, UserCircle } from '@phosphor-icons/react'
 import Link from 'next/link'
+import { z } from 'zod'
 
 import { userLogin } from '../actions/userLogin'
 
 export default function SigninForm() {
-  const { register, handleSubmit } = useForm<IFormInput>()
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
-  // const [login, { isLoading }] = useMutation((mutation, { username, password }) => {
-  //   return mutation.loginUser()
-  // })
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ValidationSchema>({
+    resolver: zodResolver(validationSchema),
+  })
+  const onSubmit: SubmitHandler<ValidationSchema> = (data) => console.log(data)
+  // const { register, handleSubmit } = useForm<IFormInput>()
+  // const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
   return (
     <div className="w-full h-[339px]">
       <form className="w-full h-full" action={userLogin}>
