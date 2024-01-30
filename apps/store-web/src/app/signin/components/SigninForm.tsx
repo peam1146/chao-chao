@@ -4,24 +4,37 @@ import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import Typography from '@/components/ui/typography'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Key, UserCircle } from '@phosphor-icons/react'
 import Link from 'next/link'
+import { z } from 'zod'
 
 import { useMutation } from '../../../../gqty'
 import { Button } from './button'
 import { Input } from './input'
 
-interface IFormInput {
-  email: string
-  password: string
-}
-
+// interface IFormInput {
+//   email: string
+//   password: string
+// }
+const validationSchema = z.object({
+  email: z.string().min(1, { message: 'Email is required' }).email({
+    message: 'Must be a valid email',
+  }),
+  password: z.string().min(6, { message: 'Password must be at least 6 characters' }),
+})
+type ValidationSchema = z.infer<typeof validationSchema>
 export default function SigninForm() {
-  const { register, handleSubmit } = useForm<IFormInput>()
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
-  // const [login, { isLoading }] = useMutation((mutation, { username, password }) => {
-  //   return mutation.loginUser()
-  // })
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ValidationSchema>({
+    resolver: zodResolver(validationSchema),
+  })
+  const onSubmit: SubmitHandler<ValidationSchema> = (data) => console.log(data)
+  // const { register, handleSubmit } = useForm<IFormInput>()
+  // const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
   return (
     <div className="w-full h-[339px]">
       <form className="w-full h-full" onSubmit={handleSubmit(onSubmit)}>
@@ -41,6 +54,9 @@ export default function SigninForm() {
                   {...register('email')}
                 ></Input>
               </div>
+              {errors.email && (
+                <p className="text-xs italic text-red-500 mt-0.5">{errors.email?.message}</p>
+              )}
               <div className="w-full">
                 <div className="w-full relative pb-1">
                   <div className="absolute h-full flex items-center justify-center ml-3">
@@ -48,6 +64,9 @@ export default function SigninForm() {
                   </div>
                   <Input type="password" placeholder="Password" {...register('password')}></Input>
                 </div>
+                {errors.password && (
+                  <p className="text-xs italic text-red-500 mt-2">{errors.password?.message}</p>
+                )}
                 <Link href="/" className="text-h6 font-regular text-white text-start">
                   Forget Password?
                 </Link>
