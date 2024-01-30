@@ -42,4 +42,5 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI,
     },
   }),
+  cookiePrefix: 'payload',
 })
