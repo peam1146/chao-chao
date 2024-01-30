@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
 import Typography from '@/components/ui/typography'
 import { Key, UserCircle } from '@phosphor-icons/react'
@@ -11,10 +11,20 @@ import { useMutation } from '../../../../gqty'
 import { Button } from './button'
 import { Input } from './input'
 
+interface IFormInput {
+  email: string
+  password: string
+}
+
 export default function SigninForm() {
+  const { register, handleSubmit } = useForm<IFormInput>()
+  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+  // const [login, { isLoading }] = useMutation((mutation, { username, password }) => {
+  //   return mutation.loginUser()
+  // })
   return (
     <div className="w-full h-[339px]">
-      <form className="w-full h-full">
+      <form className="w-full h-full" onSubmit={handleSubmit(onSubmit)}>
         <div className="w-full max-w-[449px] h-full flex flex-col lg:justify-center gap-y-12 justify-between">
           <div className="w-full flex flex-col items-center justify-center lg:gap-y-12 gap-y-4">
             <Typography variant="h3" fontWeight="bold" className="self-start lg:self-center lg:h2">
@@ -25,14 +35,18 @@ export default function SigninForm() {
                 <div className="absolute h-full flex items-center justify-center ml-3">
                   <UserCircle size={20} className="text-muted-foreground" />
                 </div>
-                <Input type="email" placeholder="Email or Phone number"></Input>
+                <Input
+                  type="text"
+                  placeholder="Email or Phone number"
+                  {...register('email')}
+                ></Input>
               </div>
               <div className="w-full">
                 <div className="w-full relative pb-1">
                   <div className="absolute h-full flex items-center justify-center ml-3">
                     <Key size={20} className="text-muted-foreground" />
                   </div>
-                  <Input type="password" placeholder="Password"></Input>
+                  <Input type="password" placeholder="Password" {...register('password')}></Input>
                 </div>
                 <Link href="/" className="text-h6 font-regular text-white text-start">
                   Forget Password?
@@ -41,7 +55,9 @@ export default function SigninForm() {
             </div>
           </div>
           <div className="w-full flex flex-col justify-center items-center text-white font-regular gap-y-2">
-            <Button className="text-h5 w-[100%] lg:w-[108px]">Sign In</Button>
+            <Button type="submit" className="text-h5 w-[100%] lg:w-[108px]">
+              Sign In
+            </Button>
             <Typography variant="h6" fontWeight="regular">
               Don't have an account?
               <Link href="/" className="text-primary pl-1">
