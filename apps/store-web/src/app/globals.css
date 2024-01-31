@@ -71,6 +71,9 @@
     --shadow-error: 0px 0px 0px 4px rgba(239, 68, 68, 0.2);
 
     --radius: 0.5rem;
+
+    --text: 0, 0%, 100%, 1;
+    --text-light: 0, 0%, 60%, 1;
   }
 
   .dark {
@@ -112,7 +115,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border outline-none ring-0;
   }
   body {
     @apply bg-background text-foreground;

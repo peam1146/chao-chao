@@ -3,7 +3,6 @@ import Typography from '@/components/ui/typography'
 import Image from 'next/image'
 
 import { resolve } from '../../gqty'
-import { ModeToggle } from './components/theme-toggle'
 
 export default async function Home() {
   const data = await resolve(({ query }) => {
@@ -17,7 +16,6 @@ export default async function Home() {
           <Image src={logo} width={100} height={100} alt="logo" />
           {data.email && <span>{data.email}</span>}
         </Typography>
-        <ModeToggle />
       </div>
     </main>
   )

@@ -1,3 +1,4 @@
+import Navbar from '@/components/layout/Navbar'
 import { ThemeProvider } from '@/providers/Theme'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -25,6 +26,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Navbar />
           {children}
         </ThemeProvider>
       </body>
