@@ -12,13 +12,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { z } from 'zod'
 
-import { createUser } from './actions'
+import { useMutation } from '../../../../gqty'
+
+type Inputs = {
+  email: string
+  password: string
+}
 
 const validationSchema = z.object({
   email: z.string().min(1, { message: 'Email is required' }).email({
     message: 'Must be a valid email',
   }),
-  phone: z.string(),
   password: z.string().min(6, { message: 'Password must be atleast 6 characters' }),
 })
 
@@ -29,23 +33,29 @@ export default function SignupForm() {
     resolver: zodResolver(validationSchema),
   })
 
-  const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
-    await createUser(data)
-  }
+  const [signup, { isLoading }] = useMutation((mutation, { data }) => {
+    return mutation.createUser({ data })
+  })
+
+  // const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+
+  const onSubmit: SubmitHandler<ValidationSchema> = (data) => console.log(data)
 
   return (
-    <div className="h-fit w-full flex items-center justify-center flex-col lg:flex-row my-auto">
-      <div className="h-[295px] w-[238px] lg:hidden">
+    <div className="h-fit w-fit flex items-center flex-col md:flex-row md:pl-10 my-auto">
+      <div className="h-[295px] w-[238px] md:hidden">
         <Image src={signupLogo} width={0} height={0} sizes="100vw" alt="Signup Picture" />
       </div>
+
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="h-fit w-full flex flex-col items-center gap-24 lg:gap-12 my-auto xl:w-1/2"
+        className="h-fit w-fit flex flex-col items-center gap-4 md:gap-12 my-auto"
       >
-        <div className="w-full flex flex-col gap-y-5 ">
-          <Typography variant="h3" fontWeight="bold" className="self-start lg:self-center lg:h2">
-            Sign up
-          </Typography>
+        <Typography variant="h3" fontWeight="bold" className="self-start md:self-center md:h2">
+          Sign up
+        </Typography>
+
+        <div className="w-full flex flex-col gap-y-5">
           <div className="w-full relative">
             <div className="absolute h-full flex items-center justify-center ml-3">
               <UserCircle size={20} className="text-muted-foreground" />
@@ -56,7 +66,12 @@ export default function SignupForm() {
             <div className="absolute h-full flex items-center justify-center ml-3">
               <Phone size={20} className="text-muted-foreground" />
             </div>
-            <Input type="tel" placeholder="Phone number" className="pl-9" {...register('phone')} />
+            <Input
+              type="tel"
+              placeholder="Phone number"
+              className="pl-9"
+              // {...register('tel', { required: true })}
+            />
           </div>
           <div className="w-full relative">
             <div className="absolute h-full flex items-center justify-center ml-3">
@@ -70,8 +85,9 @@ export default function SignupForm() {
             />
           </div>
         </div>
-        <div className="flex flex-col items-center gap-y-2 w-full">
-          <Button type="submit" className="bg-primary w-full lg:w-[108px]">
+
+        <div className="flex flex-col items-center gap-y-2">
+          <Button type="submit" disabled={isLoading} className="bg-primary w-[100%] md:w-[108px]">
             Sign up
           </Button>
           <div className="text-h6 flex flex-row gap-x-1">
@@ -82,8 +98,9 @@ export default function SignupForm() {
           </div>
         </div>
       </form>
-      <div className="w-full xl:w-1/2 hidden lg:flex justify-center items-center">
-        <Image src={signupLogo} width={0} height={0} alt="Signup Picture" />
+
+      <div className="h-[602px] w-[497px] hidden md:block">
+        <Image src={signupLogo} width={0} height={0} sizes="100vw" alt="Signup Picture" />
       </div>
     </div>
   )
