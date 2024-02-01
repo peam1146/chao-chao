@@ -1,3 +1,4 @@
+/* eslint-disable turbo/no-undeclared-env-vars */
 import { S3UploadCollectionConfig } from "payload-s3-upload";
 
 import { isAdminOrCreatedByUser } from "../../access";
@@ -10,7 +11,7 @@ export const Media: S3UploadCollectionConfig = {
 		disableLocalStorage: true,
 		s3: {
 			bucket: "chaochao-bucket",
-			prefix: "images/xyz",
+			prefix: ({ doc }) => `images/${doc.type}`,
 			commandInput: {
 				ACL: "public-read",
 			},
