@@ -30,9 +30,7 @@ export default function SignupForm() {
   })
 
   const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
-    const result = await createUser(data)
-    // console.log(data)
-    // console.log(result)
+    await createUser(data)
   }
 
   return (
