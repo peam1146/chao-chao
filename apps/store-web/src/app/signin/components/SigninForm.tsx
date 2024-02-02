@@ -2,13 +2,13 @@
 
 import React from 'react'
 
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import Typography from '@/components/ui/typography'
 import { Key, UserCircle } from '@phosphor-icons/react'
 import Link from 'next/link'
 
 import { userLogin } from '../actions/userLogin'
-import { Button } from './button'
-import { Input } from './input'
 
 export default function SigninForm() {
   return (
@@ -24,14 +24,24 @@ export default function SigninForm() {
                 <div className="absolute h-full flex items-center justify-center ml-3">
                   <UserCircle size={20} className="text-muted-foreground" />
                 </div>
-                <Input type="text" placeholder="Email or Phone number" name="email"></Input>
+                <Input
+                  type="text"
+                  placeholder="Email or Phone number"
+                  name="email"
+                  className="pl-8 max-w-[449px] text-white"
+                ></Input>
               </div>
               <div className="w-full">
                 <div className="w-full relative pb-1">
                   <div className="absolute h-full flex items-center justify-center ml-3">
                     <Key size={20} className="text-muted-foreground" />
                   </div>
-                  <Input type="password" placeholder="Password" name="password"></Input>
+                  <Input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    className="pl-8 max-w-[449px] text-white"
+                  ></Input>
                 </div>
                 <Link href="/" className="text-h6 font-regular text-white text-start">
                   Forget Password?
