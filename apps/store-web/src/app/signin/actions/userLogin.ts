@@ -7,6 +7,7 @@ import { redirect } from 'next/navigation'
 import { resolve } from '../../../../gqty'
 
 export async function userLogin(data: FormData) {
+  console.log(data)
   try {
     const args = {
       email: data.get('email') as string,
@@ -18,6 +19,7 @@ export async function userLogin(data: FormData) {
     })
     cookies().set('payload-token', token!, { secure: false })
   } catch (e) {
+    console.error('Login failed:', e)
     redirect('/signin')
   }
   revalidatePath('/')
