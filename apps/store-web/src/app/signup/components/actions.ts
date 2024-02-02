@@ -1,6 +1,5 @@
 'use server'
 
-// import { revalidatePath, revalidateTag } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { z } from 'zod'
 
@@ -18,8 +17,8 @@ type ValidationSchema = z.infer<typeof validationSchema>
 
 export async function createUser(dataForm: ValidationSchema) {
   try {
-    await resolve(({ mutation }) => {
-      const data = mutation.createUser({
+    await resolve(async ({ mutation }) => {
+      return mutation.createUser({
         data: {
           email: dataForm.email,
           password: dataForm.password,
@@ -27,14 +26,9 @@ export async function createUser(dataForm: ValidationSchema) {
           roles: [User_roles_MutationInput.User],
         },
       })
-      return { ...data }
     })
-    console.log(`Signup Success`)
-    // revalidatePath('/signup')
-    // revalidateTag('signup')
-    redirect('/signin')
   } catch (e) {
-    console.log(e)
-    redirect(`/signin?error=${e.message}`)
+    redirect('/signup')
   }
+  redirect('/signin')
 }
