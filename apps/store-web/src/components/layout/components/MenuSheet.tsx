@@ -16,22 +16,22 @@ export function MenuSheet(props: MenuSheetProps) {
       <SheetContent side="left">
         <div className="grid gap-2 py-8">
           <Link
-            href="/login"
+            href="/signin"
             className={cn(
               'flex flex-row gap-0.5 items-center p-2',
-              pathname === '/login' && 'rounded-md border'
+              pathname === '/signin' && 'rounded-md border'
             )}
           >
             <Typography variant="h5">Sign in</Typography>
           </Link>
           <Link
-            href="/register"
+            href="/signup"
             className={cn(
               'flex flex-row gap-0.5 items-center p-2',
-              pathname === '/register' && 'rounded-md border'
+              pathname === '/signup' && 'rounded-md border'
             )}
           >
-            <Typography variant="h5">Register</Typography>
+            <Typography variant="h5">Sign up</Typography>
           </Link>
         </div>
       </SheetContent>

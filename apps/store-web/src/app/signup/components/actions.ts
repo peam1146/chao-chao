@@ -1,5 +1,6 @@
 'use server'
 
+// import { revalidatePath, revalidateTag } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { z } from 'zod'
 
@@ -26,13 +27,14 @@ export async function createUser(dataForm: ValidationSchema) {
           roles: [User_roles_MutationInput.User],
         },
       })
-
       return { ...data }
     })
-
-    redirect('/signup')
+    console.log(`Signup Success`)
+    // revalidatePath('/signup')
+    // revalidateTag('signup')
+    redirect('/signin')
   } catch (e) {
     console.log(e)
-    redirect(`/signup?error=${e.message}`)
+    redirect(`/signin?error=${e.message}`)
   }
 }
