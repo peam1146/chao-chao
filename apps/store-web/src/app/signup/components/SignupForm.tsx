@@ -12,17 +12,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { z } from 'zod'
 
-import { useMutation } from '../../../../gqty'
-
-type Inputs = {
-  email: string
-  password: string
-}
+import { createUser } from './actions'
 
 const validationSchema = z.object({
   email: z.string().min(1, { message: 'Email is required' }).email({
     message: 'Must be a valid email',
   }),
+  phone: z.string(),
   password: z.string().min(6, { message: 'Password must be atleast 6 characters' }),
 })
 
@@ -33,13 +29,11 @@ export default function SignupForm() {
     resolver: zodResolver(validationSchema),
   })
 
-  const [signup, { isLoading }] = useMutation((mutation, { data }) => {
-    return mutation.createUser({ data })
-  })
-
-  // const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
-
-  const onSubmit: SubmitHandler<ValidationSchema> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
+    const result = await createUser(data)
+    console.log(data)
+    console.log(result)
+  }
 
   return (
     <div className="h-fit w-fit flex items-center flex-col md:flex-row md:pl-10 my-auto">
@@ -66,12 +60,7 @@ export default function SignupForm() {
             <div className="absolute h-full flex items-center justify-center ml-3">
               <Phone size={20} className="text-muted-foreground" />
             </div>
-            <Input
-              type="tel"
-              placeholder="Phone number"
-              className="pl-9"
-              // {...register('tel', { required: true })}
-            />
+            <Input type="tel" placeholder="Phone number" className="pl-9" {...register('phone')} />
           </div>
           <div className="w-full relative">
             <div className="absolute h-full flex items-center justify-center ml-3">
@@ -87,7 +76,7 @@ export default function SignupForm() {
         </div>
 
         <div className="flex flex-col items-center gap-y-2">
-          <Button type="submit" disabled={isLoading} className="bg-primary w-[100%] md:w-[108px]">
+          <Button type="submit" className="bg-primary w-[100%] md:w-[108px]">
             Sign up
           </Button>
           <div className="text-h6 flex flex-row gap-x-1">
