@@ -21,6 +21,7 @@ const queryFetcher: QueryFetcher = async function (
     },
     {} as Record<string, string>
   )
+  console.log(query)
   // Modify "/api/graphql" if needed
   const response = await fetch('http://localhost:3001/api/graphql', {
     method: 'POST',
