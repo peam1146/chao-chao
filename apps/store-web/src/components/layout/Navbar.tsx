@@ -30,16 +30,16 @@ const NavbarDesktop = () => {
           </Link>
           <Input placeholder="Search" className="w-2/5" />
           <div className="flex items-center gap-4">
-            <Link href="/login" className="flex flex-row gap-0.5 items-center">
-              {pathname === '/login' && <MagnifyingGlass className="w-4 h-4" />}
-              <Typography variant="h5" className={cn(pathname !== '/login' && 'text-light')}>
+            <Link href="/signin" className="flex flex-row gap-0.5 items-center">
+              {pathname === '/signin' && <MagnifyingGlass className="w-4 h-4" />}
+              <Typography variant="h5" className={cn(pathname !== '/signin' && 'text-light')}>
                 Sign in
               </Typography>
             </Link>
-            <Link href="/register" className="flex flex-row gap-0.5 items-center">
-              {pathname === '/register' && <MagnifyingGlass className="w-4 h-4" />}
-              <Typography variant="h5" className={cn(pathname !== '/register' && 'text-light')}>
-                Register
+            <Link href="/signup" className="flex flex-row gap-0.5 items-center">
+              {pathname === '/signup' && <MagnifyingGlass className="w-4 h-4" />}
+              <Typography variant="h5" className={cn(pathname !== '/signup' && 'text-light')}>
+                Sign up
               </Typography>
             </Link>
             <ModeToggle />
