@@ -1,21 +1,24 @@
 'use client'
 
-import { Text } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import Typography from '@/components/ui/typography'
 import Image from 'next/image'
-
-import { Button } from './button'
 
 export default function CategoryBlock() {
   return (
-    <main className="flex w-full h-583 bg-background min-h-screen items-center justify-center">
+    <main className="flex w-full bg-background items-center justify-center ">
       <div className="flex flex-col w-437 ">
-        <div className="flex w-full text-h2 justify-center text-[#FF5E3A] ">
+        <Typography variant="h1" fontWeight="bold" className="text-[#FF5E3A]">
           เช่าที่ไหนดี มาเช่านี่มา
-        </div>
-        <div className="flex w-full text-body1 justify-center text-[#7F8EA3] ">
+        </Typography>
+        <Typography
+          variant="body1"
+          className="flex w-full text-body1 justify-center text-[#7F8EA3] "
+        >
           Rent Anything From Anyone
-        </div>
-        <div className="flex gap-2 pt-6">
+        </Typography>
+        <div className="flex gap-2 pt-6 justify-center">
           <Button variant="outline">หนังสือนิยาย/มังงะ</Button>
           <Button variant="outline">บ้าน</Button>
         </div>
