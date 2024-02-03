@@ -41,6 +41,10 @@ const config = {
         sans: ['var(--font-sans)', ...fontFamily.sans],
         looped: ['var(--font-looped)', ...fontFamily.sans],
       },
+      textColor: {
+        DEFAULT: 'hsl(var(--text))',
+        light: 'hsl(var(--text-light))',
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
