@@ -14,7 +14,7 @@ export default function SigninForm() {
   return (
     <div className="w-full h-[339px]">
       <form className="w-full h-full" action={userLogin}>
-        <div className="w-full max-w-[449px] h-full flex flex-col lg:justify-center gap-y-12 justify-between">
+        <div className="w-full h-full flex flex-col items-center lg:justify-center gap-y-12 justify-between">
           <div className="w-full flex flex-col items-center justify-center lg:gap-y-12 gap-y-4">
             <Typography variant="h3" fontWeight="bold" className="self-start lg:self-center lg:h2">
               Sign in
@@ -28,7 +28,7 @@ export default function SigninForm() {
                   type="text"
                   placeholder="Email or Phone number"
                   name="email"
-                  className="pl-8 max-w-[449px] text-white"
+                  className="pl-8"
                 ></Input>
               </div>
               <div className="w-full">
@@ -36,26 +36,21 @@ export default function SigninForm() {
                   <div className="absolute h-full flex items-center justify-center ml-3">
                     <Key size={20} className="text-muted-foreground" />
                   </div>
-                  <Input
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    className="pl-8 max-w-[449px] text-white"
-                  ></Input>
+                  <Input type="password" placeholder="Password" name="password" className="pl-8" />
                 </div>
-                <Link href="/" className="text-h6 font-regular text-white text-start">
+                <Link href="/signup" className="text-h6 font-regular text-start">
                   Forget Password?
                 </Link>
               </div>
             </div>
           </div>
-          <div className="w-full flex flex-col justify-center items-center text-white font-regular gap-y-2">
-            <Button type="submit" className="text-h5 w-[100%] lg:w-[108px]">
+          <div className="w-full flex flex-col justify-center items-center gap-y-2">
+            <Button type="submit" className="text-h5 w-full lg:w-fit">
               Sign In
             </Button>
-            <Typography variant="h6" fontWeight="regular">
+            <Typography variant="h6" className="flex gap-1">
               Don't have an account?
-              <Link href="/" className="text-primary pl-1">
+              <Link href="/signup" className="text-primary">
                 Sign up
               </Link>
             </Typography>

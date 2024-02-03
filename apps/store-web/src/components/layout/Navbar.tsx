@@ -5,11 +5,11 @@ import { useState } from 'react'
 import logo from '@/assets/images/logo.svg'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
-import { useMediaQuery } from '@/react-hooks/use-media-query'
 import { List, MagnifyingGlass } from '@phosphor-icons/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useMediaQuery } from 'usehooks-ts'
 
 import Typography from '../ui/typography'
 import { MenuSheet } from './components/MenuSheet'
@@ -24,7 +24,7 @@ const NavbarDesktop = () => {
   if (isDesktop) {
     return (
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
+        <div className="xl:max-w-screen-2xl flex h-16 w-full px-8 items-center justify-between mx-auto">
           <Link href="/" className="flex items-center">
             <Image src={logo} width={70} height={70} alt="logo" />
           </Link>
@@ -50,7 +50,7 @@ const NavbarDesktop = () => {
   }
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
+      <div className="flex h-16 w-full px-4 items-center justify-between">
         <List className="w-6 h-6 cursor-pointer" onClick={() => setOpenMenu(true)} />
         <Link href="/" className="flex items-center">
           <Image src={logo} width={70} height={70} alt="logo" />
