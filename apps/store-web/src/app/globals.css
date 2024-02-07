@@ -104,6 +104,9 @@
     --destructive-hover: 0 65% 26%;
     --destructive-foreground: 210 40% 98%;
 
+    --available: 142 71% 45%;
+    --unavailable: 0 84% 60%;
+
     --border: 217 33% 17%;
     --input: 217 33% 17%;
     --ring: 217 33% 17%;
