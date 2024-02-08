@@ -24,16 +24,16 @@ const mockLessor = {
 
 export default function DetailPage({ params }: { params: { id: string } }) {
   return (
-    <div className="container">
+    <div className="container flex flex-col gap-y-4 py-12">
       <Breadcrumb previousPages={['Home']} currentPage={mockData.name} />
-      <div className="flex flex-row p-6 gap-10 bg-card">
+      <div className="flex flex-row p-6 gap-10 bg-card rounded-2xl justify-items-center">
         <Gallery />
         <Description
           name={mockData.name}
           price={20}
           tags={mockData.tags}
-          startDate="30/01/67"
-          endDate="30/02/67"
+          rating={4}
+          status="Available"
         />
       </div>
       <Lessor name={mockLessor.name} rating={mockLessor.rating} />

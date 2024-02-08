@@ -9,13 +9,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
-import Typography from '@/components/ui/typography'
 import Image from 'next/image'
+
+const mockListPics = [mockPic, mockPic2, mockPic2, mockPic2, mockPic]
 
 export default function Gallery() {
   return (
-    <div className="flex flex-col h-full w-full gap-4 border justify-item-center">
-      <div className="h-full w-full grid">
+    <div className="flex flex-col w-1/2 h-fit gap-4 justify-item-center">
+      <div className="h-95 w-full grid px-2">
         <Image
           src={mockPic}
           width={380}
@@ -24,49 +25,21 @@ export default function Gallery() {
           className="justify-self-center"
         />
       </div>
-      <Typography variant="h3" className="flex flex-row my-auto text-primary">
-        โอ้ยแม่งงงงง จัดยังไงวะเนี่ยยยย
-      </Typography>
 
-      <Carousel className="h-fit w-fit grid">
+      <Carousel className="mx-12">
         <CarouselPrevious />
-        <CarouselContent className="">
-          <CarouselItem className="basis-1/3 border">
-            <Image
-              src={mockPic2}
-              width={100}
-              height={100}
-              alt="Other Picture"
-              className="justify-self-center"
-            />
-          </CarouselItem>
-          <CarouselItem className="basis-1/3 border">
-            <Image
-              src={mockPic2}
-              width={100}
-              height={100}
-              alt="Other Picture"
-              className="justify-self-center"
-            />
-          </CarouselItem>
-          <CarouselItem className="basis-1/3 border">
-            <Image
-              src={mockPic2}
-              width={100}
-              height={100}
-              alt="Other Picture"
-              className="justify-self-center"
-            />
-          </CarouselItem>
-          <CarouselItem className="basis-1/3 border">
-            <Image
-              src={mockPic2}
-              width={100}
-              height={100}
-              alt="Other Picture"
-              className="justify-self-center"
-            />
-          </CarouselItem>
+        <CarouselContent className="h-25">
+          {mockListPics.map((pic, index) => (
+            <CarouselItem className="basis-1/3" key={index}>
+              <Image
+                src={pic}
+                width={100}
+                height={100}
+                alt="Other Picture"
+                className="hover:border-primary hover:border-2"
+              />
+            </CarouselItem>
+          ))}
         </CarouselContent>
         <CarouselNext />
       </Carousel>
