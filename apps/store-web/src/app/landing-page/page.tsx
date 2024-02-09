@@ -16,7 +16,7 @@ export default function LandingPage() {
       <CategoryBlock />
       <div className="flex flex-col w-full gap-20 pt-10">
         <Card />
-        <div className="grid grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-2 lg:gap-3">
+        <div className="grid grid-cols-2 2xl:grid-cols-4 lg:grid-cols-3 gap-2 lg:gap-3">
           {mockData.map((item, index) => (
             <SmallCard key={index} name={item.name} rating={item.rating} price={item.price} />
           ))}
