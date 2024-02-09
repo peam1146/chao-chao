@@ -57,4 +57,18 @@ export default buildConfig({
 			connectionString: process.env.DATABASE_URI,
 		},
 	}),
+	email: {
+		transportOptions: {
+			host: process.env.SMTP_HOST,
+			auth: {
+				user: process.env.SMTP_USER,
+				pass: process.env.SMTP_PASS,
+			},
+			port: Number(process.env.SMTP_HOST),
+			secure: Number(process.env.SMTP_PORT) === 465, // true for port 465, false (the default) for 587 and others
+			requireTLS: true,
+		},
+		fromName: "hello",
+		fromAddress: "hello@example.com",
+	},
 });
