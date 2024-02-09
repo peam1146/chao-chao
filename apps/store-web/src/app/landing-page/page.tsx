@@ -12,11 +12,11 @@ export default function LandingPage() {
     { name: 'Macbook Pro 2021', rating: 2.0, price: 10 },
   ]
   return (
-    <main className="container flex w-full bg-background min-h-[calc(100vh-64px)] flex-col items-center justify-between">
+    <main className="container flex w-full bg-background min-h-[calc(100vh-64px)] flex-col items-center justify-between pb-10">
       <CategoryBlock />
-      <div className="flex flex-col w-full gap-20">
+      <div className="flex flex-col w-full gap-20 pt-10">
         <Card />
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-3">
+        <div className="grid grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-2 lg:gap-3">
           {mockData.map((item, index) => (
             <SmallCard key={index} name={item.name} rating={item.rating} price={item.price} />
           ))}

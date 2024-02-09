@@ -17,7 +17,7 @@ export default function SmallCard({
   price: number
 }) {
   return (
-    <div className="flex flex-col w-full bg-card rounded-lg p-4 lg:gap-4 gap-2 hover:border-primary hover:border lg:hover:border-2">
+    <div className="flex flex-col max-w-[350px] w-full bg-card rounded-lg p-4 lg:gap-4 gap-2 hover:border-primary hover:border lg:hover:border-2">
       <div className="relative">
         <Badge className="absolute py-1 px-3 flex flex-row gap-1">
           <Lightning size={16} weight="fill" className="text-white" />
