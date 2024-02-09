@@ -30,8 +30,8 @@ async function start() {
 			payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
 		},
 		email: {
-			fromName: "inwpuun",
-			fromAddress: "inwpuun1@gmail.com",
+			fromName: process.env.SMTP_USERNAME,
+			fromAddress: process.env.SMTP_USER,
 			transport,
 		},
 	});
