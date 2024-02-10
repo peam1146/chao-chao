@@ -17,7 +17,7 @@ export const Media: S3UploadCollectionConfig = {
 			},
 		},
 		adminThumbnail: ({ doc }) =>
-			`${process.env.S3_API_URL}/images/xyz/${doc.filename}`,
+			`${process.env.S3_API_URL}/images/${doc.type}/${doc.filename}`,
 	},
 	access: {
 		read: isAdminOrCreatedByUser,
