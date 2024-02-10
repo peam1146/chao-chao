@@ -1,3 +1,4 @@
+import { resolve } from '../../../../gqty'
 import Breadcrumb from './component/Breadcrumb'
 import Description from './component/Description'
 import Details from './component/Details'
@@ -22,11 +23,11 @@ const mockLessor = {
   rating: 4.0,
 }
 
-export default function DetailPage({ params }: { params: { id: string } }) {
+export default async function DetailPage({ params }: { params: { id: string } }) {
   return (
-    <div className="container flex flex-col gap-y-4 py-12">
+    <div className="container flex flex-col gap-y-4 py-4 lg:py-12">
       <Breadcrumb previousPages={['Home']} currentPage={mockData.name} />
-      <div className="flex flex-row p-6 gap-10 bg-card rounded-2xl justify-items-center">
+      <div className="flex flex-col lg:flex-row p-6 gap-10 bg-card rounded-2xl justify-items-center">
         <Gallery />
         <Description
           name={mockData.name}

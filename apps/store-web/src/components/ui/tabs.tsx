@@ -8,7 +8,7 @@ import { type VariantProps, cva } from 'class-variance-authority'
 
 const TabsTriggerVariants = cva(
   `h-full px-4 inline-flex items-center justify-center whitespace-nowrap text-light transition-all
-focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50
+focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 border-b-2 border-text
 data-[state=active]:font-bold data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary`,
   {
     variants: {

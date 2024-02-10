@@ -24,7 +24,6 @@ export default function Reviews() {
 
   const mockReview = [
     {
-      id: 1,
       image: mockPic2,
       name: 'มายมุมุ หิวข้าว',
       date: '02/02/2024',
@@ -34,7 +33,6 @@ export default function Reviews() {
                 สินค้าแพคดีไม่เสียหาย สินค้าจัดส่งรวดเร็วมากๆๆ สินค้าใช้งานได้ไม่เสียหาย  ขนาดพอดี แนะนำร้านนี้เลยค่ะรวดเร็วทันใช้ทันใจมากๆๆ`,
     },
     {
-      id: 2,
       image: mockPic2,
       name: 'มายมุมุ หิวข้าว',
       date: '02/02/2024',
@@ -44,18 +42,6 @@ export default function Reviews() {
                 สินค้าแพคดีไม่เสียหาย สินค้าจัดส่งรวดเร็วมากๆๆ สินค้าใช้งานได้ไม่เสียหาย  ขนาดพอดี แนะนำร้านนี้เลยค่ะรวดเร็วทันใช้ทันใจมากๆๆ`,
     },
     {
-      id: 3,
-      image: mockPic2,
-      name: 'มายมุมุ หิวข้าว',
-      date: '02/02/2024',
-      rating: 4,
-      detail: `สินค้าแพคดีไม่เสียหาย สินค้าจัดส่งรวดเร็วมากๆๆ สินค้าใช้งานได้ไม่เสียหาย  ขนาดพอดี แนะนำร้านนี้เลยค่ะรวดเร็วทันใช้ทันใจมากๆๆ 
-                 สินค้าแพคดีไม่เสียหาย สินค้าจัดส่งรวดเร็วมากๆๆ สินค้าใช้งานได้ไม่เสียหาย  ขนาดพอดี แนะนำร้านนี้เลยค่ะรวดเร็วทันใช้ทันใจมากๆๆ 
-                สินค้าแพคดีไม่เสียหาย สินค้าจัดส่งรวดเร็วมากๆๆ สินค้าใช้งานได้ไม่เสียหาย  ขนาดพอดี แนะนำร้านนี้เลยค่ะรวดเร็วทันใช้ทันใจมากๆๆ`,
-    },
-    ,
-    {
-      id: 4,
       image: mockPic2,
       name: 'มายมุมุ หิวข้าว',
       date: '02/02/2024',
@@ -66,7 +52,16 @@ export default function Reviews() {
     },
     ,
     {
-      id: 5,
+      image: mockPic2,
+      name: 'มายมุมุ หิวข้าว',
+      date: '02/02/2024',
+      rating: 4,
+      detail: `สินค้าแพคดีไม่เสียหาย สินค้าจัดส่งรวดเร็วมากๆๆ สินค้าใช้งานได้ไม่เสียหาย  ขนาดพอดี แนะนำร้านนี้เลยค่ะรวดเร็วทันใช้ทันใจมากๆๆ 
+                 สินค้าแพคดีไม่เสียหาย สินค้าจัดส่งรวดเร็วมากๆๆ สินค้าใช้งานได้ไม่เสียหาย  ขนาดพอดี แนะนำร้านนี้เลยค่ะรวดเร็วทันใช้ทันใจมากๆๆ 
+                สินค้าแพคดีไม่เสียหาย สินค้าจัดส่งรวดเร็วมากๆๆ สินค้าใช้งานได้ไม่เสียหาย  ขนาดพอดี แนะนำร้านนี้เลยค่ะรวดเร็วทันใช้ทันใจมากๆๆ`,
+    },
+    ,
+    {
       image: mockPic2,
       name: 'มายมุมุ หิวข้าว',
       date: '02/02/2024',
@@ -92,70 +87,53 @@ export default function Reviews() {
               /5
             </Typography>
           </div>
-          <Rating name="read-only" value={4} readOnly className="mx-auto" />
+          <Rating
+            name="read-only"
+            value={4}
+            readOnly
+            className="mx-auto"
+            sx={{
+              '& .MuiRating-iconEmpty': {
+                color: '#999999',
+              },
+            }}
+          />
         </div>
         <Tabs defaultValue="all" className="w-full">
-          <TabsList className="w-full">
-            <TabsTrigger value="all" className="w-1/6">
+          <TabsList className="w-full max-lg:no-scrollbar max-lg:overflow-x-scroll justify-start">
+            <TabsTrigger value="all" className="lg:w-1/6">
               All
             </TabsTrigger>
-            <TabsTrigger value="star5" className="w-1/6">
+            <TabsTrigger value="star5" className="lg:w-1/6">
               5 stars
             </TabsTrigger>
-            <TabsTrigger value="star4" className="w-1/6">
+            <TabsTrigger value="star4" className="lg:w-1/6">
               4 stars
             </TabsTrigger>
-            <TabsTrigger value="star3" className="w-1/6">
+            <TabsTrigger value="star3" className="lg:w-1/6">
               3 stars
             </TabsTrigger>
-            <TabsTrigger value="star2" className="w-1/6">
+            <TabsTrigger value="star2" className="lg:w-1/6">
               2 stars
             </TabsTrigger>
-            <TabsTrigger value="star1" className="w-1/6">
+            <TabsTrigger value="star1" className="lg:w-1/6">
               1 star
             </TabsTrigger>
           </TabsList>
           <TabsContent value="all">
-            <div className="flex flex-col gap-y-4">
-              {mockReview.map((review) => (
-                <div className="flex flex-col gap-y-4" key={review.id}>
-                  <div className="flex flex-row gap-x-2">
-                    <Image
-                      src={mockPic2}
-                      alt="Profile Picture"
-                      width={50}
-                      height={50}
-                      className="rounded-full h-[50px]"
-                    />
-                    <div className="flex flex-col gap-y-2">
-                      <div>
-                        <div className="flex gap-x-2">
-                          <Typography variant="h6">{review.name}</Typography>
-                          <Typography variant="tiny" className="text-light">
-                            {review.date}
-                          </Typography>
-                        </div>
-                        <Typography variant="tiny" className="text-light flex">
-                          <Rating name="read-only" size="small" value={review.rating} readOnly />
-                          {review.rating.toFixed(1)}
-                        </Typography>
-                      </div>
-                      <Typography variant="h6">{review.detail}</Typography>
-                    </div>
-                  </div>
-                  <hr />
-                </div>
-              ))}
-            </div>
+            <TabContent reviews={mockReview} />
           </TabsContent>
           <TabsContent value="star5"></TabsContent>
-          <TabsContent value="star4">{/* <TabContent reviews={mockReview} /> */}</TabsContent>
+          <TabsContent value="star4">
+            <TabContent reviews={mockReview} />
+          </TabsContent>
           <TabsContent value="star3"></TabsContent>
           <TabsContent value="star2"></TabsContent>
           <TabsContent value="star1"></TabsContent>
         </Tabs>
       </div>
 
+      {/*waiting for backend to query*/}
       <Pagination>
         <PaginationContent>
           <PaginationItem>
@@ -163,13 +141,11 @@ export default function Reviews() {
           </PaginationItem>
 
           <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
+            <PaginationLink isActive>1</PaginationLink>
           </PaginationItem>
 
           <PaginationItem>
-            <PaginationLink href="#" isActive>
-              2
-            </PaginationLink>
+            <PaginationLink href="#">2</PaginationLink>
           </PaginationItem>
 
           <PaginationItem>

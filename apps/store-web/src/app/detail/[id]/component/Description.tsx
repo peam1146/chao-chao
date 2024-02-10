@@ -23,11 +23,50 @@ export default function Description({
   rating: number
   status: string
 }) {
-  const [startDate, setStartDate] = useState<Date | undefined>(new Date(Date.now))
-  const [endDate, setEndDate] = useState<Date | undefined>(new Date(Date.now))
+  const dayjs = require('dayjs')
+
+  const currentDay = new Date()
+  currentDay.setHours(0, 0, 0, 0)
+  const [startDate, setStartDate] = useState<Date | undefined>(new Date(currentDay))
+  const [endDate, setEndDate] = useState<Date | undefined>(
+    new Date(currentDay.getTime() + 1000 * 3600 * 24)
+  )
+  const [periodText, setPeriodText] = useState<string>('1 Day')
+
+  const timePeriod = (startDate: Date | undefined, endDate: Date | undefined): string => {
+    if (startDate instanceof Date && endDate instanceof Date) {
+      const diffTime = endDate.getTime() - startDate.getTime()
+      const totalDate = Math.round(diffTime / (1000 * 3600 * 24))
+      const month = Math.round(totalDate / 30)
+      const day = totalDate % 30
+
+      var monthText = String()
+      if (month == 1) {
+        monthText = '1 Month'
+      } else if (month > 1) {
+        monthText = month.toString() + ' Months'
+      }
+
+      var dayText = String()
+      if (day == 1) {
+        dayText = '1 Day'
+      } else if (day > 1) {
+        dayText = day.toString() + ' Days'
+      }
+
+      var periodText = String()
+      if (monthText.length && dayText.length) {
+        periodText = monthText + ', ' + dayText
+      } else if (monthText.length) periodText = monthText
+      else if (dayText.length) periodText = dayText
+      return periodText
+    } else {
+      return ''
+    }
+  }
 
   return (
-    <div className="h-full w-1/2 flex flex-col gap-y-4">
+    <div className="h-full lg:w-1/2 flex flex-col gap-y-4">
       <div className="flex flex-col">
         <Typography variant="h3" fontWeight="bold">
           {name}
@@ -37,8 +76,17 @@ export default function Description({
         </Typography>
       </div>
       <div className="flex gap-0.5">
-        <Rating name="read-only" value={rating} readOnly />
-        <Typography variant="h6" className="text-light my-auto">
+        <Rating
+          name="read-only"
+          value={rating}
+          readOnly
+          sx={{
+            '& .MuiRating-iconEmpty': {
+              color: '#999999',
+            },
+          }}
+        />
+        <Typography variant="h5" className="text-light my-auto pt-0.5">
           {rating.toFixed(1)}
         </Typography>
       </div>
@@ -56,19 +104,37 @@ export default function Description({
           Check for available dates
         </Typography>
         <hr />
-        <div className="h-7 flex justify-between">
+        <div className="h-fit lg:h-7 flex flex-col lg:flex-row justify-between">
           <Typography variant="h6" fontWeight="bold" className="my-auto">
             Date
           </Typography>
-          <div className="flex gap-x-2 ">
+          <div className="flex justify-between gap-x-2">
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="outline" size="sm" className="gap-x-2 bg-transparent">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="gap-x-2 bg-transparent grow lg:grow-0"
+                >
                   <CalendarBlank size={16} />
+                  <Typography variant="h6">{dayjs(startDate).format('DD/MM/YY')}</Typography>
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-full">
-                <Calendar mode="single" selected={startDate} onSelect={setStartDate} />
+                <Calendar
+                  mode="single"
+                  selected={startDate}
+                  onSelect={(e) => {
+                    setStartDate(e)
+                    setPeriodText(timePeriod(e, endDate))
+                  }}
+                  disabled={(date) =>
+                    date < new Date(Date.now() - 1000 * 3600 * 24) ||
+                    (endDate instanceof Date &&
+                      date > new Date(endDate.getTime() - 1000 * 3600 * 24))
+                  }
+                  required
+                />
               </PopoverContent>
             </Popover>
             <Typography variant="h6" className="my-auto">
@@ -76,12 +142,29 @@ export default function Description({
             </Typography>
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="outline" size="sm" className="gap-x-2 bg-transparent">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-27 gap-x-2 bg-transparent grow lg:grow-0"
+                >
                   <CalendarBlank size={16} />
+                  <Typography variant="h6">{dayjs(endDate).format('DD/MM/YY')}</Typography>
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-full">
-                <Calendar mode="single" selected={endDate} onSelect={setEndDate} />
+                <Calendar
+                  mode="single"
+                  selected={endDate}
+                  onSelect={(e) => {
+                    setEndDate(e)
+                    setPeriodText(timePeriod(startDate, e))
+                  }}
+                  disabled={(date) =>
+                    startDate instanceof Date &&
+                    date < new Date(startDate.getTime() + 1000 * 3600 * 24)
+                  }
+                  required
+                />
               </PopoverContent>
             </Popover>
           </div>
@@ -92,7 +175,7 @@ export default function Description({
             Total period
           </Typography>
           <Typography variant="h6" fontWeight="bold" className="my-auto">
-            1 month
+            {periodText}
           </Typography>
         </div>
         <hr />

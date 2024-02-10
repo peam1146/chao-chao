@@ -1,12 +1,25 @@
 import Typography from '@/components/ui/typography'
 import Rating from '@mui/material/Rating'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 
-export default function TabContent({ reviews }: { reviews: Array<Object> }) {
+export default function TabContent({
+  reviews,
+}: {
+  reviews: (
+    | {
+        image: StaticImageData
+        name: string
+        date: string
+        rating: number
+        detail: string
+      }
+    | undefined
+  )[]
+}) {
   return (
     <div className="flex flex-col gap-y-4">
-      {reviews.map((review) => (
-        <div className="flex flex-col gap-y-4" key={review.id}>
+      {reviews.map((review, index) => (
+        <div className="flex flex-col gap-y-4" key={index}>
           <div className="flex flex-row gap-x-2">
             <Image
               src={review.image}
@@ -23,10 +36,22 @@ export default function TabContent({ reviews }: { reviews: Array<Object> }) {
                     {review.date}
                   </Typography>
                 </div>
-                <Typography variant="tiny" className="text-light flex">
-                  <Rating name="read-only" size="small" value={review.rating} readOnly />
-                  {review.rating.toFixed(1)}
-                </Typography>
+                <div className="text-light flex ">
+                  <Rating
+                    name="read-only"
+                    size="small"
+                    value={review.rating}
+                    readOnly
+                    sx={{
+                      '& .MuiRating-iconEmpty': {
+                        color: '#999999',
+                      },
+                    }}
+                  />
+                  <Typography variant="tiny" className="pt-0.5">
+                    {review.rating.toFixed(1)}
+                  </Typography>
+                </div>
               </div>
               <Typography variant="h6">{review.detail}</Typography>
             </div>
