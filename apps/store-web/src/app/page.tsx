@@ -1,6 +1,6 @@
-import Card from './landing-page/components/card'
-import CategoryBlock from './landing-page/components/category-block'
-import SmallCard from './landing-page/components/small-card'
+import Card from './components/card'
+import CategoryBlock from './components/category-block'
+import SmallCard from './components/small-card'
 
 export default async function Home() {
   const mockData = [
