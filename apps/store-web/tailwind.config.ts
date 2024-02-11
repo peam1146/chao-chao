@@ -97,6 +97,8 @@ const config = {
           DEFAULT: 'hsl(var(--text)',
           light: 'hsl(var(--text-light)',
         },
+        available: 'hsl(var(--available))',
+        unavailable: 'hsl(var(--unavailable))',
       },
       borderRadius: {
         lg: 'var(--radius)',
