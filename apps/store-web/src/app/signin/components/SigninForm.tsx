@@ -38,7 +38,7 @@ export default function SigninForm() {
                   </div>
                   <Input type="password" placeholder="Password" name="password" className="pl-8" />
                 </div>
-                <Link href="/signup" className="text-h6 font-regular text-start">
+                <Link href="/forget" className="text-h6 font-regular text-start">
                   Forget Password?
                 </Link>
               </div>
