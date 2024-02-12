@@ -12,7 +12,10 @@ import {
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
-export function ModeToggle() {
+type ModeToggleProps = {
+  align?: 'center' | 'start' | 'end'
+}
+export function ModeToggle({ align }: ModeToggleProps) {
   const { setTheme } = useTheme()
 
   return (
@@ -24,7 +27,7 @@ export function ModeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align={align ?? 'end'}>
         <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme('dark')}>Dark</DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme('system')}>System</DropdownMenuItem>
