@@ -92,7 +92,7 @@ export default function SearchPage() {
             </div>
           </div>
         )}
-        <div className="">
+        <div>
           <div className="flex items-center gap-2 flex-1">
             <p className="text-sm">Result of </p>
             <b className="text-xl font-bold">"โกะโจ"</b>
@@ -150,7 +150,7 @@ export default function SearchPage() {
               <Funnel className="text-xl" />
             </Button>
           </div>
-          <div className="col-span-9 py-4">
+          <div className="py-4">
             <div className="grid grid-cols-2 2xl:grid-cols-4 lg:grid-cols-3 gap-2 lg:gap-3">
               {mockData.map((item, index) => (
                 <SmallCard key={index} name={item.name} rating={item.rating} price={item.price} />
