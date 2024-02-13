@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { DatePicker } from '@/components/ui/datepicker'
 import { Input } from '@/components/ui/input'
+import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
 import { ArrowDown, ArrowUp, CaretDown, CaretUp, CaretUpDown, Funnel } from '@phosphor-icons/react'
 
@@ -71,7 +72,7 @@ export default function SearchPage() {
   const [showFilterModal, setShowFilterModal] = useState(false)
 
   return (
-    <div className="lg:container px-4 lg:px-0">
+    <div className="lg:container px-4">
       <div className="flex gap-x-4 h-[calc(100vh-32px)] py-4 lg:py-12 font-sans overflow-y-scroll">
         <div className={cn('space-y-2 lg:sticky lg:top-0 lg:block md:block hidden')}>
           <FilterInput />
@@ -94,8 +95,10 @@ export default function SearchPage() {
         )}
         <div>
           <div className="flex items-center gap-2 flex-1">
-            <p className="text-sm">Result of </p>
-            <b className="text-xl font-bold">"โกะโจ"</b>
+            <Typography variant="h6">Result of </Typography>
+            <Typography variant="h4" fontWeight="bold">
+              "โกะโจ"
+            </Typography>
           </div>
           <div className="border-b flex items-center justify-end gap-2">
             <Button
@@ -126,7 +129,7 @@ export default function SearchPage() {
               ) : (
                 <CaretUpDown className="h-4" />
               )}
-              <p className="ml-0.5">Price</p>
+              Price
             </Button>
             <Button
               variant="ghost"
