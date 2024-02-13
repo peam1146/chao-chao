@@ -2,21 +2,21 @@
 import { S3UploadCollectionConfig } from "payload-s3-upload";
 
 import { isAdminOrCreatedByUser } from "../../access";
+import { API_URL, BUCKET_NAME } from "../../common/env";
 
 export const Media: S3UploadCollectionConfig = {
 	slug: "medias",
 	upload: {
-		staticURL: `https://chaochao-bucket.s3-ap-southeast-2.amazonaws.com/images`,
-		// staticDir: "assets",
+		staticURL: `${API_URL}/images`,
 		disableLocalStorage: true,
 		s3: {
-			bucket: "chaochao-bucket",
+			bucket: BUCKET_NAME,
 			prefix: "images/",
 			commandInput: {
 				ACL: "public-read",
 			},
 		},
-		adminThumbnail: ({ doc }) => `${process.env.S3_API_URL}${doc.filename}`,
+		adminThumbnail: ({ doc }) => `${API_URL}/images/${doc.filename}`,
 	},
 	access: {
 		read: isAdminOrCreatedByUser,
@@ -43,9 +43,7 @@ export const Media: S3UploadCollectionConfig = {
 				disabled: true,
 			},
 			hooks: {
-				afterRead: [
-					({ data: doc }) => `${process.env.S3_API_URL}/images/${doc.filename}`,
-				],
+				afterRead: [({ data: doc }) => `${API_URL}/images/${doc.filename}`],
 			},
 		},
 		{

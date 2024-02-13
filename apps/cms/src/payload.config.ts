@@ -11,6 +11,7 @@ import { Item, Media, Tag, Users } from "./collections";
 import { Logo } from "./components/Logo";
 import { S3Client } from "@aws-sdk/client-s3";
 import s3Upload from "payload-s3-upload";
+import { ACCESS_KEY_ID, REGION, SECRET_KEY_ID } from "./common/env";
 
 export default buildConfig({
 	admin: {
@@ -44,10 +45,10 @@ export default buildConfig({
 		redoc({}),
 		s3Upload(
 			new S3Client({
-				region: "ap-southeast-2",
+				region: REGION,
 				credentials: {
-					accessKeyId: process.env.S3_ACCESS_KEY_ID,
-					secretAccessKey: process.env.S3_SECRET_KEY_ID,
+					accessKeyId: ACCESS_KEY_ID,
+					secretAccessKey: SECRET_KEY_ID,
 				},
 			}),
 		),
