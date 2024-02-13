@@ -6,18 +6,17 @@ import { isAdminOrCreatedByUser } from "../../access";
 export const Media: S3UploadCollectionConfig = {
 	slug: "medias",
 	upload: {
-		staticURL: "/assets",
-		staticDir: "assets",
+		staticURL: `https://chaochao-bucket.s3-ap-southeast-2.amazonaws.com/images`,
+		// staticDir: "assets",
 		disableLocalStorage: true,
 		s3: {
 			bucket: "chaochao-bucket",
-			prefix: ({ doc }) => `images/${doc.type}`,
+			prefix: "images/",
 			commandInput: {
 				ACL: "public-read",
 			},
 		},
-		adminThumbnail: ({ doc }) =>
-			`${process.env.S3_API_URL}/images/${doc.type}/${doc.filename}`,
+		adminThumbnail: ({ doc }) => `${process.env.S3_API_URL}${doc.filename}`,
 	},
 	access: {
 		read: isAdminOrCreatedByUser,
@@ -45,8 +44,7 @@ export const Media: S3UploadCollectionConfig = {
 			},
 			hooks: {
 				afterRead: [
-					({ data: doc }) =>
-						`${process.env.S3_API_URL}/images/${doc.type}/${doc.filename}`,
+					({ data: doc }) => `${process.env.S3_API_URL}/images/${doc.filename}`,
 				],
 			},
 		},
