@@ -1,3 +1,4 @@
+import { resolve } from '../../gqty'
 import Card from './components/card'
 import CategoryBlock from './components/category-block'
 import SmallCard from './components/small-card'
@@ -9,6 +10,12 @@ export default async function Home() {
     { name: 'Iphone 13 Pro Max', rating: 3.0, price: 20 },
     { name: 'Macbook Pro 2021', rating: 2.0, price: 10 },
   ]
+  // const data = await resolve(({ query }) => {
+  //   // return query.meUser?.user!
+  //   console.log(query.meUser?.user?.email)
+  //   return query.meUser?.user?.email
+  // })
+  // console.log(data)
   return (
     <main className="container flex w-full bg-background min-h-[calc(100vh-64px)] flex-col items-center justify-between pb-10">
       <CategoryBlock />
