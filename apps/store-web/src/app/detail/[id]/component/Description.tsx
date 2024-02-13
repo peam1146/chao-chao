@@ -2,12 +2,12 @@
 
 import { useState } from 'react'
 
+import { Rating } from '@/app/components/rating'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import Typography from '@/components/ui/typography'
-import Rating from '@mui/material/Rating'
 import { CalendarBlank } from '@phosphor-icons/react'
 
 export default function Description({
@@ -76,16 +76,7 @@ export default function Description({
         </Typography>
       </div>
       <div className="flex gap-0.5">
-        <Rating
-          name="read-only"
-          value={rating}
-          readOnly
-          sx={{
-            '& .MuiRating-iconEmpty': {
-              color: '#999999',
-            },
-          }}
-        />
+        <Rating name="read-only" value={rating} max={5} />
         <Typography variant="h5" className="text-light my-auto pt-0.5">
           {rating.toFixed(1)}
         </Typography>

@@ -1,9 +1,9 @@
 'use client'
 
+import { Rating } from '@/app/components/rating'
 import mockPic2 from '@/assets/images/mockPic2.png'
 import { Button } from '@/components/ui/button'
 import Typography from '@/components/ui/typography'
-import { Rating } from '@mui/material'
 import { Chats, UserCircle } from '@phosphor-icons/react'
 import Image from 'next/image'
 
@@ -24,17 +24,7 @@ export default function Lessor({ name, rating }: { name: string; rating: number 
             {name}
           </Typography>
           <div className="flex flex-row justify-center">
-            <Rating
-              name="read-only"
-              value={rating}
-              max={5}
-              readOnly
-              sx={{
-                '& .MuiRating-iconEmpty': {
-                  color: '#999999',
-                },
-              }}
-            />
+            <Rating value={rating} max={5} />
             <Typography variant="h5" className="text-light pt-0.5">
               {rating.toFixed(1)}
             </Typography>

@@ -3,9 +3,10 @@
 import sumsung from '@/assets/images/sumsung.svg'
 import { Badge } from '@/components/ui/badge'
 import Typography from '@/components/ui/typography'
-import { Rating } from '@mui/material'
 import { Lightning } from '@phosphor-icons/react'
 import Image from 'next/image'
+
+import { Rating } from './rating'
 
 export default function SmallCard({
   name,
@@ -33,7 +34,7 @@ export default function SmallCard({
             {name}
           </Typography>
           <div className="flex flex-row gap-0.5 ">
-            <Rating name="read-only" value={rating} max={5} readOnly />
+            <Rating value={rating} max={5} />
             <Typography variant="h6" className="text-light my-auto">
               {rating.toFixed(1)}
             </Typography>

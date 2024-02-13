@@ -2,8 +2,9 @@
 
 import product from '@/assets/images/product.png'
 import Typography from '@/components/ui/typography'
-import { Rating } from '@mui/material'
 import Image from 'next/image'
+
+import { Rating } from './rating'
 
 export default function Card() {
   return (
@@ -17,7 +18,7 @@ export default function Card() {
             เสื้อสตรีท รุ่น APE ดำ-ขาว ลิขสิทธิแท้
           </Typography>
           <div className="flex flex-row gap-0.5 ">
-            <Rating name="read-only" value={4} max={5} readOnly />
+            <Rating value={4} max={5} />
             <Typography variant="h6" className="text-light my-auto">
               4.0
             </Typography>

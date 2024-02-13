@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 
+import { Rating } from '@/app/components/rating'
 import mockPic2 from '@/assets/images/mockPic2.png'
 import {
   Pagination,
@@ -14,7 +15,6 @@ import {
 } from '@/components/ui/pagination'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Typography from '@/components/ui/typography'
-import { Rating } from '@mui/material'
 import Image from 'next/image'
 
 import TabContent from './TabContent'
@@ -87,17 +87,7 @@ export default function Reviews() {
               /5
             </Typography>
           </div>
-          <Rating
-            name="read-only"
-            value={4}
-            readOnly
-            className="mx-auto"
-            sx={{
-              '& .MuiRating-iconEmpty': {
-                color: '#999999',
-              },
-            }}
-          />
+          <Rating value={4} max={5} className="mx-auto" />
         </div>
         <Tabs defaultValue="all" className="w-full">
           <TabsList className="w-full max-lg:no-scrollbar max-lg:overflow-x-scroll justify-start">
