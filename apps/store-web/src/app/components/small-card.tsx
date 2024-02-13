@@ -8,10 +8,12 @@ import { Lightning } from '@phosphor-icons/react'
 import Image from 'next/image'
 
 export default function SmallCard({
+  id,
   name,
   rating,
   price,
 }: {
+  id: number
   name: string
   rating: number
   price: number
@@ -27,14 +29,38 @@ export default function SmallCard({
           <Image src={sumsung} alt=" picture" width={0} height={0} />
         </div>
       </div>
-      <div className="flex flex-col gap-1 lg:gap-4 items-start">
+      <div className="flex flex-col gap-1 lg:gap-4 w-fit items-start">
         <div className="lg:gap-2 gap-1">
-          <Typography variant="h6" fontWeight="bold" className="lg:h4">
+          <Typography variant="h6" fontWeight="bold" className="lg:h4 line-clamp-1">
             {name}
           </Typography>
           <div className="flex flex-row gap-0.5 ">
-            <Rating name="read-only" value={rating} max={5} readOnly />
-            <Typography variant="h6" className="text-light my-auto">
+            <Rating
+              name="read-only"
+              value={rating}
+              max={5}
+              readOnly
+              className="flex md:hidden lg:flex"
+              sx={{
+                '& .MuiRating-iconEmpty': {
+                  color: '#999999',
+                },
+              }}
+            />
+            <Rating
+              name="read-only"
+              value={rating}
+              max={5}
+              size="small"
+              readOnly
+              className="lg:hidden md:flex hidden"
+              sx={{
+                '& .MuiRating-iconEmpty': {
+                  color: '#999999',
+                },
+              }}
+            />
+            <Typography variant="h5" className="text-light pt-0.5 lg:h5 md:tiny">
               {rating.toFixed(1)}
             </Typography>
           </div>

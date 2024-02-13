@@ -17,8 +17,18 @@ export default function Card() {
             เสื้อสตรีท รุ่น APE ดำ-ขาว ลิขสิทธิแท้
           </Typography>
           <div className="flex flex-row gap-0.5 ">
-            <Rating name="read-only" value={4} max={5} readOnly />
-            <Typography variant="h6" className="text-light my-auto">
+            <Rating
+              name="read-only"
+              value={4}
+              max={5}
+              readOnly
+              sx={{
+                '& .MuiRating-iconEmpty': {
+                  color: '#999999',
+                },
+              }}
+            />
+            <Typography variant="h5" className="text-light pt-0.5">
               4.0
             </Typography>
           </div>
