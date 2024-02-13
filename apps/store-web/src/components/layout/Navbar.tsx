@@ -1,12 +1,10 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 import logo from '@/assets/images/logo.svg'
-import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
 import { List, MagnifyingGlass } from '@phosphor-icons/react'
-import { set } from 'date-fns'
 import { SearchIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -42,7 +40,7 @@ const SearchSuggestion = () => {
           {
             <div className="flex p-2 items-center">
               <SearchIcon className="h-4" />
-              <p className="w-full">{search}</p>
+              <Typography className="w-full">{search}</Typography>
             </div>
           }
         </div>
@@ -78,7 +76,7 @@ const NavbarDesktop = () => {
                 Sign up
               </Typography>
             </Link>
-            <ModeToggle />S S
+            <ModeToggle />
           </div>
         </div>
       </header>
