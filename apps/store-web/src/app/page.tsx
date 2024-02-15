@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation'
+
 import { resolve } from '../../gqty'
 import Card from './components/card'
 import CategoryBlock from './components/category-block'
@@ -13,7 +15,7 @@ export default async function Home() {
 
   const { id } = await resolve(({ query }) => {
     return {
-      id: query.meUser?.user?.id!,
+      id: query.meUser?.user?.id,
     }
   })
 

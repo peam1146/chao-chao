@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useMediaQuery } from 'usehooks-ts'
 
+import { Maybe } from '../../../gqty'
 import Typography from '../ui/typography'
 import { MenuSheet } from './components/MenuSheet'
 import { ProfileToggle } from './components/profile-toggle'
@@ -48,15 +49,14 @@ const SearchSuggestion = () => {
   )
 }
 
-const Navbar = ({ id }: { id: Number }) => {
+const Navbar = ({ id }: { id: Maybe<Number | undefined> }) => {
   const [openMenu, setOpenMenu] = useState(false)
 
   const pathname = usePathname()
-  const isDesktop = useMediaQuery('(min-width: 821px)')
 
-  if (isDesktop) {
-    return (
-      <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  return (
+    <>
+      <header className="max-lg:hidden sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="xl:max-w-screen-2xl flex h-16 w-full px-8 items-center justify-between mx-auto">
           <Link href="/" className="flex items-center">
             <Typography variant="h3" fontWeight="bold">
@@ -93,21 +93,20 @@ const Navbar = ({ id }: { id: Number }) => {
           </div>
         </div>
       </header>
-    )
-  }
-  return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="flex h-16 w-full px-4 items-center justify-between">
-        <List className="w-6 h-6 cursor-pointer" onClick={() => setOpenMenu(true)} />
-        <Link href="/" className="flex items-center">
-          <Typography variant="h3" fontWeight="bold">
-            chao chao
-          </Typography>
-        </Link>
-        <MagnifyingGlass className="w-6 h-6 cursor-pointer" />
-      </div>
-      <MenuSheet open={openMenu} setOpen={setOpenMenu} pathname={pathname} id={id} />
-    </header>
+
+      <header className="lg:hidden sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="flex h-16 w-full px-4 items-center justify-between">
+          <List className="w-6 h-6 cursor-pointer" onClick={() => setOpenMenu(true)} />
+          <Link href="/" className="flex items-center">
+            <Typography variant="h3" fontWeight="bold">
+              chao chao
+            </Typography>
+          </Link>
+          <MagnifyingGlass className="w-6 h-6 cursor-pointer" />
+        </div>
+        <MenuSheet open={openMenu} setOpen={setOpenMenu} pathname={pathname} id={id} />
+      </header>
+    </>
   )
 }
 

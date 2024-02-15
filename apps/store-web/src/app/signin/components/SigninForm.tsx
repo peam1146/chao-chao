@@ -29,14 +29,21 @@ export default function SigninForm() {
                   placeholder="Email or Phone number"
                   name="email"
                   className="pl-8"
-                ></Input>
+                  required
+                />
               </div>
               <div className="w-full">
                 <div className="w-full relative pb-1">
                   <div className="absolute h-full flex items-center justify-center ml-3">
                     <Key size={20} className="text-muted-foreground" />
                   </div>
-                  <Input type="password" placeholder="Password" name="password" className="pl-8" />
+                  <Input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    className="pl-8"
+                    required
+                  />
                 </div>
                 <Link href="/forget" className="text-h6 font-regular text-start">
                   Forget Password?
@@ -45,7 +52,7 @@ export default function SigninForm() {
             </div>
           </div>
           <div className="w-full flex flex-col justify-center items-center gap-y-2">
-            <Button type="submit" className="text-h5 w-full lg:w-fit">
+            <Button type="submit" className="w-full lg:w-[108px]">
               Sign In
             </Button>
             <Typography variant="h6" className="flex gap-1">
