@@ -1,12 +1,15 @@
 import Navbar from '@/components/layout/Navbar'
 import { ThemeProvider } from '@/providers/Theme'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { IBM_Plex_Sans_Thai_Looped } from 'next/font/google'
 
 import { resolve } from '../../gqty'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const sans = IBM_Plex_Sans_Thai_Looped({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700'],
+})
 
 export const metadata: Metadata = {
   title: 'ChaoChao',
@@ -19,13 +22,13 @@ export default async function RootLayout({
 }>) {
   const { id } = await resolve(({ query }) => {
     return {
-      id: query.meUser?.user?.id!,
+      id: query.meUser?.user?.id,
     }
   })
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={sans.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

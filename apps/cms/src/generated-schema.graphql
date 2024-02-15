@@ -24,6 +24,11 @@ type Query {
 type User {
   id: Int
   phone: String!
+  firstName: String
+  lastName: String
+  bio: String
+  province: String
+  rating: Float
   roles: [User_roles!]!
   updatedAt: DateTime
   createdAt: DateTime
@@ -68,6 +73,11 @@ type Users {
 
 input User_where {
   phone: User_phone_operator
+  firstName: User_firstName_operator
+  lastName: User_lastName_operator
+  bio: User_bio_operator
+  province: User_province_operator
+  rating: User_rating_operator
   roles: User_roles_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
@@ -85,6 +95,57 @@ input User_phone_operator {
   in: [String]
   not_in: [String]
   all: [String]
+}
+
+input User_firstName_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input User_lastName_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input User_bio_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  exists: Boolean
+}
+
+input User_province_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input User_rating_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
 }
 
 input User_roles_operator {
@@ -144,6 +205,11 @@ input User_id_operator {
 
 input User_where_and {
   phone: User_phone_operator
+  firstName: User_firstName_operator
+  lastName: User_lastName_operator
+  bio: User_bio_operator
+  province: User_province_operator
+  rating: User_rating_operator
   roles: User_roles_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
@@ -153,6 +219,11 @@ input User_where_and {
 
 input User_where_or {
   phone: User_phone_operator
+  firstName: User_firstName_operator
+  lastName: User_lastName_operator
+  bio: User_bio_operator
+  province: User_province_operator
+  rating: User_rating_operator
   roles: User_roles_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
@@ -171,6 +242,11 @@ type usersDocAccess {
 
 type UsersDocAccessFields {
   phone: UsersDocAccessFields_phone
+  firstName: UsersDocAccessFields_firstName
+  lastName: UsersDocAccessFields_lastName
+  bio: UsersDocAccessFields_bio
+  province: UsersDocAccessFields_province
+  rating: UsersDocAccessFields_rating
   roles: UsersDocAccessFields_roles
   updatedAt: UsersDocAccessFields_updatedAt
   createdAt: UsersDocAccessFields_createdAt
@@ -198,6 +274,121 @@ type UsersDocAccessFields_phone_Update {
 }
 
 type UsersDocAccessFields_phone_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_firstName {
+  create: UsersDocAccessFields_firstName_Create
+  read: UsersDocAccessFields_firstName_Read
+  update: UsersDocAccessFields_firstName_Update
+  delete: UsersDocAccessFields_firstName_Delete
+}
+
+type UsersDocAccessFields_firstName_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_firstName_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_firstName_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_firstName_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_lastName {
+  create: UsersDocAccessFields_lastName_Create
+  read: UsersDocAccessFields_lastName_Read
+  update: UsersDocAccessFields_lastName_Update
+  delete: UsersDocAccessFields_lastName_Delete
+}
+
+type UsersDocAccessFields_lastName_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_lastName_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_lastName_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_lastName_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_bio {
+  create: UsersDocAccessFields_bio_Create
+  read: UsersDocAccessFields_bio_Read
+  update: UsersDocAccessFields_bio_Update
+  delete: UsersDocAccessFields_bio_Delete
+}
+
+type UsersDocAccessFields_bio_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_bio_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_bio_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_bio_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_province {
+  create: UsersDocAccessFields_province_Create
+  read: UsersDocAccessFields_province_Read
+  update: UsersDocAccessFields_province_Update
+  delete: UsersDocAccessFields_province_Delete
+}
+
+type UsersDocAccessFields_province_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_province_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_province_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_province_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_rating {
+  create: UsersDocAccessFields_rating_Create
+  read: UsersDocAccessFields_rating_Read
+  update: UsersDocAccessFields_rating_Update
+  delete: UsersDocAccessFields_rating_Delete
+}
+
+type UsersDocAccessFields_rating_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_rating_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_rating_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_rating_Delete {
   permission: Boolean!
 }
 
@@ -367,7 +558,6 @@ type Item {
 
 type Media {
   id: Int
-  name: String!
   alt: String
   createdBy: User!
   updatedAt: DateTime
@@ -381,7 +571,6 @@ type Media {
 }
 
 input Item_Image_where {
-  name: Item_Image_name_operator
   alt: Item_Image_alt_operator
   updatedAt: Item_Image_updatedAt_operator
   createdAt: Item_Image_createdAt_operator
@@ -394,16 +583,6 @@ input Item_Image_where {
   id: Item_Image_id_operator
   AND: [Item_Image_where_and]
   OR: [Item_Image_where_or]
-}
-
-input Item_Image_name_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
 }
 
 input Item_Image_alt_operator {
@@ -514,7 +693,6 @@ input Item_Image_id_operator {
 }
 
 input Item_Image_where_and {
-  name: Item_Image_name_operator
   alt: Item_Image_alt_operator
   updatedAt: Item_Image_updatedAt_operator
   createdAt: Item_Image_createdAt_operator
@@ -528,7 +706,6 @@ input Item_Image_where_and {
 }
 
 input Item_Image_where_or {
-  name: Item_Image_name_operator
   alt: Item_Image_alt_operator
   updatedAt: Item_Image_updatedAt_operator
   createdAt: Item_Image_createdAt_operator
@@ -914,7 +1091,6 @@ type ItemVersion_Version {
 }
 
 input ItemVersion_Version_Image_where {
-  name: ItemVersion_Version_Image_name_operator
   alt: ItemVersion_Version_Image_alt_operator
   updatedAt: ItemVersion_Version_Image_updatedAt_operator
   createdAt: ItemVersion_Version_Image_createdAt_operator
@@ -927,16 +1103,6 @@ input ItemVersion_Version_Image_where {
   id: ItemVersion_Version_Image_id_operator
   AND: [ItemVersion_Version_Image_where_and]
   OR: [ItemVersion_Version_Image_where_or]
-}
-
-input ItemVersion_Version_Image_name_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
 }
 
 input ItemVersion_Version_Image_alt_operator {
@@ -1047,7 +1213,6 @@ input ItemVersion_Version_Image_id_operator {
 }
 
 input ItemVersion_Version_Image_where_and {
-  name: ItemVersion_Version_Image_name_operator
   alt: ItemVersion_Version_Image_alt_operator
   updatedAt: ItemVersion_Version_Image_updatedAt_operator
   createdAt: ItemVersion_Version_Image_createdAt_operator
@@ -1061,7 +1226,6 @@ input ItemVersion_Version_Image_where_and {
 }
 
 input ItemVersion_Version_Image_where_or {
-  name: ItemVersion_Version_Image_name_operator
   alt: ItemVersion_Version_Image_alt_operator
   updatedAt: ItemVersion_Version_Image_updatedAt_operator
   createdAt: ItemVersion_Version_Image_createdAt_operator
@@ -1282,7 +1446,6 @@ type Medias {
 }
 
 input Media_where {
-  name: Media_name_operator
   alt: Media_alt_operator
   updatedAt: Media_updatedAt_operator
   createdAt: Media_createdAt_operator
@@ -1295,16 +1458,6 @@ input Media_where {
   id: Media_id_operator
   AND: [Media_where_and]
   OR: [Media_where_or]
-}
-
-input Media_name_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
 }
 
 input Media_alt_operator {
@@ -1414,7 +1567,6 @@ input Media_id_operator {
 }
 
 input Media_where_and {
-  name: Media_name_operator
   alt: Media_alt_operator
   updatedAt: Media_updatedAt_operator
   createdAt: Media_createdAt_operator
@@ -1428,7 +1580,6 @@ input Media_where_and {
 }
 
 input Media_where_or {
-  name: Media_name_operator
   alt: Media_alt_operator
   updatedAt: Media_updatedAt_operator
   createdAt: Media_createdAt_operator
@@ -1450,7 +1601,6 @@ type mediasDocAccess {
 }
 
 type MediasDocAccessFields {
-  name: MediasDocAccessFields_name
   alt: MediasDocAccessFields_alt
   updatedAt: MediasDocAccessFields_updatedAt
   createdAt: MediasDocAccessFields_createdAt
@@ -1460,29 +1610,6 @@ type MediasDocAccessFields {
   filesize: MediasDocAccessFields_filesize
   width: MediasDocAccessFields_width
   height: MediasDocAccessFields_height
-}
-
-type MediasDocAccessFields_name {
-  create: MediasDocAccessFields_name_Create
-  read: MediasDocAccessFields_name_Read
-  update: MediasDocAccessFields_name_Update
-  delete: MediasDocAccessFields_name_Delete
-}
-
-type MediasDocAccessFields_name_Create {
-  permission: Boolean!
-}
-
-type MediasDocAccessFields_name_Read {
-  permission: Boolean!
-}
-
-type MediasDocAccessFields_name_Update {
-  permission: Boolean!
-}
-
-type MediasDocAccessFields_name_Delete {
-  permission: Boolean!
 }
 
 type MediasDocAccessFields_alt {
@@ -2228,6 +2355,11 @@ type usersAccess {
 
 type UsersFields {
   phone: UsersFields_phone
+  firstName: UsersFields_firstName
+  lastName: UsersFields_lastName
+  bio: UsersFields_bio
+  province: UsersFields_province
+  rating: UsersFields_rating
   roles: UsersFields_roles
   updatedAt: UsersFields_updatedAt
   createdAt: UsersFields_createdAt
@@ -2255,6 +2387,121 @@ type UsersFields_phone_Update {
 }
 
 type UsersFields_phone_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_firstName {
+  create: UsersFields_firstName_Create
+  read: UsersFields_firstName_Read
+  update: UsersFields_firstName_Update
+  delete: UsersFields_firstName_Delete
+}
+
+type UsersFields_firstName_Create {
+  permission: Boolean!
+}
+
+type UsersFields_firstName_Read {
+  permission: Boolean!
+}
+
+type UsersFields_firstName_Update {
+  permission: Boolean!
+}
+
+type UsersFields_firstName_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_lastName {
+  create: UsersFields_lastName_Create
+  read: UsersFields_lastName_Read
+  update: UsersFields_lastName_Update
+  delete: UsersFields_lastName_Delete
+}
+
+type UsersFields_lastName_Create {
+  permission: Boolean!
+}
+
+type UsersFields_lastName_Read {
+  permission: Boolean!
+}
+
+type UsersFields_lastName_Update {
+  permission: Boolean!
+}
+
+type UsersFields_lastName_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_bio {
+  create: UsersFields_bio_Create
+  read: UsersFields_bio_Read
+  update: UsersFields_bio_Update
+  delete: UsersFields_bio_Delete
+}
+
+type UsersFields_bio_Create {
+  permission: Boolean!
+}
+
+type UsersFields_bio_Read {
+  permission: Boolean!
+}
+
+type UsersFields_bio_Update {
+  permission: Boolean!
+}
+
+type UsersFields_bio_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_province {
+  create: UsersFields_province_Create
+  read: UsersFields_province_Read
+  update: UsersFields_province_Update
+  delete: UsersFields_province_Delete
+}
+
+type UsersFields_province_Create {
+  permission: Boolean!
+}
+
+type UsersFields_province_Read {
+  permission: Boolean!
+}
+
+type UsersFields_province_Update {
+  permission: Boolean!
+}
+
+type UsersFields_province_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_rating {
+  create: UsersFields_rating_Create
+  read: UsersFields_rating_Read
+  update: UsersFields_rating_Update
+  delete: UsersFields_rating_Delete
+}
+
+type UsersFields_rating_Create {
+  permission: Boolean!
+}
+
+type UsersFields_rating_Read {
+  permission: Boolean!
+}
+
+type UsersFields_rating_Update {
+  permission: Boolean!
+}
+
+type UsersFields_rating_Delete {
   permission: Boolean!
 }
 
@@ -2612,7 +2859,6 @@ type mediasAccess {
 }
 
 type MediasFields {
-  name: MediasFields_name
   alt: MediasFields_alt
   updatedAt: MediasFields_updatedAt
   createdAt: MediasFields_createdAt
@@ -2622,29 +2868,6 @@ type MediasFields {
   filesize: MediasFields_filesize
   width: MediasFields_width
   height: MediasFields_height
-}
-
-type MediasFields_name {
-  create: MediasFields_name_Create
-  read: MediasFields_name_Read
-  update: MediasFields_name_Update
-  delete: MediasFields_name_Delete
-}
-
-type MediasFields_name_Create {
-  permission: Boolean!
-}
-
-type MediasFields_name_Read {
-  permission: Boolean!
-}
-
-type MediasFields_name_Update {
-  permission: Boolean!
-}
-
-type MediasFields_name_Delete {
-  permission: Boolean!
 }
 
 type MediasFields_alt {
@@ -3180,6 +3403,11 @@ type Mutation {
 
 input mutationUserInput {
   phone: String!
+  firstName: String
+  lastName: String
+  bio: String
+  province: String
+  rating: Float
   roles: [User_roles_MutationInput]!
   updatedAt: String
   createdAt: String
@@ -3200,6 +3428,11 @@ enum User_roles_MutationInput {
 
 input mutationUserUpdateInput {
   phone: String
+  firstName: String
+  lastName: String
+  bio: String
+  province: String
+  rating: Float
   roles: [UserUpdate_roles_MutationInput]
   updatedAt: String
   createdAt: String
@@ -3279,7 +3512,6 @@ enum ItemUpdate__status_MutationInput {
 }
 
 input mutationMediaInput {
-  name: String!
   alt: String
   createdBy: Int
   updatedAt: String
@@ -3293,7 +3525,6 @@ input mutationMediaInput {
 }
 
 input mutationMediaUpdateInput {
-  name: String
   alt: String
   createdBy: Int
   updatedAt: String

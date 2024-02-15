@@ -12,6 +12,8 @@ import {
 import { Chats, House, Info, SignOut, User, UserCircle } from '@phosphor-icons/react'
 import { useRouter } from 'next/navigation'
 
+import { logout } from '../actions/logout'
+
 export function ProfileToggle() {
   const router = useRouter()
   return (
@@ -38,7 +40,12 @@ export function ProfileToggle() {
           <Info className="h-4 w-4" />
           Help center
         </DropdownMenuItem>
-        <DropdownMenuItem className="gap-2 items-center">
+        <DropdownMenuItem
+          className="gap-2 items-center"
+          onClick={() => {
+            logout()
+          }}
+        >
           <SignOut className="h-4 w-4" />
           Log out
         </DropdownMenuItem>

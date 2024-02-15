@@ -15,6 +15,8 @@ export const Users: CollectionConfig = {
     update: isAdminOrSelf,
     delete: isAdmin,
     unlock: isAdmin,
+    create: () => true,
+    read: () => true,
   },
   fields: [
     {
@@ -31,6 +33,61 @@ export const Users: CollectionConfig = {
         }
         return true
       },
+    },
+    {
+      type: 'text',
+      name: 'firstName',
+      label: {
+        th: 'ชื่อจริง',
+        en: 'firstName',
+      },
+      required: false,
+    },
+    {
+      type: 'text',
+      name: 'lastName',
+      label: {
+        th: 'นามสกุล',
+        en: 'lastName',
+      },
+      required: false,
+    },
+    {
+      type: 'textarea',
+      name: 'bio',
+      label: {
+        th: 'คำอธิบาย',
+        en: 'bio',
+      },
+      required: false,
+    },
+    {
+      type: 'text',
+      name: 'province',
+      label: {
+        th: 'จังหวัด',
+        en: 'province',
+      },
+      required: false,
+    },
+    {
+      type: 'number',
+      name: 'rating',
+      label: {
+        th: 'คะแนน',
+        en: 'rating',
+      },
+      required: false,
+      max: 5,
+    },
+    {
+      type: 'text',
+      name: 'province',
+      label: {
+        th: 'จังหวัด',
+        en: 'province',
+      },
+      required: false,
     },
     {
       label: {

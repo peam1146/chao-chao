@@ -1,4 +1,4 @@
-import { Sheet, SheetContent } from '@/components/ui/sheet'
+import { Sheet, SheetClose, SheetContent } from '@/components/ui/sheet'
 import Typography from '@/components/ui/typography'
 import {
   Chats,
@@ -11,6 +11,8 @@ import {
   UserCirclePlus,
 } from '@phosphor-icons/react'
 
+import { Maybe } from '../../../../gqty'
+import { logout } from '../actions/logout'
 import { MenuCard } from './MenuCard'
 import { ModeToggle } from './theme-toggle'
 
@@ -18,7 +20,7 @@ interface MenuSheetProps {
   open: boolean
   setOpen: (open: boolean) => void
   pathname: string
-  id: Number
+  id: Maybe<Number | undefined>
 }
 
 export function MenuSheet(props: MenuSheetProps) {
@@ -68,12 +70,18 @@ export function MenuSheet(props: MenuSheetProps) {
                 title="Help Center"
                 href="/help"
               />
-              <MenuCard
-                icon={<SignOut width="20px" height="20px" />}
-                pathname={pathname}
-                title="Sign out"
-                href="/help"
-              />
+
+              <SheetClose asChild>
+                <button
+                  className="flex flex-row gap-2 items-stretch p-2"
+                  onClick={() => {
+                    logout()
+                  }}
+                >
+                  <SignOut width="20px" height="20px" />
+                  <Typography variant="h5">Log out</Typography>
+                </button>
+              </SheetClose>
             </div>
           </div>
           <ModeToggle align="start" />
