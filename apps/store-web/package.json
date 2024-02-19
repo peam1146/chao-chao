@@ -11,7 +11,6 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@hookform/resolvers": "^3.3.4",
     "@gqty/react": "3.0.0-alpha-7b21563c.0",
     "@hookform/resolvers": "^3.3.4",
     "@mui/material": "^5.15.10",
@@ -33,6 +32,7 @@
     "react-day-picker": "^8.10.0",
     "react-dom": "^18",
     "react-hook-form": "^7.49.3",
+    "sonner": "^1.4.0",
     "tailwind": "^4.0.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
