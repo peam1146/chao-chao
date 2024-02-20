@@ -91,36 +91,26 @@ export function MenuSheet(props: MenuSheetProps) {
   }
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetContent side="left" className="border-0 flex flex-col justify-between">
-        <div className="grid gap-3">
-          <div className="grid gap-2">
-            <Typography variant="h5" fontWeight="bold" className="text-primary">
-              General
-            </Typography>
-            <MenuCard
-              icon={<House width="20px" height="20px" />}
-              pathname={pathname}
-              title="Home"
-              href="/"
-            />
-          </div>
-          <div className="grid gap-2">
-            <Typography variant="h5" fontWeight="bold" className="text-primary">
-              Account
-            </Typography>
-            <MenuCard
-              icon={<SignIn width="20px" height="20px" />}
-              pathname={pathname}
-              title="Sign in"
-              href="/signin"
-            />
-            <MenuCard
-              icon={<UserCirclePlus width="20px" height="20px" />}
-              pathname={pathname}
-              title="Sign up"
-              href="/signup"
-            />
-          </div>
+      <SheetContent side="left">
+        <div className="grid gap-2 py-8">
+          <Link
+            href="/signin"
+            className={cn(
+              'flex flex-row gap-0.5 items-center p-2',
+              pathname === '/signin' && 'rounded-md border'
+            )}
+          >
+            <Typography variant="h5">Sign in</Typography>
+          </Link>
+          <Link
+            href="/signup"
+            className={cn(
+              'flex flex-row gap-0.5 items-center p-2',
+              pathname === '/signup' && 'rounded-md border'
+            )}
+          >
+            <Typography variant="h5">Sign up</Typography>
+          </Link>
         </div>
         <ModeToggle align="start" />
       </SheetContent>

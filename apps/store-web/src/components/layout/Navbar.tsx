@@ -65,30 +65,18 @@ const Navbar = ({ id }: { id: Maybe<Number | undefined> }) => {
           </Link>
           <SearchSuggestion />
           <div className="flex items-center gap-4">
-            {!id && (
-              <>
-                <Link href="/signin" className="flex flex-row gap-0.5 items-center">
-                  <Typography variant="h5" className={cn(pathname !== '/signin' && 'text-light')}>
-                    Sign in
-                  </Typography>
-                </Link>
-                <Link href="/signup" className="flex flex-row gap-0.5 items-center">
-                  <Typography variant="h5" className={cn(pathname !== '/signup' && 'text-light')}>
-                    Sign up
-                  </Typography>
-                </Link>
-              </>
-            )}
-            {id && (
-              <>
-                <Link href="/signin" className="flex flex-row gap-0.5 items-center">
-                  <Typography variant="h5" className={cn(pathname !== '/asset' && 'text-light')}>
-                    Manage assets
-                  </Typography>
-                </Link>
-                <ProfileToggle />
-              </>
-            )}
+            <Link href="/signin" className="flex flex-row gap-0.5 items-center">
+              {pathname === '/signin' && <MagnifyingGlass className="w-4 h-4" />}
+              <Typography variant="h5" className={cn(pathname !== '/signin' && 'text-light')}>
+                Sign in
+              </Typography>
+            </Link>
+            <Link href="/signup" className="flex flex-row gap-0.5 items-center">
+              {pathname === '/signup' && <MagnifyingGlass className="w-4 h-4" />}
+              <Typography variant="h5" className={cn(pathname !== '/signup' && 'text-light')}>
+                Sign up
+              </Typography>
+            </Link>
             <ModeToggle />
           </div>
         </div>
