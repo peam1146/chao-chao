@@ -11,16 +11,22 @@ const queryFetcher: QueryFetcher = async function (
   { query, variables, operationName },
   fetchOptions
 ) {
-  const cookieStore = cookies()
-  const payloadCookie = cookieStore.getAll().reduce(
-    (acc, { name, value }) => {
-      if (name.startsWith('payload')) {
-        acc[name] = value
-      }
-      return acc
-    },
-    {} as Record<string, string>
-  )
+  let payloadCookie: Record<string, string> = {}
+  if (typeof window === 'undefined') {
+    const cookieStore = cookies()
+    payloadCookie = cookieStore.getAll().reduce(
+      (acc, { name, value }) => {
+        if (name.startsWith('payload')) {
+          acc[name] = value
+        }
+        return acc
+      },
+      {} as Record<string, string>
+    )
+  } else {
+    payloadCookie = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
+  }
+
   // Modify "/api/graphql" if needed
   const response = await fetch('http://localhost:3001/api/graphql', {
     method: 'POST',

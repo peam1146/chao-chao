@@ -1,9 +1,9 @@
 import { redirect } from 'next/navigation'
 
 import { resolve } from '../../../gqty'
-import SignupForm from './components/SignupForm'
+import ForgotForm from './components/ForgotForm'
 
-export default async function SignupPage() {
+export default async function ForgetPage() {
   const user = await resolve(({ query }) => {
     return query.meUser?.user?.id
   })
@@ -13,7 +13,7 @@ export default async function SignupPage() {
   }
   return (
     <div className="container min-h-[calc(100vh-64px)] min-w-screen bg-background justify-items-center my-auto grid">
-      <SignupForm />
+      <ForgotForm />
     </div>
   )
 }
