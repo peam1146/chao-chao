@@ -25,7 +25,7 @@ export default async function Home() {
       <div className="flex flex-col w-full gap-20 pt-10">
         <>{id}</>
         <Card />
-        <div className="grid grid-cols-2 2xl:grid-cols-4 lg:grid-cols-3 gap-2 lg:gap-3">
+        <div className="grid grid-cols-1 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 2xl:gap-2 lg:gap-3 md:gap-2 gap-3 pt-10">
           {mockData.map((item, index) => (
             <SmallCard key={index} name={item.name} rating={item.rating} price={item.price} />
           ))}
