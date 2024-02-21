@@ -1,6 +1,6 @@
 'use client'
 
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 import signupLogo from '@/assets/images/Saly-1.png'
 import { Button } from '@/components/ui/button'
@@ -37,15 +37,13 @@ export default function SignupForm() {
     resolver: zodResolver(validationSchema),
   })
 
-  // const [error, setError] = useState('')
-
   const { toast } = useToast()
   const router = useRouter()
 
-  const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
+  async function onSubmit(data: z.infer<typeof validationSchema>) {
     try {
       await resolve(async ({ mutation }) => {
-        return mutation.createUser({
+        const user = mutation.createUser({
           data: {
             email: data.email,
             password: data.password,
@@ -53,6 +51,7 @@ export default function SignupForm() {
             roles: [User_roles_MutationInput.User],
           },
         })
+        return user
       })
 
       toast({
@@ -97,8 +96,8 @@ export default function SignupForm() {
                       <Input
                         type="email"
                         placeholder="Email"
-                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                         className="pl-9"
+                        error={!!form.formState.errors.email}
                         {...field}
                       />
                     </div>
@@ -120,8 +119,9 @@ export default function SignupForm() {
                       </div>
                       <Input
                         placeholder="Phone number"
-                        pattern="[0-9]{10}"
+                        type="tel"
                         className="pl-9"
+                        error={!!form.formState.errors.phone}
                         {...field}
                       />
                     </div>
@@ -144,8 +144,8 @@ export default function SignupForm() {
                       <Input
                         type="password"
                         placeholder="Password"
-                        pattern=".{6,}"
                         className="pl-9"
+                        error={!!form.formState.errors.password}
                         {...field}
                       />
                     </div>
@@ -172,20 +172,6 @@ export default function SignupForm() {
       <div className="w-full xl:w-1/2 hidden lg:flex justify-center items-center">
         <Image src={signupLogo} width={0} height={0} alt="Signup Picture" />
       </div>
-
-      {/* <div className="hidden">
-        {error &&
-          toast.error(
-            <div>
-              <div className="flex flex-row gap-1">
-                <Warning size={16} weight="fill" className="text-unavailable" />
-                <Typography variant="h6" fontWeight="bold" className="text-unavailable">
-                  This email is already registered.
-                </Typography>
-              </div>
-            </div>
-          )}
-      </div> */}
     </div>
   )
 }
