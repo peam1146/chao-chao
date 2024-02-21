@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 
 import profile from '@/assets/images/profileLogo.png'
 import { Button } from '@/components/ui/button'
-import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import Typography from '@/components/ui/typography'
@@ -20,10 +20,18 @@ import { z } from 'zod'
 import { resolve } from '../../../../gqty'
 
 export const editProfileSchema = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
-  bio: z.string(),
-  province: z.string(),
+  firstName: z.string().min(1, {
+    message: 'First name is required.',
+  }),
+  lastName: z.string().min(1, {
+    message: 'Last name is required.',
+  }),
+  bio: z.string().min(10, {
+    message: 'Short bio must not exceed 10 characters.',
+  }),
+  province: z.string().min(1, {
+    message: 'Province is required.',
+  }),
   profileImg: z.string().url(),
 })
 
@@ -151,8 +159,13 @@ export default function ProfileEdit() {
                         <FormItem>
                           <Typography variant="h5">First name</Typography>
                           <FormControl>
-                            <Input placeholder="First name" {...field} />
+                            <Input
+                              placeholder="First name"
+                              error={!!form.formState.errors.firstName}
+                              {...field}
+                            />
                           </FormControl>
+                          <FormMessage />
                         </FormItem>
                       )}
                     />
@@ -163,8 +176,13 @@ export default function ProfileEdit() {
                         <FormItem>
                           <Typography variant="h5">Province</Typography>
                           <FormControl>
-                            <Input placeholder="Province" {...field} />
+                            <Input
+                              placeholder="Province"
+                              error={!!form.formState.errors.province}
+                              {...field}
+                            />
                           </FormControl>
+                          <FormMessage />
                         </FormItem>
                       )}
                     />
@@ -177,8 +195,13 @@ export default function ProfileEdit() {
                         <FormItem>
                           <Typography variant="h5">Last name</Typography>
                           <FormControl>
-                            <Input placeholder="Last name" {...field} />
+                            <Input
+                              placeholder="Last name"
+                              error={!!form.formState.errors.lastName}
+                              {...field}
+                            />
                           </FormControl>
+                          <FormMessage />
                         </FormItem>
                       )}
                     />
@@ -192,8 +215,13 @@ export default function ProfileEdit() {
                       <FormItem>
                         <Typography variant="h5">Short bio</Typography>
                         <FormControl>
-                          <Textarea placeholder="Tell us about you" {...field} />
+                          <Textarea
+                            placeholder="Tell us about you"
+                            error={!!form.formState.errors.bio}
+                            {...field}
+                          />
                         </FormControl>
+                        <FormMessage />
                       </FormItem>
                     )}
                   />
