@@ -12,6 +12,8 @@ const queryFetcher: QueryFetcher = async function (
   fetchOptions
 ) {
   let payloadCookie: Record<string, string> = {}
+
+  const header: Record<string, string> = {}
   if (typeof window === 'undefined') {
     const cookieStore = cookies()
     payloadCookie = cookieStore.getAll().reduce(
@@ -24,7 +26,8 @@ const queryFetcher: QueryFetcher = async function (
       {} as Record<string, string>
     )
   } else {
-    payloadCookie = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
+    const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
+    header['Authorization'] = `JWT ${token['payload-token']}`
   }
 
   // Modify "/api/graphql" if needed
@@ -35,6 +38,7 @@ const queryFetcher: QueryFetcher = async function (
       Cookie: Object.entries(payloadCookie)
         .map(([name, value]) => `${name}=${value}`)
         .join('; '),
+      ...header,
     },
     body: JSON.stringify({
       query,

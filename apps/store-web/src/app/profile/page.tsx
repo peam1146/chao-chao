@@ -1,42 +1,60 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+
 import profile from '@/assets/images/profileLogo.png'
 import { Button } from '@/components/ui/button'
 import Typography from '@/components/ui/typography'
 import Rating from '@mui/material/Rating'
-import { List, MagnifyingGlass } from '@phosphor-icons/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 import { resolve } from '../../../gqty'
 
-export default async function Profile() {
-  const { bio, firstName, lastName } = await resolve(({ query }) => {
-    return {
-      firstName: query.meUser?.user?.firstName,
-      lastName: query.meUser?.user?.lastName,
-      bio: query.meUser?.user?.bio,
-    }
+export default function Profile() {
+  const [user, setUser] = useState({
+    bio: '',
+    firstName: '',
+    lastName: '',
+    profileImg: '',
   })
 
-  // const mutation = await resolve(({ mutation }) => {
-  //   return mutation.updateUser({
-  //     id: 1,
-  //     data: {
-  //       firstName: 'มายมุมุ',
-  //       lastName: 'หิวข้าว',
-  //       bio: 'อิอิ',
-  //     },
-  //   })
-  // })
+  const router = useRouter()
+  useEffect(() => {
+    const fetchData = async () => {
+      const { bio, firstName, lastName, profileImg } = await resolve(({ query }) => {
+        return {
+          firstName: query.meUser?.user?.firstName ?? '',
+          lastName: query.meUser?.user?.lastName ?? '',
+          bio: query.meUser?.user?.bio ?? '',
+          profileImg: query.meUser?.user?.url ?? '',
+        }
+      })
+      if (bio === '' || firstName === '' || lastName === '' || profileImg === '') {
+        router.push('/profile/edit')
+      }
+      setUser({ bio, firstName, lastName, profileImg })
+    }
+    fetchData()
+  }, [])
+
   return (
     <main className="container flex w-full bg-background min-h-[calc(100vh-64px)] flex-col items-center py-4 lg:py-12 my-auto">
       <div className="flex flex-col w-full bg-card rounded-2xl px-6 py-5 gap-4">
         <div className="flex flex-row justify-between max-lg:flex-col">
           <div className="flex flex-row gap-4 items-center">
-            <Image className="w-[80px] h-[80px]" src={profile} alt="profile" />
+            <Image
+              className="w-[80px] h-[80px] rounded-full object-cover"
+              src={user.profileImg === '' ? profile : user.profileImg}
+              width="100"
+              height="100"
+              alt="profile"
+            />
             <div className="flex flex-col gap-1">
-              {firstName || lastName ? (
+              {user.firstName !== '' || user.lastName !== '' ? (
                 <Typography variant="h5" fontWeight="bold">
-                  {firstName} {lastName}
+                  {user.firstName} {user.lastName}
                 </Typography>
               ) : (
                 <Typography variant="h5" className="text-light">
@@ -64,8 +82,8 @@ export default async function Profile() {
             </Link>
           </div>
         </div>
-        {bio ? (
-          <Typography variant="h6">{bio}</Typography>
+        {user.bio !== '' ? (
+          <Typography variant="h6">{user.bio}</Typography>
         ) : (
           <Typography variant="h6" className="text-light"></Typography>
         )}
