@@ -32,6 +32,12 @@ type User {
   roles: [User_roles!]!
   updatedAt: DateTime
   createdAt: DateTime
+  url: String
+  filename: String
+  mimeType: String
+  filesize: Float
+  width: Float
+  height: Float
   email: EmailAddress!
   resetPasswordToken: String
   resetPasswordExpiration: DateTime
@@ -81,6 +87,12 @@ input User_where {
   roles: User_roles_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
+  url: User_url_operator
+  filename: User_filename_operator
+  mimeType: User_mimeType_operator
+  filesize: User_filesize_operator
+  width: User_width_operator
+  height: User_height_operator
   email: User_email_operator
   id: User_id_operator
   AND: [User_where_and]
@@ -183,6 +195,69 @@ input User_createdAt_operator {
   exists: Boolean
 }
 
+input User_url_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input User_filename_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input User_mimeType_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input User_filesize_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input User_width_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input User_height_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
 input User_email_operator {
   equals: EmailAddress
   not_equals: EmailAddress
@@ -213,6 +288,12 @@ input User_where_and {
   roles: User_roles_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
+  url: User_url_operator
+  filename: User_filename_operator
+  mimeType: User_mimeType_operator
+  filesize: User_filesize_operator
+  width: User_width_operator
+  height: User_height_operator
   email: User_email_operator
   id: User_id_operator
 }
@@ -227,6 +308,12 @@ input User_where_or {
   roles: User_roles_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
+  url: User_url_operator
+  filename: User_filename_operator
+  mimeType: User_mimeType_operator
+  filesize: User_filesize_operator
+  width: User_width_operator
+  height: User_height_operator
   email: User_email_operator
   id: User_id_operator
 }
@@ -250,6 +337,12 @@ type UsersDocAccessFields {
   roles: UsersDocAccessFields_roles
   updatedAt: UsersDocAccessFields_updatedAt
   createdAt: UsersDocAccessFields_createdAt
+  url: UsersDocAccessFields_url
+  filename: UsersDocAccessFields_filename
+  mimeType: UsersDocAccessFields_mimeType
+  filesize: UsersDocAccessFields_filesize
+  width: UsersDocAccessFields_width
+  height: UsersDocAccessFields_height
   email: UsersDocAccessFields_email
   password: UsersDocAccessFields_password
 }
@@ -458,6 +551,144 @@ type UsersDocAccessFields_createdAt_Update {
 }
 
 type UsersDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_url {
+  create: UsersDocAccessFields_url_Create
+  read: UsersDocAccessFields_url_Read
+  update: UsersDocAccessFields_url_Update
+  delete: UsersDocAccessFields_url_Delete
+}
+
+type UsersDocAccessFields_url_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_url_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_url_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_url_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_filename {
+  create: UsersDocAccessFields_filename_Create
+  read: UsersDocAccessFields_filename_Read
+  update: UsersDocAccessFields_filename_Update
+  delete: UsersDocAccessFields_filename_Delete
+}
+
+type UsersDocAccessFields_filename_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_filename_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_filename_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_filename_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_mimeType {
+  create: UsersDocAccessFields_mimeType_Create
+  read: UsersDocAccessFields_mimeType_Read
+  update: UsersDocAccessFields_mimeType_Update
+  delete: UsersDocAccessFields_mimeType_Delete
+}
+
+type UsersDocAccessFields_mimeType_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_mimeType_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_mimeType_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_mimeType_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_filesize {
+  create: UsersDocAccessFields_filesize_Create
+  read: UsersDocAccessFields_filesize_Read
+  update: UsersDocAccessFields_filesize_Update
+  delete: UsersDocAccessFields_filesize_Delete
+}
+
+type UsersDocAccessFields_filesize_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_filesize_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_filesize_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_filesize_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_width {
+  create: UsersDocAccessFields_width_Create
+  read: UsersDocAccessFields_width_Read
+  update: UsersDocAccessFields_width_Update
+  delete: UsersDocAccessFields_width_Delete
+}
+
+type UsersDocAccessFields_width_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_width_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_width_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_width_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_height {
+  create: UsersDocAccessFields_height_Create
+  read: UsersDocAccessFields_height_Read
+  update: UsersDocAccessFields_height_Update
+  delete: UsersDocAccessFields_height_Delete
+}
+
+type UsersDocAccessFields_height_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_height_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_height_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_height_Delete {
   permission: Boolean!
 }
 
@@ -2363,6 +2594,12 @@ type UsersFields {
   roles: UsersFields_roles
   updatedAt: UsersFields_updatedAt
   createdAt: UsersFields_createdAt
+  url: UsersFields_url
+  filename: UsersFields_filename
+  mimeType: UsersFields_mimeType
+  filesize: UsersFields_filesize
+  width: UsersFields_width
+  height: UsersFields_height
   email: UsersFields_email
   password: UsersFields_password
 }
@@ -2571,6 +2808,144 @@ type UsersFields_createdAt_Update {
 }
 
 type UsersFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_url {
+  create: UsersFields_url_Create
+  read: UsersFields_url_Read
+  update: UsersFields_url_Update
+  delete: UsersFields_url_Delete
+}
+
+type UsersFields_url_Create {
+  permission: Boolean!
+}
+
+type UsersFields_url_Read {
+  permission: Boolean!
+}
+
+type UsersFields_url_Update {
+  permission: Boolean!
+}
+
+type UsersFields_url_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_filename {
+  create: UsersFields_filename_Create
+  read: UsersFields_filename_Read
+  update: UsersFields_filename_Update
+  delete: UsersFields_filename_Delete
+}
+
+type UsersFields_filename_Create {
+  permission: Boolean!
+}
+
+type UsersFields_filename_Read {
+  permission: Boolean!
+}
+
+type UsersFields_filename_Update {
+  permission: Boolean!
+}
+
+type UsersFields_filename_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_mimeType {
+  create: UsersFields_mimeType_Create
+  read: UsersFields_mimeType_Read
+  update: UsersFields_mimeType_Update
+  delete: UsersFields_mimeType_Delete
+}
+
+type UsersFields_mimeType_Create {
+  permission: Boolean!
+}
+
+type UsersFields_mimeType_Read {
+  permission: Boolean!
+}
+
+type UsersFields_mimeType_Update {
+  permission: Boolean!
+}
+
+type UsersFields_mimeType_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_filesize {
+  create: UsersFields_filesize_Create
+  read: UsersFields_filesize_Read
+  update: UsersFields_filesize_Update
+  delete: UsersFields_filesize_Delete
+}
+
+type UsersFields_filesize_Create {
+  permission: Boolean!
+}
+
+type UsersFields_filesize_Read {
+  permission: Boolean!
+}
+
+type UsersFields_filesize_Update {
+  permission: Boolean!
+}
+
+type UsersFields_filesize_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_width {
+  create: UsersFields_width_Create
+  read: UsersFields_width_Read
+  update: UsersFields_width_Update
+  delete: UsersFields_width_Delete
+}
+
+type UsersFields_width_Create {
+  permission: Boolean!
+}
+
+type UsersFields_width_Read {
+  permission: Boolean!
+}
+
+type UsersFields_width_Update {
+  permission: Boolean!
+}
+
+type UsersFields_width_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_height {
+  create: UsersFields_height_Create
+  read: UsersFields_height_Read
+  update: UsersFields_height_Update
+  delete: UsersFields_height_Delete
+}
+
+type UsersFields_height_Create {
+  permission: Boolean!
+}
+
+type UsersFields_height_Read {
+  permission: Boolean!
+}
+
+type UsersFields_height_Update {
+  permission: Boolean!
+}
+
+type UsersFields_height_Delete {
   permission: Boolean!
 }
 
@@ -3411,6 +3786,12 @@ input mutationUserInput {
   roles: [User_roles_MutationInput]!
   updatedAt: String
   createdAt: String
+  url: String
+  filename: String
+  mimeType: String
+  filesize: Float
+  width: Float
+  height: Float
   email: String!
   resetPasswordToken: String
   resetPasswordExpiration: String
@@ -3436,6 +3817,12 @@ input mutationUserUpdateInput {
   roles: [UserUpdate_roles_MutationInput]
   updatedAt: String
   createdAt: String
+  url: String
+  filename: String
+  mimeType: String
+  filesize: Float
+  width: Float
+  height: Float
   email: String
   resetPasswordToken: String
   resetPasswordExpiration: String

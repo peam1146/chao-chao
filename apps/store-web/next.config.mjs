@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    transpilePackages: ['@gqty/react', 'gqty']
-};
+  reactStrictMode: true,
+  images: {
+    domains: ['chaochao-bucket.s3-ap-southeast-2.amazonaws.com'],
+  },
+  transpilePackages: ['@gqty/react', 'gqty'],
+}
 
-export default nextConfig;
+export default nextConfig

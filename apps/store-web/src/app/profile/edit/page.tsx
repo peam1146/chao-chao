@@ -1,75 +1,218 @@
 'use client'
 
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { ChangeEvent, useEffect, useRef } from 'react'
+import { useForm } from 'react-hook-form'
 
 import profile from '@/assets/images/profileLogo.png'
 import { Button } from '@/components/ui/button'
+import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import Typography from '@/components/ui/typography'
+import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { UserCircle } from '@phosphor-icons/react'
+import { Camera, UserCircle } from '@phosphor-icons/react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { z } from 'zod'
 
-import { EditProfileValues, editProfile, editProfileSchema } from './actions/editProfile'
+import { resolve } from '../../../../gqty'
+
+export const editProfileSchema = z.object({
+  firstName: z.string(),
+  lastName: z.string(),
+  bio: z.string(),
+  province: z.string(),
+  profileImg: z.string().url(),
+})
 
 export default function ProfileEdit() {
-  const { register, handleSubmit } = useForm<EditProfileValues>({
+  const form = useForm<z.infer<typeof editProfileSchema>>({
     resolver: zodResolver(editProfileSchema),
   })
 
-  const onSubmit: SubmitHandler<EditProfileValues> = async (data) => {
-    await editProfile(data)
+  const { toast } = useToast()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { firstName, bio, lastName, province, profileImg } = await resolve(({ query }) => {
+          return {
+            firstName: query.meUser?.user?.firstName,
+            bio: query.meUser?.user?.bio,
+            lastName: query.meUser?.user?.lastName,
+            province: query.meUser?.user?.province,
+            profileImg: query.meUser?.user?.url,
+          }
+        })
+        form.reset({
+          bio: bio ?? '',
+          firstName: firstName ?? '',
+          lastName: lastName ?? '',
+          province: province ?? '',
+          profileImg: profileImg ?? '',
+        })
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchData()
+  }, [form])
+
+  const router = useRouter()
+  async function onSubmit(data: z.infer<typeof editProfileSchema>) {
+    const { id } = await resolve(({ query }) => {
+      return {
+        id: query.meUser?.user?.id!,
+      }
+    })
+    try {
+      await resolve(async ({ mutation }) => {
+        const user = mutation.updateUser({
+          data: {
+            bio: data.bio,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            province: data.province,
+          },
+          id: id,
+          autosave: true,
+        })
+        return user
+      })
+      toast({
+        title: 'Success',
+        description: 'Profile updated successfully',
+        success: true,
+      })
+      router.push('/profile')
+    } catch {
+      toast({
+        title: 'Error',
+        description: 'Something went wrong',
+        error: true,
+      })
+    }
   }
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleButtonClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click()
+    }
+  }
+
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0]
+      console.log('Selected file:', file)
+    }
+  }
+
   return (
     <main className="container flex w-full bg-background min-h-[calc(100vh-64px)] flex-col items-center py-4 lg:py-12 gap-4 my-auto">
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full">
-        <div className="flex flex-row gap-1 self-start">
-          <UserCircle className="w-6 h-6" />
-          <Typography variant="h4" fontWeight="bold">
-            Edit Profile
-          </Typography>
-        </div>
-        <div className="flex flex-col w-full bg-card rounded-2xl p-6 gap-4">
-          <div className="flex flex-row gap-8 max-lg:flex-col">
-            <Image
-              className="w-[150px] h-[150px] flex-none max-lg:self-center"
-              src={profile}
-              alt="profile"
-            />
-            <div className="flex flex-col gap-4 flex-1 items-center">
-              <div className="flex flex-row gap-10 w-full max-lg:flex-col max-lg:gap-[10px]">
-                <div className="flex flex-col gap-[10px] w-full">
-                  <>
-                    <Typography variant="h5">First name</Typography>
-                    <Input placeholder="First name" {...register('firstName')} />
-                  </>
-                  <>
-                    <Typography variant="h5">Province</Typography>
-                    <Input placeholder="Province" {...register('province')} />
-                  </>
-                </div>
-                <div className="flex flex-col gap-[10px] w-full">
-                  <Typography variant="h5">Last name</Typography>
-                  <Input placeholder="Last name" {...register('lastName')} />
-                </div>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full">
+          <div className="flex flex-row gap-1 self-start">
+            <UserCircle className="w-6 h-6" />
+            <Typography variant="h4" fontWeight="bold">
+              Edit Profile
+            </Typography>
+          </div>
+          <div className="flex flex-col w-full bg-card rounded-2xl p-6 gap-4">
+            <div className="flex flex-row gap-8 max-lg:flex-col">
+              <div className="relative h-fit">
+                <Image
+                  className="w-[150px] h-[150px] flex-none max-lg:self-center"
+                  src={profile}
+                  alt="profile"
+                />
+                <p
+                  className="absolute bottom-1 right-1 bg-primary text-white p-1 rounded-full cursor-pointer"
+                  onClick={handleButtonClick}
+                >
+                  <Camera className="w-6 h-6" />
+                </p>
+                <Input
+                  type="file"
+                  className="hidden"
+                  ref={fileInputRef}
+                  onChange={handleFileChange}
+                />
               </div>
-              <div className="flex flex-col gap-[10px] w-full">
-                <Typography variant="h5">Short bio</Typography>
-                <Textarea placeholder="Tell us about you" {...register('bio')} />
+              <div className="flex flex-col gap-4 flex-1 items-center">
+                <div className="flex flex-row gap-10 w-full max-lg:flex-col max-lg:gap-[10px]">
+                  <div className="flex flex-col gap-[10px] w-full">
+                    <FormField
+                      control={form.control}
+                      name="firstName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <Typography variant="h5">First name</Typography>
+                          <FormControl>
+                            <Input placeholder="First name" {...field} />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="province"
+                      render={({ field }) => (
+                        <FormItem>
+                          <Typography variant="h5">Province</Typography>
+                          <FormControl>
+                            <Input placeholder="Province" {...field} />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-[10px] w-full">
+                    <FormField
+                      control={form.control}
+                      name="lastName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <Typography variant="h5">Last name</Typography>
+                          <FormControl>
+                            <Input placeholder="Last name" {...field} />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-[10px] w-full">
+                  <FormField
+                    control={form.control}
+                    name="bio"
+                    render={({ field }) => (
+                      <FormItem>
+                        <Typography variant="h5">Short bio</Typography>
+                        <FormControl>
+                          <Textarea placeholder="Tell us about you" {...field} />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-row gap-2 self-center">
-          <Button type="button" variant="secondary" className="min-w-[130px] max-lg:w-1/2">
-            Cancel
-          </Button>
-          <Button type="submit" className="min-w-[130px] max-lg:w-1/2">
-            Save
-          </Button>
-        </div>
-      </form>
+          <div className="flex flex-row gap-2 self-center max-md:w-full">
+            <Link href="/profile">
+              <Button type="button" variant="secondary" className="min-w-[130px] max-lg:w-1/2">
+                Cancel
+              </Button>
+            </Link>
+            <Button type="submit" className="min-w-[130px] max-lg:w-1/2">
+              Save
+            </Button>
+          </div>
+        </form>
+      </Form>
     </main>
   )
 }

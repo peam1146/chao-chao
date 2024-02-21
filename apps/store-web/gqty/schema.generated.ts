@@ -828,6 +828,27 @@ export interface User_email_operator {
   not_in?: InputMaybe<Array<InputMaybe<Scalars['EmailAddress']>>>
 }
 
+export interface User_filename_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  contains?: InputMaybe<Scalars['String']>
+  equals?: InputMaybe<Scalars['String']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  like?: InputMaybe<Scalars['String']>
+  not_equals?: InputMaybe<Scalars['String']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export interface User_filesize_operator {
+  equals?: InputMaybe<Scalars['Float']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Float']>
+  greater_than_equal?: InputMaybe<Scalars['Float']>
+  less_than?: InputMaybe<Scalars['Float']>
+  less_than_equal?: InputMaybe<Scalars['Float']>
+  not_equals?: InputMaybe<Scalars['Float']>
+}
+
 export interface User_firstName_operator {
   all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   contains?: InputMaybe<Scalars['String']>
@@ -837,6 +858,16 @@ export interface User_firstName_operator {
   like?: InputMaybe<Scalars['String']>
   not_equals?: InputMaybe<Scalars['String']>
   not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export interface User_height_operator {
+  equals?: InputMaybe<Scalars['Float']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Float']>
+  greater_than_equal?: InputMaybe<Scalars['Float']>
+  less_than?: InputMaybe<Scalars['Float']>
+  less_than_equal?: InputMaybe<Scalars['Float']>
+  not_equals?: InputMaybe<Scalars['Float']>
 }
 
 export interface User_id_operator {
@@ -850,6 +881,17 @@ export interface User_id_operator {
 }
 
 export interface User_lastName_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  contains?: InputMaybe<Scalars['String']>
+  equals?: InputMaybe<Scalars['String']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  like?: InputMaybe<Scalars['String']>
+  not_equals?: InputMaybe<Scalars['String']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export interface User_mimeType_operator {
   all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   contains?: InputMaybe<Scalars['String']>
   equals?: InputMaybe<Scalars['String']>
@@ -925,48 +967,87 @@ export interface User_updatedAt_operator {
   not_equals?: InputMaybe<Scalars['DateTime']>
 }
 
+export interface User_url_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  contains?: InputMaybe<Scalars['String']>
+  equals?: InputMaybe<Scalars['String']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  like?: InputMaybe<Scalars['String']>
+  not_equals?: InputMaybe<Scalars['String']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
 export interface User_where {
   AND?: InputMaybe<Array<InputMaybe<User_where_and>>>
   OR?: InputMaybe<Array<InputMaybe<User_where_or>>>
   bio?: InputMaybe<User_bio_operator>
   createdAt?: InputMaybe<User_createdAt_operator>
   email?: InputMaybe<User_email_operator>
+  filename?: InputMaybe<User_filename_operator>
+  filesize?: InputMaybe<User_filesize_operator>
   firstName?: InputMaybe<User_firstName_operator>
+  height?: InputMaybe<User_height_operator>
   id?: InputMaybe<User_id_operator>
   lastName?: InputMaybe<User_lastName_operator>
+  mimeType?: InputMaybe<User_mimeType_operator>
   phone?: InputMaybe<User_phone_operator>
   province?: InputMaybe<User_province_operator>
   rating?: InputMaybe<User_rating_operator>
   roles?: InputMaybe<User_roles_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
+  url?: InputMaybe<User_url_operator>
+  width?: InputMaybe<User_width_operator>
 }
 
 export interface User_where_and {
   bio?: InputMaybe<User_bio_operator>
   createdAt?: InputMaybe<User_createdAt_operator>
   email?: InputMaybe<User_email_operator>
+  filename?: InputMaybe<User_filename_operator>
+  filesize?: InputMaybe<User_filesize_operator>
   firstName?: InputMaybe<User_firstName_operator>
+  height?: InputMaybe<User_height_operator>
   id?: InputMaybe<User_id_operator>
   lastName?: InputMaybe<User_lastName_operator>
+  mimeType?: InputMaybe<User_mimeType_operator>
   phone?: InputMaybe<User_phone_operator>
   province?: InputMaybe<User_province_operator>
   rating?: InputMaybe<User_rating_operator>
   roles?: InputMaybe<User_roles_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
+  url?: InputMaybe<User_url_operator>
+  width?: InputMaybe<User_width_operator>
 }
 
 export interface User_where_or {
   bio?: InputMaybe<User_bio_operator>
   createdAt?: InputMaybe<User_createdAt_operator>
   email?: InputMaybe<User_email_operator>
+  filename?: InputMaybe<User_filename_operator>
+  filesize?: InputMaybe<User_filesize_operator>
   firstName?: InputMaybe<User_firstName_operator>
+  height?: InputMaybe<User_height_operator>
   id?: InputMaybe<User_id_operator>
   lastName?: InputMaybe<User_lastName_operator>
+  mimeType?: InputMaybe<User_mimeType_operator>
   phone?: InputMaybe<User_phone_operator>
   province?: InputMaybe<User_province_operator>
   rating?: InputMaybe<User_rating_operator>
   roles?: InputMaybe<User_roles_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
+  url?: InputMaybe<User_url_operator>
+  width?: InputMaybe<User_width_operator>
+}
+
+export interface User_width_operator {
+  equals?: InputMaybe<Scalars['Float']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Float']>
+  greater_than_equal?: InputMaybe<Scalars['Float']>
+  less_than?: InputMaybe<Scalars['Float']>
+  less_than_equal?: InputMaybe<Scalars['Float']>
+  not_equals?: InputMaybe<Scalars['Float']>
 }
 
 export interface mutationItemInput {
@@ -1053,11 +1134,15 @@ export interface mutationUserInput {
   bio?: InputMaybe<Scalars['String']>
   createdAt?: InputMaybe<Scalars['String']>
   email: Scalars['String']
+  filename?: InputMaybe<Scalars['String']>
+  filesize?: InputMaybe<Scalars['Float']>
   firstName?: InputMaybe<Scalars['String']>
   hash?: InputMaybe<Scalars['String']>
+  height?: InputMaybe<Scalars['Float']>
   lastName?: InputMaybe<Scalars['String']>
   lockUntil?: InputMaybe<Scalars['String']>
   loginAttempts?: InputMaybe<Scalars['Float']>
+  mimeType?: InputMaybe<Scalars['String']>
   password: Scalars['String']
   phone: Scalars['String']
   province?: InputMaybe<Scalars['String']>
@@ -1067,17 +1152,23 @@ export interface mutationUserInput {
   roles: Array<InputMaybe<User_roles_MutationInput>>
   salt?: InputMaybe<Scalars['String']>
   updatedAt?: InputMaybe<Scalars['String']>
+  url?: InputMaybe<Scalars['String']>
+  width?: InputMaybe<Scalars['Float']>
 }
 
 export interface mutationUserUpdateInput {
   bio?: InputMaybe<Scalars['String']>
   createdAt?: InputMaybe<Scalars['String']>
   email?: InputMaybe<Scalars['String']>
+  filename?: InputMaybe<Scalars['String']>
+  filesize?: InputMaybe<Scalars['Float']>
   firstName?: InputMaybe<Scalars['String']>
   hash?: InputMaybe<Scalars['String']>
+  height?: InputMaybe<Scalars['Float']>
   lastName?: InputMaybe<Scalars['String']>
   lockUntil?: InputMaybe<Scalars['String']>
   loginAttempts?: InputMaybe<Scalars['Float']>
+  mimeType?: InputMaybe<Scalars['String']>
   password?: InputMaybe<Scalars['String']>
   phone?: InputMaybe<Scalars['String']>
   province?: InputMaybe<Scalars['String']>
@@ -1087,6 +1178,8 @@ export interface mutationUserUpdateInput {
   roles?: InputMaybe<Array<InputMaybe<UserUpdate_roles_MutationInput>>>
   salt?: InputMaybe<Scalars['String']>
   updatedAt?: InputMaybe<Scalars['String']>
+  url?: InputMaybe<Scalars['String']>
+  width?: InputMaybe<Scalars['Float']>
 }
 
 export enum usersJWT_roles {
@@ -3451,12 +3544,16 @@ export const generatedSchema = {
     bio: { __type: 'String' },
     createdAt: { __type: 'DateTime' },
     email: { __type: 'EmailAddress!' },
+    filename: { __type: 'String' },
+    filesize: { __type: 'Float' },
     firstName: { __type: 'String' },
     hash: { __type: 'String' },
+    height: { __type: 'Float' },
     id: { __type: 'Int' },
     lastName: { __type: 'String' },
     lockUntil: { __type: 'DateTime' },
     loginAttempts: { __type: 'Float' },
+    mimeType: { __type: 'String' },
     password: { __type: 'String!' },
     phone: { __type: 'String!' },
     province: { __type: 'String' },
@@ -3466,6 +3563,8 @@ export const generatedSchema = {
     roles: { __type: '[User_roles!]!' },
     salt: { __type: 'String' },
     updatedAt: { __type: 'DateTime' },
+    url: { __type: 'String' },
+    width: { __type: 'Float' },
   },
   User_bio_operator: {
     contains: { __type: 'String' },
@@ -3493,6 +3592,25 @@ export const generatedSchema = {
     not_equals: { __type: 'EmailAddress' },
     not_in: { __type: '[EmailAddress]' },
   },
+  User_filename_operator: {
+    all: { __type: '[String]' },
+    contains: { __type: 'String' },
+    equals: { __type: 'String' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[String]' },
+    like: { __type: 'String' },
+    not_equals: { __type: 'String' },
+    not_in: { __type: '[String]' },
+  },
+  User_filesize_operator: {
+    equals: { __type: 'Float' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Float' },
+    greater_than_equal: { __type: 'Float' },
+    less_than: { __type: 'Float' },
+    less_than_equal: { __type: 'Float' },
+    not_equals: { __type: 'Float' },
+  },
   User_firstName_operator: {
     all: { __type: '[String]' },
     contains: { __type: 'String' },
@@ -3502,6 +3620,15 @@ export const generatedSchema = {
     like: { __type: 'String' },
     not_equals: { __type: 'String' },
     not_in: { __type: '[String]' },
+  },
+  User_height_operator: {
+    equals: { __type: 'Float' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Float' },
+    greater_than_equal: { __type: 'Float' },
+    less_than: { __type: 'Float' },
+    less_than_equal: { __type: 'Float' },
+    not_equals: { __type: 'Float' },
   },
   User_id_operator: {
     equals: { __type: 'Int' },
@@ -3513,6 +3640,16 @@ export const generatedSchema = {
     not_equals: { __type: 'Int' },
   },
   User_lastName_operator: {
+    all: { __type: '[String]' },
+    contains: { __type: 'String' },
+    equals: { __type: 'String' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[String]' },
+    like: { __type: 'String' },
+    not_equals: { __type: 'String' },
+    not_in: { __type: '[String]' },
+  },
+  User_mimeType_operator: {
     all: { __type: '[String]' },
     contains: { __type: 'String' },
     equals: { __type: 'String' },
@@ -3567,46 +3704,83 @@ export const generatedSchema = {
     like: { __type: 'DateTime' },
     not_equals: { __type: 'DateTime' },
   },
+  User_url_operator: {
+    all: { __type: '[String]' },
+    contains: { __type: 'String' },
+    equals: { __type: 'String' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[String]' },
+    like: { __type: 'String' },
+    not_equals: { __type: 'String' },
+    not_in: { __type: '[String]' },
+  },
   User_where: {
     AND: { __type: '[User_where_and]' },
     OR: { __type: '[User_where_or]' },
     bio: { __type: 'User_bio_operator' },
     createdAt: { __type: 'User_createdAt_operator' },
     email: { __type: 'User_email_operator' },
+    filename: { __type: 'User_filename_operator' },
+    filesize: { __type: 'User_filesize_operator' },
     firstName: { __type: 'User_firstName_operator' },
+    height: { __type: 'User_height_operator' },
     id: { __type: 'User_id_operator' },
     lastName: { __type: 'User_lastName_operator' },
+    mimeType: { __type: 'User_mimeType_operator' },
     phone: { __type: 'User_phone_operator' },
     province: { __type: 'User_province_operator' },
     rating: { __type: 'User_rating_operator' },
     roles: { __type: 'User_roles_operator' },
     updatedAt: { __type: 'User_updatedAt_operator' },
+    url: { __type: 'User_url_operator' },
+    width: { __type: 'User_width_operator' },
   },
   User_where_and: {
     bio: { __type: 'User_bio_operator' },
     createdAt: { __type: 'User_createdAt_operator' },
     email: { __type: 'User_email_operator' },
+    filename: { __type: 'User_filename_operator' },
+    filesize: { __type: 'User_filesize_operator' },
     firstName: { __type: 'User_firstName_operator' },
+    height: { __type: 'User_height_operator' },
     id: { __type: 'User_id_operator' },
     lastName: { __type: 'User_lastName_operator' },
+    mimeType: { __type: 'User_mimeType_operator' },
     phone: { __type: 'User_phone_operator' },
     province: { __type: 'User_province_operator' },
     rating: { __type: 'User_rating_operator' },
     roles: { __type: 'User_roles_operator' },
     updatedAt: { __type: 'User_updatedAt_operator' },
+    url: { __type: 'User_url_operator' },
+    width: { __type: 'User_width_operator' },
   },
   User_where_or: {
     bio: { __type: 'User_bio_operator' },
     createdAt: { __type: 'User_createdAt_operator' },
     email: { __type: 'User_email_operator' },
+    filename: { __type: 'User_filename_operator' },
+    filesize: { __type: 'User_filesize_operator' },
     firstName: { __type: 'User_firstName_operator' },
+    height: { __type: 'User_height_operator' },
     id: { __type: 'User_id_operator' },
     lastName: { __type: 'User_lastName_operator' },
+    mimeType: { __type: 'User_mimeType_operator' },
     phone: { __type: 'User_phone_operator' },
     province: { __type: 'User_province_operator' },
     rating: { __type: 'User_rating_operator' },
     roles: { __type: 'User_roles_operator' },
     updatedAt: { __type: 'User_updatedAt_operator' },
+    url: { __type: 'User_url_operator' },
+    width: { __type: 'User_width_operator' },
+  },
+  User_width_operator: {
+    equals: { __type: 'Float' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Float' },
+    greater_than_equal: { __type: 'Float' },
+    less_than: { __type: 'Float' },
+    less_than_equal: { __type: 'Float' },
+    not_equals: { __type: 'Float' },
   },
   Users: {
     __typename: { __type: 'String!' },
@@ -3647,14 +3821,20 @@ export const generatedSchema = {
     bio: { __type: 'UsersDocAccessFields_bio' },
     createdAt: { __type: 'UsersDocAccessFields_createdAt' },
     email: { __type: 'UsersDocAccessFields_email' },
+    filename: { __type: 'UsersDocAccessFields_filename' },
+    filesize: { __type: 'UsersDocAccessFields_filesize' },
     firstName: { __type: 'UsersDocAccessFields_firstName' },
+    height: { __type: 'UsersDocAccessFields_height' },
     lastName: { __type: 'UsersDocAccessFields_lastName' },
+    mimeType: { __type: 'UsersDocAccessFields_mimeType' },
     password: { __type: 'UsersDocAccessFields_password' },
     phone: { __type: 'UsersDocAccessFields_phone' },
     province: { __type: 'UsersDocAccessFields_province' },
     rating: { __type: 'UsersDocAccessFields_rating' },
     roles: { __type: 'UsersDocAccessFields_roles' },
     updatedAt: { __type: 'UsersDocAccessFields_updatedAt' },
+    url: { __type: 'UsersDocAccessFields_url' },
+    width: { __type: 'UsersDocAccessFields_width' },
   },
   UsersDocAccessFields_bio: {
     __typename: { __type: 'String!' },
@@ -3725,6 +3905,52 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  UsersDocAccessFields_filename: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_filename_Create' },
+    delete: { __type: 'UsersDocAccessFields_filename_Delete' },
+    read: { __type: 'UsersDocAccessFields_filename_Read' },
+    update: { __type: 'UsersDocAccessFields_filename_Update' },
+  },
+  UsersDocAccessFields_filename_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_filename_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_filename_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_filename_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_filesize: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_filesize_Create' },
+    delete: { __type: 'UsersDocAccessFields_filesize_Delete' },
+    read: { __type: 'UsersDocAccessFields_filesize_Read' },
+    update: { __type: 'UsersDocAccessFields_filesize_Update' },
+  },
+  UsersDocAccessFields_filesize_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_filesize_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_filesize_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_filesize_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   UsersDocAccessFields_firstName: {
     __typename: { __type: 'String!' },
     create: { __type: 'UsersDocAccessFields_firstName_Create' },
@@ -3748,6 +3974,29 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  UsersDocAccessFields_height: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_height_Create' },
+    delete: { __type: 'UsersDocAccessFields_height_Delete' },
+    read: { __type: 'UsersDocAccessFields_height_Read' },
+    update: { __type: 'UsersDocAccessFields_height_Update' },
+  },
+  UsersDocAccessFields_height_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_height_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_height_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_height_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   UsersDocAccessFields_lastName: {
     __typename: { __type: 'String!' },
     create: { __type: 'UsersDocAccessFields_lastName_Create' },
@@ -3768,6 +4017,29 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   UsersDocAccessFields_lastName_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_mimeType: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_mimeType_Create' },
+    delete: { __type: 'UsersDocAccessFields_mimeType_Delete' },
+    read: { __type: 'UsersDocAccessFields_mimeType_Read' },
+    update: { __type: 'UsersDocAccessFields_mimeType_Update' },
+  },
+  UsersDocAccessFields_mimeType_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_mimeType_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_mimeType_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_mimeType_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -3909,19 +4181,71 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  UsersDocAccessFields_url: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_url_Create' },
+    delete: { __type: 'UsersDocAccessFields_url_Delete' },
+    read: { __type: 'UsersDocAccessFields_url_Read' },
+    update: { __type: 'UsersDocAccessFields_url_Update' },
+  },
+  UsersDocAccessFields_url_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_url_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_url_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_url_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_width: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_width_Create' },
+    delete: { __type: 'UsersDocAccessFields_width_Delete' },
+    read: { __type: 'UsersDocAccessFields_width_Read' },
+    update: { __type: 'UsersDocAccessFields_width_Update' },
+  },
+  UsersDocAccessFields_width_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_width_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_width_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_width_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   UsersFields: {
     __typename: { __type: 'String!' },
     bio: { __type: 'UsersFields_bio' },
     createdAt: { __type: 'UsersFields_createdAt' },
     email: { __type: 'UsersFields_email' },
+    filename: { __type: 'UsersFields_filename' },
+    filesize: { __type: 'UsersFields_filesize' },
     firstName: { __type: 'UsersFields_firstName' },
+    height: { __type: 'UsersFields_height' },
     lastName: { __type: 'UsersFields_lastName' },
+    mimeType: { __type: 'UsersFields_mimeType' },
     password: { __type: 'UsersFields_password' },
     phone: { __type: 'UsersFields_phone' },
     province: { __type: 'UsersFields_province' },
     rating: { __type: 'UsersFields_rating' },
     roles: { __type: 'UsersFields_roles' },
     updatedAt: { __type: 'UsersFields_updatedAt' },
+    url: { __type: 'UsersFields_url' },
+    width: { __type: 'UsersFields_width' },
   },
   UsersFields_bio: {
     __typename: { __type: 'String!' },
@@ -3977,6 +4301,52 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  UsersFields_filename: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_filename_Create' },
+    delete: { __type: 'UsersFields_filename_Delete' },
+    read: { __type: 'UsersFields_filename_Read' },
+    update: { __type: 'UsersFields_filename_Update' },
+  },
+  UsersFields_filename_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_filename_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_filename_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_filename_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_filesize: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_filesize_Create' },
+    delete: { __type: 'UsersFields_filesize_Delete' },
+    read: { __type: 'UsersFields_filesize_Read' },
+    update: { __type: 'UsersFields_filesize_Update' },
+  },
+  UsersFields_filesize_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_filesize_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_filesize_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_filesize_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   UsersFields_firstName: {
     __typename: { __type: 'String!' },
     create: { __type: 'UsersFields_firstName_Create' },
@@ -4000,6 +4370,29 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  UsersFields_height: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_height_Create' },
+    delete: { __type: 'UsersFields_height_Delete' },
+    read: { __type: 'UsersFields_height_Read' },
+    update: { __type: 'UsersFields_height_Update' },
+  },
+  UsersFields_height_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_height_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_height_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_height_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   UsersFields_lastName: {
     __typename: { __type: 'String!' },
     create: { __type: 'UsersFields_lastName_Create' },
@@ -4020,6 +4413,29 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   UsersFields_lastName_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_mimeType: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_mimeType_Create' },
+    delete: { __type: 'UsersFields_mimeType_Delete' },
+    read: { __type: 'UsersFields_mimeType_Read' },
+    update: { __type: 'UsersFields_mimeType_Update' },
+  },
+  UsersFields_mimeType_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_mimeType_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_mimeType_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_mimeType_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -4152,6 +4568,37 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   UsersFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_url: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_url_Create' },
+    delete: { __type: 'UsersFields_url_Delete' },
+    read: { __type: 'UsersFields_url_Read' },
+    update: { __type: 'UsersFields_url_Update' },
+  },
+  UsersFields_url_Create: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
+  UsersFields_url_Delete: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
+  UsersFields_url_Read: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
+  UsersFields_url_Update: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
+  UsersFields_width: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_width_Create' },
+    delete: { __type: 'UsersFields_width_Delete' },
+    read: { __type: 'UsersFields_width_Read' },
+    update: { __type: 'UsersFields_width_Update' },
+  },
+  UsersFields_width_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_width_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_width_Read: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
+  UsersFields_width_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -4370,11 +4817,15 @@ export const generatedSchema = {
     bio: { __type: 'String' },
     createdAt: { __type: 'String' },
     email: { __type: 'String!' },
+    filename: { __type: 'String' },
+    filesize: { __type: 'Float' },
     firstName: { __type: 'String' },
     hash: { __type: 'String' },
+    height: { __type: 'Float' },
     lastName: { __type: 'String' },
     lockUntil: { __type: 'String' },
     loginAttempts: { __type: 'Float' },
+    mimeType: { __type: 'String' },
     password: { __type: 'String!' },
     phone: { __type: 'String!' },
     province: { __type: 'String' },
@@ -4384,16 +4835,22 @@ export const generatedSchema = {
     roles: { __type: '[User_roles_MutationInput]!' },
     salt: { __type: 'String' },
     updatedAt: { __type: 'String' },
+    url: { __type: 'String' },
+    width: { __type: 'Float' },
   },
   mutationUserUpdateInput: {
     bio: { __type: 'String' },
     createdAt: { __type: 'String' },
     email: { __type: 'String' },
+    filename: { __type: 'String' },
+    filesize: { __type: 'Float' },
     firstName: { __type: 'String' },
     hash: { __type: 'String' },
+    height: { __type: 'Float' },
     lastName: { __type: 'String' },
     lockUntil: { __type: 'String' },
     loginAttempts: { __type: 'Float' },
+    mimeType: { __type: 'String' },
     password: { __type: 'String' },
     phone: { __type: 'String' },
     province: { __type: 'String' },
@@ -4403,6 +4860,8 @@ export const generatedSchema = {
     roles: { __type: '[UserUpdate_roles_MutationInput]' },
     salt: { __type: 'String' },
     updatedAt: { __type: 'String' },
+    url: { __type: 'String' },
+    width: { __type: 'Float' },
   },
   payload_preferencesAccess: {
     __typename: { __type: 'String!' },
@@ -6544,12 +7003,16 @@ export interface User {
   bio?: Maybe<ScalarsEnums['String']>
   createdAt?: Maybe<ScalarsEnums['DateTime']>
   email: ScalarsEnums['EmailAddress']
+  filename?: Maybe<ScalarsEnums['String']>
+  filesize?: Maybe<ScalarsEnums['Float']>
   firstName?: Maybe<ScalarsEnums['String']>
   hash?: Maybe<ScalarsEnums['String']>
+  height?: Maybe<ScalarsEnums['Float']>
   id?: Maybe<ScalarsEnums['Int']>
   lastName?: Maybe<ScalarsEnums['String']>
   lockUntil?: Maybe<ScalarsEnums['DateTime']>
   loginAttempts?: Maybe<ScalarsEnums['Float']>
+  mimeType?: Maybe<ScalarsEnums['String']>
   password: ScalarsEnums['String']
   phone: ScalarsEnums['String']
   province?: Maybe<ScalarsEnums['String']>
@@ -6559,6 +7022,8 @@ export interface User {
   roles: Array<ScalarsEnums['User_roles']>
   salt?: Maybe<ScalarsEnums['String']>
   updatedAt?: Maybe<ScalarsEnums['DateTime']>
+  url?: Maybe<ScalarsEnums['String']>
+  width?: Maybe<ScalarsEnums['Float']>
 }
 
 export interface Users {
@@ -6605,14 +7070,20 @@ export interface UsersDocAccessFields {
   bio?: Maybe<UsersDocAccessFields_bio>
   createdAt?: Maybe<UsersDocAccessFields_createdAt>
   email?: Maybe<UsersDocAccessFields_email>
+  filename?: Maybe<UsersDocAccessFields_filename>
+  filesize?: Maybe<UsersDocAccessFields_filesize>
   firstName?: Maybe<UsersDocAccessFields_firstName>
+  height?: Maybe<UsersDocAccessFields_height>
   lastName?: Maybe<UsersDocAccessFields_lastName>
+  mimeType?: Maybe<UsersDocAccessFields_mimeType>
   password?: Maybe<UsersDocAccessFields_password>
   phone?: Maybe<UsersDocAccessFields_phone>
   province?: Maybe<UsersDocAccessFields_province>
   rating?: Maybe<UsersDocAccessFields_rating>
   roles?: Maybe<UsersDocAccessFields_roles>
   updatedAt?: Maybe<UsersDocAccessFields_updatedAt>
+  url?: Maybe<UsersDocAccessFields_url>
+  width?: Maybe<UsersDocAccessFields_width>
 }
 
 export interface UsersDocAccessFields_bio {
@@ -6699,6 +7170,62 @@ export interface UsersDocAccessFields_email_Update {
   permission: ScalarsEnums['Boolean']
 }
 
+export interface UsersDocAccessFields_filename {
+  __typename?: 'UsersDocAccessFields_filename'
+  create?: Maybe<UsersDocAccessFields_filename_Create>
+  delete?: Maybe<UsersDocAccessFields_filename_Delete>
+  read?: Maybe<UsersDocAccessFields_filename_Read>
+  update?: Maybe<UsersDocAccessFields_filename_Update>
+}
+
+export interface UsersDocAccessFields_filename_Create {
+  __typename?: 'UsersDocAccessFields_filename_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_filename_Delete {
+  __typename?: 'UsersDocAccessFields_filename_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_filename_Read {
+  __typename?: 'UsersDocAccessFields_filename_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_filename_Update {
+  __typename?: 'UsersDocAccessFields_filename_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_filesize {
+  __typename?: 'UsersDocAccessFields_filesize'
+  create?: Maybe<UsersDocAccessFields_filesize_Create>
+  delete?: Maybe<UsersDocAccessFields_filesize_Delete>
+  read?: Maybe<UsersDocAccessFields_filesize_Read>
+  update?: Maybe<UsersDocAccessFields_filesize_Update>
+}
+
+export interface UsersDocAccessFields_filesize_Create {
+  __typename?: 'UsersDocAccessFields_filesize_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_filesize_Delete {
+  __typename?: 'UsersDocAccessFields_filesize_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_filesize_Read {
+  __typename?: 'UsersDocAccessFields_filesize_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_filesize_Update {
+  __typename?: 'UsersDocAccessFields_filesize_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
 export interface UsersDocAccessFields_firstName {
   __typename?: 'UsersDocAccessFields_firstName'
   create?: Maybe<UsersDocAccessFields_firstName_Create>
@@ -6727,6 +7254,34 @@ export interface UsersDocAccessFields_firstName_Update {
   permission: ScalarsEnums['Boolean']
 }
 
+export interface UsersDocAccessFields_height {
+  __typename?: 'UsersDocAccessFields_height'
+  create?: Maybe<UsersDocAccessFields_height_Create>
+  delete?: Maybe<UsersDocAccessFields_height_Delete>
+  read?: Maybe<UsersDocAccessFields_height_Read>
+  update?: Maybe<UsersDocAccessFields_height_Update>
+}
+
+export interface UsersDocAccessFields_height_Create {
+  __typename?: 'UsersDocAccessFields_height_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_height_Delete {
+  __typename?: 'UsersDocAccessFields_height_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_height_Read {
+  __typename?: 'UsersDocAccessFields_height_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_height_Update {
+  __typename?: 'UsersDocAccessFields_height_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
 export interface UsersDocAccessFields_lastName {
   __typename?: 'UsersDocAccessFields_lastName'
   create?: Maybe<UsersDocAccessFields_lastName_Create>
@@ -6752,6 +7307,34 @@ export interface UsersDocAccessFields_lastName_Read {
 
 export interface UsersDocAccessFields_lastName_Update {
   __typename?: 'UsersDocAccessFields_lastName_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_mimeType {
+  __typename?: 'UsersDocAccessFields_mimeType'
+  create?: Maybe<UsersDocAccessFields_mimeType_Create>
+  delete?: Maybe<UsersDocAccessFields_mimeType_Delete>
+  read?: Maybe<UsersDocAccessFields_mimeType_Read>
+  update?: Maybe<UsersDocAccessFields_mimeType_Update>
+}
+
+export interface UsersDocAccessFields_mimeType_Create {
+  __typename?: 'UsersDocAccessFields_mimeType_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_mimeType_Delete {
+  __typename?: 'UsersDocAccessFields_mimeType_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_mimeType_Read {
+  __typename?: 'UsersDocAccessFields_mimeType_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_mimeType_Update {
+  __typename?: 'UsersDocAccessFields_mimeType_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -6923,19 +7506,81 @@ export interface UsersDocAccessFields_updatedAt_Update {
   permission: ScalarsEnums['Boolean']
 }
 
+export interface UsersDocAccessFields_url {
+  __typename?: 'UsersDocAccessFields_url'
+  create?: Maybe<UsersDocAccessFields_url_Create>
+  delete?: Maybe<UsersDocAccessFields_url_Delete>
+  read?: Maybe<UsersDocAccessFields_url_Read>
+  update?: Maybe<UsersDocAccessFields_url_Update>
+}
+
+export interface UsersDocAccessFields_url_Create {
+  __typename?: 'UsersDocAccessFields_url_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_url_Delete {
+  __typename?: 'UsersDocAccessFields_url_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_url_Read {
+  __typename?: 'UsersDocAccessFields_url_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_url_Update {
+  __typename?: 'UsersDocAccessFields_url_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_width {
+  __typename?: 'UsersDocAccessFields_width'
+  create?: Maybe<UsersDocAccessFields_width_Create>
+  delete?: Maybe<UsersDocAccessFields_width_Delete>
+  read?: Maybe<UsersDocAccessFields_width_Read>
+  update?: Maybe<UsersDocAccessFields_width_Update>
+}
+
+export interface UsersDocAccessFields_width_Create {
+  __typename?: 'UsersDocAccessFields_width_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_width_Delete {
+  __typename?: 'UsersDocAccessFields_width_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_width_Read {
+  __typename?: 'UsersDocAccessFields_width_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_width_Update {
+  __typename?: 'UsersDocAccessFields_width_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
 export interface UsersFields {
   __typename?: 'UsersFields'
   bio?: Maybe<UsersFields_bio>
   createdAt?: Maybe<UsersFields_createdAt>
   email?: Maybe<UsersFields_email>
+  filename?: Maybe<UsersFields_filename>
+  filesize?: Maybe<UsersFields_filesize>
   firstName?: Maybe<UsersFields_firstName>
+  height?: Maybe<UsersFields_height>
   lastName?: Maybe<UsersFields_lastName>
+  mimeType?: Maybe<UsersFields_mimeType>
   password?: Maybe<UsersFields_password>
   phone?: Maybe<UsersFields_phone>
   province?: Maybe<UsersFields_province>
   rating?: Maybe<UsersFields_rating>
   roles?: Maybe<UsersFields_roles>
   updatedAt?: Maybe<UsersFields_updatedAt>
+  url?: Maybe<UsersFields_url>
+  width?: Maybe<UsersFields_width>
 }
 
 export interface UsersFields_bio {
@@ -7022,6 +7667,62 @@ export interface UsersFields_email_Update {
   permission: ScalarsEnums['Boolean']
 }
 
+export interface UsersFields_filename {
+  __typename?: 'UsersFields_filename'
+  create?: Maybe<UsersFields_filename_Create>
+  delete?: Maybe<UsersFields_filename_Delete>
+  read?: Maybe<UsersFields_filename_Read>
+  update?: Maybe<UsersFields_filename_Update>
+}
+
+export interface UsersFields_filename_Create {
+  __typename?: 'UsersFields_filename_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_filename_Delete {
+  __typename?: 'UsersFields_filename_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_filename_Read {
+  __typename?: 'UsersFields_filename_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_filename_Update {
+  __typename?: 'UsersFields_filename_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_filesize {
+  __typename?: 'UsersFields_filesize'
+  create?: Maybe<UsersFields_filesize_Create>
+  delete?: Maybe<UsersFields_filesize_Delete>
+  read?: Maybe<UsersFields_filesize_Read>
+  update?: Maybe<UsersFields_filesize_Update>
+}
+
+export interface UsersFields_filesize_Create {
+  __typename?: 'UsersFields_filesize_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_filesize_Delete {
+  __typename?: 'UsersFields_filesize_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_filesize_Read {
+  __typename?: 'UsersFields_filesize_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_filesize_Update {
+  __typename?: 'UsersFields_filesize_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
 export interface UsersFields_firstName {
   __typename?: 'UsersFields_firstName'
   create?: Maybe<UsersFields_firstName_Create>
@@ -7050,6 +7751,34 @@ export interface UsersFields_firstName_Update {
   permission: ScalarsEnums['Boolean']
 }
 
+export interface UsersFields_height {
+  __typename?: 'UsersFields_height'
+  create?: Maybe<UsersFields_height_Create>
+  delete?: Maybe<UsersFields_height_Delete>
+  read?: Maybe<UsersFields_height_Read>
+  update?: Maybe<UsersFields_height_Update>
+}
+
+export interface UsersFields_height_Create {
+  __typename?: 'UsersFields_height_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_height_Delete {
+  __typename?: 'UsersFields_height_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_height_Read {
+  __typename?: 'UsersFields_height_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_height_Update {
+  __typename?: 'UsersFields_height_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
 export interface UsersFields_lastName {
   __typename?: 'UsersFields_lastName'
   create?: Maybe<UsersFields_lastName_Create>
@@ -7075,6 +7804,34 @@ export interface UsersFields_lastName_Read {
 
 export interface UsersFields_lastName_Update {
   __typename?: 'UsersFields_lastName_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_mimeType {
+  __typename?: 'UsersFields_mimeType'
+  create?: Maybe<UsersFields_mimeType_Create>
+  delete?: Maybe<UsersFields_mimeType_Delete>
+  read?: Maybe<UsersFields_mimeType_Read>
+  update?: Maybe<UsersFields_mimeType_Update>
+}
+
+export interface UsersFields_mimeType_Create {
+  __typename?: 'UsersFields_mimeType_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_mimeType_Delete {
+  __typename?: 'UsersFields_mimeType_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_mimeType_Read {
+  __typename?: 'UsersFields_mimeType_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_mimeType_Update {
+  __typename?: 'UsersFields_mimeType_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -7243,6 +8000,62 @@ export interface UsersFields_updatedAt_Read {
 
 export interface UsersFields_updatedAt_Update {
   __typename?: 'UsersFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_url {
+  __typename?: 'UsersFields_url'
+  create?: Maybe<UsersFields_url_Create>
+  delete?: Maybe<UsersFields_url_Delete>
+  read?: Maybe<UsersFields_url_Read>
+  update?: Maybe<UsersFields_url_Update>
+}
+
+export interface UsersFields_url_Create {
+  __typename?: 'UsersFields_url_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_url_Delete {
+  __typename?: 'UsersFields_url_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_url_Read {
+  __typename?: 'UsersFields_url_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_url_Update {
+  __typename?: 'UsersFields_url_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_width {
+  __typename?: 'UsersFields_width'
+  create?: Maybe<UsersFields_width_Create>
+  delete?: Maybe<UsersFields_width_Delete>
+  read?: Maybe<UsersFields_width_Read>
+  update?: Maybe<UsersFields_width_Update>
+}
+
+export interface UsersFields_width_Create {
+  __typename?: 'UsersFields_width_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_width_Delete {
+  __typename?: 'UsersFields_width_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_width_Read {
+  __typename?: 'UsersFields_width_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_width_Update {
+  __typename?: 'UsersFields_width_Update'
   permission: ScalarsEnums['Boolean']
 }
 

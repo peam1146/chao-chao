@@ -1,4 +1,5 @@
 import Navbar from '@/components/layout/Navbar'
+import { Toaster } from '@/components/ui/toaster'
 import { ThemeProvider } from '@/providers/Theme'
 import type { Metadata } from 'next'
 import { IBM_Plex_Sans_Thai_Looped } from 'next/font/google'
@@ -35,6 +36,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Toaster />
           <Navbar id={id} />
           {children}
         </ThemeProvider>
