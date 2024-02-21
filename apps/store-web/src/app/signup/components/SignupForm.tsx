@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import signupLogo from '@/assets/images/Saly-1.png'
@@ -8,14 +7,15 @@ import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import Typography from '@/components/ui/typography'
+import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Key, Phone, UserCircle, Warning } from '@phosphor-icons/react'
+import { Key, Phone, UserCircle } from '@phosphor-icons/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 
-import { createUser } from './actions'
+import { User_roles_MutationInput, resolve } from '../../../../gqty'
 
 const validationSchema = z.object({
   email: z.string().min(1, { message: 'Email is required' }).email({
@@ -37,14 +37,35 @@ export default function SignupForm() {
     resolver: zodResolver(validationSchema),
   })
 
-  const [error, setError] = useState('')
+  // const [error, setError] = useState('')
+
+  const { toast } = useToast()
+  const router = useRouter()
 
   const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
     try {
-      await createUser(data)
+      await resolve(async ({ mutation }) => {
+        return mutation.createUser({
+          data: {
+            email: data.email,
+            password: data.password,
+            phone: data.phone,
+            roles: [User_roles_MutationInput.User],
+          },
+        })
+      })
+
+      toast({
+        title: 'Sign up Successful',
+        success: true,
+      })
+
+      router.push('/signin')
     } catch (e) {
-      setError('This email is already registered.')
-      console.log(error)
+      toast({
+        title: 'This email is already registered.',
+        error: true,
+      })
     }
   }
 
@@ -57,6 +78,7 @@ export default function SignupForm() {
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="h-fit w-full flex flex-col items-center gap-24 lg:gap-12 my-auto xl:w-1/2"
+          noValidate
         >
           <div className="w-full flex flex-col gap-y-5 ">
             <Typography variant="h3" fontWeight="bold" className="self-start lg:self-center lg:h2">
@@ -72,7 +94,13 @@ export default function SignupForm() {
                       <div className="absolute h-full flex items-center justify-center ml-3">
                         <UserCircle size={20} className="text-muted-foreground" />
                       </div>
-                      <Input placeholder="Email" className="pl-9" {...field} />
+                      <Input
+                        type="email"
+                        placeholder="Email"
+                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                        className="pl-9"
+                        {...field}
+                      />
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -90,7 +118,12 @@ export default function SignupForm() {
                       <div className="absolute h-full flex items-center justify-center ml-3">
                         <Phone size={20} className="text-muted-foreground" />
                       </div>
-                      <Input placeholder="Phone number" className="pl-9" {...field} />
+                      <Input
+                        placeholder="Phone number"
+                        pattern="[0-9]{10}"
+                        className="pl-9"
+                        {...field}
+                      />
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -108,7 +141,13 @@ export default function SignupForm() {
                       <div className="absolute h-full flex items-center justify-center ml-3">
                         <Key size={20} className="text-muted-foreground" />
                       </div>
-                      <Input type="password" placeholder="Password" className="pl-9" {...field} />
+                      <Input
+                        type="password"
+                        placeholder="Password"
+                        pattern=".{6,}"
+                        className="pl-9"
+                        {...field}
+                      />
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -134,7 +173,7 @@ export default function SignupForm() {
         <Image src={signupLogo} width={0} height={0} alt="Signup Picture" />
       </div>
 
-      <div className="hidden">
+      {/* <div className="hidden">
         {error &&
           toast.error(
             <div>
@@ -146,7 +185,7 @@ export default function SignupForm() {
               </div>
             </div>
           )}
-      </div>
+      </div> */}
     </div>
   )
 }
