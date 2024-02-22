@@ -56,10 +56,9 @@ export async function userLogin(data: LoginValues) {
     cookies().set('payload-token', token!, { secure: false })
     // revalidatePath('/')
     // redirect('/')
+    return true
   } catch (error) {
-    throw error
+    return false
     // redirect('/signin')
   }
-  revalidatePath('/')
-  redirect('/')
 }

@@ -107,25 +107,29 @@ export default function SigninForm() {
     password: '',
   })
   async function onSubmit(data: z.infer<typeof loginSchema>) {
-    if (data.email === previousData.email && data.password === previousData.password) {
-      toast({
-        title: 'Incorrect email or password',
-        description: 'Try entering you information again.',
-        error: true,
-      })
-      return
-    }
-    try {
-      await userLogin(data)
+    // if (data.email === previousData.email && data.password === previousData.password) {
+    //   toast({
+    //     title: 'Incorrect email or password',
+    //     description: 'Try entering your information again.',
+    //     error: true,
+    //   })
+    //   return
+    // }
+
+    if (await userLogin(data)) {
+      console.log('This is the data that is being sent to the server.')
       toast({
         title: 'Sign in Successful',
         success: true,
       })
-    } catch (err) {
-      setPreviousData(data)
+      router.push('/')
+      // revalidatePath('/')
+      // redirect('/')
+    } else {
+      // setPreviousData(data)
       toast({
         title: 'Incorrect email or password',
-        description: 'Try entering you information again.',
+        description: 'Try entering your information again.',
         error: true,
       })
     }
