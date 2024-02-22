@@ -49,10 +49,15 @@ export async function userLogin(data: LoginValues) {
       email: data.email as string,
       password: data.password as string,
     }
-    const { token } = await resolve(({ mutation }) => {
-      const loginInfo = mutation.loginUser(args)
-      return { token: loginInfo?.token }
-    })
+    const { token } = await resolve(
+      ({ mutation }) => {
+        const loginInfo = mutation.loginUser(args)
+        return { token: loginInfo?.token }
+      },
+      {
+        cachePolicy: 'no-store',
+      }
+    )
     cookies().set('payload-token', token!, { secure: false })
     // revalidatePath('/')
     // redirect('/')
