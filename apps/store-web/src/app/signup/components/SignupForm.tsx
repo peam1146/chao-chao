@@ -50,9 +50,14 @@ export default function SignupForm() {
             phone: data.phone,
             roles: [User_roles_MutationInput.User],
           },
-        })
+        }
+        )
         return user
-      })
+      },
+      {
+        cachePolicy: 'no-store',
+      }
+      )
 
       toast({
         title: 'Sign up Successful',

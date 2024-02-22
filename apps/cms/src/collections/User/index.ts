@@ -19,18 +19,18 @@ export const Users: S3UploadCollectionConfig = {
     create: () => true,
     read: () => true,
   },
-  upload: {
-    staticURL: `${API_URL}/images`,
-    disableLocalStorage: true,
-    s3: {
-      bucket: BUCKET_NAME,
-      prefix: 'images/',
-      commandInput: {
-        ACL: 'public-read',
-      },
-    },
-    adminThumbnail: ({ doc }) => `${API_URL}/images/${doc.filename}`,
-  },
+  // upload: {
+  //   staticURL: `${API_URL}/images`,
+  //   disableLocalStorage: true,
+  //   s3: {
+  //     bucket: BUCKET_NAME,
+  //     prefix: 'images/',
+  //     commandInput: {
+  //       ACL: 'public-read',
+  //     },
+  //   },
+  //   adminThumbnail: ({ doc }) => `${API_URL}/images/${doc.filename}`,
+  // },
   fields: [
     {
       type: 'text',
