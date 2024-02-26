@@ -7,17 +7,14 @@ import useTags from '../hooks/useTags'
 import Tag from './tag'
 import { OpeningTagsProps } from './types'
 
-export default function OpeningTags({
-  availableTags,
-  value: tags,
-  onChange: setTags,
-}: OpeningTagsProps) {
+const OpeningTags = ({ availableTags, value: tags, onChange: setTags }: OpeningTagsProps) => {
   const { inputValue, filteredTags, onAddTag, onRemoveTag, setInputValue } = useTags(
     availableTags,
     tags,
     setTags
   )
   const { inputEl, isFocus } = usePopover()
+
   return (
     <Popover open={isFocus}>
       <PopoverTrigger asChild onClick={(e) => e.preventDefault()}>
@@ -61,32 +58,29 @@ export default function OpeningTags({
           {filteredTags.length !== 0 && (
             <div className="flex flex-wrap gap-2 max-h-[30vh] overflow-auto">
               {filteredTags.map((tag) => (
-                // <div>{tag.tagName}</div>
-                <div key={tag.tagId} onClick={() => onAddTag(tag)} className="w-fit cursor-pointer">
-                  <Tag text={tag.tagName} />
-                </div>
-                // <Tag
-                //   key={tag.tagId}
-                //   text={tag.tagName}
-                //   // className="w-fit cursor-pointer"
-                //   onClick={() => onAddTag(tag)}
-                // />
-                // <Tag text={tag.tagName} />
+                <Tag
+                  key={tag.tagId}
+                  text={tag.tagName}
+                  // className="w-fit cursor-pointer"
+                  // onClick={() => onAddTag(tag)}
+                />
               ))}
             </div>
           )}
-          {/* <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center">
             <Typography variant="h6">หรือสร้างแท็กใหม่</Typography>
             {inputValue && (
               <Tag
                 text={inputValue}
-                onClick={() => onAddTag({ tagName: inputValue, tagId: Math.random() })}
-                className="w-fit cursor-pointer"
+                // onClick={() => onAddTag({ tagName: inputValue, tagId: Math.random() })}
+                // className="w-fit cursor-pointer"
               />
             )}
-          </div> */}
+          </div>
         </div>
       </PopoverContent>
     </Popover>
   )
 }
+
+export default OpeningTags

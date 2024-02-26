@@ -9,6 +9,8 @@ export default async function AssetRegist() {
         <Breadcrumb previousPages={['My Assets']} currentPage="Asset Registration" />
         <RegistCard />
       </div>
+
+      {/* <PlateEditor /> */}
     </main>
   )
 }

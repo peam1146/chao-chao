@@ -332,13 +332,15 @@ export function PlateEditor() {
     <DndProvider backend={HTML5Backend}>
       <CommentsProvider users={{}} myUserId="1">
         <Plate plugins={plugins} initialValue={initialValue}>
-          <FixedToolbar>
+          {/* <FixedToolbar>
             <FixedToolbarButtons />
-          </FixedToolbar>
+          </FixedToolbar> */}
+
           <Editor />
-          <FloatingToolbar>
+
+          {/* <FloatingToolbar>
             <FloatingToolbarButtons />
-          </FloatingToolbar>
+          </FloatingToolbar> */}
           <MentionCombobox items={[]} />
           <CommentsPopover />
         </Plate>
