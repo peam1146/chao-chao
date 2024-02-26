@@ -1,16 +1,14 @@
 'use client'
 
 import React from 'react'
-import { useEffect } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { CommandInput } from '@/components/ui/command'
 import { Input } from '@/components/ui/input'
 import { toast } from '@/components/ui/use-toast'
 import { type VariantProps } from 'class-variance-authority'
-import { set } from 'date-fns'
+import { v4 as uuid } from 'uuid'
 
-// import { v4 as uuid } from 'uuid'
 import { Autocomplete } from './autocomplete'
 import { tagVariants } from './tag'
 import { TagList } from './tag-list'
@@ -113,25 +111,10 @@ const TagInput = React.forwardRef<HTMLInputElement, TagInputProps>((props, ref) 
   } = props
 
   const [inputValue, setInputValue] = React.useState('')
-  const [showlist, setShowList] = React.useState(false)
   const [tagCount, setTagCount] = React.useState(Math.max(0, tags.length))
   const inputRef = React.useRef<HTMLInputElement>(null)
   const [draggedTagId, setDraggedTagId] = React.useState<string | null>(null)
-  useEffect(() => {
-    const handleFocus = () => {
-      if (document.activeElement === inputRef.current) {
-        setShowList(true)
-      } else {
-        setShowList(false)
-      }
-    }
 
-    document.addEventListener('click', handleFocus)
-
-    return () => {
-      document.removeEventListener('click', handleFocus)
-    }
-  }, [])
   if (
     (maxTags !== undefined && maxTags < 0) ||
     (props.minTags !== undefined && props.minTags < 0)
@@ -149,7 +132,6 @@ const TagInput = React.forwardRef<HTMLInputElement, TagInputProps>((props, ref) 
     const newValue = e.target.value
     setInputValue(newValue)
     onInputChange?.(newValue)
-    // setShowList(newValue !== '') // Show list if value is not empty
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -186,8 +168,7 @@ const TagInput = React.forwardRef<HTMLInputElement, TagInputProps>((props, ref) 
         return
       }
 
-      const newTagId = Math.random().toString(36)
-      // const newTagId = uuid()
+      const newTagId = uuid()
 
       if (
         newTagText &&
@@ -265,7 +246,7 @@ const TagInput = React.forwardRef<HTMLInputElement, TagInputProps>((props, ref) 
         />
       ) : null}
       {enableAutocomplete ? (
-        <div className="w-full">
+        <div className="w-full max-w-[450px]">
           <Autocomplete
             tags={tags}
             setTags={setTags}
@@ -273,7 +254,6 @@ const TagInput = React.forwardRef<HTMLInputElement, TagInputProps>((props, ref) 
             maxTags={maxTags}
             onTagAdd={onTagAdd}
             allowDuplicates={allowDuplicates ?? false}
-            showbelow={showlist}
           >
             {!usePopoverForTags ? (
               <CommandInput
@@ -289,6 +269,7 @@ const TagInput = React.forwardRef<HTMLInputElement, TagInputProps>((props, ref) 
                 onKeyDown={handleKeyDown}
                 onFocus={onFocus}
                 onBlur={onBlur}
+                className="w-full"
               />
             ) : (
               <TagPopover
