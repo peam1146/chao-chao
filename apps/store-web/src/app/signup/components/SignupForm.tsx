@@ -42,21 +42,21 @@ export default function SignupForm() {
 
   async function onSubmit(data: z.infer<typeof validationSchema>) {
     try {
-      await resolve(async ({ mutation }) => {
-        const user = mutation.createUser({
-          data: {
-            email: data.email,
-            password: data.password,
-            phone: data.phone,
-            roles: [User_roles_MutationInput.User],
-          },
+      await resolve(
+        async ({ mutation }) => {
+          const user = mutation.createUser({
+            data: {
+              email: data.email,
+              password: data.password,
+              phone: data.phone,
+              roles: [User_roles_MutationInput.User],
+            },
+          })
+          return user
+        },
+        {
+          cachePolicy: 'no-store',
         }
-        )
-        return user
-      },
-      {
-        cachePolicy: 'no-store',
-      }
       )
 
       toast({
