@@ -3,6 +3,7 @@
 import { useForm } from 'react-hook-form'
 
 import mockPic from '@/assets/images/mockPic2.png'
+import { TooltipProvider } from '@/components/plate-ui/tooltip'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
@@ -21,6 +22,7 @@ import { ListPlus, X, XCircle } from '@phosphor-icons/react'
 import Image from 'next/image'
 import { z } from 'zod'
 
+import { PlateEditor } from './description'
 import OpeningTags from './opening-tags'
 
 export const assetSchema = z.object({
@@ -112,6 +114,9 @@ export default function RegistCard() {
             <div>
               {/*Description*/}
               <Typography variant="h5">Description</Typography>
+              <TooltipProvider>
+                <PlateEditor />
+              </TooltipProvider>
             </div>
             <div className="w-full ">
               {/*Image*/}
