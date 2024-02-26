@@ -41,6 +41,65 @@ export const Item: CollectionConfig = {
       relationTo: 'medias',
     },
     {
+      type: 'number',
+      name: 'price',
+      label: {
+        en: 'Price',
+        th: 'ราคา',
+      },
+    },
+    {
+      type: 'number',
+      name: 'rating',
+      min: 0,
+      max: 5,
+      label: {
+        en: 'Rating',
+        th: 'คะแนน',
+      },
+    },
+    {
+      type: 'date',
+      name: 'availableAt',
+      label: {
+        en: 'Available At',
+        th: 'วันที่เปิดขาย',
+      },
+    },
+    {
+      type: 'number',
+      name: 'period',
+      label: {
+        en: 'Period',
+        th: 'ระยะเวลา',
+      },
+    },
+    {
+      type: 'select',
+      name: 'periodType',
+      options: [
+        { label: 'Days', value: 'days' },
+        { label: 'Weeks', value: 'weeks' },
+        { label: 'Months', value: 'months' },
+        { label: 'Years', value: 'years' },
+      ],
+      defaultValue: 'weeks',
+    },
+    {
+      type: 'select',
+      name: 'status',
+      options: [
+        {
+          label: 'Available',
+          value: 'available',
+        },
+        {
+          label: 'Unavailable',
+          value: 'unavailable',
+        },
+      ],
+    },
+    {
       type: 'relationship',
       name: 'tags',
       label: {
