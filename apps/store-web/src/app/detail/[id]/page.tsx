@@ -1,10 +1,10 @@
 import { resolve } from '../../../../gqty'
-import Breadcrumb from './component/Breadcrumb'
-import Description from './component/Description'
-import Details from './component/Details'
-import Gallery from './component/Gallery'
-import Lessor from './component/Lessor'
-import Reviews from './component/Reviews'
+import Breadcrumb from './components/Breadcrumb'
+import Description from './components/Description'
+import Details from './components/Details'
+import Gallery from './components/Gallery'
+import Lessor from './components/Lessor'
+import Reviews from './components/Reviews'
 
 const mockData = {
   _status: null,
