@@ -7,8 +7,8 @@ import { CommandInput } from '@/components/ui/command'
 import { Input } from '@/components/ui/input'
 import { toast } from '@/components/ui/use-toast'
 import { type VariantProps } from 'class-variance-authority'
-import { v4 as uuid } from 'uuid'
 
+// import { v4 as uuid } from 'uuid'
 import { Autocomplete } from './autocomplete'
 import { tagVariants } from './tag'
 import { TagList } from './tag-list'
@@ -168,7 +168,8 @@ const TagInput = React.forwardRef<HTMLInputElement, TagInputProps>((props, ref) 
         return
       }
 
-      const newTagId = uuid()
+      const newTagId = Math.random().toString(36)
+      // const newTagId = uuid()
 
       if (
         newTagText &&

@@ -38,7 +38,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
           {autocompleteOptions.map((option) => (
             <CommandItem key={option.id}>
               <div
-                className="w-full"
+                className="w-full bg-primary"
                 onClick={() => {
                   if (maxTags && tags.length >= maxTags) return
                   if (!allowDuplicates && tags.some((tag) => tag.text === option.text)) return

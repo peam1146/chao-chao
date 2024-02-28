@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button'
+import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
+import { X } from '@phosphor-icons/react'
 import { cva } from 'class-variance-authority'
-import { X } from 'lucide-react'
 
 import { TagInputProps, type Tag as TagType } from './tag-input'
 
@@ -99,25 +100,28 @@ export const Tag: React.FC<TagProps> = ({
     <span
       key={tagObj.id}
       draggable={draggable}
-      className={cn(
-        tagVariants({
-          variant,
-          size,
-          shape,
-          borderStyle,
-          textCase,
-          interaction,
-          animation,
-          textStyle,
-        }),
-        {
-          'justify-between': direction === 'column',
-          'cursor-pointer': draggable,
-        }
-      )}
+      className="border inline-flex items-center px-3 py-1 text-secondary rounded-full gap-1 border-muted-foreground "
+      // className={cn(
+      //   tagVariants({
+      //     variant,
+      //     size,
+      //     shape,
+      //     borderStyle,
+      //     textCase,
+      //     interaction,
+      //     animation,
+      //     textStyle,
+      //   }),
+      //   {
+      //     'justify-between': direction === 'column',
+      //     'cursor-pointer': draggable,
+      //   }
+      // )}
       onClick={() => onTagClick?.(tagObj)}
     >
-      {tagObj.text}
+      <Typography variant="h6" className="text-secondary">
+        {tagObj.text}
+      </Typography>
       <Button
         type="button"
         variant="ghost"
@@ -125,9 +129,9 @@ export const Tag: React.FC<TagProps> = ({
           e.stopPropagation() // Prevent event from bubbling up to the tag span
           onRemoveTag(tagObj.id)
         }}
-        className={cn('py-1 px-3 h-full hover:bg-transparent')}
+        className={cn('py-1 px-1 h-full')}
       >
-        <X size={14} />
+        <X className="w-4 h-4 text-secondary" />
       </Button>
     </span>
   )

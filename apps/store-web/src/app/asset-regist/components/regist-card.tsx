@@ -1,5 +1,7 @@
 'use client'
 
+import { ChangeEvent, useEffect, useRef } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 
 import mockPic from '@/assets/images/mockPic2.png'
@@ -18,23 +20,44 @@ import {
 } from '@/components/ui/select'
 import Typography from '@/components/ui/typography'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Plus } from '@phosphor-icons/react'
 import { ListPlus, X, XCircle } from '@phosphor-icons/react'
 import Image from 'next/image'
 import { z } from 'zod'
 
+import TagsInput from '../TagsInput'
 import { PlateEditor } from './description'
-import OpeningTags from './opening-tags'
+import { Tag, TagInput } from './tags/tag-input'
 
 export const assetSchema = z.object({
   name: z.string().min(1, {
     message: 'Name is required.',
   }),
   fee: z.string(),
-  category: z.string(),
+  category: z.array(
+    z.object({
+      id: z.string(),
+      text: z.string(),
+    })
+  ),
   description: z.string(),
   profileImg: z.string().url(),
 })
 export default function RegistCard() {
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleButtonClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click()
+    }
+  }
+
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0]
+      console.log('Selected file:', file)
+    }
+  }
   type AssetSchema = z.infer<typeof assetSchema>
   const form = useForm<AssetSchema>({
     resolver: zodResolver(assetSchema),
@@ -42,8 +65,13 @@ export default function RegistCard() {
   async function onSubmit(data: z.infer<typeof assetSchema>) {
     console.log(data)
   }
-  const ListforBadge = ['ตัวอย่าง', 'ตัวอย่าง', 'ตัวอย่าง']
   const ListforImage = [mockPic, mockPic, mockPic, mockPic, mockPic, mockPic, mockPic, mockPic]
+  const Demotags: Tag[] = [
+    { id: Math.random().toString(36), text: 'Sports' },
+    { id: Math.random().toString(36), text: 'Travel' },
+    { id: Math.random().toString(36), text: 'Programming' },
+  ]
+  const [tags, setTags] = React.useState<Tag[]>(Demotags)
   return (
     <div className="flex flex-col w-full gap-4">
       <div className="flex flex-row gap-1">
@@ -109,7 +137,28 @@ export default function RegistCard() {
             <div>
               {/*Category*/}
               <Typography variant="h5">Category</Typography>
-              {/* <OpeningTags availableTags={},v/> */}
+              <FormField
+                control={form.control}
+                name="category"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col items-start">
+                    <FormControl>
+                      <div>
+                        <TagInput
+                          {...field}
+                          placeholder="Enter a topic"
+                          tags={tags}
+                          className="sm:min-w-[450px]"
+                          setTags={(newTags) => {
+                            setTags(newTags)
+                          }}
+                        />
+                        {/* <TagsInput {...field} /> */}
+                      </div>
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
             </div>
             <div>
               {/*Description*/}
@@ -123,18 +172,17 @@ export default function RegistCard() {
               <Typography variant="h5">Image</Typography>
 
               <div className="grid gap-2 2xl:grid-cols-8 xl:grid-cols-7 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-3 grid-cols-3">
-                <FormItem>
+                <div className="flex md:w-[120px] w-[80px] md:h-[120px] h-[80px] justify-center items-center rounded-[8px] border-primary border-dashed border-2">
+                  <p onClick={handleButtonClick}>
+                    <Plus className="w-4 h-4 text-primary" />
+                  </p>
                   <Input
                     type="file"
-                    className="flex md:w-[120px] w-[80px] md:h-[120px] h-[80px] justify-center items-center rounded-[8px] bg-card border-primary border-dashed border-2"
-                  ></Input>
-                  {/* <div className="flex md:w-[120px] w-[80px] md:h-[120px] h-[80px] justify-center items-center rounded-[8px] border-primary border-dashed border-2">
-                    <Typography variant="h2" className="text-primary">
-                      +
-                    </Typography>
-                  </div> */}
-                </FormItem>
-
+                    className="hidden"
+                    ref={fileInputRef}
+                    onChange={handleFileChange}
+                  />
+                </div>
                 {ListforImage.map((item, index) => (
                   <div className="relative">
                     {/* <div className="w-[24px] h-[24px] rounded-full bg-primary justify-center items-center">
