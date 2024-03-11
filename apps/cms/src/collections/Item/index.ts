@@ -8,7 +8,7 @@ export const Item: CollectionConfig = {
     useAsTitle: 'name',
   },
   access: {
-    read: isAdminOrSelf,
+    read: () => true,
     update: isAdminOrSelf,
     create: isAdminOrSelf,
     delete: isAdminOrSelf,

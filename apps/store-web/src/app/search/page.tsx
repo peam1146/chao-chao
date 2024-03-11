@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -8,8 +8,9 @@ import { DatePicker } from '@/components/ui/datepicker'
 import { Input } from '@/components/ui/input'
 import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
-import { ArrowDown, ArrowUp, CaretDown, CaretUp, CaretUpDown, Funnel } from '@phosphor-icons/react'
+import { ArrowDown, ArrowUp, CaretUpDown, Funnel } from '@phosphor-icons/react'
 
+import { resolve, useQuery } from '../../../gqty'
 import SmallCard from '../components/small-card'
 
 enum Filter {
@@ -22,6 +23,29 @@ enum Filter {
 
 export default function SearchPage() {
   const [filter, setFilter] = useState<Filter>(Filter.RELEVANCE)
+  const { Items, Tags } = useQuery()
+
+  const items = Items({
+    draft: false,
+    limit: 10,
+  })?.docs?.map((item) => {
+    return {
+      id: item?.id,
+      name: item?.name,
+      price: item?.price,
+      rating: item?.rating,
+    }
+  })
+
+  const tags = Tags({
+    draft: false,
+  })?.docs?.map((item) => {
+    return {
+      id: item?.id,
+      name: item?.name,
+    }
+  })
+
   const mockData = [
     { name: 'Samsung Galaxy S21 Ultra 5G', rating: 4.0, price: 100 },
     { name: 'Jujutsu kaisen Vol.4', rating: 4.0, price: 500 },

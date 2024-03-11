@@ -7,6 +7,7 @@ import { checkRole } from '../../access/check-role'
 export const Tag: CollectionConfig = {
   slug: 'tags',
   access: {
+    read: () => true,
     update: isAdmin,
     delete: isAdmin,
   },
