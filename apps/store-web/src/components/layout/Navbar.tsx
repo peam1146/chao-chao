@@ -1,22 +1,27 @@
 'use client'
 
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 
 import { cn } from '@/lib/utils'
 import { List, MagnifyingGlass } from '@phosphor-icons/react'
 import { SearchIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useMediaQuery } from 'usehooks-ts'
 
-import { Maybe } from '../../../gqty'
+import { Maybe, useQuery } from '../../../gqty'
 import Typography from '../ui/typography'
 import { MenuSheet } from './components/MenuSheet'
 import { ProfileToggle } from './components/profile-toggle'
 import { ModeToggle } from './components/theme-toggle'
+import { useDebounce } from './hooks/use-debounce'
 
 const SearchSuggestion = () => {
   const [search, setSearch] = useState('')
+
+  const debounce = useDebounce((e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value)
+  }, 350)
+
   return (
     <div className="relative w-2/5">
       <div
@@ -26,25 +31,41 @@ const SearchSuggestion = () => {
         )}
       >
         <SearchIcon className="h-4" />
-        <input
-          onChange={(e) => {
-            setSearch(e.target.value)
-          }}
-          placeholder="Search"
-          value={search}
-          className="w-full bg-transparent"
-        />
+        <input onChange={debounce} placeholder="Search" className="w-full bg-transparent" />
       </div>
-      {search && (
-        <div className="bg-background text-muted-foreground text-sm w-full absolute border rounded-md rounded-t-none">
-          {
-            <div className="flex p-2 items-center">
-              <SearchIcon className="h-4" />
-              <Typography className="w-full">{search}</Typography>
-            </div>
-          }
+
+      {search && <SuggestionItems search={search} />}
+    </div>
+  )
+}
+
+type SuggestionItemsProps = {
+  search?: string
+}
+
+const SuggestionItems = (props: SuggestionItemsProps) => {
+  const { Items } = useQuery()
+
+  const items = Items({
+    draft: false,
+    limit: 5,
+    where: {
+      name: {
+        contains: props.search,
+      },
+    },
+  })!.docs
+
+  if (!items) return null
+
+  return (
+    <div className="bg-background text-muted-foreground text-sm w-full absolute border rounded-md rounded-t-none">
+      {items.map((item) => (
+        <div className="flex p-2 items-center">
+          <SearchIcon className="h-4" />
+          <Typography className="w-full">{item!.name}</Typography>
         </div>
-      )}
+      ))}
     </div>
   )
 }

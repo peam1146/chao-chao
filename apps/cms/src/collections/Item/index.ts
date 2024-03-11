@@ -87,7 +87,11 @@ export const Item: CollectionConfig = {
     },
     {
       type: 'select',
-      name: 'status',
+      name: 'rentingStatus',
+      label: {
+        en: 'Renting Status',
+        th: 'สถานะการเช่า',
+      },
       options: [
         {
           label: 'Available',
