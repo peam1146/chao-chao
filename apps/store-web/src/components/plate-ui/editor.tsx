@@ -1,10 +1,10 @@
-import React from 'react';
-import { cn } from '@udecode/cn';
-import { PlateContent } from '@udecode/plate-common';
-import { cva } from 'class-variance-authority';
+import React from 'react'
 
-import type { PlateContentProps } from '@udecode/plate-common';
-import type { VariantProps } from 'class-variance-authority';
+import { cn } from '@udecode/cn'
+import { PlateContent } from '@udecode/plate-common'
+import type { PlateContentProps } from '@udecode/plate-common'
+import { cva } from 'class-variance-authority'
+import type { VariantProps } from 'class-variance-authority'
 
 const editorVariants = cva(
   cn(
@@ -41,27 +41,17 @@ const editorVariants = cva(
       size: 'sm',
     },
   }
-);
+)
 
-export type EditorProps = PlateContentProps &
-  VariantProps<typeof editorVariants>;
+export type EditorProps = PlateContentProps & VariantProps<typeof editorVariants>
 
 const Editor = React.forwardRef<HTMLDivElement, EditorProps>(
-  (
-    {
-      className,
-      disabled,
-      focused,
-      focusRing,
-      readOnly,
-      size,
-      variant,
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, disabled, focused, focusRing, readOnly, size, variant, ...props }, ref) => {
     return (
-      <div ref={ref} className="relative w-full">
+      <div
+        ref={ref}
+        className="flex md:max-w-md lg:max-w-[630px] xl:max-w-[850px] 2xl:max-w-[1015px]"
+      >
         <PlateContent
           className={cn(
             editorVariants({
@@ -79,9 +69,9 @@ const Editor = React.forwardRef<HTMLDivElement, EditorProps>(
           {...props}
         />
       </div>
-    );
+    )
   }
-);
-Editor.displayName = 'Editor';
+)
+Editor.displayName = 'Editor'
 
-export { Editor };
+export { Editor }
