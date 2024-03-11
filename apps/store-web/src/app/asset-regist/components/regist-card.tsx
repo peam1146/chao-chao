@@ -29,6 +29,7 @@ import Image from 'next/image'
 import { z } from 'zod'
 
 import { resolve } from '../../../../gqty'
+import { assetRegist } from '../actions/assetRegist'
 import { PlateEditor } from './description'
 import { Tag, TagInput } from './tags/tag-input'
 
@@ -50,6 +51,26 @@ export const assetSchema = z.object({
   description: z.string(),
   profileImg: z.string().url(),
 })
+const { register, handleSubmit } = useForm<z.infer<typeof assetSchema>>({
+  resolver: zodResolver(assetSchema),
+})
+const { toast } = useToast()
+async function onSubmit(data: z.infer<typeof assetSchema>) {
+  try {
+    await assetRegist(data)
+    toast({
+      title: 'Success',
+      description: 'Your asset has been registered.',
+      success: true,
+    })
+  } catch (err) {
+    toast({
+      title: 'Not Success',
+      description: 'At least one image must be uploaded.',
+      error: true,
+    })
+  }
+}
 export default function RegistCard() {
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -90,36 +111,6 @@ export default function RegistCard() {
     // },
   })
   // const router = useRouter()
-  const { toast } = useToast()
-  async function onSubmit(data: z.infer<typeof assetSchema>) {
-    console.log(555)
-    console.log(data)
-    try {
-      console.log(data)
-      // await resolve(async ({ mutation }) => {
-      //   const dataAsset = mutation.({
-      //     data: {
-      //       name: data.name,
-      //       // description: data.description,
-      //       // profileImg: data.profileImg,
-      //     },
-      //   })
-      //   return dataAsset
-      // })
-      toast({
-        title: 'Your asset has been registered.',
-        success: true,
-      })
-    } catch (e) {
-      toast({
-        title: 'At least one image must be uploaded.',
-        error: true,
-      })
-    }
-  }
-  // async function onSubmit(data: z.infer<typeof assetSchema>) {
-  //   console.log(data)
-  // }
   const Demotags: Tag[] = [
     { id: Math.random().toString(36), text: 'Sports' },
     { id: Math.random().toString(36), text: 'Travel' },
