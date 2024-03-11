@@ -36,7 +36,7 @@ export default function SmallCard({
             <Typography variant="h6" fontWeight="bold" className="lg:h4 line-clamp-1">
               {name}
             </Typography>
-            <div className="flex flex-row gap-0.5 ">
+            <div className="flex flex-row gap-0.5 items-center">
               <Rating
                 name="read-only"
                 value={rating}
@@ -47,8 +47,9 @@ export default function SmallCard({
                     color: '#999999',
                   },
                 }}
+                size="small"
               />
-              <Typography variant="h5" className="text-light pt-0.5 ">
+              <Typography variant="h6" className="text-light">
                 {rating.toFixed(1)}
               </Typography>
             </div>

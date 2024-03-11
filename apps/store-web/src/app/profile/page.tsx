@@ -11,6 +11,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 import { resolve } from '../../../gqty'
+import { MyAsset } from './components/MyAsset'
+import { Review } from './components/Review'
 
 export default function Profile() {
   const [user, setUser] = useState({
@@ -40,7 +42,7 @@ export default function Profile() {
   }, [])
 
   return (
-    <main className="container flex w-full bg-background min-h-[calc(100vh-64px)] flex-col items-center py-4 lg:py-12 my-auto">
+    <main className="container flex w-full bg-background min-h-[calc(100vh-64px)] flex-col items-center py-4 lg:py-12 my-auto gap-6">
       <div className="flex flex-col w-full bg-card rounded-2xl px-6 py-5 gap-4">
         <div className="flex flex-row justify-between max-lg:flex-col">
           <div className="flex flex-row gap-4 items-center">
@@ -62,7 +64,7 @@ export default function Profile() {
                 </Typography>
               )}
               <div className="flex flex-row gap-0.5 ">
-                <Rating name="read-only" value={4} max={5} readOnly />
+                <Rating name="read-only" value={4} max={5} readOnly size="small" />
                 <Typography variant="h6" className="text-light my-auto">
                   4.0
                 </Typography>
@@ -87,17 +89,19 @@ export default function Profile() {
         ) : (
           <Typography variant="h6" className="text-light"></Typography>
         )}
+        <div className="flex flex-row gap-3 w-full">
+          <Link href="/chat" className="w-full">
+            <Button className="w-full lg:hidden">Chat</Button>
+          </Link>
+          <Link href="/profile/edit" className="w-full">
+            <Button variant="secondary" className="w-full lg:hidden">
+              Edit Profile
+            </Button>
+          </Link>
+        </div>
       </div>
-      <div className="flex flex-row gap-3 w-full">
-        <Link href="/chat" className="w-full">
-          <Button className="w-full lg:hidden">Chat</Button>
-        </Link>
-        <Link href="/profile/edit" className="w-full">
-          <Button variant="secondary" className="w-full lg:hidden">
-            Edit Profile
-          </Button>
-        </Link>
-      </div>
+      <MyAsset />
+      <Review />
     </main>
   )
 }
