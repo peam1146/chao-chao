@@ -590,6 +590,10 @@ type Item {
   image(where: Item_Image_where): Media
   tags: [Tag!]
   createdBy: User
+  rating: Float
+  price: Float
+  start: DateTime
+  end: DateTime
   updatedAt: DateTime
   createdAt: DateTime
   _status: Item__status
@@ -790,6 +794,10 @@ input Item_where {
   description: Item_description_operator
   image: Item_image_operator
   tags: Item_tags_operator
+  rating: Item_rating_operator
+  price: Item_price_operator
+  start: Item_start_operator
+  end: Item_end_operator
   updatedAt: Item_updatedAt_operator
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
@@ -835,6 +843,45 @@ input Item_tags_operator {
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
 scalar JSON
+
+input Item_rating_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Item_price_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+}
+
+input Item_start_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+}
+
+input Item_end_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+}
 
 input Item_updatedAt_operator {
   equals: DateTime
@@ -887,6 +934,10 @@ input Item_where_and {
   description: Item_description_operator
   image: Item_image_operator
   tags: Item_tags_operator
+  rating: Item_rating_operator
+  price: Item_price_operator
+  start: Item_start_operator
+  end: Item_end_operator
   updatedAt: Item_updatedAt_operator
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
@@ -898,6 +949,10 @@ input Item_where_or {
   description: Item_description_operator
   image: Item_image_operator
   tags: Item_tags_operator
+  rating: Item_rating_operator
+  price: Item_price_operator
+  start: Item_start_operator
+  end: Item_end_operator
   updatedAt: Item_updatedAt_operator
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
@@ -918,6 +973,10 @@ type ItemsDocAccessFields {
   description: ItemsDocAccessFields_description
   image: ItemsDocAccessFields_image
   tags: ItemsDocAccessFields_tags
+  rating: ItemsDocAccessFields_rating
+  price: ItemsDocAccessFields_price
+  start: ItemsDocAccessFields_start
+  end: ItemsDocAccessFields_end
   updatedAt: ItemsDocAccessFields_updatedAt
   createdAt: ItemsDocAccessFields_createdAt
   _status: ItemsDocAccessFields__status
@@ -1012,6 +1071,98 @@ type ItemsDocAccessFields_tags_Update {
 }
 
 type ItemsDocAccessFields_tags_Delete {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_rating {
+  create: ItemsDocAccessFields_rating_Create
+  read: ItemsDocAccessFields_rating_Read
+  update: ItemsDocAccessFields_rating_Update
+  delete: ItemsDocAccessFields_rating_Delete
+}
+
+type ItemsDocAccessFields_rating_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_rating_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_rating_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_rating_Delete {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_price {
+  create: ItemsDocAccessFields_price_Create
+  read: ItemsDocAccessFields_price_Read
+  update: ItemsDocAccessFields_price_Update
+  delete: ItemsDocAccessFields_price_Delete
+}
+
+type ItemsDocAccessFields_price_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_price_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_price_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_price_Delete {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_start {
+  create: ItemsDocAccessFields_start_Create
+  read: ItemsDocAccessFields_start_Read
+  update: ItemsDocAccessFields_start_Update
+  delete: ItemsDocAccessFields_start_Delete
+}
+
+type ItemsDocAccessFields_start_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_start_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_start_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_start_Delete {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_end {
+  create: ItemsDocAccessFields_end_Create
+  read: ItemsDocAccessFields_end_Read
+  update: ItemsDocAccessFields_end_Update
+  delete: ItemsDocAccessFields_end_Delete
+}
+
+type ItemsDocAccessFields_end_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_end_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_end_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_end_Delete {
   permission: Boolean!
 }
 
@@ -1124,6 +1275,10 @@ type ItemVersion_Version {
   image(where: ItemVersion_Version_Image_where): Media
   tags: [Tag!]
   createdBy: User
+  rating: Float
+  price: Float
+  start: DateTime
+  end: DateTime
   updatedAt: DateTime
   createdAt: DateTime
   _status: ItemVersion_Version__status
@@ -1303,6 +1458,10 @@ input versionsItem_where {
   version__image: versionsItem_version__image_operator
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
+  version__rating: versionsItem_version__rating_operator
+  version__price: versionsItem_version__price_operator
+  version__start: versionsItem_version__start_operator
+  version__end: versionsItem_version__end_operator
   version__updatedAt: versionsItem_version__updatedAt_operator
   version__createdAt: versionsItem_version__createdAt_operator
   version___status: versionsItem_version___status_operator
@@ -1362,6 +1521,45 @@ input versionsItem_version__createdBy_operator {
   in: [JSON]
   not_in: [JSON]
   all: [JSON]
+}
+
+input versionsItem_version__rating_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input versionsItem_version__price_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+}
+
+input versionsItem_version__start_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+}
+
+input versionsItem_version__end_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
 }
 
 input versionsItem_version__updatedAt_operator {
@@ -1445,6 +1643,10 @@ input versionsItem_where_and {
   version__image: versionsItem_version__image_operator
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
+  version__rating: versionsItem_version__rating_operator
+  version__price: versionsItem_version__price_operator
+  version__start: versionsItem_version__start_operator
+  version__end: versionsItem_version__end_operator
   version__updatedAt: versionsItem_version__updatedAt_operator
   version__createdAt: versionsItem_version__createdAt_operator
   version___status: versionsItem_version___status_operator
@@ -1461,6 +1663,10 @@ input versionsItem_where_or {
   version__image: versionsItem_version__image_operator
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
+  version__rating: versionsItem_version__rating_operator
+  version__price: versionsItem_version__price_operator
+  version__start: versionsItem_version__start_operator
+  version__end: versionsItem_version__end_operator
   version__updatedAt: versionsItem_version__updatedAt_operator
   version__createdAt: versionsItem_version__createdAt_operator
   version___status: versionsItem_version___status_operator
@@ -2722,6 +2928,10 @@ type ItemsFields {
   description: ItemsFields_description
   image: ItemsFields_image
   tags: ItemsFields_tags
+  rating: ItemsFields_rating
+  price: ItemsFields_price
+  start: ItemsFields_start
+  end: ItemsFields_end
   updatedAt: ItemsFields_updatedAt
   createdAt: ItemsFields_createdAt
   _status: ItemsFields__status
@@ -2816,6 +3026,98 @@ type ItemsFields_tags_Update {
 }
 
 type ItemsFields_tags_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_rating {
+  create: ItemsFields_rating_Create
+  read: ItemsFields_rating_Read
+  update: ItemsFields_rating_Update
+  delete: ItemsFields_rating_Delete
+}
+
+type ItemsFields_rating_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_rating_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_rating_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_rating_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_price {
+  create: ItemsFields_price_Create
+  read: ItemsFields_price_Read
+  update: ItemsFields_price_Update
+  delete: ItemsFields_price_Delete
+}
+
+type ItemsFields_price_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_price_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_price_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_price_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_start {
+  create: ItemsFields_start_Create
+  read: ItemsFields_start_Read
+  update: ItemsFields_start_Update
+  delete: ItemsFields_start_Delete
+}
+
+type ItemsFields_start_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_start_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_start_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_start_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_end {
+  create: ItemsFields_end_Create
+  read: ItemsFields_end_Read
+  update: ItemsFields_end_Update
+  delete: ItemsFields_end_Delete
+}
+
+type ItemsFields_end_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_end_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_end_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_end_Delete {
   permission: Boolean!
 }
 
@@ -3550,6 +3852,10 @@ input mutationItemInput {
   image: String
   tags: [Int]
   createdBy: Int
+  rating: Float
+  price: Float!
+  start: String!
+  end: String!
   updatedAt: String
   createdAt: String
   _status: Item__status_MutationInput
@@ -3566,6 +3872,10 @@ input mutationItemUpdateInput {
   image: String
   tags: [Int]
   createdBy: Int
+  rating: Float
+  price: Float
+  start: String
+  end: String
   updatedAt: String
   createdAt: String
   _status: ItemUpdate__status_MutationInput

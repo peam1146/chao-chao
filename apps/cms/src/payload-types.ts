@@ -19,6 +19,13 @@ export interface Config {
 }
 export interface User {
   id: string;
+  phone: string;
+  firstName?: string;
+  lastName?: string;
+  bio?: string;
+  province?: string;
+  rating?: number;
+  url?: string;
   roles: ('admin' | 'User')[];
   updatedAt: string;
   createdAt: string;
@@ -36,14 +43,18 @@ export interface Item {
   name: string;
   description?: string;
   image?: string | Media;
+  tags?: string[] | Tag[];
   createdBy: string | User;
+  rating?: number;
+  price: number;
+  start: string;
+  end: string;
   updatedAt: string;
   createdAt: string;
   _status?: 'draft' | 'published';
 }
 export interface Media {
   id: string;
-  name: string;
   alt?: string;
   createdBy: string | User;
   updatedAt: string;
@@ -62,12 +73,6 @@ export interface Tag {
   createdBy: string | User;
   updatedAt: string;
   createdAt: string;
-  url?: string;
-  filename?: string;
-  mimeType?: string;
-  filesize?: number;
-  width?: number;
-  height?: number;
 }
 export interface PayloadPreference {
   id: string;

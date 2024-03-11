@@ -59,5 +59,41 @@ export const Item: CollectionConfig = {
       required: true,
       hidden: true,
     },
+    {
+      type: 'number',
+      name: 'rating',
+      label: {
+        en: 'Rating',
+        th: 'คะแนน',
+      },
+      required: false,
+    },
+    {
+      type: 'number',
+      name: 'price',
+      label: {
+        en: 'Price',
+        th: 'ราคา',
+      },
+      required: true,
+    },
+    {
+      type: 'date',
+      name: 'start',
+      label: {
+        en: 'Start Date',
+        th: 'วันที่เริ่มให้เช่า',
+      },
+      required: true,
+    },
+    {
+      type: 'date',
+      name: 'end',
+      label: {
+        en: 'End Date',
+        th: 'วันที่สิ้นสุดให้เช่า',
+      },
+      required: true,
+    },
   ],
 }
