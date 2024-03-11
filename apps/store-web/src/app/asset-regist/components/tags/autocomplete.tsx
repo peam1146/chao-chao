@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 
 import {
   Command,
@@ -17,6 +18,7 @@ type AutocompleteProps = {
   maxTags?: number
   onTagAdd?: (tag: string) => void
   allowDuplicates: boolean
+  showbelow: boolean
   children: React.ReactNode
 }
 
@@ -27,31 +29,36 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   maxTags,
   onTagAdd,
   allowDuplicates,
+  showbelow,
   children,
 }) => {
+  console.log('showbelow', showbelow)
+
   return (
     <Command className="border min-w-[400px]">
       {children}
-      <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup heading="Suggestions">
-          {autocompleteOptions.map((option) => (
-            <CommandItem key={option.id}>
-              <div
-                className="w-full bg-primary"
-                onClick={() => {
-                  if (maxTags && tags.length >= maxTags) return
-                  if (!allowDuplicates && tags.some((tag) => tag.text === option.text)) return
-                  setTags([...tags, option])
-                  onTagAdd?.(option.text)
-                }}
-              >
-                {option.text}
-              </div>
-            </CommandItem>
-          ))}
-        </CommandGroup>
-      </CommandList>
+      {showbelow && (
+        <CommandList>
+          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandGroup heading="Suggestions">
+            {autocompleteOptions.map((option) => (
+              <CommandItem key={option.id}>
+                <div
+                  className="w-full"
+                  onClick={() => {
+                    if (maxTags && tags.length >= maxTags) return
+                    if (!allowDuplicates && tags.some((tag) => tag.text === option.text)) return
+                    setTags([...tags, option])
+                    onTagAdd?.(option.text)
+                  }}
+                >
+                  {option.text}
+                </div>
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        </CommandList>
+      )}
     </Command>
   )
 }
