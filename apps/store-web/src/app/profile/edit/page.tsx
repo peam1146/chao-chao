@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent, useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import profile from '@/assets/images/profileLogo.png'
@@ -32,16 +32,23 @@ export const editProfileSchema = z.object({
   province: z.string().min(1, {
     message: 'Province is required.',
   }),
-  // profileImg: z.string().url().nullable(),
+  profileImg: z.string().nullable(),
 })
 
 export default function ProfileEdit() {
   const form = useForm<z.infer<typeof editProfileSchema>>({
     resolver: zodResolver(editProfileSchema),
   })
-  console.log(form.formState.errors)
 
   const { toast } = useToast()
+
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const [imageUrl, setImageUrl] = useState('')
+  const handleButtonClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click()
+    }
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,7 +59,6 @@ export default function ProfileEdit() {
             bio: query.meUser?.user?.bio,
             lastName: query.meUser?.user?.lastName,
             province: query.meUser?.user?.province,
-            // profileImg: query.meUser?.user?.url,
             profileImg: query.meUser?.user?.profileImage()?.url,
           }
         })
@@ -62,8 +68,9 @@ export default function ProfileEdit() {
           firstName: firstName ?? '',
           lastName: lastName ?? '',
           province: province ?? '',
-          // profileImg: profileImg ?? '',
+          profileImg: profileImg ?? '',
         })
+        setImageUrl(profileImg ?? '')
       } catch (error) {
         console.error(error)
       }
@@ -72,27 +79,34 @@ export default function ProfileEdit() {
   }, [form])
 
   const router = useRouter()
+  
   async function onSubmit(data: z.infer<typeof editProfileSchema>) {
+    console.log(imageUrl)
     const { id } = await resolve(({ query }) => {
       return {
         id: query.meUser?.user?.id!,
       }
     })
-    console.log(data)
     try {
-      await resolve(async ({ mutation }) => {
-        const user = mutation.updateUser({
-          data: {
-            bio: data.bio,
-            firstName: data.firstName,
-            lastName: data.lastName,
-            province: data.province,
-          },
-          id: id,
-          autosave: true,
-        })
-        return user
-      })
+      await resolve(
+        async ({ mutation }) => {
+          const user = mutation.updateUser({
+            data: {
+              bio: data.bio,
+              firstName: data.firstName,
+              lastName: data.lastName,
+              province: data.province,
+            },
+            id: id,
+            autosave: true,
+          })
+          return user
+        },
+        {
+          cachePolicy: 'no-store',
+        }
+      )
+
       toast({
         title: 'Success',
         description: 'Profile updated successfully',
@@ -105,20 +119,6 @@ export default function ProfileEdit() {
         description: 'Something went wrong',
         error: true,
       })
-    }
-  }
-  const fileInputRef = useRef<HTMLInputElement>(null)
-
-  const handleButtonClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click()
-    }
-  }
-
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files && event.target.files.length > 0) {
-      const file = event.target.files[0]
-      console.log('Selected file:', file)
     }
   }
 
@@ -134,11 +134,13 @@ export default function ProfileEdit() {
           </div>
           <div className="flex flex-col w-full bg-card rounded-2xl p-6 gap-4">
             <div className="flex flex-row gap-8 max-lg:flex-col">
-              <div className="relative h-fit">
+              <div className="relative h-fit max-lg:self-center">
                 <Image
-                  className="w-[150px] h-[150px] flex-none max-lg:self-center"
-                  src={profile}
+                  className="w-[150px] h-[150px] flex-none max-lg:self-center rounded-full object-cover"
+                  src={imageUrl ?? profile}
                   alt="profile"
+                  width={150}
+                  height={150}
                 />
                 <p
                   className="absolute bottom-1 right-1 bg-primary text-white p-1 rounded-full cursor-pointer"
@@ -150,7 +152,15 @@ export default function ProfileEdit() {
                   type="file"
                   className="hidden"
                   ref={fileInputRef}
-                  onChange={handleFileChange}
+                  accept="image/*"
+                  onChange={(e) => {
+                    if (e.target.files && e.target.files.length > 0) {
+                      const file = e.target.files[0]
+                      if (!file) return
+                      const url = URL.createObjectURL(file)
+                      setImageUrl(url)
+                    }
+                  }}
                 />
               </div>
               <div className="flex flex-col gap-4 flex-1 items-center">
@@ -234,12 +244,12 @@ export default function ProfileEdit() {
             </div>
           </div>
           <div className="flex flex-row gap-2 self-center max-md:w-full">
-            <Link href="/profile">
-              <Button type="button" variant="secondary" className="min-w-[130px] max-lg:w-1/2">
+            <Link href="/profile" className="max-lg:w-1/2">
+              <Button type="button" variant="secondary" className="min-w-[130px] w-full">
                 Cancel
               </Button>
             </Link>
-            <Button type="submit" className="min-w-[130px] max-lg:w-1/2">
+            <Button type="submit" className="min-w-[130px] mmax-lg:w-1/2">
               Save
             </Button>
           </div>

@@ -25,17 +25,17 @@ export default function Profile() {
   const router = useRouter()
   useEffect(() => {
     const fetchData = async () => {
-      const { id, bio, firstName, lastName, profileImg } = await resolve(({ query }) => {
+      const { bio, firstName, lastName, profileImg } = await resolve(({ query }) => {
         return {
           id: query.meUser?.user?.id ?? '',
           firstName: query.meUser?.user?.firstName ?? '',
           lastName: query.meUser?.user?.lastName ?? '',
           bio: query.meUser?.user?.bio ?? '',
-          profileImg: '',
+          profileImg: query.meUser?.user?.profileImage()?.url ?? '',
         }
       })
 
-      if (bio === '' || firstName === '' || lastName === '') {
+      if (bio === '' || firstName === '' || lastName === '' || profileImg === '') {
         router.push('/profile/edit')
       }
       setUser({ bio, firstName, lastName, profileImg })

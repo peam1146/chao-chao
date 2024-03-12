@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 
-import SmallCard from '@/app/components/small-card'
 import { Button } from '@/components/ui/button'
 import {
   Pagination,
@@ -16,6 +15,8 @@ import {
 import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
 import { ArrowDown, ArrowUp, CaretUpDown } from '@phosphor-icons/react'
+
+import { AssetCard } from './AssetCard'
 
 enum Filter {
   RELEVANCE = 'RELEVANCE',
@@ -36,9 +37,10 @@ const mockData = [
 
 export function MyAsset() {
   const [filter, setFilter] = useState<Filter>(Filter.RELEVANCE)
+
   return (
-    <div>
-      <div className="flex items-center justify-between border-b">
+    <>
+      <div className="flex items-center justify-between border-b w-full">
         <Typography variant="h4" fontWeight="bold">
           Assets
         </Typography>
@@ -95,10 +97,10 @@ export function MyAsset() {
           </Button>
         </div>
       </div>
-      <div className="py-4">
-        <div className="grid grid-cols-2 2xl:grid-cols-4 lg:grid-cols-3 gap-2 lg:gap-3">
+      <div className="py-4 w-full">
+        <div className="mx-auto w-full grid grid-cols-2 2xl:grid-cols-6 lg:grid-cols-4 gap-4">
           {mockData.map((item, index) => (
-            <SmallCard key={index} name={item.name} rating={item.rating} price={item.price} />
+            <AssetCard key={index} name={item.name} rating={item.rating} price={item.price} />
           ))}
         </div>
       </div>
@@ -129,6 +131,6 @@ export function MyAsset() {
           </PaginationItem>
         </PaginationContent>
       </Pagination>
-    </div>
+    </>
   )
 }
