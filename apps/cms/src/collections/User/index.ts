@@ -30,6 +30,7 @@ export const Users: CollectionConfig = {
         update: () => true,
       },
       required: false,
+      maxDepth: 3,
     },
     {
       type: 'text',

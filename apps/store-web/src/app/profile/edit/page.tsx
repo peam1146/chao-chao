@@ -32,13 +32,14 @@ export const editProfileSchema = z.object({
   province: z.string().min(1, {
     message: 'Province is required.',
   }),
-  profileImg: z.string().url().nullable(),
+  // profileImg: z.string().url().nullable(),
 })
 
 export default function ProfileEdit() {
   const form = useForm<z.infer<typeof editProfileSchema>>({
     resolver: zodResolver(editProfileSchema),
   })
+  console.log(form.formState.errors)
 
   const { toast } = useToast()
 
@@ -52,15 +53,16 @@ export default function ProfileEdit() {
             lastName: query.meUser?.user?.lastName,
             province: query.meUser?.user?.province,
             // profileImg: query.meUser?.user?.url,
-            profileImg: '',
+            profileImg: query.meUser?.user?.profileImage()?.url,
           }
         })
+        console.log(profileImg)
         form.reset({
           bio: bio ?? '',
           firstName: firstName ?? '',
           lastName: lastName ?? '',
           province: province ?? '',
-          profileImg: profileImg ?? '',
+          // profileImg: profileImg ?? '',
         })
       } catch (error) {
         console.error(error)
