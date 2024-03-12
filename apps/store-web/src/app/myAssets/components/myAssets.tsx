@@ -48,7 +48,7 @@ export default function MyAssets() {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="all">
-            <div className="grid grid-cols-2 lg:grid-cols-5 grid-s-3 gap-3">
+            <div className="grid grid-cols-2 2xl:grid-cols-5 lg:grid-cols-3 grid-s-3 gap-3">
               <AssetsCard name="Assets" rating={5} price={20} />
               <AssetsCard name="Assets" rating={5} price={20} />
               <AssetsCard name="Assets" rating={5} price={20} />

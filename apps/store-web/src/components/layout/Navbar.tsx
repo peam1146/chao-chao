@@ -102,7 +102,7 @@ const Navbar = ({ id }: { id: Maybe<Number | undefined> }) => {
             )}
             {id && (
               <>
-                <Link href="/signin" className="flex flex-row gap-0.5 items-center">
+                <Link href="/myAssets" className="flex flex-row gap-0.5 items-center">
                   <Typography variant="h5" className={cn(pathname !== '/asset' && 'text-light')}>
                     Manage assets
                   </Typography>
