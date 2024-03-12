@@ -1,17 +1,43 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
 import cors from 'cors'
 import express from 'express'
+import http from 'http'
 import nodemailer from 'nodemailer'
 import payload from 'payload'
+import { Server } from 'socket.io'
 
 require('dotenv').config()
 const app = express()
+
+const server = http.createServer(app)
+
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+  },
+})
 
 app.use(cors())
 
 // Redirect root to Admin panel
 app.get('/', (_, res) => {
   res.redirect('/admin')
+})
+
+io.on('connection', (socket) => {
+  console.log('A user connected:', socket.id)
+  socket.on('join_room', (chatId) => {
+    socket.join(chatId)
+    console.log(`user with id-${socket.id} joined room - ${chatId}`)
+  })
+  socket.on('send_msg', (data) => {
+    console.log(data)
+    socket.to(data.chatId).emit('receive_msg', data)
+  })
+
+  socket.on('disconnect', () => {
+    console.log('A user disconnected:', socket.id)
+  })
 })
 
 async function start() {
@@ -39,7 +65,7 @@ async function start() {
     },
   })
 
-  app.listen(process.env.PORT, () => {
+  server.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`)
   })
 }
