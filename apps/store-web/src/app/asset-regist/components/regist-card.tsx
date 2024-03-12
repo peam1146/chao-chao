@@ -23,54 +23,14 @@ import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Plus } from '@phosphor-icons/react'
 import { ListPlus, X, XCircle } from '@phosphor-icons/react'
-import { Value } from '@radix-ui/react-select'
-import { SearchIcon } from 'lucide-react'
 import Image from 'next/image'
-import { z } from 'zod'
+import { useRouter } from 'next/router'
+import { arrayOutputType, z } from 'zod'
 
-import { resolve } from '../../../../gqty'
-import { assetRegist } from '../actions/assetRegist'
+import { mutation, resolve } from '../../../../gqty'
 import { PlateEditor } from './description'
 import { Tag, TagInput } from './tags/tag-input'
 
-export const assetSchema = z.object({
-  name: z
-    .string({
-      required_error: 'Name is required.',
-    })
-    .min(1, {
-      message: 'Name is required.',
-    }),
-  fee: z.string(),
-  category: z.array(
-    z.object({
-      id: z.string(),
-      text: z.string(),
-    })
-  ),
-  description: z.string(),
-  profileImg: z.string().url(),
-})
-const { register, handleSubmit } = useForm<z.infer<typeof assetSchema>>({
-  resolver: zodResolver(assetSchema),
-})
-const { toast } = useToast()
-async function onSubmit(data: z.infer<typeof assetSchema>) {
-  try {
-    await assetRegist(data)
-    toast({
-      title: 'Success',
-      description: 'Your asset has been registered.',
-      success: true,
-    })
-  } catch (err) {
-    toast({
-      title: 'Not Success',
-      description: 'At least one image must be uploaded.',
-      error: true,
-    })
-  }
-}
 export default function RegistCard() {
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -99,18 +59,6 @@ export default function RegistCard() {
     console.log(listImg)
   }
 
-  type AssetSchema = z.infer<typeof assetSchema>
-  const form = useForm<AssetSchema>({
-    resolver: zodResolver(assetSchema),
-    // defaultValues: {
-    //   name: '',
-    //   fee: '',
-    //   category: [],
-    //   description: '',
-    //   profileImg: '',
-    // },
-  })
-  // const router = useRouter()
   const Demotags: Tag[] = [
     { id: Math.random().toString(36), text: 'Sports' },
     { id: Math.random().toString(36), text: 'Travel' },
@@ -131,25 +79,72 @@ export default function RegistCard() {
   const [tags, setTags] = React.useState<Tag[]>(Demotags)
   const [tagsDB, setTagsDB] = React.useState<Tag[]>(autoCompleteOptions)
   const [search, setSearch] = React.useState('')
-  const [showbelow, setShowbelow] = React.useState(false)
-  console.log('mainshowbelow', showbelow)
+  // const [showbelow, setShowbelow] = React.useState(false)
+  // console.log('mainshowbelow', showbelow)
+  const assetSchema = z.object({
+    name: z
+      .string({
+        required_error: 'Name is required.',
+      })
+      .min(1, {
+        message: 'Name is required.',
+      }),
+    fee: z.string(),
+    category: z.array(
+      z.object({
+        id: z.string(),
+        text: z.string(),
+      })
+    ),
+    description: z.string(),
+    profileImg: z.string().url(),
+  })
+  type AssetSchema = z.infer<typeof assetSchema>
 
-  // const divRef = useRef(null)
-  // useEffect(() => {
-  //   const handleFocus = () => {
-  //     if (document.activeElement === divRef.current) {
-  //       setShowbelow(true)
-  //     } else {
-  //       setShowbelow(false)
-  //     }
-  //   }
+  const form = useForm<AssetSchema>({
+    resolver: zodResolver(assetSchema),
+  })
 
-  //   document.addEventListener('click', handleFocus)
+  const { handleSubmit, register } = useForm()
+  const { toast } = useToast()
+  // const router = useRouter()
+  const onSubmit = async (data: z.infer<typeof assetSchema>) => {
+    console.log('data', data)
+    try {
+      console.log('data', data)
+      await resolve(
+        async ({ mutation }) => {
+          const register = mutation.createItem({
+            data: {
+              name: data.name,
+              // fee: data.fee as string,
+              // category: data.category as { id: string; text: string }[],
+              description: data.description,
+              image: data.profileImg,
+              // tags: data.category.map((tag) => tag.text),
+            },
+          })
+          return register
+        },
+        {
+          cachePolicy: 'no-store',
+        }
+      )
 
-  //   return () => {
-  //     document.removeEventListener('click', handleFocus)
-  //   }
-  // }, [])
+      toast({
+        title: 'Success',
+        description: 'Your asset has been registered.',
+        success: true,
+      })
+      // router.push('/')
+    } catch (e) {
+      toast({
+        title: 'Not Success',
+        description: 'At least one image must be uploaded.',
+        error: true,
+      })
+    }
+  }
   return (
     <div className="flex flex-col w-full gap-4">
       <div className="flex flex-row gap-1">
@@ -159,7 +154,7 @@ export default function RegistCard() {
         </Typography>
       </div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <div className="flex flex-col w-full max-w-[1100px] bg-card rounded-md p-6 dark:border-none light:border-primary border-solid border-2">
             <div className="h-fit w-full flex flex-col gap-4 my-auto">
               <div className="flex w-full lg:flex-row flex-col gap-4 items-start">
@@ -232,11 +227,7 @@ export default function RegistCard() {
                             placeholder="Enter new category"
                             value={search}
                             tags={tags}
-                            // enableAutocomplete={
-                            //   document.activeElement === divRef.current ? true : false
-                            // }
                             enableAutocomplete={true}
-                            // enableAutocomplete={showbelow}
                             autocompleteOptions={tagsDB}
                             className="w-full"
                             setTags={(newTags) => {
@@ -297,7 +288,7 @@ export default function RegistCard() {
               </div>
             </div>
           </div>
-          <div className="flex flex-row w-full gap-[10px] md:justify-center sm:justify-between">
+          <div className="flex flex-row w-full gap-[10px] md:justify-center sm:justify-between pt-4">
             <Button variant="secondary" className="w-[160px]">
               <Typography variant="h5">Cancel</Typography>
             </Button>
