@@ -19,13 +19,13 @@ export interface Config {
 }
 export interface User {
   id: string;
+  profileImage?: string | Media;
   phone: string;
   firstName?: string;
   lastName?: string;
   bio?: string;
   province?: string;
   rating?: number;
-  url?: string;
   roles: ('admin' | 'User')[];
   updatedAt: string;
   createdAt: string;
@@ -37,21 +37,6 @@ export interface User {
   loginAttempts?: number;
   lockUntil?: string;
   password?: string;
-}
-export interface Item {
-  id: string;
-  name: string;
-  description?: string;
-  image?: string | Media;
-  tags?: string[] | Tag[];
-  createdBy: string | User;
-  rating?: number;
-  price: number;
-  start: string;
-  end: string;
-  updatedAt: string;
-  createdAt: string;
-  _status?: 'draft' | 'published';
 }
 export interface Media {
   id: string;
@@ -65,6 +50,25 @@ export interface Media {
   filesize?: number;
   width?: number;
   height?: number;
+}
+export interface Item {
+  id: string;
+  name: string;
+  description?: string;
+  image?: string | Media;
+  price: number;
+  rating?: number;
+  availableAt?: string;
+  period?: number;
+  periodType?: 'days' | 'weeks' | 'months' | 'years';
+  rentingStatus?: 'available' | 'unavailable';
+  tags?: string[] | Tag[];
+  createdBy: string | User;
+  start: string;
+  end: string;
+  updatedAt: string;
+  createdAt: string;
+  _status?: 'draft' | 'published';
 }
 export interface Tag {
   id: string;

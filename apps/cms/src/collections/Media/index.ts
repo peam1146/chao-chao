@@ -38,7 +38,7 @@ export const Media: S3UploadCollectionConfig = {
       name: 'alt',
       label: {
         en: 'Alt',
-        th: 'คอธบาย',
+        th: 'คำอธิบาย',
       },
     },
     {
