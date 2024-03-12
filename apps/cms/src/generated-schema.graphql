@@ -587,13 +587,15 @@ type Item {
   id: Int
   name: String
   description: String
-  image(where: Item_Image_where): Media
+  image: [Media!]
+  price: Float
+  availableAt: DateTime
+  period: Float
+  periodType: Item_periodType
+  rentingStatus: Item_rentingStatus
   tags: [Tag!]
   createdBy: User
   rating: Float
-  price: Float
-  start: DateTime
-  end: DateTime
   updatedAt: DateTime
   createdAt: DateTime
   _status: Item__status
@@ -601,6 +603,7 @@ type Item {
 
 type Media {
   id: Int
+  name: String
   alt: String
   createdBy: User!
   updatedAt: DateTime
@@ -613,152 +616,16 @@ type Media {
   height: Float
 }
 
-input Item_Image_where {
-  alt: Item_Image_alt_operator
-  updatedAt: Item_Image_updatedAt_operator
-  createdAt: Item_Image_createdAt_operator
-  url: Item_Image_url_operator
-  filename: Item_Image_filename_operator
-  mimeType: Item_Image_mimeType_operator
-  filesize: Item_Image_filesize_operator
-  width: Item_Image_width_operator
-  height: Item_Image_height_operator
-  id: Item_Image_id_operator
-  AND: [Item_Image_where_and]
-  OR: [Item_Image_where_or]
+enum Item_periodType {
+  days
+  weeks
+  months
+  years
 }
 
-input Item_Image_alt_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input Item_Image_updatedAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input Item_Image_createdAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input Item_Image_url_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input Item_Image_filename_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input Item_Image_mimeType_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input Item_Image_filesize_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input Item_Image_width_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input Item_Image_height_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input Item_Image_id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input Item_Image_where_and {
-  alt: Item_Image_alt_operator
-  updatedAt: Item_Image_updatedAt_operator
-  createdAt: Item_Image_createdAt_operator
-  url: Item_Image_url_operator
-  filename: Item_Image_filename_operator
-  mimeType: Item_Image_mimeType_operator
-  filesize: Item_Image_filesize_operator
-  width: Item_Image_width_operator
-  height: Item_Image_height_operator
-  id: Item_Image_id_operator
-}
-
-input Item_Image_where_or {
-  alt: Item_Image_alt_operator
-  updatedAt: Item_Image_updatedAt_operator
-  createdAt: Item_Image_createdAt_operator
-  url: Item_Image_url_operator
-  filename: Item_Image_filename_operator
-  mimeType: Item_Image_mimeType_operator
-  filesize: Item_Image_filesize_operator
-  width: Item_Image_width_operator
-  height: Item_Image_height_operator
-  id: Item_Image_id_operator
+enum Item_rentingStatus {
+  available
+  unavailable
 }
 
 type Tag {
@@ -793,11 +660,14 @@ input Item_where {
   name: Item_name_operator
   description: Item_description_operator
   image: Item_image_operator
-  tags: Item_tags_operator
-  rating: Item_rating_operator
   price: Item_price_operator
-  start: Item_start_operator
-  end: Item_end_operator
+  availableAt: Item_availableAt_operator
+  period: Item_period_operator
+  periodType: Item_periodType_operator
+  rentingStatus: Item_rentingStatus_operator
+  tags: Item_tags_operator
+  createdBy: Item_createdBy_operator
+  rating: Item_rating_operator
   updatedAt: Item_updatedAt_operator
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
@@ -825,9 +695,77 @@ input Item_description_operator {
 }
 
 input Item_image_operator {
-  equals: String
-  not_equals: String
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+input Item_price_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
   exists: Boolean
+}
+
+input Item_availableAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Item_period_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Item_periodType_operator {
+  equals: Item_periodType_Input
+  not_equals: Item_periodType_Input
+  in: [Item_periodType_Input]
+  not_in: [Item_periodType_Input]
+  all: [Item_periodType_Input]
+  exists: Boolean
+}
+
+enum Item_periodType_Input {
+  days
+  weeks
+  months
+  years
+}
+
+input Item_rentingStatus_operator {
+  equals: Item_rentingStatus_Input
+  not_equals: Item_rentingStatus_Input
+  in: [Item_rentingStatus_Input]
+  not_in: [Item_rentingStatus_Input]
+  all: [Item_rentingStatus_Input]
+  exists: Boolean
+}
+
+enum Item_rentingStatus_Input {
+  available
+  unavailable
 }
 
 input Item_tags_operator {
@@ -839,10 +777,13 @@ input Item_tags_operator {
   exists: Boolean
 }
 
-"""
-The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
-"""
-scalar JSON
+input Item_createdBy_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
 
 input Item_rating_operator {
   equals: Float
@@ -852,35 +793,6 @@ input Item_rating_operator {
   less_than_equal: Float
   less_than: Float
   exists: Boolean
-}
-
-input Item_price_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-}
-
-input Item_start_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-}
-
-input Item_end_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
 }
 
 input Item_updatedAt_operator {
@@ -933,11 +845,14 @@ input Item_where_and {
   name: Item_name_operator
   description: Item_description_operator
   image: Item_image_operator
-  tags: Item_tags_operator
-  rating: Item_rating_operator
   price: Item_price_operator
-  start: Item_start_operator
-  end: Item_end_operator
+  availableAt: Item_availableAt_operator
+  period: Item_period_operator
+  periodType: Item_periodType_operator
+  rentingStatus: Item_rentingStatus_operator
+  tags: Item_tags_operator
+  createdBy: Item_createdBy_operator
+  rating: Item_rating_operator
   updatedAt: Item_updatedAt_operator
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
@@ -948,11 +863,14 @@ input Item_where_or {
   name: Item_name_operator
   description: Item_description_operator
   image: Item_image_operator
-  tags: Item_tags_operator
-  rating: Item_rating_operator
   price: Item_price_operator
-  start: Item_start_operator
-  end: Item_end_operator
+  availableAt: Item_availableAt_operator
+  period: Item_period_operator
+  periodType: Item_periodType_operator
+  rentingStatus: Item_rentingStatus_operator
+  tags: Item_tags_operator
+  createdBy: Item_createdBy_operator
+  rating: Item_rating_operator
   updatedAt: Item_updatedAt_operator
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
@@ -972,11 +890,14 @@ type ItemsDocAccessFields {
   name: ItemsDocAccessFields_name
   description: ItemsDocAccessFields_description
   image: ItemsDocAccessFields_image
-  tags: ItemsDocAccessFields_tags
-  rating: ItemsDocAccessFields_rating
   price: ItemsDocAccessFields_price
-  start: ItemsDocAccessFields_start
-  end: ItemsDocAccessFields_end
+  availableAt: ItemsDocAccessFields_availableAt
+  period: ItemsDocAccessFields_period
+  periodType: ItemsDocAccessFields_periodType
+  rentingStatus: ItemsDocAccessFields_rentingStatus
+  tags: ItemsDocAccessFields_tags
+  createdBy: ItemsDocAccessFields_createdBy
+  rating: ItemsDocAccessFields_rating
   updatedAt: ItemsDocAccessFields_updatedAt
   createdAt: ItemsDocAccessFields_createdAt
   _status: ItemsDocAccessFields__status
@@ -1051,52 +972,6 @@ type ItemsDocAccessFields_image_Delete {
   permission: Boolean!
 }
 
-type ItemsDocAccessFields_tags {
-  create: ItemsDocAccessFields_tags_Create
-  read: ItemsDocAccessFields_tags_Read
-  update: ItemsDocAccessFields_tags_Update
-  delete: ItemsDocAccessFields_tags_Delete
-}
-
-type ItemsDocAccessFields_tags_Create {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_tags_Read {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_tags_Update {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_tags_Delete {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_rating {
-  create: ItemsDocAccessFields_rating_Create
-  read: ItemsDocAccessFields_rating_Read
-  update: ItemsDocAccessFields_rating_Update
-  delete: ItemsDocAccessFields_rating_Delete
-}
-
-type ItemsDocAccessFields_rating_Create {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_rating_Read {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_rating_Update {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_rating_Delete {
-  permission: Boolean!
-}
-
 type ItemsDocAccessFields_price {
   create: ItemsDocAccessFields_price_Create
   read: ItemsDocAccessFields_price_Read
@@ -1120,49 +995,164 @@ type ItemsDocAccessFields_price_Delete {
   permission: Boolean!
 }
 
-type ItemsDocAccessFields_start {
-  create: ItemsDocAccessFields_start_Create
-  read: ItemsDocAccessFields_start_Read
-  update: ItemsDocAccessFields_start_Update
-  delete: ItemsDocAccessFields_start_Delete
+type ItemsDocAccessFields_availableAt {
+  create: ItemsDocAccessFields_availableAt_Create
+  read: ItemsDocAccessFields_availableAt_Read
+  update: ItemsDocAccessFields_availableAt_Update
+  delete: ItemsDocAccessFields_availableAt_Delete
 }
 
-type ItemsDocAccessFields_start_Create {
+type ItemsDocAccessFields_availableAt_Create {
   permission: Boolean!
 }
 
-type ItemsDocAccessFields_start_Read {
+type ItemsDocAccessFields_availableAt_Read {
   permission: Boolean!
 }
 
-type ItemsDocAccessFields_start_Update {
+type ItemsDocAccessFields_availableAt_Update {
   permission: Boolean!
 }
 
-type ItemsDocAccessFields_start_Delete {
+type ItemsDocAccessFields_availableAt_Delete {
   permission: Boolean!
 }
 
-type ItemsDocAccessFields_end {
-  create: ItemsDocAccessFields_end_Create
-  read: ItemsDocAccessFields_end_Read
-  update: ItemsDocAccessFields_end_Update
-  delete: ItemsDocAccessFields_end_Delete
+type ItemsDocAccessFields_period {
+  create: ItemsDocAccessFields_period_Create
+  read: ItemsDocAccessFields_period_Read
+  update: ItemsDocAccessFields_period_Update
+  delete: ItemsDocAccessFields_period_Delete
 }
 
-type ItemsDocAccessFields_end_Create {
+type ItemsDocAccessFields_period_Create {
   permission: Boolean!
 }
 
-type ItemsDocAccessFields_end_Read {
+type ItemsDocAccessFields_period_Read {
   permission: Boolean!
 }
 
-type ItemsDocAccessFields_end_Update {
+type ItemsDocAccessFields_period_Update {
   permission: Boolean!
 }
 
-type ItemsDocAccessFields_end_Delete {
+type ItemsDocAccessFields_period_Delete {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_periodType {
+  create: ItemsDocAccessFields_periodType_Create
+  read: ItemsDocAccessFields_periodType_Read
+  update: ItemsDocAccessFields_periodType_Update
+  delete: ItemsDocAccessFields_periodType_Delete
+}
+
+type ItemsDocAccessFields_periodType_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_periodType_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_periodType_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_periodType_Delete {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_rentingStatus {
+  create: ItemsDocAccessFields_rentingStatus_Create
+  read: ItemsDocAccessFields_rentingStatus_Read
+  update: ItemsDocAccessFields_rentingStatus_Update
+  delete: ItemsDocAccessFields_rentingStatus_Delete
+}
+
+type ItemsDocAccessFields_rentingStatus_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_rentingStatus_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_rentingStatus_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_rentingStatus_Delete {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_tags {
+  create: ItemsDocAccessFields_tags_Create
+  read: ItemsDocAccessFields_tags_Read
+  update: ItemsDocAccessFields_tags_Update
+  delete: ItemsDocAccessFields_tags_Delete
+}
+
+type ItemsDocAccessFields_tags_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_tags_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_tags_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_tags_Delete {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_createdBy {
+  create: ItemsDocAccessFields_createdBy_Create
+  read: ItemsDocAccessFields_createdBy_Read
+  update: ItemsDocAccessFields_createdBy_Update
+  delete: ItemsDocAccessFields_createdBy_Delete
+}
+
+type ItemsDocAccessFields_createdBy_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_createdBy_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_createdBy_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_createdBy_Delete {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_rating {
+  create: ItemsDocAccessFields_rating_Create
+  read: ItemsDocAccessFields_rating_Read
+  update: ItemsDocAccessFields_rating_Update
+  delete: ItemsDocAccessFields_rating_Delete
+}
+
+type ItemsDocAccessFields_rating_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_rating_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_rating_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_rating_Delete {
   permission: Boolean!
 }
 
@@ -1272,164 +1262,30 @@ type ItemVersion {
 type ItemVersion_Version {
   name: String
   description: String
-  image(where: ItemVersion_Version_Image_where): Media
+  image: [Media!]
+  price: Float
+  availableAt: DateTime
+  period: Float
+  periodType: ItemVersion_Version_periodType
+  rentingStatus: ItemVersion_Version_rentingStatus
   tags: [Tag!]
   createdBy: User
   rating: Float
-  price: Float
-  start: DateTime
-  end: DateTime
   updatedAt: DateTime
   createdAt: DateTime
   _status: ItemVersion_Version__status
 }
 
-input ItemVersion_Version_Image_where {
-  alt: ItemVersion_Version_Image_alt_operator
-  updatedAt: ItemVersion_Version_Image_updatedAt_operator
-  createdAt: ItemVersion_Version_Image_createdAt_operator
-  url: ItemVersion_Version_Image_url_operator
-  filename: ItemVersion_Version_Image_filename_operator
-  mimeType: ItemVersion_Version_Image_mimeType_operator
-  filesize: ItemVersion_Version_Image_filesize_operator
-  width: ItemVersion_Version_Image_width_operator
-  height: ItemVersion_Version_Image_height_operator
-  id: ItemVersion_Version_Image_id_operator
-  AND: [ItemVersion_Version_Image_where_and]
-  OR: [ItemVersion_Version_Image_where_or]
+enum ItemVersion_Version_periodType {
+  days
+  weeks
+  months
+  years
 }
 
-input ItemVersion_Version_Image_alt_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input ItemVersion_Version_Image_updatedAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input ItemVersion_Version_Image_createdAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input ItemVersion_Version_Image_url_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input ItemVersion_Version_Image_filename_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input ItemVersion_Version_Image_mimeType_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input ItemVersion_Version_Image_filesize_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input ItemVersion_Version_Image_width_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input ItemVersion_Version_Image_height_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input ItemVersion_Version_Image_id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input ItemVersion_Version_Image_where_and {
-  alt: ItemVersion_Version_Image_alt_operator
-  updatedAt: ItemVersion_Version_Image_updatedAt_operator
-  createdAt: ItemVersion_Version_Image_createdAt_operator
-  url: ItemVersion_Version_Image_url_operator
-  filename: ItemVersion_Version_Image_filename_operator
-  mimeType: ItemVersion_Version_Image_mimeType_operator
-  filesize: ItemVersion_Version_Image_filesize_operator
-  width: ItemVersion_Version_Image_width_operator
-  height: ItemVersion_Version_Image_height_operator
-  id: ItemVersion_Version_Image_id_operator
-}
-
-input ItemVersion_Version_Image_where_or {
-  alt: ItemVersion_Version_Image_alt_operator
-  updatedAt: ItemVersion_Version_Image_updatedAt_operator
-  createdAt: ItemVersion_Version_Image_createdAt_operator
-  url: ItemVersion_Version_Image_url_operator
-  filename: ItemVersion_Version_Image_filename_operator
-  mimeType: ItemVersion_Version_Image_mimeType_operator
-  filesize: ItemVersion_Version_Image_filesize_operator
-  width: ItemVersion_Version_Image_width_operator
-  height: ItemVersion_Version_Image_height_operator
-  id: ItemVersion_Version_Image_id_operator
+enum ItemVersion_Version_rentingStatus {
+  available
+  unavailable
 }
 
 enum ItemVersion_Version__status {
@@ -1456,12 +1312,14 @@ input versionsItem_where {
   version__name: versionsItem_version__name_operator
   version__description: versionsItem_version__description_operator
   version__image: versionsItem_version__image_operator
+  version__price: versionsItem_version__price_operator
+  version__availableAt: versionsItem_version__availableAt_operator
+  version__period: versionsItem_version__period_operator
+  version__periodType: versionsItem_version__periodType_operator
+  version__rentingStatus: versionsItem_version__rentingStatus_operator
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
   version__rating: versionsItem_version__rating_operator
-  version__price: versionsItem_version__price_operator
-  version__start: versionsItem_version__start_operator
-  version__end: versionsItem_version__end_operator
   version__updatedAt: versionsItem_version__updatedAt_operator
   version__createdAt: versionsItem_version__createdAt_operator
   version___status: versionsItem_version___status_operator
@@ -1501,9 +1359,72 @@ input versionsItem_version__description_operator {
 }
 
 input versionsItem_version__image_operator {
-  equals: String
-  not_equals: String
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input versionsItem_version__price_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
   exists: Boolean
+}
+
+input versionsItem_version__availableAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input versionsItem_version__period_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input versionsItem_version__periodType_operator {
+  equals: versionsItem_version__periodType_Input
+  not_equals: versionsItem_version__periodType_Input
+  in: [versionsItem_version__periodType_Input]
+  not_in: [versionsItem_version__periodType_Input]
+  all: [versionsItem_version__periodType_Input]
+  exists: Boolean
+}
+
+enum versionsItem_version__periodType_Input {
+  days
+  weeks
+  months
+  years
+}
+
+input versionsItem_version__rentingStatus_operator {
+  equals: versionsItem_version__rentingStatus_Input
+  not_equals: versionsItem_version__rentingStatus_Input
+  in: [versionsItem_version__rentingStatus_Input]
+  not_in: [versionsItem_version__rentingStatus_Input]
+  all: [versionsItem_version__rentingStatus_Input]
+  exists: Boolean
+}
+
+enum versionsItem_version__rentingStatus_Input {
+  available
+  unavailable
 }
 
 input versionsItem_version__tags_operator {
@@ -1531,35 +1452,6 @@ input versionsItem_version__rating_operator {
   less_than_equal: Float
   less_than: Float
   exists: Boolean
-}
-
-input versionsItem_version__price_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-}
-
-input versionsItem_version__start_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-}
-
-input versionsItem_version__end_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
 }
 
 input versionsItem_version__updatedAt_operator {
@@ -1641,12 +1533,14 @@ input versionsItem_where_and {
   version__name: versionsItem_version__name_operator
   version__description: versionsItem_version__description_operator
   version__image: versionsItem_version__image_operator
+  version__price: versionsItem_version__price_operator
+  version__availableAt: versionsItem_version__availableAt_operator
+  version__period: versionsItem_version__period_operator
+  version__periodType: versionsItem_version__periodType_operator
+  version__rentingStatus: versionsItem_version__rentingStatus_operator
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
   version__rating: versionsItem_version__rating_operator
-  version__price: versionsItem_version__price_operator
-  version__start: versionsItem_version__start_operator
-  version__end: versionsItem_version__end_operator
   version__updatedAt: versionsItem_version__updatedAt_operator
   version__createdAt: versionsItem_version__createdAt_operator
   version___status: versionsItem_version___status_operator
@@ -1661,12 +1555,14 @@ input versionsItem_where_or {
   version__name: versionsItem_version__name_operator
   version__description: versionsItem_version__description_operator
   version__image: versionsItem_version__image_operator
+  version__price: versionsItem_version__price_operator
+  version__availableAt: versionsItem_version__availableAt_operator
+  version__period: versionsItem_version__period_operator
+  version__periodType: versionsItem_version__periodType_operator
+  version__rentingStatus: versionsItem_version__rentingStatus_operator
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
   version__rating: versionsItem_version__rating_operator
-  version__price: versionsItem_version__price_operator
-  version__start: versionsItem_version__start_operator
-  version__end: versionsItem_version__end_operator
   version__updatedAt: versionsItem_version__updatedAt_operator
   version__createdAt: versionsItem_version__createdAt_operator
   version___status: versionsItem_version___status_operator
@@ -1691,6 +1587,7 @@ type Medias {
 }
 
 input Media_where {
+  name: Media_name_operator
   alt: Media_alt_operator
   updatedAt: Media_updatedAt_operator
   createdAt: Media_createdAt_operator
@@ -1703,6 +1600,17 @@ input Media_where {
   id: Media_id_operator
   AND: [Media_where_and]
   OR: [Media_where_or]
+}
+
+input Media_name_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
 }
 
 input Media_alt_operator {
@@ -1812,6 +1720,7 @@ input Media_id_operator {
 }
 
 input Media_where_and {
+  name: Media_name_operator
   alt: Media_alt_operator
   updatedAt: Media_updatedAt_operator
   createdAt: Media_createdAt_operator
@@ -1825,6 +1734,7 @@ input Media_where_and {
 }
 
 input Media_where_or {
+  name: Media_name_operator
   alt: Media_alt_operator
   updatedAt: Media_updatedAt_operator
   createdAt: Media_createdAt_operator
@@ -1846,6 +1756,7 @@ type mediasDocAccess {
 }
 
 type MediasDocAccessFields {
+  name: MediasDocAccessFields_name
   alt: MediasDocAccessFields_alt
   updatedAt: MediasDocAccessFields_updatedAt
   createdAt: MediasDocAccessFields_createdAt
@@ -1855,6 +1766,29 @@ type MediasDocAccessFields {
   filesize: MediasDocAccessFields_filesize
   width: MediasDocAccessFields_width
   height: MediasDocAccessFields_height
+}
+
+type MediasDocAccessFields_name {
+  create: MediasDocAccessFields_name_Create
+  read: MediasDocAccessFields_name_Read
+  update: MediasDocAccessFields_name_Update
+  delete: MediasDocAccessFields_name_Delete
+}
+
+type MediasDocAccessFields_name_Create {
+  permission: Boolean!
+}
+
+type MediasDocAccessFields_name_Read {
+  permission: Boolean!
+}
+
+type MediasDocAccessFields_name_Update {
+  permission: Boolean!
+}
+
+type MediasDocAccessFields_name_Delete {
+  permission: Boolean!
 }
 
 type MediasDocAccessFields_alt {
@@ -2927,11 +2861,14 @@ type ItemsFields {
   name: ItemsFields_name
   description: ItemsFields_description
   image: ItemsFields_image
-  tags: ItemsFields_tags
-  rating: ItemsFields_rating
   price: ItemsFields_price
-  start: ItemsFields_start
-  end: ItemsFields_end
+  availableAt: ItemsFields_availableAt
+  period: ItemsFields_period
+  periodType: ItemsFields_periodType
+  rentingStatus: ItemsFields_rentingStatus
+  tags: ItemsFields_tags
+  createdBy: ItemsFields_createdBy
+  rating: ItemsFields_rating
   updatedAt: ItemsFields_updatedAt
   createdAt: ItemsFields_createdAt
   _status: ItemsFields__status
@@ -3006,52 +2943,6 @@ type ItemsFields_image_Delete {
   permission: Boolean!
 }
 
-type ItemsFields_tags {
-  create: ItemsFields_tags_Create
-  read: ItemsFields_tags_Read
-  update: ItemsFields_tags_Update
-  delete: ItemsFields_tags_Delete
-}
-
-type ItemsFields_tags_Create {
-  permission: Boolean!
-}
-
-type ItemsFields_tags_Read {
-  permission: Boolean!
-}
-
-type ItemsFields_tags_Update {
-  permission: Boolean!
-}
-
-type ItemsFields_tags_Delete {
-  permission: Boolean!
-}
-
-type ItemsFields_rating {
-  create: ItemsFields_rating_Create
-  read: ItemsFields_rating_Read
-  update: ItemsFields_rating_Update
-  delete: ItemsFields_rating_Delete
-}
-
-type ItemsFields_rating_Create {
-  permission: Boolean!
-}
-
-type ItemsFields_rating_Read {
-  permission: Boolean!
-}
-
-type ItemsFields_rating_Update {
-  permission: Boolean!
-}
-
-type ItemsFields_rating_Delete {
-  permission: Boolean!
-}
-
 type ItemsFields_price {
   create: ItemsFields_price_Create
   read: ItemsFields_price_Read
@@ -3075,49 +2966,164 @@ type ItemsFields_price_Delete {
   permission: Boolean!
 }
 
-type ItemsFields_start {
-  create: ItemsFields_start_Create
-  read: ItemsFields_start_Read
-  update: ItemsFields_start_Update
-  delete: ItemsFields_start_Delete
+type ItemsFields_availableAt {
+  create: ItemsFields_availableAt_Create
+  read: ItemsFields_availableAt_Read
+  update: ItemsFields_availableAt_Update
+  delete: ItemsFields_availableAt_Delete
 }
 
-type ItemsFields_start_Create {
+type ItemsFields_availableAt_Create {
   permission: Boolean!
 }
 
-type ItemsFields_start_Read {
+type ItemsFields_availableAt_Read {
   permission: Boolean!
 }
 
-type ItemsFields_start_Update {
+type ItemsFields_availableAt_Update {
   permission: Boolean!
 }
 
-type ItemsFields_start_Delete {
+type ItemsFields_availableAt_Delete {
   permission: Boolean!
 }
 
-type ItemsFields_end {
-  create: ItemsFields_end_Create
-  read: ItemsFields_end_Read
-  update: ItemsFields_end_Update
-  delete: ItemsFields_end_Delete
+type ItemsFields_period {
+  create: ItemsFields_period_Create
+  read: ItemsFields_period_Read
+  update: ItemsFields_period_Update
+  delete: ItemsFields_period_Delete
 }
 
-type ItemsFields_end_Create {
+type ItemsFields_period_Create {
   permission: Boolean!
 }
 
-type ItemsFields_end_Read {
+type ItemsFields_period_Read {
   permission: Boolean!
 }
 
-type ItemsFields_end_Update {
+type ItemsFields_period_Update {
   permission: Boolean!
 }
 
-type ItemsFields_end_Delete {
+type ItemsFields_period_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_periodType {
+  create: ItemsFields_periodType_Create
+  read: ItemsFields_periodType_Read
+  update: ItemsFields_periodType_Update
+  delete: ItemsFields_periodType_Delete
+}
+
+type ItemsFields_periodType_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_periodType_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_periodType_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_periodType_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_rentingStatus {
+  create: ItemsFields_rentingStatus_Create
+  read: ItemsFields_rentingStatus_Read
+  update: ItemsFields_rentingStatus_Update
+  delete: ItemsFields_rentingStatus_Delete
+}
+
+type ItemsFields_rentingStatus_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_rentingStatus_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_rentingStatus_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_rentingStatus_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_tags {
+  create: ItemsFields_tags_Create
+  read: ItemsFields_tags_Read
+  update: ItemsFields_tags_Update
+  delete: ItemsFields_tags_Delete
+}
+
+type ItemsFields_tags_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_tags_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_tags_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_tags_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_createdBy {
+  create: ItemsFields_createdBy_Create
+  read: ItemsFields_createdBy_Read
+  update: ItemsFields_createdBy_Update
+  delete: ItemsFields_createdBy_Delete
+}
+
+type ItemsFields_createdBy_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_createdBy_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_createdBy_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_createdBy_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_rating {
+  create: ItemsFields_rating_Create
+  read: ItemsFields_rating_Read
+  update: ItemsFields_rating_Update
+  delete: ItemsFields_rating_Delete
+}
+
+type ItemsFields_rating_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_rating_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_rating_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_rating_Delete {
   permission: Boolean!
 }
 
@@ -3224,6 +3230,7 @@ type mediasAccess {
 }
 
 type MediasFields {
+  name: MediasFields_name
   alt: MediasFields_alt
   updatedAt: MediasFields_updatedAt
   createdAt: MediasFields_createdAt
@@ -3233,6 +3240,29 @@ type MediasFields {
   filesize: MediasFields_filesize
   width: MediasFields_width
   height: MediasFields_height
+}
+
+type MediasFields_name {
+  create: MediasFields_name_Create
+  read: MediasFields_name_Read
+  update: MediasFields_name_Update
+  delete: MediasFields_name_Delete
+}
+
+type MediasFields_name_Create {
+  permission: Boolean!
+}
+
+type MediasFields_name_Read {
+  permission: Boolean!
+}
+
+type MediasFields_name_Update {
+  permission: Boolean!
+}
+
+type MediasFields_name_Delete {
+  permission: Boolean!
 }
 
 type MediasFields_alt {
@@ -3849,16 +3879,30 @@ type usersResetPassword {
 input mutationItemInput {
   name: String!
   description: String
-  image: String
+  image: [Int]
+  price: Float
+  availableAt: String
+  period: Float
+  periodType: Item_periodType_MutationInput
+  rentingStatus: Item_rentingStatus_MutationInput
   tags: [Int]
   createdBy: Int
   rating: Float
-  price: Float!
-  start: String!
-  end: String!
   updatedAt: String
   createdAt: String
   _status: Item__status_MutationInput
+}
+
+enum Item_periodType_MutationInput {
+  days
+  weeks
+  months
+  years
+}
+
+enum Item_rentingStatus_MutationInput {
+  available
+  unavailable
 }
 
 enum Item__status_MutationInput {
@@ -3869,16 +3913,30 @@ enum Item__status_MutationInput {
 input mutationItemUpdateInput {
   name: String
   description: String
-  image: String
+  image: [Int]
+  price: Float
+  availableAt: String
+  period: Float
+  periodType: ItemUpdate_periodType_MutationInput
+  rentingStatus: ItemUpdate_rentingStatus_MutationInput
   tags: [Int]
   createdBy: Int
   rating: Float
-  price: Float
-  start: String
-  end: String
   updatedAt: String
   createdAt: String
   _status: ItemUpdate__status_MutationInput
+}
+
+enum ItemUpdate_periodType_MutationInput {
+  days
+  weeks
+  months
+  years
+}
+
+enum ItemUpdate_rentingStatus_MutationInput {
+  available
+  unavailable
 }
 
 enum ItemUpdate__status_MutationInput {
@@ -3887,6 +3945,7 @@ enum ItemUpdate__status_MutationInput {
 }
 
 input mutationMediaInput {
+  name: String
   alt: String
   createdBy: Int
   updatedAt: String
@@ -3900,6 +3959,7 @@ input mutationMediaInput {
 }
 
 input mutationMediaUpdateInput {
+  name: String
   alt: String
   createdBy: Int
   updatedAt: String

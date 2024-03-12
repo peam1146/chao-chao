@@ -113,7 +113,7 @@ export const Item: CollectionConfig = {
       relationTo: 'users',
       defaultValue: ({ user }) => user.id,
       required: true,
-      hidden: true,
+      hidden: false,
     },
     {
       type: 'number',
