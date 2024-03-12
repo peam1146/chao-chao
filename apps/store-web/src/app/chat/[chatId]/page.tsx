@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -35,9 +35,14 @@ export default function ChatRoom() {
   }
 
   useEffect(() => {
-    socket.on('receive_msg', (data: IMsgDataTypes) => {
+    const onMessage = (data: IMsgDataTypes) => {
       setChat((current) => [...current, data])
-    })
+    }
+    socket.on('receive_msg', onMessage)
+
+    return () => {
+      socket.off('receive_msg', onMessage)
+    }
   }, [socket])
 
   return (
