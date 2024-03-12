@@ -10,7 +10,7 @@ export default function SideBar() {
     <div className="flex flex-col pt-[72px] max-lg:hidden">
       <div
         className="flex flex-row w-[200px] gap-4 px-4 py-3 hover:bg-muted"
-        onClick={() => router.push('/myAsset')}
+        onClick={() => router.push('/myAssets')}
       >
         <Tray size={24} />
         <Typography>My Assets</Typography>
