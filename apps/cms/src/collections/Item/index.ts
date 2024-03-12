@@ -41,6 +41,7 @@ export const Item: CollectionConfig = {
       relationTo: 'medias',
       hasMany: true,
       required: true,
+      maxDepth: 2,
     },
     {
       type: 'number',
