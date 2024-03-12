@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 
 import {
   Command,
@@ -15,7 +14,6 @@ type AutocompleteProps = {
   tags: TagType[]
   setTags: React.Dispatch<React.SetStateAction<TagType[]>>
   autocompleteOptions: TagType[]
-  maxTags?: number
   onTagAdd?: (tag: string) => void
   allowDuplicates: boolean
   showbelow: boolean
@@ -26,14 +24,11 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   tags,
   setTags,
   autocompleteOptions,
-  maxTags,
   onTagAdd,
   allowDuplicates,
   showbelow,
   children,
 }) => {
-  console.log('showbelow', showbelow)
-
   return (
     <Command className="border min-w-[400px]">
       {children}
@@ -46,7 +41,6 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
                 <div
                   className="w-full"
                   onClick={() => {
-                    if (maxTags && tags.length >= maxTags) return
                     if (!allowDuplicates && tags.some((tag) => tag.text === option.text)) return
                     setTags([...tags, option])
                     onTagAdd?.(option.text)

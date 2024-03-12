@@ -2,7 +2,6 @@
 
 import { ChangeEvent, useRef } from 'react'
 import React from 'react'
-import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 import mockPic from '@/assets/images/mockPic2.png'
@@ -22,10 +21,9 @@ import Typography from '@/components/ui/typography'
 import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Plus } from '@phosphor-icons/react'
-import { ListPlus, X, XCircle } from '@phosphor-icons/react'
+import { ListPlus, XCircle } from '@phosphor-icons/react'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
-import { arrayOutputType, z } from 'zod'
+import { z } from 'zod'
 
 import { mutation, resolve } from '../../../../gqty'
 import { PlateEditor } from './description'
@@ -46,8 +44,6 @@ export default function RegistCard() {
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0]
-      console.log('Selected file:', file)
-      // const newImageUrl = URL.createObjectURL(file)
       const newList = listImg.concat(mockPic)
       setListImg(newList)
     }
@@ -56,16 +52,8 @@ export default function RegistCard() {
     const newImages = [...listImg]
     newImages.splice(idx, 1)
     setListImg(newImages)
-    console.log(listImg)
   }
-
-  const Demotags: Tag[] = [
-    { id: Math.random().toString(36), text: 'Sports' },
-    { id: Math.random().toString(36), text: 'Travel' },
-    { id: Math.random().toString(36), text: 'Programming' },
-  ]
   const autoCompleteOptions: Tag[] = [
-    ...Demotags,
     { id: Math.random().toString(36), text: 'Food' },
     { id: Math.random().toString(36), text: 'Movies' },
     { id: Math.random().toString(36), text: 'Art' },
@@ -74,13 +62,14 @@ export default function RegistCard() {
     { id: Math.random().toString(36), text: 'Fashion' },
     { id: Math.random().toString(36), text: 'Health' },
     { id: Math.random().toString(36), text: 'Lifestyle' },
+    { id: Math.random().toString(36), text: 'Sports' },
+    { id: Math.random().toString(36), text: 'Travel' },
+    { id: Math.random().toString(36), text: 'Tech' },
   ]
 
-  const [tags, setTags] = React.useState<Tag[]>(Demotags)
+  const [tags, setTags] = React.useState<Tag[]>([])
   const [tagsDB, setTagsDB] = React.useState<Tag[]>(autoCompleteOptions)
   const [search, setSearch] = React.useState('')
-  // const [showbelow, setShowbelow] = React.useState(false)
-  // console.log('mainshowbelow', showbelow)
   const assetSchema = z.object({
     name: z
       .string({
@@ -89,7 +78,7 @@ export default function RegistCard() {
       .min(1, {
         message: 'Name is required.',
       }),
-    fee: z.string(),
+    fee: z.number(),
     category: z.array(
       z.object({
         id: z.string(),
@@ -104,24 +93,20 @@ export default function RegistCard() {
   const form = useForm<AssetSchema>({
     resolver: zodResolver(assetSchema),
   })
-
-  const { handleSubmit, register } = useForm()
   const { toast } = useToast()
-  // const router = useRouter()
-  const onSubmit = async (data: z.infer<typeof assetSchema>) => {
-    console.log('data', data)
+  async function onSubmit(data: z.infer<typeof assetSchema>) {
     try {
-      console.log('data', data)
       await resolve(
         async ({ mutation }) => {
           const register = mutation.createItem({
             data: {
               name: data.name,
-              // fee: data.fee as string,
-              // category: data.category as { id: string; text: string }[],
+              price: data.fee as number,
+              start: '2024-03-12T12:00:00',
+              end: '2024-03-15T12:00:00',
               description: data.description,
               image: data.profileImg,
-              // tags: data.category.map((tag) => tag.text),
+              tags: [],
             },
           })
           return register
@@ -130,13 +115,11 @@ export default function RegistCard() {
           cachePolicy: 'no-store',
         }
       )
-
       toast({
         title: 'Success',
         description: 'Your asset has been registered.',
         success: true,
       })
-      // router.push('/')
     } catch (e) {
       toast({
         title: 'Not Success',
@@ -154,11 +137,10 @@ export default function RegistCard() {
         </Typography>
       </div>
       <Form {...form}>
-        <form onSubmit={handleSubmit(onSubmit)} noValidate>
-          <div className="flex flex-col w-full max-w-[1100px] bg-card rounded-md p-6 dark:border-none light:border-primary border-solid border-2">
+        <form onSubmit={form.handleSubmit(onSubmit)} noValidate>
+          <div className="flex flex-col w-full  max-w-[1100px] bg-card rounded-md p-6 dark:border-none light:border-primary border-solid border-2">
             <div className="h-fit w-full flex flex-col gap-4 my-auto">
               <div className="flex w-full lg:flex-row flex-col gap-4 items-start">
-                {/*Name + Rental Fee*/}
                 <div className="flex flex-col w-full lg:w-1/2">
                   <Typography variant="h5">Name</Typography>
                   <FormField
@@ -178,9 +160,8 @@ export default function RegistCard() {
                     )}
                   />
                 </div>
-                {/*Rental Fee*/}
                 <div className="flex flex-row items-end gap-[10px] w-full lg:w-1/2">
-                  <div className="flex flex-col  max-w-[428px] w-full min-w-[100px]">
+                  <div className="flex flex-col  max-w-[428px] w-full">
                     <Typography variant="h5">Rental Fee</Typography>
                     <FormField
                       control={form.control}
@@ -208,11 +189,9 @@ export default function RegistCard() {
                     </Select>
                   </div>
                 </div>
-                {/*Name + Rental Fee*/}
               </div>
 
               <div>
-                {/*Category*/}
                 <Typography variant="h5">Category</Typography>
                 <FormField
                   control={form.control}
@@ -241,17 +220,15 @@ export default function RegistCard() {
                 />
               </div>
               <div>
-                {/*Description*/}
                 <Typography variant="h5">Description</Typography>
                 <TooltipProvider>
                   <PlateEditor />
                 </TooltipProvider>
               </div>
               <div className="w-full ">
-                {/*Image*/}
                 <Typography variant="h5">Image</Typography>
 
-                <div className="grid gap-2 2xl:grid-cols-8 xl:grid-cols-7 lg:grid-cols-5 md:grid-cols-3 grid-cols-3">
+                <div className="grid gap-2 2xl:grid-cols-8 xl:grid-cols-6 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2 ">
                   <div className="flex md:w-[120px] w-[80px] md:h-[120px] h-[80px] justify-center items-center rounded-[8px] border-primary border-dashed border-2">
                     <p onClick={handleButtonClick}>
                       <Plus className="w-4 h-4 text-primary" />
@@ -265,13 +242,10 @@ export default function RegistCard() {
                   </div>
                   {listImg.map((item, index) => (
                     <div className="relative">
-                      {/* <div className="w-[24px] h-[24px] rounded-full bg-primary justify-center items-center">
-                      <X size={16} />
-                    </div> */}
                       <XCircle
                         size={24}
                         weight="fill"
-                        className="absolute lg:right-1 lg:top-1 right-7 top-1 text-primary"
+                        className="absolute lg:right-3 md:right-1  right-2 top-1 text-primary"
                         onClick={handleDeleteImage.bind(index)}
                       />
                       <Image
