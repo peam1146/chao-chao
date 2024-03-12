@@ -31,7 +31,7 @@ io.on('connection', (socket) => {
     console.log(`user with id-${socket.id} joined room - ${chatId}`)
   })
   socket.on('send_msg', (data) => {
-    console.log(data)
+    socket.emit('receive_msg', data)
     socket.to(data.chatId).emit('receive_msg', data)
   })
 
