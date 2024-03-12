@@ -18,14 +18,12 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import Typography from '@/components/ui/typography'
-import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Plus } from '@phosphor-icons/react'
 import { ListPlus, XCircle } from '@phosphor-icons/react'
 import Image from 'next/image'
 import { z } from 'zod'
 
-import { mutation, resolve } from '../../../../gqty'
 import { PlateEditor } from './description'
 import { Tag, TagInput } from './tags/tag-input'
 
@@ -93,41 +91,7 @@ export default function RegistCard() {
   const form = useForm<AssetSchema>({
     resolver: zodResolver(assetSchema),
   })
-  const { toast } = useToast()
-  async function onSubmit(data: z.infer<typeof assetSchema>) {
-    try {
-      await resolve(
-        async ({ mutation }) => {
-          const register = mutation.createItem({
-            data: {
-              name: data.name,
-              price: data.fee as number,
-              start: '2024-03-12T12:00:00',
-              end: '2024-03-15T12:00:00',
-              description: data.description,
-              image: data.profileImg,
-              tags: [],
-            },
-          })
-          return register
-        },
-        {
-          cachePolicy: 'no-store',
-        }
-      )
-      toast({
-        title: 'Success',
-        description: 'Your asset has been registered.',
-        success: true,
-      })
-    } catch (e) {
-      toast({
-        title: 'Not Success',
-        description: 'At least one image must be uploaded.',
-        error: true,
-      })
-    }
-  }
+  function onSubmit(data: z.infer<typeof assetSchema>) {}
   return (
     <div className="flex flex-col w-full gap-4">
       <div className="flex flex-row gap-1">
@@ -137,7 +101,7 @@ export default function RegistCard() {
         </Typography>
       </div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} noValidate>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="flex flex-col w-full  max-w-[1100px] bg-card rounded-md p-6 dark:border-none light:border-primary border-solid border-2">
             <div className="h-fit w-full flex flex-col gap-4 my-auto">
               <div className="flex w-full lg:flex-row flex-col gap-4 items-start">
@@ -191,7 +155,7 @@ export default function RegistCard() {
                 </div>
               </div>
 
-              <div>
+              <div className="flex flex-col md:max-w-md lg:max-w-[630px] xl:max-w-[850px] 2xl:max-w-[1015px]">
                 <Typography variant="h5">Category</Typography>
                 <FormField
                   control={form.control}
@@ -199,7 +163,7 @@ export default function RegistCard() {
                   render={({ field }) => (
                     <FormItem className="flex flex-col items-start">
                       <FormControl>
-                        <div className="w-full">
+                        <div className="pt-1 w-full ">
                           <TagInput
                             {...field}
                             id="category"
@@ -208,7 +172,7 @@ export default function RegistCard() {
                             tags={tags}
                             enableAutocomplete={true}
                             autocompleteOptions={tagsDB}
-                            className="w-full"
+                            className="w-[500px] truncate"
                             setTags={(newTags) => {
                               setTags(newTags)
                             }}
@@ -241,11 +205,11 @@ export default function RegistCard() {
                     />
                   </div>
                   {listImg.map((item, index) => (
-                    <div className="relative">
+                    <div className="relative md:w-[120px] w-[80px] md:h-[120px] h-[80px]">
                       <XCircle
                         size={24}
                         weight="fill"
-                        className="absolute lg:right-3 md:right-1  right-2 top-1 text-primary"
+                        className="absolute lg:right-1 md:right-2 right-12 top-1 text-primary"
                         onClick={handleDeleteImage.bind(index)}
                       />
                       <Image
