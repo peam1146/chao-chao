@@ -2,11 +2,16 @@ import { Sheet, SheetClose, SheetContent } from '@/components/ui/sheet'
 import Typography from '@/components/ui/typography'
 import {
   Chats,
+  CreditCard,
+  Envelope,
   HandCoins,
   House,
   Info,
+  ListDashes,
+  Megaphone,
   SignIn,
   SignOut,
+  Tray,
   UserCircle,
   UserCirclePlus,
 } from '@phosphor-icons/react'
@@ -30,7 +35,7 @@ export function MenuSheet(props: MenuSheetProps) {
     return (
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent side="left" className="border-0 flex flex-col justify-between">
-          <div className="grid gap-3">
+          <div className="grid gap-4">
             <div className="grid gap-2">
               <Typography variant="h5" fontWeight="bold" className="text-primary">
                 General
@@ -42,19 +47,48 @@ export function MenuSheet(props: MenuSheetProps) {
                 href="/"
               />
               <MenuCard
-                icon={<HandCoins width="20px" height="20px" />}
-                pathname={pathname}
-                title="Manage assets"
-                href="/asset"
-              />
-              <MenuCard
                 icon={<Chats width="20px" height="20px" />}
                 pathname={pathname}
                 title="Chat"
                 href="/chat"
               />
             </div>
-            <div className="grid gap-2 py-8">
+            <div className="grid gap-2">
+              <Typography variant="h5" fontWeight="bold" className="text-primary">
+                Manage Assets
+              </Typography>
+              <MenuCard
+                icon={<Tray width="20px" height="20px" />}
+                pathname={pathname}
+                title="My Assets"
+                href="/myAssets"
+              />
+              <MenuCard
+                icon={<ListDashes width="20px" height="20px" />}
+                pathname={pathname}
+                title="My Contracts"
+                href="/contracts"
+              />
+              <MenuCard
+                icon={<Envelope width="20px" height="20px" />}
+                pathname={pathname}
+                title="Rental Requests"
+                href="/rentalRequest"
+              />
+              <MenuCard
+                icon={<CreditCard width="20px" height="20px" />}
+                pathname={pathname}
+                title="Payment"
+                href="/payment"
+              />
+              <MenuCard
+                icon={<Megaphone width="20px" height="20px" />}
+                pathname={pathname}
+                title="Advertising"
+                href="/advertising"
+              />
+            </div>
+            <div className="grid gap-2">
               <Typography variant="h5" fontWeight="bold" className="text-primary">
                 Account
               </Typography>
