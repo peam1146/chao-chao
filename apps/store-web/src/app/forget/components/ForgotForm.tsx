@@ -6,6 +6,7 @@ import forgotLogo from '@/assets/images/Saly-3.png'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import Typography from '@/components/ui/typography'
+import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { UserCircle } from '@phosphor-icons/react'
 import Image from 'next/image'
@@ -25,8 +26,15 @@ export default function ForgotForm() {
     resolver: zodResolver(validationSchema),
   })
 
+  const { toast } = useToast()
+
   const onSubmit: SubmitHandler<ValidationSchema> = async (data) => {
     await handleForgot(data)
+    toast({
+      title: 'Success',
+      description: 'Send link to reset password successfully.',
+      success: true,
+    })
   }
 
   return (

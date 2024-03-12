@@ -2,7 +2,7 @@ import { ComponentPropsWithRef, forwardRef } from 'react'
 
 import { type VariantProps, cva } from 'class-variance-authority'
 
-const typographyVariant = cva('', {
+const typographyVariant = cva('break-all', {
   variants: {
     variant: {
       h1: 'h1',
