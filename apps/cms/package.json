@@ -31,7 +31,8 @@
     "payload": "^2.0.0",
     "payload-oapi": "^0.0.4",
     "payload-s3-upload": "^2.1.1",
-    "react": "^18"
+    "react": "^18",
+    "socket.io": "^4.7.4"
   },
   "devDependencies": {
     "@chao-chao/eslint-config": "workspace:^",
