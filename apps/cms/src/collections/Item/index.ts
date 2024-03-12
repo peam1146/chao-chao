@@ -36,9 +36,11 @@ export const Item: CollectionConfig = {
       },
     },
     {
-      type: 'upload',
+      type: 'relationship',
       name: 'image',
       relationTo: 'medias',
+      hasMany: true,
+      required: true,
     },
     {
       type: 'number',
@@ -46,16 +48,6 @@ export const Item: CollectionConfig = {
       label: {
         en: 'Price',
         th: 'ราคา',
-      },
-    },
-    {
-      type: 'number',
-      name: 'rating',
-      min: 0,
-      max: 5,
-      label: {
-        en: 'Rating',
-        th: 'คะแนน',
       },
     },
     {
@@ -125,38 +117,15 @@ export const Item: CollectionConfig = {
     {
       type: 'number',
       name: 'rating',
+      min: 0,
+      max: 5,
       label: {
         en: 'Rating',
         th: 'คะแนน',
       },
-      required: false,
-    },
-    {
-      type: 'number',
-      name: 'price',
-      label: {
-        en: 'Price',
-        th: 'ราคา',
+      admin: {
+        readOnly: true,
       },
-      required: true,
-    },
-    {
-      type: 'date',
-      name: 'start',
-      label: {
-        en: 'Start Date',
-        th: 'วันที่เริ่มให้เช่า',
-      },
-      required: true,
-    },
-    {
-      type: 'date',
-      name: 'end',
-      label: {
-        en: 'End Date',
-        th: 'วันที่สิ้นสุดให้เช่า',
-      },
-      required: true,
     },
   ],
 }
