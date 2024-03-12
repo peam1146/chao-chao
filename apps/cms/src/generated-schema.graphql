@@ -23,13 +23,13 @@ type Query {
 
 type User {
   id: Int
+  profileImage(where: User_ProfileImage_where): Media
   phone: String!
   firstName: String
   lastName: String
   bio: String
   province: String
   rating: Float
-  url: String
   roles: [User_roles!]!
   updatedAt: DateTime
   createdAt: DateTime
@@ -43,15 +43,177 @@ type User {
   password: String!
 }
 
-enum User_roles {
-  admin
-  User
+type Media {
+  id: Int
+  alt: String
+  createdBy: User!
+  updatedAt: DateTime
+  createdAt: DateTime
+  url: String
+  filename: String
+  mimeType: String
+  filesize: Float
+  width: Float
+  height: Float
 }
 
 """
 A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 """
 scalar DateTime
+
+input User_ProfileImage_where {
+  alt: User_ProfileImage_alt_operator
+  updatedAt: User_ProfileImage_updatedAt_operator
+  createdAt: User_ProfileImage_createdAt_operator
+  url: User_ProfileImage_url_operator
+  filename: User_ProfileImage_filename_operator
+  mimeType: User_ProfileImage_mimeType_operator
+  filesize: User_ProfileImage_filesize_operator
+  width: User_ProfileImage_width_operator
+  height: User_ProfileImage_height_operator
+  id: User_ProfileImage_id_operator
+  AND: [User_ProfileImage_where_and]
+  OR: [User_ProfileImage_where_or]
+}
+
+input User_ProfileImage_alt_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input User_ProfileImage_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input User_ProfileImage_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input User_ProfileImage_url_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input User_ProfileImage_filename_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input User_ProfileImage_mimeType_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input User_ProfileImage_filesize_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input User_ProfileImage_width_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input User_ProfileImage_height_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input User_ProfileImage_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input User_ProfileImage_where_and {
+  alt: User_ProfileImage_alt_operator
+  updatedAt: User_ProfileImage_updatedAt_operator
+  createdAt: User_ProfileImage_createdAt_operator
+  url: User_ProfileImage_url_operator
+  filename: User_ProfileImage_filename_operator
+  mimeType: User_ProfileImage_mimeType_operator
+  filesize: User_ProfileImage_filesize_operator
+  width: User_ProfileImage_width_operator
+  height: User_ProfileImage_height_operator
+  id: User_ProfileImage_id_operator
+}
+
+input User_ProfileImage_where_or {
+  alt: User_ProfileImage_alt_operator
+  updatedAt: User_ProfileImage_updatedAt_operator
+  createdAt: User_ProfileImage_createdAt_operator
+  url: User_ProfileImage_url_operator
+  filename: User_ProfileImage_filename_operator
+  mimeType: User_ProfileImage_mimeType_operator
+  filesize: User_ProfileImage_filesize_operator
+  width: User_ProfileImage_width_operator
+  height: User_ProfileImage_height_operator
+  id: User_ProfileImage_id_operator
+}
+
+enum User_roles {
+  admin
+  User
+}
 
 """
 A field whose value conforms to the standard internet email address format as specified in HTML Spec: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address.
@@ -73,13 +235,13 @@ type Users {
 }
 
 input User_where {
+  profileImage: User_profileImage_operator
   phone: User_phone_operator
   firstName: User_firstName_operator
   lastName: User_lastName_operator
   bio: User_bio_operator
   province: User_province_operator
   rating: User_rating_operator
-  url: User_url_operator
   roles: User_roles_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
@@ -87,6 +249,12 @@ input User_where {
   id: User_id_operator
   AND: [User_where_and]
   OR: [User_where_or]
+}
+
+input User_profileImage_operator {
+  equals: String
+  not_equals: String
+  exists: Boolean
 }
 
 input User_phone_operator {
@@ -150,17 +318,6 @@ input User_rating_operator {
   exists: Boolean
 }
 
-input User_url_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
 input User_roles_operator {
   equals: User_roles_Input
   not_equals: User_roles_Input
@@ -217,13 +374,13 @@ input User_id_operator {
 }
 
 input User_where_and {
+  profileImage: User_profileImage_operator
   phone: User_phone_operator
   firstName: User_firstName_operator
   lastName: User_lastName_operator
   bio: User_bio_operator
   province: User_province_operator
   rating: User_rating_operator
-  url: User_url_operator
   roles: User_roles_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
@@ -232,13 +389,13 @@ input User_where_and {
 }
 
 input User_where_or {
+  profileImage: User_profileImage_operator
   phone: User_phone_operator
   firstName: User_firstName_operator
   lastName: User_lastName_operator
   bio: User_bio_operator
   province: User_province_operator
   rating: User_rating_operator
-  url: User_url_operator
   roles: User_roles_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
@@ -256,18 +413,41 @@ type usersDocAccess {
 }
 
 type UsersDocAccessFields {
+  profileImage: UsersDocAccessFields_profileImage
   phone: UsersDocAccessFields_phone
   firstName: UsersDocAccessFields_firstName
   lastName: UsersDocAccessFields_lastName
   bio: UsersDocAccessFields_bio
   province: UsersDocAccessFields_province
   rating: UsersDocAccessFields_rating
-  url: UsersDocAccessFields_url
   roles: UsersDocAccessFields_roles
   updatedAt: UsersDocAccessFields_updatedAt
   createdAt: UsersDocAccessFields_createdAt
   email: UsersDocAccessFields_email
   password: UsersDocAccessFields_password
+}
+
+type UsersDocAccessFields_profileImage {
+  create: UsersDocAccessFields_profileImage_Create
+  read: UsersDocAccessFields_profileImage_Read
+  update: UsersDocAccessFields_profileImage_Update
+  delete: UsersDocAccessFields_profileImage_Delete
+}
+
+type UsersDocAccessFields_profileImage_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_profileImage_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_profileImage_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_profileImage_Delete {
+  permission: Boolean!
 }
 
 type UsersDocAccessFields_phone {
@@ -405,29 +585,6 @@ type UsersDocAccessFields_rating_Update {
 }
 
 type UsersDocAccessFields_rating_Delete {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_url {
-  create: UsersDocAccessFields_url_Create
-  read: UsersDocAccessFields_url_Read
-  update: UsersDocAccessFields_url_Update
-  delete: UsersDocAccessFields_url_Delete
-}
-
-type UsersDocAccessFields_url_Create {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_url_Read {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_url_Update {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_url_Delete {
   permission: Boolean!
 }
 
@@ -2637,18 +2794,41 @@ type usersAccess {
 }
 
 type UsersFields {
+  profileImage: UsersFields_profileImage
   phone: UsersFields_phone
   firstName: UsersFields_firstName
   lastName: UsersFields_lastName
   bio: UsersFields_bio
   province: UsersFields_province
   rating: UsersFields_rating
-  url: UsersFields_url
   roles: UsersFields_roles
   updatedAt: UsersFields_updatedAt
   createdAt: UsersFields_createdAt
   email: UsersFields_email
   password: UsersFields_password
+}
+
+type UsersFields_profileImage {
+  create: UsersFields_profileImage_Create
+  read: UsersFields_profileImage_Read
+  update: UsersFields_profileImage_Update
+  delete: UsersFields_profileImage_Delete
+}
+
+type UsersFields_profileImage_Create {
+  permission: Boolean!
+}
+
+type UsersFields_profileImage_Read {
+  permission: Boolean!
+}
+
+type UsersFields_profileImage_Update {
+  permission: Boolean!
+}
+
+type UsersFields_profileImage_Delete {
+  permission: Boolean!
 }
 
 type UsersFields_phone {
@@ -2786,29 +2966,6 @@ type UsersFields_rating_Update {
 }
 
 type UsersFields_rating_Delete {
-  permission: Boolean!
-}
-
-type UsersFields_url {
-  create: UsersFields_url_Create
-  read: UsersFields_url_Read
-  update: UsersFields_url_Update
-  delete: UsersFields_url_Delete
-}
-
-type UsersFields_url_Create {
-  permission: Boolean!
-}
-
-type UsersFields_url_Read {
-  permission: Boolean!
-}
-
-type UsersFields_url_Update {
-  permission: Boolean!
-}
-
-type UsersFields_url_Delete {
   permission: Boolean!
 }
 
@@ -3949,13 +4106,13 @@ type Mutation {
 }
 
 input mutationUserInput {
+  profileImage: String
   phone: String!
   firstName: String
   lastName: String
   bio: String
   province: String
   rating: Float
-  url: String
   roles: [User_roles_MutationInput]!
   updatedAt: String
   createdAt: String
@@ -3975,13 +4132,13 @@ enum User_roles_MutationInput {
 }
 
 input mutationUserUpdateInput {
+  profileImage: String
   phone: String
   firstName: String
   lastName: String
   bio: String
   province: String
   rating: Float
-  url: String
   roles: [UserUpdate_roles_MutationInput]
   updatedAt: String
   createdAt: String

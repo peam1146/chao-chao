@@ -32,7 +32,7 @@ export const editProfileSchema = z.object({
   province: z.string().min(1, {
     message: 'Province is required.',
   }),
-  profileImg: z.string().url(),
+  profileImg: z.string().url().nullable(),
 })
 
 export default function ProfileEdit() {
@@ -51,7 +51,8 @@ export default function ProfileEdit() {
             bio: query.meUser?.user?.bio,
             lastName: query.meUser?.user?.lastName,
             province: query.meUser?.user?.province,
-            profileImg: query.meUser?.user?.url,
+            // profileImg: query.meUser?.user?.url,
+            profileImg: '',
           }
         })
         form.reset({
@@ -75,6 +76,7 @@ export default function ProfileEdit() {
         id: query.meUser?.user?.id!,
       }
     })
+    console.log(data)
     try {
       await resolve(async ({ mutation }) => {
         const user = mutation.updateUser({

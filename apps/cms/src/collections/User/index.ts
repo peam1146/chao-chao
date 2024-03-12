@@ -1,11 +1,10 @@
-import { S3UploadCollectionConfig } from 'payload-s3-upload'
 import { User } from 'payload/generated-types'
+import { CollectionConfig } from 'payload/types'
 
 import { checkRole, isAdmin } from '../../access/'
-import { API_URL, BUCKET_NAME } from '../../common/env'
 import { ensureFirstUserIsAdmin } from './hooks/ensureFirstUserIsAdmin'
 
-export const Users: S3UploadCollectionConfig = {
+export const Users: CollectionConfig = {
   slug: 'users',
   auth: true,
   admin: {
@@ -19,19 +18,19 @@ export const Users: S3UploadCollectionConfig = {
     create: () => true,
     read: () => true,
   },
-  // upload: {
-  //   staticURL: `${API_URL}/images`,
-  //   disableLocalStorage: true,
-  //   s3: {
-  //     bucket: BUCKET_NAME,
-  //     prefix: 'images/',
-  //     commandInput: {
-  //       ACL: 'public-read',
-  //     },
-  //   },
-  //   adminThumbnail: ({ doc }) => `${API_URL}/images/${doc.filename}`,
-  // },
+
   fields: [
+    {
+      type: 'upload',
+      name: 'profileImage',
+      relationTo: 'medias',
+      access: {
+        create: () => true,
+        read: () => true,
+        update: () => true,
+      },
+      required: false,
+    },
     {
       type: 'text',
       name: 'phone',
@@ -101,19 +100,6 @@ export const Users: S3UploadCollectionConfig = {
         en: 'province',
       },
       required: false,
-    },
-    {
-      name: 'url',
-      type: 'text',
-      access: {
-        create: () => false,
-      },
-      admin: {
-        disabled: true,
-      },
-      hooks: {
-        afterRead: [({ data: doc }) => (doc ? `${API_URL}/images/${doc.filename}` : null)],
-      },
     },
     {
       label: {
