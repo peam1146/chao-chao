@@ -206,7 +206,7 @@ export default function RegistCard() {
                       <XCircle
                         size={24}
                         weight="fill"
-                        className="absolute lg:right-1 md:right-2 right-12 top-1 text-primary"
+                        className="absolute lg:right-1 md:right-2 right-1 top-1 text-primary"
                         onClick={handleDeleteImage.bind(index)}
                       />
                       <Image

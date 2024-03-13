@@ -7,6 +7,7 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command'
+import Typography from '@/components/ui/typography'
 
 import { type Tag as TagType } from './tag-input'
 
@@ -34,7 +35,9 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       {children}
       {showbelow && (
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandEmpty>
+            <Typography>No results found.</Typography>
+          </CommandEmpty>
           <CommandGroup heading="Suggestions">
             {autocompleteOptions.map((option) => (
               <CommandItem key={option.id}>
