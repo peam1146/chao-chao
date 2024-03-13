@@ -29,7 +29,7 @@ export default function MyAssets() {
             My Assets
           </Typography>
         </div>
-        <Link href="/asset-regist">
+        <Link href="/asset/register">
           <Button className="gap-2">
             <Plus size={15} className="text-primary-foreground" />
             Add new asset

@@ -24,10 +24,10 @@ import { ListPlus, XCircle } from '@phosphor-icons/react'
 import Image, { StaticImageData } from 'next/image'
 import { z } from 'zod'
 
-import { PlateEditor } from './description'
-import { Tag, TagInput } from './tags/tag-input'
+import { Tag, TagInput } from '../../../../components/ui/tags/tag-input'
+import { PlateEditor } from './PlateEditor'
 
-export default function RegistCard() {
+export default function RegisterCard() {
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleButtonClick = () => {

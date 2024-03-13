@@ -7,7 +7,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 
-import RegistCard from './components/regist-card'
+import RegisterCard from './components/RegisterCard'
 
 export default async function AssetRegist() {
   return (
@@ -24,7 +24,7 @@ export default async function AssetRegist() {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <RegistCard />
+        <RegisterCard />
       </div>
     </main>
   )
