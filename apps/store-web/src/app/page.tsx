@@ -1,9 +1,9 @@
 import { redirect } from 'next/navigation'
 
 import { resolve } from '../../gqty'
-import Card from './components/card'
-import CategoryBlock from './components/category-block'
-import SmallCard from './components/small-card'
+import Card from './components/Card'
+import CategoryBlock from './components/CategoryBlock'
+import SmallCard from './components/SmallCard'
 
 export default async function Home() {
   const mockData = [

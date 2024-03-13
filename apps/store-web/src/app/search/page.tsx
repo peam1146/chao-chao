@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils'
 import { ArrowDown, ArrowUp, CaretUpDown, Funnel } from '@phosphor-icons/react'
 
 import { resolve, useQuery } from '../../../gqty'
-import SmallCard from '../components/small-card'
+import SmallCard from '../components/SmallCard'
 
 enum Filter {
   RELEVANCE = 'RELEVANCE',
