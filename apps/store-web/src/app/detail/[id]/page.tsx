@@ -1,5 +1,13 @@
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb'
+
 import { resolve } from '../../../../gqty'
-import Breadcrumb from './components/Breadcrumb'
 import Description from './components/Description'
 import Details from './components/Details'
 import Gallery from './components/Gallery'
@@ -26,7 +34,17 @@ const mockLessor = {
 export default async function DetailPage({ params }: { params: { id: string } }) {
   return (
     <div className="container flex flex-col gap-y-4 py-4 lg:py-12">
-      <Breadcrumb previousPages={['Home']} currentPage={mockData.name} />
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>{mockData.name}</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       <div className="flex flex-col lg:flex-row p-6 gap-10 bg-card rounded-2xl justify-items-center">
         <Gallery />
         <Description
