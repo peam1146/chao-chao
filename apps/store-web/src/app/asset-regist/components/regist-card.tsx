@@ -236,14 +236,3 @@ export default function RegistCard() {
     </div>
   )
 }
-
-// ;<div className="flex flex-row gap-2 self-center max-md:w-full">
-//   <Link href="/profile">
-//     <Button type="button" variant="secondary" className="min-w-[130px] max-lg:w-1/2">
-//       Cancel
-//     </Button>
-//   </Link>
-//   <Button type="submit" className="min-w-[130px] max-lg:w-1/2">
-//     Save
-//   </Button>
-// </div>

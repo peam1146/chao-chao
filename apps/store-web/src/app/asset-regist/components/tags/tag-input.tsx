@@ -4,7 +4,6 @@ import React from 'react'
 import { useEffect } from 'react'
 
 import { CommandInput } from '@/components/ui/command'
-import { type VariantProps } from 'class-variance-authority'
 
 import { Autocomplete } from './autocomplete'
 import { TagList } from './tag-list'

@@ -14,6 +14,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Typography from '@/components/ui/typography'
 import { Plus, Tray } from '@phosphor-icons/react'
+import Link from 'next/link'
 
 import AssetsCard from './assetsCard'
 import SearchMyAssets from './searchMyAssets'
@@ -28,10 +29,12 @@ export default function MyAssets() {
             My Assets
           </Typography>
         </div>
-        <Button className="gap-2">
-          <Plus size={15} className="text-primary-foreground" />
-          Add new asset
-        </Button>
+        <Link href="/asset-regist">
+          <Button className="gap-2">
+            <Plus size={15} className="text-primary-foreground" />
+            Add new asset
+          </Button>
+        </Link>
       </div>
       <SearchMyAssets />
       <div>
