@@ -593,6 +593,8 @@ type Item {
   period: Float
   periodType: Item_periodType
   rentingStatus: Item_rentingStatus
+  start: DateTime
+  end: DateTime
   tags: [Tag!]
   createdBy: User
   rating: Float
@@ -665,6 +667,8 @@ input Item_where {
   period: Item_period_operator
   periodType: Item_periodType_operator
   rentingStatus: Item_rentingStatus_operator
+  start: Item_start_operator
+  end: Item_end_operator
   tags: Item_tags_operator
   createdBy: Item_createdBy_operator
   rating: Item_rating_operator
@@ -768,6 +772,26 @@ enum Item_rentingStatus_Input {
   unavailable
 }
 
+input Item_start_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+}
+
+input Item_end_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+}
+
 input Item_tags_operator {
   equals: JSON
   not_equals: JSON
@@ -850,6 +874,8 @@ input Item_where_and {
   period: Item_period_operator
   periodType: Item_periodType_operator
   rentingStatus: Item_rentingStatus_operator
+  start: Item_start_operator
+  end: Item_end_operator
   tags: Item_tags_operator
   createdBy: Item_createdBy_operator
   rating: Item_rating_operator
@@ -868,6 +894,8 @@ input Item_where_or {
   period: Item_period_operator
   periodType: Item_periodType_operator
   rentingStatus: Item_rentingStatus_operator
+  start: Item_start_operator
+  end: Item_end_operator
   tags: Item_tags_operator
   createdBy: Item_createdBy_operator
   rating: Item_rating_operator
@@ -895,6 +923,8 @@ type ItemsDocAccessFields {
   period: ItemsDocAccessFields_period
   periodType: ItemsDocAccessFields_periodType
   rentingStatus: ItemsDocAccessFields_rentingStatus
+  start: ItemsDocAccessFields_start
+  end: ItemsDocAccessFields_end
   tags: ItemsDocAccessFields_tags
   createdBy: ItemsDocAccessFields_createdBy
   rating: ItemsDocAccessFields_rating
@@ -1087,6 +1117,52 @@ type ItemsDocAccessFields_rentingStatus_Delete {
   permission: Boolean!
 }
 
+type ItemsDocAccessFields_start {
+  create: ItemsDocAccessFields_start_Create
+  read: ItemsDocAccessFields_start_Read
+  update: ItemsDocAccessFields_start_Update
+  delete: ItemsDocAccessFields_start_Delete
+}
+
+type ItemsDocAccessFields_start_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_start_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_start_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_start_Delete {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_end {
+  create: ItemsDocAccessFields_end_Create
+  read: ItemsDocAccessFields_end_Read
+  update: ItemsDocAccessFields_end_Update
+  delete: ItemsDocAccessFields_end_Delete
+}
+
+type ItemsDocAccessFields_end_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_end_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_end_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_end_Delete {
+  permission: Boolean!
+}
+
 type ItemsDocAccessFields_tags {
   create: ItemsDocAccessFields_tags_Create
   read: ItemsDocAccessFields_tags_Read
@@ -1268,6 +1344,8 @@ type ItemVersion_Version {
   period: Float
   periodType: ItemVersion_Version_periodType
   rentingStatus: ItemVersion_Version_rentingStatus
+  start: DateTime
+  end: DateTime
   tags: [Tag!]
   createdBy: User
   rating: Float
@@ -1317,6 +1395,8 @@ input versionsItem_where {
   version__period: versionsItem_version__period_operator
   version__periodType: versionsItem_version__periodType_operator
   version__rentingStatus: versionsItem_version__rentingStatus_operator
+  version__start: versionsItem_version__start_operator
+  version__end: versionsItem_version__end_operator
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
   version__rating: versionsItem_version__rating_operator
@@ -1425,6 +1505,26 @@ input versionsItem_version__rentingStatus_operator {
 enum versionsItem_version__rentingStatus_Input {
   available
   unavailable
+}
+
+input versionsItem_version__start_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+}
+
+input versionsItem_version__end_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
 }
 
 input versionsItem_version__tags_operator {
@@ -1538,6 +1638,8 @@ input versionsItem_where_and {
   version__period: versionsItem_version__period_operator
   version__periodType: versionsItem_version__periodType_operator
   version__rentingStatus: versionsItem_version__rentingStatus_operator
+  version__start: versionsItem_version__start_operator
+  version__end: versionsItem_version__end_operator
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
   version__rating: versionsItem_version__rating_operator
@@ -1560,6 +1662,8 @@ input versionsItem_where_or {
   version__period: versionsItem_version__period_operator
   version__periodType: versionsItem_version__periodType_operator
   version__rentingStatus: versionsItem_version__rentingStatus_operator
+  version__start: versionsItem_version__start_operator
+  version__end: versionsItem_version__end_operator
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
   version__rating: versionsItem_version__rating_operator
@@ -2866,6 +2970,8 @@ type ItemsFields {
   period: ItemsFields_period
   periodType: ItemsFields_periodType
   rentingStatus: ItemsFields_rentingStatus
+  start: ItemsFields_start
+  end: ItemsFields_end
   tags: ItemsFields_tags
   createdBy: ItemsFields_createdBy
   rating: ItemsFields_rating
@@ -3055,6 +3161,52 @@ type ItemsFields_rentingStatus_Update {
 }
 
 type ItemsFields_rentingStatus_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_start {
+  create: ItemsFields_start_Create
+  read: ItemsFields_start_Read
+  update: ItemsFields_start_Update
+  delete: ItemsFields_start_Delete
+}
+
+type ItemsFields_start_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_start_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_start_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_start_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_end {
+  create: ItemsFields_end_Create
+  read: ItemsFields_end_Read
+  update: ItemsFields_end_Update
+  delete: ItemsFields_end_Delete
+}
+
+type ItemsFields_end_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_end_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_end_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_end_Delete {
   permission: Boolean!
 }
 
@@ -3885,6 +4037,8 @@ input mutationItemInput {
   period: Float
   periodType: Item_periodType_MutationInput
   rentingStatus: Item_rentingStatus_MutationInput
+  start: String!
+  end: String!
   tags: [Int]
   createdBy: Int
   rating: Float
@@ -3919,6 +4073,8 @@ input mutationItemUpdateInput {
   period: Float
   periodType: ItemUpdate_periodType_MutationInput
   rentingStatus: ItemUpdate_rentingStatus_MutationInput
+  start: String
+  end: String
   tags: [Int]
   createdBy: Int
   rating: Float

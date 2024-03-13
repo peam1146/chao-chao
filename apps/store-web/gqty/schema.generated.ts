@@ -121,6 +121,16 @@ export interface Item_description_operator {
   not_equals?: InputMaybe<Scalars['String']>
 }
 
+export interface Item_end_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
 export interface Item_id_operator {
   equals?: InputMaybe<Scalars['Int']>
   exists?: InputMaybe<Scalars['Boolean']>
@@ -233,6 +243,16 @@ export interface Item_rentingStatus_operator {
   not_in?: InputMaybe<Array<InputMaybe<Item_rentingStatus_Input>>>
 }
 
+export interface Item_start_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
 export interface Item_tags_operator {
   all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   equals?: InputMaybe<Scalars['JSON']>
@@ -261,6 +281,7 @@ export interface Item_where {
   createdAt?: InputMaybe<Item_createdAt_operator>
   createdBy?: InputMaybe<Item_createdBy_operator>
   description?: InputMaybe<Item_description_operator>
+  end?: InputMaybe<Item_end_operator>
   id?: InputMaybe<Item_id_operator>
   image?: InputMaybe<Item_image_operator>
   name?: InputMaybe<Item_name_operator>
@@ -269,6 +290,7 @@ export interface Item_where {
   price?: InputMaybe<Item_price_operator>
   rating?: InputMaybe<Item_rating_operator>
   rentingStatus?: InputMaybe<Item_rentingStatus_operator>
+  start?: InputMaybe<Item_start_operator>
   tags?: InputMaybe<Item_tags_operator>
   updatedAt?: InputMaybe<Item_updatedAt_operator>
 }
@@ -279,6 +301,7 @@ export interface Item_where_and {
   createdAt?: InputMaybe<Item_createdAt_operator>
   createdBy?: InputMaybe<Item_createdBy_operator>
   description?: InputMaybe<Item_description_operator>
+  end?: InputMaybe<Item_end_operator>
   id?: InputMaybe<Item_id_operator>
   image?: InputMaybe<Item_image_operator>
   name?: InputMaybe<Item_name_operator>
@@ -287,6 +310,7 @@ export interface Item_where_and {
   price?: InputMaybe<Item_price_operator>
   rating?: InputMaybe<Item_rating_operator>
   rentingStatus?: InputMaybe<Item_rentingStatus_operator>
+  start?: InputMaybe<Item_start_operator>
   tags?: InputMaybe<Item_tags_operator>
   updatedAt?: InputMaybe<Item_updatedAt_operator>
 }
@@ -297,6 +321,7 @@ export interface Item_where_or {
   createdAt?: InputMaybe<Item_createdAt_operator>
   createdBy?: InputMaybe<Item_createdBy_operator>
   description?: InputMaybe<Item_description_operator>
+  end?: InputMaybe<Item_end_operator>
   id?: InputMaybe<Item_id_operator>
   image?: InputMaybe<Item_image_operator>
   name?: InputMaybe<Item_name_operator>
@@ -305,6 +330,7 @@ export interface Item_where_or {
   price?: InputMaybe<Item_price_operator>
   rating?: InputMaybe<Item_rating_operator>
   rentingStatus?: InputMaybe<Item_rentingStatus_operator>
+  start?: InputMaybe<Item_start_operator>
   tags?: InputMaybe<Item_tags_operator>
   updatedAt?: InputMaybe<Item_updatedAt_operator>
 }
@@ -857,6 +883,7 @@ export interface mutationItemInput {
   createdAt?: InputMaybe<Scalars['String']>
   createdBy?: InputMaybe<Scalars['Int']>
   description?: InputMaybe<Scalars['String']>
+  end: Scalars['String']
   image?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   name: Scalars['String']
   period?: InputMaybe<Scalars['Float']>
@@ -864,6 +891,7 @@ export interface mutationItemInput {
   price?: InputMaybe<Scalars['Float']>
   rating?: InputMaybe<Scalars['Float']>
   rentingStatus?: InputMaybe<Item_rentingStatus_MutationInput>
+  start: Scalars['String']
   tags?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   updatedAt?: InputMaybe<Scalars['String']>
 }
@@ -874,6 +902,7 @@ export interface mutationItemUpdateInput {
   createdAt?: InputMaybe<Scalars['String']>
   createdBy?: InputMaybe<Scalars['Int']>
   description?: InputMaybe<Scalars['String']>
+  end?: InputMaybe<Scalars['String']>
   image?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   name?: InputMaybe<Scalars['String']>
   period?: InputMaybe<Scalars['Float']>
@@ -881,6 +910,7 @@ export interface mutationItemUpdateInput {
   price?: InputMaybe<Scalars['Float']>
   rating?: InputMaybe<Scalars['Float']>
   rentingStatus?: InputMaybe<ItemUpdate_rentingStatus_MutationInput>
+  start?: InputMaybe<Scalars['String']>
   tags?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   updatedAt?: InputMaybe<Scalars['String']>
 }
@@ -1091,6 +1121,16 @@ export interface versionsItem_version__description_operator {
   not_equals?: InputMaybe<Scalars['String']>
 }
 
+export interface versionsItem_version__end_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
 export interface versionsItem_version__image_operator {
   all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   equals?: InputMaybe<Scalars['JSON']>
@@ -1169,6 +1209,16 @@ export interface versionsItem_version__rentingStatus_operator {
   not_in?: InputMaybe<Array<InputMaybe<versionsItem_version__rentingStatus_Input>>>
 }
 
+export interface versionsItem_version__start_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
 export interface versionsItem_version__tags_operator {
   all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   equals?: InputMaybe<Scalars['JSON']>
@@ -1202,6 +1252,7 @@ export interface versionsItem_where {
   version__createdAt?: InputMaybe<versionsItem_version__createdAt_operator>
   version__createdBy?: InputMaybe<versionsItem_version__createdBy_operator>
   version__description?: InputMaybe<versionsItem_version__description_operator>
+  version__end?: InputMaybe<versionsItem_version__end_operator>
   version__image?: InputMaybe<versionsItem_version__image_operator>
   version__name?: InputMaybe<versionsItem_version__name_operator>
   version__period?: InputMaybe<versionsItem_version__period_operator>
@@ -1209,6 +1260,7 @@ export interface versionsItem_where {
   version__price?: InputMaybe<versionsItem_version__price_operator>
   version__rating?: InputMaybe<versionsItem_version__rating_operator>
   version__rentingStatus?: InputMaybe<versionsItem_version__rentingStatus_operator>
+  version__start?: InputMaybe<versionsItem_version__start_operator>
   version__tags?: InputMaybe<versionsItem_version__tags_operator>
   version__updatedAt?: InputMaybe<versionsItem_version__updatedAt_operator>
 }
@@ -1224,6 +1276,7 @@ export interface versionsItem_where_and {
   version__createdAt?: InputMaybe<versionsItem_version__createdAt_operator>
   version__createdBy?: InputMaybe<versionsItem_version__createdBy_operator>
   version__description?: InputMaybe<versionsItem_version__description_operator>
+  version__end?: InputMaybe<versionsItem_version__end_operator>
   version__image?: InputMaybe<versionsItem_version__image_operator>
   version__name?: InputMaybe<versionsItem_version__name_operator>
   version__period?: InputMaybe<versionsItem_version__period_operator>
@@ -1231,6 +1284,7 @@ export interface versionsItem_where_and {
   version__price?: InputMaybe<versionsItem_version__price_operator>
   version__rating?: InputMaybe<versionsItem_version__rating_operator>
   version__rentingStatus?: InputMaybe<versionsItem_version__rentingStatus_operator>
+  version__start?: InputMaybe<versionsItem_version__start_operator>
   version__tags?: InputMaybe<versionsItem_version__tags_operator>
   version__updatedAt?: InputMaybe<versionsItem_version__updatedAt_operator>
 }
@@ -1246,6 +1300,7 @@ export interface versionsItem_where_or {
   version__createdAt?: InputMaybe<versionsItem_version__createdAt_operator>
   version__createdBy?: InputMaybe<versionsItem_version__createdBy_operator>
   version__description?: InputMaybe<versionsItem_version__description_operator>
+  version__end?: InputMaybe<versionsItem_version__end_operator>
   version__image?: InputMaybe<versionsItem_version__image_operator>
   version__name?: InputMaybe<versionsItem_version__name_operator>
   version__period?: InputMaybe<versionsItem_version__period_operator>
@@ -1253,6 +1308,7 @@ export interface versionsItem_where_or {
   version__price?: InputMaybe<versionsItem_version__price_operator>
   version__rating?: InputMaybe<versionsItem_version__rating_operator>
   version__rentingStatus?: InputMaybe<versionsItem_version__rentingStatus_operator>
+  version__start?: InputMaybe<versionsItem_version__start_operator>
   version__tags?: InputMaybe<versionsItem_version__tags_operator>
   version__updatedAt?: InputMaybe<versionsItem_version__updatedAt_operator>
 }
@@ -1311,6 +1367,7 @@ export const generatedSchema = {
     createdAt: { __type: 'DateTime' },
     createdBy: { __type: 'User' },
     description: { __type: 'String' },
+    end: { __type: 'DateTime' },
     id: { __type: 'Int' },
     image: { __type: '[Media!]' },
     name: { __type: 'String' },
@@ -1319,6 +1376,7 @@ export const generatedSchema = {
     price: { __type: 'Float' },
     rating: { __type: 'Float' },
     rentingStatus: { __type: 'Item_rentingStatus' },
+    start: { __type: 'DateTime' },
     tags: { __type: '[Tag!]' },
     updatedAt: { __type: 'DateTime' },
   },
@@ -1338,6 +1396,7 @@ export const generatedSchema = {
     createdAt: { __type: 'DateTime' },
     createdBy: { __type: 'User' },
     description: { __type: 'String' },
+    end: { __type: 'DateTime' },
     image: { __type: '[Media!]' },
     name: { __type: 'String' },
     period: { __type: 'Float' },
@@ -1345,6 +1404,7 @@ export const generatedSchema = {
     price: { __type: 'Float' },
     rating: { __type: 'Float' },
     rentingStatus: { __type: 'ItemVersion_Version_rentingStatus' },
+    start: { __type: 'DateTime' },
     tags: { __type: '[Tag!]' },
     updatedAt: { __type: 'DateTime' },
   },
@@ -1389,6 +1449,15 @@ export const generatedSchema = {
     exists: { __type: 'Boolean' },
     like: { __type: 'String' },
     not_equals: { __type: 'String' },
+  },
+  Item_end_operator: {
+    equals: { __type: 'DateTime' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
   },
   Item_id_operator: {
     equals: { __type: 'Int' },
@@ -1458,6 +1527,15 @@ export const generatedSchema = {
     not_equals: { __type: 'Item_rentingStatus_Input' },
     not_in: { __type: '[Item_rentingStatus_Input]' },
   },
+  Item_start_operator: {
+    equals: { __type: 'DateTime' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
   Item_tags_operator: {
     all: { __type: '[JSON]' },
     equals: { __type: 'JSON' },
@@ -1484,6 +1562,7 @@ export const generatedSchema = {
     createdAt: { __type: 'Item_createdAt_operator' },
     createdBy: { __type: 'Item_createdBy_operator' },
     description: { __type: 'Item_description_operator' },
+    end: { __type: 'Item_end_operator' },
     id: { __type: 'Item_id_operator' },
     image: { __type: 'Item_image_operator' },
     name: { __type: 'Item_name_operator' },
@@ -1492,6 +1571,7 @@ export const generatedSchema = {
     price: { __type: 'Item_price_operator' },
     rating: { __type: 'Item_rating_operator' },
     rentingStatus: { __type: 'Item_rentingStatus_operator' },
+    start: { __type: 'Item_start_operator' },
     tags: { __type: 'Item_tags_operator' },
     updatedAt: { __type: 'Item_updatedAt_operator' },
   },
@@ -1501,6 +1581,7 @@ export const generatedSchema = {
     createdAt: { __type: 'Item_createdAt_operator' },
     createdBy: { __type: 'Item_createdBy_operator' },
     description: { __type: 'Item_description_operator' },
+    end: { __type: 'Item_end_operator' },
     id: { __type: 'Item_id_operator' },
     image: { __type: 'Item_image_operator' },
     name: { __type: 'Item_name_operator' },
@@ -1509,6 +1590,7 @@ export const generatedSchema = {
     price: { __type: 'Item_price_operator' },
     rating: { __type: 'Item_rating_operator' },
     rentingStatus: { __type: 'Item_rentingStatus_operator' },
+    start: { __type: 'Item_start_operator' },
     tags: { __type: 'Item_tags_operator' },
     updatedAt: { __type: 'Item_updatedAt_operator' },
   },
@@ -1518,6 +1600,7 @@ export const generatedSchema = {
     createdAt: { __type: 'Item_createdAt_operator' },
     createdBy: { __type: 'Item_createdBy_operator' },
     description: { __type: 'Item_description_operator' },
+    end: { __type: 'Item_end_operator' },
     id: { __type: 'Item_id_operator' },
     image: { __type: 'Item_image_operator' },
     name: { __type: 'Item_name_operator' },
@@ -1526,6 +1609,7 @@ export const generatedSchema = {
     price: { __type: 'Item_price_operator' },
     rating: { __type: 'Item_rating_operator' },
     rentingStatus: { __type: 'Item_rentingStatus_operator' },
+    start: { __type: 'Item_start_operator' },
     tags: { __type: 'Item_tags_operator' },
     updatedAt: { __type: 'Item_updatedAt_operator' },
   },
@@ -1570,6 +1654,7 @@ export const generatedSchema = {
     createdAt: { __type: 'ItemsDocAccessFields_createdAt' },
     createdBy: { __type: 'ItemsDocAccessFields_createdBy' },
     description: { __type: 'ItemsDocAccessFields_description' },
+    end: { __type: 'ItemsDocAccessFields_end' },
     image: { __type: 'ItemsDocAccessFields_image' },
     name: { __type: 'ItemsDocAccessFields_name' },
     period: { __type: 'ItemsDocAccessFields_period' },
@@ -1577,6 +1662,7 @@ export const generatedSchema = {
     price: { __type: 'ItemsDocAccessFields_price' },
     rating: { __type: 'ItemsDocAccessFields_rating' },
     rentingStatus: { __type: 'ItemsDocAccessFields_rentingStatus' },
+    start: { __type: 'ItemsDocAccessFields_start' },
     tags: { __type: 'ItemsDocAccessFields_tags' },
     updatedAt: { __type: 'ItemsDocAccessFields_updatedAt' },
   },
@@ -1692,6 +1778,29 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   ItemsDocAccessFields_description_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_end: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsDocAccessFields_end_Create' },
+    delete: { __type: 'ItemsDocAccessFields_end_Delete' },
+    read: { __type: 'ItemsDocAccessFields_end_Read' },
+    update: { __type: 'ItemsDocAccessFields_end_Update' },
+  },
+  ItemsDocAccessFields_end_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_end_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_end_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_end_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -1856,6 +1965,29 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  ItemsDocAccessFields_start: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsDocAccessFields_start_Create' },
+    delete: { __type: 'ItemsDocAccessFields_start_Delete' },
+    read: { __type: 'ItemsDocAccessFields_start_Read' },
+    update: { __type: 'ItemsDocAccessFields_start_Update' },
+  },
+  ItemsDocAccessFields_start_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_start_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_start_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_start_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   ItemsDocAccessFields_tags: {
     __typename: { __type: 'String!' },
     create: { __type: 'ItemsDocAccessFields_tags_Create' },
@@ -1909,6 +2041,7 @@ export const generatedSchema = {
     createdAt: { __type: 'ItemsFields_createdAt' },
     createdBy: { __type: 'ItemsFields_createdBy' },
     description: { __type: 'ItemsFields_description' },
+    end: { __type: 'ItemsFields_end' },
     image: { __type: 'ItemsFields_image' },
     name: { __type: 'ItemsFields_name' },
     period: { __type: 'ItemsFields_period' },
@@ -1916,6 +2049,7 @@ export const generatedSchema = {
     price: { __type: 'ItemsFields_price' },
     rating: { __type: 'ItemsFields_rating' },
     rentingStatus: { __type: 'ItemsFields_rentingStatus' },
+    start: { __type: 'ItemsFields_start' },
     tags: { __type: 'ItemsFields_tags' },
     updatedAt: { __type: 'ItemsFields_updatedAt' },
   },
@@ -2034,6 +2168,17 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  ItemsFields_end: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsFields_end_Create' },
+    delete: { __type: 'ItemsFields_end_Delete' },
+    read: { __type: 'ItemsFields_end_Read' },
+    update: { __type: 'ItemsFields_end_Update' },
+  },
+  ItemsFields_end_Create: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
+  ItemsFields_end_Delete: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
+  ItemsFields_end_Read: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
+  ItemsFields_end_Update: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
   ItemsFields_image: {
     __typename: { __type: 'String!' },
     create: { __type: 'ItemsFields_image_Create' },
@@ -2183,6 +2328,26 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   ItemsFields_rentingStatus_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_start: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsFields_start_Create' },
+    delete: { __type: 'ItemsFields_start_Delete' },
+    read: { __type: 'ItemsFields_start_Read' },
+    update: { __type: 'ItemsFields_start_Update' },
+  },
+  ItemsFields_start_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_start_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_start_Read: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
+  ItemsFields_start_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -4568,6 +4733,7 @@ export const generatedSchema = {
     createdAt: { __type: 'String' },
     createdBy: { __type: 'Int' },
     description: { __type: 'String' },
+    end: { __type: 'String!' },
     image: { __type: '[Int]' },
     name: { __type: 'String!' },
     period: { __type: 'Float' },
@@ -4575,6 +4741,7 @@ export const generatedSchema = {
     price: { __type: 'Float' },
     rating: { __type: 'Float' },
     rentingStatus: { __type: 'Item_rentingStatus_MutationInput' },
+    start: { __type: 'String!' },
     tags: { __type: '[Int]' },
     updatedAt: { __type: 'String' },
   },
@@ -4584,6 +4751,7 @@ export const generatedSchema = {
     createdAt: { __type: 'String' },
     createdBy: { __type: 'Int' },
     description: { __type: 'String' },
+    end: { __type: 'String' },
     image: { __type: '[Int]' },
     name: { __type: 'String' },
     period: { __type: 'Float' },
@@ -4591,6 +4759,7 @@ export const generatedSchema = {
     price: { __type: 'Float' },
     rating: { __type: 'Float' },
     rentingStatus: { __type: 'ItemUpdate_rentingStatus_MutationInput' },
+    start: { __type: 'String' },
     tags: { __type: '[Int]' },
     updatedAt: { __type: 'String' },
   },
@@ -4900,6 +5069,15 @@ export const generatedSchema = {
     like: { __type: 'String' },
     not_equals: { __type: 'String' },
   },
+  versionsItem_version__end_operator: {
+    equals: { __type: 'DateTime' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
   versionsItem_version__image_operator: {
     all: { __type: '[JSON]' },
     equals: { __type: 'JSON' },
@@ -4959,6 +5137,15 @@ export const generatedSchema = {
     not_equals: { __type: 'versionsItem_version__rentingStatus_Input' },
     not_in: { __type: '[versionsItem_version__rentingStatus_Input]' },
   },
+  versionsItem_version__start_operator: {
+    equals: { __type: 'DateTime' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
   versionsItem_version__tags_operator: {
     all: { __type: '[JSON]' },
     equals: { __type: 'JSON' },
@@ -4990,6 +5177,7 @@ export const generatedSchema = {
     version__createdAt: { __type: 'versionsItem_version__createdAt_operator' },
     version__createdBy: { __type: 'versionsItem_version__createdBy_operator' },
     version__description: { __type: 'versionsItem_version__description_operator' },
+    version__end: { __type: 'versionsItem_version__end_operator' },
     version__image: { __type: 'versionsItem_version__image_operator' },
     version__name: { __type: 'versionsItem_version__name_operator' },
     version__period: { __type: 'versionsItem_version__period_operator' },
@@ -4997,6 +5185,7 @@ export const generatedSchema = {
     version__price: { __type: 'versionsItem_version__price_operator' },
     version__rating: { __type: 'versionsItem_version__rating_operator' },
     version__rentingStatus: { __type: 'versionsItem_version__rentingStatus_operator' },
+    version__start: { __type: 'versionsItem_version__start_operator' },
     version__tags: { __type: 'versionsItem_version__tags_operator' },
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
   },
@@ -5011,6 +5200,7 @@ export const generatedSchema = {
     version__createdAt: { __type: 'versionsItem_version__createdAt_operator' },
     version__createdBy: { __type: 'versionsItem_version__createdBy_operator' },
     version__description: { __type: 'versionsItem_version__description_operator' },
+    version__end: { __type: 'versionsItem_version__end_operator' },
     version__image: { __type: 'versionsItem_version__image_operator' },
     version__name: { __type: 'versionsItem_version__name_operator' },
     version__period: { __type: 'versionsItem_version__period_operator' },
@@ -5018,6 +5208,7 @@ export const generatedSchema = {
     version__price: { __type: 'versionsItem_version__price_operator' },
     version__rating: { __type: 'versionsItem_version__rating_operator' },
     version__rentingStatus: { __type: 'versionsItem_version__rentingStatus_operator' },
+    version__start: { __type: 'versionsItem_version__start_operator' },
     version__tags: { __type: 'versionsItem_version__tags_operator' },
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
   },
@@ -5032,6 +5223,7 @@ export const generatedSchema = {
     version__createdAt: { __type: 'versionsItem_version__createdAt_operator' },
     version__createdBy: { __type: 'versionsItem_version__createdBy_operator' },
     version__description: { __type: 'versionsItem_version__description_operator' },
+    version__end: { __type: 'versionsItem_version__end_operator' },
     version__image: { __type: 'versionsItem_version__image_operator' },
     version__name: { __type: 'versionsItem_version__name_operator' },
     version__period: { __type: 'versionsItem_version__period_operator' },
@@ -5039,6 +5231,7 @@ export const generatedSchema = {
     version__price: { __type: 'versionsItem_version__price_operator' },
     version__rating: { __type: 'versionsItem_version__rating_operator' },
     version__rentingStatus: { __type: 'versionsItem_version__rentingStatus_operator' },
+    version__start: { __type: 'versionsItem_version__start_operator' },
     version__tags: { __type: 'versionsItem_version__tags_operator' },
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
   },
@@ -5076,6 +5269,7 @@ export interface Item {
   createdAt?: Maybe<ScalarsEnums['DateTime']>
   createdBy?: Maybe<User>
   description?: Maybe<ScalarsEnums['String']>
+  end?: Maybe<ScalarsEnums['DateTime']>
   id?: Maybe<ScalarsEnums['Int']>
   image?: Maybe<Array<Media>>
   name?: Maybe<ScalarsEnums['String']>
@@ -5084,6 +5278,7 @@ export interface Item {
   price?: Maybe<ScalarsEnums['Float']>
   rating?: Maybe<ScalarsEnums['Float']>
   rentingStatus?: Maybe<ScalarsEnums['Item_rentingStatus']>
+  start?: Maybe<ScalarsEnums['DateTime']>
   tags?: Maybe<Array<Tag>>
   updatedAt?: Maybe<ScalarsEnums['DateTime']>
 }
@@ -5105,6 +5300,7 @@ export interface ItemVersion_Version {
   createdAt?: Maybe<ScalarsEnums['DateTime']>
   createdBy?: Maybe<User>
   description?: Maybe<ScalarsEnums['String']>
+  end?: Maybe<ScalarsEnums['DateTime']>
   image?: Maybe<Array<Media>>
   name?: Maybe<ScalarsEnums['String']>
   period?: Maybe<ScalarsEnums['Float']>
@@ -5112,6 +5308,7 @@ export interface ItemVersion_Version {
   price?: Maybe<ScalarsEnums['Float']>
   rating?: Maybe<ScalarsEnums['Float']>
   rentingStatus?: Maybe<ScalarsEnums['ItemVersion_Version_rentingStatus']>
+  start?: Maybe<ScalarsEnums['DateTime']>
   tags?: Maybe<Array<Tag>>
   updatedAt?: Maybe<ScalarsEnums['DateTime']>
 }
@@ -5162,6 +5359,7 @@ export interface ItemsDocAccessFields {
   createdAt?: Maybe<ItemsDocAccessFields_createdAt>
   createdBy?: Maybe<ItemsDocAccessFields_createdBy>
   description?: Maybe<ItemsDocAccessFields_description>
+  end?: Maybe<ItemsDocAccessFields_end>
   image?: Maybe<ItemsDocAccessFields_image>
   name?: Maybe<ItemsDocAccessFields_name>
   period?: Maybe<ItemsDocAccessFields_period>
@@ -5169,6 +5367,7 @@ export interface ItemsDocAccessFields {
   price?: Maybe<ItemsDocAccessFields_price>
   rating?: Maybe<ItemsDocAccessFields_rating>
   rentingStatus?: Maybe<ItemsDocAccessFields_rentingStatus>
+  start?: Maybe<ItemsDocAccessFields_start>
   tags?: Maybe<ItemsDocAccessFields_tags>
   updatedAt?: Maybe<ItemsDocAccessFields_updatedAt>
 }
@@ -5310,6 +5509,34 @@ export interface ItemsDocAccessFields_description_Read {
 
 export interface ItemsDocAccessFields_description_Update {
   __typename?: 'ItemsDocAccessFields_description_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_end {
+  __typename?: 'ItemsDocAccessFields_end'
+  create?: Maybe<ItemsDocAccessFields_end_Create>
+  delete?: Maybe<ItemsDocAccessFields_end_Delete>
+  read?: Maybe<ItemsDocAccessFields_end_Read>
+  update?: Maybe<ItemsDocAccessFields_end_Update>
+}
+
+export interface ItemsDocAccessFields_end_Create {
+  __typename?: 'ItemsDocAccessFields_end_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_end_Delete {
+  __typename?: 'ItemsDocAccessFields_end_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_end_Read {
+  __typename?: 'ItemsDocAccessFields_end_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_end_Update {
+  __typename?: 'ItemsDocAccessFields_end_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -5509,6 +5736,34 @@ export interface ItemsDocAccessFields_rentingStatus_Update {
   permission: ScalarsEnums['Boolean']
 }
 
+export interface ItemsDocAccessFields_start {
+  __typename?: 'ItemsDocAccessFields_start'
+  create?: Maybe<ItemsDocAccessFields_start_Create>
+  delete?: Maybe<ItemsDocAccessFields_start_Delete>
+  read?: Maybe<ItemsDocAccessFields_start_Read>
+  update?: Maybe<ItemsDocAccessFields_start_Update>
+}
+
+export interface ItemsDocAccessFields_start_Create {
+  __typename?: 'ItemsDocAccessFields_start_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_start_Delete {
+  __typename?: 'ItemsDocAccessFields_start_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_start_Read {
+  __typename?: 'ItemsDocAccessFields_start_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_start_Update {
+  __typename?: 'ItemsDocAccessFields_start_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
 export interface ItemsDocAccessFields_tags {
   __typename?: 'ItemsDocAccessFields_tags'
   create?: Maybe<ItemsDocAccessFields_tags_Create>
@@ -5572,6 +5827,7 @@ export interface ItemsFields {
   createdAt?: Maybe<ItemsFields_createdAt>
   createdBy?: Maybe<ItemsFields_createdBy>
   description?: Maybe<ItemsFields_description>
+  end?: Maybe<ItemsFields_end>
   image?: Maybe<ItemsFields_image>
   name?: Maybe<ItemsFields_name>
   period?: Maybe<ItemsFields_period>
@@ -5579,6 +5835,7 @@ export interface ItemsFields {
   price?: Maybe<ItemsFields_price>
   rating?: Maybe<ItemsFields_rating>
   rentingStatus?: Maybe<ItemsFields_rentingStatus>
+  start?: Maybe<ItemsFields_start>
   tags?: Maybe<ItemsFields_tags>
   updatedAt?: Maybe<ItemsFields_updatedAt>
 }
@@ -5720,6 +5977,34 @@ export interface ItemsFields_description_Read {
 
 export interface ItemsFields_description_Update {
   __typename?: 'ItemsFields_description_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_end {
+  __typename?: 'ItemsFields_end'
+  create?: Maybe<ItemsFields_end_Create>
+  delete?: Maybe<ItemsFields_end_Delete>
+  read?: Maybe<ItemsFields_end_Read>
+  update?: Maybe<ItemsFields_end_Update>
+}
+
+export interface ItemsFields_end_Create {
+  __typename?: 'ItemsFields_end_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_end_Delete {
+  __typename?: 'ItemsFields_end_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_end_Read {
+  __typename?: 'ItemsFields_end_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_end_Update {
+  __typename?: 'ItemsFields_end_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -5916,6 +6201,34 @@ export interface ItemsFields_rentingStatus_Read {
 
 export interface ItemsFields_rentingStatus_Update {
   __typename?: 'ItemsFields_rentingStatus_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_start {
+  __typename?: 'ItemsFields_start'
+  create?: Maybe<ItemsFields_start_Create>
+  delete?: Maybe<ItemsFields_start_Delete>
+  read?: Maybe<ItemsFields_start_Read>
+  update?: Maybe<ItemsFields_start_Update>
+}
+
+export interface ItemsFields_start_Create {
+  __typename?: 'ItemsFields_start_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_start_Delete {
+  __typename?: 'ItemsFields_start_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_start_Read {
+  __typename?: 'ItemsFields_start_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_start_Update {
+  __typename?: 'ItemsFields_start_Update'
   permission: ScalarsEnums['Boolean']
 }
 

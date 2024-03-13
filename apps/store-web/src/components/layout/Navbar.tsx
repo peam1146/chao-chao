@@ -1,12 +1,12 @@
 'use client'
 
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 
 import { cn } from '@/lib/utils'
 import { List, MagnifyingGlass } from '@phosphor-icons/react'
 import { SearchIcon } from 'lucide-react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 import { Maybe, useQuery } from '../../../gqty'
 import Typography from '../ui/typography'
@@ -15,35 +15,15 @@ import { ProfileToggle } from './components/profile-toggle'
 import { ModeToggle } from './components/theme-toggle'
 import { useDebounce } from './hooks/use-debounce'
 
+// import { SearchConfig, BeforeSync } from "@payloadcms/plugin-search/types";
+
 const SearchSuggestion = () => {
   const [search, setSearch] = useState('')
 
   const debounce = useDebounce((e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
-  }, 350)
+  }, 150)
 
-  return (
-    <div className="relative w-2/5">
-      <div
-        className={cn(
-          'flex h-10 w-full items-center rounded-md border border-input bg-background p-2 text-sm ring-offset-background',
-          search && 'rounded-b-none border-b-0'
-        )}
-      >
-        <SearchIcon className="h-4" />
-        <input onChange={debounce} placeholder="Search" className="w-full bg-transparent" />
-      </div>
-
-      {search && <SuggestionItems search={search} />}
-    </div>
-  )
-}
-
-type SuggestionItemsProps = {
-  search?: string
-}
-
-const SuggestionItems = (props: SuggestionItemsProps) => {
   const { Items } = useQuery()
 
   const items = Items({
@@ -51,21 +31,72 @@ const SuggestionItems = (props: SuggestionItemsProps) => {
     limit: 5,
     where: {
       name: {
-        contains: props.search,
+        contains: search,
       },
     },
   })!.docs
 
   if (!items) return null
 
+  const [showItems, setShowItems] = useState(false)
+  // To toggle the search items as result changes
+  useEffect(() => {
+    if (items.length > 0 && !showItems) setShowItems(true)
+
+    if (items.length <= 0) setShowItems(false)
+  }, [items])
+
+  const router = useRouter()
+
   return (
-    <div className="bg-background text-muted-foreground text-sm w-full absolute border rounded-md rounded-t-none">
-      {items.map((item) => (
-        <div className="flex p-2 items-center">
-          <SearchIcon className="h-4" />
-          <Typography className="w-full">{item!.name}</Typography>
+    <div className="relative w-2/5" tabIndex={1}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault()
+          setShowItems(false)
+          router.push(`/search?search=${search}`)
+        }}
+        className={cn(
+          'flex h-10 w-full items-center rounded-md border border-input bg-background p-2 text-sm ring-offset-background',
+          search && 'rounded-b-none border-b-0'
+        )}
+      >
+        <SearchIcon className="h-4" />
+        <input
+          type="text"
+          onChange={debounce}
+          placeholder="Search"
+          className="w-full bg-transparent"
+        />
+        <input type="submit" className="hidden" />
+      </form>
+      {search && showItems && (
+        <div className="bg-background text-muted-foreground text-sm w-full absolute border rounded-md rounded-t-none ">
+          {items.map((item) => (
+            <Link
+              href={{
+                pathname: '/search',
+                query: { search: `${item?.name}` },
+              }}
+              className="flex p-2 items-center transition-all ease-in-out duration-500 hover:bg-muted"
+              key={item?.id}
+              onClick={() => {
+                setShowItems(false)
+                setSearch('')
+              }}
+            >
+              {/* <img */}
+              {/*           src='' */}
+              {/* 	ref={item?.image} */}
+              {/* 	alt="image" */}
+              {/* 	className="w-8 h-8 rounded-md" */}
+              {/* /> */}
+              <SearchIcon className="h-4" />
+              <Typography className="w-full">{item?.name}</Typography>
+            </Link>
+          ))}
         </div>
-      ))}
+      )}
     </div>
   )
 }
