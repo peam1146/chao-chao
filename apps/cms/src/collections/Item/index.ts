@@ -97,6 +97,24 @@ export const Item: CollectionConfig = {
       ],
     },
     {
+      type: 'date',
+      name: 'start',
+      label: {
+        en: 'Start Date',
+        th: 'วันที่เริ่มให้เช่า',
+      },
+      required: true,
+    },
+    {
+      type: 'date',
+      name: 'end',
+      label: {
+        en: 'End Date',
+        th: 'วันที่สิ้นสุดให้เช่า',
+      },
+      required: true,
+    },
+    {
       type: 'relationship',
       name: 'tags',
       label: {

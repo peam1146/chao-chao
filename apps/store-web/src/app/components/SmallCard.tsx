@@ -12,10 +12,12 @@ export default function SmallCard({
   name,
   rating,
   price,
+  image,
 }: {
   name: string
   rating: number
   price: number
+  image?: string
 }) {
   return (
     <Link href="/detail/1">
@@ -26,7 +28,7 @@ export default function SmallCard({
             <Typography fontWeight="regular">Recommend</Typography>
           </Badge>
           <div className="flex lg:w-full lg:h-[300px] min-w-[142px] justify-center">
-            <Image src={sumsung} alt=" picture" width={0} height={0} />
+            <Image src={sumsung} alt="picture" width={0} height={0} />
           </div>
         </div>
         <div className="flex flex-col gap-1 lg:gap-4 w-fit items-start">
