@@ -17,7 +17,7 @@ export const Tag: React.FC<TagProps> = ({ tagObj, onTagClick, onRemoveTag }) => 
       className="border inline-flex items-center px-3 py-1 text-secondary rounded-full gap-1 border-muted-foreground "
       onClick={() => onTagClick?.(tagObj)}
     >
-      <Typography variant="h6" className="max-w-[400px] text-secondary line-clamp-1 break-words">
+      <Typography variant="h6" className="max-w-[160px] text-secondary line-clamp-1 break-words">
         {tagObj.text}
       </Typography>
       <Button

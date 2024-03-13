@@ -48,10 +48,7 @@ export type EditorProps = PlateContentProps & VariantProps<typeof editorVariants
 const Editor = React.forwardRef<HTMLDivElement, EditorProps>(
   ({ className, disabled, focused, focusRing, readOnly, size, variant, ...props }, ref) => {
     return (
-      <div
-        ref={ref}
-        className="flex md:max-w-md lg:max-w-[630px] xl:max-w-[850px] 2xl:max-w-[1015px]"
-      >
+      <div ref={ref} className="flex">
         <PlateContent
           className={cn(
             editorVariants({

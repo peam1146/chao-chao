@@ -21,7 +21,7 @@ import Typography from '@/components/ui/typography'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Plus } from '@phosphor-icons/react'
 import { ListPlus, XCircle } from '@phosphor-icons/react'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import { z } from 'zod'
 
 import { PlateEditor } from './description'
@@ -35,14 +35,12 @@ export default function RegistCard() {
       fileInputRef.current.click()
     }
   }
-
-  const ListforImage = [mockPic, mockPic, mockPic, mockPic]
-  const [listImg, setListImg] = React.useState(ListforImage)
+  const [listImg, setListImg] = React.useState<StaticImageData[]>([])
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0]
-      const newList = listImg.concat(mockPic)
+      const newList = [...listImg, mockPic]
       setListImg(newList)
     }
   }
@@ -64,7 +62,6 @@ export default function RegistCard() {
     { id: Math.random().toString(36), text: 'Travel' },
     { id: Math.random().toString(36), text: 'Tech' },
   ]
-
   const [tags, setTags] = React.useState<Tag[]>([])
   const [tagsDB, setTagsDB] = React.useState<Tag[]>(autoCompleteOptions)
   const [search, setSearch] = React.useState('')
@@ -102,7 +99,7 @@ export default function RegistCard() {
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className="flex flex-col w-full  max-w-[1100px] bg-card rounded-md p-6 dark:border-none light:border-primary border-solid border-2">
+          <div className="flex flex-col w-full bg-card rounded-md p-6 dark:border-none light:border-primary border-solid border-2">
             <div className="h-fit w-full flex flex-col gap-4 my-auto">
               <div className="flex w-full lg:flex-row flex-col gap-4 items-start">
                 <div className="flex flex-col w-full lg:w-1/2">
@@ -125,7 +122,7 @@ export default function RegistCard() {
                   />
                 </div>
                 <div className="flex flex-row items-end gap-[10px] w-full lg:w-1/2">
-                  <div className="flex flex-col  max-w-[428px] w-full">
+                  <div className="flex flex-col w-full">
                     <Typography variant="h5">Rental Fee</Typography>
                     <FormField
                       control={form.control}
@@ -155,7 +152,7 @@ export default function RegistCard() {
                 </div>
               </div>
 
-              <div className="flex flex-col md:max-w-md lg:max-w-[630px] xl:max-w-[850px] 2xl:max-w-[1015px]">
+              <div>
                 <Typography variant="h5">Category</Typography>
                 <FormField
                   control={form.control}
@@ -172,7 +169,7 @@ export default function RegistCard() {
                             tags={tags}
                             enableAutocomplete={true}
                             autocompleteOptions={tagsDB}
-                            className="w-[500px] truncate"
+                            className="w-full"
                             setTags={(newTags) => {
                               setTags(newTags)
                             }}
@@ -192,7 +189,7 @@ export default function RegistCard() {
               <div className="w-full ">
                 <Typography variant="h5">Image</Typography>
 
-                <div className="grid gap-2 2xl:grid-cols-8 xl:grid-cols-6 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2 ">
+                <div className="grid gap-2 2xl:grid-cols-9 xl:grid-cols-6 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2 ">
                   <div className="flex md:w-[120px] w-[80px] md:h-[120px] h-[80px] justify-center items-center rounded-[8px] border-primary border-dashed border-2">
                     <p onClick={handleButtonClick}>
                       <Plus className="w-4 h-4 text-primary" />
@@ -227,10 +224,10 @@ export default function RegistCard() {
             </div>
           </div>
           <div className="flex flex-row w-full gap-[10px] md:justify-center sm:justify-between pt-4">
-            <Button variant="secondary" className="w-[160px]">
+            <Button variant="secondary" className="min-w-[130px] max-lg:w-1/2">
               <Typography variant="h5">Cancel</Typography>
             </Button>
-            <Button type="submit" className="w-[160px]">
+            <Button type="submit" className="min-w-[130px] max-lg:w-1/2">
               <Typography variant="h5">Confirm</Typography>
             </Button>
           </div>
@@ -239,3 +236,14 @@ export default function RegistCard() {
     </div>
   )
 }
+
+// ;<div className="flex flex-row gap-2 self-center max-md:w-full">
+//   <Link href="/profile">
+//     <Button type="button" variant="secondary" className="min-w-[130px] max-lg:w-1/2">
+//       Cancel
+//     </Button>
+//   </Link>
+//   <Button type="submit" className="min-w-[130px] max-lg:w-1/2">
+//     Save
+//   </Button>
+// </div>
