@@ -6,6 +6,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
+import Link from 'next/link'
 
 import RegisterCard from './components/RegisterCard'
 
@@ -16,7 +17,9 @@ export default async function AssetRegist() {
         <Breadcrumb className="py-2">
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/myAssets">My Assets</BreadcrumbLink>
+              <Link href="/myAssets">
+                <BreadcrumbLink>My Assets</BreadcrumbLink>
+              </Link>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>

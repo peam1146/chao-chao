@@ -22,7 +22,7 @@ export function AssetCard(props: AssetCardProps) {
       <div className="flex flex-col w-full bg-card rounded-lg p-4 lg:gap-4 gap-2 hover:border-primary border ">
         <div className="relative mx-auto">
           {isPromoted && (
-            <Badge className="absolute font-normal" size="sm">
+            <Badge className="absolute font-normal -left-2" size="sm">
               <Lightning size={16} weight="fill" className="text-white font-" />
               Recommend
             </Badge>

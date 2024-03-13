@@ -1,4 +1,4 @@
-import Card from './components/Card'
+import Card from './components/PromoteCard'
 import CategoryBlock from './components/CategoryBlock'
 import SmallCard from './components/SmallCard'
 

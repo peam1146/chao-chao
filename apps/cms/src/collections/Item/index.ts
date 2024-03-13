@@ -142,9 +142,6 @@ export const Item: CollectionConfig = {
         en: 'Rating',
         th: 'คะแนน',
       },
-      admin: {
-        readOnly: true,
-      },
     },
   ],
 }

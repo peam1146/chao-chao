@@ -12,7 +12,7 @@ export default async function SignupPage() {
     redirect('/')
   }
   return (
-    <div className="container min-h-[calc(100vh-64px)] min-w-screen bg-background justify-items-center my-auto grid">
+    <div className="container min-w-screen bg-background items-center justify-items-center py-24 my-auto grid">
       <SignupForm />
     </div>
   )
