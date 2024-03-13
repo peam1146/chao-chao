@@ -37,8 +37,10 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <Toaster />
-          <Navbar id={id} />
-          {children}
+          <div className="min-h-screen max-w-screen flex flex-col bg-background">
+            <Navbar id={id} />
+            <div className="flex-1 relative w-full">{children}</div>
+          </div>
         </ThemeProvider>
       </body>
     </html>

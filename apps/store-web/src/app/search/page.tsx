@@ -1,7 +1,8 @@
 'use client'
 
-import { Suspense, useState } from 'react'
+import { ChangeEvent, Suspense, useState } from 'react'
 
+import { useDebounce } from '@/components/layout/hooks/use-debounce'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { DatePicker } from '@/components/ui/datepicker'
@@ -28,7 +29,7 @@ export default function SearchPage() {
   const searchParams = useSearchParams()
   const search = searchParams.get('search')
 
-  const { Items, Tags } = useQuery({ fetchPolicy: 'cache-and-network' })
+  const { Items, Tags } = useQuery({ fetchPolicy: 'cache-first' })
 
   const [showFilterModal, setShowFilterModal] = useState(false)
 
@@ -54,6 +55,14 @@ export default function SearchPage() {
       },
     },
   })
+
+  const maxPriceValue = useDebounce((e: ChangeEvent<HTMLInputElement>) => {
+    setMaxPrice(Number(e.target.value))
+  }, 250)
+
+  const minPriceValue = useDebounce((e: ChangeEvent<HTMLInputElement>) => {
+    setMinPrice(Number(e.target.value))
+  }, 250)
 
   const tags = Tags({
     draft: false,
@@ -99,17 +108,15 @@ export default function SearchPage() {
       <hr />
       <div className="flex justify-between space-x-1 items-center">
         <Input
-          type="number"
-          value={minPrice}
-          onChange={(e) => setMinPrice(Number(e.target.value))}
+          type="text"
+          onChange={minPriceValue}
           className="text-sm p-1 h-8"
           placeholder="0.00"
         />
         <p>-</p>
         <Input
-          type="number"
-          value={maxPrice}
-          onChange={(e) => setMaxPrice(Number(e.target.value))}
+          type="text"
+          onChange={maxPriceValue}
           className="text-sm p-1 h-8"
           placeholder="0.00"
         />
@@ -144,15 +151,18 @@ export default function SearchPage() {
             <div className="flex items-center gap-2 flex-1">
               <Typography variant="h6">Result of </Typography>
               <Typography variant="h4" fontWeight="bold">
-                {`${search}`}
+                "{`${search}`}"
               </Typography>
             </div>
           )}
-          <div className="border-b flex items-center justify-end gap-2">
+          <div className="border-b flex items-center gap-2 justify-end">
             <Button
               variant="ghost"
               onClick={() => setFilter('RELEVANCE')}
-              className={cn('px-0 text-light font-thin', filter === 'RELEVANCE' && 'text-white')}
+              className={cn(
+                'px-0 hover:bg-transparent text-light',
+                filter === 'RELEVANCE' && 'text-white'
+              )}
             >
               Relevance
             </Button>
@@ -162,7 +172,7 @@ export default function SearchPage() {
                 setFilter(filter === 'PRICE_LESS' ? 'PRICE_MORE' : 'PRICE_LESS')
               }}
               className={cn(
-                'px-0 font-thin text-light flex items-center',
+                'px-0 hover:bg-transparent text-light flex items-center',
                 (filter === 'PRICE_LESS' || filter === 'PRICE_MORE') && 'text-white'
               )}
             >
@@ -179,21 +189,27 @@ export default function SearchPage() {
             <Button
               variant="ghost"
               onClick={() => setFilter('LATEST')}
-              className={cn('px-0 text-light font-thin', filter === 'LATEST' && 'text-white')}
+              className={cn(
+                'px-0 hover:bg-transparent text-light',
+                filter === 'LATEST' && 'text-white'
+              )}
             >
               Latest
             </Button>
             <Button
               variant="ghost"
               onClick={() => setFilter('SCORE')}
-              className={cn('px-0 text-light font-thin', filter === 'SCORE' && 'text-white')}
+              className={cn(
+                'px-0 hover:bg-transparent text-light',
+                filter === 'SCORE' && 'text-white'
+              )}
             >
               Score
             </Button>
             <Button
               variant="ghost"
               onClick={() => setShowFilterModal(true)}
-              className={cn('px-0 text-light font-thin lg:hidden md:hidden')}
+              className={cn('px-0 hover:bg-transparent text-light lg:hidden md:hidden')}
             >
               <Funnel className="text-xl" />
             </Button>
@@ -211,7 +227,7 @@ export default function SearchPage() {
                       <SmallCard
                         key={item?.id}
                         name={item?.name ?? ''}
-                        image=""
+                        image={item?.image}
                         rating={item?.rating ?? 0}
                         price={item?.price ?? 0}
                       />

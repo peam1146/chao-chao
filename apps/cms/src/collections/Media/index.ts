@@ -1,7 +1,6 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
 import { S3UploadCollectionConfig } from 'payload-s3-upload'
 
-import { isAdminOrCreatedByUser } from '../../access'
 import { API_URL, BUCKET_NAME } from '../../common/env'
 
 export const Media: S3UploadCollectionConfig = {
@@ -19,7 +18,7 @@ export const Media: S3UploadCollectionConfig = {
     adminThumbnail: ({ doc }) => `${API_URL}/images/${doc.filename}`,
   },
   access: {
-    read: isAdminOrCreatedByUser,
+    read: () => true,
   },
   admin: {
     useAsTitle: 'name',

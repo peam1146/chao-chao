@@ -15,16 +15,16 @@ import { ProfileToggle } from './components/profile-toggle'
 import { ModeToggle } from './components/theme-toggle'
 import { useDebounce } from './hooks/use-debounce'
 
-// import { SearchConfig, BeforeSync } from "@payloadcms/plugin-search/types";
-
 const SearchSuggestion = () => {
   const [search, setSearch] = useState('')
 
   const debounce = useDebounce((e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
-  }, 150)
+  }, 250)
 
-  const { Items } = useQuery()
+  const { Items } = useQuery({
+    fetchPolicy: 'cache-and-network',
+  })
 
   const items = Items({
     draft: false,
@@ -53,8 +53,10 @@ const SearchSuggestion = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault()
+          const param = search
           setShowItems(false)
-          router.push(`/search?search=${search}`)
+          setSearch('')
+          router.push(`/search?search=${param}`)
         }}
         className={cn(
           'flex h-10 w-full items-center rounded-md border border-input bg-background p-2 text-sm ring-offset-background',
@@ -70,31 +72,26 @@ const SearchSuggestion = () => {
         />
         <input type="submit" className="hidden" />
       </form>
-      {search && showItems && (
+      {search && (
         <div className="bg-background text-muted-foreground text-sm w-full absolute border rounded-md rounded-t-none ">
-          {items.map((item) => (
-            <Link
-              href={{
-                pathname: '/search',
-                query: { search: `${item?.name}` },
-              }}
-              className="flex p-2 items-center transition-all ease-in-out duration-500 hover:bg-muted"
-              key={item?.id}
-              onClick={() => {
-                setShowItems(false)
-                setSearch('')
-              }}
-            >
-              {/* <img */}
-              {/*           src='' */}
-              {/* 	ref={item?.image} */}
-              {/* 	alt="image" */}
-              {/* 	className="w-8 h-8 rounded-md" */}
-              {/* /> */}
-              <SearchIcon className="h-4" />
-              <Typography className="w-full">{item?.name}</Typography>
-            </Link>
-          ))}
+          {showItems &&
+            items.map((item) => (
+              <Link
+                href={{
+                  pathname: '/search',
+                  query: { search: `${item?.name}` },
+                }}
+                className="flex p-2 items-center transition-all ease-in-out duration-500 hover:bg-muted"
+                key={item?.id}
+                onClick={() => {
+                  setShowItems(false)
+                  setSearch('')
+                }}
+              >
+                <SearchIcon className="h-4" />
+                <Typography className="w-full">{item?.name}</Typography>
+              </Link>
+            ))}
         </div>
       )}
     </div>
