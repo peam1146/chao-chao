@@ -59,7 +59,7 @@ export default function ProfileEdit() {
             bio: query.meUser?.user?.bio,
             lastName: query.meUser?.user?.lastName,
             province: query.meUser?.user?.province,
-            profileImg: query.meUser?.user?.profileImage()?.url,
+            profileImg: query.meUser?.user?.profileImage?.url,
           }
         })
         form.reset({
@@ -79,8 +79,6 @@ export default function ProfileEdit() {
 
   const router = useRouter()
 
-  // async function uploadImage(file: File) {}
-
   async function onSubmit(data: z.infer<typeof editProfileSchema>) {
     const { userId } = await resolve(({ query }) => {
       return {
@@ -88,39 +86,24 @@ export default function ProfileEdit() {
       }
     })
     try {
-      // if (fileInputRef.current?.files && fileInputRef.current?.files.length > 0) {
-      //   const data = new FormData()
-      //   const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
-      //   data.append('file', fileInputRef.current.files[0])
-      //   await fetch('http://localhost:3001/api/medias', {
-      //     method: 'POST',
-      //     body: data,
-      //     headers: {
-      //       Authorization: `JWT ${token['payload-token']}`,
-      //     },
-      //   })
-      //   // .then((response) => response.json())
-      //   // .then(async (result) => {
-      //   //   const imageId = result.doc.id
-      //   //   console.log(imageId)
-
-      //   //   await resolve(
-      //   //     ({ mutation }) => {
-      //   //       const image = mutation.updateUser({
-      //   //         data: { profileImage: imageId },
-      //   //         id: userId!,
-      //   //         autosave: true,
-      //   //         draft: false,
-      //   //       })
-      //   //       return image
-      //   //     },
-      //   //     {
-      //   //       cachePolicy: 'no-store',
-      //   //     }
-      //   //   )
-      //   // })
-      //   // .catch((error) => console.error(error))
-      // }
+      let imageId: number
+      if (fileInputRef.current?.files && fileInputRef.current?.files.length > 0) {
+        const data = new FormData()
+        const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
+        data.append('file', fileInputRef.current.files[0])
+        await fetch('http://localhost:3001/api/medias', {
+          method: 'POST',
+          body: data,
+          headers: {
+            Authorization: `JWT ${token['payload-token']}`,
+          },
+        })
+          .then((response) => response.json())
+          .then(async (result) => {
+            imageId = result.doc.id
+          })
+          .catch((error) => console.error(error))
+      }
 
       await resolve(
         async ({ mutation }) => {
@@ -130,7 +113,7 @@ export default function ProfileEdit() {
               firstName: data.firstName,
               lastName: data.lastName,
               province: data.province,
-              profileImage: '1',
+              profileImage: imageId,
             },
             id: userId,
             autosave: true,

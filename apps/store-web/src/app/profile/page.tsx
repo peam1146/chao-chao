@@ -31,7 +31,7 @@ export default function Profile() {
           firstName: query.meUser?.user?.firstName ?? '',
           lastName: query.meUser?.user?.lastName ?? '',
           bio: query.meUser?.user?.bio ?? '',
-          profileImg: query.meUser?.user?.profileImage()?.url ?? '',
+          profileImg: query.meUser?.user?.profileImage?.url ?? '',
         }
       })
 
