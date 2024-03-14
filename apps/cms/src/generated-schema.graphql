@@ -45,6 +45,7 @@ type User {
 
 type Media {
   id: Int
+  name: String
   alt: String
   createdBy: User!
   updatedAt: DateTime
@@ -63,6 +64,7 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 scalar DateTime
 
 input User_ProfileImage_where {
+  name: User_ProfileImage_name_operator
   alt: User_ProfileImage_alt_operator
   updatedAt: User_ProfileImage_updatedAt_operator
   createdAt: User_ProfileImage_createdAt_operator
@@ -75,6 +77,17 @@ input User_ProfileImage_where {
   id: User_ProfileImage_id_operator
   AND: [User_ProfileImage_where_and]
   OR: [User_ProfileImage_where_or]
+}
+
+input User_ProfileImage_name_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
 }
 
 input User_ProfileImage_alt_operator {
@@ -185,6 +198,7 @@ input User_ProfileImage_id_operator {
 }
 
 input User_ProfileImage_where_and {
+  name: User_ProfileImage_name_operator
   alt: User_ProfileImage_alt_operator
   updatedAt: User_ProfileImage_updatedAt_operator
   createdAt: User_ProfileImage_createdAt_operator
@@ -198,6 +212,7 @@ input User_ProfileImage_where_and {
 }
 
 input User_ProfileImage_where_or {
+  name: User_ProfileImage_name_operator
   alt: User_ProfileImage_alt_operator
   updatedAt: User_ProfileImage_updatedAt_operator
   createdAt: User_ProfileImage_createdAt_operator
@@ -758,21 +773,6 @@ type Item {
   updatedAt: DateTime
   createdAt: DateTime
   _status: Item__status
-}
-
-type Media {
-  id: Int
-  name: String
-  alt: String
-  createdBy: User!
-  updatedAt: DateTime
-  createdAt: DateTime
-  url: String
-  filename: String
-  mimeType: String
-  filesize: Float
-  width: Float
-  height: Float
 }
 
 enum Item_periodType {
