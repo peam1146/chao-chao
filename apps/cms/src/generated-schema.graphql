@@ -23,7 +23,7 @@ type Query {
 
 type User {
   id: Int
-  profileImage(where: User_ProfileImage_where): Media
+  profileImage: Media
   phone: String!
   firstName: String
   lastName: String
@@ -62,168 +62,6 @@ type Media {
 A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
 """
 scalar DateTime
-
-input User_ProfileImage_where {
-  name: User_ProfileImage_name_operator
-  alt: User_ProfileImage_alt_operator
-  updatedAt: User_ProfileImage_updatedAt_operator
-  createdAt: User_ProfileImage_createdAt_operator
-  url: User_ProfileImage_url_operator
-  filename: User_ProfileImage_filename_operator
-  mimeType: User_ProfileImage_mimeType_operator
-  filesize: User_ProfileImage_filesize_operator
-  width: User_ProfileImage_width_operator
-  height: User_ProfileImage_height_operator
-  id: User_ProfileImage_id_operator
-  AND: [User_ProfileImage_where_and]
-  OR: [User_ProfileImage_where_or]
-}
-
-input User_ProfileImage_name_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input User_ProfileImage_alt_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input User_ProfileImage_updatedAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input User_ProfileImage_createdAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input User_ProfileImage_url_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input User_ProfileImage_filename_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input User_ProfileImage_mimeType_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input User_ProfileImage_filesize_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input User_ProfileImage_width_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input User_ProfileImage_height_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input User_ProfileImage_id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input User_ProfileImage_where_and {
-  name: User_ProfileImage_name_operator
-  alt: User_ProfileImage_alt_operator
-  updatedAt: User_ProfileImage_updatedAt_operator
-  createdAt: User_ProfileImage_createdAt_operator
-  url: User_ProfileImage_url_operator
-  filename: User_ProfileImage_filename_operator
-  mimeType: User_ProfileImage_mimeType_operator
-  filesize: User_ProfileImage_filesize_operator
-  width: User_ProfileImage_width_operator
-  height: User_ProfileImage_height_operator
-  id: User_ProfileImage_id_operator
-}
-
-input User_ProfileImage_where_or {
-  name: User_ProfileImage_name_operator
-  alt: User_ProfileImage_alt_operator
-  updatedAt: User_ProfileImage_updatedAt_operator
-  createdAt: User_ProfileImage_createdAt_operator
-  url: User_ProfileImage_url_operator
-  filename: User_ProfileImage_filename_operator
-  mimeType: User_ProfileImage_mimeType_operator
-  filesize: User_ProfileImage_filesize_operator
-  width: User_ProfileImage_width_operator
-  height: User_ProfileImage_height_operator
-  id: User_ProfileImage_id_operator
-}
 
 enum User_roles {
   admin
@@ -267,10 +105,18 @@ input User_where {
 }
 
 input User_profileImage_operator {
-  equals: String
-  not_equals: String
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
 
 input User_phone_operator {
   equals: String
@@ -862,11 +708,6 @@ input Item_image_operator {
   not_in: [JSON]
   all: [JSON]
 }
-
-"""
-The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
-"""
-scalar JSON
 
 input Item_price_operator {
   equals: Float
@@ -4106,7 +3947,7 @@ type Mutation {
 }
 
 input mutationUserInput {
-  profileImage: String
+  profileImage: Int
   phone: String!
   firstName: String
   lastName: String
@@ -4132,7 +3973,7 @@ enum User_roles_MutationInput {
 }
 
 input mutationUserUpdateInput {
-  profileImage: String
+  profileImage: Int
   phone: String
   firstName: String
   lastName: String

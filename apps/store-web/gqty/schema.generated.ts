@@ -693,154 +693,6 @@ export enum UserUpdate_roles_MutationInput {
   admin = 'admin',
 }
 
-export interface User_ProfileImage_alt_operator {
-  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-  contains?: InputMaybe<Scalars['String']>
-  equals?: InputMaybe<Scalars['String']>
-  exists?: InputMaybe<Scalars['Boolean']>
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-  like?: InputMaybe<Scalars['String']>
-  not_equals?: InputMaybe<Scalars['String']>
-  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-export interface User_ProfileImage_createdAt_operator {
-  equals?: InputMaybe<Scalars['DateTime']>
-  exists?: InputMaybe<Scalars['Boolean']>
-  greater_than?: InputMaybe<Scalars['DateTime']>
-  greater_than_equal?: InputMaybe<Scalars['DateTime']>
-  less_than?: InputMaybe<Scalars['DateTime']>
-  less_than_equal?: InputMaybe<Scalars['DateTime']>
-  like?: InputMaybe<Scalars['DateTime']>
-  not_equals?: InputMaybe<Scalars['DateTime']>
-}
-
-export interface User_ProfileImage_filename_operator {
-  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-  contains?: InputMaybe<Scalars['String']>
-  equals?: InputMaybe<Scalars['String']>
-  exists?: InputMaybe<Scalars['Boolean']>
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-  like?: InputMaybe<Scalars['String']>
-  not_equals?: InputMaybe<Scalars['String']>
-  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-export interface User_ProfileImage_filesize_operator {
-  equals?: InputMaybe<Scalars['Float']>
-  exists?: InputMaybe<Scalars['Boolean']>
-  greater_than?: InputMaybe<Scalars['Float']>
-  greater_than_equal?: InputMaybe<Scalars['Float']>
-  less_than?: InputMaybe<Scalars['Float']>
-  less_than_equal?: InputMaybe<Scalars['Float']>
-  not_equals?: InputMaybe<Scalars['Float']>
-}
-
-export interface User_ProfileImage_height_operator {
-  equals?: InputMaybe<Scalars['Float']>
-  exists?: InputMaybe<Scalars['Boolean']>
-  greater_than?: InputMaybe<Scalars['Float']>
-  greater_than_equal?: InputMaybe<Scalars['Float']>
-  less_than?: InputMaybe<Scalars['Float']>
-  less_than_equal?: InputMaybe<Scalars['Float']>
-  not_equals?: InputMaybe<Scalars['Float']>
-}
-
-export interface User_ProfileImage_id_operator {
-  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-  contains?: InputMaybe<Scalars['String']>
-  equals?: InputMaybe<Scalars['String']>
-  exists?: InputMaybe<Scalars['Boolean']>
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-  like?: InputMaybe<Scalars['String']>
-  not_equals?: InputMaybe<Scalars['String']>
-  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-export interface User_ProfileImage_mimeType_operator {
-  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-  contains?: InputMaybe<Scalars['String']>
-  equals?: InputMaybe<Scalars['String']>
-  exists?: InputMaybe<Scalars['Boolean']>
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-  like?: InputMaybe<Scalars['String']>
-  not_equals?: InputMaybe<Scalars['String']>
-  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-export interface User_ProfileImage_updatedAt_operator {
-  equals?: InputMaybe<Scalars['DateTime']>
-  exists?: InputMaybe<Scalars['Boolean']>
-  greater_than?: InputMaybe<Scalars['DateTime']>
-  greater_than_equal?: InputMaybe<Scalars['DateTime']>
-  less_than?: InputMaybe<Scalars['DateTime']>
-  less_than_equal?: InputMaybe<Scalars['DateTime']>
-  like?: InputMaybe<Scalars['DateTime']>
-  not_equals?: InputMaybe<Scalars['DateTime']>
-}
-
-export interface User_ProfileImage_url_operator {
-  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-  contains?: InputMaybe<Scalars['String']>
-  equals?: InputMaybe<Scalars['String']>
-  exists?: InputMaybe<Scalars['Boolean']>
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-  like?: InputMaybe<Scalars['String']>
-  not_equals?: InputMaybe<Scalars['String']>
-  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-export interface User_ProfileImage_where {
-  AND?: InputMaybe<Array<InputMaybe<User_ProfileImage_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<User_ProfileImage_where_or>>>
-  alt?: InputMaybe<User_ProfileImage_alt_operator>
-  createdAt?: InputMaybe<User_ProfileImage_createdAt_operator>
-  filename?: InputMaybe<User_ProfileImage_filename_operator>
-  filesize?: InputMaybe<User_ProfileImage_filesize_operator>
-  height?: InputMaybe<User_ProfileImage_height_operator>
-  id?: InputMaybe<User_ProfileImage_id_operator>
-  mimeType?: InputMaybe<User_ProfileImage_mimeType_operator>
-  updatedAt?: InputMaybe<User_ProfileImage_updatedAt_operator>
-  url?: InputMaybe<User_ProfileImage_url_operator>
-  width?: InputMaybe<User_ProfileImage_width_operator>
-}
-
-export interface User_ProfileImage_where_and {
-  alt?: InputMaybe<User_ProfileImage_alt_operator>
-  createdAt?: InputMaybe<User_ProfileImage_createdAt_operator>
-  filename?: InputMaybe<User_ProfileImage_filename_operator>
-  filesize?: InputMaybe<User_ProfileImage_filesize_operator>
-  height?: InputMaybe<User_ProfileImage_height_operator>
-  id?: InputMaybe<User_ProfileImage_id_operator>
-  mimeType?: InputMaybe<User_ProfileImage_mimeType_operator>
-  updatedAt?: InputMaybe<User_ProfileImage_updatedAt_operator>
-  url?: InputMaybe<User_ProfileImage_url_operator>
-  width?: InputMaybe<User_ProfileImage_width_operator>
-}
-
-export interface User_ProfileImage_where_or {
-  alt?: InputMaybe<User_ProfileImage_alt_operator>
-  createdAt?: InputMaybe<User_ProfileImage_createdAt_operator>
-  filename?: InputMaybe<User_ProfileImage_filename_operator>
-  filesize?: InputMaybe<User_ProfileImage_filesize_operator>
-  height?: InputMaybe<User_ProfileImage_height_operator>
-  id?: InputMaybe<User_ProfileImage_id_operator>
-  mimeType?: InputMaybe<User_ProfileImage_mimeType_operator>
-  updatedAt?: InputMaybe<User_ProfileImage_updatedAt_operator>
-  url?: InputMaybe<User_ProfileImage_url_operator>
-  width?: InputMaybe<User_ProfileImage_width_operator>
-}
-
-export interface User_ProfileImage_width_operator {
-  equals?: InputMaybe<Scalars['Float']>
-  exists?: InputMaybe<Scalars['Boolean']>
-  greater_than?: InputMaybe<Scalars['Float']>
-  greater_than_equal?: InputMaybe<Scalars['Float']>
-  less_than?: InputMaybe<Scalars['Float']>
-  less_than_equal?: InputMaybe<Scalars['Float']>
-  not_equals?: InputMaybe<Scalars['Float']>
-}
-
 export interface User_bio_operator {
   contains?: InputMaybe<Scalars['String']>
   equals?: InputMaybe<Scalars['String']>
@@ -913,9 +765,12 @@ export interface User_phone_operator {
 }
 
 export interface User_profileImage_operator {
-  equals?: InputMaybe<Scalars['String']>
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
   exists?: InputMaybe<Scalars['Boolean']>
-  not_equals?: InputMaybe<Scalars['String']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
 }
 
 export interface User_province_operator {
@@ -1129,7 +984,7 @@ export interface mutationUserInput {
   loginAttempts?: InputMaybe<Scalars['Float']>
   password: Scalars['String']
   phone: Scalars['String']
-  profileImage?: InputMaybe<Scalars['String']>
+  profileImage?: InputMaybe<Scalars['Int']>
   province?: InputMaybe<Scalars['String']>
   rating?: InputMaybe<Scalars['Float']>
   resetPasswordExpiration?: InputMaybe<Scalars['String']>
@@ -1150,7 +1005,7 @@ export interface mutationUserUpdateInput {
   loginAttempts?: InputMaybe<Scalars['Float']>
   password?: InputMaybe<Scalars['String']>
   phone?: InputMaybe<Scalars['String']>
-  profileImage?: InputMaybe<Scalars['String']>
+  profileImage?: InputMaybe<Scalars['Int']>
   province?: InputMaybe<Scalars['String']>
   rating?: InputMaybe<Scalars['Float']>
   resetPasswordExpiration?: InputMaybe<Scalars['String']>
@@ -3985,7 +3840,7 @@ export const generatedSchema = {
     loginAttempts: { __type: 'Float' },
     password: { __type: 'String!' },
     phone: { __type: 'String!' },
-    profileImage: { __type: 'Media', __args: { where: 'User_ProfileImage_where' } },
+    profileImage: { __type: 'Media' },
     province: { __type: 'String' },
     rating: { __type: 'Float' },
     resetPasswordExpiration: { __type: 'DateTime' },
@@ -3993,141 +3848,6 @@ export const generatedSchema = {
     roles: { __type: '[User_roles!]!' },
     salt: { __type: 'String' },
     updatedAt: { __type: 'DateTime' },
-  },
-  User_ProfileImage_alt_operator: {
-    all: { __type: '[String]' },
-    contains: { __type: 'String' },
-    equals: { __type: 'String' },
-    exists: { __type: 'Boolean' },
-    in: { __type: '[String]' },
-    like: { __type: 'String' },
-    not_equals: { __type: 'String' },
-    not_in: { __type: '[String]' },
-  },
-  User_ProfileImage_createdAt_operator: {
-    equals: { __type: 'DateTime' },
-    exists: { __type: 'Boolean' },
-    greater_than: { __type: 'DateTime' },
-    greater_than_equal: { __type: 'DateTime' },
-    less_than: { __type: 'DateTime' },
-    less_than_equal: { __type: 'DateTime' },
-    like: { __type: 'DateTime' },
-    not_equals: { __type: 'DateTime' },
-  },
-  User_ProfileImage_filename_operator: {
-    all: { __type: '[String]' },
-    contains: { __type: 'String' },
-    equals: { __type: 'String' },
-    exists: { __type: 'Boolean' },
-    in: { __type: '[String]' },
-    like: { __type: 'String' },
-    not_equals: { __type: 'String' },
-    not_in: { __type: '[String]' },
-  },
-  User_ProfileImage_filesize_operator: {
-    equals: { __type: 'Float' },
-    exists: { __type: 'Boolean' },
-    greater_than: { __type: 'Float' },
-    greater_than_equal: { __type: 'Float' },
-    less_than: { __type: 'Float' },
-    less_than_equal: { __type: 'Float' },
-    not_equals: { __type: 'Float' },
-  },
-  User_ProfileImage_height_operator: {
-    equals: { __type: 'Float' },
-    exists: { __type: 'Boolean' },
-    greater_than: { __type: 'Float' },
-    greater_than_equal: { __type: 'Float' },
-    less_than: { __type: 'Float' },
-    less_than_equal: { __type: 'Float' },
-    not_equals: { __type: 'Float' },
-  },
-  User_ProfileImage_id_operator: {
-    all: { __type: '[String]' },
-    contains: { __type: 'String' },
-    equals: { __type: 'String' },
-    exists: { __type: 'Boolean' },
-    in: { __type: '[String]' },
-    like: { __type: 'String' },
-    not_equals: { __type: 'String' },
-    not_in: { __type: '[String]' },
-  },
-  User_ProfileImage_mimeType_operator: {
-    all: { __type: '[String]' },
-    contains: { __type: 'String' },
-    equals: { __type: 'String' },
-    exists: { __type: 'Boolean' },
-    in: { __type: '[String]' },
-    like: { __type: 'String' },
-    not_equals: { __type: 'String' },
-    not_in: { __type: '[String]' },
-  },
-  User_ProfileImage_updatedAt_operator: {
-    equals: { __type: 'DateTime' },
-    exists: { __type: 'Boolean' },
-    greater_than: { __type: 'DateTime' },
-    greater_than_equal: { __type: 'DateTime' },
-    less_than: { __type: 'DateTime' },
-    less_than_equal: { __type: 'DateTime' },
-    like: { __type: 'DateTime' },
-    not_equals: { __type: 'DateTime' },
-  },
-  User_ProfileImage_url_operator: {
-    all: { __type: '[String]' },
-    contains: { __type: 'String' },
-    equals: { __type: 'String' },
-    exists: { __type: 'Boolean' },
-    in: { __type: '[String]' },
-    like: { __type: 'String' },
-    not_equals: { __type: 'String' },
-    not_in: { __type: '[String]' },
-  },
-  User_ProfileImage_where: {
-    AND: { __type: '[User_ProfileImage_where_and]' },
-    OR: { __type: '[User_ProfileImage_where_or]' },
-    alt: { __type: 'User_ProfileImage_alt_operator' },
-    createdAt: { __type: 'User_ProfileImage_createdAt_operator' },
-    filename: { __type: 'User_ProfileImage_filename_operator' },
-    filesize: { __type: 'User_ProfileImage_filesize_operator' },
-    height: { __type: 'User_ProfileImage_height_operator' },
-    id: { __type: 'User_ProfileImage_id_operator' },
-    mimeType: { __type: 'User_ProfileImage_mimeType_operator' },
-    updatedAt: { __type: 'User_ProfileImage_updatedAt_operator' },
-    url: { __type: 'User_ProfileImage_url_operator' },
-    width: { __type: 'User_ProfileImage_width_operator' },
-  },
-  User_ProfileImage_where_and: {
-    alt: { __type: 'User_ProfileImage_alt_operator' },
-    createdAt: { __type: 'User_ProfileImage_createdAt_operator' },
-    filename: { __type: 'User_ProfileImage_filename_operator' },
-    filesize: { __type: 'User_ProfileImage_filesize_operator' },
-    height: { __type: 'User_ProfileImage_height_operator' },
-    id: { __type: 'User_ProfileImage_id_operator' },
-    mimeType: { __type: 'User_ProfileImage_mimeType_operator' },
-    updatedAt: { __type: 'User_ProfileImage_updatedAt_operator' },
-    url: { __type: 'User_ProfileImage_url_operator' },
-    width: { __type: 'User_ProfileImage_width_operator' },
-  },
-  User_ProfileImage_where_or: {
-    alt: { __type: 'User_ProfileImage_alt_operator' },
-    createdAt: { __type: 'User_ProfileImage_createdAt_operator' },
-    filename: { __type: 'User_ProfileImage_filename_operator' },
-    filesize: { __type: 'User_ProfileImage_filesize_operator' },
-    height: { __type: 'User_ProfileImage_height_operator' },
-    id: { __type: 'User_ProfileImage_id_operator' },
-    mimeType: { __type: 'User_ProfileImage_mimeType_operator' },
-    updatedAt: { __type: 'User_ProfileImage_updatedAt_operator' },
-    url: { __type: 'User_ProfileImage_url_operator' },
-    width: { __type: 'User_ProfileImage_width_operator' },
-  },
-  User_ProfileImage_width_operator: {
-    equals: { __type: 'Float' },
-    exists: { __type: 'Boolean' },
-    greater_than: { __type: 'Float' },
-    greater_than_equal: { __type: 'Float' },
-    less_than: { __type: 'Float' },
-    less_than_equal: { __type: 'Float' },
-    not_equals: { __type: 'Float' },
   },
   User_bio_operator: {
     contains: { __type: 'String' },
@@ -4194,9 +3914,12 @@ export const generatedSchema = {
     not_in: { __type: '[String]' },
   },
   User_profileImage_operator: {
-    equals: { __type: 'String' },
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
     exists: { __type: 'Boolean' },
-    not_equals: { __type: 'String' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
   },
   User_province_operator: {
     all: { __type: '[String]' },
@@ -5113,7 +4836,7 @@ export const generatedSchema = {
     loginAttempts: { __type: 'Float' },
     password: { __type: 'String!' },
     phone: { __type: 'String!' },
-    profileImage: { __type: 'String' },
+    profileImage: { __type: 'Int' },
     province: { __type: 'String' },
     rating: { __type: 'Float' },
     resetPasswordExpiration: { __type: 'String' },
@@ -5133,7 +4856,7 @@ export const generatedSchema = {
     loginAttempts: { __type: 'Float' },
     password: { __type: 'String' },
     phone: { __type: 'String' },
-    profileImage: { __type: 'String' },
+    profileImage: { __type: 'Int' },
     province: { __type: 'String' },
     rating: { __type: 'Float' },
     resetPasswordExpiration: { __type: 'String' },
@@ -7984,7 +7707,7 @@ export interface User {
   loginAttempts?: Maybe<ScalarsEnums['Float']>
   password: ScalarsEnums['String']
   phone: ScalarsEnums['String']
-  profileImage: (args?: { where?: Maybe<User_ProfileImage_where> }) => Maybe<Media>
+  profileImage?: Maybe<Media>
   province?: Maybe<ScalarsEnums['String']>
   rating?: Maybe<ScalarsEnums['Float']>
   resetPasswordExpiration?: Maybe<ScalarsEnums['DateTime']>

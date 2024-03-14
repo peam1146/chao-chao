@@ -21,7 +21,7 @@ export const Users: CollectionConfig = {
 
   fields: [
     {
-      type: 'upload',
+      type: 'relationship',
       name: 'profileImage',
       relationTo: 'medias',
       access: {
