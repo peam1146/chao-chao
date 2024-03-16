@@ -110,7 +110,7 @@ export default function RegisterCard() {
         }
       }
       for (let e in tags) {
-        if (tags[e].id === -1) {
+        if (tags[e].id === undefined) {
           const id = await resolve(
             async ({ mutation }) => {
               const newtag = mutation.createTag({
