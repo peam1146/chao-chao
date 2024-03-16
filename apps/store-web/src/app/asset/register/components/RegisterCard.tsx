@@ -6,7 +6,6 @@ import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import mockPic from '@/assets/images/mockPic2.png'
-import { TooltipProvider } from '@/components/plate-ui/tooltip'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
@@ -31,7 +30,6 @@ import { z } from 'zod'
 import { Item_periodType_MutationInput, useQuery } from '../../../../../gqty'
 import { resolve } from '../../../../../gqty'
 import { Tag, TagInput } from '../../../../components/ui/tags/tag-input'
-import { PlateEditor } from './PlateEditor'
 
 export const assetSchema = z.object({
   name: z
