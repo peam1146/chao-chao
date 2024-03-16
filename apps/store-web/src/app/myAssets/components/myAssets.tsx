@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 import TabContent from '@/app/detail/[id]/components/TabContent'
 import { Button } from '@/components/ui/button'
 import {
@@ -15,11 +17,33 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Typography from '@/components/ui/typography'
 import { Plus, Tray } from '@phosphor-icons/react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 
-import AssetsCard from './assetsCard'
-import SearchMyAssets from './searchMyAssets'
+import { useQuery } from '../../../../gqty'
+import AssetsCard from './AssetsCard'
+import SearchMyAssets from './SearchMyAssets'
 
 export default function MyAssets() {
+  const { Items } = useQuery({ fetchPolicy: 'cache-first' })
+
+  const searchParams = useSearchParams()
+  const search = searchParams.get('search')
+
+  const items = Items({
+    draft: false,
+    limit: 30,
+    where: {
+      name: {
+        contains: search,
+      },
+      createdBy: {
+        equals: 1,
+      },
+    },
+  })
+
+  console.log(items?.docs)
+
   return (
     <div className="flex flex-col w-full gap-y-4">
       <div className="flex justify-between">
@@ -52,19 +76,58 @@ export default function MyAssets() {
           </TabsList>
           <TabsContent value="all">
             <div className="grid grid-cols-2 2xl:grid-cols-5 lg:grid-cols-3 grid-s-3 gap-3">
-              <AssetsCard name="Assets" rating={5} price={20} />
-              <AssetsCard name="Assets" rating={5} price={20} />
-              <AssetsCard name="Assets" rating={5} price={20} />
-              <AssetsCard name="Assets" rating={5} price={20} />
-              <AssetsCard name="Assets" rating={5} price={20} />
-              <AssetsCard name="Assets" rating={5} price={20} />
+              {items?.docs
+                ?.filter((item) => item?.id !== undefined)
+                .map((item) => {
+                  return (
+                    <AssetsCard
+                      key={item?.id}
+                      name={item?.name ?? ''}
+                      image={item?.image}
+                      rating={item?.rating ?? 0}
+                      price={item?.price ?? 0}
+                      periodType={item?.periodType ?? 'days'}
+                    />
+                  )
+                })}
             </div>
           </TabsContent>
           <TabsContent value="beingRented">
-            <div className="grid"></div>
+            <div className="grid grid-cols-2 2xl:grid-cols-5 lg:grid-cols-3 grid-s-3 gap-3">
+              {items?.docs
+                ?.filter((item) => item?.id !== undefined && item.rentingStatus === 'unavailable')
+                .map((item) => {
+                  return (
+                    <AssetsCard
+                      key={item?.id}
+                      name={item?.name ?? ''}
+                      image={item?.image}
+                      rating={item?.rating ?? 0}
+                      price={item?.price ?? 0}
+                      periodType={item?.periodType ?? 'Days'}
+                    />
+                  )
+                })}
+            </div>
           </TabsContent>
-          <div className="grid"></div>
-          <TabsContent value="available"></TabsContent>
+          <TabsContent value="available">
+            <div className="grid grid-cols-2 2xl:grid-cols-5 lg:grid-cols-3 grid-s-3 gap-3">
+              {items?.docs
+                ?.filter((item) => item?.id !== undefined && item.rentingStatus === 'available')
+                .map((item) => {
+                  return (
+                    <AssetsCard
+                      key={item?.id}
+                      name={item?.name ?? ''}
+                      image={item?.image}
+                      rating={item?.rating ?? 0}
+                      price={item?.price ?? 0}
+                      periodType={item?.periodType ?? 'Days'}
+                    />
+                  )
+                })}
+            </div>
+          </TabsContent>
         </Tabs>
       </div>
 
