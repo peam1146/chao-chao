@@ -123,6 +123,7 @@ export interface Item_description_operator {
 
 export interface Item_end_operator {
   equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
   greater_than?: InputMaybe<Scalars['DateTime']>
   greater_than_equal?: InputMaybe<Scalars['DateTime']>
   less_than?: InputMaybe<Scalars['DateTime']>
@@ -245,6 +246,7 @@ export interface Item_rentingStatus_operator {
 
 export interface Item_start_operator {
   equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
   greater_than?: InputMaybe<Scalars['DateTime']>
   greater_than_equal?: InputMaybe<Scalars['DateTime']>
   less_than?: InputMaybe<Scalars['DateTime']>
@@ -881,7 +883,7 @@ export interface mutationItemInput {
   createdAt?: InputMaybe<Scalars['String']>
   createdBy?: InputMaybe<Scalars['Int']>
   description?: InputMaybe<Scalars['String']>
-  end: Scalars['String']
+  end?: InputMaybe<Scalars['String']>
   image?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   name: Scalars['String']
   period?: InputMaybe<Scalars['Float']>
@@ -889,7 +891,7 @@ export interface mutationItemInput {
   price?: InputMaybe<Scalars['Float']>
   rating?: InputMaybe<Scalars['Float']>
   rentingStatus?: InputMaybe<Item_rentingStatus_MutationInput>
-  start: Scalars['String']
+  start?: InputMaybe<Scalars['String']>
   tags?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   updatedAt?: InputMaybe<Scalars['String']>
 }
@@ -1121,6 +1123,7 @@ export interface versionsItem_version__description_operator {
 
 export interface versionsItem_version__end_operator {
   equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
   greater_than?: InputMaybe<Scalars['DateTime']>
   greater_than_equal?: InputMaybe<Scalars['DateTime']>
   less_than?: InputMaybe<Scalars['DateTime']>
@@ -1209,6 +1212,7 @@ export interface versionsItem_version__rentingStatus_operator {
 
 export interface versionsItem_version__start_operator {
   equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
   greater_than?: InputMaybe<Scalars['DateTime']>
   greater_than_equal?: InputMaybe<Scalars['DateTime']>
   less_than?: InputMaybe<Scalars['DateTime']>
@@ -1450,6 +1454,7 @@ export const generatedSchema = {
   },
   Item_end_operator: {
     equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
     greater_than: { __type: 'DateTime' },
     greater_than_equal: { __type: 'DateTime' },
     less_than: { __type: 'DateTime' },
@@ -1527,6 +1532,7 @@ export const generatedSchema = {
   },
   Item_start_operator: {
     equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
     greater_than: { __type: 'DateTime' },
     greater_than_equal: { __type: 'DateTime' },
     less_than: { __type: 'DateTime' },
@@ -4741,7 +4747,7 @@ export const generatedSchema = {
     createdAt: { __type: 'String' },
     createdBy: { __type: 'Int' },
     description: { __type: 'String' },
-    end: { __type: 'String!' },
+    end: { __type: 'String' },
     image: { __type: '[Int]' },
     name: { __type: 'String!' },
     period: { __type: 'Float' },
@@ -4749,7 +4755,7 @@ export const generatedSchema = {
     price: { __type: 'Float' },
     rating: { __type: 'Float' },
     rentingStatus: { __type: 'Item_rentingStatus_MutationInput' },
-    start: { __type: 'String!' },
+    start: { __type: 'String' },
     tags: { __type: '[Int]' },
     updatedAt: { __type: 'String' },
   },
@@ -5079,6 +5085,7 @@ export const generatedSchema = {
   },
   versionsItem_version__end_operator: {
     equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
     greater_than: { __type: 'DateTime' },
     greater_than_equal: { __type: 'DateTime' },
     less_than: { __type: 'DateTime' },
@@ -5147,6 +5154,7 @@ export const generatedSchema = {
   },
   versionsItem_version__start_operator: {
     equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
     greater_than: { __type: 'DateTime' },
     greater_than_equal: { __type: 'DateTime' },
     less_than: { __type: 'DateTime' },

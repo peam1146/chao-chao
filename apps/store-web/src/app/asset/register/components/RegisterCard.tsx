@@ -1,7 +1,8 @@
 'use client'
 
-import { ChangeEvent, useRef } from 'react'
+import { ChangeEvent } from 'react'
 import React from 'react'
+import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import mockPic from '@/assets/images/mockPic2.png'
@@ -17,17 +18,34 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Textarea } from '@/components/ui/textarea'
 import Typography from '@/components/ui/typography'
+import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Plus } from '@phosphor-icons/react'
 import { ListPlus, XCircle } from '@phosphor-icons/react'
 import Image, { StaticImageData } from 'next/image'
+import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 
+import { Item_periodType_MutationInput, useQuery } from '../../../../../gqty'
+import { resolve } from '../../../../../gqty'
 import { Tag, TagInput } from '../../../../components/ui/tags/tag-input'
 import { PlateEditor } from './PlateEditor'
 
+export const assetSchema = z.object({
+  name: z
+    .string({
+      required_error: 'Name is required.',
+    })
+    .min(1, {
+      message: 'Name is required.',
+    }),
+  fee: z.coerce.number().optional(),
+  description: z.string().optional(),
+})
 export default function RegisterCard() {
+  const [imageUrl, setImageUrl] = useState<File[]>([])
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleButtonClick = () => {
@@ -35,12 +53,15 @@ export default function RegisterCard() {
       fileInputRef.current.click()
     }
   }
-  const [listImg, setListImg] = React.useState<StaticImageData[]>([])
-
+  const [listImg, setListImg] = useState<string[]>([])
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0]
-      const newList = [...listImg, mockPic]
+      const newfile = [...imageUrl, file]
+      setImageUrl(newfile)
+      if (!file) return
+      const url = URL.createObjectURL(file)
+      const newList = [...listImg, url]
       setListImg(newList)
     }
   }
@@ -49,46 +70,102 @@ export default function RegisterCard() {
     newImages.splice(idx, 1)
     setListImg(newImages)
   }
-  const autoCompleteOptions: Tag[] = [
-    { id: Math.random().toString(36), text: 'Food' },
-    { id: Math.random().toString(36), text: 'Movies' },
-    { id: Math.random().toString(36), text: 'Art' },
-    { id: Math.random().toString(36), text: 'Books' },
-    { id: Math.random().toString(36), text: 'Music' },
-    { id: Math.random().toString(36), text: 'Fashion' },
-    { id: Math.random().toString(36), text: 'Health' },
-    { id: Math.random().toString(36), text: 'Lifestyle' },
-    { id: Math.random().toString(36), text: 'Sports' },
-    { id: Math.random().toString(36), text: 'Travel' },
-    { id: Math.random().toString(36), text: 'Tech' },
-  ]
-  const [tags, setTags] = React.useState<Tag[]>([])
-  const [tagsDB, setTagsDB] = React.useState<Tag[]>(autoCompleteOptions)
-  const [search, setSearch] = React.useState('')
-  const assetSchema = z.object({
-    name: z
-      .string({
-        required_error: 'Name is required.',
-      })
-      .min(1, {
-        message: 'Name is required.',
-      }),
-    fee: z.number(),
-    category: z.array(
-      z.object({
-        id: z.string(),
-        text: z.string(),
-      })
-    ),
-    description: z.string(),
-    profileImg: z.string().url(),
-  })
-  type AssetSchema = z.infer<typeof assetSchema>
-
-  const form = useForm<AssetSchema>({
+  const [tags, setTags] = useState<Tag[]>([])
+  const [search, setSearch] = useState('')
+  const form = useForm<z.infer<typeof assetSchema>>({
     resolver: zodResolver(assetSchema),
   })
-  function onSubmit(data: z.infer<typeof assetSchema>) {}
+  const router = useRouter()
+  const { toast } = useToast()
+  const { Tags } = useQuery({ fetchPolicy: 'cache-first' })
+  const tagsDB = Tags({
+    draft: false,
+  })?.docs?.map((tag) => {
+    return { id: tag?.id, text: tag?.name }
+  })
+  console.log('tagsUser', tags)
+  async function onSubmit(data: z.infer<typeof assetSchema>) {
+    console.log('submit data', data)
+    // }
+    try {
+      //`file[${i}]`
+      let imageIds: number[] = []
+      // console.log('myImage3', imageUrl)
+      for (let i = 0; i < imageUrl.length; i++) {
+        if (fileInputRef.current?.files && fileInputRef.current?.files.length > 0) {
+          const formData = new FormData()
+          const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
+          formData.append('file', imageUrl[i])
+          console.log('form data', formData)
+          const response = await fetch('http://localhost:3001/api/medias', {
+            method: 'POST',
+            body: formData,
+            headers: {
+              Authorization: `JWT ${token['payload-token']}`,
+            },
+          })
+            .then((response) => response.json())
+            .then(async (result) => {
+              imageIds.push(result.doc.id)
+              console.log('Image uploaded successfully. Image ID: at', result.doc.id)
+            })
+            .catch((error) => console.error(error))
+        }
+      }
+      console.log('imageIDs', imageIds)
+      console.log('mytags', tags)
+      for (let e in tags) {
+        if (tags[e].id === undefined) {
+          const id = await resolve(
+            async ({ mutation }) => {
+              const newtag = mutation.createTag({
+                data: {
+                  name: tags[e].text,
+                },
+              })
+              return newtag?.id
+            },
+            {
+              cachePolicy: 'no-store',
+            }
+          )
+          tags[e].id = id!
+        }
+        console.log('Tagsri', tags)
+        await resolve(
+          async ({ mutation }) => {
+            const register = mutation.createItem({
+              data: {
+                name: data.name,
+                price: data.fee ? data.fee : 0,
+                description: data.description ? data.description : '',
+                image: imageIds,
+                periodType: Item_periodType_MutationInput.days,
+                tags: tags.map(({ id }) => id),
+              },
+            })
+            return register
+          },
+          {
+            cachePolicy: 'no-store',
+          }
+        )
+        toast({
+          title: 'Success',
+          description: 'Your asset has been registered.',
+          success: true,
+        })
+        console.log('success')
+        router.push('/myAssets')
+      }
+    } catch (e) {
+      toast({
+        title: 'Not Success',
+        description: 'At least one image must be uploaded.',
+        error: true,
+      })
+    }
+  }
   return (
     <div className="flex flex-col w-full gap-4">
       <div className="flex flex-row gap-1">
@@ -102,7 +179,7 @@ export default function RegisterCard() {
           <div className="flex flex-col w-full bg-card rounded-md p-6 dark:border-none light:border-primary border-solid border-2">
             <div className="h-fit w-full flex flex-col gap-4 my-auto">
               <div className="flex w-full lg:flex-row flex-col gap-4 items-start">
-                <div className="flex flex-col w-full lg:w-1/2">
+                <div className="flex flex-col w-full lg:w-1/2 gap-1">
                   <Typography variant="h5">Name</Typography>
                   <FormField
                     control={form.control}
@@ -122,7 +199,7 @@ export default function RegisterCard() {
                   />
                 </div>
                 <div className="flex flex-row items-end gap-[10px] w-full lg:w-1/2">
-                  <div className="flex flex-col w-full">
+                  <div className="flex flex-col w-full gap-1">
                     <Typography variant="h5">Rental Fee</Typography>
                     <FormField
                       control={form.control}
@@ -130,8 +207,14 @@ export default function RegisterCard() {
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder="0.00" {...field} />
+                            <Input
+                              type="number"
+                              placeholder="0.00"
+                              error={!!form.formState.errors.fee}
+                              {...field}
+                            />
                           </FormControl>
+                          <FormMessage />
                         </FormItem>
                       )}
                     />
@@ -151,42 +234,50 @@ export default function RegisterCard() {
                   </div>
                 </div>
               </div>
-
-              <div>
+              <div className="flex flex-col w-full gap-1">
                 <Typography variant="h5">Category</Typography>
+                {/* <FormField
+              control={form.control}
+              name="category"
+              render={({ field }) => (
+                <FormItem className="flex flex-col items-start">
+                  <FormControl> */}
+                <div className="w-full ">
+                  <TagInput
+                    // {...field}
+                    id="category"
+                    placeholder="Enter new category"
+                    value={search}
+                    tags={tags}
+                    enableAutocomplete={true}
+                    autocompleteOptions={tagsDB}
+                    className="w-full"
+                    setTags={(newTags) => {
+                      setTags(newTags)
+                    }}
+                  />
+                </div>
+                {/* </FormControl>
+                </FormItem>
+              )}
+            /> */}
+              </div>
+              <div className="flex flex-col w-full gap-1">
+                <Typography variant="h5">Description</Typography>
                 <FormField
                   control={form.control}
-                  name="category"
+                  name="description"
                   render={({ field }) => (
-                    <FormItem className="flex flex-col items-start">
+                    <FormItem>
                       <FormControl>
-                        <div className="pt-1 w-full ">
-                          <TagInput
-                            {...field}
-                            id="category"
-                            placeholder="Enter new category"
-                            value={search}
-                            tags={tags}
-                            enableAutocomplete={true}
-                            autocompleteOptions={tagsDB}
-                            className="w-full"
-                            setTags={(newTags) => {
-                              setTags(newTags)
-                            }}
-                          />
-                        </div>
+                        <Textarea {...field} />
                       </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
               </div>
-              <div>
-                <Typography variant="h5">Description</Typography>
-                <TooltipProvider>
-                  <PlateEditor />
-                </TooltipProvider>
-              </div>
-              <div className="w-full ">
+              <div className="flex flex-col w-full gap-1">
                 <Typography variant="h5">Image</Typography>
 
                 <div className="grid gap-2 2xl:grid-cols-9 xl:grid-cols-6 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2 ">
@@ -207,7 +298,7 @@ export default function RegisterCard() {
                         size={24}
                         weight="fill"
                         className="absolute lg:right-1 md:right-2 right-1 top-1 text-primary"
-                        onClick={handleDeleteImage.bind(index)}
+                        onClick={() => handleDeleteImage(index)}
                       />
                       <Image
                         key={index}

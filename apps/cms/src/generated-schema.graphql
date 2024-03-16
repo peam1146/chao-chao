@@ -778,6 +778,7 @@ input Item_start_operator {
   less_than_equal: DateTime
   less_than: DateTime
   like: DateTime
+  exists: Boolean
 }
 
 input Item_end_operator {
@@ -788,6 +789,7 @@ input Item_end_operator {
   less_than_equal: DateTime
   less_than: DateTime
   like: DateTime
+  exists: Boolean
 }
 
 input Item_tags_operator {
@@ -1513,6 +1515,7 @@ input versionsItem_version__start_operator {
   less_than_equal: DateTime
   less_than: DateTime
   like: DateTime
+  exists: Boolean
 }
 
 input versionsItem_version__end_operator {
@@ -1523,6 +1526,7 @@ input versionsItem_version__end_operator {
   less_than_equal: DateTime
   less_than: DateTime
   like: DateTime
+  exists: Boolean
 }
 
 input versionsItem_version__tags_operator {
@@ -4035,8 +4039,8 @@ input mutationItemInput {
   period: Float
   periodType: Item_periodType_MutationInput
   rentingStatus: Item_rentingStatus_MutationInput
-  start: String!
-  end: String!
+  start: String
+  end: String
   tags: [Int]
   createdBy: Int
   rating: Float

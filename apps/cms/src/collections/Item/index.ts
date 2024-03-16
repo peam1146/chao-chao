@@ -103,7 +103,6 @@ export const Item: CollectionConfig = {
         en: 'Start Date',
         th: 'วันที่เริ่มให้เช่า',
       },
-      required: true,
     },
     {
       type: 'date',
@@ -112,7 +111,6 @@ export const Item: CollectionConfig = {
         en: 'End Date',
         th: 'วันที่สิ้นสุดให้เช่า',
       },
-      required: true,
     },
     {
       type: 'relationship',
