@@ -5,7 +5,6 @@ import React from 'react'
 import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import mockPic from '@/assets/images/mockPic2.png'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
@@ -23,7 +22,8 @@ import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Plus } from '@phosphor-icons/react'
 import { ListPlus, XCircle } from '@phosphor-icons/react'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 
@@ -39,6 +39,7 @@ export const assetSchema = z.object({
     .min(1, {
       message: 'Name is required.',
     }),
+  periodType: z.string().optional(),
   fee: z.coerce.number().optional(),
   description: z.string().optional(),
 })
@@ -63,13 +64,17 @@ export default function RegisterCard() {
       setListImg(newList)
     }
   }
+
   const handleDeleteImage = (idx: any) => {
     const newImages = [...listImg]
+    const newfile = [...imageUrl]
     newImages.splice(idx, 1)
+    newfile.splice(idx, 1)
     setListImg(newImages)
+    setImageUrl(newfile)
   }
+
   const [tags, setTags] = useState<Tag[]>([])
-  const [search, setSearch] = useState('')
   const form = useForm<z.infer<typeof assetSchema>>({
     resolver: zodResolver(assetSchema),
   })
@@ -78,23 +83,18 @@ export default function RegisterCard() {
   const { Tags } = useQuery({ fetchPolicy: 'cache-first' })
   const tagsDB = Tags({
     draft: false,
+    limit: 100,
   })?.docs?.map((tag) => {
-    return { id: tag?.id, text: tag?.name }
+    return { id: tag?.id!, text: tag?.name! }
   })
-  console.log('tagsUser', tags)
   async function onSubmit(data: z.infer<typeof assetSchema>) {
-    console.log('submit data', data)
-    // }
     try {
-      //`file[${i}]`
       let imageIds: number[] = []
-      // console.log('myImage3', imageUrl)
       for (let i = 0; i < imageUrl.length; i++) {
         if (fileInputRef.current?.files && fileInputRef.current?.files.length > 0) {
           const formData = new FormData()
           const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
           formData.append('file', imageUrl[i])
-          console.log('form data', formData)
           const response = await fetch('http://localhost:3001/api/medias', {
             method: 'POST',
             body: formData,
@@ -105,15 +105,12 @@ export default function RegisterCard() {
             .then((response) => response.json())
             .then(async (result) => {
               imageIds.push(result.doc.id)
-              console.log('Image uploaded successfully. Image ID: at', result.doc.id)
             })
             .catch((error) => console.error(error))
         }
       }
-      console.log('imageIDs', imageIds)
-      console.log('mytags', tags)
       for (let e in tags) {
-        if (tags[e].id === undefined) {
+        if (tags[e].id === -1) {
           const id = await resolve(
             async ({ mutation }) => {
               const newtag = mutation.createTag({
@@ -129,33 +126,35 @@ export default function RegisterCard() {
           )
           tags[e].id = id!
         }
-        console.log('Tagsri', tags)
-        await resolve(
-          async ({ mutation }) => {
-            const register = mutation.createItem({
-              data: {
-                name: data.name,
-                price: data.fee ? data.fee : 0,
-                description: data.description ? data.description : '',
-                image: imageIds,
-                periodType: Item_periodType_MutationInput.days,
-                tags: tags.map(({ id }) => id),
-              },
-            })
-            return register
-          },
-          {
-            cachePolicy: 'no-store',
-          }
-        )
-        toast({
-          title: 'Success',
-          description: 'Your asset has been registered.',
-          success: true,
-        })
-        console.log('success')
-        router.push('/myAssets')
       }
+      let item_type = Item_periodType_MutationInput.days
+      if (data.periodType == 'month') {
+        item_type = Item_periodType_MutationInput.months
+      }
+      await resolve(
+        async ({ mutation }) => {
+          const register = mutation.createItem({
+            data: {
+              name: data.name,
+              price: data.fee ? data.fee : 0,
+              description: data.description ? data.description : '',
+              image: imageIds,
+              periodType: item_type,
+              tags: tags.map(({ id }) => id),
+            },
+          })
+          return register
+        },
+        {
+          cachePolicy: 'no-store',
+        }
+      )
+      toast({
+        title: 'Success',
+        description: 'Your asset has been registered.',
+        success: true,
+      })
+      router.push('/myAssets')
     } catch (e) {
       toast({
         title: 'Not Success',
@@ -205,12 +204,7 @@ export default function RegisterCard() {
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input
-                              type="number"
-                              placeholder="0.00"
-                              error={!!form.formState.errors.fee}
-                              {...field}
-                            />
+                            <Input placeholder="0.00" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -218,34 +212,33 @@ export default function RegisterCard() {
                     />
                   </div>
                   <div className="relative">
-                    <Select>
-                      <SelectTrigger className="w-[106px]">
-                        <SelectValue placeholder="฿ /day" />
-                      </SelectTrigger>
-                      <SelectContent className="absolute">
-                        <SelectGroup>
-                          <SelectItem value="฿/day"> ฿ /day</SelectItem>
-                          <SelectItem value="฿/month"> ฿ /month</SelectItem>
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
+                    <FormField
+                      control={form.control}
+                      name="periodType"
+                      render={({ field }) => (
+                        <Select onValueChange={field.onChange}>
+                          <SelectTrigger className="w-[106px]">
+                            <SelectValue placeholder="฿ /day" />
+                          </SelectTrigger>
+                          <SelectContent className="absolute">
+                            <SelectGroup>
+                              <SelectItem value="day"> ฿ /day</SelectItem>
+                              <SelectItem value="month"> ฿ /month</SelectItem>
+                            </SelectGroup>
+                          </SelectContent>
+                        </Select>
+                      )}
+                    />
                   </div>
                 </div>
               </div>
               <div className="flex flex-col w-full gap-1">
                 <Typography variant="h5">Category</Typography>
-                {/* <FormField
-              control={form.control}
-              name="category"
-              render={({ field }) => (
-                <FormItem className="flex flex-col items-start">
-                  <FormControl> */}
                 <div className="w-full ">
                   <TagInput
-                    // {...field}
                     id="category"
                     placeholder="Enter new category"
-                    value={search}
+                    value={''}
                     tags={tags}
                     enableAutocomplete={true}
                     autocompleteOptions={tagsDB}
@@ -255,10 +248,6 @@ export default function RegisterCard() {
                     }}
                   />
                 </div>
-                {/* </FormControl>
-                </FormItem>
-              )}
-            /> */}
               </div>
               <div className="flex flex-col w-full gap-1">
                 <Typography variant="h5">Description</Typography>
@@ -313,9 +302,11 @@ export default function RegisterCard() {
             </div>
           </div>
           <div className="flex flex-row w-full gap-[10px] md:justify-center sm:justify-between pt-4">
-            <Button variant="secondary" className="min-w-[130px] max-lg:w-1/2">
-              <Typography variant="h5">Cancel</Typography>
-            </Button>
+            <Link href="/myAssets" className="max-lg:w-1/2">
+              <Button variant="secondary" className="min-w-[130px] max-lg:w-1/2">
+                <Typography variant="h5">Cancel</Typography>
+              </Button>
+            </Link>
             <Button type="submit" className="min-w-[130px] max-lg:w-1/2">
               <Typography variant="h5">Confirm</Typography>
             </Button>

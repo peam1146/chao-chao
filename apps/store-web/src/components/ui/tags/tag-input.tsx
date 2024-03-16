@@ -93,7 +93,7 @@ const TagInput = React.forwardRef<HTMLInputElement, TagInputProps>((props, ref) 
     ) {
       e.preventDefault()
       const newTagText = inputValue.trim()
-      const newTagId = undefined
+      const newTagId = -1
       if (newTagText && (allowDuplicates || !tags.some((tag) => tag.text === newTagText))) {
         setTags([...tags, { id: newTagId, text: newTagText }])
         onTagAdd?.(newTagText)
@@ -102,7 +102,7 @@ const TagInput = React.forwardRef<HTMLInputElement, TagInputProps>((props, ref) 
     }
   }
 
-  const removeTag = (idToRemove: string) => {
+  const removeTag = (idToRemove: number) => {
     setTags(tags.filter((tag) => tag.id !== idToRemove))
     onTagRemove?.(tags.find((tag) => tag.id === idToRemove)?.text || '')
   }

@@ -7,7 +7,7 @@ import { TagInputProps, type Tag as TagType } from './tag-input'
 
 export type TagProps = {
   tagObj: TagType
-  onRemoveTag: (id: string) => void
+  onRemoveTag: (id: number) => void
 } & Pick<TagInputProps, 'direction' | 'onTagClick'>
 
 export const Tag: React.FC<TagProps> = ({ tagObj, onTagClick, onRemoveTag }) => {
