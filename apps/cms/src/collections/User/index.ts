@@ -3,6 +3,7 @@ import { CollectionConfig } from 'payload/types'
 
 import { checkRole, isAdmin } from '../../access/'
 import { ensureFirstUserIsAdmin } from './hooks/ensureFirstUserIsAdmin'
+import { CustomerSelect } from './ui/CustomerSelect'
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -92,6 +93,20 @@ export const Users: CollectionConfig = {
         en: 'province',
       },
       required: false,
+    },
+    {
+      name: 'stripeCustomerID',
+      label: 'Stripe Customer',
+      type: 'text',
+      access: {
+        read: ({ req: { user } }) => checkRole(['admin'], user),
+      },
+      admin: {
+        position: 'sidebar',
+        components: {
+          Field: CustomerSelect,
+        },
+      },
     },
     {
       label: {
