@@ -3,13 +3,15 @@ import { S3Client } from '@aws-sdk/client-s3'
 import { viteBundler } from '@payloadcms/bundler-vite'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { payloadCloud } from '@payloadcms/plugin-cloud'
+import stripePlugin from '@payloadcms/plugin-stripe'
 import { slateEditor } from '@payloadcms/richtext-slate'
 import path from 'path'
 import { openapi, redoc } from 'payload-oapi'
 import s3Upload from 'payload-s3-upload'
 import { buildConfig } from 'payload/config'
 
-import { Chatroom, Item, Media, Message, Renting, Tag, Users } from './collections'
+import { Item, Media, Renting, Tag, Users } from './collections'
+import { Chatroom, Message } from './collections'
 import { Report } from './collections/Report'
 import { Review } from './collections/Review'
 import { ACCESS_KEY_ID, REGION, SECRET_KEY_ID } from './common/env'
@@ -54,6 +56,9 @@ export default buildConfig({
         },
       })
     ),
+    stripePlugin({
+      stripeSecretKey: process.env.STRIPE_SECRET_KEY,
+    }),
   ],
   db: postgresAdapter({
     pool: {
