@@ -70,7 +70,7 @@ export default function AssetsCard({
             <Typography variant="tiny" fontWeight="bold" className="lg:h4 line-clamp-1">
               {name}
             </Typography>
-            <div className="flex max-sm:flex-col  gap-0.5 ">
+            <div className="flex max-md:flex-col gap-0.5 ">
               <Rating
                 name="read-only"
                 value={rating}

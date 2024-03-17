@@ -1,8 +1,5 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
-import TabContent from '@/app/detail/[id]/components/TabContent'
 import { Button } from '@/components/ui/button'
 import {
   Pagination,
