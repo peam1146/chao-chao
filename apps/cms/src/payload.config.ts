@@ -58,6 +58,13 @@ export default buildConfig({
     ),
     stripePlugin({
       stripeSecretKey: process.env.STRIPE_SECRET_KEY,
+      stripeWebhooksEndpointSecret: process.env.STRIPE_WEBHOOKS_ENDPOINT_SECRET,
+      isTestKey: Boolean(process.env.PAYLOAD_PUBLIC_STRIPE_IS_TEST_KEY),
+      webhooks: {
+        'checkout.session.completed': async ({ event, stripe, stripeConfig }) => {
+          console.log('checkout.session.completed', event)
+        },
+      },
     }),
   ],
   db: postgresAdapter({

@@ -41,6 +41,9 @@ importers:
       '@payloadcms/plugin-cloud':
         specifier: ^3.0.0
         version: 3.0.0(payload@2.0.0)
+      '@payloadcms/plugin-stripe':
+        specifier: ^0.0.19
+        version: 0.0.19(payload@2.0.0)
       '@payloadcms/richtext-slate':
         specifier: ^1.0.0
         version: 1.0.0(react-dom@18.2.0)
@@ -3474,6 +3477,18 @@ packages:
       - encoding
     dev: false
 
+  /@payloadcms/plugin-stripe@0.0.19(payload@2.0.0):
+    resolution: {integrity: sha512-5eB2ae38dDEUfVgWs5qkB3feQuuYV8t5R0Jn4qhNPBx11sdxhPGVcNyrK3KJizUSIkt/B9T9q31PfWBc0NT7kA==}
+    peerDependencies:
+      payload: ^1.1.8 || ^2.0.0
+    dependencies:
+      '@types/uuid': 9.0.8
+      lodash.get: 4.4.2
+      payload: 2.0.0(esbuild@0.18.20)(typescript@4.8.4)(webpack@5.89.0)
+      stripe: 10.17.0
+      uuid: 9.0.1
+    dev: false
+
   /@payloadcms/richtext-slate@1.0.0(react-dom@18.2.0):
     resolution: {integrity: sha512-6cGrdgrk1ZJ/ryiXA5MyMmBU2yHmayj/xZjHHL+G8g7DK3fgImUHCYR1Q5fvrCDaGAE/luxwS1Q9Vo0RSffRsA==}
     dependencies:
@@ -5741,6 +5756,10 @@ packages:
       '@types/mime': 3.0.4
       '@types/node': 20.10.6
     dev: true
+
+  /@types/uuid@9.0.8:
+    resolution: {integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==}
+    dev: false
 
   /@types/ws@8.5.10:
     resolution: {integrity: sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==}
@@ -14797,6 +14816,14 @@ packages:
   /strip-json-comments@3.1.1:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
+
+  /stripe@10.17.0:
+    resolution: {integrity: sha512-JHV2KoL+nMQRXu3m9ervCZZvi4DDCJfzHUE6CmtJxR9TmizyYfrVuhGvnsZLLnheby9Qrnf4Hq6iOEcejGwnGQ==}
+    engines: {node: ^8.1 || >=10.*}
+    dependencies:
+      '@types/node': 20.10.6
+      qs: 6.11.2
+    dev: false
 
   /strnum@1.0.5:
     resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}

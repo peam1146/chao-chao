@@ -12,11 +12,6 @@ export interface Config {
     items: Item;
     medias: Media;
     tags: Tag;
-    chatroom: Chatroom;
-    message: Message;
-    renting: Renting;
-    reviews: Review;
-    report: Report;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -31,10 +26,18 @@ export interface User {
   bio?: string;
   rating?: number;
   province?: string;
+  stripeCustomerID?: string;
   roles: ('admin' | 'User')[];
-  requestsMade?: string[] | Renting[];
-  requestsReceived?: string[] | Renting[];
-  review?: string[] | Review[];
+  requestsMade?: {
+    user: string | User;
+    item: string | Item;
+    id?: string;
+  }[];
+  requestsReceived?: {
+    user: string | User;
+    item: string | Item;
+    id?: string;
+  }[];
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -60,27 +63,6 @@ export interface Media {
   width?: number;
   height?: number;
 }
-export interface Renting {
-  id: string;
-  rentedBy?: {
-    user?: string | User;
-  };
-  rentedTo?: {
-    user?: string | User;
-    item?: string | Item;
-  };
-  startDate: string;
-  endDate: string;
-  status?: 'PENDING' | 'PROCESSING' | 'COMPLETED';
-  totalPrice?: number;
-  rentalFee?: number;
-  insuranceFee?: number;
-  deliveryFee?: number;
-  file?: string | Media;
-  createdBy: string | User;
-  updatedAt: string;
-  createdAt: string;
-}
 export interface Item {
   id: string;
   name: string;
@@ -90,13 +72,12 @@ export interface Item {
   availableAt?: string;
   period?: number;
   periodType?: 'days' | 'weeks' | 'months' | 'years';
-  rentingStatus?: 'available' | 'unavailable' | 'negotiating';
+  rentingStatus?: 'available' | 'unavailable';
   start?: string;
   end?: string;
   tags?: string[] | Tag[];
   createdBy: string | User;
   rating?: number;
-  review?: string[] | Review[];
   updatedAt: string;
   createdAt: string;
   _status?: 'draft' | 'published';
@@ -105,42 +86,6 @@ export interface Tag {
   id: string;
   name: string;
   alt?: string;
-  createdBy: string | User;
-  updatedAt: string;
-  createdAt: string;
-}
-export interface Review {
-  id: string;
-  description: string;
-  rating: number;
-  reviewToUser?: string | User;
-  reviewToItem?: string | Item;
-  option: 'ITEM' | 'USER';
-  createdBy: string | User;
-  updatedAt: string;
-  createdAt: string;
-}
-export interface Chatroom {
-  id: string;
-  user1_id: string | User;
-  user2_id: string | User;
-  lastMessage?: string | Message;
-  user1LastViewed?: string;
-  user2LastViewed?: string;
-  updatedAt: string;
-  createdAt: string;
-}
-export interface Message {
-  id: string;
-  message?: string;
-  createdAt: string;
-  createdBy: string | User;
-  room: string | Chatroom;
-  updatedAt: string;
-}
-export interface Report {
-  id: string;
-  reportMessage: string;
   createdBy: string | User;
   updatedAt: string;
   createdAt: string;
@@ -180,11 +125,6 @@ declare module 'payload' {
       'items': Item
       'medias': Media
       'tags': Tag
-      'chatroom': Chatroom
-      'message': Message
-      'renting': Renting
-      'reviews': Review
-      'report': Report
       'payload-preferences': PayloadPreference
       'payload-migrations': PayloadMigration
     }
