@@ -54,6 +54,7 @@ export default function RegisterCard() {
   }
   const [listImg, setListImg] = useState<string[]>([])
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log('change', event.target.files)
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0]
       const newfile = [...imageUrl, file]
@@ -63,6 +64,7 @@ export default function RegisterCard() {
       const newList = [...listImg, url]
       setListImg(newList)
     }
+    event.target.value = ''
   }
 
   const handleDeleteImage = (idx: any) => {
@@ -72,6 +74,7 @@ export default function RegisterCard() {
     newfile.splice(idx, 1)
     setListImg(newImages)
     setImageUrl(newfile)
+    console.log('listImg', listImg)
   }
 
   const [tags, setTags] = useState<Tag[]>([])
@@ -110,7 +113,7 @@ export default function RegisterCard() {
         }
       }
       for (let e in tags) {
-        if (tags[e].id === undefined) {
+        if (isNaN(tags[e].id)) {
           const id = await resolve(
             async ({ mutation }) => {
               const newtag = mutation.createTag({
@@ -273,6 +276,7 @@ export default function RegisterCard() {
                       <Plus className="w-4 h-4 text-primary" />
                     </p>
                     <Input
+                      id="file"
                       type="file"
                       className="hidden"
                       ref={fileInputRef}

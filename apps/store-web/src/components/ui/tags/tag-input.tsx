@@ -93,7 +93,7 @@ const TagInput = React.forwardRef<HTMLInputElement, TagInputProps>((props, ref) 
     ) {
       e.preventDefault()
       const newTagText = inputValue.trim()
-      const newTagId = undefined
+      const newTagId = NaN
       if (newTagText && (allowDuplicates || !tags.some((tag) => tag.text === newTagText))) {
         setTags([...tags, { id: newTagId, text: newTagText }])
         onTagAdd?.(newTagText)
