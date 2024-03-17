@@ -24,7 +24,7 @@ export default function MyAssets() {
   const { Items } = useQuery({ fetchPolicy: 'cache-first' })
 
   const searchParams = useSearchParams()
-  const search = searchParams.get('search')
+  const search = searchParams.get('search') ? searchParams.get('search') : undefined
 
   const items = Items({
     draft: false,
