@@ -26,6 +26,16 @@ export default buildConfig({
         Logo: Logo,
       },
     },
+    vite: (config) => {
+      return {
+        ...config,
+        build: {
+          rollupOptions: {
+            external: ['@payloadcms/plugin-stripe'],
+          },
+        },
+      }
+    },
   },
   // i18n: {
   //   fallbackLng: 'en', // default
