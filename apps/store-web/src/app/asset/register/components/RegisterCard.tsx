@@ -27,7 +27,11 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 
-import { Item_periodType_MutationInput, useQuery } from '../../../../../gqty'
+import {
+  Item_periodType_MutationInput,
+  Item_rentingStatus_MutationInput,
+  useQuery,
+} from '../../../../../gqty'
 import { resolve } from '../../../../../gqty'
 import { Tag, TagInput } from '../../../../components/ui/tags/tag-input'
 
@@ -54,7 +58,6 @@ export default function RegisterCard() {
   }
   const [listImg, setListImg] = useState<string[]>([])
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log('change', event.target.files)
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0]
       const newfile = [...imageUrl, file]
@@ -64,7 +67,6 @@ export default function RegisterCard() {
       const newList = [...listImg, url]
       setListImg(newList)
     }
-    event.target.value = ''
   }
 
   const handleDeleteImage = (idx: any) => {
@@ -74,7 +76,6 @@ export default function RegisterCard() {
     newfile.splice(idx, 1)
     setListImg(newImages)
     setImageUrl(newfile)
-    console.log('listImg', listImg)
   }
 
   const [tags, setTags] = useState<Tag[]>([])
@@ -144,6 +145,7 @@ export default function RegisterCard() {
               image: imageIds,
               periodType: item_type,
               tags: tags.map(({ id }) => id),
+              rentingStatus: Item_rentingStatus_MutationInput.available,
             },
           })
           return register
