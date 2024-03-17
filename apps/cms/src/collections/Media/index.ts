@@ -19,6 +19,7 @@ export const Media: S3UploadCollectionConfig = {
   },
   access: {
     read: () => true,
+    create: () => true,
   },
   admin: {
     useAsTitle: 'name',

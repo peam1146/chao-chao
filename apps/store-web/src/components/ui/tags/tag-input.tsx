@@ -16,7 +16,7 @@ export enum Delimiter {
 type OmittedInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'>
 
 export type Tag = {
-  id: string
+  id: number
   text: string
 }
 
@@ -93,7 +93,7 @@ const TagInput = React.forwardRef<HTMLInputElement, TagInputProps>((props, ref) 
     ) {
       e.preventDefault()
       const newTagText = inputValue.trim()
-      const newTagId = Math.random().toString(36)
+      const newTagId = NaN
       if (newTagText && (allowDuplicates || !tags.some((tag) => tag.text === newTagText))) {
         setTags([...tags, { id: newTagId, text: newTagText }])
         onTagAdd?.(newTagText)
@@ -102,7 +102,7 @@ const TagInput = React.forwardRef<HTMLInputElement, TagInputProps>((props, ref) 
     }
   }
 
-  const removeTag = (idToRemove: string) => {
+  const removeTag = (idToRemove: number) => {
     setTags(tags.filter((tag) => tag.id !== idToRemove))
     onTagRemove?.(tags.find((tag) => tag.id === idToRemove)?.text || '')
   }
@@ -123,7 +123,7 @@ const TagInput = React.forwardRef<HTMLInputElement, TagInputProps>((props, ref) 
   const displayedTags = sortTags ? [...tags].sort() : tags
   return (
     <div
-      className={`w-full flex gap-3 ${
+      className={`w-full flex gap-2 ${
         inputFieldPostion === 'bottom'
           ? 'flex-col'
           : inputFieldPostion === 'top'
