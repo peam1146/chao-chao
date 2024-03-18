@@ -3,7 +3,6 @@
 import { ChangeEvent } from 'react'
 import React from 'react'
 import { useRef, useState } from 'react'
-import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
@@ -24,7 +23,6 @@ import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Plus } from '@phosphor-icons/react'
 import { ListPlus, XCircle } from '@phosphor-icons/react'
-import { get } from 'http'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -148,7 +146,7 @@ export default function EditCard() {
           const formData = new FormData()
           const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
           formData.append('file', imageUrl[i])
-          const response = await fetch(`http://localhost:3001/api/medias`, {
+          const response = await fetch('http://localhost:3001/api/medias', {
             method: 'POST',
             body: formData,
             headers: {
@@ -187,7 +185,7 @@ export default function EditCard() {
       }
       await resolve(
         async ({ mutation }) => {
-          const register = mutation.updateItem({
+          const register = mutation.createItem({
             data: {
               name: data.name,
               price: data.fee ? data.fee : 0,
@@ -195,10 +193,8 @@ export default function EditCard() {
               image: imageIds,
               periodType: item_type,
               tags: tags.map(({ id }) => id),
-              rentingStatus: ItemUpdate_rentingStatus_MutationInput.available,
+              rentingStatus: Item_rentingStatus_MutationInput.available,
             },
-            id: item_id,
-            autosave: true,
           })
           return register
         },
@@ -208,7 +204,7 @@ export default function EditCard() {
       )
       toast({
         title: 'Success',
-        description: 'Your asset has been edited.',
+        description: 'Your asset has been registered.',
         success: true,
       })
       setIsLoadingBtn(false)
