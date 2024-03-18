@@ -1,6 +1,5 @@
 'use client'
 
-import sumsung from '@/assets/images/sumsung.svg'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import Typography from '@/components/ui/typography'
@@ -9,14 +8,20 @@ import { DotsThreeVertical, PencilSimple, Trash } from '@phosphor-icons/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { Maybe, Media } from '../../../../gqty'
+
 export default function AssetsCard({
   name,
+  image,
   rating,
   price,
+  periodType,
 }: {
   name: string
+  image?: Maybe<Media[]>
   rating: number
   price: number
+  periodType: string
 }) {
   return (
     <Link href="./detail/1">
@@ -36,7 +41,7 @@ export default function AssetsCard({
               </Button>
             </PopoverTrigger>
 
-            <PopoverContent className="w-fit p-1">
+            <PopoverContent className="w-fit p-1 mr-44">
               <div className="flex flex-row w-[186px] p-2 gap-2 hover:bg-muted text-muted-foreground rounded-md">
                 <PencilSimple size={16} className="my-auto" />
                 <Typography variant="h6">Edit</Typography>
@@ -49,7 +54,15 @@ export default function AssetsCard({
             </PopoverContent>
           </Popover>
           <div className="flex h-[142px] justify-center">
-            <Image src={sumsung} alt=" picture" width={0} height={0} />
+            {image && (
+              <Image
+                src={image?.[0]?.url ?? ''}
+                width={image?.[0]?.width ?? 0}
+                height={image?.[0]?.height ?? 0}
+                alt="picture"
+                className="object-contain rounded-lg"
+              />
+            )}
           </div>
         </div>
         <div className="flex flex-col gap-1 lg:gap-4 w-fit items-start">
@@ -57,7 +70,7 @@ export default function AssetsCard({
             <Typography variant="tiny" fontWeight="bold" className="lg:h4 line-clamp-1">
               {name}
             </Typography>
-            <div className="flex flex-row gap-0.5 ">
+            <div className="flex max-md:flex-col gap-0.5 ">
               <Rating
                 name="read-only"
                 value={rating}
@@ -76,7 +89,7 @@ export default function AssetsCard({
             </div>
           </div>
           <Typography variant="h6" className="lg:h4">
-            {price}฿/วัน
+            {price}฿/{periodType}
           </Typography>
         </div>
       </div>

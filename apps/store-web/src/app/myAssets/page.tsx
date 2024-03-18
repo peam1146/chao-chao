@@ -1,5 +1,5 @@
-import MyAssets from './components/myAssets'
-import SideBar from './components/sideBar'
+import MyAssets from './components/MyAssets'
+import SideBar from './components/SideBar'
 
 export default function MyAssetsPage() {
   return (
