@@ -3,7 +3,6 @@
 import { ChangeEvent } from 'react'
 import React from 'react'
 import { useRef, useState } from 'react'
-import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
@@ -23,15 +22,12 @@ import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Plus } from '@phosphor-icons/react'
 import { ListPlus, XCircle } from '@phosphor-icons/react'
-import { get } from 'http'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 
 import {
-  ItemUpdate_periodType_MutationInput,
-  ItemUpdate_rentingStatus_MutationInput,
   Item_periodType_MutationInput,
   Item_rentingStatus_MutationInput,
   useQuery,
@@ -51,7 +47,7 @@ export const assetSchema = z.object({
   fee: z.coerce.number().optional(),
   description: z.string().optional(),
 })
-export default function EditCard({ item_id }: { item_id: number }) {
+export default function RegisterCard() {
   const [imageUrl, setImageUrl] = useState<File[]>([])
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -95,47 +91,6 @@ export default function EditCard({ item_id }: { item_id: number }) {
   })?.docs?.map((tag) => {
     return { id: tag?.id!, text: tag?.name! }
   })
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { name, price, description, periodType, tags, image } = await resolve(({ query }) => {
-          const tags = query.Item({ id: item_id })?.tags?.map((tag: any) => {
-            return { id: tag?.id!, text: tag?.name! }
-          })
-          const images_url = query.Item({ id: item_id })?.image?.map((image: any) => {
-            return image?.url!
-          })
-          // const image_id = query.Item({ id: item_id })?.image?.map((image: any) => {
-          //   console.log(image?.id)
-          //   return image?.id!
-          // })
-          // console.log('image_t', query.Item({ id: item_id })?.image)
-          return {
-            name: query.Item({ id: item_id })?.name,
-            price: query.Item({ id: item_id })?.price,
-            description: query.Item({ id: item_id })?.description,
-            periodType: query.Item({ id: item_id })?.periodType,
-            tags: tags,
-            image: images_url,
-          }
-        })
-        console.log('image', image)
-        form.reset({
-          name: name ?? '',
-          fee: price ?? 0,
-          description: description ?? '',
-          periodType: periodType ?? 'day',
-        })
-        setTags(tags?.map(({ id, text }) => ({ id, text })) ?? [])
-        console.log('listimg', listImg)
-        setListImg(image?.map((image: any) => image) ?? [])
-        // setImageUrl(listImg?.map((image: any) => image) ?? [])
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    fetchData()
-  }, [form])
   async function onSubmit(data: z.infer<typeof assetSchema>) {
     try {
       let imageIds: number[] = []
@@ -144,7 +99,7 @@ export default function EditCard({ item_id }: { item_id: number }) {
           const formData = new FormData()
           const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
           formData.append('file', imageUrl[i])
-          const response = await fetch(`http://localhost:3001/api/medias`, {
+          const response = await fetch('http://localhost:3001/api/medias', {
             method: 'POST',
             body: formData,
             headers: {
@@ -158,7 +113,6 @@ export default function EditCard({ item_id }: { item_id: number }) {
             .catch((error) => console.error(error))
         }
       }
-      console.log('imageIds', imageIds)
       for (let e in tags) {
         if (isNaN(tags[e].id)) {
           const id = await resolve(
@@ -177,13 +131,13 @@ export default function EditCard({ item_id }: { item_id: number }) {
           tags[e].id = id!
         }
       }
-      let item_type = ItemUpdate_periodType_MutationInput.days
+      let item_type = Item_periodType_MutationInput.days
       if (data.periodType == 'month') {
-        item_type = ItemUpdate_periodType_MutationInput.months
+        item_type = Item_periodType_MutationInput.months
       }
       await resolve(
         async ({ mutation }) => {
-          const register = mutation.updateItem({
+          const register = mutation.createItem({
             data: {
               name: data.name,
               price: data.fee ? data.fee : 0,
@@ -191,10 +145,8 @@ export default function EditCard({ item_id }: { item_id: number }) {
               image: imageIds,
               periodType: item_type,
               tags: tags.map(({ id }) => id),
-              rentingStatus: ItemUpdate_rentingStatus_MutationInput.available,
+              rentingStatus: Item_rentingStatus_MutationInput.available,
             },
-            id: item_id,
-            autosave: true,
           })
           return register
         },
@@ -204,7 +156,7 @@ export default function EditCard({ item_id }: { item_id: number }) {
       )
       toast({
         title: 'Success',
-        description: 'Your asset has been edited.',
+        description: 'Your asset has been registered.',
         success: true,
       })
       router.push('/myAssets')
@@ -221,7 +173,7 @@ export default function EditCard({ item_id }: { item_id: number }) {
       <div className="flex flex-row gap-1">
         <ListPlus size={22}></ListPlus>
         <Typography variant="h4" fontWeight="bold">
-          Edit Asset
+          Asset Registration
         </Typography>
       </div>
       <Form {...form}>
