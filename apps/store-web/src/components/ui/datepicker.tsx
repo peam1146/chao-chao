@@ -17,7 +17,7 @@ export function DatePicker(props: DatepickerProps) {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <button className="flex items-center border text-sm rounded-md p-2 w-full">
+        <button className="flex items-center border text-sm rounded-md p-1.5 w-full">
           <CalendarIcon className="mr-2 h-4 w-4" />
           {value ? format(value, 'dd/MM/yy') : <span>Pick a date</span>}
         </button>
