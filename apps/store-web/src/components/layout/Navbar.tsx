@@ -24,6 +24,7 @@ const SearchSuggestion = () => {
 
   const { Items } = useQuery({
     fetchPolicy: 'cache-and-network',
+    refetchOnWindowVisible: false,
   })
 
   const items = Items({
@@ -73,7 +74,7 @@ const SearchSuggestion = () => {
         <input type="submit" className="hidden" />
       </form>
       {search && (
-        <div className="bg-background text-muted-foreground text-sm w-full absolute border rounded-md rounded-t-none ">
+        <div className="bg-background text-muted-foreground text-sm w-full absolute border rounded-md rounded-t-none z-[100]">
           {showItems &&
             items.map((item) => (
               <Link

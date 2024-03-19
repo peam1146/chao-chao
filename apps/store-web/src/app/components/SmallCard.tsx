@@ -27,9 +27,11 @@ export default function SmallCard({
         <div className="relative">
           <Badge className="absolute py-1 px-3 flex flex-row gap-1">
             <Lightning size={16} weight="fill" className="text-white" />
-            <Typography fontWeight="regular">Recommend</Typography>
+            <Typography fontWeight="regular" className="max-md:hidden">
+              Recommend
+            </Typography>
           </Badge>
-          <div className="flex lg:w-full lg:h-[300px] min-w-[142px] justify-center">
+          <div className="flex w-full h-[240px] justify-center">
             {image && (
               <Image
                 src={image?.[0]?.url ?? ''}
