@@ -10,7 +10,7 @@ import Link from 'next/link'
 
 import EditCard from './components/EditCard'
 
-export default async function AssetRegist() {
+export default async function AssetEdit() {
   return (
     <main className="container flex w-full bg-background min-h-[calc(100vh-64px)] justify-center pb-4">
       <div className="flex flex-col w-full pt-5 ">
@@ -23,11 +23,11 @@ export default async function AssetRegist() {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>Asset Registration</BreadcrumbPage>
+              <BreadcrumbPage>Edit Asset</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <EditCard />
+        <EditCard item_id={1} />
       </div>
     </main>
   )
