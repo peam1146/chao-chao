@@ -1,5 +1,5 @@
-import MyContracts from './components/MyContracts'
+import ContractsContainer from './components/ContractsContainer'
 
 export default function MyContractsPage() {
-  return <MyContracts />
+  return <ContractsContainer />
 }

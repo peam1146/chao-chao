@@ -13,11 +13,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Typography from '@/components/ui/typography'
 import { ListDashes } from '@phosphor-icons/react'
 
-import ContractsCard from './ContractsCard'
+import NeigotiatingContractsCard from './NeigotiatingContractsCard'
+import RentingContractsCard from './RentingContractsCard'
 
 // import { useQuery } from '../../../../../gqty'
 
-export default function MyContracts() {
+export default function ContractsContainer() {
   // const { Items } = useQuery({ fetchPolicy: 'cache-first' })
 
   // const items = Items({
@@ -46,21 +47,31 @@ export default function MyContracts() {
       <div>
         <Tabs defaultValue="negotiating" className="w-full">
           <TabsList className="w-full max-lg:no-scrollbar max-lg:overflow-x-scroll justify-start">
-            <TabsTrigger value="negotiating" className="lg:w-1/3 w-[153px]">
+            <TabsTrigger value="negotiating" className="lg:w-1/3 min-w-[153px]">
               Negotiating
             </TabsTrigger>
-            <TabsTrigger value="renting" className="lg:w-1/3 w-[153px]">
+            <TabsTrigger value="renting" className="lg:w-1/3 min-w-[153px]">
               Renting
             </TabsTrigger>
-            <TabsTrigger value="beingRented" className="lg:w-1/3 w-[153px]">
+            <TabsTrigger value="beingRented" className="lg:w-1/3 min-w-[153px]">
               Being Rented
             </TabsTrigger>
           </TabsList>
           <TabsContent value="negotiating">
             <div className="flex flex-col gap-4">
-              <ContractsCard name="จักรยานแพะภูเขา1" price={20} periodType="day" status="renting" />
-              <ContractsCard name="จักรยานแพะภูเขา2" price={20} periodType="day" status="renting" />
-              <ContractsCard
+              <NeigotiatingContractsCard
+                name="จักรยานแพะภูเขา1"
+                price={20}
+                periodType="day"
+                status="renting"
+              />
+              <NeigotiatingContractsCard
+                name="จักรยานแพะภูเขา2"
+                price={20}
+                periodType="day"
+                status="renting"
+              />
+              <NeigotiatingContractsCard
                 name="จักรยานแพะภูเขา3"
                 price={20}
                 periodType="day"
@@ -85,6 +96,12 @@ export default function MyContracts() {
           </TabsContent>
           <TabsContent value="renting">
             <div className="flex flex-col gap-4">
+              <RentingContractsCard
+                name="จักรยานแพะภูเขา4"
+                price={20}
+                periodType="day"
+                status="renting"
+              />
               {/* {items?.docs
                 ?.filter((item) => item?.id !== undefined && item.rentingStatus === 'unavailable')
                 .map((item) => {
@@ -104,6 +121,12 @@ export default function MyContracts() {
           </TabsContent>
           <TabsContent value="beingRented">
             <div className="flex flex-col gap-4">
+              <RentingContractsCard
+                name="จักรยานแพะภูเขา5"
+                price={20}
+                periodType="day"
+                status="beingRented"
+              />
               {/* {items?.docs
                 ?.filter((item) => item?.id !== undefined && item.rentingStatus === 'available')
                 .map((item) => {
