@@ -97,7 +97,7 @@ export default function ContractsContainer() {
           <TabsContent value="renting">
             <div className="flex flex-col gap-4">
               <RentingContractsCard
-                name="จักรยานแพะภูเขา4"
+                name="จักรยานแพะภูเขา4หหหหหหหหหหหหหหหหหหหหหหหหหหหหห"
                 price={20}
                 periodType="day"
                 status="renting"

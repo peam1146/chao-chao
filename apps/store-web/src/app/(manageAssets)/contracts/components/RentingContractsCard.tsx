@@ -25,7 +25,7 @@ export default function RentingContractsCard({
   return (
     <div className="flex max-lg:flex-col items-center h-fit bg-card rounded-2xl px-4 py-2 gap-4 border lg:border-2 border-transparent">
       <div className="flex flex-1 gap-3">
-        <div className="flex h-[130px] w-[130px] my-auto">
+        <div className="flex lg:h-[130px] lg:w-[130px] h-[100px] w-[100px]  my-auto">
           {/* {image && <Image src={mockPic} alt="picture" className="object-contain rounded-lg" />} */}
           <Image src={mockPic} alt="picture" className="object-contain rounded-lg" />
         </div>
@@ -33,7 +33,9 @@ export default function RentingContractsCard({
         <div className="flex flex-col flex-1 gap-1 max-xl:hidden">
           <div className="flex">
             <Button variant="link" className="p-0 w-fit h-fit">
-              <Typography variant="h5">{name}</Typography>
+              <Typography variant="h5" className="line-clamp-1">
+                {name}
+              </Typography>
             </Button>
             <div className="flex-1" />
             <div className="flex gap-1.5">
@@ -103,9 +105,18 @@ export default function RentingContractsCard({
         </div>
 
         <div className="flex flex-col flex-1 gap-1 xl:hidden ">
-          <Button variant="link" className="p-0 w-fit h-fit">
-            <Typography variant="h5">{name}</Typography>
-          </Button>
+          <div className="flex">
+            <Button variant="link" className="p-0 w-[100px] justify-start h-fit">
+              <Typography variant="h5" className="truncate">
+                {name}
+              </Typography>
+            </Button>
+            <div className="flex-1" />
+            <div className="flex gap-1.5">
+              <Clock size={16} />
+              <Typography variant="h6">2d left</Typography>
+            </div>
+          </div>
           <hr className="w-full" />
           <div className="flex gap-1">
             <Typography variant="h6" className="text-light">
@@ -117,7 +128,7 @@ export default function RentingContractsCard({
               </Typography>
             </Button>
           </div>
-          <div className="flex gap-1">
+          <div className="flex gap-0.5">
             <Typography variant="h6" className="text-light">
               Date:
             </Typography>

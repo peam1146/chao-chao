@@ -6,7 +6,7 @@ export default function ManageLayout({
   children: React.ReactNode
 }>) {
   return (
-    <div className="container">
+    <div className="container max-lg:px-4">
       <div className="flex flex-row gap-4 mt-10">
         <SideBar />
 

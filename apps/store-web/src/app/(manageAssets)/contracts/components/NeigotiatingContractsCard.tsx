@@ -111,7 +111,7 @@ export default function NeigotiatingContractsCard({
     <>
       <div className="flex max-lg:flex-col items-center h-fit bg-card rounded-2xl px-4 py-2 gap-4 border lg:border-2 border-transparent">
         <div className="flex flex-1 gap-3">
-          <div className="flex h-[130px] w-[130px] my-auto">
+          <div className="flex lg:h-[130px] lg:w-[130px] h-[120px] w-[120px] my-auto">
             {/* {image && <Image src={mockPic} alt="picture" className="object-contain rounded-lg" />} */}
             <Image src={mockPic} alt="picture" className="object-contain rounded-lg" />
           </div>
@@ -181,9 +181,11 @@ export default function NeigotiatingContractsCard({
             </div>
           </div>
 
-          <div className="flex flex-col flex-1 gap-1 xl:hidden ">
-            <Button variant="link" className="p-0 w-fit h-fit">
-              <Typography variant="h5">{name}</Typography>
+          <div className="flex flex-col flex-1 gap-1 xl:hidden relative">
+            <Button variant="link" className="p-0 w-[180px] justify-start h-fit">
+              <Typography variant="h5" className="truncate">
+                {name}
+              </Typography>
             </Button>
             <hr className="w-full" />
             <div className="flex gap-1">
@@ -358,7 +360,7 @@ export default function NeigotiatingContractsCard({
           ) : (
             <Button
               size="sm"
-              className="gap-2"
+              className="gap-2 px-1.5"
               onClick={() => {
                 onAccept()
               }}
