@@ -1,7 +1,8 @@
 'use client'
 
-import { Dispatch, SetStateAction } from 'react'
+import { ChangeEvent, Dispatch, SetStateAction } from 'react'
 
+import { useDebounce } from '@/components/layout/hooks/use-debounce'
 import { Checkbox } from '@/components/ui/checkbox'
 import { DatePicker } from '@/components/ui/datepicker'
 import { Input } from '@/components/ui/input'
@@ -41,6 +42,18 @@ export function FilterInput(props: FilterInputProps) {
     draft: false,
   })
 
+  const debounceMinPrice = useDebounce((e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value === '') {
+      setMinPrice(undefined)
+    } else setMinPrice(Number(e.target.value))
+  }, 300)
+
+  const debounceMaxPrice = useDebounce((e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value === '') {
+      setMaxPrice(undefined)
+    } else setMaxPrice(Number(e.target.value))
+  }, 300)
+
   return (
     <div className="flex flex-col gap-2 w-[25%] min-w-[280px] h-fit sticky top-[65px] rounded-md p-6 max-xl:hidden">
       <h6 className="font-bold text-sm">Category</h6>
@@ -78,14 +91,14 @@ export function FilterInput(props: FilterInputProps) {
       <div className="flex justify-between space-x-1 items-center mx-auto">
         <Input
           type="number"
-          onChange={(e) => setMinPrice(Number(e.target.value))}
+          onChange={debounceMinPrice}
           className="text-sm p-1 h-8"
           placeholder="0.00"
         />
         <p>-</p>
         <Input
           type="number"
-          onChange={(e) => setMaxPrice(Number(e.target.value))}
+          onChange={debounceMaxPrice}
           className="text-sm p-1 h-8"
           placeholder="0.00"
         />
