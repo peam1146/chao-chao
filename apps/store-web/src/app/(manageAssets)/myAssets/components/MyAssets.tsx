@@ -16,7 +16,7 @@ import { Plus, Tray } from '@phosphor-icons/react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 
-import { useQuery } from '../../../../gqty'
+import { useQuery } from '../../../../../gqty'
 import AssetsCard from './AssetsCard'
 import SearchMyAssets from './SearchMyAssets'
 

@@ -7,7 +7,7 @@ import { SearchIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-import { useQuery } from '../../../../gqty'
+import { useQuery } from '../../../../../gqty'
 
 export default function SearchMyAssets() {
   const [search, setSearch] = useState('')
