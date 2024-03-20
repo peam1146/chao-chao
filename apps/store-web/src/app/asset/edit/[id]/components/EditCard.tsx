@@ -325,6 +325,7 @@ export default function EditCard({ item_id }: { item_id: number }) {
                       id="file"
                       type="file"
                       className="hidden"
+                      accept="image/*"
                       ref={fileInputRef}
                       onChange={handleFileChange}
                     />
