@@ -193,6 +193,7 @@ export default function SearchPage() {
                         return (
                           <SmallCard
                             key={item?.id}
+                            id={item?.id}
                             name={item?.name ?? ''}
                             image={item?.image}
                             rating={item?.rating ?? 0}
