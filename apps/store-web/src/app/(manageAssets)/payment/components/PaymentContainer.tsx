@@ -16,8 +16,6 @@ import { CreditCard } from '@phosphor-icons/react'
 import ExpensesContainer from './ExpensesContainer'
 import ReceivableContainer from './ReceivableContainer'
 
-// import { PaymentCardContainer } from './PaymentCard'
-
 export function PaymentContainer() {
   return (
     <div className="flex flex-col w-full gap-4">

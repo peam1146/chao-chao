@@ -66,31 +66,41 @@ export function PaymentCardContainer(props: PaymentCardContainerProps) {
         <div className="flex flex-col gap-1">
           <div className="flex xl:flex-row flex-col xl:gap-8 gap-1">
             <div className="flex w-[180px] gap-1">
-              <Typography variant="h6">{assetFromLabel}</Typography>
+              <Typography variant="h6" className="text-light">
+                {assetFromLabel}
+              </Typography>
               <Button variant="link" className="p-0 w-fit h-fit">
                 <Typography variant="h6">{assetFrom}</Typography>
               </Button>
             </div>
             <div className="flex max-xl:flex-col xl:flex-row max-xl:gap-1 xl:gap-8">
               <div className="flex gap-1">
-                <Typography variant="h6">Date:</Typography>
+                <Typography variant="h6" className="text-light">
+                  Date:
+                </Typography>
                 <Typography variant="h6">{`${startDateText} - ${endDateText}`}</Typography>
               </div>
             </div>
           </div>
           <div className="flex xl:flex-row flex-col xl:gap-8 gap-1">
             <div className="flex w-[180px] gap-1">
-              <Typography variant="h6">Insurance fee:</Typography>
+              <Typography variant="h6" className="text-light">
+                Insurance fee:
+              </Typography>
               <Typography variant="h6">{`฿${insuranceFee}`}</Typography>
             </div>
             <div className="flex gap-1">
-              <Typography variant="h6">Delivery fee:</Typography>
+              <Typography variant="h6" className="text-light">
+                Delivery fee:
+              </Typography>
               <Typography variant="h6">{`฿${deliveryFee}`}</Typography>
             </div>
           </div>
           <div className="flex xl:flex-row flex-col xl:gap-8 gap-1">
             <div className="flex w-[180px] gap-1">
-              <Typography variant="h6">Rental fee:</Typography>
+              <Typography variant="h6" className="text-light">
+                Rental fee:
+              </Typography>
               <Typography variant="h6">
                 {`฿${rentalFee} (฿${
                   Math.round((rentalFee / daysDiff + Number.EPSILON) * 100) / 100
@@ -99,7 +109,9 @@ export function PaymentCardContainer(props: PaymentCardContainerProps) {
             </div>
             <div className="flex flex-col">
               <div className="flex gap-1">
-                <Typography variant="h6">Total fee:</Typography>
+                <Typography variant="h6" className="text-light">
+                  Total fee:
+                </Typography>
                 <Typography variant="h6">{`฿${totalFee}`}</Typography>
               </div>
             </div>
