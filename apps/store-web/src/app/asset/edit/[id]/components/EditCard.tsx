@@ -23,7 +23,6 @@ import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Plus } from '@phosphor-icons/react'
 import { ListPlus, XCircle } from '@phosphor-icons/react'
-import { get } from 'http'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -32,8 +31,6 @@ import { z } from 'zod'
 import {
   ItemUpdate_periodType_MutationInput,
   ItemUpdate_rentingStatus_MutationInput,
-  Item_periodType_MutationInput,
-  Item_rentingStatus_MutationInput,
   useQuery,
 } from '../../../../../../gqty'
 import { resolve } from '../../../../../../gqty'
@@ -54,6 +51,7 @@ export const assetSchema = z.object({
 export default function EditCard({ item_id }: { item_id: number }) {
   const [imageUrl, setImageUrl] = useState<File[]>([])
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const [prevImages, setPrevImages] = useState<{ id: number; url: string }[]>([])
 
   const handleButtonClick = () => {
     if (fileInputRef.current) {
@@ -98,28 +96,24 @@ export default function EditCard({ item_id }: { item_id: number }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { name, price, description, periodType, tags, image } = await resolve(({ query }) => {
-          const tags = query.Item({ id: item_id })?.tags?.map((tag: any) => {
-            return { id: tag?.id!, text: tag?.name! }
-          })
-          const images_url = query.Item({ id: item_id })?.image?.map((image: any) => {
-            return image?.url!
-          })
-          // const image_id = query.Item({ id: item_id })?.image?.map((image: any) => {
-          //   console.log(image?.id)
-          //   return image?.id!
-          // })
-          // console.log('image_t', query.Item({ id: item_id })?.image)
-          return {
-            name: query.Item({ id: item_id })?.name,
-            price: query.Item({ id: item_id })?.price,
-            description: query.Item({ id: item_id })?.description,
-            periodType: query.Item({ id: item_id })?.periodType,
-            tags: tags,
-            image: images_url,
+        const { name, price, description, periodType, tags, images } = await resolve(
+          ({ query }) => {
+            const tags = query.Item({ id: item_id })?.tags?.map((tag: any) => {
+              return { id: tag?.id!, text: tag?.name! }
+            })
+            const images = query.Item({ id: item_id })?.image?.map((image: any) => {
+              return { id: image?.id!, url: image?.url! }
+            })
+            return {
+              name: query.Item({ id: item_id })?.name,
+              price: query.Item({ id: item_id })?.price,
+              description: query.Item({ id: item_id })?.description,
+              periodType: query.Item({ id: item_id })?.periodType,
+              tags: tags,
+              images: images,
+            }
           }
-        })
-        console.log('image', image)
+        )
         form.reset({
           name: name ?? '',
           fee: price ?? 0,
@@ -127,9 +121,8 @@ export default function EditCard({ item_id }: { item_id: number }) {
           periodType: periodType ?? 'day',
         })
         setTags(tags?.map(({ id, text }) => ({ id, text })) ?? [])
-        console.log('listimg', listImg)
-        setListImg(image?.map((image: any) => image) ?? [])
-        // setImageUrl(listImg?.map((image: any) => image) ?? [])
+        setListImg(images?.map((image) => image.url) ?? [])
+        setPrevImages(images?.map((image) => image) ?? [])
       } catch (error) {
         console.error(error)
       }
@@ -137,6 +130,9 @@ export default function EditCard({ item_id }: { item_id: number }) {
     fetchData()
   }, [form])
   async function onSubmit(data: z.infer<typeof assetSchema>) {
+    const prevImagesId = prevImages
+      .filter((image) => listImg.includes(image.url))
+      .map((image) => image.id!)
     try {
       let imageIds: number[] = []
       for (let i = 0; i < imageUrl.length; i++) {
@@ -158,7 +154,7 @@ export default function EditCard({ item_id }: { item_id: number }) {
             .catch((error) => console.error(error))
         }
       }
-      console.log('imageIds', imageIds)
+      imageIds = prevImagesId.concat(imageIds)
       for (let e in tags) {
         if (isNaN(tags[e].id)) {
           const id = await resolve(
@@ -344,8 +340,8 @@ export default function EditCard({ item_id }: { item_id: number }) {
                       <Image
                         key={index}
                         src={item}
-                        width={0}
-                        height={0}
+                        width={120}
+                        height={120}
                         alt="add picture"
                         className="rounded-[8px] md:w-[120px] w-[80px] md:h-[120px] h-[80px]"
                       ></Image>
@@ -357,7 +353,7 @@ export default function EditCard({ item_id }: { item_id: number }) {
           </div>
           <div className="flex flex-row w-full gap-[10px] md:justify-center sm:justify-between pt-4">
             <Link href="/myAssets" className="max-lg:w-1/2">
-              <Button variant="secondary" className="min-w-[130px] max-lg:w-1/2">
+              <Button variant="secondary" className="min-w-[130px] w-full ">
                 <Typography variant="h5">Cancel</Typography>
               </Button>
             </Link>

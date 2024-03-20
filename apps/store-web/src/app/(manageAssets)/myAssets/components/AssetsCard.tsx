@@ -44,10 +44,12 @@ export default function AssetsCard({
             </PopoverTrigger>
 
             <PopoverContent className="w-fit p-1 mr-44">
-              <div className="flex flex-row w-[186px] p-2 gap-2 hover:bg-muted text-muted-foreground rounded-md">
-                <PencilSimple size={16} className="my-auto" />
-                <Typography variant="h6">Edit</Typography>
-              </div>
+              <Link href="asset/edit/10">
+                <div className="flex flex-row w-[186px] p-2 gap-2 hover:bg-muted text-muted-foreground rounded-md">
+                  <PencilSimple size={16} className="my-auto" />
+                  <Typography variant="h6">Edit</Typography>
+                </div>
+              </Link>
 
               <div className="flex flex-row p-2 gap-2 hover:bg-muted text-muted-foreground rounded-md">
                 <Trash size={16} className="my-auto" />
