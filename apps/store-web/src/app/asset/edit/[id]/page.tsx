@@ -27,7 +27,7 @@ export default async function AssetEdit() {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <EditCard item_id={1} />
+        <EditCard item_id={10} />
       </div>
     </main>
   )
