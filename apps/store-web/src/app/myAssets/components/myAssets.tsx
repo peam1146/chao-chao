@@ -17,8 +17,8 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 
 import { useQuery } from '../../../../gqty'
-import AssetsCard from './AssetsCard'
-import SearchMyAssets from './SearchMyAssets'
+import AssetsCard from './assetsCard'
+import SearchMyAssets from './searchMyAssets'
 
 export default function MyAssets() {
   const { Items } = useQuery({ fetchPolicy: 'cache-first' })

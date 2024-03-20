@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Modal } from '@/components/ui/dialog'
+import { Spinner } from '@/components/ui/spinner'
 import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
 import { ArrowDown, ArrowUp, CaretUpDown, Funnel } from '@phosphor-icons/react'
@@ -29,7 +30,7 @@ export default function SearchPage() {
   const search = searchParams.get('search')
 
   const query = useQuery({
-    fetchPolicy: 'no-cache',
+    fetchPolicy: 'cache-and-network',
     refetchOnReconnect: true,
     refetchOnWindowVisible: true,
     suspense: true,
@@ -179,7 +180,9 @@ export default function SearchPage() {
             </div>
             <div className="py-4">
               {query.$state.isLoading ? (
-                <div className="text-center">Loading...</div>
+                <div className="flex justify-center">
+                  <Spinner size="md" />
+                </div>
               ) : (
                 <>
                   {items?.length === 0 ? (

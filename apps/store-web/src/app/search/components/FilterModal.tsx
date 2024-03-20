@@ -29,8 +29,10 @@ export function FilterModal(props: FilterModalProps) {
   const [maxPriceModal, setModalMaxPrice] = useState<number>()
 
   const query = useQuery({
-    fetchPolicy: 'cache-first',
-    refetchOnReconnect: true,
+    fetchPolicy: 'cache-and-network',
+    suspense: true,
+    refetchOnRender: false,
+    refetchOnWindowVisible: false,
   })
 
   const tags = query.Tags({

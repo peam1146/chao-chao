@@ -1,6 +1,6 @@
 import SideBar from '@/components/layout/SideBar'
 
-import MyAssets from './components/MyAssets'
+import MyAssets from './components/myAssets'
 
 export default function MyAssetsPage() {
   return (
