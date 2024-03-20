@@ -8,7 +8,7 @@ import { DotsThreeVertical, PencilSimple, Trash } from '@phosphor-icons/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Maybe, Media } from '../../../../gqty'
+import { Maybe, Media } from '../../../../../gqty'
 
 export default function AssetsCard({
   name,
