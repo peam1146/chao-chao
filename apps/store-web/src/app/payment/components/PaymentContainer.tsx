@@ -29,14 +29,14 @@ export function PaymentContainer() {
       </div>
       <div>
         <Tabs defaultValue="expenses" className="w-full">
-          <TabsList className="w-full">
-            <TabsTrigger value="expenses" className="w-1/3">
+          <TabsList className="w-full max-lg:no-scrollbar max-lg:overflow-x-scroll justify-start">
+            <TabsTrigger value="expenses" className="md:w-1/3">
               Expenses
             </TabsTrigger>
-            <TabsTrigger value="receivables" className="w-1/3">
+            <TabsTrigger value="receivables" className="md:w-1/3">
               Receivables
             </TabsTrigger>
-            <TabsTrigger value="paymentHistory" className="w-1/3">
+            <TabsTrigger value="paymentHistory" className="md:w-1/3">
               Payment history
             </TabsTrigger>
           </TabsList>
