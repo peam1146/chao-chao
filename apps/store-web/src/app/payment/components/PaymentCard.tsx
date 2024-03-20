@@ -18,13 +18,14 @@ export type PaymentCardContainerProps = {
   rentalFee: number
   deliveryFee: number
   totalFee: number
+  variant?: 'expenses' | 'receivable'
 }
 
 export type ExpensesCardButtonProps = {
   dueDate: Date
 }
 
-export type ReceivableProps = {
+export type ReceivableCardProps = {
   dueDate: Date
 }
 
@@ -39,6 +40,7 @@ export function PaymentCardContainer(props: PaymentCardContainerProps) {
     deliveryFee,
     rentalFee,
     totalFee,
+    variant = 'expenses',
   } = props
 
   const startDateText = `${startDate.getDate()}/${startDate.toLocaleString('default', {
@@ -52,7 +54,7 @@ export function PaymentCardContainer(props: PaymentCardContainerProps) {
   })}`
 
   const daysDiff = Math.round((endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000))
-
+  const assetFromLabel = variant === 'receivable' ? 'Request from:' : 'Asset from:'
   return (
     <div className="flex gap-3 w-full pt-2 pb-2 ">
       <Image src={thumbnail} alt="thumbnail" className="w-[100px] h-[100px]" />
@@ -64,7 +66,7 @@ export function PaymentCardContainer(props: PaymentCardContainerProps) {
         <div className="flex flex-col gap-1">
           <div className="flex xl:flex-row flex-col xl:gap-8 gap-1">
             <div className="flex w-[180px] gap-1">
-              <Typography variant="h6">Asset from:</Typography>
+              <Typography variant="h6">{assetFromLabel}</Typography>
               <Button variant="link" className="p-0 w-fit h-fit">
                 <Typography variant="h6">{assetFrom}</Typography>
               </Button>
@@ -114,13 +116,13 @@ export function ExpensesCardButton(props: ExpensesCardButtonProps) {
     month: '2-digit',
     year: '2-digit',
   })}`
-  const daysLeft = Math.round((new Date().getTime() - dueDate.getTime()) / (24 * 60 * 60 * 1000))
+  const daysLeft = Math.round((dueDate.getTime() - new Date().getTime()) / (24 * 60 * 60 * 1000))
   return (
     <div className="max-xl:w-full xl:w-[180px]">
       <div className="flex flex-col items-center justify-center w-full h-full gap-3">
-        <div className="flex xl:flex-col flex-row gap-1 items-center">
+        <div className="flex flex-col gap-1 items-center">
           <div className="flex gap-2">
-            <Clock size={16} />
+            <Clock size={16} className="self-center" />
             <Typography variant="h6">{`${daysLeft}d left`}</Typography>
           </div>
           <div className="flex gap-1">
@@ -136,19 +138,13 @@ export function ExpensesCardButton(props: ExpensesCardButtonProps) {
   )
 }
 
-export function ExpensesCardOverDueButton(props: ExpensesCardButtonProps) {
-  const { dueDate } = props
-  const dueDateText = `${dueDate.getDate()}/${dueDate.toLocaleString('default', {
-    month: '2-digit',
-    year: '2-digit',
-  })}`
-  const daysLeft = Math.round((new Date().getTime() - dueDate.getTime()) / (24 * 60 * 60 * 1000))
+export function ExpensesCardOverDueButton() {
   return (
     <div className="max-xl:w-full xl:w-[180px]">
       <div className="flex flex-col items-center justify-center w-full h-full gap-1">
         <div className="flex xl:flex-col flex-row items-center">
           <div className="flex gap-2">
-            <Warning size={16} color="#EF4444" />
+            <Warning size={16} className="text-unavailable self-center" />
             <Typography variant="h6" className="text-unavailable">
               Payment Late
             </Typography>
@@ -175,19 +171,19 @@ export function PaymentCard(props: PropsWithChildren) {
   )
 }
 
-export function ReceivablesCardButton(props: ExpensesCardButtonProps) {
+export function ReceivablesCardButton(props: ReceivableCardProps) {
   const { dueDate } = props
   const dueDateText = `${dueDate.getDate()}/${dueDate.toLocaleString('default', {
     month: '2-digit',
     year: '2-digit',
   })}`
-  const daysLeft = Math.round((new Date().getTime() - dueDate.getTime()) / (24 * 60 * 60 * 1000))
+  const daysLeft = Math.round((dueDate.getTime() - new Date().getTime()) / (24 * 60 * 60 * 1000))
   return (
     <div className="max-xl:w-full xl:w-[180px]">
       <div className="flex flex-col items-center justify-center w-full h-full gap-3">
-        <div className="flex xl:flex-col flex-row gap-1 items-center">
+        <div className="flex flex-col gap-1 items-center">
           <div className="flex gap-2">
-            <Clock size={16} />
+            <Clock size={16} className="self-center" />
             <Typography variant="h6">{`${daysLeft}d left`}</Typography>
           </div>
           <div className="flex gap-1">
@@ -200,19 +196,13 @@ export function ReceivablesCardButton(props: ExpensesCardButtonProps) {
   )
 }
 
-export function ReceivableCardOverDueButton(props: ExpensesCardButtonProps) {
-  const { dueDate } = props
-  const dueDateText = `${dueDate.getDate()}/${dueDate.toLocaleString('default', {
-    month: '2-digit',
-    year: '2-digit',
-  })}`
-  const daysLeft = Math.round((new Date().getTime() - dueDate.getTime()) / (24 * 60 * 60 * 1000))
+export function ReceivableCardOverDueButton() {
   return (
     <div className="max-xl:w-full xl:w-[180px]">
       <div className="flex flex-col items-center justify-center w-full h-full gap-1">
         <div className="flex xl:flex-col flex-row items-center">
           <div className="flex gap-2">
-            <Warning size={16} color="#EF4444" />
+            <Warning size={16} className="text-unavailable self-center" />
             <Typography variant="h6" className="text-unavailable">
               Payment Late
             </Typography>

@@ -5,8 +5,6 @@ import React from 'react'
 import bicycle from '@/assets/images/bicycle.svg'
 
 import {
-  ExpensesCardButton,
-  ExpensesCardOverDueButton,
   PaymentCard,
   PaymentCardContainer,
   ReceivableCardOverDueButton,
@@ -27,8 +25,9 @@ export default function ReceivableContainer() {
           deliveryFee={50}
           rentalFee={50}
           totalFee={1100}
+          variant="receivable"
         />
-        <ReceivablesCardButton dueDate={new Date('2024-03-17')} />
+        <ReceivablesCardButton dueDate={new Date('2024-03-29')} />
       </PaymentCard>
       <PaymentCard>
         <PaymentCardContainer
@@ -41,8 +40,9 @@ export default function ReceivableContainer() {
           deliveryFee={50}
           rentalFee={50}
           totalFee={1100}
+          variant="receivable"
         />
-        <ReceivableCardOverDueButton dueDate={new Date('2024-03-17')} />
+        <ReceivableCardOverDueButton />
       </PaymentCard>
     </div>
   )

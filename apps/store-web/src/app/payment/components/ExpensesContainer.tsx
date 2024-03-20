@@ -26,7 +26,7 @@ export default function ExpensesContainer() {
           rentalFee={50}
           totalFee={1100}
         />
-        <ExpensesCardButton dueDate={new Date('2024-03-17')} />
+        <ExpensesCardButton dueDate={new Date('2024-03-29')} />
       </PaymentCard>
       <PaymentCard>
         <PaymentCardContainer
@@ -40,7 +40,7 @@ export default function ExpensesContainer() {
           rentalFee={50}
           totalFee={1100}
         />
-        <ExpensesCardOverDueButton dueDate={new Date('2024-03-17')} />
+        <ExpensesCardOverDueButton />
       </PaymentCard>
     </div>
   )
