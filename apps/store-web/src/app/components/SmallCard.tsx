@@ -11,18 +11,20 @@ import Link from 'next/link'
 import { Maybe, Media } from '../../../gqty'
 
 export default function SmallCard({
+  id,
   name,
   rating,
   price,
   image,
 }: {
+  id?: Maybe<Number>
   name: string
   rating: number
   price: number
   image?: Maybe<Media[]>
 }) {
   return (
-    <Link href="/detail/1">
+    <Link href={`/detail/${id}`}>
       <div className="flex flex-col max-w-[350px] w-full bg-card rounded-lg p-4 lg:gap-4 gap-2 hover:border-primary border-background border-2">
         <div className="relative">
           <Badge className="absolute py-1 px-3 flex flex-row gap-1">
