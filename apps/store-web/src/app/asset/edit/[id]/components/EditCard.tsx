@@ -118,7 +118,7 @@ export default function EditCard({ item_id }: { item_id: number }) {
           name: name ?? '',
           fee: price ?? 0,
           description: description ?? '',
-          periodType: periodType ?? 'day',
+          periodType: periodType ?? 'days',
         })
         setTags(tags?.map(({ id, text }) => ({ id, text })) ?? [])
         setListImg(images?.map((image) => image.url) ?? [])
@@ -174,7 +174,7 @@ export default function EditCard({ item_id }: { item_id: number }) {
         }
       }
       let item_type = ItemUpdate_periodType_MutationInput.days
-      if (data.periodType == 'month') {
+      if (data.periodType == 'months') {
         item_type = ItemUpdate_periodType_MutationInput.months
       }
       await resolve(
@@ -265,14 +265,14 @@ export default function EditCard({ item_id }: { item_id: number }) {
                       control={form.control}
                       name="periodType"
                       render={({ field }) => (
-                        <Select onValueChange={field.onChange}>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <SelectTrigger className="w-[106px]">
                             <SelectValue placeholder="฿ /day" />
                           </SelectTrigger>
                           <SelectContent className="absolute">
                             <SelectGroup>
-                              <SelectItem value="day"> ฿ /day</SelectItem>
-                              <SelectItem value="month"> ฿ /month</SelectItem>
+                              <SelectItem value="days"> ฿ /day</SelectItem>
+                              <SelectItem value="months"> ฿ /month</SelectItem>
                             </SelectGroup>
                           </SelectContent>
                         </Select>

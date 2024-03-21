@@ -285,6 +285,7 @@ export default function RegisterCard() {
                       type="file"
                       accept="image/*"
                       className="hidden"
+                      accept="image/*"
                       ref={fileInputRef}
                       onChange={handleFileChange}
                     />
