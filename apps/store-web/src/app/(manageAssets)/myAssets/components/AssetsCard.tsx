@@ -8,7 +8,7 @@ import { DotsThreeVertical, PencilSimple, Trash } from '@phosphor-icons/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Maybe, Media, User_roles, resolve } from '../../../../../gqty'
+import { Maybe, Media, resolve } from '../../../../../gqty'
 
 export default function AssetsCard({
   id,
@@ -25,6 +25,18 @@ export default function AssetsCard({
   price: number
   periodType: string
 }) {
+  async function handleDelete() {
+    try {
+      await resolve(async ({ mutation }) => {
+        const asset = mutation.deleteItem({
+          id: id,
+        })
+        return asset
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
   async function handleDelete() {
     try {
       await resolve(async ({ mutation }) => {
@@ -57,6 +69,7 @@ export default function AssetsCard({
 
             <PopoverContent className="w-fit p-1 mr-44">
               <Link href={`asset/edit/${id}`}>
+              <Link href={`asset/edit/${id}`}>
                 <div className="flex flex-row w-[186px] p-2 gap-2 hover:bg-muted text-muted-foreground rounded-md">
                   <PencilSimple size={16} className="my-auto" />
                   <Typography variant="h6">Edit</Typography>
@@ -64,7 +77,7 @@ export default function AssetsCard({
               </Link>
 
               <div
-                className="flex flex-row p-2 gap-2 hover:bg-muted text-muted-foreground rounded-md cursor-pointer"
+                className="flex flex-row p-2 gap-2 hover:bg-muted text-muted-foreground rounded-md"
                 onClick={(e) => {
                   handleDelete()
                   e.preventDefault()
