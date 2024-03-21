@@ -21,10 +21,12 @@ import AssetsCard from './AssetsCard'
 import SearchMyAssets from './SearchMyAssets'
 
 export default function MyAssets() {
-  const { Items } = useQuery({ fetchPolicy: 'cache-first' })
+  const { Items, meUser } = useQuery({ fetchPolicy: 'cache-first' })
 
   const searchParams = useSearchParams()
   const search = searchParams.get('search') ? searchParams.get('search') : undefined
+
+  const userId = meUser?.user?.id
 
   const items = Items({
     draft: false,
@@ -34,7 +36,7 @@ export default function MyAssets() {
         contains: search,
       },
       createdBy: {
-        equals: 1,
+        equals: userId,
       },
     },
   })

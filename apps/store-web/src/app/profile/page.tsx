@@ -20,25 +20,27 @@ export default function Profile() {
     firstName: '',
     lastName: '',
     profileImg: '',
+    rating: 0,
   })
 
   const router = useRouter()
   useEffect(() => {
     const fetchData = async () => {
-      const { bio, firstName, lastName, profileImg } = await resolve(({ query }) => {
+      const { bio, firstName, lastName, profileImg, rating } = await resolve(({ query }) => {
         return {
           id: query.meUser?.user?.id ?? '',
           firstName: query.meUser?.user?.firstName ?? '',
           lastName: query.meUser?.user?.lastName ?? '',
           bio: query.meUser?.user?.bio ?? '',
           profileImg: query.meUser?.user?.profileImage?.url ?? '',
+          rating: query.meUser?.user?.rating ?? 0,
         }
       })
 
       if (bio === '' || firstName === '' || lastName === '' || profileImg === '') {
         router.push('/profile/edit')
       }
-      setUser({ bio, firstName, lastName, profileImg })
+      setUser({ bio, firstName, lastName, profileImg, rating })
     }
     fetchData()
   }, [])
@@ -66,9 +68,9 @@ export default function Profile() {
                 </Typography>
               )}
               <div className="flex flex-row gap-0.5 ">
-                <Rating name="read-only" value={4} max={5} readOnly size="small" />
+                <Rating name="read-only" value={user.rating} max={5} readOnly size="small" />
                 <Typography variant="h6" className="text-light my-auto">
-                  4.0
+                  {user.rating}.0
                 </Typography>
               </div>
             </div>
