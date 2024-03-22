@@ -1,8 +1,6 @@
 'use client'
 
-import { ChangeEvent } from 'react'
-import React from 'react'
-import { useRef, useState } from 'react'
+import { ChangeEvent, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
@@ -16,12 +14,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Spinner } from '@/components/ui/spinner'
 import { Textarea } from '@/components/ui/textarea'
 import Typography from '@/components/ui/typography'
 import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Plus } from '@phosphor-icons/react'
-import { ListPlus, XCircle } from '@phosphor-icons/react'
+import { ListPlus, Plus, XCircle } from '@phosphor-icons/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -30,9 +28,9 @@ import { z } from 'zod'
 import {
   Item_periodType_MutationInput,
   Item_rentingStatus_MutationInput,
+  resolve,
   useQuery,
 } from '../../../../../gqty'
-import { resolve } from '../../../../../gqty'
 import { Tag, TagInput } from '../../../../components/ui/tags/tag-input'
 
 export const assetSchema = z.object({
@@ -50,6 +48,8 @@ export const assetSchema = z.object({
 export default function RegisterCard() {
   const [imageUrl, setImageUrl] = useState<File[]>([])
   const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleButtonClick = () => {
     if (fileInputRef.current) {
@@ -92,6 +92,7 @@ export default function RegisterCard() {
     return { id: tag?.id!, text: tag?.name! }
   })
   async function onSubmit(data: z.infer<typeof assetSchema>) {
+    setIsLoading(true)
     try {
       let imageIds: number[] = []
       for (let i = 0; i < imageUrl.length; i++) {
@@ -159,8 +160,10 @@ export default function RegisterCard() {
         description: 'Your asset has been registered.',
         success: true,
       })
+      setIsLoading(false)
       router.push('/myAssets')
     } catch (e) {
+      setIsLoading(false)
       toast({
         title: 'Not Success',
         description: 'At least one image must be uploaded.',
@@ -273,13 +276,14 @@ export default function RegisterCard() {
                 <Typography variant="h5">Image</Typography>
 
                 <div className="grid gap-2 2xl:grid-cols-9 xl:grid-cols-6 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2 ">
-                  <div className="flex md:w-[120px] w-[80px] md:h-[120px] h-[80px] justify-center items-center rounded-[8px] border-primary border-dashed border-2">
+                  <div className="flex md:w-[120px] w-[80px] md:h-[120px] h-[80px] justify-center items-center rounded-[8px] border-primary border-dashed border-2 cursor-pointer">
                     <p onClick={handleButtonClick}>
                       <Plus className="w-4 h-4 text-primary" />
                     </p>
                     <Input
                       id="file"
                       type="file"
+                      accept="image/*"
                       className="hidden"
                       ref={fileInputRef}
                       onChange={handleFileChange}
@@ -290,7 +294,7 @@ export default function RegisterCard() {
                       <XCircle
                         size={24}
                         weight="fill"
-                        className="absolute lg:right-1 md:right-2 right-1 top-1 text-primary"
+                        className="absolute lg:right-1 md:right-2 right-1 top-1 text-primary cursor-pointer"
                         onClick={() => handleDeleteImage(index)}
                       />
                       <Image
@@ -314,7 +318,9 @@ export default function RegisterCard() {
               </Button>
             </Link>
             <Button type="submit" className="min-w-[130px] max-lg:w-1/2">
-              <Typography variant="h5">Confirm</Typography>
+              <Typography variant="h5" className="flex items-center">
+                {isLoading ? <Spinner /> : 'Confirm'}
+              </Typography>
             </Button>
           </div>
         </form>
