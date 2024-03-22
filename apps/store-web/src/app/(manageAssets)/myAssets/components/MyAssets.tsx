@@ -30,7 +30,6 @@ export default function MyAssets() {
 
   const items = Items({
     draft: false,
-    limit: 30,
     where: {
       name: {
         contains: search,

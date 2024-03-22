@@ -3,7 +3,7 @@
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
-import { ArrowLeft, CaretRight } from '@phosphor-icons/react'
+import { CaretRight } from '@phosphor-icons/react'
 import { Slot } from '@radix-ui/react-slot'
 import { MoreHorizontal } from 'lucide-react'
 
@@ -47,7 +47,7 @@ const BreadcrumbLink = React.forwardRef<
   return (
     <Comp
       ref={ref}
-      className={cn('transition-colors text-light hover:text-foreground', className)}
+      className={cn('transition-colors text-light hover:text-foreground cursor-pointer', className)}
       {...props}
     />
   )
@@ -94,11 +94,8 @@ const BreadcrumbEllipsis = ({ className, ...props }: React.ComponentProps<'span'
 BreadcrumbEllipsis.displayName = 'BreadcrumbElipssis'
 
 export {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-  BreadcrumbEllipsis,
+  Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem,
+  BreadcrumbLink, BreadcrumbList, BreadcrumbPage,
+  BreadcrumbSeparator
 }
+

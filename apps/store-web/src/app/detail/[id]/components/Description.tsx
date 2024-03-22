@@ -10,18 +10,24 @@ import Typography from '@/components/ui/typography'
 import Rating from '@mui/material/Rating'
 import { CalendarBlank } from '@phosphor-icons/react'
 
+import { Item_rentingStatus, Maybe, Tag } from '../../../../../gqty'
+
 export default function Description({
+  isSelf,
   name,
   price,
   tags,
   rating,
   status,
+  description,
 }: {
-  name: string
-  price: number
-  tags: Array<string>
-  rating: number
-  status: string
+  isSelf: boolean
+  name: Maybe<string | undefined>
+  price: Maybe<number | undefined>
+  tags?: Maybe<Tag[]>
+  rating: Maybe<number | undefined>
+  status: Maybe<Item_rentingStatus | undefined>
+  description: Maybe<string | undefined>
 }) {
   const dayjs = require('dayjs')
 
@@ -87,129 +93,138 @@ export default function Description({
           }}
         />
         <Typography variant="h5" className="text-light my-auto pt-0.5">
-          {rating.toFixed(1)}
+          {rating?.toFixed(1)}
         </Typography>
       </div>
       <div className="flex flex-wrap gap-x-2 gap-y-3">
-        {tags.map((item, index) => (
+        {tags?.map((item, index) => (
           <Badge variant="outline" key={index} className="px-3 py-1 border-muted-foreground">
             <Typography variant="h6" fontWeight="regular">
-              {item}
+              {item.name}
             </Typography>
           </Badge>
         ))}
       </div>
-      <div className="p-3 flex flex-col gap-y-2 border rounded-lg">
-        <Typography variant="h5" fontWeight="bold" className="flex justify-center">
-          Check for available dates
-        </Typography>
-        <hr />
-        <div className="h-fit lg:h-7 flex flex-col lg:flex-row justify-between">
-          <Typography variant="h6" fontWeight="bold" className="my-auto">
-            Date
+      <Typography variant="body2">{description ? description : 'No details'}</Typography>
+      {!isSelf && (
+        <div className="p-3 flex flex-col gap-y-2 border rounded-lg">
+          <Typography variant="h5" fontWeight="bold" className="flex justify-center">
+            Select date to rent
           </Typography>
-          <div className="flex justify-between gap-x-2">
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="gap-x-2 bg-transparent grow lg:grow-0"
-                >
-                  <CalendarBlank size={16} />
-                  <Typography variant="h6">{dayjs(startDate).format('DD/MM/YY')}</Typography>
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-full">
-                <Calendar
-                  mode="single"
-                  selected={startDate}
-                  onSelect={(e) => {
-                    setStartDate(e)
-                    setPeriodText(timePeriod(e, endDate))
-                  }}
-                  disabled={(date) =>
-                    date < new Date(Date.now() - 1000 * 3600 * 24) ||
-                    (endDate instanceof Date &&
-                      date > new Date(endDate.getTime() - 1000 * 3600 * 24))
-                  }
-                  required
-                />
-              </PopoverContent>
-            </Popover>
-            <Typography variant="h6" className="my-auto">
-              -
+          <hr />
+          <div className="h-fit lg:h-7 flex flex-col lg:flex-row justify-between">
+            <Typography variant="h6" fontWeight="bold" className="my-auto">
+              Date
             </Typography>
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-27 gap-x-2 bg-transparent grow lg:grow-0"
-                >
-                  <CalendarBlank size={16} />
-                  <Typography variant="h6">{dayjs(endDate).format('DD/MM/YY')}</Typography>
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-full">
-                <Calendar
-                  mode="single"
-                  selected={endDate}
-                  onSelect={(e) => {
-                    setEndDate(e)
-                    setPeriodText(timePeriod(startDate, e))
-                  }}
-                  disabled={(date) =>
-                    startDate instanceof Date &&
-                    date < new Date(startDate.getTime() + 1000 * 3600 * 24)
-                  }
-                  required
-                />
-              </PopoverContent>
-            </Popover>
+            <div className="flex justify-between gap-x-2">
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="gap-x-2 bg-transparent grow lg:grow-0"
+                  >
+                    <CalendarBlank size={16} />
+                    <Typography variant="h6">{dayjs(startDate).format('DD/MM/YY')}</Typography>
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-full">
+                  <Calendar
+                    mode="single"
+                    selected={startDate}
+                    onSelect={(e) => {
+                      setStartDate(e)
+                      setPeriodText(timePeriod(e, endDate))
+                    }}
+                    disabled={(date) =>
+                      date < new Date(Date.now() - 1000 * 3600 * 24) ||
+                      (endDate instanceof Date &&
+                        date > new Date(endDate.getTime() - 1000 * 3600 * 24))
+                    }
+                    required
+                  />
+                </PopoverContent>
+              </Popover>
+              <Typography variant="h6" className="my-auto">
+                -
+              </Typography>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-27 gap-x-2 bg-transparent grow lg:grow-0"
+                  >
+                    <CalendarBlank size={16} />
+                    <Typography variant="h6">{dayjs(endDate).format('DD/MM/YY')}</Typography>
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-full">
+                  <Calendar
+                    mode="single"
+                    selected={endDate}
+                    onSelect={(e) => {
+                      setEndDate(e)
+                      setPeriodText(timePeriod(startDate, e))
+                    }}
+                    disabled={(date) =>
+                      startDate instanceof Date &&
+                      date < new Date(startDate.getTime() + 1000 * 3600 * 24)
+                    }
+                    required
+                  />
+                </PopoverContent>
+              </Popover>
+            </div>
+          </div>
+          <hr />
+          <div className="h-7 flex justify-between">
+            <Typography variant="h6" fontWeight="bold" className="my-auto">
+              Total period
+            </Typography>
+            <Typography variant="h6" fontWeight="bold" className="my-auto">
+              {periodText}
+            </Typography>
+          </div>
+          <hr />
+          <div className="h-7 flex justify-between">
+            <Typography variant="h6" fontWeight="bold" className="my-auto">
+              Total price
+            </Typography>
+            <Typography variant="h6" fontWeight="bold" className="my-auto">
+              {((price ?? 0) * ((endDate?.getTime() ?? 0) - (startDate?.getTime() ?? 0))) /
+                (1000 * 3600 * 24)}
+              ฿
+            </Typography>
+          </div>
+          <hr />
+          <div className="h-7 flex justify-between">
+            <Typography variant="h6" fontWeight="bold" className="my-auto">
+              Status
+            </Typography>
+
+            {status == Item_rentingStatus.available ? (
+              <Typography variant="h6" className="px-3 py-1 border rounded-full bg-available">
+                Available
+              </Typography>
+            ) : (
+              <Typography variant="h6" className="px-3 py-1 border rounded-full bg-unavailable">
+                Unavailable
+              </Typography>
+            )}
+          </div>
+          <hr className={status == Item_rentingStatus.available ? 'block' : 'hidden'} />
+          <div className="flex justify-center">
+            <Button
+              type="submit"
+              size="lg"
+              className={status == Item_rentingStatus.available ? 'block' : 'hidden'}
+            >
+              Rent
+            </Button>
           </div>
         </div>
-        <hr />
-        <div className="h-7 flex justify-between">
-          <Typography variant="h6" fontWeight="bold" className="my-auto">
-            Total period
-          </Typography>
-          <Typography variant="h6" fontWeight="bold" className="my-auto">
-            {periodText}
-          </Typography>
-        </div>
-        <hr />
-        <div className="h-7 flex justify-between">
-          <Typography variant="h6" fontWeight="bold" className="my-auto">
-            Total price
-          </Typography>
-          <Typography variant="h6" fontWeight="bold" className="my-auto">
-            600฿
-          </Typography>
-        </div>
-        <hr />
-        <div className="h-7 flex justify-between">
-          <Typography variant="h6" fontWeight="bold" className="my-auto">
-            Status
-          </Typography>
-
-          {status == 'Available' ? (
-            <Typography variant="h6" className="px-3 py-1 border rounded-full bg-available">
-              Available
-            </Typography>
-          ) : (
-            <Typography variant="h6" className="px-3 py-1 border rounded-full bg-unavailable">
-              Unavailable
-            </Typography>
-          )}
-        </div>
-        <hr className={status == 'Available' ? 'block' : 'hidden'} />
-        <div className="flex justify-center">
-          <Button type="submit" size="lg" className={status == 'Available' ? 'block' : 'hidden'}>
-            Rent
-          </Button>
-        </div>
-      </div>
+      )}
     </div>
   )
 }

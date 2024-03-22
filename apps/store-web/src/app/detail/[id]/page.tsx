@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,57 +8,57 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
+import { useParams, useRouter } from 'next/navigation'
 
-import { resolve } from '../../../../gqty'
+import { useQuery } from '../../../../gqty'
 import Description from './components/Description'
 import Details from './components/Details'
 import Gallery from './components/Gallery'
 import Lessor from './components/Lessor'
 import Reviews from './components/Reviews'
 
-const mockData = {
-  _status: null,
-  createdAt: null,
-  createdBy: null,
-  description:
-    'Mom in japanese is okasan, Mommy in japanese is mama.\nDad in japanese is otosan, Daddy in japanese is Gojo Satoru.',
-  image: null,
-  name: 'Jujutsu kaisen Vol.4',
-  tags: ['หนังสือการ์ตูน', 'พระเครื่อง', 'เครื่องราง/ของขลัง', 'ของเซ่นไหว้'],
-  updatedAt: null,
-}
+export default function DetailPage() {
+  const router = useRouter()
 
-const mockLessor = {
-  name: 'มายมุมุ หิวข้าว',
-  rating: 4.0,
-}
+  const { id } = useParams<{ id: string }>()
 
-export default async function DetailPage({ params }: { params: { id: string } }) {
+  const query = useQuery({
+    fetchPolicy: 'cache-first',
+  })
+
+  const item = query.Item({
+    id: Number(id),
+  })
+
+  const userId = query.meUser?.user?.id
+
   return (
     <div className="container flex flex-col gap-y-4 py-4 lg:py-12">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            <BreadcrumbLink onClick={() => router.back()}>Search</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>{mockData.name}</BreadcrumbPage>
+            <BreadcrumbPage>{item?.name}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
       <div className="flex flex-col lg:flex-row p-6 gap-10 bg-card rounded-2xl justify-items-center">
-        <Gallery />
+        <Gallery imgList={item?.image} />
         <Description
-          name={mockData.name}
-          price={20}
-          tags={mockData.tags}
-          rating={4}
-          status="Available"
+          isSelf={item?.createdBy?.id === userId}
+          name={item?.name ?? ''}
+          price={item?.price ?? 0}
+          tags={item?.tags ?? []}
+          rating={item?.rating ?? 0}
+          status={item?.rentingStatus}
+          description={item?.description ?? ''}
         />
       </div>
-      <Lessor name={mockLessor.name} rating={mockLessor.rating} />
-      <Details details={mockData.description} />
+      <Lessor isSelf={item?.createdBy?.id === userId} user={item?.createdBy} />
+      {!(item?.createdBy?.id === userId) && <Details details={item?.description} />}
       <Reviews />
     </div>
   )
