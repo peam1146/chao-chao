@@ -26,6 +26,7 @@ import { ListPlus, XCircle } from '@phosphor-icons/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { z } from 'zod'
 
 import {
@@ -48,7 +49,9 @@ export const assetSchema = z.object({
   fee: z.coerce.number().optional(),
   description: z.string().optional(),
 })
-export default function EditCard({ item_id }: { item_id: number }) {
+export default function EditCard() {
+  const params = useParams<{ id: string }>()
+  const item_id = Number(params.id)
   const [imageUrl, setImageUrl] = useState<File[]>([])
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [prevImages, setPrevImages] = useState<{ id: number; url: string }[]>([])
@@ -93,6 +96,27 @@ export default function EditCard({ item_id }: { item_id: number }) {
   })?.docs?.map((tag) => {
     return { id: tag?.id!, text: tag?.name! }
   })
+  const [isLoading, setisLoading] = useState(false)
+  // const { Item, $state } = useQuery({ fetchPolicy: 'cache-first' })
+  // const item_name = Item({ id: item_id })?.name
+  // const item_price = Item({ id: item_id })?.price
+  // const item_description = Item({ id: item_id })?.description
+  // const item_periodType = Item({ id: item_id })?.periodType
+  // const item_tags = Item({ id: item_id })?.tags?.map((tag) => {
+  //   return { id: tag?.id!, text: tag?.name! }
+  // })
+  // const item_images = Item({ id: item_id })?.image?.map((image) => {
+  //   return { id: image?.id!, url: image?.url! }
+  // })
+  // form.reset({
+  //   name: item_name ?? '',
+  //   fee: item_price ?? 0,
+  //   description: item_description ?? '',
+  //   periodType: item_periodType ?? 'days',
+  // })
+  // setTags(item_tags?.map(({ id, text }) => ({ id, text })) ?? [])
+  // setListImg(item_images?.map((image) => image.url) ?? [])
+  // setPrevImages(item_images?.map((image) => image) ?? [])
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -123,6 +147,7 @@ export default function EditCard({ item_id }: { item_id: number }) {
         setTags(tags?.map(({ id, text }) => ({ id, text })) ?? [])
         setListImg(images?.map((image) => image.url) ?? [])
         setPrevImages(images?.map((image) => image) ?? [])
+        setisLoading(true)
       } catch (error) {
         console.error(error)
       }
@@ -213,157 +238,161 @@ export default function EditCard({ item_id }: { item_id: number }) {
     }
   }
   return (
-    <div className="flex flex-col w-full gap-4">
-      <div className="flex flex-row gap-1">
-        <ListPlus size={22}></ListPlus>
-        <Typography variant="h4" fontWeight="bold">
-          Edit Asset
-        </Typography>
-      </div>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className="flex flex-col w-full bg-card rounded-md p-6 dark:border-none light:border-primary border-solid border-2">
-            <div className="h-fit w-full flex flex-col gap-4 my-auto">
-              <div className="flex w-full lg:flex-row flex-col gap-4 items-start">
-                <div className="flex flex-col w-full lg:w-1/2 gap-1">
-                  <Typography variant="h5">Name</Typography>
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            placeholder="Name"
-                            error={!!form.formState.errors.name}
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-                <div className="flex flex-row items-end gap-[10px] w-full lg:w-1/2">
+    <>
+      {isLoading && (
+        <div className="flex flex-col w-full gap-4">
+          <div className="flex flex-row gap-1">
+            <ListPlus size={22}></ListPlus>
+            <Typography variant="h4" fontWeight="bold">
+              Edit Asset
+            </Typography>
+          </div>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+              <div className="flex flex-col w-full bg-card rounded-md p-6 dark:border-none light:border-primary border-solid border-2">
+                <div className="h-fit w-full flex flex-col gap-4 my-auto">
+                  <div className="flex w-full lg:flex-row flex-col gap-4 items-start">
+                    <div className="flex flex-col w-full lg:w-1/2 gap-1">
+                      <Typography variant="h5">Name</Typography>
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormControl>
+                              <Input
+                                placeholder="Name"
+                                error={!!form.formState.errors.name}
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+                    <div className="flex flex-row items-end gap-[10px] w-full lg:w-1/2">
+                      <div className="flex flex-col w-full gap-1">
+                        <Typography variant="h5">Rental Fee</Typography>
+                        <FormField
+                          control={form.control}
+                          name="fee"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <Input placeholder="0.00" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="relative">
+                        <FormField
+                          control={form.control}
+                          name="periodType"
+                          render={({ field }) => (
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <SelectTrigger className="w-[106px]">
+                                <SelectValue placeholder="฿ /day" />
+                              </SelectTrigger>
+                              <SelectContent className="absolute">
+                                <SelectGroup>
+                                  <SelectItem value="days"> ฿ /day</SelectItem>
+                                  <SelectItem value="months"> ฿ /month</SelectItem>
+                                </SelectGroup>
+                              </SelectContent>
+                            </Select>
+                          )}
+                        />
+                      </div>
+                    </div>
+                  </div>
                   <div className="flex flex-col w-full gap-1">
-                    <Typography variant="h5">Rental Fee</Typography>
+                    <Typography variant="h5">Category</Typography>
+                    <div className="w-full ">
+                      <TagInput
+                        id="category"
+                        placeholder="Enter new category"
+                        value={''}
+                        tags={tags}
+                        enableAutocomplete={true}
+                        autocompleteOptions={tagsDB}
+                        className="w-full"
+                        setTags={(newTags) => {
+                          setTags(newTags)
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-col w-full gap-1">
+                    <Typography variant="h5">Description</Typography>
                     <FormField
                       control={form.control}
-                      name="fee"
+                      name="description"
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder="0.00" {...field} />
+                            <Textarea {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
                   </div>
-                  <div className="relative">
-                    <FormField
-                      control={form.control}
-                      name="periodType"
-                      render={({ field }) => (
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <SelectTrigger className="w-[106px]">
-                            <SelectValue placeholder="฿ /day" />
-                          </SelectTrigger>
-                          <SelectContent className="absolute">
-                            <SelectGroup>
-                              <SelectItem value="days"> ฿ /day</SelectItem>
-                              <SelectItem value="months"> ฿ /month</SelectItem>
-                            </SelectGroup>
-                          </SelectContent>
-                        </Select>
-                      )}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col w-full gap-1">
-                <Typography variant="h5">Category</Typography>
-                <div className="w-full ">
-                  <TagInput
-                    id="category"
-                    placeholder="Enter new category"
-                    value={''}
-                    tags={tags}
-                    enableAutocomplete={true}
-                    autocompleteOptions={tagsDB}
-                    className="w-full"
-                    setTags={(newTags) => {
-                      setTags(newTags)
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col w-full gap-1">
-                <Typography variant="h5">Description</Typography>
-                <FormField
-                  control={form.control}
-                  name="description"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Textarea {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="flex flex-col w-full gap-1">
-                <Typography variant="h5">Image</Typography>
+                  <div className="flex flex-col w-full gap-1">
+                    <Typography variant="h5">Image</Typography>
 
-                <div className="grid gap-2 2xl:grid-cols-9 xl:grid-cols-6 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2 ">
-                  <div className="flex md:w-[120px] w-[80px] md:h-[120px] h-[80px] justify-center items-center rounded-[8px] border-primary border-dashed border-2">
-                    <p onClick={handleButtonClick}>
-                      <Plus className="w-4 h-4 text-primary" />
-                    </p>
-                    <Input
-                      id="file"
-                      type="file"
-                      className="hidden"
-                      accept="image/*"
-                      ref={fileInputRef}
-                      onChange={handleFileChange}
-                    />
-                  </div>
-                  {listImg.map((item, index) => (
-                    <div className="relative md:w-[120px] w-[80px] md:h-[120px] h-[80px]">
-                      <XCircle
-                        size={24}
-                        weight="fill"
-                        className="absolute lg:right-1 md:right-2 right-1 top-1 text-primary"
-                        onClick={() => handleDeleteImage(index)}
-                      />
-                      <Image
-                        key={index}
-                        src={item}
-                        width={120}
-                        height={120}
-                        alt="add picture"
-                        className="rounded-[8px] md:w-[120px] w-[80px] md:h-[120px] h-[80px]"
-                      ></Image>
+                    <div className="grid gap-2 2xl:grid-cols-9 xl:grid-cols-6 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2 ">
+                      <div className="flex md:w-[120px] w-[80px] md:h-[120px] h-[80px] justify-center items-center rounded-[8px] border-primary border-dashed border-2">
+                        <p onClick={handleButtonClick} className="cursor-pointer">
+                          <Plus className="w-4 h-4 text-primary" />
+                        </p>
+                        <Input
+                          id="file"
+                          type="file"
+                          className="hidden"
+                          accept="image/*"
+                          ref={fileInputRef}
+                          onChange={handleFileChange}
+                        />
+                      </div>
+                      {listImg.map((item, index) => (
+                        <div className="relative md:w-[120px] w-[80px] md:h-[120px] h-[80px]">
+                          <XCircle
+                            size={24}
+                            weight="fill"
+                            className="absolute lg:right-1 md:right-2 right-1 top-1 text-primary cursor-pointer"
+                            onClick={() => handleDeleteImage(index)}
+                          />
+                          <Image
+                            key={index}
+                            src={item}
+                            width={120}
+                            height={120}
+                            alt="add picture"
+                            className="rounded-[8px] md:w-[120px] w-[80px] md:h-[120px] h-[80px]"
+                          ></Image>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="flex flex-row w-full gap-[10px] md:justify-center sm:justify-between pt-4">
-            <Link href="/myAssets" className="max-lg:w-1/2">
-              <Button variant="secondary" className="min-w-[130px] w-full ">
-                <Typography variant="h5">Cancel</Typography>
-              </Button>
-            </Link>
-            <Button type="submit" className="min-w-[130px] max-lg:w-1/2">
-              <Typography variant="h5">Confirm</Typography>
-            </Button>
-          </div>
-        </form>
-      </Form>
-    </div>
+              <div className="flex flex-row w-full gap-[10px] md:justify-center sm:justify-between pt-4">
+                <Link href="/myAssets" className="max-lg:w-1/2">
+                  <Button variant="secondary" className="min-w-[130px] w-full ">
+                    <Typography variant="h5">Cancel</Typography>
+                  </Button>
+                </Link>
+                <Button type="submit" className="min-w-[130px] max-lg:w-1/2">
+                  <Typography variant="h5">Confirm</Typography>
+                </Button>
+              </div>
+            </form>
+          </Form>
+        </div>
+      )}
+    </>
   )
 }

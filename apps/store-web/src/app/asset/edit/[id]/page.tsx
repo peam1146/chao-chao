@@ -1,5 +1,3 @@
-'use client'
-
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,13 +7,10 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
 
 import EditCard from './components/EditCard'
 
 export default async function AssetEdit() {
-  const params = useParams<{ id: string }>()
-  const id = Number(params.id)
   return (
     <main className="container flex w-full bg-background min-h-[calc(100vh-64px)] justify-center pb-4">
       <div className="flex flex-col w-full pt-5 ">
@@ -32,7 +27,7 @@ export default async function AssetEdit() {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <EditCard item_id={id} />
+        <EditCard />
       </div>
     </main>
   )

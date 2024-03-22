@@ -8,7 +8,7 @@ import { DotsThreeVertical, PencilSimple, Trash } from '@phosphor-icons/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Maybe, Media, resolve } from '../../../../../gqty'
+import { Maybe, Media, User_roles, resolve } from '../../../../../gqty'
 
 export default function AssetsCard({
   id,
@@ -64,7 +64,7 @@ export default function AssetsCard({
               </Link>
 
               <div
-                className="flex flex-row p-2 gap-2 hover:bg-muted text-muted-foreground rounded-md"
+                className="flex flex-row p-2 gap-2 hover:bg-muted text-muted-foreground rounded-md cursor-pointer"
                 onClick={(e) => {
                   handleDelete()
                   e.preventDefault()
