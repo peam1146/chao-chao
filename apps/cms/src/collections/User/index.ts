@@ -75,15 +75,6 @@ export const Users: CollectionConfig = {
       required: false,
     },
     {
-      type: 'text',
-      name: 'province',
-      label: {
-        th: 'จังหวัด',
-        en: 'province',
-      },
-      required: false,
-    },
-    {
       type: 'number',
       name: 'rating',
       label: {
