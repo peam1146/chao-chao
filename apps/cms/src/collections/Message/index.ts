@@ -19,7 +19,6 @@ export const Message: CollectionConfig = {
     {
       type: 'text',
       name: 'message',
-      hidden: true,
     },
     {
       type: 'date',
@@ -31,16 +30,13 @@ export const Message: CollectionConfig = {
       type: 'relationship',
       relationTo: 'users',
       name: 'createdBy',
-      defaultValue: ({ user }) => user.id,
       required: true,
-      hidden: true,
     },
     {
       type: 'relationship',
       relationTo: 'chatroom',
       name: 'room',
       required: true,
-      hidden: true,
     },
   ],
 }

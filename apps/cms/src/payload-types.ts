@@ -105,6 +105,9 @@ export interface Chatroom {
   id: number;
   user1_id: number | User;
   user2_id: number | User;
+  lastMessage?: (number | null) | Message;
+  user1LastViewed?: string | null;
+  user2LastViewed?: string | null;
   updatedAt: string;
   createdAt: string;
 }

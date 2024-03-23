@@ -25,6 +25,124 @@ export interface Scalars {
   JSONObject: any
 }
 
+export interface Chatroom_createdAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Chatroom_id_operator {
+  equals?: InputMaybe<Scalars['Int']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Int']>
+  greater_than_equal?: InputMaybe<Scalars['Int']>
+  less_than?: InputMaybe<Scalars['Int']>
+  less_than_equal?: InputMaybe<Scalars['Int']>
+  not_equals?: InputMaybe<Scalars['Int']>
+}
+
+export interface Chatroom_lastMessage_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Chatroom_updatedAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Chatroom_user1LastViewed_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Chatroom_user1_id_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Chatroom_user2LastViewed_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Chatroom_user2_id_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Chatroom_where {
+  AND?: InputMaybe<Array<InputMaybe<Chatroom_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Chatroom_where_or>>>
+  createdAt?: InputMaybe<Chatroom_createdAt_operator>
+  id?: InputMaybe<Chatroom_id_operator>
+  lastMessage?: InputMaybe<Chatroom_lastMessage_operator>
+  updatedAt?: InputMaybe<Chatroom_updatedAt_operator>
+  user1LastViewed?: InputMaybe<Chatroom_user1LastViewed_operator>
+  user1_id?: InputMaybe<Chatroom_user1_id_operator>
+  user2LastViewed?: InputMaybe<Chatroom_user2LastViewed_operator>
+  user2_id?: InputMaybe<Chatroom_user2_id_operator>
+}
+
+export interface Chatroom_where_and {
+  AND?: InputMaybe<Array<InputMaybe<Chatroom_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Chatroom_where_or>>>
+  createdAt?: InputMaybe<Chatroom_createdAt_operator>
+  id?: InputMaybe<Chatroom_id_operator>
+  lastMessage?: InputMaybe<Chatroom_lastMessage_operator>
+  updatedAt?: InputMaybe<Chatroom_updatedAt_operator>
+  user1LastViewed?: InputMaybe<Chatroom_user1LastViewed_operator>
+  user1_id?: InputMaybe<Chatroom_user1_id_operator>
+  user2LastViewed?: InputMaybe<Chatroom_user2LastViewed_operator>
+  user2_id?: InputMaybe<Chatroom_user2_id_operator>
+}
+
+export interface Chatroom_where_or {
+  AND?: InputMaybe<Array<InputMaybe<Chatroom_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Chatroom_where_or>>>
+  createdAt?: InputMaybe<Chatroom_createdAt_operator>
+  id?: InputMaybe<Chatroom_id_operator>
+  lastMessage?: InputMaybe<Chatroom_lastMessage_operator>
+  updatedAt?: InputMaybe<Chatroom_updatedAt_operator>
+  user1LastViewed?: InputMaybe<Chatroom_user1LastViewed_operator>
+  user1_id?: InputMaybe<Chatroom_user1_id_operator>
+  user2LastViewed?: InputMaybe<Chatroom_user2LastViewed_operator>
+  user2_id?: InputMaybe<Chatroom_user2_id_operator>
+}
+
 export enum ItemUpdate__status_MutationInput {
   draft = 'draft',
   published = 'published',
@@ -298,6 +416,8 @@ export interface Item_where {
 }
 
 export interface Item_where_and {
+  AND?: InputMaybe<Array<InputMaybe<Item_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Item_where_or>>>
   _status?: InputMaybe<Item__status_operator>
   availableAt?: InputMaybe<Item_availableAt_operator>
   createdAt?: InputMaybe<Item_createdAt_operator>
@@ -318,6 +438,8 @@ export interface Item_where_and {
 }
 
 export interface Item_where_or {
+  AND?: InputMaybe<Array<InputMaybe<Item_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Item_where_or>>>
   _status?: InputMaybe<Item__status_operator>
   availableAt?: InputMaybe<Item_availableAt_operator>
   createdAt?: InputMaybe<Item_createdAt_operator>
@@ -461,6 +583,8 @@ export interface Media_where {
 }
 
 export interface Media_where_and {
+  AND?: InputMaybe<Array<InputMaybe<Media_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Media_where_or>>>
   alt?: InputMaybe<Media_alt_operator>
   createdAt?: InputMaybe<Media_createdAt_operator>
   filename?: InputMaybe<Media_filename_operator>
@@ -475,6 +599,8 @@ export interface Media_where_and {
 }
 
 export interface Media_where_or {
+  AND?: InputMaybe<Array<InputMaybe<Media_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Media_where_or>>>
   alt?: InputMaybe<Media_alt_operator>
   createdAt?: InputMaybe<Media_createdAt_operator>
   filename?: InputMaybe<Media_filename_operator>
@@ -496,6 +622,97 @@ export interface Media_width_operator {
   less_than?: InputMaybe<Scalars['Float']>
   less_than_equal?: InputMaybe<Scalars['Float']>
   not_equals?: InputMaybe<Scalars['Float']>
+}
+
+export interface Message_createdAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Message_createdBy_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Message_id_operator {
+  equals?: InputMaybe<Scalars['Int']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Int']>
+  greater_than_equal?: InputMaybe<Scalars['Int']>
+  less_than?: InputMaybe<Scalars['Int']>
+  less_than_equal?: InputMaybe<Scalars['Int']>
+  not_equals?: InputMaybe<Scalars['Int']>
+}
+
+export interface Message_message_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  contains?: InputMaybe<Scalars['String']>
+  equals?: InputMaybe<Scalars['String']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  like?: InputMaybe<Scalars['String']>
+  not_equals?: InputMaybe<Scalars['String']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export interface Message_room_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Message_updatedAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Message_where {
+  AND?: InputMaybe<Array<InputMaybe<Message_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Message_where_or>>>
+  createdAt?: InputMaybe<Message_createdAt_operator>
+  createdBy?: InputMaybe<Message_createdBy_operator>
+  id?: InputMaybe<Message_id_operator>
+  message?: InputMaybe<Message_message_operator>
+  room?: InputMaybe<Message_room_operator>
+  updatedAt?: InputMaybe<Message_updatedAt_operator>
+}
+
+export interface Message_where_and {
+  AND?: InputMaybe<Array<InputMaybe<Message_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Message_where_or>>>
+  createdAt?: InputMaybe<Message_createdAt_operator>
+  createdBy?: InputMaybe<Message_createdBy_operator>
+  id?: InputMaybe<Message_id_operator>
+  message?: InputMaybe<Message_message_operator>
+  room?: InputMaybe<Message_room_operator>
+  updatedAt?: InputMaybe<Message_updatedAt_operator>
+}
+
+export interface Message_where_or {
+  AND?: InputMaybe<Array<InputMaybe<Message_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Message_where_or>>>
+  createdAt?: InputMaybe<Message_createdAt_operator>
+  createdBy?: InputMaybe<Message_createdBy_operator>
+  id?: InputMaybe<Message_id_operator>
+  message?: InputMaybe<Message_message_operator>
+  room?: InputMaybe<Message_room_operator>
+  updatedAt?: InputMaybe<Message_updatedAt_operator>
 }
 
 export interface PayloadPreferenceUpdate_UserRelationshipInput {
@@ -594,6 +811,8 @@ export interface PayloadPreference_where {
 }
 
 export interface PayloadPreference_where_and {
+  AND?: InputMaybe<Array<InputMaybe<PayloadPreference_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<PayloadPreference_where_or>>>
   createdAt?: InputMaybe<PayloadPreference_createdAt_operator>
   id?: InputMaybe<PayloadPreference_id_operator>
   key?: InputMaybe<PayloadPreference_key_operator>
@@ -603,6 +822,8 @@ export interface PayloadPreference_where_and {
 }
 
 export interface PayloadPreference_where_or {
+  AND?: InputMaybe<Array<InputMaybe<PayloadPreference_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<PayloadPreference_where_or>>>
   createdAt?: InputMaybe<PayloadPreference_createdAt_operator>
   id?: InputMaybe<PayloadPreference_id_operator>
   key?: InputMaybe<PayloadPreference_key_operator>
@@ -675,6 +896,8 @@ export interface Tag_where {
 }
 
 export interface Tag_where_and {
+  AND?: InputMaybe<Array<InputMaybe<Tag_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Tag_where_or>>>
   alt?: InputMaybe<Tag_alt_operator>
   createdAt?: InputMaybe<Tag_createdAt_operator>
   id?: InputMaybe<Tag_id_operator>
@@ -683,6 +906,8 @@ export interface Tag_where_and {
 }
 
 export interface Tag_where_or {
+  AND?: InputMaybe<Array<InputMaybe<Tag_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Tag_where_or>>>
   alt?: InputMaybe<Tag_alt_operator>
   createdAt?: InputMaybe<Tag_createdAt_operator>
   id?: InputMaybe<Tag_id_operator>
@@ -848,6 +1073,8 @@ export interface User_where {
 }
 
 export interface User_where_and {
+  AND?: InputMaybe<Array<InputMaybe<User_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<User_where_or>>>
   bio?: InputMaybe<User_bio_operator>
   createdAt?: InputMaybe<User_createdAt_operator>
   email?: InputMaybe<User_email_operator>
@@ -863,6 +1090,8 @@ export interface User_where_and {
 }
 
 export interface User_where_or {
+  AND?: InputMaybe<Array<InputMaybe<User_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<User_where_or>>>
   bio?: InputMaybe<User_bio_operator>
   createdAt?: InputMaybe<User_createdAt_operator>
   email?: InputMaybe<User_email_operator>
@@ -875,6 +1104,26 @@ export interface User_where_or {
   rating?: InputMaybe<User_rating_operator>
   roles?: InputMaybe<User_roles_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
+}
+
+export interface mutationChatroomInput {
+  createdAt?: InputMaybe<Scalars['String']>
+  lastMessage?: InputMaybe<Scalars['Int']>
+  updatedAt?: InputMaybe<Scalars['String']>
+  user1LastViewed?: InputMaybe<Scalars['String']>
+  user1_id?: InputMaybe<Scalars['Int']>
+  user2LastViewed?: InputMaybe<Scalars['String']>
+  user2_id?: InputMaybe<Scalars['Int']>
+}
+
+export interface mutationChatroomUpdateInput {
+  createdAt?: InputMaybe<Scalars['String']>
+  lastMessage?: InputMaybe<Scalars['Int']>
+  updatedAt?: InputMaybe<Scalars['String']>
+  user1LastViewed?: InputMaybe<Scalars['String']>
+  user1_id?: InputMaybe<Scalars['Int']>
+  user2LastViewed?: InputMaybe<Scalars['String']>
+  user2_id?: InputMaybe<Scalars['Int']>
 }
 
 export interface mutationItemInput {
@@ -941,6 +1190,22 @@ export interface mutationMediaUpdateInput {
   updatedAt?: InputMaybe<Scalars['String']>
   url?: InputMaybe<Scalars['String']>
   width?: InputMaybe<Scalars['Float']>
+}
+
+export interface mutationMessageInput {
+  createdAt?: InputMaybe<Scalars['String']>
+  createdBy?: InputMaybe<Scalars['Int']>
+  message?: InputMaybe<Scalars['String']>
+  room?: InputMaybe<Scalars['Int']>
+  updatedAt?: InputMaybe<Scalars['String']>
+}
+
+export interface mutationMessageUpdateInput {
+  createdAt?: InputMaybe<Scalars['String']>
+  createdBy?: InputMaybe<Scalars['Int']>
+  message?: InputMaybe<Scalars['String']>
+  room?: InputMaybe<Scalars['Int']>
+  updatedAt?: InputMaybe<Scalars['String']>
 }
 
 export interface mutationPayloadPreferenceInput {
@@ -1268,6 +1533,8 @@ export interface versionsItem_where {
 }
 
 export interface versionsItem_where_and {
+  AND?: InputMaybe<Array<InputMaybe<versionsItem_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<versionsItem_where_or>>>
   createdAt?: InputMaybe<versionsItem_createdAt_operator>
   id?: InputMaybe<versionsItem_id_operator>
   latest?: InputMaybe<versionsItem_latest_operator>
@@ -1292,6 +1559,8 @@ export interface versionsItem_where_and {
 }
 
 export interface versionsItem_where_or {
+  AND?: InputMaybe<Array<InputMaybe<versionsItem_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<versionsItem_where_or>>>
   createdAt?: InputMaybe<versionsItem_createdAt_operator>
   id?: InputMaybe<versionsItem_id_operator>
   latest?: InputMaybe<versionsItem_latest_operator>
@@ -1356,11 +1625,527 @@ export const generatedSchema = {
   Access: {
     __typename: { __type: 'String!' },
     canAccessAdmin: { __type: 'Boolean!' },
+    chatroom: { __type: 'chatroomAccess' },
     items: { __type: 'itemsAccess' },
     medias: { __type: 'mediasAccess' },
+    message: { __type: 'messageAccess' },
     payload_preferences: { __type: 'payload_preferencesAccess' },
     tags: { __type: 'tagsAccess' },
     users: { __type: 'usersAccess' },
+  },
+  Chatroom: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'DateTime' },
+    id: { __type: 'Int' },
+    lastMessage: { __type: 'Message' },
+    updatedAt: { __type: 'DateTime' },
+    user1LastViewed: { __type: 'DateTime' },
+    user1_id: { __type: 'User!' },
+    user2LastViewed: { __type: 'DateTime' },
+    user2_id: { __type: 'User!' },
+  },
+  ChatroomCreateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ChatroomCreateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ChatroomDeleteAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ChatroomDeleteDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ChatroomDocAccessFields: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'ChatroomDocAccessFields_createdAt' },
+    lastMessage: { __type: 'ChatroomDocAccessFields_lastMessage' },
+    updatedAt: { __type: 'ChatroomDocAccessFields_updatedAt' },
+    user1LastViewed: { __type: 'ChatroomDocAccessFields_user1LastViewed' },
+    user1_id: { __type: 'ChatroomDocAccessFields_user1_id' },
+    user2LastViewed: { __type: 'ChatroomDocAccessFields_user2LastViewed' },
+    user2_id: { __type: 'ChatroomDocAccessFields_user2_id' },
+  },
+  ChatroomDocAccessFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomDocAccessFields_createdAt_Create' },
+    delete: { __type: 'ChatroomDocAccessFields_createdAt_Delete' },
+    read: { __type: 'ChatroomDocAccessFields_createdAt_Read' },
+    update: { __type: 'ChatroomDocAccessFields_createdAt_Update' },
+  },
+  ChatroomDocAccessFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_lastMessage: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomDocAccessFields_lastMessage_Create' },
+    delete: { __type: 'ChatroomDocAccessFields_lastMessage_Delete' },
+    read: { __type: 'ChatroomDocAccessFields_lastMessage_Read' },
+    update: { __type: 'ChatroomDocAccessFields_lastMessage_Update' },
+  },
+  ChatroomDocAccessFields_lastMessage_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_lastMessage_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_lastMessage_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_lastMessage_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomDocAccessFields_updatedAt_Create' },
+    delete: { __type: 'ChatroomDocAccessFields_updatedAt_Delete' },
+    read: { __type: 'ChatroomDocAccessFields_updatedAt_Read' },
+    update: { __type: 'ChatroomDocAccessFields_updatedAt_Update' },
+  },
+  ChatroomDocAccessFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1LastViewed: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomDocAccessFields_user1LastViewed_Create' },
+    delete: { __type: 'ChatroomDocAccessFields_user1LastViewed_Delete' },
+    read: { __type: 'ChatroomDocAccessFields_user1LastViewed_Read' },
+    update: { __type: 'ChatroomDocAccessFields_user1LastViewed_Update' },
+  },
+  ChatroomDocAccessFields_user1LastViewed_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1LastViewed_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1LastViewed_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1LastViewed_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1_id: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomDocAccessFields_user1_id_Create' },
+    delete: { __type: 'ChatroomDocAccessFields_user1_id_Delete' },
+    read: { __type: 'ChatroomDocAccessFields_user1_id_Read' },
+    update: { __type: 'ChatroomDocAccessFields_user1_id_Update' },
+  },
+  ChatroomDocAccessFields_user1_id_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1_id_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1_id_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1_id_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2LastViewed: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomDocAccessFields_user2LastViewed_Create' },
+    delete: { __type: 'ChatroomDocAccessFields_user2LastViewed_Delete' },
+    read: { __type: 'ChatroomDocAccessFields_user2LastViewed_Read' },
+    update: { __type: 'ChatroomDocAccessFields_user2LastViewed_Update' },
+  },
+  ChatroomDocAccessFields_user2LastViewed_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2LastViewed_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2LastViewed_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2LastViewed_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2_id: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomDocAccessFields_user2_id_Create' },
+    delete: { __type: 'ChatroomDocAccessFields_user2_id_Delete' },
+    read: { __type: 'ChatroomDocAccessFields_user2_id_Read' },
+    update: { __type: 'ChatroomDocAccessFields_user2_id_Update' },
+  },
+  ChatroomDocAccessFields_user2_id_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2_id_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2_id_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2_id_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'ChatroomFields_createdAt' },
+    lastMessage: { __type: 'ChatroomFields_lastMessage' },
+    updatedAt: { __type: 'ChatroomFields_updatedAt' },
+    user1LastViewed: { __type: 'ChatroomFields_user1LastViewed' },
+    user1_id: { __type: 'ChatroomFields_user1_id' },
+    user2LastViewed: { __type: 'ChatroomFields_user2LastViewed' },
+    user2_id: { __type: 'ChatroomFields_user2_id' },
+  },
+  ChatroomFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomFields_createdAt_Create' },
+    delete: { __type: 'ChatroomFields_createdAt_Delete' },
+    read: { __type: 'ChatroomFields_createdAt_Read' },
+    update: { __type: 'ChatroomFields_createdAt_Update' },
+  },
+  ChatroomFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_lastMessage: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomFields_lastMessage_Create' },
+    delete: { __type: 'ChatroomFields_lastMessage_Delete' },
+    read: { __type: 'ChatroomFields_lastMessage_Read' },
+    update: { __type: 'ChatroomFields_lastMessage_Update' },
+  },
+  ChatroomFields_lastMessage_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_lastMessage_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_lastMessage_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_lastMessage_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomFields_updatedAt_Create' },
+    delete: { __type: 'ChatroomFields_updatedAt_Delete' },
+    read: { __type: 'ChatroomFields_updatedAt_Read' },
+    update: { __type: 'ChatroomFields_updatedAt_Update' },
+  },
+  ChatroomFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1LastViewed: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomFields_user1LastViewed_Create' },
+    delete: { __type: 'ChatroomFields_user1LastViewed_Delete' },
+    read: { __type: 'ChatroomFields_user1LastViewed_Read' },
+    update: { __type: 'ChatroomFields_user1LastViewed_Update' },
+  },
+  ChatroomFields_user1LastViewed_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1LastViewed_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1LastViewed_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1LastViewed_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1_id: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomFields_user1_id_Create' },
+    delete: { __type: 'ChatroomFields_user1_id_Delete' },
+    read: { __type: 'ChatroomFields_user1_id_Read' },
+    update: { __type: 'ChatroomFields_user1_id_Update' },
+  },
+  ChatroomFields_user1_id_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1_id_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1_id_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1_id_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2LastViewed: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomFields_user2LastViewed_Create' },
+    delete: { __type: 'ChatroomFields_user2LastViewed_Delete' },
+    read: { __type: 'ChatroomFields_user2LastViewed_Read' },
+    update: { __type: 'ChatroomFields_user2LastViewed_Update' },
+  },
+  ChatroomFields_user2LastViewed_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2LastViewed_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2LastViewed_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2LastViewed_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2_id: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomFields_user2_id_Create' },
+    delete: { __type: 'ChatroomFields_user2_id_Delete' },
+    read: { __type: 'ChatroomFields_user2_id_Read' },
+    update: { __type: 'ChatroomFields_user2_id_Update' },
+  },
+  ChatroomFields_user2_id_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2_id_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2_id_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2_id_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomReadAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ChatroomReadDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ChatroomUpdateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ChatroomUpdateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  Chatroom_createdAt_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Chatroom_id_operator: {
+    equals: { __type: 'Int' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Int' },
+    greater_than_equal: { __type: 'Int' },
+    less_than: { __type: 'Int' },
+    less_than_equal: { __type: 'Int' },
+    not_equals: { __type: 'Int' },
+  },
+  Chatroom_lastMessage_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Chatroom_updatedAt_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Chatroom_user1LastViewed_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Chatroom_user1_id_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Chatroom_user2LastViewed_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Chatroom_user2_id_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Chatroom_where: {
+    AND: { __type: '[Chatroom_where_and]' },
+    OR: { __type: '[Chatroom_where_or]' },
+    createdAt: { __type: 'Chatroom_createdAt_operator' },
+    id: { __type: 'Chatroom_id_operator' },
+    lastMessage: { __type: 'Chatroom_lastMessage_operator' },
+    updatedAt: { __type: 'Chatroom_updatedAt_operator' },
+    user1LastViewed: { __type: 'Chatroom_user1LastViewed_operator' },
+    user1_id: { __type: 'Chatroom_user1_id_operator' },
+    user2LastViewed: { __type: 'Chatroom_user2LastViewed_operator' },
+    user2_id: { __type: 'Chatroom_user2_id_operator' },
+  },
+  Chatroom_where_and: {
+    AND: { __type: '[Chatroom_where_and]' },
+    OR: { __type: '[Chatroom_where_or]' },
+    createdAt: { __type: 'Chatroom_createdAt_operator' },
+    id: { __type: 'Chatroom_id_operator' },
+    lastMessage: { __type: 'Chatroom_lastMessage_operator' },
+    updatedAt: { __type: 'Chatroom_updatedAt_operator' },
+    user1LastViewed: { __type: 'Chatroom_user1LastViewed_operator' },
+    user1_id: { __type: 'Chatroom_user1_id_operator' },
+    user2LastViewed: { __type: 'Chatroom_user2LastViewed_operator' },
+    user2_id: { __type: 'Chatroom_user2_id_operator' },
+  },
+  Chatroom_where_or: {
+    AND: { __type: '[Chatroom_where_and]' },
+    OR: { __type: '[Chatroom_where_or]' },
+    createdAt: { __type: 'Chatroom_createdAt_operator' },
+    id: { __type: 'Chatroom_id_operator' },
+    lastMessage: { __type: 'Chatroom_lastMessage_operator' },
+    updatedAt: { __type: 'Chatroom_updatedAt_operator' },
+    user1LastViewed: { __type: 'Chatroom_user1LastViewed_operator' },
+    user1_id: { __type: 'Chatroom_user1_id_operator' },
+    user2LastViewed: { __type: 'Chatroom_user2LastViewed_operator' },
+    user2_id: { __type: 'Chatroom_user2_id_operator' },
+  },
+  Chatrooms: {
+    __typename: { __type: 'String!' },
+    docs: { __type: '[Chatroom]' },
+    hasNextPage: { __type: 'Boolean' },
+    hasPrevPage: { __type: 'Boolean' },
+    limit: { __type: 'Int' },
+    nextPage: { __type: 'Int' },
+    offset: { __type: 'Int' },
+    page: { __type: 'Int' },
+    pagingCounter: { __type: 'Int' },
+    prevPage: { __type: 'Int' },
+    totalDocs: { __type: 'Int' },
+    totalPages: { __type: 'Int' },
   },
   Item: {
     __typename: { __type: 'String!' },
@@ -1580,6 +2365,8 @@ export const generatedSchema = {
     updatedAt: { __type: 'Item_updatedAt_operator' },
   },
   Item_where_and: {
+    AND: { __type: '[Item_where_and]' },
+    OR: { __type: '[Item_where_or]' },
     _status: { __type: 'Item__status_operator' },
     availableAt: { __type: 'Item_availableAt_operator' },
     createdAt: { __type: 'Item_createdAt_operator' },
@@ -1599,6 +2386,8 @@ export const generatedSchema = {
     updatedAt: { __type: 'Item_updatedAt_operator' },
   },
   Item_where_or: {
+    AND: { __type: '[Item_where_and]' },
+    OR: { __type: '[Item_where_or]' },
     _status: { __type: 'Item__status_operator' },
     availableAt: { __type: 'Item_availableAt_operator' },
     createdAt: { __type: 'Item_createdAt_operator' },
@@ -2556,6 +3345,8 @@ export const generatedSchema = {
     width: { __type: 'Media_width_operator' },
   },
   Media_where_and: {
+    AND: { __type: '[Media_where_and]' },
+    OR: { __type: '[Media_where_or]' },
     alt: { __type: 'Media_alt_operator' },
     createdAt: { __type: 'Media_createdAt_operator' },
     filename: { __type: 'Media_filename_operator' },
@@ -2569,6 +3360,8 @@ export const generatedSchema = {
     width: { __type: 'Media_width_operator' },
   },
   Media_where_or: {
+    AND: { __type: '[Media_where_and]' },
+    OR: { __type: '[Media_where_or]' },
     alt: { __type: 'Media_alt_operator' },
     createdAt: { __type: 'Media_createdAt_operator' },
     filename: { __type: 'Media_filename_operator' },
@@ -3121,6 +3914,397 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
     where: { __type: 'JSONObject' },
   },
+  Message: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'DateTime' },
+    createdBy: { __type: 'User!' },
+    id: { __type: 'Int' },
+    message: { __type: 'String' },
+    room: { __type: 'Chatroom!' },
+    updatedAt: { __type: 'DateTime' },
+  },
+  MessageCreateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  MessageCreateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  MessageDeleteAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  MessageDeleteDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  MessageDocAccessFields: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'MessageDocAccessFields_createdAt' },
+    createdBy: { __type: 'MessageDocAccessFields_createdBy' },
+    message: { __type: 'MessageDocAccessFields_message' },
+    room: { __type: 'MessageDocAccessFields_room' },
+    updatedAt: { __type: 'MessageDocAccessFields_updatedAt' },
+  },
+  MessageDocAccessFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageDocAccessFields_createdAt_Create' },
+    delete: { __type: 'MessageDocAccessFields_createdAt_Delete' },
+    read: { __type: 'MessageDocAccessFields_createdAt_Read' },
+    update: { __type: 'MessageDocAccessFields_createdAt_Update' },
+  },
+  MessageDocAccessFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_createdBy: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageDocAccessFields_createdBy_Create' },
+    delete: { __type: 'MessageDocAccessFields_createdBy_Delete' },
+    read: { __type: 'MessageDocAccessFields_createdBy_Read' },
+    update: { __type: 'MessageDocAccessFields_createdBy_Update' },
+  },
+  MessageDocAccessFields_createdBy_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_createdBy_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_createdBy_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_createdBy_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_message: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageDocAccessFields_message_Create' },
+    delete: { __type: 'MessageDocAccessFields_message_Delete' },
+    read: { __type: 'MessageDocAccessFields_message_Read' },
+    update: { __type: 'MessageDocAccessFields_message_Update' },
+  },
+  MessageDocAccessFields_message_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_message_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_message_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_message_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_room: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageDocAccessFields_room_Create' },
+    delete: { __type: 'MessageDocAccessFields_room_Delete' },
+    read: { __type: 'MessageDocAccessFields_room_Read' },
+    update: { __type: 'MessageDocAccessFields_room_Update' },
+  },
+  MessageDocAccessFields_room_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_room_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_room_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_room_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageDocAccessFields_updatedAt_Create' },
+    delete: { __type: 'MessageDocAccessFields_updatedAt_Delete' },
+    read: { __type: 'MessageDocAccessFields_updatedAt_Read' },
+    update: { __type: 'MessageDocAccessFields_updatedAt_Update' },
+  },
+  MessageDocAccessFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'MessageFields_createdAt' },
+    createdBy: { __type: 'MessageFields_createdBy' },
+    message: { __type: 'MessageFields_message' },
+    room: { __type: 'MessageFields_room' },
+    updatedAt: { __type: 'MessageFields_updatedAt' },
+  },
+  MessageFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageFields_createdAt_Create' },
+    delete: { __type: 'MessageFields_createdAt_Delete' },
+    read: { __type: 'MessageFields_createdAt_Read' },
+    update: { __type: 'MessageFields_createdAt_Update' },
+  },
+  MessageFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_createdBy: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageFields_createdBy_Create' },
+    delete: { __type: 'MessageFields_createdBy_Delete' },
+    read: { __type: 'MessageFields_createdBy_Read' },
+    update: { __type: 'MessageFields_createdBy_Update' },
+  },
+  MessageFields_createdBy_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_createdBy_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_createdBy_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_createdBy_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_message: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageFields_message_Create' },
+    delete: { __type: 'MessageFields_message_Delete' },
+    read: { __type: 'MessageFields_message_Read' },
+    update: { __type: 'MessageFields_message_Update' },
+  },
+  MessageFields_message_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_message_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_message_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_message_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_room: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageFields_room_Create' },
+    delete: { __type: 'MessageFields_room_Delete' },
+    read: { __type: 'MessageFields_room_Read' },
+    update: { __type: 'MessageFields_room_Update' },
+  },
+  MessageFields_room_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_room_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_room_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_room_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageFields_updatedAt_Create' },
+    delete: { __type: 'MessageFields_updatedAt_Delete' },
+    read: { __type: 'MessageFields_updatedAt_Read' },
+    update: { __type: 'MessageFields_updatedAt_Update' },
+  },
+  MessageFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageReadAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  MessageReadDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  MessageUpdateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  MessageUpdateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  Message_createdAt_operator: {
+    equals: { __type: 'DateTime' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Message_createdBy_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Message_id_operator: {
+    equals: { __type: 'Int' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Int' },
+    greater_than_equal: { __type: 'Int' },
+    less_than: { __type: 'Int' },
+    less_than_equal: { __type: 'Int' },
+    not_equals: { __type: 'Int' },
+  },
+  Message_message_operator: {
+    all: { __type: '[String]' },
+    contains: { __type: 'String' },
+    equals: { __type: 'String' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[String]' },
+    like: { __type: 'String' },
+    not_equals: { __type: 'String' },
+    not_in: { __type: '[String]' },
+  },
+  Message_room_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Message_updatedAt_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Message_where: {
+    AND: { __type: '[Message_where_and]' },
+    OR: { __type: '[Message_where_or]' },
+    createdAt: { __type: 'Message_createdAt_operator' },
+    createdBy: { __type: 'Message_createdBy_operator' },
+    id: { __type: 'Message_id_operator' },
+    message: { __type: 'Message_message_operator' },
+    room: { __type: 'Message_room_operator' },
+    updatedAt: { __type: 'Message_updatedAt_operator' },
+  },
+  Message_where_and: {
+    AND: { __type: '[Message_where_and]' },
+    OR: { __type: '[Message_where_or]' },
+    createdAt: { __type: 'Message_createdAt_operator' },
+    createdBy: { __type: 'Message_createdBy_operator' },
+    id: { __type: 'Message_id_operator' },
+    message: { __type: 'Message_message_operator' },
+    room: { __type: 'Message_room_operator' },
+    updatedAt: { __type: 'Message_updatedAt_operator' },
+  },
+  Message_where_or: {
+    AND: { __type: '[Message_where_and]' },
+    OR: { __type: '[Message_where_or]' },
+    createdAt: { __type: 'Message_createdAt_operator' },
+    createdBy: { __type: 'Message_createdBy_operator' },
+    id: { __type: 'Message_id_operator' },
+    message: { __type: 'Message_message_operator' },
+    room: { __type: 'Message_room_operator' },
+    updatedAt: { __type: 'Message_updatedAt_operator' },
+  },
+  Messages: {
+    __typename: { __type: 'String!' },
+    docs: { __type: '[Message]' },
+    hasNextPage: { __type: 'Boolean' },
+    hasPrevPage: { __type: 'Boolean' },
+    limit: { __type: 'Int' },
+    nextPage: { __type: 'Int' },
+    offset: { __type: 'Int' },
+    page: { __type: 'Int' },
+    pagingCounter: { __type: 'Int' },
+    prevPage: { __type: 'Int' },
+    totalDocs: { __type: 'Int' },
+    totalPages: { __type: 'Int' },
+  },
   PayloadPreference: {
     __typename: { __type: 'String!' },
     createdAt: { __type: 'DateTime' },
@@ -3210,6 +4394,8 @@ export const generatedSchema = {
     value: { __type: 'PayloadPreference_value_operator' },
   },
   PayloadPreference_where_and: {
+    AND: { __type: '[PayloadPreference_where_and]' },
+    OR: { __type: '[PayloadPreference_where_or]' },
     createdAt: { __type: 'PayloadPreference_createdAt_operator' },
     id: { __type: 'PayloadPreference_id_operator' },
     key: { __type: 'PayloadPreference_key_operator' },
@@ -3218,6 +4404,8 @@ export const generatedSchema = {
     value: { __type: 'PayloadPreference_value_operator' },
   },
   PayloadPreference_where_or: {
+    AND: { __type: '[PayloadPreference_where_and]' },
+    OR: { __type: '[PayloadPreference_where_or]' },
     createdAt: { __type: 'PayloadPreference_createdAt_operator' },
     id: { __type: 'PayloadPreference_id_operator' },
     key: { __type: 'PayloadPreference_key_operator' },
@@ -3592,6 +4780,8 @@ export const generatedSchema = {
     updatedAt: { __type: 'Tag_updatedAt_operator' },
   },
   Tag_where_and: {
+    AND: { __type: '[Tag_where_and]' },
+    OR: { __type: '[Tag_where_or]' },
     alt: { __type: 'Tag_alt_operator' },
     createdAt: { __type: 'Tag_createdAt_operator' },
     id: { __type: 'Tag_id_operator' },
@@ -3599,6 +4789,8 @@ export const generatedSchema = {
     updatedAt: { __type: 'Tag_updatedAt_operator' },
   },
   Tag_where_or: {
+    AND: { __type: '[Tag_where_and]' },
+    OR: { __type: '[Tag_where_or]' },
     alt: { __type: 'Tag_alt_operator' },
     createdAt: { __type: 'Tag_createdAt_operator' },
     id: { __type: 'Tag_id_operator' },
@@ -3980,6 +5172,8 @@ export const generatedSchema = {
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
   User_where_and: {
+    AND: { __type: '[User_where_and]' },
+    OR: { __type: '[User_where_or]' },
     bio: { __type: 'User_bio_operator' },
     createdAt: { __type: 'User_createdAt_operator' },
     email: { __type: 'User_email_operator' },
@@ -3994,6 +5188,8 @@ export const generatedSchema = {
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
   User_where_or: {
+    AND: { __type: '[User_where_and]' },
+    OR: { __type: '[User_where_or]' },
     bio: { __type: 'User_bio_operator' },
     createdAt: { __type: 'User_createdAt_operator' },
     email: { __type: 'User_email_operator' },
@@ -4632,6 +5828,22 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
     where: { __type: 'JSONObject' },
   },
+  chatroomAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomCreateAccess' },
+    delete: { __type: 'ChatroomDeleteAccess' },
+    fields: { __type: 'ChatroomFields' },
+    read: { __type: 'ChatroomReadAccess' },
+    update: { __type: 'ChatroomUpdateAccess' },
+  },
+  chatroomDocAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomCreateDocAccess' },
+    delete: { __type: 'ChatroomDeleteDocAccess' },
+    fields: { __type: 'ChatroomDocAccessFields' },
+    read: { __type: 'ChatroomReadDocAccess' },
+    update: { __type: 'ChatroomUpdateDocAccess' },
+  },
   itemsAccess: {
     __typename: { __type: 'String!' },
     create: { __type: 'ItemsCreateAccess' },
@@ -4666,18 +5878,44 @@ export const generatedSchema = {
     read: { __type: 'MediasReadDocAccess' },
     update: { __type: 'MediasUpdateDocAccess' },
   },
+  messageAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageCreateAccess' },
+    delete: { __type: 'MessageDeleteAccess' },
+    fields: { __type: 'MessageFields' },
+    read: { __type: 'MessageReadAccess' },
+    update: { __type: 'MessageUpdateAccess' },
+  },
+  messageDocAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageCreateDocAccess' },
+    delete: { __type: 'MessageDeleteDocAccess' },
+    fields: { __type: 'MessageDocAccessFields' },
+    read: { __type: 'MessageReadDocAccess' },
+    update: { __type: 'MessageUpdateDocAccess' },
+  },
   mutation: {
     __typename: { __type: 'String!' },
+    createChatroom: {
+      __type: 'Chatroom',
+      __args: { data: 'mutationChatroomInput!', draft: 'Boolean' },
+    },
     createItem: { __type: 'Item', __args: { data: 'mutationItemInput!', draft: 'Boolean' } },
     createMedia: { __type: 'Media', __args: { data: 'mutationMediaInput!', draft: 'Boolean' } },
+    createMessage: {
+      __type: 'Message',
+      __args: { data: 'mutationMessageInput!', draft: 'Boolean' },
+    },
     createPayloadPreference: {
       __type: 'PayloadPreference',
       __args: { data: 'mutationPayloadPreferenceInput!', draft: 'Boolean' },
     },
     createTag: { __type: 'Tag', __args: { data: 'mutationTagInput!', draft: 'Boolean' } },
     createUser: { __type: 'User', __args: { data: 'mutationUserInput!', draft: 'Boolean' } },
+    deleteChatroom: { __type: 'Chatroom', __args: { id: 'Int!' } },
     deleteItem: { __type: 'Item', __args: { id: 'Int!' } },
     deleteMedia: { __type: 'Media', __args: { id: 'Int!' } },
+    deleteMessage: { __type: 'Message', __args: { id: 'Int!' } },
     deletePayloadPreference: { __type: 'PayloadPreference', __args: { id: 'Int!' } },
     deleteTag: { __type: 'Tag', __args: { id: 'Int!' } },
     deleteUser: { __type: 'User', __args: { id: 'Int!' } },
@@ -4694,6 +5932,15 @@ export const generatedSchema = {
     },
     restoreVersionItem: { __type: 'Item', __args: { id: 'Int' } },
     unlockUser: { __type: 'Boolean!', __args: { email: 'String!' } },
+    updateChatroom: {
+      __type: 'Chatroom',
+      __args: {
+        autosave: 'Boolean',
+        data: 'mutationChatroomUpdateInput!',
+        draft: 'Boolean',
+        id: 'Int!',
+      },
+    },
     updateItem: {
       __type: 'Item',
       __args: {
@@ -4708,6 +5955,15 @@ export const generatedSchema = {
       __args: {
         autosave: 'Boolean',
         data: 'mutationMediaUpdateInput!',
+        draft: 'Boolean',
+        id: 'Int!',
+      },
+    },
+    updateMessage: {
+      __type: 'Message',
+      __args: {
+        autosave: 'Boolean',
+        data: 'mutationMessageUpdateInput!',
         draft: 'Boolean',
         id: 'Int!',
       },
@@ -4740,6 +5996,24 @@ export const generatedSchema = {
       },
     },
     verifyEmailUser: { __type: 'Boolean', __args: { token: 'String' } },
+  },
+  mutationChatroomInput: {
+    createdAt: { __type: 'String' },
+    lastMessage: { __type: 'Int' },
+    updatedAt: { __type: 'String' },
+    user1LastViewed: { __type: 'String' },
+    user1_id: { __type: 'Int' },
+    user2LastViewed: { __type: 'String' },
+    user2_id: { __type: 'Int' },
+  },
+  mutationChatroomUpdateInput: {
+    createdAt: { __type: 'String' },
+    lastMessage: { __type: 'Int' },
+    updatedAt: { __type: 'String' },
+    user1LastViewed: { __type: 'String' },
+    user1_id: { __type: 'Int' },
+    user2LastViewed: { __type: 'String' },
+    user2_id: { __type: 'Int' },
   },
   mutationItemInput: {
     _status: { __type: 'Item__status_MutationInput' },
@@ -4802,6 +6076,20 @@ export const generatedSchema = {
     updatedAt: { __type: 'String' },
     url: { __type: 'String' },
     width: { __type: 'Float' },
+  },
+  mutationMessageInput: {
+    createdAt: { __type: 'String' },
+    createdBy: { __type: 'Int' },
+    message: { __type: 'String' },
+    room: { __type: 'Int' },
+    updatedAt: { __type: 'String' },
+  },
+  mutationMessageUpdateInput: {
+    createdAt: { __type: 'String' },
+    createdBy: { __type: 'Int' },
+    message: { __type: 'String' },
+    room: { __type: 'Int' },
+    updatedAt: { __type: 'String' },
   },
   mutationPayloadPreferenceInput: {
     createdAt: { __type: 'String' },
@@ -4890,6 +6178,17 @@ export const generatedSchema = {
   query: {
     __typename: { __type: 'String!' },
     Access: { __type: 'Access' },
+    Chatroom: { __type: 'Chatroom', __args: { draft: 'Boolean', id: 'Int!' } },
+    Chatrooms: {
+      __type: 'Chatrooms',
+      __args: {
+        draft: 'Boolean',
+        limit: 'Int',
+        page: 'Int',
+        sort: 'String',
+        where: 'Chatroom_where',
+      },
+    },
     Item: { __type: 'Item', __args: { draft: 'Boolean', id: 'Int!' } },
     Items: {
       __type: 'Items',
@@ -4899,6 +6198,17 @@ export const generatedSchema = {
     Medias: {
       __type: 'Medias',
       __args: { draft: 'Boolean', limit: 'Int', page: 'Int', sort: 'String', where: 'Media_where' },
+    },
+    Message: { __type: 'Message', __args: { draft: 'Boolean', id: 'Int!' } },
+    Messages: {
+      __type: 'Messages',
+      __args: {
+        draft: 'Boolean',
+        limit: 'Int',
+        page: 'Int',
+        sort: 'String',
+        where: 'Message_where',
+      },
     },
     PayloadPreference: { __type: 'PayloadPreference', __args: { draft: 'Boolean', id: 'Int!' } },
     PayloadPreferences: {
@@ -4921,8 +6231,10 @@ export const generatedSchema = {
       __type: 'Users',
       __args: { draft: 'Boolean', limit: 'Int', page: 'Int', sort: 'String', where: 'User_where' },
     },
+    docAccessChatroom: { __type: 'chatroomDocAccess', __args: { id: 'Int!' } },
     docAccessItem: { __type: 'itemsDocAccess', __args: { id: 'Int!' } },
     docAccessMedia: { __type: 'mediasDocAccess', __args: { id: 'Int!' } },
+    docAccessMessage: { __type: 'messageDocAccess', __args: { id: 'Int!' } },
     docAccessPayloadPreference: { __type: 'payload_preferencesDocAccess', __args: { id: 'Int!' } },
     docAccessTag: { __type: 'tagsDocAccess', __args: { id: 'Int!' } },
     docAccessUser: { __type: 'usersDocAccess', __args: { id: 'Int!' } },
@@ -5206,6 +6518,8 @@ export const generatedSchema = {
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
   },
   versionsItem_where_and: {
+    AND: { __type: '[versionsItem_where_and]' },
+    OR: { __type: '[versionsItem_where_or]' },
     createdAt: { __type: 'versionsItem_createdAt_operator' },
     id: { __type: 'versionsItem_id_operator' },
     latest: { __type: 'versionsItem_latest_operator' },
@@ -5229,6 +6543,8 @@ export const generatedSchema = {
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
   },
   versionsItem_where_or: {
+    AND: { __type: '[versionsItem_where_and]' },
+    OR: { __type: '[versionsItem_where_or]' },
     createdAt: { __type: 'versionsItem_createdAt_operator' },
     id: { __type: 'versionsItem_id_operator' },
     latest: { __type: 'versionsItem_latest_operator' },
@@ -5271,11 +6587,502 @@ export const generatedSchema = {
 export interface Access {
   __typename?: 'Access'
   canAccessAdmin: ScalarsEnums['Boolean']
+  chatroom?: Maybe<chatroomAccess>
   items?: Maybe<itemsAccess>
   medias?: Maybe<mediasAccess>
+  message?: Maybe<messageAccess>
   payload_preferences?: Maybe<payload_preferencesAccess>
   tags?: Maybe<tagsAccess>
   users?: Maybe<usersAccess>
+}
+
+export interface Chatroom {
+  __typename?: 'Chatroom'
+  createdAt?: Maybe<ScalarsEnums['DateTime']>
+  id?: Maybe<ScalarsEnums['Int']>
+  lastMessage?: Maybe<Message>
+  updatedAt?: Maybe<ScalarsEnums['DateTime']>
+  user1LastViewed?: Maybe<ScalarsEnums['DateTime']>
+  user1_id: User
+  user2LastViewed?: Maybe<ScalarsEnums['DateTime']>
+  user2_id: User
+}
+
+export interface ChatroomCreateAccess {
+  __typename?: 'ChatroomCreateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ChatroomCreateDocAccess {
+  __typename?: 'ChatroomCreateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ChatroomDeleteAccess {
+  __typename?: 'ChatroomDeleteAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ChatroomDeleteDocAccess {
+  __typename?: 'ChatroomDeleteDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ChatroomDocAccessFields {
+  __typename?: 'ChatroomDocAccessFields'
+  createdAt?: Maybe<ChatroomDocAccessFields_createdAt>
+  lastMessage?: Maybe<ChatroomDocAccessFields_lastMessage>
+  updatedAt?: Maybe<ChatroomDocAccessFields_updatedAt>
+  user1LastViewed?: Maybe<ChatroomDocAccessFields_user1LastViewed>
+  user1_id?: Maybe<ChatroomDocAccessFields_user1_id>
+  user2LastViewed?: Maybe<ChatroomDocAccessFields_user2LastViewed>
+  user2_id?: Maybe<ChatroomDocAccessFields_user2_id>
+}
+
+export interface ChatroomDocAccessFields_createdAt {
+  __typename?: 'ChatroomDocAccessFields_createdAt'
+  create?: Maybe<ChatroomDocAccessFields_createdAt_Create>
+  delete?: Maybe<ChatroomDocAccessFields_createdAt_Delete>
+  read?: Maybe<ChatroomDocAccessFields_createdAt_Read>
+  update?: Maybe<ChatroomDocAccessFields_createdAt_Update>
+}
+
+export interface ChatroomDocAccessFields_createdAt_Create {
+  __typename?: 'ChatroomDocAccessFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_createdAt_Delete {
+  __typename?: 'ChatroomDocAccessFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_createdAt_Read {
+  __typename?: 'ChatroomDocAccessFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_createdAt_Update {
+  __typename?: 'ChatroomDocAccessFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_lastMessage {
+  __typename?: 'ChatroomDocAccessFields_lastMessage'
+  create?: Maybe<ChatroomDocAccessFields_lastMessage_Create>
+  delete?: Maybe<ChatroomDocAccessFields_lastMessage_Delete>
+  read?: Maybe<ChatroomDocAccessFields_lastMessage_Read>
+  update?: Maybe<ChatroomDocAccessFields_lastMessage_Update>
+}
+
+export interface ChatroomDocAccessFields_lastMessage_Create {
+  __typename?: 'ChatroomDocAccessFields_lastMessage_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_lastMessage_Delete {
+  __typename?: 'ChatroomDocAccessFields_lastMessage_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_lastMessage_Read {
+  __typename?: 'ChatroomDocAccessFields_lastMessage_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_lastMessage_Update {
+  __typename?: 'ChatroomDocAccessFields_lastMessage_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_updatedAt {
+  __typename?: 'ChatroomDocAccessFields_updatedAt'
+  create?: Maybe<ChatroomDocAccessFields_updatedAt_Create>
+  delete?: Maybe<ChatroomDocAccessFields_updatedAt_Delete>
+  read?: Maybe<ChatroomDocAccessFields_updatedAt_Read>
+  update?: Maybe<ChatroomDocAccessFields_updatedAt_Update>
+}
+
+export interface ChatroomDocAccessFields_updatedAt_Create {
+  __typename?: 'ChatroomDocAccessFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_updatedAt_Delete {
+  __typename?: 'ChatroomDocAccessFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_updatedAt_Read {
+  __typename?: 'ChatroomDocAccessFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_updatedAt_Update {
+  __typename?: 'ChatroomDocAccessFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1LastViewed {
+  __typename?: 'ChatroomDocAccessFields_user1LastViewed'
+  create?: Maybe<ChatroomDocAccessFields_user1LastViewed_Create>
+  delete?: Maybe<ChatroomDocAccessFields_user1LastViewed_Delete>
+  read?: Maybe<ChatroomDocAccessFields_user1LastViewed_Read>
+  update?: Maybe<ChatroomDocAccessFields_user1LastViewed_Update>
+}
+
+export interface ChatroomDocAccessFields_user1LastViewed_Create {
+  __typename?: 'ChatroomDocAccessFields_user1LastViewed_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1LastViewed_Delete {
+  __typename?: 'ChatroomDocAccessFields_user1LastViewed_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1LastViewed_Read {
+  __typename?: 'ChatroomDocAccessFields_user1LastViewed_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1LastViewed_Update {
+  __typename?: 'ChatroomDocAccessFields_user1LastViewed_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1_id {
+  __typename?: 'ChatroomDocAccessFields_user1_id'
+  create?: Maybe<ChatroomDocAccessFields_user1_id_Create>
+  delete?: Maybe<ChatroomDocAccessFields_user1_id_Delete>
+  read?: Maybe<ChatroomDocAccessFields_user1_id_Read>
+  update?: Maybe<ChatroomDocAccessFields_user1_id_Update>
+}
+
+export interface ChatroomDocAccessFields_user1_id_Create {
+  __typename?: 'ChatroomDocAccessFields_user1_id_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1_id_Delete {
+  __typename?: 'ChatroomDocAccessFields_user1_id_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1_id_Read {
+  __typename?: 'ChatroomDocAccessFields_user1_id_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1_id_Update {
+  __typename?: 'ChatroomDocAccessFields_user1_id_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2LastViewed {
+  __typename?: 'ChatroomDocAccessFields_user2LastViewed'
+  create?: Maybe<ChatroomDocAccessFields_user2LastViewed_Create>
+  delete?: Maybe<ChatroomDocAccessFields_user2LastViewed_Delete>
+  read?: Maybe<ChatroomDocAccessFields_user2LastViewed_Read>
+  update?: Maybe<ChatroomDocAccessFields_user2LastViewed_Update>
+}
+
+export interface ChatroomDocAccessFields_user2LastViewed_Create {
+  __typename?: 'ChatroomDocAccessFields_user2LastViewed_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2LastViewed_Delete {
+  __typename?: 'ChatroomDocAccessFields_user2LastViewed_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2LastViewed_Read {
+  __typename?: 'ChatroomDocAccessFields_user2LastViewed_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2LastViewed_Update {
+  __typename?: 'ChatroomDocAccessFields_user2LastViewed_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2_id {
+  __typename?: 'ChatroomDocAccessFields_user2_id'
+  create?: Maybe<ChatroomDocAccessFields_user2_id_Create>
+  delete?: Maybe<ChatroomDocAccessFields_user2_id_Delete>
+  read?: Maybe<ChatroomDocAccessFields_user2_id_Read>
+  update?: Maybe<ChatroomDocAccessFields_user2_id_Update>
+}
+
+export interface ChatroomDocAccessFields_user2_id_Create {
+  __typename?: 'ChatroomDocAccessFields_user2_id_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2_id_Delete {
+  __typename?: 'ChatroomDocAccessFields_user2_id_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2_id_Read {
+  __typename?: 'ChatroomDocAccessFields_user2_id_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2_id_Update {
+  __typename?: 'ChatroomDocAccessFields_user2_id_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields {
+  __typename?: 'ChatroomFields'
+  createdAt?: Maybe<ChatroomFields_createdAt>
+  lastMessage?: Maybe<ChatroomFields_lastMessage>
+  updatedAt?: Maybe<ChatroomFields_updatedAt>
+  user1LastViewed?: Maybe<ChatroomFields_user1LastViewed>
+  user1_id?: Maybe<ChatroomFields_user1_id>
+  user2LastViewed?: Maybe<ChatroomFields_user2LastViewed>
+  user2_id?: Maybe<ChatroomFields_user2_id>
+}
+
+export interface ChatroomFields_createdAt {
+  __typename?: 'ChatroomFields_createdAt'
+  create?: Maybe<ChatroomFields_createdAt_Create>
+  delete?: Maybe<ChatroomFields_createdAt_Delete>
+  read?: Maybe<ChatroomFields_createdAt_Read>
+  update?: Maybe<ChatroomFields_createdAt_Update>
+}
+
+export interface ChatroomFields_createdAt_Create {
+  __typename?: 'ChatroomFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_createdAt_Delete {
+  __typename?: 'ChatroomFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_createdAt_Read {
+  __typename?: 'ChatroomFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_createdAt_Update {
+  __typename?: 'ChatroomFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_lastMessage {
+  __typename?: 'ChatroomFields_lastMessage'
+  create?: Maybe<ChatroomFields_lastMessage_Create>
+  delete?: Maybe<ChatroomFields_lastMessage_Delete>
+  read?: Maybe<ChatroomFields_lastMessage_Read>
+  update?: Maybe<ChatroomFields_lastMessage_Update>
+}
+
+export interface ChatroomFields_lastMessage_Create {
+  __typename?: 'ChatroomFields_lastMessage_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_lastMessage_Delete {
+  __typename?: 'ChatroomFields_lastMessage_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_lastMessage_Read {
+  __typename?: 'ChatroomFields_lastMessage_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_lastMessage_Update {
+  __typename?: 'ChatroomFields_lastMessage_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_updatedAt {
+  __typename?: 'ChatroomFields_updatedAt'
+  create?: Maybe<ChatroomFields_updatedAt_Create>
+  delete?: Maybe<ChatroomFields_updatedAt_Delete>
+  read?: Maybe<ChatroomFields_updatedAt_Read>
+  update?: Maybe<ChatroomFields_updatedAt_Update>
+}
+
+export interface ChatroomFields_updatedAt_Create {
+  __typename?: 'ChatroomFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_updatedAt_Delete {
+  __typename?: 'ChatroomFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_updatedAt_Read {
+  __typename?: 'ChatroomFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_updatedAt_Update {
+  __typename?: 'ChatroomFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1LastViewed {
+  __typename?: 'ChatroomFields_user1LastViewed'
+  create?: Maybe<ChatroomFields_user1LastViewed_Create>
+  delete?: Maybe<ChatroomFields_user1LastViewed_Delete>
+  read?: Maybe<ChatroomFields_user1LastViewed_Read>
+  update?: Maybe<ChatroomFields_user1LastViewed_Update>
+}
+
+export interface ChatroomFields_user1LastViewed_Create {
+  __typename?: 'ChatroomFields_user1LastViewed_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1LastViewed_Delete {
+  __typename?: 'ChatroomFields_user1LastViewed_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1LastViewed_Read {
+  __typename?: 'ChatroomFields_user1LastViewed_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1LastViewed_Update {
+  __typename?: 'ChatroomFields_user1LastViewed_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1_id {
+  __typename?: 'ChatroomFields_user1_id'
+  create?: Maybe<ChatroomFields_user1_id_Create>
+  delete?: Maybe<ChatroomFields_user1_id_Delete>
+  read?: Maybe<ChatroomFields_user1_id_Read>
+  update?: Maybe<ChatroomFields_user1_id_Update>
+}
+
+export interface ChatroomFields_user1_id_Create {
+  __typename?: 'ChatroomFields_user1_id_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1_id_Delete {
+  __typename?: 'ChatroomFields_user1_id_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1_id_Read {
+  __typename?: 'ChatroomFields_user1_id_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1_id_Update {
+  __typename?: 'ChatroomFields_user1_id_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2LastViewed {
+  __typename?: 'ChatroomFields_user2LastViewed'
+  create?: Maybe<ChatroomFields_user2LastViewed_Create>
+  delete?: Maybe<ChatroomFields_user2LastViewed_Delete>
+  read?: Maybe<ChatroomFields_user2LastViewed_Read>
+  update?: Maybe<ChatroomFields_user2LastViewed_Update>
+}
+
+export interface ChatroomFields_user2LastViewed_Create {
+  __typename?: 'ChatroomFields_user2LastViewed_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2LastViewed_Delete {
+  __typename?: 'ChatroomFields_user2LastViewed_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2LastViewed_Read {
+  __typename?: 'ChatroomFields_user2LastViewed_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2LastViewed_Update {
+  __typename?: 'ChatroomFields_user2LastViewed_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2_id {
+  __typename?: 'ChatroomFields_user2_id'
+  create?: Maybe<ChatroomFields_user2_id_Create>
+  delete?: Maybe<ChatroomFields_user2_id_Delete>
+  read?: Maybe<ChatroomFields_user2_id_Read>
+  update?: Maybe<ChatroomFields_user2_id_Update>
+}
+
+export interface ChatroomFields_user2_id_Create {
+  __typename?: 'ChatroomFields_user2_id_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2_id_Delete {
+  __typename?: 'ChatroomFields_user2_id_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2_id_Read {
+  __typename?: 'ChatroomFields_user2_id_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2_id_Update {
+  __typename?: 'ChatroomFields_user2_id_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomReadAccess {
+  __typename?: 'ChatroomReadAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ChatroomReadDocAccess {
+  __typename?: 'ChatroomReadDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ChatroomUpdateAccess {
+  __typename?: 'ChatroomUpdateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ChatroomUpdateDocAccess {
+  __typename?: 'ChatroomUpdateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface Chatrooms {
+  __typename?: 'Chatrooms'
+  docs?: Maybe<Array<Maybe<Chatroom>>>
+  hasNextPage?: Maybe<ScalarsEnums['Boolean']>
+  hasPrevPage?: Maybe<ScalarsEnums['Boolean']>
+  limit?: Maybe<ScalarsEnums['Int']>
+  nextPage?: Maybe<ScalarsEnums['Int']>
+  offset?: Maybe<ScalarsEnums['Int']>
+  page?: Maybe<ScalarsEnums['Int']>
+  pagingCounter?: Maybe<ScalarsEnums['Int']>
+  prevPage?: Maybe<ScalarsEnums['Int']>
+  totalDocs?: Maybe<ScalarsEnums['Int']>
+  totalPages?: Maybe<ScalarsEnums['Int']>
 }
 
 export interface Item {
@@ -7007,6 +8814,377 @@ export interface MediasUpdateDocAccess {
   where?: Maybe<ScalarsEnums['JSONObject']>
 }
 
+export interface Message {
+  __typename?: 'Message'
+  createdAt?: Maybe<ScalarsEnums['DateTime']>
+  createdBy: User
+  id?: Maybe<ScalarsEnums['Int']>
+  message?: Maybe<ScalarsEnums['String']>
+  room: Chatroom
+  updatedAt?: Maybe<ScalarsEnums['DateTime']>
+}
+
+export interface MessageCreateAccess {
+  __typename?: 'MessageCreateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface MessageCreateDocAccess {
+  __typename?: 'MessageCreateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface MessageDeleteAccess {
+  __typename?: 'MessageDeleteAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface MessageDeleteDocAccess {
+  __typename?: 'MessageDeleteDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface MessageDocAccessFields {
+  __typename?: 'MessageDocAccessFields'
+  createdAt?: Maybe<MessageDocAccessFields_createdAt>
+  createdBy?: Maybe<MessageDocAccessFields_createdBy>
+  message?: Maybe<MessageDocAccessFields_message>
+  room?: Maybe<MessageDocAccessFields_room>
+  updatedAt?: Maybe<MessageDocAccessFields_updatedAt>
+}
+
+export interface MessageDocAccessFields_createdAt {
+  __typename?: 'MessageDocAccessFields_createdAt'
+  create?: Maybe<MessageDocAccessFields_createdAt_Create>
+  delete?: Maybe<MessageDocAccessFields_createdAt_Delete>
+  read?: Maybe<MessageDocAccessFields_createdAt_Read>
+  update?: Maybe<MessageDocAccessFields_createdAt_Update>
+}
+
+export interface MessageDocAccessFields_createdAt_Create {
+  __typename?: 'MessageDocAccessFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_createdAt_Delete {
+  __typename?: 'MessageDocAccessFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_createdAt_Read {
+  __typename?: 'MessageDocAccessFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_createdAt_Update {
+  __typename?: 'MessageDocAccessFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_createdBy {
+  __typename?: 'MessageDocAccessFields_createdBy'
+  create?: Maybe<MessageDocAccessFields_createdBy_Create>
+  delete?: Maybe<MessageDocAccessFields_createdBy_Delete>
+  read?: Maybe<MessageDocAccessFields_createdBy_Read>
+  update?: Maybe<MessageDocAccessFields_createdBy_Update>
+}
+
+export interface MessageDocAccessFields_createdBy_Create {
+  __typename?: 'MessageDocAccessFields_createdBy_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_createdBy_Delete {
+  __typename?: 'MessageDocAccessFields_createdBy_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_createdBy_Read {
+  __typename?: 'MessageDocAccessFields_createdBy_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_createdBy_Update {
+  __typename?: 'MessageDocAccessFields_createdBy_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_message {
+  __typename?: 'MessageDocAccessFields_message'
+  create?: Maybe<MessageDocAccessFields_message_Create>
+  delete?: Maybe<MessageDocAccessFields_message_Delete>
+  read?: Maybe<MessageDocAccessFields_message_Read>
+  update?: Maybe<MessageDocAccessFields_message_Update>
+}
+
+export interface MessageDocAccessFields_message_Create {
+  __typename?: 'MessageDocAccessFields_message_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_message_Delete {
+  __typename?: 'MessageDocAccessFields_message_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_message_Read {
+  __typename?: 'MessageDocAccessFields_message_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_message_Update {
+  __typename?: 'MessageDocAccessFields_message_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_room {
+  __typename?: 'MessageDocAccessFields_room'
+  create?: Maybe<MessageDocAccessFields_room_Create>
+  delete?: Maybe<MessageDocAccessFields_room_Delete>
+  read?: Maybe<MessageDocAccessFields_room_Read>
+  update?: Maybe<MessageDocAccessFields_room_Update>
+}
+
+export interface MessageDocAccessFields_room_Create {
+  __typename?: 'MessageDocAccessFields_room_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_room_Delete {
+  __typename?: 'MessageDocAccessFields_room_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_room_Read {
+  __typename?: 'MessageDocAccessFields_room_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_room_Update {
+  __typename?: 'MessageDocAccessFields_room_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_updatedAt {
+  __typename?: 'MessageDocAccessFields_updatedAt'
+  create?: Maybe<MessageDocAccessFields_updatedAt_Create>
+  delete?: Maybe<MessageDocAccessFields_updatedAt_Delete>
+  read?: Maybe<MessageDocAccessFields_updatedAt_Read>
+  update?: Maybe<MessageDocAccessFields_updatedAt_Update>
+}
+
+export interface MessageDocAccessFields_updatedAt_Create {
+  __typename?: 'MessageDocAccessFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_updatedAt_Delete {
+  __typename?: 'MessageDocAccessFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_updatedAt_Read {
+  __typename?: 'MessageDocAccessFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_updatedAt_Update {
+  __typename?: 'MessageDocAccessFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields {
+  __typename?: 'MessageFields'
+  createdAt?: Maybe<MessageFields_createdAt>
+  createdBy?: Maybe<MessageFields_createdBy>
+  message?: Maybe<MessageFields_message>
+  room?: Maybe<MessageFields_room>
+  updatedAt?: Maybe<MessageFields_updatedAt>
+}
+
+export interface MessageFields_createdAt {
+  __typename?: 'MessageFields_createdAt'
+  create?: Maybe<MessageFields_createdAt_Create>
+  delete?: Maybe<MessageFields_createdAt_Delete>
+  read?: Maybe<MessageFields_createdAt_Read>
+  update?: Maybe<MessageFields_createdAt_Update>
+}
+
+export interface MessageFields_createdAt_Create {
+  __typename?: 'MessageFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_createdAt_Delete {
+  __typename?: 'MessageFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_createdAt_Read {
+  __typename?: 'MessageFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_createdAt_Update {
+  __typename?: 'MessageFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_createdBy {
+  __typename?: 'MessageFields_createdBy'
+  create?: Maybe<MessageFields_createdBy_Create>
+  delete?: Maybe<MessageFields_createdBy_Delete>
+  read?: Maybe<MessageFields_createdBy_Read>
+  update?: Maybe<MessageFields_createdBy_Update>
+}
+
+export interface MessageFields_createdBy_Create {
+  __typename?: 'MessageFields_createdBy_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_createdBy_Delete {
+  __typename?: 'MessageFields_createdBy_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_createdBy_Read {
+  __typename?: 'MessageFields_createdBy_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_createdBy_Update {
+  __typename?: 'MessageFields_createdBy_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_message {
+  __typename?: 'MessageFields_message'
+  create?: Maybe<MessageFields_message_Create>
+  delete?: Maybe<MessageFields_message_Delete>
+  read?: Maybe<MessageFields_message_Read>
+  update?: Maybe<MessageFields_message_Update>
+}
+
+export interface MessageFields_message_Create {
+  __typename?: 'MessageFields_message_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_message_Delete {
+  __typename?: 'MessageFields_message_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_message_Read {
+  __typename?: 'MessageFields_message_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_message_Update {
+  __typename?: 'MessageFields_message_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_room {
+  __typename?: 'MessageFields_room'
+  create?: Maybe<MessageFields_room_Create>
+  delete?: Maybe<MessageFields_room_Delete>
+  read?: Maybe<MessageFields_room_Read>
+  update?: Maybe<MessageFields_room_Update>
+}
+
+export interface MessageFields_room_Create {
+  __typename?: 'MessageFields_room_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_room_Delete {
+  __typename?: 'MessageFields_room_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_room_Read {
+  __typename?: 'MessageFields_room_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_room_Update {
+  __typename?: 'MessageFields_room_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_updatedAt {
+  __typename?: 'MessageFields_updatedAt'
+  create?: Maybe<MessageFields_updatedAt_Create>
+  delete?: Maybe<MessageFields_updatedAt_Delete>
+  read?: Maybe<MessageFields_updatedAt_Read>
+  update?: Maybe<MessageFields_updatedAt_Update>
+}
+
+export interface MessageFields_updatedAt_Create {
+  __typename?: 'MessageFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_updatedAt_Delete {
+  __typename?: 'MessageFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_updatedAt_Read {
+  __typename?: 'MessageFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_updatedAt_Update {
+  __typename?: 'MessageFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageReadAccess {
+  __typename?: 'MessageReadAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface MessageReadDocAccess {
+  __typename?: 'MessageReadDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface MessageUpdateAccess {
+  __typename?: 'MessageUpdateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface MessageUpdateDocAccess {
+  __typename?: 'MessageUpdateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface Messages {
+  __typename?: 'Messages'
+  docs?: Maybe<Array<Maybe<Message>>>
+  hasNextPage?: Maybe<ScalarsEnums['Boolean']>
+  hasPrevPage?: Maybe<ScalarsEnums['Boolean']>
+  limit?: Maybe<ScalarsEnums['Int']>
+  nextPage?: Maybe<ScalarsEnums['Int']>
+  offset?: Maybe<ScalarsEnums['Int']>
+  page?: Maybe<ScalarsEnums['Int']>
+  pagingCounter?: Maybe<ScalarsEnums['Int']>
+  prevPage?: Maybe<ScalarsEnums['Int']>
+  totalDocs?: Maybe<ScalarsEnums['Int']>
+  totalPages?: Maybe<ScalarsEnums['Int']>
+}
+
 export interface PayloadPreference {
   __typename?: 'PayloadPreference'
   createdAt?: Maybe<ScalarsEnums['DateTime']>
@@ -8504,6 +10682,24 @@ export interface UsersUpdateDocAccess {
   where?: Maybe<ScalarsEnums['JSONObject']>
 }
 
+export interface chatroomAccess {
+  __typename?: 'chatroomAccess'
+  create?: Maybe<ChatroomCreateAccess>
+  delete?: Maybe<ChatroomDeleteAccess>
+  fields?: Maybe<ChatroomFields>
+  read?: Maybe<ChatroomReadAccess>
+  update?: Maybe<ChatroomUpdateAccess>
+}
+
+export interface chatroomDocAccess {
+  __typename?: 'chatroomDocAccess'
+  create?: Maybe<ChatroomCreateDocAccess>
+  delete?: Maybe<ChatroomDeleteDocAccess>
+  fields?: Maybe<ChatroomDocAccessFields>
+  read?: Maybe<ChatroomReadDocAccess>
+  update?: Maybe<ChatroomUpdateDocAccess>
+}
+
 export interface itemsAccess {
   __typename?: 'itemsAccess'
   create?: Maybe<ItemsCreateAccess>
@@ -8542,8 +10738,32 @@ export interface mediasDocAccess {
   update?: Maybe<MediasUpdateDocAccess>
 }
 
+export interface messageAccess {
+  __typename?: 'messageAccess'
+  create?: Maybe<MessageCreateAccess>
+  delete?: Maybe<MessageDeleteAccess>
+  fields?: Maybe<MessageFields>
+  read?: Maybe<MessageReadAccess>
+  update?: Maybe<MessageUpdateAccess>
+}
+
+export interface messageDocAccess {
+  __typename?: 'messageDocAccess'
+  create?: Maybe<MessageCreateDocAccess>
+  delete?: Maybe<MessageDeleteDocAccess>
+  fields?: Maybe<MessageDocAccessFields>
+  read?: Maybe<MessageReadDocAccess>
+  update?: Maybe<MessageUpdateDocAccess>
+}
+
 export interface Mutation {
   __typename?: 'Mutation'
+  createChatroom: (
+    args: {
+      data: mutationChatroomInput
+      draft?: Maybe<Scalars['Boolean']>
+    }
+  ) => Maybe<Chatroom>
   createItem: (args: { data: mutationItemInput; draft?: Maybe<Scalars['Boolean']> }) => Maybe<Item>
   createMedia: (
     args: {
@@ -8551,6 +10771,12 @@ export interface Mutation {
       draft?: Maybe<Scalars['Boolean']>
     }
   ) => Maybe<Media>
+  createMessage: (
+    args: {
+      data: mutationMessageInput
+      draft?: Maybe<Scalars['Boolean']>
+    }
+  ) => Maybe<Message>
   createPayloadPreference: (
     args: {
       data: mutationPayloadPreferenceInput
@@ -8559,8 +10785,10 @@ export interface Mutation {
   ) => Maybe<PayloadPreference>
   createTag: (args: { data: mutationTagInput; draft?: Maybe<Scalars['Boolean']> }) => Maybe<Tag>
   createUser: (args: { data: mutationUserInput; draft?: Maybe<Scalars['Boolean']> }) => Maybe<User>
+  deleteChatroom: (args: { id: Scalars['Int'] }) => Maybe<Chatroom>
   deleteItem: (args: { id: Scalars['Int'] }) => Maybe<Item>
   deleteMedia: (args: { id: Scalars['Int'] }) => Maybe<Media>
+  deleteMessage: (args: { id: Scalars['Int'] }) => Maybe<Message>
   deletePayloadPreference: (args: { id: Scalars['Int'] }) => Maybe<PayloadPreference>
   deleteTag: (args: { id: Scalars['Int'] }) => Maybe<Tag>
   deleteUser: (args: { id: Scalars['Int'] }) => Maybe<User>
@@ -8587,6 +10815,14 @@ export interface Mutation {
   ) => Maybe<usersResetPassword>
   restoreVersionItem: (args?: { id?: Maybe<Scalars['Int']> }) => Maybe<Item>
   unlockUser: (args: { email: Scalars['String'] }) => ScalarsEnums['Boolean']
+  updateChatroom: (
+    args: {
+      autosave?: Maybe<Scalars['Boolean']>
+      data: mutationChatroomUpdateInput
+      draft?: Maybe<Scalars['Boolean']>
+      id: Scalars['Int']
+    }
+  ) => Maybe<Chatroom>
   updateItem: (
     args: {
       autosave?: Maybe<Scalars['Boolean']>
@@ -8603,6 +10839,14 @@ export interface Mutation {
       id: Scalars['Int']
     }
   ) => Maybe<Media>
+  updateMessage: (
+    args: {
+      autosave?: Maybe<Scalars['Boolean']>
+      data: mutationMessageUpdateInput
+      draft?: Maybe<Scalars['Boolean']>
+      id: Scalars['Int']
+    }
+  ) => Maybe<Message>
   updatePayloadPreference: (
     args: {
       autosave?: Maybe<Scalars['Boolean']>
@@ -8651,6 +10895,16 @@ export interface payload_preferencesDocAccess {
 export interface Query {
   __typename?: 'Query'
   Access?: Maybe<Access>
+  Chatroom: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Chatroom>
+  Chatrooms: (
+    args?: {
+      draft?: Maybe<Scalars['Boolean']>
+      limit?: Maybe<Scalars['Int']>
+      page?: Maybe<Scalars['Int']>
+      sort?: Maybe<Scalars['String']>
+      where?: Maybe<Chatroom_where>
+    }
+  ) => Maybe<Chatrooms>
   Item: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Item>
   Items: (
     args?: {
@@ -8671,6 +10925,16 @@ export interface Query {
       where?: Maybe<Media_where>
     }
   ) => Maybe<Medias>
+  Message: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Message>
+  Messages: (
+    args?: {
+      draft?: Maybe<Scalars['Boolean']>
+      limit?: Maybe<Scalars['Int']>
+      page?: Maybe<Scalars['Int']>
+      sort?: Maybe<Scalars['String']>
+      where?: Maybe<Message_where>
+    }
+  ) => Maybe<Messages>
   PayloadPreference: (
     args: {
       draft?: Maybe<Scalars['Boolean']>
@@ -8706,8 +10970,10 @@ export interface Query {
       where?: Maybe<User_where>
     }
   ) => Maybe<Users>
+  docAccessChatroom: (args: { id: Scalars['Int'] }) => Maybe<chatroomDocAccess>
   docAccessItem: (args: { id: Scalars['Int'] }) => Maybe<itemsDocAccess>
   docAccessMedia: (args: { id: Scalars['Int'] }) => Maybe<mediasDocAccess>
+  docAccessMessage: (args: { id: Scalars['Int'] }) => Maybe<messageDocAccess>
   docAccessPayloadPreference: (args: { id: Scalars['Int'] }) => Maybe<payload_preferencesDocAccess>
   docAccessTag: (args: { id: Scalars['Int'] }) => Maybe<tagsDocAccess>
   docAccessUser: (args: { id: Scalars['Int'] }) => Maybe<usersDocAccess>
