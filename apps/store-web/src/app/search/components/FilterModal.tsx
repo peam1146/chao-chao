@@ -29,7 +29,7 @@ export function FilterModal(props: FilterModalProps) {
   const [maxPriceModal, setModalMaxPrice] = useState<number>()
 
   const query = useQuery({
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-first',
     suspense: true,
     refetchOnRender: false,
     refetchOnWindowVisible: false,
