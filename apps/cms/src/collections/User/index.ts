@@ -126,5 +126,53 @@ export const Users: CollectionConfig = {
         },
       ],
     },
+    {
+      name: 'requestsMade',
+      label: 'Requests Made',
+      type: 'array',
+      fields: [
+        {
+          name: 'user',
+          type: 'relationship',
+          relationTo: 'users',
+          hasMany: false,
+          required: true,
+          maxDepth: 3,
+        },
+        {
+          name: 'item',
+          type: 'relationship',
+          relationTo: 'items',
+          hasMany: false,
+          required: true,
+          maxDepth: 3,
+        },
+      ],
+      unique: true,
+    },
+    {
+      name: 'requestsReceived',
+      label: 'Requests Received',
+      type: 'array',
+      fields: [
+        {
+          name: 'user',
+          type: 'relationship',
+          relationTo: 'users',
+          hasMany: false,
+          required: true,
+          maxDepth: 3,
+        },
+        {
+          name: 'item',
+          type: 'relationship',
+          relationTo: 'items',
+          hasMany: false,
+          required: true,
+          maxDepth: 3,
+        },
+      ],
+      unique: true,
+    },
   ],
 }

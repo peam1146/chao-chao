@@ -1,5 +1,6 @@
 export * from './Item'
 export * from './Media'
+export * from './Renting'
 export * from './Tag'
 export * from './User'
 export * from './Message'
