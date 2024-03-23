@@ -9,7 +9,7 @@ export const Chatroom: CollectionConfig = {
   access: {
     read: () => true,
     create: () => true,
-    update: isAdmin,
+    update: () => true,
     delete: isAdmin,
   },
   admin: {
@@ -21,14 +21,28 @@ export const Chatroom: CollectionConfig = {
       relationTo: 'users',
       name: 'user1_id',
       required: true,
-      hidden: true,
     },
     {
       type: 'relationship',
       relationTo: 'users',
       name: 'user2_id',
       required: true,
-      hidden: true,
+    },
+    {
+      type: 'relationship',
+      relationTo: 'message',
+      name: 'lastMessage',
+      required: false,
+    },
+    {
+      type: 'date',
+      name: 'user1LastViewed',
+      required: false,
+    },
+    {
+      type: 'date',
+      name: 'user2LastViewed',
+      required: false,
     },
   ],
 }

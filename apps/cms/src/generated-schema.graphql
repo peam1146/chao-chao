@@ -15,6 +15,12 @@ type Query {
   Tag(id: Int!, draft: Boolean): Tag
   Tags(draft: Boolean, where: Tag_where, limit: Int, page: Int, sort: String): Tags
   docAccessTag(id: Int!): tagsDocAccess
+  Chatroom(id: Int!, draft: Boolean): Chatroom
+  Chatrooms(draft: Boolean, where: Chatroom_where, limit: Int, page: Int, sort: String): Chatrooms
+  docAccessChatroom(id: Int!): chatroomDocAccess
+  Message(id: Int!, draft: Boolean): Message
+  Messages(draft: Boolean, where: Message_where, limit: Int, page: Int, sort: String): Messages
+  docAccessMessage(id: Int!): messageDocAccess
   PayloadPreference(id: Int!, draft: Boolean): PayloadPreference
   PayloadPreferences(draft: Boolean, where: PayloadPreference_where, limit: Int, page: Int, sort: String): PayloadPreferences
   docAccessPayloadPreference(id: Int!): payload_preferencesDocAccess
@@ -28,8 +34,8 @@ type User {
   firstName: String
   lastName: String
   bio: String
-  province: String
   rating: Float
+  province: String
   roles: [User_roles!]!
   updatedAt: DateTime
   createdAt: DateTime
@@ -93,8 +99,8 @@ input User_where {
   firstName: User_firstName_operator
   lastName: User_lastName_operator
   bio: User_bio_operator
-  province: User_province_operator
   rating: User_rating_operator
+  province: User_province_operator
   roles: User_roles_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
@@ -158,6 +164,16 @@ input User_bio_operator {
   exists: Boolean
 }
 
+input User_rating_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
 input User_province_operator {
   equals: String
   not_equals: String
@@ -166,16 +182,6 @@ input User_province_operator {
   in: [String]
   not_in: [String]
   all: [String]
-  exists: Boolean
-}
-
-input User_rating_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
   exists: Boolean
 }
 
@@ -240,13 +246,15 @@ input User_where_and {
   firstName: User_firstName_operator
   lastName: User_lastName_operator
   bio: User_bio_operator
-  province: User_province_operator
   rating: User_rating_operator
+  province: User_province_operator
   roles: User_roles_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
   email: User_email_operator
   id: User_id_operator
+  AND: [User_where_and]
+  OR: [User_where_or]
 }
 
 input User_where_or {
@@ -255,13 +263,15 @@ input User_where_or {
   firstName: User_firstName_operator
   lastName: User_lastName_operator
   bio: User_bio_operator
-  province: User_province_operator
   rating: User_rating_operator
+  province: User_province_operator
   roles: User_roles_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
   email: User_email_operator
   id: User_id_operator
+  AND: [User_where_and]
+  OR: [User_where_or]
 }
 
 type usersDocAccess {
@@ -279,8 +289,8 @@ type UsersDocAccessFields {
   firstName: UsersDocAccessFields_firstName
   lastName: UsersDocAccessFields_lastName
   bio: UsersDocAccessFields_bio
-  province: UsersDocAccessFields_province
   rating: UsersDocAccessFields_rating
+  province: UsersDocAccessFields_province
   roles: UsersDocAccessFields_roles
   updatedAt: UsersDocAccessFields_updatedAt
   createdAt: UsersDocAccessFields_createdAt
@@ -403,29 +413,6 @@ type UsersDocAccessFields_bio_Delete {
   permission: Boolean!
 }
 
-type UsersDocAccessFields_province {
-  create: UsersDocAccessFields_province_Create
-  read: UsersDocAccessFields_province_Read
-  update: UsersDocAccessFields_province_Update
-  delete: UsersDocAccessFields_province_Delete
-}
-
-type UsersDocAccessFields_province_Create {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_province_Read {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_province_Update {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_province_Delete {
-  permission: Boolean!
-}
-
 type UsersDocAccessFields_rating {
   create: UsersDocAccessFields_rating_Create
   read: UsersDocAccessFields_rating_Read
@@ -446,6 +433,29 @@ type UsersDocAccessFields_rating_Update {
 }
 
 type UsersDocAccessFields_rating_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_province {
+  create: UsersDocAccessFields_province_Create
+  read: UsersDocAccessFields_province_Read
+  update: UsersDocAccessFields_province_Update
+  delete: UsersDocAccessFields_province_Delete
+}
+
+type UsersDocAccessFields_province_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_province_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_province_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_province_Delete {
   permission: Boolean!
 }
 
@@ -883,6 +893,8 @@ input Item_where_and {
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
   id: Item_id_operator
+  AND: [Item_where_and]
+  OR: [Item_where_or]
 }
 
 input Item_where_or {
@@ -903,6 +915,8 @@ input Item_where_or {
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
   id: Item_id_operator
+  AND: [Item_where_and]
+  OR: [Item_where_or]
 }
 
 type itemsDocAccess {
@@ -1652,6 +1666,8 @@ input versionsItem_where_and {
   updatedAt: versionsItem_updatedAt_operator
   latest: versionsItem_latest_operator
   id: versionsItem_id_operator
+  AND: [versionsItem_where_and]
+  OR: [versionsItem_where_or]
 }
 
 input versionsItem_where_or {
@@ -1676,6 +1692,8 @@ input versionsItem_where_or {
   updatedAt: versionsItem_updatedAt_operator
   latest: versionsItem_latest_operator
   id: versionsItem_id_operator
+  AND: [versionsItem_where_and]
+  OR: [versionsItem_where_or]
 }
 
 type Medias {
@@ -1837,6 +1855,8 @@ input Media_where_and {
   width: Media_width_operator
   height: Media_height_operator
   id: Media_id_operator
+  AND: [Media_where_and]
+  OR: [Media_where_or]
 }
 
 input Media_where_or {
@@ -1851,6 +1871,8 @@ input Media_where_or {
   width: Media_width_operator
   height: Media_height_operator
   id: Media_id_operator
+  AND: [Media_where_and]
+  OR: [Media_where_or]
 }
 
 type mediasDocAccess {
@@ -2207,6 +2229,8 @@ input Tag_where_and {
   updatedAt: Tag_updatedAt_operator
   createdAt: Tag_createdAt_operator
   id: Tag_id_operator
+  AND: [Tag_where_and]
+  OR: [Tag_where_or]
 }
 
 input Tag_where_or {
@@ -2215,6 +2239,8 @@ input Tag_where_or {
   updatedAt: Tag_updatedAt_operator
   createdAt: Tag_createdAt_operator
   id: Tag_id_operator
+  AND: [Tag_where_and]
+  OR: [Tag_where_or]
 }
 
 type tagsDocAccess {
@@ -2344,6 +2370,613 @@ type TagsDeleteDocAccess {
   where: JSONObject
 }
 
+type Chatroom {
+  id: Int
+  user1_id: User!
+  user2_id: User!
+  lastMessage: Message
+  user1LastViewed: DateTime
+  user2LastViewed: DateTime
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type Message {
+  id: Int
+  message: String
+  createdAt: DateTime
+  createdBy: User!
+  room: Chatroom!
+  updatedAt: DateTime
+}
+
+type Chatrooms {
+  docs: [Chatroom]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Chatroom_where {
+  user1_id: Chatroom_user1_id_operator
+  user2_id: Chatroom_user2_id_operator
+  lastMessage: Chatroom_lastMessage_operator
+  user1LastViewed: Chatroom_user1LastViewed_operator
+  user2LastViewed: Chatroom_user2LastViewed_operator
+  updatedAt: Chatroom_updatedAt_operator
+  createdAt: Chatroom_createdAt_operator
+  id: Chatroom_id_operator
+  AND: [Chatroom_where_and]
+  OR: [Chatroom_where_or]
+}
+
+input Chatroom_user1_id_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input Chatroom_user2_id_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input Chatroom_lastMessage_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input Chatroom_user1LastViewed_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Chatroom_user2LastViewed_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Chatroom_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Chatroom_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Chatroom_id_operator {
+  equals: Int
+  not_equals: Int
+  greater_than_equal: Int
+  greater_than: Int
+  less_than_equal: Int
+  less_than: Int
+  exists: Boolean
+}
+
+input Chatroom_where_and {
+  user1_id: Chatroom_user1_id_operator
+  user2_id: Chatroom_user2_id_operator
+  lastMessage: Chatroom_lastMessage_operator
+  user1LastViewed: Chatroom_user1LastViewed_operator
+  user2LastViewed: Chatroom_user2LastViewed_operator
+  updatedAt: Chatroom_updatedAt_operator
+  createdAt: Chatroom_createdAt_operator
+  id: Chatroom_id_operator
+  AND: [Chatroom_where_and]
+  OR: [Chatroom_where_or]
+}
+
+input Chatroom_where_or {
+  user1_id: Chatroom_user1_id_operator
+  user2_id: Chatroom_user2_id_operator
+  lastMessage: Chatroom_lastMessage_operator
+  user1LastViewed: Chatroom_user1LastViewed_operator
+  user2LastViewed: Chatroom_user2LastViewed_operator
+  updatedAt: Chatroom_updatedAt_operator
+  createdAt: Chatroom_createdAt_operator
+  id: Chatroom_id_operator
+  AND: [Chatroom_where_and]
+  OR: [Chatroom_where_or]
+}
+
+type chatroomDocAccess {
+  fields: ChatroomDocAccessFields
+  create: ChatroomCreateDocAccess
+  read: ChatroomReadDocAccess
+  update: ChatroomUpdateDocAccess
+  delete: ChatroomDeleteDocAccess
+}
+
+type ChatroomDocAccessFields {
+  user1_id: ChatroomDocAccessFields_user1_id
+  user2_id: ChatroomDocAccessFields_user2_id
+  lastMessage: ChatroomDocAccessFields_lastMessage
+  user1LastViewed: ChatroomDocAccessFields_user1LastViewed
+  user2LastViewed: ChatroomDocAccessFields_user2LastViewed
+  updatedAt: ChatroomDocAccessFields_updatedAt
+  createdAt: ChatroomDocAccessFields_createdAt
+}
+
+type ChatroomDocAccessFields_user1_id {
+  create: ChatroomDocAccessFields_user1_id_Create
+  read: ChatroomDocAccessFields_user1_id_Read
+  update: ChatroomDocAccessFields_user1_id_Update
+  delete: ChatroomDocAccessFields_user1_id_Delete
+}
+
+type ChatroomDocAccessFields_user1_id_Create {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_user1_id_Read {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_user1_id_Update {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_user1_id_Delete {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_user2_id {
+  create: ChatroomDocAccessFields_user2_id_Create
+  read: ChatroomDocAccessFields_user2_id_Read
+  update: ChatroomDocAccessFields_user2_id_Update
+  delete: ChatroomDocAccessFields_user2_id_Delete
+}
+
+type ChatroomDocAccessFields_user2_id_Create {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_user2_id_Read {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_user2_id_Update {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_user2_id_Delete {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_lastMessage {
+  create: ChatroomDocAccessFields_lastMessage_Create
+  read: ChatroomDocAccessFields_lastMessage_Read
+  update: ChatroomDocAccessFields_lastMessage_Update
+  delete: ChatroomDocAccessFields_lastMessage_Delete
+}
+
+type ChatroomDocAccessFields_lastMessage_Create {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_lastMessage_Read {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_lastMessage_Update {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_lastMessage_Delete {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_user1LastViewed {
+  create: ChatroomDocAccessFields_user1LastViewed_Create
+  read: ChatroomDocAccessFields_user1LastViewed_Read
+  update: ChatroomDocAccessFields_user1LastViewed_Update
+  delete: ChatroomDocAccessFields_user1LastViewed_Delete
+}
+
+type ChatroomDocAccessFields_user1LastViewed_Create {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_user1LastViewed_Read {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_user1LastViewed_Update {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_user1LastViewed_Delete {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_user2LastViewed {
+  create: ChatroomDocAccessFields_user2LastViewed_Create
+  read: ChatroomDocAccessFields_user2LastViewed_Read
+  update: ChatroomDocAccessFields_user2LastViewed_Update
+  delete: ChatroomDocAccessFields_user2LastViewed_Delete
+}
+
+type ChatroomDocAccessFields_user2LastViewed_Create {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_user2LastViewed_Read {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_user2LastViewed_Update {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_user2LastViewed_Delete {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_updatedAt {
+  create: ChatroomDocAccessFields_updatedAt_Create
+  read: ChatroomDocAccessFields_updatedAt_Read
+  update: ChatroomDocAccessFields_updatedAt_Update
+  delete: ChatroomDocAccessFields_updatedAt_Delete
+}
+
+type ChatroomDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_createdAt {
+  create: ChatroomDocAccessFields_createdAt_Create
+  read: ChatroomDocAccessFields_createdAt_Read
+  update: ChatroomDocAccessFields_createdAt_Update
+  delete: ChatroomDocAccessFields_createdAt_Delete
+}
+
+type ChatroomDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type ChatroomDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type ChatroomCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ChatroomReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ChatroomUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ChatroomDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type Messages {
+  docs: [Message]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Message_where {
+  message: Message_message_operator
+  createdAt: Message_createdAt_operator
+  createdBy: Message_createdBy_operator
+  room: Message_room_operator
+  updatedAt: Message_updatedAt_operator
+  id: Message_id_operator
+  AND: [Message_where_and]
+  OR: [Message_where_or]
+}
+
+input Message_message_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Message_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+}
+
+input Message_createdBy_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input Message_room_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input Message_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Message_id_operator {
+  equals: Int
+  not_equals: Int
+  greater_than_equal: Int
+  greater_than: Int
+  less_than_equal: Int
+  less_than: Int
+  exists: Boolean
+}
+
+input Message_where_and {
+  message: Message_message_operator
+  createdAt: Message_createdAt_operator
+  createdBy: Message_createdBy_operator
+  room: Message_room_operator
+  updatedAt: Message_updatedAt_operator
+  id: Message_id_operator
+  AND: [Message_where_and]
+  OR: [Message_where_or]
+}
+
+input Message_where_or {
+  message: Message_message_operator
+  createdAt: Message_createdAt_operator
+  createdBy: Message_createdBy_operator
+  room: Message_room_operator
+  updatedAt: Message_updatedAt_operator
+  id: Message_id_operator
+  AND: [Message_where_and]
+  OR: [Message_where_or]
+}
+
+type messageDocAccess {
+  fields: MessageDocAccessFields
+  create: MessageCreateDocAccess
+  read: MessageReadDocAccess
+  update: MessageUpdateDocAccess
+  delete: MessageDeleteDocAccess
+}
+
+type MessageDocAccessFields {
+  message: MessageDocAccessFields_message
+  createdAt: MessageDocAccessFields_createdAt
+  createdBy: MessageDocAccessFields_createdBy
+  room: MessageDocAccessFields_room
+  updatedAt: MessageDocAccessFields_updatedAt
+}
+
+type MessageDocAccessFields_message {
+  create: MessageDocAccessFields_message_Create
+  read: MessageDocAccessFields_message_Read
+  update: MessageDocAccessFields_message_Update
+  delete: MessageDocAccessFields_message_Delete
+}
+
+type MessageDocAccessFields_message_Create {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_message_Read {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_message_Update {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_message_Delete {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_createdAt {
+  create: MessageDocAccessFields_createdAt_Create
+  read: MessageDocAccessFields_createdAt_Read
+  update: MessageDocAccessFields_createdAt_Update
+  delete: MessageDocAccessFields_createdAt_Delete
+}
+
+type MessageDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_createdBy {
+  create: MessageDocAccessFields_createdBy_Create
+  read: MessageDocAccessFields_createdBy_Read
+  update: MessageDocAccessFields_createdBy_Update
+  delete: MessageDocAccessFields_createdBy_Delete
+}
+
+type MessageDocAccessFields_createdBy_Create {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_createdBy_Read {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_createdBy_Update {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_createdBy_Delete {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_room {
+  create: MessageDocAccessFields_room_Create
+  read: MessageDocAccessFields_room_Read
+  update: MessageDocAccessFields_room_Update
+  delete: MessageDocAccessFields_room_Delete
+}
+
+type MessageDocAccessFields_room_Create {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_room_Read {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_room_Update {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_room_Delete {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_updatedAt {
+  create: MessageDocAccessFields_updatedAt_Create
+  read: MessageDocAccessFields_updatedAt_Read
+  update: MessageDocAccessFields_updatedAt_Update
+  delete: MessageDocAccessFields_updatedAt_Delete
+}
+
+type MessageDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type MessageDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type MessageCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MessageReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MessageUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MessageDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type PayloadPreference {
   id: Int
   user: PayloadPreference_User_Relationship!
@@ -2458,6 +3091,8 @@ input PayloadPreference_where_and {
   updatedAt: PayloadPreference_updatedAt_operator
   createdAt: PayloadPreference_createdAt_operator
   id: PayloadPreference_id_operator
+  AND: [PayloadPreference_where_and]
+  OR: [PayloadPreference_where_or]
 }
 
 input PayloadPreference_where_or {
@@ -2467,6 +3102,8 @@ input PayloadPreference_where_or {
   updatedAt: PayloadPreference_updatedAt_operator
   createdAt: PayloadPreference_createdAt_operator
   id: PayloadPreference_id_operator
+  AND: [PayloadPreference_where_and]
+  OR: [PayloadPreference_where_or]
 }
 
 type payload_preferencesDocAccess {
@@ -2626,6 +3263,8 @@ type Access {
   items: itemsAccess
   medias: mediasAccess
   tags: tagsAccess
+  chatroom: chatroomAccess
+  message: messageAccess
   payload_preferences: payload_preferencesAccess
 }
 
@@ -2644,8 +3283,8 @@ type UsersFields {
   firstName: UsersFields_firstName
   lastName: UsersFields_lastName
   bio: UsersFields_bio
-  province: UsersFields_province
   rating: UsersFields_rating
+  province: UsersFields_province
   roles: UsersFields_roles
   updatedAt: UsersFields_updatedAt
   createdAt: UsersFields_createdAt
@@ -2768,29 +3407,6 @@ type UsersFields_bio_Delete {
   permission: Boolean!
 }
 
-type UsersFields_province {
-  create: UsersFields_province_Create
-  read: UsersFields_province_Read
-  update: UsersFields_province_Update
-  delete: UsersFields_province_Delete
-}
-
-type UsersFields_province_Create {
-  permission: Boolean!
-}
-
-type UsersFields_province_Read {
-  permission: Boolean!
-}
-
-type UsersFields_province_Update {
-  permission: Boolean!
-}
-
-type UsersFields_province_Delete {
-  permission: Boolean!
-}
-
 type UsersFields_rating {
   create: UsersFields_rating_Create
   read: UsersFields_rating_Read
@@ -2811,6 +3427,29 @@ type UsersFields_rating_Update {
 }
 
 type UsersFields_rating_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_province {
+  create: UsersFields_province_Create
+  read: UsersFields_province_Read
+  update: UsersFields_province_Update
+  delete: UsersFields_province_Delete
+}
+
+type UsersFields_province_Create {
+  permission: Boolean!
+}
+
+type UsersFields_province_Read {
+  permission: Boolean!
+}
+
+type UsersFields_province_Update {
+  permission: Boolean!
+}
+
+type UsersFields_province_Delete {
   permission: Boolean!
 }
 
@@ -3773,6 +4412,356 @@ type TagsDeleteAccess {
   where: JSONObject
 }
 
+type chatroomAccess {
+  fields: ChatroomFields
+  create: ChatroomCreateAccess
+  read: ChatroomReadAccess
+  update: ChatroomUpdateAccess
+  delete: ChatroomDeleteAccess
+}
+
+type ChatroomFields {
+  user1_id: ChatroomFields_user1_id
+  user2_id: ChatroomFields_user2_id
+  lastMessage: ChatroomFields_lastMessage
+  user1LastViewed: ChatroomFields_user1LastViewed
+  user2LastViewed: ChatroomFields_user2LastViewed
+  updatedAt: ChatroomFields_updatedAt
+  createdAt: ChatroomFields_createdAt
+}
+
+type ChatroomFields_user1_id {
+  create: ChatroomFields_user1_id_Create
+  read: ChatroomFields_user1_id_Read
+  update: ChatroomFields_user1_id_Update
+  delete: ChatroomFields_user1_id_Delete
+}
+
+type ChatroomFields_user1_id_Create {
+  permission: Boolean!
+}
+
+type ChatroomFields_user1_id_Read {
+  permission: Boolean!
+}
+
+type ChatroomFields_user1_id_Update {
+  permission: Boolean!
+}
+
+type ChatroomFields_user1_id_Delete {
+  permission: Boolean!
+}
+
+type ChatroomFields_user2_id {
+  create: ChatroomFields_user2_id_Create
+  read: ChatroomFields_user2_id_Read
+  update: ChatroomFields_user2_id_Update
+  delete: ChatroomFields_user2_id_Delete
+}
+
+type ChatroomFields_user2_id_Create {
+  permission: Boolean!
+}
+
+type ChatroomFields_user2_id_Read {
+  permission: Boolean!
+}
+
+type ChatroomFields_user2_id_Update {
+  permission: Boolean!
+}
+
+type ChatroomFields_user2_id_Delete {
+  permission: Boolean!
+}
+
+type ChatroomFields_lastMessage {
+  create: ChatroomFields_lastMessage_Create
+  read: ChatroomFields_lastMessage_Read
+  update: ChatroomFields_lastMessage_Update
+  delete: ChatroomFields_lastMessage_Delete
+}
+
+type ChatroomFields_lastMessage_Create {
+  permission: Boolean!
+}
+
+type ChatroomFields_lastMessage_Read {
+  permission: Boolean!
+}
+
+type ChatroomFields_lastMessage_Update {
+  permission: Boolean!
+}
+
+type ChatroomFields_lastMessage_Delete {
+  permission: Boolean!
+}
+
+type ChatroomFields_user1LastViewed {
+  create: ChatroomFields_user1LastViewed_Create
+  read: ChatroomFields_user1LastViewed_Read
+  update: ChatroomFields_user1LastViewed_Update
+  delete: ChatroomFields_user1LastViewed_Delete
+}
+
+type ChatroomFields_user1LastViewed_Create {
+  permission: Boolean!
+}
+
+type ChatroomFields_user1LastViewed_Read {
+  permission: Boolean!
+}
+
+type ChatroomFields_user1LastViewed_Update {
+  permission: Boolean!
+}
+
+type ChatroomFields_user1LastViewed_Delete {
+  permission: Boolean!
+}
+
+type ChatroomFields_user2LastViewed {
+  create: ChatroomFields_user2LastViewed_Create
+  read: ChatroomFields_user2LastViewed_Read
+  update: ChatroomFields_user2LastViewed_Update
+  delete: ChatroomFields_user2LastViewed_Delete
+}
+
+type ChatroomFields_user2LastViewed_Create {
+  permission: Boolean!
+}
+
+type ChatroomFields_user2LastViewed_Read {
+  permission: Boolean!
+}
+
+type ChatroomFields_user2LastViewed_Update {
+  permission: Boolean!
+}
+
+type ChatroomFields_user2LastViewed_Delete {
+  permission: Boolean!
+}
+
+type ChatroomFields_updatedAt {
+  create: ChatroomFields_updatedAt_Create
+  read: ChatroomFields_updatedAt_Read
+  update: ChatroomFields_updatedAt_Update
+  delete: ChatroomFields_updatedAt_Delete
+}
+
+type ChatroomFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type ChatroomFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type ChatroomFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type ChatroomFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type ChatroomFields_createdAt {
+  create: ChatroomFields_createdAt_Create
+  read: ChatroomFields_createdAt_Read
+  update: ChatroomFields_createdAt_Update
+  delete: ChatroomFields_createdAt_Delete
+}
+
+type ChatroomFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type ChatroomFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type ChatroomFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type ChatroomFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type ChatroomCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ChatroomReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ChatroomUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ChatroomDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type messageAccess {
+  fields: MessageFields
+  create: MessageCreateAccess
+  read: MessageReadAccess
+  update: MessageUpdateAccess
+  delete: MessageDeleteAccess
+}
+
+type MessageFields {
+  message: MessageFields_message
+  createdAt: MessageFields_createdAt
+  createdBy: MessageFields_createdBy
+  room: MessageFields_room
+  updatedAt: MessageFields_updatedAt
+}
+
+type MessageFields_message {
+  create: MessageFields_message_Create
+  read: MessageFields_message_Read
+  update: MessageFields_message_Update
+  delete: MessageFields_message_Delete
+}
+
+type MessageFields_message_Create {
+  permission: Boolean!
+}
+
+type MessageFields_message_Read {
+  permission: Boolean!
+}
+
+type MessageFields_message_Update {
+  permission: Boolean!
+}
+
+type MessageFields_message_Delete {
+  permission: Boolean!
+}
+
+type MessageFields_createdAt {
+  create: MessageFields_createdAt_Create
+  read: MessageFields_createdAt_Read
+  update: MessageFields_createdAt_Update
+  delete: MessageFields_createdAt_Delete
+}
+
+type MessageFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type MessageFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type MessageFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type MessageFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type MessageFields_createdBy {
+  create: MessageFields_createdBy_Create
+  read: MessageFields_createdBy_Read
+  update: MessageFields_createdBy_Update
+  delete: MessageFields_createdBy_Delete
+}
+
+type MessageFields_createdBy_Create {
+  permission: Boolean!
+}
+
+type MessageFields_createdBy_Read {
+  permission: Boolean!
+}
+
+type MessageFields_createdBy_Update {
+  permission: Boolean!
+}
+
+type MessageFields_createdBy_Delete {
+  permission: Boolean!
+}
+
+type MessageFields_room {
+  create: MessageFields_room_Create
+  read: MessageFields_room_Read
+  update: MessageFields_room_Update
+  delete: MessageFields_room_Delete
+}
+
+type MessageFields_room_Create {
+  permission: Boolean!
+}
+
+type MessageFields_room_Read {
+  permission: Boolean!
+}
+
+type MessageFields_room_Update {
+  permission: Boolean!
+}
+
+type MessageFields_room_Delete {
+  permission: Boolean!
+}
+
+type MessageFields_updatedAt {
+  create: MessageFields_updatedAt_Create
+  read: MessageFields_updatedAt_Read
+  update: MessageFields_updatedAt_Update
+  delete: MessageFields_updatedAt_Delete
+}
+
+type MessageFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type MessageFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type MessageFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type MessageFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type MessageCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MessageReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MessageUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MessageDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type payload_preferencesAccess {
   fields: PayloadPreferencesFields
   create: PayloadPreferencesCreateAccess
@@ -3945,6 +4934,12 @@ type Mutation {
   createTag(data: mutationTagInput!, draft: Boolean): Tag
   updateTag(id: Int!, autosave: Boolean, data: mutationTagUpdateInput!, draft: Boolean): Tag
   deleteTag(id: Int!): Tag
+  createChatroom(data: mutationChatroomInput!, draft: Boolean): Chatroom
+  updateChatroom(id: Int!, autosave: Boolean, data: mutationChatroomUpdateInput!, draft: Boolean): Chatroom
+  deleteChatroom(id: Int!): Chatroom
+  createMessage(data: mutationMessageInput!, draft: Boolean): Message
+  updateMessage(id: Int!, autosave: Boolean, data: mutationMessageUpdateInput!, draft: Boolean): Message
+  deleteMessage(id: Int!): Message
   createPayloadPreference(data: mutationPayloadPreferenceInput!, draft: Boolean): PayloadPreference
   updatePayloadPreference(id: Int!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean): PayloadPreference
   deletePayloadPreference(id: Int!): PayloadPreference
@@ -3956,8 +4951,8 @@ input mutationUserInput {
   firstName: String
   lastName: String
   bio: String
-  province: String
   rating: Float
+  province: String
   roles: [User_roles_MutationInput]!
   updatedAt: String
   createdAt: String
@@ -3982,8 +4977,8 @@ input mutationUserUpdateInput {
   firstName: String
   lastName: String
   bio: String
-  province: String
   rating: Float
+  province: String
   roles: [UserUpdate_roles_MutationInput]
   updatedAt: String
   createdAt: String
@@ -4144,6 +5139,42 @@ input mutationTagUpdateInput {
   createdBy: Int
   updatedAt: String
   createdAt: String
+}
+
+input mutationChatroomInput {
+  user1_id: Int
+  user2_id: Int
+  lastMessage: Int
+  user1LastViewed: String
+  user2LastViewed: String
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationChatroomUpdateInput {
+  user1_id: Int
+  user2_id: Int
+  lastMessage: Int
+  user1LastViewed: String
+  user2LastViewed: String
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationMessageInput {
+  message: String
+  createdAt: String
+  createdBy: Int
+  room: Int
+  updatedAt: String
+}
+
+input mutationMessageUpdateInput {
+  message: String
+  createdAt: String
+  createdBy: Int
+  room: Int
+  updatedAt: String
 }
 
 input mutationPayloadPreferenceInput {

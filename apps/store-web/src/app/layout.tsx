@@ -39,7 +39,7 @@ export default async function RootLayout({
           <Toaster />
           <div className="min-h-screen max-w-screen flex flex-col bg-background">
             <Navbar id={id} />
-            <div className="flex-1 relative w-full">{children}</div>
+            <div className="flex-1 flex-col flex relative w-full">{children}</div>
           </div>
         </ThemeProvider>
       </body>
