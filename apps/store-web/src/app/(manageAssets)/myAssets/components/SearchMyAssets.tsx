@@ -19,7 +19,7 @@ export default function SearchMyAssets() {
   }, 250)
 
   const { Items } = useQuery({
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-first',
   })
 
   const items = Items({

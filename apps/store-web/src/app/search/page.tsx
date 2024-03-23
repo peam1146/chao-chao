@@ -30,9 +30,7 @@ export default function SearchPage() {
   const search = searchParams.get('search')
 
   const query = useQuery({
-    fetchPolicy: 'cache-and-network',
-    refetchOnReconnect: true,
-    refetchOnWindowVisible: true,
+    fetchPolicy: 'cache-first',
     suspense: true,
   })
 
