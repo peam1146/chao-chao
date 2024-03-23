@@ -9,7 +9,7 @@ import { openapi, redoc } from 'payload-oapi'
 import s3Upload from 'payload-s3-upload'
 import { buildConfig } from 'payload/config'
 
-import { Chatroom, Item, Media, Message, Tag, Users } from './collections'
+import { Chatroom, Item, Media, Message, Renting, Tag, Users } from './collections'
 import { ACCESS_KEY_ID, REGION, SECRET_KEY_ID } from './common/env'
 import { Logo } from './components/Logo'
 
@@ -29,7 +29,7 @@ export default buildConfig({
   //   resources: i18n(),
   // },
   editor: slateEditor({}),
-  collections: [Users, Item, Media, Tag, Chatroom, Message],
+  collections: [Users, Item, Media, Tag, Chatroom, Message, Renting],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },

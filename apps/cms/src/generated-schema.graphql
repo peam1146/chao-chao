@@ -21,6 +21,9 @@ type Query {
   Message(id: Int!, draft: Boolean): Message
   Messages(draft: Boolean, where: Message_where, limit: Int, page: Int, sort: String): Messages
   docAccessMessage(id: Int!): messageDocAccess
+  Renting(id: Int!, draft: Boolean): Renting
+  Rentings(draft: Boolean, where: Renting_where, limit: Int, page: Int, sort: String): Rentings
+  docAccessRenting(id: Int!): rentingDocAccess
   PayloadPreference(id: Int!, draft: Boolean): PayloadPreference
   PayloadPreferences(draft: Boolean, where: PayloadPreference_where, limit: Int, page: Int, sort: String): PayloadPreferences
   docAccessPayloadPreference(id: Int!): payload_preferencesDocAccess
@@ -37,6 +40,8 @@ type User {
   rating: Float
   province: String
   roles: [User_roles!]!
+  requestsMade: [User_RequestsMade!]
+  requestsReceived: [User_RequestsReceived!]
   updatedAt: DateTime
   createdAt: DateTime
   email: EmailAddress!
@@ -74,6 +79,64 @@ enum User_roles {
   User
 }
 
+type User_RequestsMade {
+  user: User
+  item: Item
+  id: String
+}
+
+type Item {
+  id: Int
+  name: String
+  description: String
+  image: [Media!]
+  price: Float
+  availableAt: DateTime
+  period: Float
+  periodType: Item_periodType
+  rentingStatus: Item_rentingStatus
+  start: DateTime
+  end: DateTime
+  tags: [Tag!]
+  createdBy: User
+  rating: Float
+  updatedAt: DateTime
+  createdAt: DateTime
+  _status: Item__status
+}
+
+enum Item_periodType {
+  days
+  weeks
+  months
+  years
+}
+
+enum Item_rentingStatus {
+  available
+  unavailable
+}
+
+type Tag {
+  id: Int
+  name: String!
+  alt: String
+  createdBy: User!
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+enum Item__status {
+  draft
+  published
+}
+
+type User_RequestsReceived {
+  user: User
+  item: Item
+  id: String
+}
+
 """
 A field whose value conforms to the standard internet email address format as specified in HTML Spec: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address.
 """
@@ -102,6 +165,12 @@ input User_where {
   rating: User_rating_operator
   province: User_province_operator
   roles: User_roles_operator
+  requestsMade__user: User_requestsMade__user_operator
+  requestsMade__item: User_requestsMade__item_operator
+  requestsMade__id: User_requestsMade__id_operator
+  requestsReceived__user: User_requestsReceived__user_operator
+  requestsReceived__item: User_requestsReceived__item_operator
+  requestsReceived__id: User_requestsReceived__id_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
   email: User_email_operator
@@ -198,6 +267,60 @@ enum User_roles_Input {
   User
 }
 
+input User_requestsMade__user_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input User_requestsMade__item_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input User_requestsMade__id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input User_requestsReceived__user_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input User_requestsReceived__item_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input User_requestsReceived__id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
 input User_updatedAt_operator {
   equals: DateTime
   not_equals: DateTime
@@ -249,6 +372,12 @@ input User_where_and {
   rating: User_rating_operator
   province: User_province_operator
   roles: User_roles_operator
+  requestsMade__user: User_requestsMade__user_operator
+  requestsMade__item: User_requestsMade__item_operator
+  requestsMade__id: User_requestsMade__id_operator
+  requestsReceived__user: User_requestsReceived__user_operator
+  requestsReceived__item: User_requestsReceived__item_operator
+  requestsReceived__id: User_requestsReceived__id_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
   email: User_email_operator
@@ -266,6 +395,12 @@ input User_where_or {
   rating: User_rating_operator
   province: User_province_operator
   roles: User_roles_operator
+  requestsMade__user: User_requestsMade__user_operator
+  requestsMade__item: User_requestsMade__item_operator
+  requestsMade__id: User_requestsMade__id_operator
+  requestsReceived__user: User_requestsReceived__user_operator
+  requestsReceived__item: User_requestsReceived__item_operator
+  requestsReceived__id: User_requestsReceived__id_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
   email: User_email_operator
@@ -292,6 +427,8 @@ type UsersDocAccessFields {
   rating: UsersDocAccessFields_rating
   province: UsersDocAccessFields_province
   roles: UsersDocAccessFields_roles
+  requestsMade: UsersDocAccessFields_requestsMade
+  requestsReceived: UsersDocAccessFields_requestsReceived
   updatedAt: UsersDocAccessFields_updatedAt
   createdAt: UsersDocAccessFields_createdAt
   email: UsersDocAccessFields_email
@@ -482,6 +619,204 @@ type UsersDocAccessFields_roles_Delete {
   permission: Boolean!
 }
 
+type UsersDocAccessFields_requestsMade {
+  create: UsersDocAccessFields_requestsMade_Create
+  read: UsersDocAccessFields_requestsMade_Read
+  update: UsersDocAccessFields_requestsMade_Update
+  delete: UsersDocAccessFields_requestsMade_Delete
+  fields: UsersDocAccessFields_requestsMade_Fields
+}
+
+type UsersDocAccessFields_requestsMade_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsMade_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsMade_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsMade_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsMade_Fields {
+  user: UsersDocAccessFields_requestsMade_user
+  item: UsersDocAccessFields_requestsMade_item
+  id: UsersDocAccessFields_requestsMade_id
+}
+
+type UsersDocAccessFields_requestsMade_user {
+  create: UsersDocAccessFields_requestsMade_user_Create
+  read: UsersDocAccessFields_requestsMade_user_Read
+  update: UsersDocAccessFields_requestsMade_user_Update
+  delete: UsersDocAccessFields_requestsMade_user_Delete
+}
+
+type UsersDocAccessFields_requestsMade_user_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsMade_user_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsMade_user_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsMade_user_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsMade_item {
+  create: UsersDocAccessFields_requestsMade_item_Create
+  read: UsersDocAccessFields_requestsMade_item_Read
+  update: UsersDocAccessFields_requestsMade_item_Update
+  delete: UsersDocAccessFields_requestsMade_item_Delete
+}
+
+type UsersDocAccessFields_requestsMade_item_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsMade_item_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsMade_item_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsMade_item_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsMade_id {
+  create: UsersDocAccessFields_requestsMade_id_Create
+  read: UsersDocAccessFields_requestsMade_id_Read
+  update: UsersDocAccessFields_requestsMade_id_Update
+  delete: UsersDocAccessFields_requestsMade_id_Delete
+}
+
+type UsersDocAccessFields_requestsMade_id_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsMade_id_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsMade_id_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsMade_id_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived {
+  create: UsersDocAccessFields_requestsReceived_Create
+  read: UsersDocAccessFields_requestsReceived_Read
+  update: UsersDocAccessFields_requestsReceived_Update
+  delete: UsersDocAccessFields_requestsReceived_Delete
+  fields: UsersDocAccessFields_requestsReceived_Fields
+}
+
+type UsersDocAccessFields_requestsReceived_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived_Fields {
+  user: UsersDocAccessFields_requestsReceived_user
+  item: UsersDocAccessFields_requestsReceived_item
+  id: UsersDocAccessFields_requestsReceived_id
+}
+
+type UsersDocAccessFields_requestsReceived_user {
+  create: UsersDocAccessFields_requestsReceived_user_Create
+  read: UsersDocAccessFields_requestsReceived_user_Read
+  update: UsersDocAccessFields_requestsReceived_user_Update
+  delete: UsersDocAccessFields_requestsReceived_user_Delete
+}
+
+type UsersDocAccessFields_requestsReceived_user_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived_user_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived_user_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived_user_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived_item {
+  create: UsersDocAccessFields_requestsReceived_item_Create
+  read: UsersDocAccessFields_requestsReceived_item_Read
+  update: UsersDocAccessFields_requestsReceived_item_Update
+  delete: UsersDocAccessFields_requestsReceived_item_Delete
+}
+
+type UsersDocAccessFields_requestsReceived_item_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived_item_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived_item_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived_item_Delete {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived_id {
+  create: UsersDocAccessFields_requestsReceived_id_Create
+  read: UsersDocAccessFields_requestsReceived_id_Read
+  update: UsersDocAccessFields_requestsReceived_id_Update
+  delete: UsersDocAccessFields_requestsReceived_id_Delete
+}
+
+type UsersDocAccessFields_requestsReceived_id_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived_id_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived_id_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_requestsReceived_id_Delete {
+  permission: Boolean!
+}
+
 type UsersDocAccessFields_updatedAt {
   create: UsersDocAccessFields_updatedAt_Create
   read: UsersDocAccessFields_updatedAt_Read
@@ -609,52 +944,6 @@ type usersMe {
   exp: Int
   token: String
   user: User
-}
-
-type Item {
-  id: Int
-  name: String
-  description: String
-  image: [Media!]
-  price: Float
-  availableAt: DateTime
-  period: Float
-  periodType: Item_periodType
-  rentingStatus: Item_rentingStatus
-  start: DateTime
-  end: DateTime
-  tags: [Tag!]
-  createdBy: User
-  rating: Float
-  updatedAt: DateTime
-  createdAt: DateTime
-  _status: Item__status
-}
-
-enum Item_periodType {
-  days
-  weeks
-  months
-  years
-}
-
-enum Item_rentingStatus {
-  available
-  unavailable
-}
-
-type Tag {
-  id: Int
-  name: String!
-  alt: String
-  createdBy: User!
-  updatedAt: DateTime
-  createdAt: DateTime
-}
-
-enum Item__status {
-  draft
-  published
 }
 
 type Items {
@@ -2977,6 +3266,530 @@ type MessageDeleteDocAccess {
   where: JSONObject
 }
 
+type Renting {
+  id: Int
+  rentedBy: Renting_RentedBy
+  rentedTo: Renting_RentedTo
+  startDate: DateTime!
+  endDate: DateTime!
+  status: Renting_status
+  totalPrice: Float
+  createdBy: User!
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type Renting_RentedBy {
+  user: User
+}
+
+type Renting_RentedTo {
+  user: User
+  item: Item
+}
+
+enum Renting_status {
+  PENDING
+  PROCESSING
+  COMPLETED
+  CANCELLED
+}
+
+type Rentings {
+  docs: [Renting]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Renting_where {
+  rentedBy__user: Renting_rentedBy__user_operator
+  rentedTo__user: Renting_rentedTo__user_operator
+  rentedTo__item: Renting_rentedTo__item_operator
+  startDate: Renting_startDate_operator
+  endDate: Renting_endDate_operator
+  status: Renting_status_operator
+  totalPrice: Renting_totalPrice_operator
+  createdBy: Renting_createdBy_operator
+  updatedAt: Renting_updatedAt_operator
+  createdAt: Renting_createdAt_operator
+  id: Renting_id_operator
+  AND: [Renting_where_and]
+  OR: [Renting_where_or]
+}
+
+input Renting_rentedBy__user_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input Renting_rentedTo__user_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input Renting_rentedTo__item_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input Renting_startDate_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+}
+
+input Renting_endDate_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+}
+
+input Renting_status_operator {
+  equals: Renting_status_Input
+  not_equals: Renting_status_Input
+  in: [Renting_status_Input]
+  not_in: [Renting_status_Input]
+  all: [Renting_status_Input]
+  exists: Boolean
+}
+
+enum Renting_status_Input {
+  PENDING
+  PROCESSING
+  COMPLETED
+  CANCELLED
+}
+
+input Renting_totalPrice_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Renting_createdBy_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input Renting_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Renting_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Renting_id_operator {
+  equals: Int
+  not_equals: Int
+  greater_than_equal: Int
+  greater_than: Int
+  less_than_equal: Int
+  less_than: Int
+  exists: Boolean
+}
+
+input Renting_where_and {
+  rentedBy__user: Renting_rentedBy__user_operator
+  rentedTo__user: Renting_rentedTo__user_operator
+  rentedTo__item: Renting_rentedTo__item_operator
+  startDate: Renting_startDate_operator
+  endDate: Renting_endDate_operator
+  status: Renting_status_operator
+  totalPrice: Renting_totalPrice_operator
+  createdBy: Renting_createdBy_operator
+  updatedAt: Renting_updatedAt_operator
+  createdAt: Renting_createdAt_operator
+  id: Renting_id_operator
+}
+
+input Renting_where_or {
+  rentedBy__user: Renting_rentedBy__user_operator
+  rentedTo__user: Renting_rentedTo__user_operator
+  rentedTo__item: Renting_rentedTo__item_operator
+  startDate: Renting_startDate_operator
+  endDate: Renting_endDate_operator
+  status: Renting_status_operator
+  totalPrice: Renting_totalPrice_operator
+  createdBy: Renting_createdBy_operator
+  updatedAt: Renting_updatedAt_operator
+  createdAt: Renting_createdAt_operator
+  id: Renting_id_operator
+}
+
+type rentingDocAccess {
+  fields: RentingDocAccessFields
+  create: RentingCreateDocAccess
+  read: RentingReadDocAccess
+  update: RentingUpdateDocAccess
+  delete: RentingDeleteDocAccess
+}
+
+type RentingDocAccessFields {
+  rentedBy: RentingDocAccessFields_rentedBy
+  rentedTo: RentingDocAccessFields_rentedTo
+  startDate: RentingDocAccessFields_startDate
+  endDate: RentingDocAccessFields_endDate
+  status: RentingDocAccessFields_status
+  totalPrice: RentingDocAccessFields_totalPrice
+  createdBy: RentingDocAccessFields_createdBy
+  updatedAt: RentingDocAccessFields_updatedAt
+  createdAt: RentingDocAccessFields_createdAt
+}
+
+type RentingDocAccessFields_rentedBy {
+  create: RentingDocAccessFields_rentedBy_Create
+  read: RentingDocAccessFields_rentedBy_Read
+  update: RentingDocAccessFields_rentedBy_Update
+  delete: RentingDocAccessFields_rentedBy_Delete
+  fields: RentingDocAccessFields_rentedBy_Fields
+}
+
+type RentingDocAccessFields_rentedBy_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedBy_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedBy_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedBy_Delete {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedBy_Fields {
+  user: RentingDocAccessFields_rentedBy_user
+}
+
+type RentingDocAccessFields_rentedBy_user {
+  create: RentingDocAccessFields_rentedBy_user_Create
+  read: RentingDocAccessFields_rentedBy_user_Read
+  update: RentingDocAccessFields_rentedBy_user_Update
+  delete: RentingDocAccessFields_rentedBy_user_Delete
+}
+
+type RentingDocAccessFields_rentedBy_user_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedBy_user_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedBy_user_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedBy_user_Delete {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedTo {
+  create: RentingDocAccessFields_rentedTo_Create
+  read: RentingDocAccessFields_rentedTo_Read
+  update: RentingDocAccessFields_rentedTo_Update
+  delete: RentingDocAccessFields_rentedTo_Delete
+  fields: RentingDocAccessFields_rentedTo_Fields
+}
+
+type RentingDocAccessFields_rentedTo_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedTo_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedTo_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedTo_Delete {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedTo_Fields {
+  user: RentingDocAccessFields_rentedTo_user
+  item: RentingDocAccessFields_rentedTo_item
+}
+
+type RentingDocAccessFields_rentedTo_user {
+  create: RentingDocAccessFields_rentedTo_user_Create
+  read: RentingDocAccessFields_rentedTo_user_Read
+  update: RentingDocAccessFields_rentedTo_user_Update
+  delete: RentingDocAccessFields_rentedTo_user_Delete
+}
+
+type RentingDocAccessFields_rentedTo_user_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedTo_user_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedTo_user_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedTo_user_Delete {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedTo_item {
+  create: RentingDocAccessFields_rentedTo_item_Create
+  read: RentingDocAccessFields_rentedTo_item_Read
+  update: RentingDocAccessFields_rentedTo_item_Update
+  delete: RentingDocAccessFields_rentedTo_item_Delete
+}
+
+type RentingDocAccessFields_rentedTo_item_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedTo_item_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedTo_item_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentedTo_item_Delete {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_startDate {
+  create: RentingDocAccessFields_startDate_Create
+  read: RentingDocAccessFields_startDate_Read
+  update: RentingDocAccessFields_startDate_Update
+  delete: RentingDocAccessFields_startDate_Delete
+}
+
+type RentingDocAccessFields_startDate_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_startDate_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_startDate_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_startDate_Delete {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_endDate {
+  create: RentingDocAccessFields_endDate_Create
+  read: RentingDocAccessFields_endDate_Read
+  update: RentingDocAccessFields_endDate_Update
+  delete: RentingDocAccessFields_endDate_Delete
+}
+
+type RentingDocAccessFields_endDate_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_endDate_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_endDate_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_endDate_Delete {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_status {
+  create: RentingDocAccessFields_status_Create
+  read: RentingDocAccessFields_status_Read
+  update: RentingDocAccessFields_status_Update
+  delete: RentingDocAccessFields_status_Delete
+}
+
+type RentingDocAccessFields_status_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_status_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_status_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_status_Delete {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_totalPrice {
+  create: RentingDocAccessFields_totalPrice_Create
+  read: RentingDocAccessFields_totalPrice_Read
+  update: RentingDocAccessFields_totalPrice_Update
+  delete: RentingDocAccessFields_totalPrice_Delete
+}
+
+type RentingDocAccessFields_totalPrice_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_totalPrice_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_totalPrice_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_totalPrice_Delete {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_createdBy {
+  create: RentingDocAccessFields_createdBy_Create
+  read: RentingDocAccessFields_createdBy_Read
+  update: RentingDocAccessFields_createdBy_Update
+  delete: RentingDocAccessFields_createdBy_Delete
+}
+
+type RentingDocAccessFields_createdBy_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_createdBy_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_createdBy_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_createdBy_Delete {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_updatedAt {
+  create: RentingDocAccessFields_updatedAt_Create
+  read: RentingDocAccessFields_updatedAt_Read
+  update: RentingDocAccessFields_updatedAt_Update
+  delete: RentingDocAccessFields_updatedAt_Delete
+}
+
+type RentingDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_createdAt {
+  create: RentingDocAccessFields_createdAt_Create
+  read: RentingDocAccessFields_createdAt_Read
+  update: RentingDocAccessFields_createdAt_Update
+  delete: RentingDocAccessFields_createdAt_Delete
+}
+
+type RentingDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type RentingCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type RentingReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type RentingUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type RentingDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type PayloadPreference {
   id: Int
   user: PayloadPreference_User_Relationship!
@@ -3265,6 +4078,7 @@ type Access {
   tags: tagsAccess
   chatroom: chatroomAccess
   message: messageAccess
+  renting: rentingAccess
   payload_preferences: payload_preferencesAccess
 }
 
@@ -3286,6 +4100,8 @@ type UsersFields {
   rating: UsersFields_rating
   province: UsersFields_province
   roles: UsersFields_roles
+  requestsMade: UsersFields_requestsMade
+  requestsReceived: UsersFields_requestsReceived
   updatedAt: UsersFields_updatedAt
   createdAt: UsersFields_createdAt
   email: UsersFields_email
@@ -3473,6 +4289,204 @@ type UsersFields_roles_Update {
 }
 
 type UsersFields_roles_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade {
+  create: UsersFields_requestsMade_Create
+  read: UsersFields_requestsMade_Read
+  update: UsersFields_requestsMade_Update
+  delete: UsersFields_requestsMade_Delete
+  fields: UsersFields_requestsMade_Fields
+}
+
+type UsersFields_requestsMade_Create {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade_Read {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade_Update {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade_Fields {
+  user: UsersFields_requestsMade_user
+  item: UsersFields_requestsMade_item
+  id: UsersFields_requestsMade_id
+}
+
+type UsersFields_requestsMade_user {
+  create: UsersFields_requestsMade_user_Create
+  read: UsersFields_requestsMade_user_Read
+  update: UsersFields_requestsMade_user_Update
+  delete: UsersFields_requestsMade_user_Delete
+}
+
+type UsersFields_requestsMade_user_Create {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade_user_Read {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade_user_Update {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade_user_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade_item {
+  create: UsersFields_requestsMade_item_Create
+  read: UsersFields_requestsMade_item_Read
+  update: UsersFields_requestsMade_item_Update
+  delete: UsersFields_requestsMade_item_Delete
+}
+
+type UsersFields_requestsMade_item_Create {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade_item_Read {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade_item_Update {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade_item_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade_id {
+  create: UsersFields_requestsMade_id_Create
+  read: UsersFields_requestsMade_id_Read
+  update: UsersFields_requestsMade_id_Update
+  delete: UsersFields_requestsMade_id_Delete
+}
+
+type UsersFields_requestsMade_id_Create {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade_id_Read {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade_id_Update {
+  permission: Boolean!
+}
+
+type UsersFields_requestsMade_id_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived {
+  create: UsersFields_requestsReceived_Create
+  read: UsersFields_requestsReceived_Read
+  update: UsersFields_requestsReceived_Update
+  delete: UsersFields_requestsReceived_Delete
+  fields: UsersFields_requestsReceived_Fields
+}
+
+type UsersFields_requestsReceived_Create {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived_Read {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived_Update {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived_Fields {
+  user: UsersFields_requestsReceived_user
+  item: UsersFields_requestsReceived_item
+  id: UsersFields_requestsReceived_id
+}
+
+type UsersFields_requestsReceived_user {
+  create: UsersFields_requestsReceived_user_Create
+  read: UsersFields_requestsReceived_user_Read
+  update: UsersFields_requestsReceived_user_Update
+  delete: UsersFields_requestsReceived_user_Delete
+}
+
+type UsersFields_requestsReceived_user_Create {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived_user_Read {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived_user_Update {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived_user_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived_item {
+  create: UsersFields_requestsReceived_item_Create
+  read: UsersFields_requestsReceived_item_Read
+  update: UsersFields_requestsReceived_item_Update
+  delete: UsersFields_requestsReceived_item_Delete
+}
+
+type UsersFields_requestsReceived_item_Create {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived_item_Read {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived_item_Update {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived_item_Delete {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived_id {
+  create: UsersFields_requestsReceived_id_Create
+  read: UsersFields_requestsReceived_id_Read
+  update: UsersFields_requestsReceived_id_Update
+  delete: UsersFields_requestsReceived_id_Delete
+}
+
+type UsersFields_requestsReceived_id_Create {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived_id_Read {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived_id_Update {
+  permission: Boolean!
+}
+
+type UsersFields_requestsReceived_id_Delete {
   permission: Boolean!
 }
 
@@ -4762,6 +5776,333 @@ type MessageDeleteAccess {
   where: JSONObject
 }
 
+type rentingAccess {
+  fields: RentingFields
+  create: RentingCreateAccess
+  read: RentingReadAccess
+  update: RentingUpdateAccess
+  delete: RentingDeleteAccess
+}
+
+type RentingFields {
+  rentedBy: RentingFields_rentedBy
+  rentedTo: RentingFields_rentedTo
+  startDate: RentingFields_startDate
+  endDate: RentingFields_endDate
+  status: RentingFields_status
+  totalPrice: RentingFields_totalPrice
+  createdBy: RentingFields_createdBy
+  updatedAt: RentingFields_updatedAt
+  createdAt: RentingFields_createdAt
+}
+
+type RentingFields_rentedBy {
+  create: RentingFields_rentedBy_Create
+  read: RentingFields_rentedBy_Read
+  update: RentingFields_rentedBy_Update
+  delete: RentingFields_rentedBy_Delete
+  fields: RentingFields_rentedBy_Fields
+}
+
+type RentingFields_rentedBy_Create {
+  permission: Boolean!
+}
+
+type RentingFields_rentedBy_Read {
+  permission: Boolean!
+}
+
+type RentingFields_rentedBy_Update {
+  permission: Boolean!
+}
+
+type RentingFields_rentedBy_Delete {
+  permission: Boolean!
+}
+
+type RentingFields_rentedBy_Fields {
+  user: RentingFields_rentedBy_user
+}
+
+type RentingFields_rentedBy_user {
+  create: RentingFields_rentedBy_user_Create
+  read: RentingFields_rentedBy_user_Read
+  update: RentingFields_rentedBy_user_Update
+  delete: RentingFields_rentedBy_user_Delete
+}
+
+type RentingFields_rentedBy_user_Create {
+  permission: Boolean!
+}
+
+type RentingFields_rentedBy_user_Read {
+  permission: Boolean!
+}
+
+type RentingFields_rentedBy_user_Update {
+  permission: Boolean!
+}
+
+type RentingFields_rentedBy_user_Delete {
+  permission: Boolean!
+}
+
+type RentingFields_rentedTo {
+  create: RentingFields_rentedTo_Create
+  read: RentingFields_rentedTo_Read
+  update: RentingFields_rentedTo_Update
+  delete: RentingFields_rentedTo_Delete
+  fields: RentingFields_rentedTo_Fields
+}
+
+type RentingFields_rentedTo_Create {
+  permission: Boolean!
+}
+
+type RentingFields_rentedTo_Read {
+  permission: Boolean!
+}
+
+type RentingFields_rentedTo_Update {
+  permission: Boolean!
+}
+
+type RentingFields_rentedTo_Delete {
+  permission: Boolean!
+}
+
+type RentingFields_rentedTo_Fields {
+  user: RentingFields_rentedTo_user
+  item: RentingFields_rentedTo_item
+}
+
+type RentingFields_rentedTo_user {
+  create: RentingFields_rentedTo_user_Create
+  read: RentingFields_rentedTo_user_Read
+  update: RentingFields_rentedTo_user_Update
+  delete: RentingFields_rentedTo_user_Delete
+}
+
+type RentingFields_rentedTo_user_Create {
+  permission: Boolean!
+}
+
+type RentingFields_rentedTo_user_Read {
+  permission: Boolean!
+}
+
+type RentingFields_rentedTo_user_Update {
+  permission: Boolean!
+}
+
+type RentingFields_rentedTo_user_Delete {
+  permission: Boolean!
+}
+
+type RentingFields_rentedTo_item {
+  create: RentingFields_rentedTo_item_Create
+  read: RentingFields_rentedTo_item_Read
+  update: RentingFields_rentedTo_item_Update
+  delete: RentingFields_rentedTo_item_Delete
+}
+
+type RentingFields_rentedTo_item_Create {
+  permission: Boolean!
+}
+
+type RentingFields_rentedTo_item_Read {
+  permission: Boolean!
+}
+
+type RentingFields_rentedTo_item_Update {
+  permission: Boolean!
+}
+
+type RentingFields_rentedTo_item_Delete {
+  permission: Boolean!
+}
+
+type RentingFields_startDate {
+  create: RentingFields_startDate_Create
+  read: RentingFields_startDate_Read
+  update: RentingFields_startDate_Update
+  delete: RentingFields_startDate_Delete
+}
+
+type RentingFields_startDate_Create {
+  permission: Boolean!
+}
+
+type RentingFields_startDate_Read {
+  permission: Boolean!
+}
+
+type RentingFields_startDate_Update {
+  permission: Boolean!
+}
+
+type RentingFields_startDate_Delete {
+  permission: Boolean!
+}
+
+type RentingFields_endDate {
+  create: RentingFields_endDate_Create
+  read: RentingFields_endDate_Read
+  update: RentingFields_endDate_Update
+  delete: RentingFields_endDate_Delete
+}
+
+type RentingFields_endDate_Create {
+  permission: Boolean!
+}
+
+type RentingFields_endDate_Read {
+  permission: Boolean!
+}
+
+type RentingFields_endDate_Update {
+  permission: Boolean!
+}
+
+type RentingFields_endDate_Delete {
+  permission: Boolean!
+}
+
+type RentingFields_status {
+  create: RentingFields_status_Create
+  read: RentingFields_status_Read
+  update: RentingFields_status_Update
+  delete: RentingFields_status_Delete
+}
+
+type RentingFields_status_Create {
+  permission: Boolean!
+}
+
+type RentingFields_status_Read {
+  permission: Boolean!
+}
+
+type RentingFields_status_Update {
+  permission: Boolean!
+}
+
+type RentingFields_status_Delete {
+  permission: Boolean!
+}
+
+type RentingFields_totalPrice {
+  create: RentingFields_totalPrice_Create
+  read: RentingFields_totalPrice_Read
+  update: RentingFields_totalPrice_Update
+  delete: RentingFields_totalPrice_Delete
+}
+
+type RentingFields_totalPrice_Create {
+  permission: Boolean!
+}
+
+type RentingFields_totalPrice_Read {
+  permission: Boolean!
+}
+
+type RentingFields_totalPrice_Update {
+  permission: Boolean!
+}
+
+type RentingFields_totalPrice_Delete {
+  permission: Boolean!
+}
+
+type RentingFields_createdBy {
+  create: RentingFields_createdBy_Create
+  read: RentingFields_createdBy_Read
+  update: RentingFields_createdBy_Update
+  delete: RentingFields_createdBy_Delete
+}
+
+type RentingFields_createdBy_Create {
+  permission: Boolean!
+}
+
+type RentingFields_createdBy_Read {
+  permission: Boolean!
+}
+
+type RentingFields_createdBy_Update {
+  permission: Boolean!
+}
+
+type RentingFields_createdBy_Delete {
+  permission: Boolean!
+}
+
+type RentingFields_updatedAt {
+  create: RentingFields_updatedAt_Create
+  read: RentingFields_updatedAt_Read
+  update: RentingFields_updatedAt_Update
+  delete: RentingFields_updatedAt_Delete
+}
+
+type RentingFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type RentingFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type RentingFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type RentingFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type RentingFields_createdAt {
+  create: RentingFields_createdAt_Create
+  read: RentingFields_createdAt_Read
+  update: RentingFields_createdAt_Update
+  delete: RentingFields_createdAt_Delete
+}
+
+type RentingFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type RentingFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type RentingFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type RentingFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type RentingCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type RentingReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type RentingUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type RentingDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type payload_preferencesAccess {
   fields: PayloadPreferencesFields
   create: PayloadPreferencesCreateAccess
@@ -4940,6 +6281,9 @@ type Mutation {
   createMessage(data: mutationMessageInput!, draft: Boolean): Message
   updateMessage(id: Int!, autosave: Boolean, data: mutationMessageUpdateInput!, draft: Boolean): Message
   deleteMessage(id: Int!): Message
+  createRenting(data: mutationRentingInput!, draft: Boolean): Renting
+  updateRenting(id: Int!, autosave: Boolean, data: mutationRentingUpdateInput!, draft: Boolean): Renting
+  deleteRenting(id: Int!): Renting
   createPayloadPreference(data: mutationPayloadPreferenceInput!, draft: Boolean): PayloadPreference
   updatePayloadPreference(id: Int!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean): PayloadPreference
   deletePayloadPreference(id: Int!): PayloadPreference
@@ -4954,6 +6298,8 @@ input mutationUserInput {
   rating: Float
   province: String
   roles: [User_roles_MutationInput]!
+  requestsMade: [mutationUser_RequestsMadeInput]
+  requestsReceived: [mutationUser_RequestsReceivedInput]
   updatedAt: String
   createdAt: String
   email: String!
@@ -4971,6 +6317,18 @@ enum User_roles_MutationInput {
   User
 }
 
+input mutationUser_RequestsMadeInput {
+  user: Int
+  item: Int
+  id: String
+}
+
+input mutationUser_RequestsReceivedInput {
+  user: Int
+  item: Int
+  id: String
+}
+
 input mutationUserUpdateInput {
   profileImage: Int
   phone: String
@@ -4980,6 +6338,8 @@ input mutationUserUpdateInput {
   rating: Float
   province: String
   roles: [UserUpdate_roles_MutationInput]
+  requestsMade: [mutationUserUpdate_RequestsMadeInput]
+  requestsReceived: [mutationUserUpdate_RequestsReceivedInput]
   updatedAt: String
   createdAt: String
   email: String
@@ -4995,6 +6355,18 @@ input mutationUserUpdateInput {
 enum UserUpdate_roles_MutationInput {
   admin
   User
+}
+
+input mutationUserUpdate_RequestsMadeInput {
+  user: Int
+  item: Int
+  id: String
+}
+
+input mutationUserUpdate_RequestsReceivedInput {
+  user: Int
+  item: Int
+  id: String
 }
 
 type usersRefreshedUser {
@@ -5175,6 +6547,62 @@ input mutationMessageUpdateInput {
   createdBy: Int
   room: Int
   updatedAt: String
+}
+
+input mutationRentingInput {
+  rentedBy: mutationRenting_RentedByInput!
+  rentedTo: mutationRenting_RentedToInput!
+  startDate: String!
+  endDate: String!
+  status: Renting_status_MutationInput
+  totalPrice: Float
+  createdBy: Int
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationRenting_RentedByInput {
+  user: Int
+}
+
+input mutationRenting_RentedToInput {
+  user: Int
+  item: Int
+}
+
+enum Renting_status_MutationInput {
+  PENDING
+  PROCESSING
+  COMPLETED
+  CANCELLED
+}
+
+input mutationRentingUpdateInput {
+  rentedBy: mutationRentingUpdate_RentedByInput!
+  rentedTo: mutationRentingUpdate_RentedToInput!
+  startDate: String
+  endDate: String
+  status: RentingUpdate_status_MutationInput
+  totalPrice: Float
+  createdBy: Int
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationRentingUpdate_RentedByInput {
+  user: Int
+}
+
+input mutationRentingUpdate_RentedToInput {
+  user: Int
+  item: Int
+}
+
+enum RentingUpdate_status_MutationInput {
+  PENDING
+  PROCESSING
+  COMPLETED
+  CANCELLED
 }
 
 input mutationPayloadPreferenceInput {

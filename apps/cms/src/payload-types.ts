@@ -8,157 +8,193 @@
 
 export interface Config {
   collections: {
-    users: User;
-    items: Item;
-    medias: Media;
-    tags: Tag;
-    chatroom: Chatroom;
-    message: Message;
-    'payload-preferences': PayloadPreference;
-    'payload-migrations': PayloadMigration;
-  };
-  globals: {};
+    users: User
+    items: Item
+    medias: Media
+    tags: Tag
+    chatroom: Chatroom
+    message: Message
+    renting: Renting
+    'payload-preferences': PayloadPreference
+    'payload-migrations': PayloadMigration
+  }
+  globals: {}
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
-  id: number;
-  profileImage?: (number | null) | Media;
-  phone: string;
-  firstName?: string | null;
-  lastName?: string | null;
-  bio?: string | null;
-  rating?: number | null;
-  province?: string | null;
-  roles: ('admin' | 'User')[];
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  password: string | null;
+  id: number
+  profileImage?: (number | null) | Media
+  phone: string
+  firstName?: string | null
+  lastName?: string | null
+  bio?: string | null
+  rating?: number | null
+  province?: string | null
+  roles: ('admin' | 'User')[]
+  requestsMade?: {
+    user: string | User
+    item: string | Item
+    id?: string
+  }[]
+  requestsReceived?: {
+    user: string | User
+    item: string | Item
+    id?: string
+  }[]
+  updatedAt: string
+  createdAt: string
+  email: string
+  resetPasswordToken?: string | null
+  resetPasswordExpiration?: string | null
+  salt?: string | null
+  hash?: string | null
+  loginAttempts?: number | null
+  lockUntil?: string | null
+  password: string | null
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "medias".
  */
 export interface Media {
-  id: number;
-  name?: string | null;
-  alt?: string | null;
-  createdBy: number | User;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
+  id: number
+  name?: string | null
+  alt?: string | null
+  createdBy: number | User
+  updatedAt: string
+  createdAt: string
+  url?: string | null
+  filename?: string | null
+  mimeType?: string | null
+  filesize?: number | null
+  width?: number | null
+  height?: number | null
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "items".
  */
 export interface Item {
-  id: number;
-  name: string;
-  description?: string | null;
-  image: (number | Media)[];
-  price?: number | null;
-  availableAt?: string | null;
-  period?: number | null;
-  periodType?: ('days' | 'weeks' | 'months' | 'years') | null;
-  rentingStatus?: ('available' | 'unavailable') | null;
-  start?: string | null;
-  end?: string | null;
-  tags?: (number | Tag)[] | null;
-  createdBy: number | User;
-  rating?: number | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
+  id: number
+  name: string
+  description?: string | null
+  image: (number | Media)[]
+  price?: number | null
+  availableAt?: string | null
+  period?: number | null
+  periodType?: ('days' | 'weeks' | 'months' | 'years') | null
+  rentingStatus?: ('available' | 'unavailable') | null
+  start?: string | null
+  end?: string | null
+  tags?: (number | Tag)[] | null
+  createdBy: number | User
+  rating?: number | null
+  updatedAt: string
+  createdAt: string
+  _status?: ('draft' | 'published') | null
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "tags".
  */
 export interface Tag {
-  id: number;
-  name: string;
-  alt?: string | null;
-  createdBy: number | User;
-  updatedAt: string;
-  createdAt: string;
+  id: number
+  name: string
+  alt?: string | null
+  createdBy: number | User
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "chatroom".
  */
 export interface Chatroom {
-  id: number;
-  user1_id: number | User;
-  user2_id: number | User;
-  lastMessage?: (number | null) | Message;
-  user1LastViewed?: string | null;
-  user2LastViewed?: string | null;
-  updatedAt: string;
-  createdAt: string;
+  id: number
+  user1_id: number | User
+  user2_id: number | User
+  lastMessage?: (number | null) | Message
+  user1LastViewed?: string | null
+  user2LastViewed?: string | null
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "message".
  */
 export interface Message {
-  id: number;
-  message?: string | null;
-  createdAt: string;
-  createdBy: number | User;
-  room: number | Chatroom;
-  updatedAt: string;
+  id: number
+  message?: string | null
+  createdAt: string
+  createdBy: number | User
+  room: number | Chatroom
+  updatedAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
+export interface Renting {
+  id: string
+  rentedBy: {
+    user: string | User
+  }
+  rentedTo: {
+    user: string | User
+    item: string | Item
+  }
+  startDate: string
+  endDate: string
+  status?: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'CANCELLED'
+  totalPrice?: number
+  updatedAt: string
+  createdAt: string
+}
 export interface PayloadPreference {
-  id: number;
+  id: number
   user: {
-    relationTo: 'users';
-    value: number | User;
-  };
-  key?: string | null;
+    relationTo: 'users'
+    value: number | User
+  }
+  key?: string | null
   value?:
     | {
-        [k: string]: unknown;
+        [k: string]: unknown
       }
     | unknown[]
     | string
     | number
     | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
+    | null
+  updatedAt: string
+  createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: number;
-  name?: string | null;
-  batch?: number | null;
-  updatedAt: string;
-  createdAt: string;
+  id: number
+  name?: string | null
+  batch?: number | null
+  updatedAt: string
+  createdAt: string
 }
 
-
 declare module 'payload' {
-  export interface GeneratedTypes extends Config {}
+  export interface GeneratedTypes {
+    collections: {
+      users: User
+      items: Item
+      medias: Media
+      tags: Tag
+      renting: Renting
+      'payload-preferences': PayloadPreference
+      'payload-migrations': PayloadMigration
+    }
+  }
 }
