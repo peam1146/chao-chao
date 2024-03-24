@@ -30,16 +30,8 @@ export interface User {
   rating?: number;
   province?: string;
   roles: ('admin' | 'User')[];
-  requestsMade?: {
-    user: string | User;
-    item: string | Item;
-    id?: string;
-  }[];
-  requestsReceived?: {
-    user: string | User;
-    item: string | Item;
-    id?: string;
-  }[];
+  requestsMade?: string[] | Renting[];
+  requestsReceived?: string[] | Renting[];
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -64,6 +56,27 @@ export interface Media {
   filesize?: number;
   width?: number;
   height?: number;
+}
+export interface Renting {
+  id: string;
+  rentedBy: {
+    user: string | User;
+  };
+  rentedTo: {
+    user: string | User;
+    item: string | Item;
+  };
+  startDate: string;
+  endDate: string;
+  status?: 'PENDING' | 'PROCESSING' | 'COMPLETED';
+  totalPrice?: number;
+  rentalFee?: number;
+  insuranceFee?: number;
+  deliveryFee?: number;
+  file?: string | Media;
+  createdBy: string | User;
+  updatedAt: string;
+  createdAt: string;
 }
 export interface Item {
   id: string;
@@ -109,23 +122,6 @@ export interface Message {
   createdBy: string | User;
   room: string | Chatroom;
   updatedAt: string;
-}
-export interface Renting {
-  id: string;
-  rentedBy: {
-    user: string | User;
-  };
-  rentedTo: {
-    user: string | User;
-    item: string | Item;
-  };
-  startDate: string;
-  endDate: string;
-  status?: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'CANCELLED';
-  totalPrice?: number;
-  createdBy: string | User;
-  updatedAt: string;
-  createdAt: string;
 }
 export interface PayloadPreference {
   id: string;

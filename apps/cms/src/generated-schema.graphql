@@ -40,8 +40,8 @@ type User {
   rating: Float
   province: String
   roles: [User_roles!]!
-  requestsMade: [User_RequestsMade!]
-  requestsReceived: [User_RequestsReceived!]
+  requestsMade: [Renting!]
+  requestsReceived: [Renting!]
   updatedAt: DateTime
   createdAt: DateTime
   email: EmailAddress!
@@ -79,10 +79,30 @@ enum User_roles {
   User
 }
 
-type User_RequestsMade {
+type Renting {
+  id: Int
+  rentedBy: Renting_RentedBy
+  rentedTo: Renting_RentedTo
+  startDate: DateTime!
+  endDate: DateTime!
+  status: Renting_status
+  totalPrice: Float
+  rentalFee: Float
+  insuranceFee: Float
+  deliveryFee: Float
+  file: Media
+  createdBy: User!
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type Renting_RentedBy {
+  user: User
+}
+
+type Renting_RentedTo {
   user: User
   item: Item
-  id: String
 }
 
 type Item {
@@ -131,10 +151,10 @@ enum Item__status {
   published
 }
 
-type User_RequestsReceived {
-  user: User
-  item: Item
-  id: String
+enum Renting_status {
+  PENDING
+  PROCESSING
+  COMPLETED
 }
 
 """
@@ -165,12 +185,8 @@ input User_where {
   rating: User_rating_operator
   province: User_province_operator
   roles: User_roles_operator
-  requestsMade__user: User_requestsMade__user_operator
-  requestsMade__item: User_requestsMade__item_operator
-  requestsMade__id: User_requestsMade__id_operator
-  requestsReceived__user: User_requestsReceived__user_operator
-  requestsReceived__item: User_requestsReceived__item_operator
-  requestsReceived__id: User_requestsReceived__id_operator
+  requestsMade: User_requestsMade_operator
+  requestsReceived: User_requestsReceived_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
   email: User_email_operator
@@ -267,57 +283,21 @@ enum User_roles_Input {
   User
 }
 
-input User_requestsMade__user_operator {
+input User_requestsMade_operator {
   equals: JSON
   not_equals: JSON
   in: [JSON]
   not_in: [JSON]
   all: [JSON]
-}
-
-input User_requestsMade__item_operator {
-  equals: JSON
-  not_equals: JSON
-  in: [JSON]
-  not_in: [JSON]
-  all: [JSON]
-}
-
-input User_requestsMade__id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
   exists: Boolean
 }
 
-input User_requestsReceived__user_operator {
+input User_requestsReceived_operator {
   equals: JSON
   not_equals: JSON
   in: [JSON]
   not_in: [JSON]
   all: [JSON]
-}
-
-input User_requestsReceived__item_operator {
-  equals: JSON
-  not_equals: JSON
-  in: [JSON]
-  not_in: [JSON]
-  all: [JSON]
-}
-
-input User_requestsReceived__id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
   exists: Boolean
 }
 
@@ -372,12 +352,8 @@ input User_where_and {
   rating: User_rating_operator
   province: User_province_operator
   roles: User_roles_operator
-  requestsMade__user: User_requestsMade__user_operator
-  requestsMade__item: User_requestsMade__item_operator
-  requestsMade__id: User_requestsMade__id_operator
-  requestsReceived__user: User_requestsReceived__user_operator
-  requestsReceived__item: User_requestsReceived__item_operator
-  requestsReceived__id: User_requestsReceived__id_operator
+  requestsMade: User_requestsMade_operator
+  requestsReceived: User_requestsReceived_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
   email: User_email_operator
@@ -393,12 +369,8 @@ input User_where_or {
   rating: User_rating_operator
   province: User_province_operator
   roles: User_roles_operator
-  requestsMade__user: User_requestsMade__user_operator
-  requestsMade__item: User_requestsMade__item_operator
-  requestsMade__id: User_requestsMade__id_operator
-  requestsReceived__user: User_requestsReceived__user_operator
-  requestsReceived__item: User_requestsReceived__item_operator
-  requestsReceived__id: User_requestsReceived__id_operator
+  requestsMade: User_requestsMade_operator
+  requestsReceived: User_requestsReceived_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
   email: User_email_operator
@@ -620,7 +592,6 @@ type UsersDocAccessFields_requestsMade {
   read: UsersDocAccessFields_requestsMade_Read
   update: UsersDocAccessFields_requestsMade_Update
   delete: UsersDocAccessFields_requestsMade_Delete
-  fields: UsersDocAccessFields_requestsMade_Fields
 }
 
 type UsersDocAccessFields_requestsMade_Create {
@@ -639,87 +610,11 @@ type UsersDocAccessFields_requestsMade_Delete {
   permission: Boolean!
 }
 
-type UsersDocAccessFields_requestsMade_Fields {
-  user: UsersDocAccessFields_requestsMade_user
-  item: UsersDocAccessFields_requestsMade_item
-  id: UsersDocAccessFields_requestsMade_id
-}
-
-type UsersDocAccessFields_requestsMade_user {
-  create: UsersDocAccessFields_requestsMade_user_Create
-  read: UsersDocAccessFields_requestsMade_user_Read
-  update: UsersDocAccessFields_requestsMade_user_Update
-  delete: UsersDocAccessFields_requestsMade_user_Delete
-}
-
-type UsersDocAccessFields_requestsMade_user_Create {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsMade_user_Read {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsMade_user_Update {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsMade_user_Delete {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsMade_item {
-  create: UsersDocAccessFields_requestsMade_item_Create
-  read: UsersDocAccessFields_requestsMade_item_Read
-  update: UsersDocAccessFields_requestsMade_item_Update
-  delete: UsersDocAccessFields_requestsMade_item_Delete
-}
-
-type UsersDocAccessFields_requestsMade_item_Create {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsMade_item_Read {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsMade_item_Update {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsMade_item_Delete {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsMade_id {
-  create: UsersDocAccessFields_requestsMade_id_Create
-  read: UsersDocAccessFields_requestsMade_id_Read
-  update: UsersDocAccessFields_requestsMade_id_Update
-  delete: UsersDocAccessFields_requestsMade_id_Delete
-}
-
-type UsersDocAccessFields_requestsMade_id_Create {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsMade_id_Read {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsMade_id_Update {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsMade_id_Delete {
-  permission: Boolean!
-}
-
 type UsersDocAccessFields_requestsReceived {
   create: UsersDocAccessFields_requestsReceived_Create
   read: UsersDocAccessFields_requestsReceived_Read
   update: UsersDocAccessFields_requestsReceived_Update
   delete: UsersDocAccessFields_requestsReceived_Delete
-  fields: UsersDocAccessFields_requestsReceived_Fields
 }
 
 type UsersDocAccessFields_requestsReceived_Create {
@@ -735,81 +630,6 @@ type UsersDocAccessFields_requestsReceived_Update {
 }
 
 type UsersDocAccessFields_requestsReceived_Delete {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsReceived_Fields {
-  user: UsersDocAccessFields_requestsReceived_user
-  item: UsersDocAccessFields_requestsReceived_item
-  id: UsersDocAccessFields_requestsReceived_id
-}
-
-type UsersDocAccessFields_requestsReceived_user {
-  create: UsersDocAccessFields_requestsReceived_user_Create
-  read: UsersDocAccessFields_requestsReceived_user_Read
-  update: UsersDocAccessFields_requestsReceived_user_Update
-  delete: UsersDocAccessFields_requestsReceived_user_Delete
-}
-
-type UsersDocAccessFields_requestsReceived_user_Create {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsReceived_user_Read {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsReceived_user_Update {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsReceived_user_Delete {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsReceived_item {
-  create: UsersDocAccessFields_requestsReceived_item_Create
-  read: UsersDocAccessFields_requestsReceived_item_Read
-  update: UsersDocAccessFields_requestsReceived_item_Update
-  delete: UsersDocAccessFields_requestsReceived_item_Delete
-}
-
-type UsersDocAccessFields_requestsReceived_item_Create {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsReceived_item_Read {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsReceived_item_Update {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsReceived_item_Delete {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsReceived_id {
-  create: UsersDocAccessFields_requestsReceived_id_Create
-  read: UsersDocAccessFields_requestsReceived_id_Read
-  update: UsersDocAccessFields_requestsReceived_id_Update
-  delete: UsersDocAccessFields_requestsReceived_id_Delete
-}
-
-type UsersDocAccessFields_requestsReceived_id_Create {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsReceived_id_Read {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsReceived_id_Update {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_requestsReceived_id_Delete {
   permission: Boolean!
 }
 
@@ -3238,35 +3058,6 @@ type MessageDeleteDocAccess {
   where: JSONObject
 }
 
-type Renting {
-  id: Int
-  rentedBy: Renting_RentedBy
-  rentedTo: Renting_RentedTo
-  startDate: DateTime!
-  endDate: DateTime!
-  status: Renting_status
-  totalPrice: Float
-  createdBy: User!
-  updatedAt: DateTime
-  createdAt: DateTime
-}
-
-type Renting_RentedBy {
-  user: User
-}
-
-type Renting_RentedTo {
-  user: User
-  item: Item
-}
-
-enum Renting_status {
-  PENDING
-  PROCESSING
-  COMPLETED
-  CANCELLED
-}
-
 type Rentings {
   docs: [Renting]
   hasNextPage: Boolean
@@ -3289,6 +3080,10 @@ input Renting_where {
   endDate: Renting_endDate_operator
   status: Renting_status_operator
   totalPrice: Renting_totalPrice_operator
+  rentalFee: Renting_rentalFee_operator
+  insuranceFee: Renting_insuranceFee_operator
+  deliveryFee: Renting_deliveryFee_operator
+  file: Renting_file_operator
   createdBy: Renting_createdBy_operator
   updatedAt: Renting_updatedAt_operator
   createdAt: Renting_createdAt_operator
@@ -3354,7 +3149,6 @@ enum Renting_status_Input {
   PENDING
   PROCESSING
   COMPLETED
-  CANCELLED
 }
 
 input Renting_totalPrice_operator {
@@ -3364,6 +3158,45 @@ input Renting_totalPrice_operator {
   greater_than: Float
   less_than_equal: Float
   less_than: Float
+  exists: Boolean
+}
+
+input Renting_rentalFee_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Renting_insuranceFee_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Renting_deliveryFee_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Renting_file_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
   exists: Boolean
 }
 
@@ -3415,6 +3248,10 @@ input Renting_where_and {
   endDate: Renting_endDate_operator
   status: Renting_status_operator
   totalPrice: Renting_totalPrice_operator
+  rentalFee: Renting_rentalFee_operator
+  insuranceFee: Renting_insuranceFee_operator
+  deliveryFee: Renting_deliveryFee_operator
+  file: Renting_file_operator
   createdBy: Renting_createdBy_operator
   updatedAt: Renting_updatedAt_operator
   createdAt: Renting_createdAt_operator
@@ -3429,6 +3266,10 @@ input Renting_where_or {
   endDate: Renting_endDate_operator
   status: Renting_status_operator
   totalPrice: Renting_totalPrice_operator
+  rentalFee: Renting_rentalFee_operator
+  insuranceFee: Renting_insuranceFee_operator
+  deliveryFee: Renting_deliveryFee_operator
+  file: Renting_file_operator
   createdBy: Renting_createdBy_operator
   updatedAt: Renting_updatedAt_operator
   createdAt: Renting_createdAt_operator
@@ -3450,6 +3291,10 @@ type RentingDocAccessFields {
   endDate: RentingDocAccessFields_endDate
   status: RentingDocAccessFields_status
   totalPrice: RentingDocAccessFields_totalPrice
+  rentalFee: RentingDocAccessFields_rentalFee
+  insuranceFee: RentingDocAccessFields_insuranceFee
+  deliveryFee: RentingDocAccessFields_deliveryFee
+  file: RentingDocAccessFields_file
   createdBy: RentingDocAccessFields_createdBy
   updatedAt: RentingDocAccessFields_updatedAt
   createdAt: RentingDocAccessFields_createdAt
@@ -3670,6 +3515,98 @@ type RentingDocAccessFields_totalPrice_Update {
 }
 
 type RentingDocAccessFields_totalPrice_Delete {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentalFee {
+  create: RentingDocAccessFields_rentalFee_Create
+  read: RentingDocAccessFields_rentalFee_Read
+  update: RentingDocAccessFields_rentalFee_Update
+  delete: RentingDocAccessFields_rentalFee_Delete
+}
+
+type RentingDocAccessFields_rentalFee_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentalFee_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentalFee_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_rentalFee_Delete {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_insuranceFee {
+  create: RentingDocAccessFields_insuranceFee_Create
+  read: RentingDocAccessFields_insuranceFee_Read
+  update: RentingDocAccessFields_insuranceFee_Update
+  delete: RentingDocAccessFields_insuranceFee_Delete
+}
+
+type RentingDocAccessFields_insuranceFee_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_insuranceFee_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_insuranceFee_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_insuranceFee_Delete {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_deliveryFee {
+  create: RentingDocAccessFields_deliveryFee_Create
+  read: RentingDocAccessFields_deliveryFee_Read
+  update: RentingDocAccessFields_deliveryFee_Update
+  delete: RentingDocAccessFields_deliveryFee_Delete
+}
+
+type RentingDocAccessFields_deliveryFee_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_deliveryFee_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_deliveryFee_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_deliveryFee_Delete {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_file {
+  create: RentingDocAccessFields_file_Create
+  read: RentingDocAccessFields_file_Read
+  update: RentingDocAccessFields_file_Update
+  delete: RentingDocAccessFields_file_Delete
+}
+
+type RentingDocAccessFields_file_Create {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_file_Read {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_file_Update {
+  permission: Boolean!
+}
+
+type RentingDocAccessFields_file_Delete {
   permission: Boolean!
 }
 
@@ -4265,7 +4202,6 @@ type UsersFields_requestsMade {
   read: UsersFields_requestsMade_Read
   update: UsersFields_requestsMade_Update
   delete: UsersFields_requestsMade_Delete
-  fields: UsersFields_requestsMade_Fields
 }
 
 type UsersFields_requestsMade_Create {
@@ -4284,87 +4220,11 @@ type UsersFields_requestsMade_Delete {
   permission: Boolean!
 }
 
-type UsersFields_requestsMade_Fields {
-  user: UsersFields_requestsMade_user
-  item: UsersFields_requestsMade_item
-  id: UsersFields_requestsMade_id
-}
-
-type UsersFields_requestsMade_user {
-  create: UsersFields_requestsMade_user_Create
-  read: UsersFields_requestsMade_user_Read
-  update: UsersFields_requestsMade_user_Update
-  delete: UsersFields_requestsMade_user_Delete
-}
-
-type UsersFields_requestsMade_user_Create {
-  permission: Boolean!
-}
-
-type UsersFields_requestsMade_user_Read {
-  permission: Boolean!
-}
-
-type UsersFields_requestsMade_user_Update {
-  permission: Boolean!
-}
-
-type UsersFields_requestsMade_user_Delete {
-  permission: Boolean!
-}
-
-type UsersFields_requestsMade_item {
-  create: UsersFields_requestsMade_item_Create
-  read: UsersFields_requestsMade_item_Read
-  update: UsersFields_requestsMade_item_Update
-  delete: UsersFields_requestsMade_item_Delete
-}
-
-type UsersFields_requestsMade_item_Create {
-  permission: Boolean!
-}
-
-type UsersFields_requestsMade_item_Read {
-  permission: Boolean!
-}
-
-type UsersFields_requestsMade_item_Update {
-  permission: Boolean!
-}
-
-type UsersFields_requestsMade_item_Delete {
-  permission: Boolean!
-}
-
-type UsersFields_requestsMade_id {
-  create: UsersFields_requestsMade_id_Create
-  read: UsersFields_requestsMade_id_Read
-  update: UsersFields_requestsMade_id_Update
-  delete: UsersFields_requestsMade_id_Delete
-}
-
-type UsersFields_requestsMade_id_Create {
-  permission: Boolean!
-}
-
-type UsersFields_requestsMade_id_Read {
-  permission: Boolean!
-}
-
-type UsersFields_requestsMade_id_Update {
-  permission: Boolean!
-}
-
-type UsersFields_requestsMade_id_Delete {
-  permission: Boolean!
-}
-
 type UsersFields_requestsReceived {
   create: UsersFields_requestsReceived_Create
   read: UsersFields_requestsReceived_Read
   update: UsersFields_requestsReceived_Update
   delete: UsersFields_requestsReceived_Delete
-  fields: UsersFields_requestsReceived_Fields
 }
 
 type UsersFields_requestsReceived_Create {
@@ -4380,81 +4240,6 @@ type UsersFields_requestsReceived_Update {
 }
 
 type UsersFields_requestsReceived_Delete {
-  permission: Boolean!
-}
-
-type UsersFields_requestsReceived_Fields {
-  user: UsersFields_requestsReceived_user
-  item: UsersFields_requestsReceived_item
-  id: UsersFields_requestsReceived_id
-}
-
-type UsersFields_requestsReceived_user {
-  create: UsersFields_requestsReceived_user_Create
-  read: UsersFields_requestsReceived_user_Read
-  update: UsersFields_requestsReceived_user_Update
-  delete: UsersFields_requestsReceived_user_Delete
-}
-
-type UsersFields_requestsReceived_user_Create {
-  permission: Boolean!
-}
-
-type UsersFields_requestsReceived_user_Read {
-  permission: Boolean!
-}
-
-type UsersFields_requestsReceived_user_Update {
-  permission: Boolean!
-}
-
-type UsersFields_requestsReceived_user_Delete {
-  permission: Boolean!
-}
-
-type UsersFields_requestsReceived_item {
-  create: UsersFields_requestsReceived_item_Create
-  read: UsersFields_requestsReceived_item_Read
-  update: UsersFields_requestsReceived_item_Update
-  delete: UsersFields_requestsReceived_item_Delete
-}
-
-type UsersFields_requestsReceived_item_Create {
-  permission: Boolean!
-}
-
-type UsersFields_requestsReceived_item_Read {
-  permission: Boolean!
-}
-
-type UsersFields_requestsReceived_item_Update {
-  permission: Boolean!
-}
-
-type UsersFields_requestsReceived_item_Delete {
-  permission: Boolean!
-}
-
-type UsersFields_requestsReceived_id {
-  create: UsersFields_requestsReceived_id_Create
-  read: UsersFields_requestsReceived_id_Read
-  update: UsersFields_requestsReceived_id_Update
-  delete: UsersFields_requestsReceived_id_Delete
-}
-
-type UsersFields_requestsReceived_id_Create {
-  permission: Boolean!
-}
-
-type UsersFields_requestsReceived_id_Read {
-  permission: Boolean!
-}
-
-type UsersFields_requestsReceived_id_Update {
-  permission: Boolean!
-}
-
-type UsersFields_requestsReceived_id_Delete {
   permission: Boolean!
 }
 
@@ -5759,6 +5544,10 @@ type RentingFields {
   endDate: RentingFields_endDate
   status: RentingFields_status
   totalPrice: RentingFields_totalPrice
+  rentalFee: RentingFields_rentalFee
+  insuranceFee: RentingFields_insuranceFee
+  deliveryFee: RentingFields_deliveryFee
+  file: RentingFields_file
   createdBy: RentingFields_createdBy
   updatedAt: RentingFields_updatedAt
   createdAt: RentingFields_createdAt
@@ -5979,6 +5768,98 @@ type RentingFields_totalPrice_Update {
 }
 
 type RentingFields_totalPrice_Delete {
+  permission: Boolean!
+}
+
+type RentingFields_rentalFee {
+  create: RentingFields_rentalFee_Create
+  read: RentingFields_rentalFee_Read
+  update: RentingFields_rentalFee_Update
+  delete: RentingFields_rentalFee_Delete
+}
+
+type RentingFields_rentalFee_Create {
+  permission: Boolean!
+}
+
+type RentingFields_rentalFee_Read {
+  permission: Boolean!
+}
+
+type RentingFields_rentalFee_Update {
+  permission: Boolean!
+}
+
+type RentingFields_rentalFee_Delete {
+  permission: Boolean!
+}
+
+type RentingFields_insuranceFee {
+  create: RentingFields_insuranceFee_Create
+  read: RentingFields_insuranceFee_Read
+  update: RentingFields_insuranceFee_Update
+  delete: RentingFields_insuranceFee_Delete
+}
+
+type RentingFields_insuranceFee_Create {
+  permission: Boolean!
+}
+
+type RentingFields_insuranceFee_Read {
+  permission: Boolean!
+}
+
+type RentingFields_insuranceFee_Update {
+  permission: Boolean!
+}
+
+type RentingFields_insuranceFee_Delete {
+  permission: Boolean!
+}
+
+type RentingFields_deliveryFee {
+  create: RentingFields_deliveryFee_Create
+  read: RentingFields_deliveryFee_Read
+  update: RentingFields_deliveryFee_Update
+  delete: RentingFields_deliveryFee_Delete
+}
+
+type RentingFields_deliveryFee_Create {
+  permission: Boolean!
+}
+
+type RentingFields_deliveryFee_Read {
+  permission: Boolean!
+}
+
+type RentingFields_deliveryFee_Update {
+  permission: Boolean!
+}
+
+type RentingFields_deliveryFee_Delete {
+  permission: Boolean!
+}
+
+type RentingFields_file {
+  create: RentingFields_file_Create
+  read: RentingFields_file_Read
+  update: RentingFields_file_Update
+  delete: RentingFields_file_Delete
+}
+
+type RentingFields_file_Create {
+  permission: Boolean!
+}
+
+type RentingFields_file_Read {
+  permission: Boolean!
+}
+
+type RentingFields_file_Update {
+  permission: Boolean!
+}
+
+type RentingFields_file_Delete {
   permission: Boolean!
 }
 
@@ -6266,8 +6147,8 @@ input mutationUserInput {
   rating: Float
   province: String
   roles: [User_roles_MutationInput]!
-  requestsMade: [mutationUser_RequestsMadeInput]
-  requestsReceived: [mutationUser_RequestsReceivedInput]
+  requestsMade: [Int]
+  requestsReceived: [Int]
   updatedAt: String
   createdAt: String
   email: String!
@@ -6285,18 +6166,6 @@ enum User_roles_MutationInput {
   User
 }
 
-input mutationUser_RequestsMadeInput {
-  user: Int
-  item: Int
-  id: String
-}
-
-input mutationUser_RequestsReceivedInput {
-  user: Int
-  item: Int
-  id: String
-}
-
 input mutationUserUpdateInput {
   profileImage: Int
   phone: String
@@ -6306,8 +6175,8 @@ input mutationUserUpdateInput {
   rating: Float
   province: String
   roles: [UserUpdate_roles_MutationInput]
-  requestsMade: [mutationUserUpdate_RequestsMadeInput]
-  requestsReceived: [mutationUserUpdate_RequestsReceivedInput]
+  requestsMade: [Int]
+  requestsReceived: [Int]
   updatedAt: String
   createdAt: String
   email: String
@@ -6323,18 +6192,6 @@ input mutationUserUpdateInput {
 enum UserUpdate_roles_MutationInput {
   admin
   User
-}
-
-input mutationUserUpdate_RequestsMadeInput {
-  user: Int
-  item: Int
-  id: String
-}
-
-input mutationUserUpdate_RequestsReceivedInput {
-  user: Int
-  item: Int
-  id: String
 }
 
 type usersRefreshedUser {
@@ -6524,6 +6381,10 @@ input mutationRentingInput {
   endDate: String!
   status: Renting_status_MutationInput
   totalPrice: Float
+  rentalFee: Float
+  insuranceFee: Float
+  deliveryFee: Float
+  file: Int
   createdBy: Int
   updatedAt: String
   createdAt: String
@@ -6542,7 +6403,6 @@ enum Renting_status_MutationInput {
   PENDING
   PROCESSING
   COMPLETED
-  CANCELLED
 }
 
 input mutationRentingUpdateInput {
@@ -6552,6 +6412,10 @@ input mutationRentingUpdateInput {
   endDate: String
   status: RentingUpdate_status_MutationInput
   totalPrice: Float
+  rentalFee: Float
+  insuranceFee: Float
+  deliveryFee: Float
+  file: Int
   createdBy: Int
   updatedAt: String
   createdAt: String
@@ -6570,7 +6434,6 @@ enum RentingUpdate_status_MutationInput {
   PENDING
   PROCESSING
   COMPLETED
-  CANCELLED
 }
 
 input mutationPayloadPreferenceInput {

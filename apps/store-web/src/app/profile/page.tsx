@@ -57,7 +57,13 @@ export default function Profile() {
                 </Typography>
               )}
               <div className="flex flex-row gap-0.5 ">
-                <Rating name="read-only" value={user?.rating} max={5} readOnly size="small" />
+                <Rating
+                  name="read-only"
+                  value={Number(user?.rating)}
+                  max={5}
+                  readOnly
+                  size="small"
+                />
                 <Typography variant="h6" className="text-light my-auto">
                   {user?.rating ? user?.rating : '0'}.0
                 </Typography>

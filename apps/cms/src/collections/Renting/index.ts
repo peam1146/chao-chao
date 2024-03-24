@@ -3,6 +3,7 @@ import { CollectionConfig } from 'payload/types'
 import { isAdminOrSelf } from '../../access'
 import { afterDelete } from './hooks/afterDelete'
 import { syncCollections } from './hooks/syncCollections'
+import { syncTotalPrice } from './hooks/syncTotalPrice'
 
 export const Renting: CollectionConfig = {
   slug: 'renting',
@@ -11,7 +12,7 @@ export const Renting: CollectionConfig = {
     defaultColumns: ['createdAt'],
   },
   hooks: {
-    afterChange: [syncCollections],
+    afterChange: [syncCollections, syncTotalPrice],
     afterDelete: [afterDelete],
   },
   access: {
@@ -84,6 +85,29 @@ export const Renting: CollectionConfig = {
     {
       name: 'totalPrice',
       type: 'number',
+      defaultValue: 0,
+    },
+    {
+      name: 'rentalFee',
+      type: 'number',
+      defaultValue: 0,
+    },
+    {
+      name: 'insuranceFee',
+      type: 'number',
+      defaultValue: 0,
+    },
+    {
+      name: 'deliveryFee',
+      type: 'number',
+      defaultValue: 0,
+    },
+    {
+      type: 'relationship',
+      name: 'file',
+      relationTo: 'medias',
+      hasMany: false,
+      maxDepth: 3,
     },
     {
       type: 'relationship',
