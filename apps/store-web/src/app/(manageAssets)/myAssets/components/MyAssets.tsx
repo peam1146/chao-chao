@@ -21,7 +21,7 @@ import AssetsCard from './AssetsCard'
 import SearchMyAssets from './SearchMyAssets'
 
 export default function MyAssets() {
-  const { Items, meUser } = useQuery({ fetchPolicy: 'cache-first' })
+  const { Items, meUser } = useQuery({ fetchPolicy: 'cache-and-network' })
 
   const searchParams = useSearchParams()
   const search = searchParams.get('search') ? searchParams.get('search') : undefined

@@ -70,6 +70,11 @@ export default function Description({ isSelf, item }: { isSelf: boolean; item: M
                 user: item?.createdBy?.id,
               },
               status: Renting_status_MutationInput.PENDING,
+              totalPrice:
+                Math.ceil(
+                  (item?.price ?? 0) * (data.endDate?.getTime() - data.startDate?.getTime())
+                ) /
+                (1000 * 3600 * 24),
             },
           })
           return request
