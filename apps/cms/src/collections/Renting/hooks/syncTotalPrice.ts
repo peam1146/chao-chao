@@ -5,13 +5,11 @@ import type { Renting } from '../../../payload-types'
 export const syncTotalPrice: AfterChangeHook<Renting> = async ({ req, doc }) => {
   const { deliveryFee, insuranceFee, rentalFee } = doc
 
-  const totalPrice = deliveryFee + insuranceFee + rentalFee
-
-  await req.payload.update({
-    collection: 'renting',
-    id: doc.id,
-    data: {
-      totalPrice: totalPrice,
-    },
-  })
+  // await req.payload.update({
+  //   collection: 'renting',
+  //   id: doc.id,
+  //   data: {
+  //     totalPrice: deliveryFee + insuranceFee + rentalFee,
+  //   },
+  // })
 }

@@ -34,7 +34,9 @@ export default function SearchPage() {
     suspense: true,
   })
 
-  const me = query.meUser?.user?.id
+  const me = query.meUser?.user
+
+  console.log(me)
 
   const itemsArray = query.Items({
     draft: false,
@@ -56,7 +58,7 @@ export default function SearchPage() {
         greater_than: endDate?.toISOString(),
       },
       createdBy: {
-        not_equals: me,
+        not_equals: me?.id,
       },
     },
   })

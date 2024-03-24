@@ -45,11 +45,15 @@ export const syncCollections: AfterChangeHook<Renting> = async ({ req, doc }) =>
           id,
         ]
 
+        const requestMadeIds = requestMadeList.filter(
+          (id, index) => requestMadeList.indexOf(id) === index
+        )
+
         await req.payload.update({
           collection: 'users',
           id: userRenting.id,
           data: {
-            requestsMade: requestMadeList,
+            requestsMade: requestMadeIds,
           },
         })
       } else {
