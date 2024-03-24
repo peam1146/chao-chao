@@ -118,8 +118,6 @@ export interface Chatroom_where {
 }
 
 export interface Chatroom_where_and {
-  AND?: InputMaybe<Array<InputMaybe<Chatroom_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<Chatroom_where_or>>>
   createdAt?: InputMaybe<Chatroom_createdAt_operator>
   id?: InputMaybe<Chatroom_id_operator>
   lastMessage?: InputMaybe<Chatroom_lastMessage_operator>
@@ -131,8 +129,6 @@ export interface Chatroom_where_and {
 }
 
 export interface Chatroom_where_or {
-  AND?: InputMaybe<Array<InputMaybe<Chatroom_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<Chatroom_where_or>>>
   createdAt?: InputMaybe<Chatroom_createdAt_operator>
   id?: InputMaybe<Chatroom_id_operator>
   lastMessage?: InputMaybe<Chatroom_lastMessage_operator>
@@ -416,8 +412,6 @@ export interface Item_where {
 }
 
 export interface Item_where_and {
-  AND?: InputMaybe<Array<InputMaybe<Item_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<Item_where_or>>>
   _status?: InputMaybe<Item__status_operator>
   availableAt?: InputMaybe<Item_availableAt_operator>
   createdAt?: InputMaybe<Item_createdAt_operator>
@@ -438,8 +432,6 @@ export interface Item_where_and {
 }
 
 export interface Item_where_or {
-  AND?: InputMaybe<Array<InputMaybe<Item_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<Item_where_or>>>
   _status?: InputMaybe<Item__status_operator>
   availableAt?: InputMaybe<Item_availableAt_operator>
   createdAt?: InputMaybe<Item_createdAt_operator>
@@ -583,8 +575,6 @@ export interface Media_where {
 }
 
 export interface Media_where_and {
-  AND?: InputMaybe<Array<InputMaybe<Media_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<Media_where_or>>>
   alt?: InputMaybe<Media_alt_operator>
   createdAt?: InputMaybe<Media_createdAt_operator>
   filename?: InputMaybe<Media_filename_operator>
@@ -599,8 +589,6 @@ export interface Media_where_and {
 }
 
 export interface Media_where_or {
-  AND?: InputMaybe<Array<InputMaybe<Media_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<Media_where_or>>>
   alt?: InputMaybe<Media_alt_operator>
   createdAt?: InputMaybe<Media_createdAt_operator>
   filename?: InputMaybe<Media_filename_operator>
@@ -694,8 +682,6 @@ export interface Message_where {
 }
 
 export interface Message_where_and {
-  AND?: InputMaybe<Array<InputMaybe<Message_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<Message_where_or>>>
   createdAt?: InputMaybe<Message_createdAt_operator>
   createdBy?: InputMaybe<Message_createdBy_operator>
   id?: InputMaybe<Message_id_operator>
@@ -705,8 +691,6 @@ export interface Message_where_and {
 }
 
 export interface Message_where_or {
-  AND?: InputMaybe<Array<InputMaybe<Message_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<Message_where_or>>>
   createdAt?: InputMaybe<Message_createdAt_operator>
   createdBy?: InputMaybe<Message_createdBy_operator>
   id?: InputMaybe<Message_id_operator>
@@ -811,8 +795,6 @@ export interface PayloadPreference_where {
 }
 
 export interface PayloadPreference_where_and {
-  AND?: InputMaybe<Array<InputMaybe<PayloadPreference_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<PayloadPreference_where_or>>>
   createdAt?: InputMaybe<PayloadPreference_createdAt_operator>
   id?: InputMaybe<PayloadPreference_id_operator>
   key?: InputMaybe<PayloadPreference_key_operator>
@@ -822,8 +804,6 @@ export interface PayloadPreference_where_and {
 }
 
 export interface PayloadPreference_where_or {
-  AND?: InputMaybe<Array<InputMaybe<PayloadPreference_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<PayloadPreference_where_or>>>
   createdAt?: InputMaybe<PayloadPreference_createdAt_operator>
   id?: InputMaybe<PayloadPreference_id_operator>
   key?: InputMaybe<PayloadPreference_key_operator>
@@ -1071,8 +1051,6 @@ export interface Tag_where {
 }
 
 export interface Tag_where_and {
-  AND?: InputMaybe<Array<InputMaybe<Tag_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<Tag_where_or>>>
   alt?: InputMaybe<Tag_alt_operator>
   createdAt?: InputMaybe<Tag_createdAt_operator>
   id?: InputMaybe<Tag_id_operator>
@@ -1081,8 +1059,6 @@ export interface Tag_where_and {
 }
 
 export interface Tag_where_or {
-  AND?: InputMaybe<Array<InputMaybe<Tag_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<Tag_where_or>>>
   alt?: InputMaybe<Tag_alt_operator>
   createdAt?: InputMaybe<Tag_createdAt_operator>
   id?: InputMaybe<Tag_id_operator>
@@ -1308,8 +1284,6 @@ export interface User_where {
 }
 
 export interface User_where_and {
-  AND?: InputMaybe<Array<InputMaybe<User_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<User_where_or>>>
   bio?: InputMaybe<User_bio_operator>
   createdAt?: InputMaybe<User_createdAt_operator>
   email?: InputMaybe<User_email_operator>
@@ -1331,8 +1305,6 @@ export interface User_where_and {
 }
 
 export interface User_where_or {
-  AND?: InputMaybe<Array<InputMaybe<User_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<User_where_or>>>
   bio?: InputMaybe<User_bio_operator>
   createdAt?: InputMaybe<User_createdAt_operator>
   email?: InputMaybe<User_email_operator>
@@ -1850,8 +1822,6 @@ export interface versionsItem_where {
 }
 
 export interface versionsItem_where_and {
-  AND?: InputMaybe<Array<InputMaybe<versionsItem_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<versionsItem_where_or>>>
   createdAt?: InputMaybe<versionsItem_createdAt_operator>
   id?: InputMaybe<versionsItem_id_operator>
   latest?: InputMaybe<versionsItem_latest_operator>
@@ -1876,8 +1846,6 @@ export interface versionsItem_where_and {
 }
 
 export interface versionsItem_where_or {
-  AND?: InputMaybe<Array<InputMaybe<versionsItem_where_and>>>
-  OR?: InputMaybe<Array<InputMaybe<versionsItem_where_or>>>
   createdAt?: InputMaybe<versionsItem_createdAt_operator>
   id?: InputMaybe<versionsItem_id_operator>
   latest?: InputMaybe<versionsItem_latest_operator>
@@ -2432,8 +2400,6 @@ export const generatedSchema = {
     user2_id: { __type: 'Chatroom_user2_id_operator' },
   },
   Chatroom_where_and: {
-    AND: { __type: '[Chatroom_where_and]' },
-    OR: { __type: '[Chatroom_where_or]' },
     createdAt: { __type: 'Chatroom_createdAt_operator' },
     id: { __type: 'Chatroom_id_operator' },
     lastMessage: { __type: 'Chatroom_lastMessage_operator' },
@@ -2444,8 +2410,6 @@ export const generatedSchema = {
     user2_id: { __type: 'Chatroom_user2_id_operator' },
   },
   Chatroom_where_or: {
-    AND: { __type: '[Chatroom_where_and]' },
-    OR: { __type: '[Chatroom_where_or]' },
     createdAt: { __type: 'Chatroom_createdAt_operator' },
     id: { __type: 'Chatroom_id_operator' },
     lastMessage: { __type: 'Chatroom_lastMessage_operator' },
@@ -2687,8 +2651,6 @@ export const generatedSchema = {
     updatedAt: { __type: 'Item_updatedAt_operator' },
   },
   Item_where_and: {
-    AND: { __type: '[Item_where_and]' },
-    OR: { __type: '[Item_where_or]' },
     _status: { __type: 'Item__status_operator' },
     availableAt: { __type: 'Item_availableAt_operator' },
     createdAt: { __type: 'Item_createdAt_operator' },
@@ -2708,8 +2670,6 @@ export const generatedSchema = {
     updatedAt: { __type: 'Item_updatedAt_operator' },
   },
   Item_where_or: {
-    AND: { __type: '[Item_where_and]' },
-    OR: { __type: '[Item_where_or]' },
     _status: { __type: 'Item__status_operator' },
     availableAt: { __type: 'Item_availableAt_operator' },
     createdAt: { __type: 'Item_createdAt_operator' },
@@ -3667,8 +3627,6 @@ export const generatedSchema = {
     width: { __type: 'Media_width_operator' },
   },
   Media_where_and: {
-    AND: { __type: '[Media_where_and]' },
-    OR: { __type: '[Media_where_or]' },
     alt: { __type: 'Media_alt_operator' },
     createdAt: { __type: 'Media_createdAt_operator' },
     filename: { __type: 'Media_filename_operator' },
@@ -3682,8 +3640,6 @@ export const generatedSchema = {
     width: { __type: 'Media_width_operator' },
   },
   Media_where_or: {
-    AND: { __type: '[Media_where_and]' },
-    OR: { __type: '[Media_where_or]' },
     alt: { __type: 'Media_alt_operator' },
     createdAt: { __type: 'Media_createdAt_operator' },
     filename: { __type: 'Media_filename_operator' },
@@ -4594,8 +4550,6 @@ export const generatedSchema = {
     updatedAt: { __type: 'Message_updatedAt_operator' },
   },
   Message_where_and: {
-    AND: { __type: '[Message_where_and]' },
-    OR: { __type: '[Message_where_or]' },
     createdAt: { __type: 'Message_createdAt_operator' },
     createdBy: { __type: 'Message_createdBy_operator' },
     id: { __type: 'Message_id_operator' },
@@ -4604,8 +4558,6 @@ export const generatedSchema = {
     updatedAt: { __type: 'Message_updatedAt_operator' },
   },
   Message_where_or: {
-    AND: { __type: '[Message_where_and]' },
-    OR: { __type: '[Message_where_or]' },
     createdAt: { __type: 'Message_createdAt_operator' },
     createdBy: { __type: 'Message_createdBy_operator' },
     id: { __type: 'Message_id_operator' },
@@ -4716,8 +4668,6 @@ export const generatedSchema = {
     value: { __type: 'PayloadPreference_value_operator' },
   },
   PayloadPreference_where_and: {
-    AND: { __type: '[PayloadPreference_where_and]' },
-    OR: { __type: '[PayloadPreference_where_or]' },
     createdAt: { __type: 'PayloadPreference_createdAt_operator' },
     id: { __type: 'PayloadPreference_id_operator' },
     key: { __type: 'PayloadPreference_key_operator' },
@@ -4726,8 +4676,6 @@ export const generatedSchema = {
     value: { __type: 'PayloadPreference_value_operator' },
   },
   PayloadPreference_where_or: {
-    AND: { __type: '[PayloadPreference_where_and]' },
-    OR: { __type: '[PayloadPreference_where_or]' },
     createdAt: { __type: 'PayloadPreference_createdAt_operator' },
     id: { __type: 'PayloadPreference_id_operator' },
     key: { __type: 'PayloadPreference_key_operator' },
@@ -5906,8 +5854,6 @@ export const generatedSchema = {
     updatedAt: { __type: 'Tag_updatedAt_operator' },
   },
   Tag_where_and: {
-    AND: { __type: '[Tag_where_and]' },
-    OR: { __type: '[Tag_where_or]' },
     alt: { __type: 'Tag_alt_operator' },
     createdAt: { __type: 'Tag_createdAt_operator' },
     id: { __type: 'Tag_id_operator' },
@@ -5915,8 +5861,6 @@ export const generatedSchema = {
     updatedAt: { __type: 'Tag_updatedAt_operator' },
   },
   Tag_where_or: {
-    AND: { __type: '[Tag_where_and]' },
-    OR: { __type: '[Tag_where_or]' },
     alt: { __type: 'Tag_alt_operator' },
     createdAt: { __type: 'Tag_createdAt_operator' },
     id: { __type: 'Tag_id_operator' },
@@ -6366,8 +6310,6 @@ export const generatedSchema = {
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
   User_where_and: {
-    AND: { __type: '[User_where_and]' },
-    OR: { __type: '[User_where_or]' },
     bio: { __type: 'User_bio_operator' },
     createdAt: { __type: 'User_createdAt_operator' },
     email: { __type: 'User_email_operator' },
@@ -6388,8 +6330,6 @@ export const generatedSchema = {
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
   User_where_or: {
-    AND: { __type: '[User_where_and]' },
-    OR: { __type: '[User_where_or]' },
     bio: { __type: 'User_bio_operator' },
     createdAt: { __type: 'User_createdAt_operator' },
     email: { __type: 'User_email_operator' },
@@ -8216,8 +8156,6 @@ export const generatedSchema = {
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
   },
   versionsItem_where_and: {
-    AND: { __type: '[versionsItem_where_and]' },
-    OR: { __type: '[versionsItem_where_or]' },
     createdAt: { __type: 'versionsItem_createdAt_operator' },
     id: { __type: 'versionsItem_id_operator' },
     latest: { __type: 'versionsItem_latest_operator' },
@@ -8241,8 +8179,6 @@ export const generatedSchema = {
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
   },
   versionsItem_where_or: {
-    AND: { __type: '[versionsItem_where_and]' },
-    OR: { __type: '[versionsItem_where_or]' },
     createdAt: { __type: 'versionsItem_createdAt_operator' },
     id: { __type: 'versionsItem_id_operator' },
     latest: { __type: 'versionsItem_latest_operator' },
