@@ -18,14 +18,18 @@ import { useDebounce } from './hooks/use-debounce'
 const SearchSuggestion = () => {
   const [search, setSearch] = useState('')
 
+  const [searchEnter, setSearchEnter] = useState('')
+
   const debounce = useDebounce((e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
   }, 250)
 
-  const { Items } = useQuery({
+  const { Items, meUser } = useQuery({
     fetchPolicy: 'cache-and-network',
     refetchOnWindowVisible: false,
   })
+
+  const me = meUser?.user?.id
 
   const items = Items({
     draft: false,
@@ -33,6 +37,9 @@ const SearchSuggestion = () => {
     where: {
       name: {
         contains: search,
+      },
+      createdBy: {
+        not_equals: me,
       },
     },
   })!.docs
@@ -54,7 +61,7 @@ const SearchSuggestion = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault()
-          const param = search
+          const param = searchEnter
           setShowItems(false)
           setSearch('')
           router.push(`/search?search=${param}`)
@@ -67,7 +74,11 @@ const SearchSuggestion = () => {
         <SearchIcon className="h-4" />
         <input
           type="text"
-          onChange={debounce}
+          onChange={(e) => {
+            e.preventDefault()
+            debounce(e)
+            setSearchEnter(e.target.value)
+          }}
           placeholder="Search"
           className="w-full bg-transparent"
         />
