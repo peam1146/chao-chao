@@ -121,7 +121,7 @@ export const Item: CollectionConfig = {
       },
       relationTo: 'tags',
       hasMany: true,
-      maxRows: 2,
+      maxDepth: 2,
     },
     {
       type: 'relationship',
