@@ -8,7 +8,6 @@ import { usePathname, useRouter } from 'next/navigation'
 export default function SideBar() {
   const router = useRouter()
   const pathname = usePathname()
-  console.log('pathname', pathname)
   return (
     <div className="flex flex-col pt-[72px] gap-1 max-lg:hidden">
       <div

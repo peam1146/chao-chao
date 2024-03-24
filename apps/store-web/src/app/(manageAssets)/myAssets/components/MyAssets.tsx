@@ -78,6 +78,7 @@ export default function MyAssets() {
                   return (
                     <AssetsCard
                       key={item?.id}
+                      id={Number(item?.id)}
                       name={item?.name ?? ''}
                       image={item?.image}
                       rating={item?.rating ?? 0}
@@ -96,6 +97,7 @@ export default function MyAssets() {
                   return (
                     <AssetsCard
                       key={item?.id}
+                      id={Number(item?.id)}
                       name={item?.name ?? ''}
                       image={item?.image}
                       rating={item?.rating ?? 0}
@@ -114,6 +116,7 @@ export default function MyAssets() {
                   return (
                     <AssetsCard
                       key={item?.id}
+                      id={Number(item?.id)}
                       name={item?.name ?? ''}
                       image={item?.image}
                       rating={item?.rating ?? 0}

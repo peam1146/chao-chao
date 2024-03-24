@@ -34,6 +34,8 @@ export default function SearchPage() {
     suspense: true,
   })
 
+  const me = query.meUser?.user?.id
+
   const itemsArray = query.Items({
     draft: false,
     where: {
@@ -52,6 +54,9 @@ export default function SearchPage() {
       },
       end: {
         greater_than: endDate?.toISOString(),
+      },
+      createdBy: {
+        not_equals: me,
       },
     },
   })
@@ -142,7 +147,9 @@ export default function SearchPage() {
     return items?.docs?.filter((item) => item?.id !== undefined)
   }
 
-  const items = itemsSorted(itemsArray)
+  const items = itemsSorted(itemsArray)?.filter(
+    (item) => item?.rentingStatus !== 'unavailable' && item
+  )
 
   return (
     <>

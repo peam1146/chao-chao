@@ -12,15 +12,6 @@ import { AssetCard } from './AssetCard'
 
 type Filter = 'RELEVANCE' | 'PRICE_LESS' | 'PRICE_MORE' | 'LATEST' | 'SCORE'
 
-const mockData = [
-  { name: 'Samsung Galaxy S21 Ultra 5G', rating: 4.0, price: 100 },
-  { name: 'Jujutsu kaisen Vol.4', rating: 4.0, price: 500 },
-  { name: 'Iphone 13 Pro Max', rating: 3.0, price: 20 },
-  { name: 'Macbook Pro 2021', rating: 2.0, price: 10 },
-  { name: 'Samsung Galaxy S21 Ultra 5G', rating: 4.0, price: 100 },
-  { name: 'Jujutsu kaisen Vol.4', rating: 4.0, price: 500 },
-]
-
 export function MyAsset() {
   const [filter, setFilter] = useState<Filter>('RELEVANCE')
 
@@ -120,23 +111,27 @@ export function MyAsset() {
     return items?.docs?.filter((item) => item?.id !== undefined)
   }
 
-  const items = itemsSorted(itemsArray)
-
   return (
     <>
       <SortingSection />
       <div className="py-4 w-full">
         <div className="mx-auto w-full grid grid-cols-2 2xl:grid-cols-6 lg:grid-cols-4 gap-4">
-          {items?.map((item, index) => (
-            <AssetCard
-              key={index}
-              id={item?.id}
-              name={item?.name ?? ''}
-              image={item?.image}
-              rating={item?.rating ?? 0}
-              price={item?.price ?? 0}
-            />
-          ))}
+          {!itemsArray?.docs?.length && (
+            <Typography variant="h3" fontWeight="bold" className="text-center w-full">
+              No assets found
+            </Typography>
+          )}
+          {itemsSorted(itemsArray) &&
+            itemsSorted(itemsArray)?.map((item, index) => (
+              <AssetCard
+                key={index}
+                id={item?.id}
+                name={item?.name ?? ''}
+                image={item?.image}
+                rating={item?.rating ?? 0}
+                price={item?.price ?? 0}
+              />
+            ))}
         </div>
       </div>
     </>
