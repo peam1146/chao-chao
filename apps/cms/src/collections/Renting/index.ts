@@ -1,6 +1,7 @@
 import { CollectionConfig } from 'payload/types'
 
 import { isAdminOrSelf } from '../../access'
+import { afterDelete } from './hooks/afterDelete'
 import { syncCollections } from './hooks/syncCollections'
 
 export const Renting: CollectionConfig = {
@@ -11,6 +12,7 @@ export const Renting: CollectionConfig = {
   },
   hooks: {
     afterChange: [syncCollections],
+    afterDelete: [afterDelete],
   },
   access: {
     read: () => true,
@@ -77,7 +79,6 @@ export const Renting: CollectionConfig = {
         { label: 'Pending', value: 'PENDING' },
         { label: 'Processing', value: 'PROCESSING' },
         { label: 'Completed', value: 'COMPLETED' },
-        { label: 'Cancelled', value: 'CANCELLED' },
       ],
     },
     {

@@ -112,48 +112,7 @@ export const syncCollections: AfterChangeHook<Renting> = async ({ req, doc }) =>
         })
       }
     }
-    if (status === 'CANCELLED') {
-      const { requestsMade } = userRenting
-      const { requestsReceived } = userBeingRented
 
-      if (requestsMade && requestsMade.length > 0) {
-        const requestMadeItemList = [
-          ...requestsMade.filter((request) => {
-            typeof request.item === 'object'
-              ? request.item.id !== itemId
-              : request.item !== itemId && typeof request.user === 'object'
-                ? request.user.id !== userBeingRented.id
-                : request.user !== userBeingRented.id
-          }),
-        ]
-        await req.payload.update({
-          collection: 'users',
-          id: userRenting.id,
-          data: {
-            requestsMade: requestMadeItemList,
-          },
-        })
-      }
-
-      if (requestsReceived && requestsReceived.length > 0) {
-        const requestReceiveItemList = [
-          ...requestsReceived.filter((request) => {
-            typeof request.item === 'object'
-              ? request.item.id !== itemId
-              : request.item !== itemId && typeof request.user === 'object'
-                ? request.user.id !== userRenting.id
-                : request.user !== userRenting.id
-          }),
-        ]
-        await req.payload.update({
-          collection: 'users',
-          id: userBeingRented.id,
-          data: {
-            requestsReceived: requestReceiveItemList,
-          },
-        })
-      }
-    }
     if (status === 'COMPLETED') {
       //ไปที่ collections payment
     }
