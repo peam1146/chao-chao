@@ -18,7 +18,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.503.1",
     "@payloadcms/bundler-vite": "^0.1.6",
-    "@payloadcms/bundler-webpack": "^1.0.0",
+    "@payloadcms/bundler-webpack": "^1.0.6",
     "@payloadcms/db-postgres": "^0.x",
     "@payloadcms/plugin-cloud": "^3.0.0",
     "@payloadcms/plugin-stripe": "^0.0.19",
@@ -27,6 +27,7 @@
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
+    "drizzle-orm": "^0.30.2",
     "express": "^4.17.1",
     "nodemailer": "^6.9.9",
     "payload": "^2.0.0",

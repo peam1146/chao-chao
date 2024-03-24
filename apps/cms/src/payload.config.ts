@@ -1,6 +1,6 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
 import { S3Client } from '@aws-sdk/client-s3'
-import { viteBundler } from '@payloadcms/bundler-vite'
+import { webpackBundler } from '@payloadcms/bundler-webpack'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { payloadCloud } from '@payloadcms/plugin-cloud'
 import stripePlugin from '@payloadcms/plugin-stripe'
@@ -16,32 +16,44 @@ import { Report } from './collections/Report'
 import { Review } from './collections/Review'
 import { ACCESS_KEY_ID, REGION, SECRET_KEY_ID } from './common/env'
 import { Logo } from './components/Logo'
+import endpoints from './endpoints'
+
+const mockModulePath = path.resolve(__dirname, './mock/endpoints.js')
+
+dotenv.config({
+  path: path.resolve(__dirname, '../../.env'),
+})
 
 export default buildConfig({
   admin: {
     user: Users.slug,
-    bundler: viteBundler(),
+    bundler: webpackBundler(),
     components: {
       graphics: {
         Logo: Logo,
       },
     },
-    vite: (config) => {
+    webpack: (config) => {
       return {
         ...config,
-        build: {
-          rollupOptions: {
-            external: ['@payloadcms/plugin-stripe'],
+        resolve: {
+          ...config.resolve,
+          fallback: {
+            url: false,
+            crypto: false,
+            http: false,
+            https: false,
+          },
+          alias: {
+            ...config.resolve.alias,
+            [path.resolve(__dirname, './endpoints')]: mockModulePath,
+            [path.resolve(__dirname, 'collections/User/hooks/createStripeCustomer')]:
+              mockModulePath,
           },
         },
       }
     },
   },
-  // i18n: {
-  //   fallbackLng: 'en', // default
-  //   debug: true, // default
-  //   resources: i18n(),
-  // },
   editor: slateEditor({}),
   collections: [Users, Item, Media, Tag, Chatroom, Message, Renting, Review, Report],
   typescript: {
@@ -74,9 +86,13 @@ export default buildConfig({
         'checkout.session.completed': async ({ event, stripe, stripeConfig }) => {
           console.log('checkout.session.completed', event)
         },
+        'customer.created': ({ event, stripe }) => {
+          console.log('customer.created', event)
+        },
       },
     }),
   ],
+  endpoints: endpoints,
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI,
