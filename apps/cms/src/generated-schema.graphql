@@ -382,8 +382,6 @@ input User_where_and {
   createdAt: User_createdAt_operator
   email: User_email_operator
   id: User_id_operator
-  AND: [User_where_and]
-  OR: [User_where_or]
 }
 
 input User_where_or {
@@ -405,8 +403,6 @@ input User_where_or {
   createdAt: User_createdAt_operator
   email: User_email_operator
   id: User_id_operator
-  AND: [User_where_and]
-  OR: [User_where_or]
 }
 
 type usersDocAccess {
@@ -1182,8 +1178,6 @@ input Item_where_and {
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
   id: Item_id_operator
-  AND: [Item_where_and]
-  OR: [Item_where_or]
 }
 
 input Item_where_or {
@@ -1204,8 +1198,6 @@ input Item_where_or {
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
   id: Item_id_operator
-  AND: [Item_where_and]
-  OR: [Item_where_or]
 }
 
 type itemsDocAccess {
@@ -1955,8 +1947,6 @@ input versionsItem_where_and {
   updatedAt: versionsItem_updatedAt_operator
   latest: versionsItem_latest_operator
   id: versionsItem_id_operator
-  AND: [versionsItem_where_and]
-  OR: [versionsItem_where_or]
 }
 
 input versionsItem_where_or {
@@ -1981,8 +1971,6 @@ input versionsItem_where_or {
   updatedAt: versionsItem_updatedAt_operator
   latest: versionsItem_latest_operator
   id: versionsItem_id_operator
-  AND: [versionsItem_where_and]
-  OR: [versionsItem_where_or]
 }
 
 type Medias {
@@ -2144,8 +2132,6 @@ input Media_where_and {
   width: Media_width_operator
   height: Media_height_operator
   id: Media_id_operator
-  AND: [Media_where_and]
-  OR: [Media_where_or]
 }
 
 input Media_where_or {
@@ -2160,8 +2146,6 @@ input Media_where_or {
   width: Media_width_operator
   height: Media_height_operator
   id: Media_id_operator
-  AND: [Media_where_and]
-  OR: [Media_where_or]
 }
 
 type mediasDocAccess {
@@ -2518,8 +2502,6 @@ input Tag_where_and {
   updatedAt: Tag_updatedAt_operator
   createdAt: Tag_createdAt_operator
   id: Tag_id_operator
-  AND: [Tag_where_and]
-  OR: [Tag_where_or]
 }
 
 input Tag_where_or {
@@ -2528,8 +2510,6 @@ input Tag_where_or {
   updatedAt: Tag_updatedAt_operator
   createdAt: Tag_createdAt_operator
   id: Tag_id_operator
-  AND: [Tag_where_and]
-  OR: [Tag_where_or]
 }
 
 type tagsDocAccess {
@@ -2794,8 +2774,6 @@ input Chatroom_where_and {
   updatedAt: Chatroom_updatedAt_operator
   createdAt: Chatroom_createdAt_operator
   id: Chatroom_id_operator
-  AND: [Chatroom_where_and]
-  OR: [Chatroom_where_or]
 }
 
 input Chatroom_where_or {
@@ -2807,8 +2785,6 @@ input Chatroom_where_or {
   updatedAt: Chatroom_updatedAt_operator
   createdAt: Chatroom_createdAt_operator
   id: Chatroom_id_operator
-  AND: [Chatroom_where_and]
-  OR: [Chatroom_where_or]
 }
 
 type chatroomDocAccess {
@@ -3100,8 +3076,6 @@ input Message_where_and {
   room: Message_room_operator
   updatedAt: Message_updatedAt_operator
   id: Message_id_operator
-  AND: [Message_where_and]
-  OR: [Message_where_or]
 }
 
 input Message_where_or {
@@ -3111,8 +3085,6 @@ input Message_where_or {
   room: Message_room_operator
   updatedAt: Message_updatedAt_operator
   id: Message_id_operator
-  AND: [Message_where_and]
-  OR: [Message_where_or]
 }
 
 type messageDocAccess {
@@ -3904,8 +3876,6 @@ input PayloadPreference_where_and {
   updatedAt: PayloadPreference_updatedAt_operator
   createdAt: PayloadPreference_createdAt_operator
   id: PayloadPreference_id_operator
-  AND: [PayloadPreference_where_and]
-  OR: [PayloadPreference_where_or]
 }
 
 input PayloadPreference_where_or {
@@ -3915,8 +3885,6 @@ input PayloadPreference_where_or {
   updatedAt: PayloadPreference_updatedAt_operator
   createdAt: PayloadPreference_createdAt_operator
   id: PayloadPreference_id_operator
-  AND: [PayloadPreference_where_and]
-  OR: [PayloadPreference_where_or]
 }
 
 type payload_preferencesDocAccess {
