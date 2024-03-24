@@ -4,12 +4,10 @@ import type { Renting, User } from '../../../payload-types'
 
 export const syncCollections: AfterChangeHook<Renting> = async ({ req, doc }) => {
   const { payload } = req
-  const { rentedTo, rentedBy, status } = doc
+  const { rentedTo, rentedBy, status, id } = doc
 
   const rentedByID = typeof rentedBy.user === 'object' ? rentedBy.user.id : rentedBy.user
   const rentedToID = typeof rentedTo.user === 'object' ? rentedTo.user.id : rentedTo.user
-
-  const itemId = typeof rentedTo.item === 'object' ? rentedTo.item.id : rentedTo.item
 
   if (!rentedByID) {
     payload.logger.error('Error in `syncCollections` hook: No user ID found on renting')
@@ -31,15 +29,6 @@ export const syncCollections: AfterChangeHook<Renting> = async ({ req, doc }) =>
     id: rentedToID,
   })
 
-  const item = await req.payload.findByID({
-    collection: 'items',
-    id: itemId,
-  })
-
-  if (typeof item.createdBy === 'object' && item.createdBy.id !== rentedToID) {
-    return payload.logger.error('Error in `syncCollections` hook: Item not created by user')
-  }
-
   if (
     userRenting &&
     userBeingRented &&
@@ -51,19 +40,16 @@ export const syncCollections: AfterChangeHook<Renting> = async ({ req, doc }) =>
 
     if (status === 'PENDING') {
       if (requestsMade && requestsMade.length > 0) {
-        const requestMadeItemList = [
-          ...requestsMade,
-          {
-            item: typeof item === 'object' ? item.id : item,
-            user: userBeingRented.id,
-          },
+        const requestMadeList = [
+          ...requestsMade.map((request) => (typeof request === 'object' ? request.id : request)),
+          id,
         ]
 
         await req.payload.update({
           collection: 'users',
           id: userRenting.id,
           data: {
-            requestsMade: requestMadeItemList,
+            requestsMade: requestMadeList,
           },
         })
       } else {
@@ -71,30 +57,28 @@ export const syncCollections: AfterChangeHook<Renting> = async ({ req, doc }) =>
           collection: 'users',
           id: userRenting.id,
           data: {
-            requestsMade: [
-              {
-                item: typeof item === 'object' ? item.id : item,
-                user: userBeingRented.id,
-              },
-            ],
+            requestsMade: [id],
           },
         })
       }
 
       if (requestsReceived && requestsReceived.length > 0) {
         const requestReceiveItemList = [
-          ...requestsReceived,
-          {
-            item: typeof item === 'object' ? item.id : item,
-            user: userRenting.id,
-          },
+          ...requestsReceived.map((request) =>
+            typeof request === 'object' ? request.id : request
+          ),
+          id,
         ]
+
+        const requestReceiveIds = requestReceiveItemList.filter(
+          (id, index) => requestReceiveItemList.indexOf(id) === index
+        )
 
         await req.payload.update({
           collection: 'users',
           id: userBeingRented.id,
           data: {
-            requestsReceived: requestReceiveItemList,
+            requestsReceived: requestReceiveIds,
           },
         })
       } else {
@@ -102,22 +86,16 @@ export const syncCollections: AfterChangeHook<Renting> = async ({ req, doc }) =>
           collection: 'users',
           id: userBeingRented.id,
           data: {
-            requestsReceived: [
-              {
-                item: typeof item === 'object' ? item.id : item,
-                user: userRenting.id,
-              },
-            ],
+            requestsReceived: [id],
           },
         })
       }
     }
-
-    if (status === 'COMPLETED') {
-      //ไปที่ collections payment
-    }
-    if (status === 'PROCESSING') {
-      //บอกให้รู้สำหรับ negotiating ใน ui
-    }
+  }
+  if (status === 'COMPLETED') {
+    //ไปที่ collections payment
+  }
+  if (status === 'PROCESSING') {
+    //บอกให้รู้สำหรับ negotiating ใน ui
   }
 }

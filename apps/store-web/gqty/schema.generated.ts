@@ -813,7 +813,6 @@ export interface PayloadPreference_where_or {
 }
 
 export enum RentingUpdate_status_MutationInput {
-  CANCELLED = 'CANCELLED',
   COMPLETED = 'COMPLETED',
   PENDING = 'PENDING',
   PROCESSING = 'PROCESSING',
@@ -838,6 +837,16 @@ export interface Renting_createdBy_operator {
   not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
 }
 
+export interface Renting_deliveryFee_operator {
+  equals?: InputMaybe<Scalars['Float']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Float']>
+  greater_than_equal?: InputMaybe<Scalars['Float']>
+  less_than?: InputMaybe<Scalars['Float']>
+  less_than_equal?: InputMaybe<Scalars['Float']>
+  not_equals?: InputMaybe<Scalars['Float']>
+}
+
 export interface Renting_endDate_operator {
   equals?: InputMaybe<Scalars['DateTime']>
   greater_than?: InputMaybe<Scalars['DateTime']>
@@ -848,6 +857,15 @@ export interface Renting_endDate_operator {
   not_equals?: InputMaybe<Scalars['DateTime']>
 }
 
+export interface Renting_file_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
 export interface Renting_id_operator {
   equals?: InputMaybe<Scalars['Int']>
   exists?: InputMaybe<Scalars['Boolean']>
@@ -856,6 +874,26 @@ export interface Renting_id_operator {
   less_than?: InputMaybe<Scalars['Int']>
   less_than_equal?: InputMaybe<Scalars['Int']>
   not_equals?: InputMaybe<Scalars['Int']>
+}
+
+export interface Renting_insuranceFee_operator {
+  equals?: InputMaybe<Scalars['Float']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Float']>
+  greater_than_equal?: InputMaybe<Scalars['Float']>
+  less_than?: InputMaybe<Scalars['Float']>
+  less_than_equal?: InputMaybe<Scalars['Float']>
+  not_equals?: InputMaybe<Scalars['Float']>
+}
+
+export interface Renting_rentalFee_operator {
+  equals?: InputMaybe<Scalars['Float']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Float']>
+  greater_than_equal?: InputMaybe<Scalars['Float']>
+  less_than?: InputMaybe<Scalars['Float']>
+  less_than_equal?: InputMaybe<Scalars['Float']>
+  not_equals?: InputMaybe<Scalars['Float']>
 }
 
 export interface Renting_rentedBy__user_operator {
@@ -893,21 +931,18 @@ export interface Renting_startDate_operator {
 }
 
 export enum Renting_status {
-  CANCELLED = 'CANCELLED',
   COMPLETED = 'COMPLETED',
   PENDING = 'PENDING',
   PROCESSING = 'PROCESSING',
 }
 
 export enum Renting_status_Input {
-  CANCELLED = 'CANCELLED',
   COMPLETED = 'COMPLETED',
   PENDING = 'PENDING',
   PROCESSING = 'PROCESSING',
 }
 
 export enum Renting_status_MutationInput {
-  CANCELLED = 'CANCELLED',
   COMPLETED = 'COMPLETED',
   PENDING = 'PENDING',
   PROCESSING = 'PROCESSING',
@@ -948,8 +983,12 @@ export interface Renting_where {
   OR?: InputMaybe<Array<InputMaybe<Renting_where_or>>>
   createdAt?: InputMaybe<Renting_createdAt_operator>
   createdBy?: InputMaybe<Renting_createdBy_operator>
+  deliveryFee?: InputMaybe<Renting_deliveryFee_operator>
   endDate?: InputMaybe<Renting_endDate_operator>
+  file?: InputMaybe<Renting_file_operator>
   id?: InputMaybe<Renting_id_operator>
+  insuranceFee?: InputMaybe<Renting_insuranceFee_operator>
+  rentalFee?: InputMaybe<Renting_rentalFee_operator>
   rentedBy__user?: InputMaybe<Renting_rentedBy__user_operator>
   rentedTo__item?: InputMaybe<Renting_rentedTo__item_operator>
   rentedTo__user?: InputMaybe<Renting_rentedTo__user_operator>
@@ -962,8 +1001,12 @@ export interface Renting_where {
 export interface Renting_where_and {
   createdAt?: InputMaybe<Renting_createdAt_operator>
   createdBy?: InputMaybe<Renting_createdBy_operator>
+  deliveryFee?: InputMaybe<Renting_deliveryFee_operator>
   endDate?: InputMaybe<Renting_endDate_operator>
+  file?: InputMaybe<Renting_file_operator>
   id?: InputMaybe<Renting_id_operator>
+  insuranceFee?: InputMaybe<Renting_insuranceFee_operator>
+  rentalFee?: InputMaybe<Renting_rentalFee_operator>
   rentedBy__user?: InputMaybe<Renting_rentedBy__user_operator>
   rentedTo__item?: InputMaybe<Renting_rentedTo__item_operator>
   rentedTo__user?: InputMaybe<Renting_rentedTo__user_operator>
@@ -976,8 +1019,12 @@ export interface Renting_where_and {
 export interface Renting_where_or {
   createdAt?: InputMaybe<Renting_createdAt_operator>
   createdBy?: InputMaybe<Renting_createdBy_operator>
+  deliveryFee?: InputMaybe<Renting_deliveryFee_operator>
   endDate?: InputMaybe<Renting_endDate_operator>
+  file?: InputMaybe<Renting_file_operator>
   id?: InputMaybe<Renting_id_operator>
+  insuranceFee?: InputMaybe<Renting_insuranceFee_operator>
+  rentalFee?: InputMaybe<Renting_rentalFee_operator>
   rentedBy__user?: InputMaybe<Renting_rentedBy__user_operator>
   rentedTo__item?: InputMaybe<Renting_rentedTo__item_operator>
   rentedTo__user?: InputMaybe<Renting_rentedTo__user_operator>
@@ -1172,55 +1219,19 @@ export interface User_rating_operator {
   not_equals?: InputMaybe<Scalars['Float']>
 }
 
-export interface User_requestsMade__id_operator {
-  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-  contains?: InputMaybe<Scalars['String']>
-  equals?: InputMaybe<Scalars['String']>
+export interface User_requestsMade_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
   exists?: InputMaybe<Scalars['Boolean']>
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-  like?: InputMaybe<Scalars['String']>
-  not_equals?: InputMaybe<Scalars['String']>
-  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-export interface User_requestsMade__item_operator {
-  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
-  equals?: InputMaybe<Scalars['JSON']>
   in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   not_equals?: InputMaybe<Scalars['JSON']>
   not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
 }
 
-export interface User_requestsMade__user_operator {
+export interface User_requestsReceived_operator {
   all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   equals?: InputMaybe<Scalars['JSON']>
-  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
-  not_equals?: InputMaybe<Scalars['JSON']>
-  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
-}
-
-export interface User_requestsReceived__id_operator {
-  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-  contains?: InputMaybe<Scalars['String']>
-  equals?: InputMaybe<Scalars['String']>
   exists?: InputMaybe<Scalars['Boolean']>
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-  like?: InputMaybe<Scalars['String']>
-  not_equals?: InputMaybe<Scalars['String']>
-  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
-}
-
-export interface User_requestsReceived__item_operator {
-  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
-  equals?: InputMaybe<Scalars['JSON']>
-  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
-  not_equals?: InputMaybe<Scalars['JSON']>
-  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
-}
-
-export interface User_requestsReceived__user_operator {
-  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
-  equals?: InputMaybe<Scalars['JSON']>
   in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   not_equals?: InputMaybe<Scalars['JSON']>
   not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
@@ -1273,12 +1284,8 @@ export interface User_where {
   profileImage?: InputMaybe<User_profileImage_operator>
   province?: InputMaybe<User_province_operator>
   rating?: InputMaybe<User_rating_operator>
-  requestsMade__id?: InputMaybe<User_requestsMade__id_operator>
-  requestsMade__item?: InputMaybe<User_requestsMade__item_operator>
-  requestsMade__user?: InputMaybe<User_requestsMade__user_operator>
-  requestsReceived__id?: InputMaybe<User_requestsReceived__id_operator>
-  requestsReceived__item?: InputMaybe<User_requestsReceived__item_operator>
-  requestsReceived__user?: InputMaybe<User_requestsReceived__user_operator>
+  requestsMade?: InputMaybe<User_requestsMade_operator>
+  requestsReceived?: InputMaybe<User_requestsReceived_operator>
   roles?: InputMaybe<User_roles_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
 }
@@ -1294,12 +1301,8 @@ export interface User_where_and {
   profileImage?: InputMaybe<User_profileImage_operator>
   province?: InputMaybe<User_province_operator>
   rating?: InputMaybe<User_rating_operator>
-  requestsMade__id?: InputMaybe<User_requestsMade__id_operator>
-  requestsMade__item?: InputMaybe<User_requestsMade__item_operator>
-  requestsMade__user?: InputMaybe<User_requestsMade__user_operator>
-  requestsReceived__id?: InputMaybe<User_requestsReceived__id_operator>
-  requestsReceived__item?: InputMaybe<User_requestsReceived__item_operator>
-  requestsReceived__user?: InputMaybe<User_requestsReceived__user_operator>
+  requestsMade?: InputMaybe<User_requestsMade_operator>
+  requestsReceived?: InputMaybe<User_requestsReceived_operator>
   roles?: InputMaybe<User_roles_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
 }
@@ -1315,12 +1318,8 @@ export interface User_where_or {
   profileImage?: InputMaybe<User_profileImage_operator>
   province?: InputMaybe<User_province_operator>
   rating?: InputMaybe<User_rating_operator>
-  requestsMade__id?: InputMaybe<User_requestsMade__id_operator>
-  requestsMade__item?: InputMaybe<User_requestsMade__item_operator>
-  requestsMade__user?: InputMaybe<User_requestsMade__user_operator>
-  requestsReceived__id?: InputMaybe<User_requestsReceived__id_operator>
-  requestsReceived__item?: InputMaybe<User_requestsReceived__item_operator>
-  requestsReceived__user?: InputMaybe<User_requestsReceived__user_operator>
+  requestsMade?: InputMaybe<User_requestsMade_operator>
+  requestsReceived?: InputMaybe<User_requestsReceived_operator>
   roles?: InputMaybe<User_roles_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
 }
@@ -1446,7 +1445,11 @@ export interface mutationPayloadPreferenceUpdateInput {
 export interface mutationRentingInput {
   createdAt?: InputMaybe<Scalars['String']>
   createdBy?: InputMaybe<Scalars['Int']>
+  deliveryFee?: InputMaybe<Scalars['Float']>
   endDate: Scalars['String']
+  file?: InputMaybe<Scalars['Int']>
+  insuranceFee?: InputMaybe<Scalars['Float']>
+  rentalFee?: InputMaybe<Scalars['Float']>
   rentedBy: mutationRenting_RentedByInput
   rentedTo: mutationRenting_RentedToInput
   startDate: Scalars['String']
@@ -1458,7 +1461,11 @@ export interface mutationRentingInput {
 export interface mutationRentingUpdateInput {
   createdAt?: InputMaybe<Scalars['String']>
   createdBy?: InputMaybe<Scalars['Int']>
+  deliveryFee?: InputMaybe<Scalars['Float']>
   endDate?: InputMaybe<Scalars['String']>
+  file?: InputMaybe<Scalars['Int']>
+  insuranceFee?: InputMaybe<Scalars['Float']>
+  rentalFee?: InputMaybe<Scalars['Float']>
   rentedBy: mutationRentingUpdate_RentedByInput
   rentedTo: mutationRentingUpdate_RentedToInput
   startDate?: InputMaybe<Scalars['String']>
@@ -1515,8 +1522,8 @@ export interface mutationUserInput {
   profileImage?: InputMaybe<Scalars['Int']>
   province?: InputMaybe<Scalars['String']>
   rating?: InputMaybe<Scalars['Float']>
-  requestsMade?: InputMaybe<Array<InputMaybe<mutationUser_RequestsMadeInput>>>
-  requestsReceived?: InputMaybe<Array<InputMaybe<mutationUser_RequestsReceivedInput>>>
+  requestsMade?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
+  requestsReceived?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   resetPasswordExpiration?: InputMaybe<Scalars['String']>
   resetPasswordToken?: InputMaybe<Scalars['String']>
   roles: Array<InputMaybe<User_roles_MutationInput>>
@@ -1538,37 +1545,13 @@ export interface mutationUserUpdateInput {
   profileImage?: InputMaybe<Scalars['Int']>
   province?: InputMaybe<Scalars['String']>
   rating?: InputMaybe<Scalars['Float']>
-  requestsMade?: InputMaybe<Array<InputMaybe<mutationUserUpdate_RequestsMadeInput>>>
-  requestsReceived?: InputMaybe<Array<InputMaybe<mutationUserUpdate_RequestsReceivedInput>>>
+  requestsMade?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
+  requestsReceived?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   resetPasswordExpiration?: InputMaybe<Scalars['String']>
   resetPasswordToken?: InputMaybe<Scalars['String']>
   roles?: InputMaybe<Array<InputMaybe<UserUpdate_roles_MutationInput>>>
   salt?: InputMaybe<Scalars['String']>
   updatedAt?: InputMaybe<Scalars['String']>
-}
-
-export interface mutationUserUpdate_RequestsMadeInput {
-  id?: InputMaybe<Scalars['String']>
-  item?: InputMaybe<Scalars['Int']>
-  user?: InputMaybe<Scalars['Int']>
-}
-
-export interface mutationUserUpdate_RequestsReceivedInput {
-  id?: InputMaybe<Scalars['String']>
-  item?: InputMaybe<Scalars['Int']>
-  user?: InputMaybe<Scalars['Int']>
-}
-
-export interface mutationUser_RequestsMadeInput {
-  id?: InputMaybe<Scalars['String']>
-  item?: InputMaybe<Scalars['Int']>
-  user?: InputMaybe<Scalars['Int']>
-}
-
-export interface mutationUser_RequestsReceivedInput {
-  id?: InputMaybe<Scalars['String']>
-  item?: InputMaybe<Scalars['Int']>
-  user?: InputMaybe<Scalars['Int']>
 }
 
 export enum usersJWT_roles {
@@ -4987,8 +4970,12 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     createdAt: { __type: 'DateTime' },
     createdBy: { __type: 'User!' },
+    deliveryFee: { __type: 'Float' },
     endDate: { __type: 'DateTime!' },
+    file: { __type: 'Media' },
     id: { __type: 'Int' },
+    insuranceFee: { __type: 'Float' },
+    rentalFee: { __type: 'Float' },
     rentedBy: { __type: 'Renting_RentedBy' },
     rentedTo: { __type: 'Renting_RentedTo' },
     startDate: { __type: 'DateTime!' },
@@ -5020,7 +5007,11 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     createdAt: { __type: 'RentingDocAccessFields_createdAt' },
     createdBy: { __type: 'RentingDocAccessFields_createdBy' },
+    deliveryFee: { __type: 'RentingDocAccessFields_deliveryFee' },
     endDate: { __type: 'RentingDocAccessFields_endDate' },
+    file: { __type: 'RentingDocAccessFields_file' },
+    insuranceFee: { __type: 'RentingDocAccessFields_insuranceFee' },
+    rentalFee: { __type: 'RentingDocAccessFields_rentalFee' },
     rentedBy: { __type: 'RentingDocAccessFields_rentedBy' },
     rentedTo: { __type: 'RentingDocAccessFields_rentedTo' },
     startDate: { __type: 'RentingDocAccessFields_startDate' },
@@ -5074,6 +5065,29 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  RentingDocAccessFields_deliveryFee: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_deliveryFee_Create' },
+    delete: { __type: 'RentingDocAccessFields_deliveryFee_Delete' },
+    read: { __type: 'RentingDocAccessFields_deliveryFee_Read' },
+    update: { __type: 'RentingDocAccessFields_deliveryFee_Update' },
+  },
+  RentingDocAccessFields_deliveryFee_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_deliveryFee_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_deliveryFee_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_deliveryFee_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   RentingDocAccessFields_endDate: {
     __typename: { __type: 'String!' },
     create: { __type: 'RentingDocAccessFields_endDate_Create' },
@@ -5094,6 +5108,75 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   RentingDocAccessFields_endDate_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_file: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_file_Create' },
+    delete: { __type: 'RentingDocAccessFields_file_Delete' },
+    read: { __type: 'RentingDocAccessFields_file_Read' },
+    update: { __type: 'RentingDocAccessFields_file_Update' },
+  },
+  RentingDocAccessFields_file_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_file_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_file_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_file_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_insuranceFee: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_insuranceFee_Create' },
+    delete: { __type: 'RentingDocAccessFields_insuranceFee_Delete' },
+    read: { __type: 'RentingDocAccessFields_insuranceFee_Read' },
+    update: { __type: 'RentingDocAccessFields_insuranceFee_Update' },
+  },
+  RentingDocAccessFields_insuranceFee_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_insuranceFee_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_insuranceFee_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_insuranceFee_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentalFee: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_rentalFee_Create' },
+    delete: { __type: 'RentingDocAccessFields_rentalFee_Delete' },
+    read: { __type: 'RentingDocAccessFields_rentalFee_Read' },
+    update: { __type: 'RentingDocAccessFields_rentalFee_Update' },
+  },
+  RentingDocAccessFields_rentalFee_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentalFee_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentalFee_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentalFee_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -5319,7 +5402,11 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     createdAt: { __type: 'RentingFields_createdAt' },
     createdBy: { __type: 'RentingFields_createdBy' },
+    deliveryFee: { __type: 'RentingFields_deliveryFee' },
     endDate: { __type: 'RentingFields_endDate' },
+    file: { __type: 'RentingFields_file' },
+    insuranceFee: { __type: 'RentingFields_insuranceFee' },
+    rentalFee: { __type: 'RentingFields_rentalFee' },
     rentedBy: { __type: 'RentingFields_rentedBy' },
     rentedTo: { __type: 'RentingFields_rentedTo' },
     startDate: { __type: 'RentingFields_startDate' },
@@ -5373,6 +5460,29 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  RentingFields_deliveryFee: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_deliveryFee_Create' },
+    delete: { __type: 'RentingFields_deliveryFee_Delete' },
+    read: { __type: 'RentingFields_deliveryFee_Read' },
+    update: { __type: 'RentingFields_deliveryFee_Update' },
+  },
+  RentingFields_deliveryFee_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_deliveryFee_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_deliveryFee_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_deliveryFee_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   RentingFields_endDate: {
     __typename: { __type: 'String!' },
     create: { __type: 'RentingFields_endDate_Create' },
@@ -5393,6 +5503,75 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   RentingFields_endDate_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_file: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_file_Create' },
+    delete: { __type: 'RentingFields_file_Delete' },
+    read: { __type: 'RentingFields_file_Read' },
+    update: { __type: 'RentingFields_file_Update' },
+  },
+  RentingFields_file_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_file_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_file_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_file_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_insuranceFee: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_insuranceFee_Create' },
+    delete: { __type: 'RentingFields_insuranceFee_Delete' },
+    read: { __type: 'RentingFields_insuranceFee_Read' },
+    update: { __type: 'RentingFields_insuranceFee_Update' },
+  },
+  RentingFields_insuranceFee_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_insuranceFee_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_insuranceFee_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_insuranceFee_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentalFee: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_rentalFee_Create' },
+    delete: { __type: 'RentingFields_rentalFee_Delete' },
+    read: { __type: 'RentingFields_rentalFee_Read' },
+    update: { __type: 'RentingFields_rentalFee_Update' },
+  },
+  RentingFields_rentalFee_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentalFee_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentalFee_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentalFee_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -5657,6 +5836,15 @@ export const generatedSchema = {
     not_equals: { __type: 'JSON' },
     not_in: { __type: '[JSON]' },
   },
+  Renting_deliveryFee_operator: {
+    equals: { __type: 'Float' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Float' },
+    greater_than_equal: { __type: 'Float' },
+    less_than: { __type: 'Float' },
+    less_than_equal: { __type: 'Float' },
+    not_equals: { __type: 'Float' },
+  },
   Renting_endDate_operator: {
     equals: { __type: 'DateTime' },
     greater_than: { __type: 'DateTime' },
@@ -5666,6 +5854,14 @@ export const generatedSchema = {
     like: { __type: 'DateTime' },
     not_equals: { __type: 'DateTime' },
   },
+  Renting_file_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
   Renting_id_operator: {
     equals: { __type: 'Int' },
     exists: { __type: 'Boolean' },
@@ -5674,6 +5870,24 @@ export const generatedSchema = {
     less_than: { __type: 'Int' },
     less_than_equal: { __type: 'Int' },
     not_equals: { __type: 'Int' },
+  },
+  Renting_insuranceFee_operator: {
+    equals: { __type: 'Float' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Float' },
+    greater_than_equal: { __type: 'Float' },
+    less_than: { __type: 'Float' },
+    less_than_equal: { __type: 'Float' },
+    not_equals: { __type: 'Float' },
+  },
+  Renting_rentalFee_operator: {
+    equals: { __type: 'Float' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Float' },
+    greater_than_equal: { __type: 'Float' },
+    less_than: { __type: 'Float' },
+    less_than_equal: { __type: 'Float' },
+    not_equals: { __type: 'Float' },
   },
   Renting_rentedBy__user_operator: {
     all: { __type: '[JSON]' },
@@ -5737,8 +5951,12 @@ export const generatedSchema = {
     OR: { __type: '[Renting_where_or]' },
     createdAt: { __type: 'Renting_createdAt_operator' },
     createdBy: { __type: 'Renting_createdBy_operator' },
+    deliveryFee: { __type: 'Renting_deliveryFee_operator' },
     endDate: { __type: 'Renting_endDate_operator' },
+    file: { __type: 'Renting_file_operator' },
     id: { __type: 'Renting_id_operator' },
+    insuranceFee: { __type: 'Renting_insuranceFee_operator' },
+    rentalFee: { __type: 'Renting_rentalFee_operator' },
     rentedBy__user: { __type: 'Renting_rentedBy__user_operator' },
     rentedTo__item: { __type: 'Renting_rentedTo__item_operator' },
     rentedTo__user: { __type: 'Renting_rentedTo__user_operator' },
@@ -5750,8 +5968,12 @@ export const generatedSchema = {
   Renting_where_and: {
     createdAt: { __type: 'Renting_createdAt_operator' },
     createdBy: { __type: 'Renting_createdBy_operator' },
+    deliveryFee: { __type: 'Renting_deliveryFee_operator' },
     endDate: { __type: 'Renting_endDate_operator' },
+    file: { __type: 'Renting_file_operator' },
     id: { __type: 'Renting_id_operator' },
+    insuranceFee: { __type: 'Renting_insuranceFee_operator' },
+    rentalFee: { __type: 'Renting_rentalFee_operator' },
     rentedBy__user: { __type: 'Renting_rentedBy__user_operator' },
     rentedTo__item: { __type: 'Renting_rentedTo__item_operator' },
     rentedTo__user: { __type: 'Renting_rentedTo__user_operator' },
@@ -5763,8 +5985,12 @@ export const generatedSchema = {
   Renting_where_or: {
     createdAt: { __type: 'Renting_createdAt_operator' },
     createdBy: { __type: 'Renting_createdBy_operator' },
+    deliveryFee: { __type: 'Renting_deliveryFee_operator' },
     endDate: { __type: 'Renting_endDate_operator' },
+    file: { __type: 'Renting_file_operator' },
     id: { __type: 'Renting_id_operator' },
+    insuranceFee: { __type: 'Renting_insuranceFee_operator' },
+    rentalFee: { __type: 'Renting_rentalFee_operator' },
     rentedBy__user: { __type: 'Renting_rentedBy__user_operator' },
     rentedTo__item: { __type: 'Renting_rentedTo__item_operator' },
     rentedTo__user: { __type: 'Renting_rentedTo__user_operator' },
@@ -6111,25 +6337,13 @@ export const generatedSchema = {
     profileImage: { __type: 'Media' },
     province: { __type: 'String' },
     rating: { __type: 'Float' },
-    requestsMade: { __type: '[User_RequestsMade!]' },
-    requestsReceived: { __type: '[User_RequestsReceived!]' },
+    requestsMade: { __type: '[Renting!]' },
+    requestsReceived: { __type: '[Renting!]' },
     resetPasswordExpiration: { __type: 'DateTime' },
     resetPasswordToken: { __type: 'String' },
     roles: { __type: '[User_roles!]!' },
     salt: { __type: 'String' },
     updatedAt: { __type: 'DateTime' },
-  },
-  User_RequestsMade: {
-    __typename: { __type: 'String!' },
-    id: { __type: 'String' },
-    item: { __type: 'Item' },
-    user: { __type: 'User' },
-  },
-  User_RequestsReceived: {
-    __typename: { __type: 'String!' },
-    id: { __type: 'String' },
-    item: { __type: 'Item' },
-    user: { __type: 'User' },
   },
   User_bio_operator: {
     contains: { __type: 'String' },
@@ -6222,50 +6436,18 @@ export const generatedSchema = {
     less_than_equal: { __type: 'Float' },
     not_equals: { __type: 'Float' },
   },
-  User_requestsMade__id_operator: {
-    all: { __type: '[String]' },
-    contains: { __type: 'String' },
-    equals: { __type: 'String' },
+  User_requestsMade_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
     exists: { __type: 'Boolean' },
-    in: { __type: '[String]' },
-    like: { __type: 'String' },
-    not_equals: { __type: 'String' },
-    not_in: { __type: '[String]' },
-  },
-  User_requestsMade__item_operator: {
-    all: { __type: '[JSON]' },
-    equals: { __type: 'JSON' },
     in: { __type: '[JSON]' },
     not_equals: { __type: 'JSON' },
     not_in: { __type: '[JSON]' },
   },
-  User_requestsMade__user_operator: {
+  User_requestsReceived_operator: {
     all: { __type: '[JSON]' },
     equals: { __type: 'JSON' },
-    in: { __type: '[JSON]' },
-    not_equals: { __type: 'JSON' },
-    not_in: { __type: '[JSON]' },
-  },
-  User_requestsReceived__id_operator: {
-    all: { __type: '[String]' },
-    contains: { __type: 'String' },
-    equals: { __type: 'String' },
     exists: { __type: 'Boolean' },
-    in: { __type: '[String]' },
-    like: { __type: 'String' },
-    not_equals: { __type: 'String' },
-    not_in: { __type: '[String]' },
-  },
-  User_requestsReceived__item_operator: {
-    all: { __type: '[JSON]' },
-    equals: { __type: 'JSON' },
-    in: { __type: '[JSON]' },
-    not_equals: { __type: 'JSON' },
-    not_in: { __type: '[JSON]' },
-  },
-  User_requestsReceived__user_operator: {
-    all: { __type: '[JSON]' },
-    equals: { __type: 'JSON' },
     in: { __type: '[JSON]' },
     not_equals: { __type: 'JSON' },
     not_in: { __type: '[JSON]' },
@@ -6300,12 +6482,8 @@ export const generatedSchema = {
     profileImage: { __type: 'User_profileImage_operator' },
     province: { __type: 'User_province_operator' },
     rating: { __type: 'User_rating_operator' },
-    requestsMade__id: { __type: 'User_requestsMade__id_operator' },
-    requestsMade__item: { __type: 'User_requestsMade__item_operator' },
-    requestsMade__user: { __type: 'User_requestsMade__user_operator' },
-    requestsReceived__id: { __type: 'User_requestsReceived__id_operator' },
-    requestsReceived__item: { __type: 'User_requestsReceived__item_operator' },
-    requestsReceived__user: { __type: 'User_requestsReceived__user_operator' },
+    requestsMade: { __type: 'User_requestsMade_operator' },
+    requestsReceived: { __type: 'User_requestsReceived_operator' },
     roles: { __type: 'User_roles_operator' },
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
@@ -6320,12 +6498,8 @@ export const generatedSchema = {
     profileImage: { __type: 'User_profileImage_operator' },
     province: { __type: 'User_province_operator' },
     rating: { __type: 'User_rating_operator' },
-    requestsMade__id: { __type: 'User_requestsMade__id_operator' },
-    requestsMade__item: { __type: 'User_requestsMade__item_operator' },
-    requestsMade__user: { __type: 'User_requestsMade__user_operator' },
-    requestsReceived__id: { __type: 'User_requestsReceived__id_operator' },
-    requestsReceived__item: { __type: 'User_requestsReceived__item_operator' },
-    requestsReceived__user: { __type: 'User_requestsReceived__user_operator' },
+    requestsMade: { __type: 'User_requestsMade_operator' },
+    requestsReceived: { __type: 'User_requestsReceived_operator' },
     roles: { __type: 'User_roles_operator' },
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
@@ -6340,12 +6514,8 @@ export const generatedSchema = {
     profileImage: { __type: 'User_profileImage_operator' },
     province: { __type: 'User_province_operator' },
     rating: { __type: 'User_rating_operator' },
-    requestsMade__id: { __type: 'User_requestsMade__id_operator' },
-    requestsMade__item: { __type: 'User_requestsMade__item_operator' },
-    requestsMade__user: { __type: 'User_requestsMade__user_operator' },
-    requestsReceived__id: { __type: 'User_requestsReceived__id_operator' },
-    requestsReceived__item: { __type: 'User_requestsReceived__item_operator' },
-    requestsReceived__user: { __type: 'User_requestsReceived__user_operator' },
+    requestsMade: { __type: 'User_requestsMade_operator' },
+    requestsReceived: { __type: 'User_requestsReceived_operator' },
     roles: { __type: 'User_roles_operator' },
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
@@ -6634,7 +6804,6 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     create: { __type: 'UsersDocAccessFields_requestsMade_Create' },
     delete: { __type: 'UsersDocAccessFields_requestsMade_Delete' },
-    fields: { __type: 'UsersDocAccessFields_requestsMade_Fields' },
     read: { __type: 'UsersDocAccessFields_requestsMade_Read' },
     update: { __type: 'UsersDocAccessFields_requestsMade_Update' },
   },
@@ -6646,12 +6815,6 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
-  UsersDocAccessFields_requestsMade_Fields: {
-    __typename: { __type: 'String!' },
-    id: { __type: 'UsersDocAccessFields_requestsMade_id' },
-    item: { __type: 'UsersDocAccessFields_requestsMade_item' },
-    user: { __type: 'UsersDocAccessFields_requestsMade_user' },
-  },
   UsersDocAccessFields_requestsMade_Read: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
@@ -6660,80 +6823,10 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
-  UsersDocAccessFields_requestsMade_id: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'UsersDocAccessFields_requestsMade_id_Create' },
-    delete: { __type: 'UsersDocAccessFields_requestsMade_id_Delete' },
-    read: { __type: 'UsersDocAccessFields_requestsMade_id_Read' },
-    update: { __type: 'UsersDocAccessFields_requestsMade_id_Update' },
-  },
-  UsersDocAccessFields_requestsMade_id_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsMade_id_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsMade_id_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsMade_id_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsMade_item: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'UsersDocAccessFields_requestsMade_item_Create' },
-    delete: { __type: 'UsersDocAccessFields_requestsMade_item_Delete' },
-    read: { __type: 'UsersDocAccessFields_requestsMade_item_Read' },
-    update: { __type: 'UsersDocAccessFields_requestsMade_item_Update' },
-  },
-  UsersDocAccessFields_requestsMade_item_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsMade_item_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsMade_item_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsMade_item_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsMade_user: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'UsersDocAccessFields_requestsMade_user_Create' },
-    delete: { __type: 'UsersDocAccessFields_requestsMade_user_Delete' },
-    read: { __type: 'UsersDocAccessFields_requestsMade_user_Read' },
-    update: { __type: 'UsersDocAccessFields_requestsMade_user_Update' },
-  },
-  UsersDocAccessFields_requestsMade_user_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsMade_user_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsMade_user_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsMade_user_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
   UsersDocAccessFields_requestsReceived: {
     __typename: { __type: 'String!' },
     create: { __type: 'UsersDocAccessFields_requestsReceived_Create' },
     delete: { __type: 'UsersDocAccessFields_requestsReceived_Delete' },
-    fields: { __type: 'UsersDocAccessFields_requestsReceived_Fields' },
     read: { __type: 'UsersDocAccessFields_requestsReceived_Read' },
     update: { __type: 'UsersDocAccessFields_requestsReceived_Update' },
   },
@@ -6745,86 +6838,11 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
-  UsersDocAccessFields_requestsReceived_Fields: {
-    __typename: { __type: 'String!' },
-    id: { __type: 'UsersDocAccessFields_requestsReceived_id' },
-    item: { __type: 'UsersDocAccessFields_requestsReceived_item' },
-    user: { __type: 'UsersDocAccessFields_requestsReceived_user' },
-  },
   UsersDocAccessFields_requestsReceived_Read: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
   UsersDocAccessFields_requestsReceived_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsReceived_id: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'UsersDocAccessFields_requestsReceived_id_Create' },
-    delete: { __type: 'UsersDocAccessFields_requestsReceived_id_Delete' },
-    read: { __type: 'UsersDocAccessFields_requestsReceived_id_Read' },
-    update: { __type: 'UsersDocAccessFields_requestsReceived_id_Update' },
-  },
-  UsersDocAccessFields_requestsReceived_id_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsReceived_id_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsReceived_id_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsReceived_id_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsReceived_item: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'UsersDocAccessFields_requestsReceived_item_Create' },
-    delete: { __type: 'UsersDocAccessFields_requestsReceived_item_Delete' },
-    read: { __type: 'UsersDocAccessFields_requestsReceived_item_Read' },
-    update: { __type: 'UsersDocAccessFields_requestsReceived_item_Update' },
-  },
-  UsersDocAccessFields_requestsReceived_item_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsReceived_item_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsReceived_item_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsReceived_item_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsReceived_user: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'UsersDocAccessFields_requestsReceived_user_Create' },
-    delete: { __type: 'UsersDocAccessFields_requestsReceived_user_Delete' },
-    read: { __type: 'UsersDocAccessFields_requestsReceived_user_Read' },
-    update: { __type: 'UsersDocAccessFields_requestsReceived_user_Update' },
-  },
-  UsersDocAccessFields_requestsReceived_user_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsReceived_user_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsReceived_user_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersDocAccessFields_requestsReceived_user_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -7107,7 +7125,6 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     create: { __type: 'UsersFields_requestsMade_Create' },
     delete: { __type: 'UsersFields_requestsMade_Delete' },
-    fields: { __type: 'UsersFields_requestsMade_Fields' },
     read: { __type: 'UsersFields_requestsMade_Read' },
     update: { __type: 'UsersFields_requestsMade_Update' },
   },
@@ -7119,12 +7136,6 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
-  UsersFields_requestsMade_Fields: {
-    __typename: { __type: 'String!' },
-    id: { __type: 'UsersFields_requestsMade_id' },
-    item: { __type: 'UsersFields_requestsMade_item' },
-    user: { __type: 'UsersFields_requestsMade_user' },
-  },
   UsersFields_requestsMade_Read: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
@@ -7133,80 +7144,10 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
-  UsersFields_requestsMade_id: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'UsersFields_requestsMade_id_Create' },
-    delete: { __type: 'UsersFields_requestsMade_id_Delete' },
-    read: { __type: 'UsersFields_requestsMade_id_Read' },
-    update: { __type: 'UsersFields_requestsMade_id_Update' },
-  },
-  UsersFields_requestsMade_id_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsMade_id_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsMade_id_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsMade_id_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsMade_item: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'UsersFields_requestsMade_item_Create' },
-    delete: { __type: 'UsersFields_requestsMade_item_Delete' },
-    read: { __type: 'UsersFields_requestsMade_item_Read' },
-    update: { __type: 'UsersFields_requestsMade_item_Update' },
-  },
-  UsersFields_requestsMade_item_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsMade_item_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsMade_item_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsMade_item_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsMade_user: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'UsersFields_requestsMade_user_Create' },
-    delete: { __type: 'UsersFields_requestsMade_user_Delete' },
-    read: { __type: 'UsersFields_requestsMade_user_Read' },
-    update: { __type: 'UsersFields_requestsMade_user_Update' },
-  },
-  UsersFields_requestsMade_user_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsMade_user_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsMade_user_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsMade_user_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
   UsersFields_requestsReceived: {
     __typename: { __type: 'String!' },
     create: { __type: 'UsersFields_requestsReceived_Create' },
     delete: { __type: 'UsersFields_requestsReceived_Delete' },
-    fields: { __type: 'UsersFields_requestsReceived_Fields' },
     read: { __type: 'UsersFields_requestsReceived_Read' },
     update: { __type: 'UsersFields_requestsReceived_Update' },
   },
@@ -7218,86 +7159,11 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
-  UsersFields_requestsReceived_Fields: {
-    __typename: { __type: 'String!' },
-    id: { __type: 'UsersFields_requestsReceived_id' },
-    item: { __type: 'UsersFields_requestsReceived_item' },
-    user: { __type: 'UsersFields_requestsReceived_user' },
-  },
   UsersFields_requestsReceived_Read: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
   UsersFields_requestsReceived_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsReceived_id: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'UsersFields_requestsReceived_id_Create' },
-    delete: { __type: 'UsersFields_requestsReceived_id_Delete' },
-    read: { __type: 'UsersFields_requestsReceived_id_Read' },
-    update: { __type: 'UsersFields_requestsReceived_id_Update' },
-  },
-  UsersFields_requestsReceived_id_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsReceived_id_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsReceived_id_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsReceived_id_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsReceived_item: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'UsersFields_requestsReceived_item_Create' },
-    delete: { __type: 'UsersFields_requestsReceived_item_Delete' },
-    read: { __type: 'UsersFields_requestsReceived_item_Read' },
-    update: { __type: 'UsersFields_requestsReceived_item_Update' },
-  },
-  UsersFields_requestsReceived_item_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsReceived_item_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsReceived_item_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsReceived_item_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsReceived_user: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'UsersFields_requestsReceived_user_Create' },
-    delete: { __type: 'UsersFields_requestsReceived_user_Delete' },
-    read: { __type: 'UsersFields_requestsReceived_user_Read' },
-    update: { __type: 'UsersFields_requestsReceived_user_Update' },
-  },
-  UsersFields_requestsReceived_user_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsReceived_user_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsReceived_user_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  UsersFields_requestsReceived_user_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -7668,7 +7534,11 @@ export const generatedSchema = {
   mutationRentingInput: {
     createdAt: { __type: 'String' },
     createdBy: { __type: 'Int' },
+    deliveryFee: { __type: 'Float' },
     endDate: { __type: 'String!' },
+    file: { __type: 'Int' },
+    insuranceFee: { __type: 'Float' },
+    rentalFee: { __type: 'Float' },
     rentedBy: { __type: 'mutationRenting_RentedByInput!' },
     rentedTo: { __type: 'mutationRenting_RentedToInput!' },
     startDate: { __type: 'String!' },
@@ -7679,7 +7549,11 @@ export const generatedSchema = {
   mutationRentingUpdateInput: {
     createdAt: { __type: 'String' },
     createdBy: { __type: 'Int' },
+    deliveryFee: { __type: 'Float' },
     endDate: { __type: 'String' },
+    file: { __type: 'Int' },
+    insuranceFee: { __type: 'Float' },
+    rentalFee: { __type: 'Float' },
     rentedBy: { __type: 'mutationRentingUpdate_RentedByInput!' },
     rentedTo: { __type: 'mutationRentingUpdate_RentedToInput!' },
     startDate: { __type: 'String' },
@@ -7719,8 +7593,8 @@ export const generatedSchema = {
     profileImage: { __type: 'Int' },
     province: { __type: 'String' },
     rating: { __type: 'Float' },
-    requestsMade: { __type: '[mutationUser_RequestsMadeInput]' },
-    requestsReceived: { __type: '[mutationUser_RequestsReceivedInput]' },
+    requestsMade: { __type: '[Int]' },
+    requestsReceived: { __type: '[Int]' },
     resetPasswordExpiration: { __type: 'String' },
     resetPasswordToken: { __type: 'String' },
     roles: { __type: '[User_roles_MutationInput]!' },
@@ -7741,33 +7615,13 @@ export const generatedSchema = {
     profileImage: { __type: 'Int' },
     province: { __type: 'String' },
     rating: { __type: 'Float' },
-    requestsMade: { __type: '[mutationUserUpdate_RequestsMadeInput]' },
-    requestsReceived: { __type: '[mutationUserUpdate_RequestsReceivedInput]' },
+    requestsMade: { __type: '[Int]' },
+    requestsReceived: { __type: '[Int]' },
     resetPasswordExpiration: { __type: 'String' },
     resetPasswordToken: { __type: 'String' },
     roles: { __type: '[UserUpdate_roles_MutationInput]' },
     salt: { __type: 'String' },
     updatedAt: { __type: 'String' },
-  },
-  mutationUserUpdate_RequestsMadeInput: {
-    id: { __type: 'String' },
-    item: { __type: 'Int' },
-    user: { __type: 'Int' },
-  },
-  mutationUserUpdate_RequestsReceivedInput: {
-    id: { __type: 'String' },
-    item: { __type: 'Int' },
-    user: { __type: 'Int' },
-  },
-  mutationUser_RequestsMadeInput: {
-    id: { __type: 'String' },
-    item: { __type: 'Int' },
-    user: { __type: 'Int' },
-  },
-  mutationUser_RequestsReceivedInput: {
-    id: { __type: 'String' },
-    item: { __type: 'Int' },
-    user: { __type: 'Int' },
   },
   payload_preferencesAccess: {
     __typename: { __type: 'String!' },
@@ -11206,8 +11060,12 @@ export interface Renting {
   __typename?: 'Renting'
   createdAt?: Maybe<ScalarsEnums['DateTime']>
   createdBy: User
+  deliveryFee?: Maybe<ScalarsEnums['Float']>
   endDate: ScalarsEnums['DateTime']
+  file?: Maybe<Media>
   id?: Maybe<ScalarsEnums['Int']>
+  insuranceFee?: Maybe<ScalarsEnums['Float']>
+  rentalFee?: Maybe<ScalarsEnums['Float']>
   rentedBy?: Maybe<Renting_RentedBy>
   rentedTo?: Maybe<Renting_RentedTo>
   startDate: ScalarsEnums['DateTime']
@@ -11244,7 +11102,11 @@ export interface RentingDocAccessFields {
   __typename?: 'RentingDocAccessFields'
   createdAt?: Maybe<RentingDocAccessFields_createdAt>
   createdBy?: Maybe<RentingDocAccessFields_createdBy>
+  deliveryFee?: Maybe<RentingDocAccessFields_deliveryFee>
   endDate?: Maybe<RentingDocAccessFields_endDate>
+  file?: Maybe<RentingDocAccessFields_file>
+  insuranceFee?: Maybe<RentingDocAccessFields_insuranceFee>
+  rentalFee?: Maybe<RentingDocAccessFields_rentalFee>
   rentedBy?: Maybe<RentingDocAccessFields_rentedBy>
   rentedTo?: Maybe<RentingDocAccessFields_rentedTo>
   startDate?: Maybe<RentingDocAccessFields_startDate>
@@ -11309,6 +11171,34 @@ export interface RentingDocAccessFields_createdBy_Update {
   permission: ScalarsEnums['Boolean']
 }
 
+export interface RentingDocAccessFields_deliveryFee {
+  __typename?: 'RentingDocAccessFields_deliveryFee'
+  create?: Maybe<RentingDocAccessFields_deliveryFee_Create>
+  delete?: Maybe<RentingDocAccessFields_deliveryFee_Delete>
+  read?: Maybe<RentingDocAccessFields_deliveryFee_Read>
+  update?: Maybe<RentingDocAccessFields_deliveryFee_Update>
+}
+
+export interface RentingDocAccessFields_deliveryFee_Create {
+  __typename?: 'RentingDocAccessFields_deliveryFee_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_deliveryFee_Delete {
+  __typename?: 'RentingDocAccessFields_deliveryFee_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_deliveryFee_Read {
+  __typename?: 'RentingDocAccessFields_deliveryFee_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_deliveryFee_Update {
+  __typename?: 'RentingDocAccessFields_deliveryFee_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
 export interface RentingDocAccessFields_endDate {
   __typename?: 'RentingDocAccessFields_endDate'
   create?: Maybe<RentingDocAccessFields_endDate_Create>
@@ -11334,6 +11224,90 @@ export interface RentingDocAccessFields_endDate_Read {
 
 export interface RentingDocAccessFields_endDate_Update {
   __typename?: 'RentingDocAccessFields_endDate_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_file {
+  __typename?: 'RentingDocAccessFields_file'
+  create?: Maybe<RentingDocAccessFields_file_Create>
+  delete?: Maybe<RentingDocAccessFields_file_Delete>
+  read?: Maybe<RentingDocAccessFields_file_Read>
+  update?: Maybe<RentingDocAccessFields_file_Update>
+}
+
+export interface RentingDocAccessFields_file_Create {
+  __typename?: 'RentingDocAccessFields_file_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_file_Delete {
+  __typename?: 'RentingDocAccessFields_file_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_file_Read {
+  __typename?: 'RentingDocAccessFields_file_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_file_Update {
+  __typename?: 'RentingDocAccessFields_file_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_insuranceFee {
+  __typename?: 'RentingDocAccessFields_insuranceFee'
+  create?: Maybe<RentingDocAccessFields_insuranceFee_Create>
+  delete?: Maybe<RentingDocAccessFields_insuranceFee_Delete>
+  read?: Maybe<RentingDocAccessFields_insuranceFee_Read>
+  update?: Maybe<RentingDocAccessFields_insuranceFee_Update>
+}
+
+export interface RentingDocAccessFields_insuranceFee_Create {
+  __typename?: 'RentingDocAccessFields_insuranceFee_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_insuranceFee_Delete {
+  __typename?: 'RentingDocAccessFields_insuranceFee_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_insuranceFee_Read {
+  __typename?: 'RentingDocAccessFields_insuranceFee_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_insuranceFee_Update {
+  __typename?: 'RentingDocAccessFields_insuranceFee_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentalFee {
+  __typename?: 'RentingDocAccessFields_rentalFee'
+  create?: Maybe<RentingDocAccessFields_rentalFee_Create>
+  delete?: Maybe<RentingDocAccessFields_rentalFee_Delete>
+  read?: Maybe<RentingDocAccessFields_rentalFee_Read>
+  update?: Maybe<RentingDocAccessFields_rentalFee_Update>
+}
+
+export interface RentingDocAccessFields_rentalFee_Create {
+  __typename?: 'RentingDocAccessFields_rentalFee_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentalFee_Delete {
+  __typename?: 'RentingDocAccessFields_rentalFee_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentalFee_Read {
+  __typename?: 'RentingDocAccessFields_rentalFee_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentalFee_Update {
+  __typename?: 'RentingDocAccessFields_rentalFee_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -11606,7 +11580,11 @@ export interface RentingFields {
   __typename?: 'RentingFields'
   createdAt?: Maybe<RentingFields_createdAt>
   createdBy?: Maybe<RentingFields_createdBy>
+  deliveryFee?: Maybe<RentingFields_deliveryFee>
   endDate?: Maybe<RentingFields_endDate>
+  file?: Maybe<RentingFields_file>
+  insuranceFee?: Maybe<RentingFields_insuranceFee>
+  rentalFee?: Maybe<RentingFields_rentalFee>
   rentedBy?: Maybe<RentingFields_rentedBy>
   rentedTo?: Maybe<RentingFields_rentedTo>
   startDate?: Maybe<RentingFields_startDate>
@@ -11671,6 +11649,34 @@ export interface RentingFields_createdBy_Update {
   permission: ScalarsEnums['Boolean']
 }
 
+export interface RentingFields_deliveryFee {
+  __typename?: 'RentingFields_deliveryFee'
+  create?: Maybe<RentingFields_deliveryFee_Create>
+  delete?: Maybe<RentingFields_deliveryFee_Delete>
+  read?: Maybe<RentingFields_deliveryFee_Read>
+  update?: Maybe<RentingFields_deliveryFee_Update>
+}
+
+export interface RentingFields_deliveryFee_Create {
+  __typename?: 'RentingFields_deliveryFee_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_deliveryFee_Delete {
+  __typename?: 'RentingFields_deliveryFee_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_deliveryFee_Read {
+  __typename?: 'RentingFields_deliveryFee_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_deliveryFee_Update {
+  __typename?: 'RentingFields_deliveryFee_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
 export interface RentingFields_endDate {
   __typename?: 'RentingFields_endDate'
   create?: Maybe<RentingFields_endDate_Create>
@@ -11696,6 +11702,90 @@ export interface RentingFields_endDate_Read {
 
 export interface RentingFields_endDate_Update {
   __typename?: 'RentingFields_endDate_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_file {
+  __typename?: 'RentingFields_file'
+  create?: Maybe<RentingFields_file_Create>
+  delete?: Maybe<RentingFields_file_Delete>
+  read?: Maybe<RentingFields_file_Read>
+  update?: Maybe<RentingFields_file_Update>
+}
+
+export interface RentingFields_file_Create {
+  __typename?: 'RentingFields_file_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_file_Delete {
+  __typename?: 'RentingFields_file_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_file_Read {
+  __typename?: 'RentingFields_file_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_file_Update {
+  __typename?: 'RentingFields_file_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_insuranceFee {
+  __typename?: 'RentingFields_insuranceFee'
+  create?: Maybe<RentingFields_insuranceFee_Create>
+  delete?: Maybe<RentingFields_insuranceFee_Delete>
+  read?: Maybe<RentingFields_insuranceFee_Read>
+  update?: Maybe<RentingFields_insuranceFee_Update>
+}
+
+export interface RentingFields_insuranceFee_Create {
+  __typename?: 'RentingFields_insuranceFee_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_insuranceFee_Delete {
+  __typename?: 'RentingFields_insuranceFee_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_insuranceFee_Read {
+  __typename?: 'RentingFields_insuranceFee_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_insuranceFee_Update {
+  __typename?: 'RentingFields_insuranceFee_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentalFee {
+  __typename?: 'RentingFields_rentalFee'
+  create?: Maybe<RentingFields_rentalFee_Create>
+  delete?: Maybe<RentingFields_rentalFee_Delete>
+  read?: Maybe<RentingFields_rentalFee_Read>
+  update?: Maybe<RentingFields_rentalFee_Update>
+}
+
+export interface RentingFields_rentalFee_Create {
+  __typename?: 'RentingFields_rentalFee_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentalFee_Delete {
+  __typename?: 'RentingFields_rentalFee_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentalFee_Read {
+  __typename?: 'RentingFields_rentalFee_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentalFee_Update {
+  __typename?: 'RentingFields_rentalFee_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -12343,27 +12433,13 @@ export interface User {
   profileImage?: Maybe<Media>
   province?: Maybe<ScalarsEnums['String']>
   rating?: Maybe<ScalarsEnums['Float']>
-  requestsMade?: Maybe<Array<User_RequestsMade>>
-  requestsReceived?: Maybe<Array<User_RequestsReceived>>
+  requestsMade?: Maybe<Array<Renting>>
+  requestsReceived?: Maybe<Array<Renting>>
   resetPasswordExpiration?: Maybe<ScalarsEnums['DateTime']>
   resetPasswordToken?: Maybe<ScalarsEnums['String']>
   roles: Array<ScalarsEnums['User_roles']>
   salt?: Maybe<ScalarsEnums['String']>
   updatedAt?: Maybe<ScalarsEnums['DateTime']>
-}
-
-export interface User_RequestsMade {
-  __typename?: 'User_RequestsMade'
-  id?: Maybe<ScalarsEnums['String']>
-  item?: Maybe<Item>
-  user?: Maybe<User>
-}
-
-export interface User_RequestsReceived {
-  __typename?: 'User_RequestsReceived'
-  id?: Maybe<ScalarsEnums['String']>
-  item?: Maybe<Item>
-  user?: Maybe<User>
 }
 
 export interface Users {
@@ -12707,7 +12783,6 @@ export interface UsersDocAccessFields_requestsMade {
   __typename?: 'UsersDocAccessFields_requestsMade'
   create?: Maybe<UsersDocAccessFields_requestsMade_Create>
   delete?: Maybe<UsersDocAccessFields_requestsMade_Delete>
-  fields?: Maybe<UsersDocAccessFields_requestsMade_Fields>
   read?: Maybe<UsersDocAccessFields_requestsMade_Read>
   update?: Maybe<UsersDocAccessFields_requestsMade_Update>
 }
@@ -12722,13 +12797,6 @@ export interface UsersDocAccessFields_requestsMade_Delete {
   permission: ScalarsEnums['Boolean']
 }
 
-export interface UsersDocAccessFields_requestsMade_Fields {
-  __typename?: 'UsersDocAccessFields_requestsMade_Fields'
-  id?: Maybe<UsersDocAccessFields_requestsMade_id>
-  item?: Maybe<UsersDocAccessFields_requestsMade_item>
-  user?: Maybe<UsersDocAccessFields_requestsMade_user>
-}
-
 export interface UsersDocAccessFields_requestsMade_Read {
   __typename?: 'UsersDocAccessFields_requestsMade_Read'
   permission: ScalarsEnums['Boolean']
@@ -12739,95 +12807,10 @@ export interface UsersDocAccessFields_requestsMade_Update {
   permission: ScalarsEnums['Boolean']
 }
 
-export interface UsersDocAccessFields_requestsMade_id {
-  __typename?: 'UsersDocAccessFields_requestsMade_id'
-  create?: Maybe<UsersDocAccessFields_requestsMade_id_Create>
-  delete?: Maybe<UsersDocAccessFields_requestsMade_id_Delete>
-  read?: Maybe<UsersDocAccessFields_requestsMade_id_Read>
-  update?: Maybe<UsersDocAccessFields_requestsMade_id_Update>
-}
-
-export interface UsersDocAccessFields_requestsMade_id_Create {
-  __typename?: 'UsersDocAccessFields_requestsMade_id_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsMade_id_Delete {
-  __typename?: 'UsersDocAccessFields_requestsMade_id_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsMade_id_Read {
-  __typename?: 'UsersDocAccessFields_requestsMade_id_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsMade_id_Update {
-  __typename?: 'UsersDocAccessFields_requestsMade_id_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsMade_item {
-  __typename?: 'UsersDocAccessFields_requestsMade_item'
-  create?: Maybe<UsersDocAccessFields_requestsMade_item_Create>
-  delete?: Maybe<UsersDocAccessFields_requestsMade_item_Delete>
-  read?: Maybe<UsersDocAccessFields_requestsMade_item_Read>
-  update?: Maybe<UsersDocAccessFields_requestsMade_item_Update>
-}
-
-export interface UsersDocAccessFields_requestsMade_item_Create {
-  __typename?: 'UsersDocAccessFields_requestsMade_item_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsMade_item_Delete {
-  __typename?: 'UsersDocAccessFields_requestsMade_item_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsMade_item_Read {
-  __typename?: 'UsersDocAccessFields_requestsMade_item_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsMade_item_Update {
-  __typename?: 'UsersDocAccessFields_requestsMade_item_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsMade_user {
-  __typename?: 'UsersDocAccessFields_requestsMade_user'
-  create?: Maybe<UsersDocAccessFields_requestsMade_user_Create>
-  delete?: Maybe<UsersDocAccessFields_requestsMade_user_Delete>
-  read?: Maybe<UsersDocAccessFields_requestsMade_user_Read>
-  update?: Maybe<UsersDocAccessFields_requestsMade_user_Update>
-}
-
-export interface UsersDocAccessFields_requestsMade_user_Create {
-  __typename?: 'UsersDocAccessFields_requestsMade_user_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsMade_user_Delete {
-  __typename?: 'UsersDocAccessFields_requestsMade_user_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsMade_user_Read {
-  __typename?: 'UsersDocAccessFields_requestsMade_user_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsMade_user_Update {
-  __typename?: 'UsersDocAccessFields_requestsMade_user_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
 export interface UsersDocAccessFields_requestsReceived {
   __typename?: 'UsersDocAccessFields_requestsReceived'
   create?: Maybe<UsersDocAccessFields_requestsReceived_Create>
   delete?: Maybe<UsersDocAccessFields_requestsReceived_Delete>
-  fields?: Maybe<UsersDocAccessFields_requestsReceived_Fields>
   read?: Maybe<UsersDocAccessFields_requestsReceived_Read>
   update?: Maybe<UsersDocAccessFields_requestsReceived_Update>
 }
@@ -12842,13 +12825,6 @@ export interface UsersDocAccessFields_requestsReceived_Delete {
   permission: ScalarsEnums['Boolean']
 }
 
-export interface UsersDocAccessFields_requestsReceived_Fields {
-  __typename?: 'UsersDocAccessFields_requestsReceived_Fields'
-  id?: Maybe<UsersDocAccessFields_requestsReceived_id>
-  item?: Maybe<UsersDocAccessFields_requestsReceived_item>
-  user?: Maybe<UsersDocAccessFields_requestsReceived_user>
-}
-
 export interface UsersDocAccessFields_requestsReceived_Read {
   __typename?: 'UsersDocAccessFields_requestsReceived_Read'
   permission: ScalarsEnums['Boolean']
@@ -12856,90 +12832,6 @@ export interface UsersDocAccessFields_requestsReceived_Read {
 
 export interface UsersDocAccessFields_requestsReceived_Update {
   __typename?: 'UsersDocAccessFields_requestsReceived_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsReceived_id {
-  __typename?: 'UsersDocAccessFields_requestsReceived_id'
-  create?: Maybe<UsersDocAccessFields_requestsReceived_id_Create>
-  delete?: Maybe<UsersDocAccessFields_requestsReceived_id_Delete>
-  read?: Maybe<UsersDocAccessFields_requestsReceived_id_Read>
-  update?: Maybe<UsersDocAccessFields_requestsReceived_id_Update>
-}
-
-export interface UsersDocAccessFields_requestsReceived_id_Create {
-  __typename?: 'UsersDocAccessFields_requestsReceived_id_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsReceived_id_Delete {
-  __typename?: 'UsersDocAccessFields_requestsReceived_id_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsReceived_id_Read {
-  __typename?: 'UsersDocAccessFields_requestsReceived_id_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsReceived_id_Update {
-  __typename?: 'UsersDocAccessFields_requestsReceived_id_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsReceived_item {
-  __typename?: 'UsersDocAccessFields_requestsReceived_item'
-  create?: Maybe<UsersDocAccessFields_requestsReceived_item_Create>
-  delete?: Maybe<UsersDocAccessFields_requestsReceived_item_Delete>
-  read?: Maybe<UsersDocAccessFields_requestsReceived_item_Read>
-  update?: Maybe<UsersDocAccessFields_requestsReceived_item_Update>
-}
-
-export interface UsersDocAccessFields_requestsReceived_item_Create {
-  __typename?: 'UsersDocAccessFields_requestsReceived_item_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsReceived_item_Delete {
-  __typename?: 'UsersDocAccessFields_requestsReceived_item_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsReceived_item_Read {
-  __typename?: 'UsersDocAccessFields_requestsReceived_item_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsReceived_item_Update {
-  __typename?: 'UsersDocAccessFields_requestsReceived_item_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsReceived_user {
-  __typename?: 'UsersDocAccessFields_requestsReceived_user'
-  create?: Maybe<UsersDocAccessFields_requestsReceived_user_Create>
-  delete?: Maybe<UsersDocAccessFields_requestsReceived_user_Delete>
-  read?: Maybe<UsersDocAccessFields_requestsReceived_user_Read>
-  update?: Maybe<UsersDocAccessFields_requestsReceived_user_Update>
-}
-
-export interface UsersDocAccessFields_requestsReceived_user_Create {
-  __typename?: 'UsersDocAccessFields_requestsReceived_user_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsReceived_user_Delete {
-  __typename?: 'UsersDocAccessFields_requestsReceived_user_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsReceived_user_Read {
-  __typename?: 'UsersDocAccessFields_requestsReceived_user_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersDocAccessFields_requestsReceived_user_Update {
-  __typename?: 'UsersDocAccessFields_requestsReceived_user_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -13301,7 +13193,6 @@ export interface UsersFields_requestsMade {
   __typename?: 'UsersFields_requestsMade'
   create?: Maybe<UsersFields_requestsMade_Create>
   delete?: Maybe<UsersFields_requestsMade_Delete>
-  fields?: Maybe<UsersFields_requestsMade_Fields>
   read?: Maybe<UsersFields_requestsMade_Read>
   update?: Maybe<UsersFields_requestsMade_Update>
 }
@@ -13316,13 +13207,6 @@ export interface UsersFields_requestsMade_Delete {
   permission: ScalarsEnums['Boolean']
 }
 
-export interface UsersFields_requestsMade_Fields {
-  __typename?: 'UsersFields_requestsMade_Fields'
-  id?: Maybe<UsersFields_requestsMade_id>
-  item?: Maybe<UsersFields_requestsMade_item>
-  user?: Maybe<UsersFields_requestsMade_user>
-}
-
 export interface UsersFields_requestsMade_Read {
   __typename?: 'UsersFields_requestsMade_Read'
   permission: ScalarsEnums['Boolean']
@@ -13333,95 +13217,10 @@ export interface UsersFields_requestsMade_Update {
   permission: ScalarsEnums['Boolean']
 }
 
-export interface UsersFields_requestsMade_id {
-  __typename?: 'UsersFields_requestsMade_id'
-  create?: Maybe<UsersFields_requestsMade_id_Create>
-  delete?: Maybe<UsersFields_requestsMade_id_Delete>
-  read?: Maybe<UsersFields_requestsMade_id_Read>
-  update?: Maybe<UsersFields_requestsMade_id_Update>
-}
-
-export interface UsersFields_requestsMade_id_Create {
-  __typename?: 'UsersFields_requestsMade_id_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsMade_id_Delete {
-  __typename?: 'UsersFields_requestsMade_id_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsMade_id_Read {
-  __typename?: 'UsersFields_requestsMade_id_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsMade_id_Update {
-  __typename?: 'UsersFields_requestsMade_id_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsMade_item {
-  __typename?: 'UsersFields_requestsMade_item'
-  create?: Maybe<UsersFields_requestsMade_item_Create>
-  delete?: Maybe<UsersFields_requestsMade_item_Delete>
-  read?: Maybe<UsersFields_requestsMade_item_Read>
-  update?: Maybe<UsersFields_requestsMade_item_Update>
-}
-
-export interface UsersFields_requestsMade_item_Create {
-  __typename?: 'UsersFields_requestsMade_item_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsMade_item_Delete {
-  __typename?: 'UsersFields_requestsMade_item_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsMade_item_Read {
-  __typename?: 'UsersFields_requestsMade_item_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsMade_item_Update {
-  __typename?: 'UsersFields_requestsMade_item_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsMade_user {
-  __typename?: 'UsersFields_requestsMade_user'
-  create?: Maybe<UsersFields_requestsMade_user_Create>
-  delete?: Maybe<UsersFields_requestsMade_user_Delete>
-  read?: Maybe<UsersFields_requestsMade_user_Read>
-  update?: Maybe<UsersFields_requestsMade_user_Update>
-}
-
-export interface UsersFields_requestsMade_user_Create {
-  __typename?: 'UsersFields_requestsMade_user_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsMade_user_Delete {
-  __typename?: 'UsersFields_requestsMade_user_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsMade_user_Read {
-  __typename?: 'UsersFields_requestsMade_user_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsMade_user_Update {
-  __typename?: 'UsersFields_requestsMade_user_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
 export interface UsersFields_requestsReceived {
   __typename?: 'UsersFields_requestsReceived'
   create?: Maybe<UsersFields_requestsReceived_Create>
   delete?: Maybe<UsersFields_requestsReceived_Delete>
-  fields?: Maybe<UsersFields_requestsReceived_Fields>
   read?: Maybe<UsersFields_requestsReceived_Read>
   update?: Maybe<UsersFields_requestsReceived_Update>
 }
@@ -13436,13 +13235,6 @@ export interface UsersFields_requestsReceived_Delete {
   permission: ScalarsEnums['Boolean']
 }
 
-export interface UsersFields_requestsReceived_Fields {
-  __typename?: 'UsersFields_requestsReceived_Fields'
-  id?: Maybe<UsersFields_requestsReceived_id>
-  item?: Maybe<UsersFields_requestsReceived_item>
-  user?: Maybe<UsersFields_requestsReceived_user>
-}
-
 export interface UsersFields_requestsReceived_Read {
   __typename?: 'UsersFields_requestsReceived_Read'
   permission: ScalarsEnums['Boolean']
@@ -13450,90 +13242,6 @@ export interface UsersFields_requestsReceived_Read {
 
 export interface UsersFields_requestsReceived_Update {
   __typename?: 'UsersFields_requestsReceived_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsReceived_id {
-  __typename?: 'UsersFields_requestsReceived_id'
-  create?: Maybe<UsersFields_requestsReceived_id_Create>
-  delete?: Maybe<UsersFields_requestsReceived_id_Delete>
-  read?: Maybe<UsersFields_requestsReceived_id_Read>
-  update?: Maybe<UsersFields_requestsReceived_id_Update>
-}
-
-export interface UsersFields_requestsReceived_id_Create {
-  __typename?: 'UsersFields_requestsReceived_id_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsReceived_id_Delete {
-  __typename?: 'UsersFields_requestsReceived_id_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsReceived_id_Read {
-  __typename?: 'UsersFields_requestsReceived_id_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsReceived_id_Update {
-  __typename?: 'UsersFields_requestsReceived_id_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsReceived_item {
-  __typename?: 'UsersFields_requestsReceived_item'
-  create?: Maybe<UsersFields_requestsReceived_item_Create>
-  delete?: Maybe<UsersFields_requestsReceived_item_Delete>
-  read?: Maybe<UsersFields_requestsReceived_item_Read>
-  update?: Maybe<UsersFields_requestsReceived_item_Update>
-}
-
-export interface UsersFields_requestsReceived_item_Create {
-  __typename?: 'UsersFields_requestsReceived_item_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsReceived_item_Delete {
-  __typename?: 'UsersFields_requestsReceived_item_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsReceived_item_Read {
-  __typename?: 'UsersFields_requestsReceived_item_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsReceived_item_Update {
-  __typename?: 'UsersFields_requestsReceived_item_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsReceived_user {
-  __typename?: 'UsersFields_requestsReceived_user'
-  create?: Maybe<UsersFields_requestsReceived_user_Create>
-  delete?: Maybe<UsersFields_requestsReceived_user_Delete>
-  read?: Maybe<UsersFields_requestsReceived_user_Read>
-  update?: Maybe<UsersFields_requestsReceived_user_Update>
-}
-
-export interface UsersFields_requestsReceived_user_Create {
-  __typename?: 'UsersFields_requestsReceived_user_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsReceived_user_Delete {
-  __typename?: 'UsersFields_requestsReceived_user_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsReceived_user_Read {
-  __typename?: 'UsersFields_requestsReceived_user_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface UsersFields_requestsReceived_user_Update {
-  __typename?: 'UsersFields_requestsReceived_user_Update'
   permission: ScalarsEnums['Boolean']
 }
 

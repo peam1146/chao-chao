@@ -4,12 +4,10 @@ import type { Renting, User } from '../../../payload-types'
 
 export const afterDelete: AfterDeleteHook<Renting> = async ({ req, doc }) => {
   const { payload } = req
-  const { rentedTo, rentedBy } = doc
+  const { rentedTo, rentedBy, id: requestId } = doc
 
   const rentedByID = typeof rentedBy.user === 'object' ? rentedBy.user.id : rentedBy.user
   const rentedToID = typeof rentedTo.user === 'object' ? rentedTo.user.id : rentedTo.user
-
-  const itemId = typeof rentedTo.item === 'object' ? rentedTo.item.id : rentedTo.item
 
   if (!rentedByID) {
     payload.logger.error('Error in `syncCollections` hook: No user ID found on renting')
@@ -36,13 +34,9 @@ export const afterDelete: AfterDeleteHook<Renting> = async ({ req, doc }) => {
 
   if (requestsMade && requestsMade.length > 0) {
     const requestMadeItemList = [
-      ...requestsMade.filter((request) => {
-        typeof request.item === 'object'
-          ? request.item.id !== itemId
-          : request.item !== itemId && typeof request.user === 'object'
-            ? request.user.id !== userBeingRented.id
-            : request.user !== userBeingRented.id
-      }),
+      ...requestsMade
+        .map((request) => (typeof request === 'object' ? request.id : request))
+        .filter((id) => id !== requestId),
     ]
     await req.payload.update({
       collection: 'users',
@@ -55,13 +49,9 @@ export const afterDelete: AfterDeleteHook<Renting> = async ({ req, doc }) => {
 
   if (requestsReceived && requestsReceived.length > 0) {
     const requestReceiveItemList = [
-      ...requestsReceived.filter((request) => {
-        typeof request.item === 'object'
-          ? request.item.id !== itemId
-          : request.item !== itemId && typeof request.user === 'object'
-            ? request.user.id !== userRenting.id
-            : request.user !== userRenting.id
-      }),
+      ...requestsReceived
+        .map((request) => (typeof request === 'object' ? request.id : request))
+        .filter((id) => id !== requestId),
     ]
     await req.payload.update({
       collection: 'users',
