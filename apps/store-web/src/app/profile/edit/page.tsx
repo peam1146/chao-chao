@@ -7,6 +7,7 @@ import profile from '@/assets/images/profileLogo.png'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { Spinner } from '@/components/ui/spinner'
 import { Textarea } from '@/components/ui/textarea'
 import Typography from '@/components/ui/typography'
 import { useToast } from '@/components/ui/use-toast'
@@ -79,7 +80,10 @@ export default function ProfileEdit() {
 
   const router = useRouter()
 
+  const [isLoading, setIsLoading] = useState(false)
+
   async function onSubmit(data: z.infer<typeof editProfileSchema>) {
+    setIsLoading(true)
     const { userId } = await resolve(({ query }) => {
       return {
         userId: query.meUser?.user?.id!,
@@ -130,12 +134,14 @@ export default function ProfileEdit() {
         success: true,
       })
       router.push('/profile')
+      setIsLoading(false)
     } catch {
       toast({
         title: 'Error',
         description: 'Something went wrong',
         error: true,
       })
+      setIsLoading(false)
     }
   }
 
@@ -266,8 +272,8 @@ export default function ProfileEdit() {
                 Cancel
               </Button>
             </Link>
-            <Button type="submit" className="min-w-[130px] mmax-lg:w-1/2">
-              Save
+            <Button type="submit" className="min-w-[130px] max-lg:w-1/2">
+              {isLoading ? <Spinner /> : 'Save'}
             </Button>
           </div>
         </form>

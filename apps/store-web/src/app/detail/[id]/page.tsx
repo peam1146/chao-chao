@@ -23,7 +23,7 @@ export default function DetailPage() {
   const { id } = useParams<{ id: string }>()
 
   const query = useQuery({
-    fetchPolicy: 'cache-first',
+    fetchPolicy: 'network-only',
   })
 
   const item = query.Item({
@@ -37,7 +37,7 @@ export default function DetailPage() {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink onClick={() => router.back()}>Search</BreadcrumbLink>
+            <BreadcrumbLink onClick={() => router.back()}>Back</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
@@ -47,15 +47,7 @@ export default function DetailPage() {
       </Breadcrumb>
       <div className="flex flex-col lg:flex-row p-6 gap-10 bg-card rounded-2xl justify-items-center">
         <Gallery imgList={item?.image} />
-        <Description
-          isSelf={item?.createdBy?.id === userId}
-          name={item?.name ?? ''}
-          price={item?.price ?? 0}
-          tags={item?.tags ?? []}
-          rating={item?.rating ?? 0}
-          status={item?.rentingStatus}
-          description={item?.description ?? ''}
-        />
+        <Description isSelf={item?.createdBy?.id === userId} item={item} />
       </div>
       <Lessor isSelf={item?.createdBy?.id === userId} user={item?.createdBy} />
       {!(item?.createdBy?.id === userId) && <Details details={item?.description} />}

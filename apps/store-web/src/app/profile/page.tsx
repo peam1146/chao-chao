@@ -18,7 +18,7 @@ export default function Profile() {
   const router = useRouter()
 
   const query = useQuery({
-    fetchPolicy: 'cache-first',
+    fetchPolicy: 'no-cache',
   })
 
   const user = query.meUser?.user
