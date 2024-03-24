@@ -48,6 +48,7 @@ export default function Description({ isSelf, item }: { isSelf: boolean; item: M
 
   async function onSubmit(data: z.infer<typeof requestSchema>) {
     setIsLoading(true)
+
     if (data.endDate?.getTime() <= data.startDate?.getTime()) {
       toast({
         title: 'Error',
@@ -285,7 +286,7 @@ export default function Description({ isSelf, item }: { isSelf: boolean; item: M
               <Button
                 type="submit"
                 size="lg"
-                disabled={isLoading}
+                disabled={isLoading || !form.getValues('startDate') || !form.getValues('endDate')}
                 className={item?.rentingStatus == Item_rentingStatus.available ? 'block' : 'hidden'}
               >
                 <Typography variant="h5" className="flex items-center">
