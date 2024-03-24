@@ -117,7 +117,7 @@ export function MyAsset() {
       <div className="py-4 w-full">
         <div className="mx-auto w-full grid grid-cols-2 2xl:grid-cols-6 lg:grid-cols-4 gap-4">
           {!itemsArray?.docs?.length && (
-            <Typography variant="h3" fontWeight="bold" className="text-center w-full">
+            <Typography variant="h6" fontWeight="bold" className="self-center w-full">
               No assets found
             </Typography>
           )}
