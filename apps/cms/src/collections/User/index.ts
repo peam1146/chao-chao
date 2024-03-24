@@ -2,6 +2,7 @@ import { User } from 'payload/generated-types'
 import { CollectionConfig } from 'payload/types'
 
 import { checkRole, isAdmin } from '../../access/'
+import createStripeCustomer from './hooks/createStripeCustomer'
 import { ensureFirstUserIsAdmin } from './hooks/ensureFirstUserIsAdmin'
 import { CustomerSelect } from './ui/CustomerSelect'
 
@@ -11,6 +12,9 @@ export const Users: CollectionConfig = {
   admin: {
     useAsTitle: 'email',
     hidden: ({ user }) => !checkRole(['admin'], user as unknown as User),
+  },
+  hooks: {
+    beforeChange: [createStripeCustomer],
   },
   access: {
     update: () => true,
