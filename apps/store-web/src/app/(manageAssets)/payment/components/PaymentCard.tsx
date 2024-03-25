@@ -132,7 +132,7 @@ export function ExpensesCardButton(props: ExpensesCardButtonProps) {
   return (
     <div className="max-xl:w-full xl:w-[180px]">
       <div className="flex flex-col items-center justify-center w-full h-full gap-3">
-        <div className="flex flex-col gap-1 items-center">
+        <div className="flex flex-row lg:flex-col gap-1 items-center">
           <div className="flex gap-2">
             <Clock size={16} className="self-center" />
             <Typography variant="h6">{`${daysLeft}d left`}</Typography>
