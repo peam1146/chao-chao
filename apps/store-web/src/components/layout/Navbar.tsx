@@ -3,7 +3,7 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 
 import { cn } from '@/lib/utils'
-import { List, MagnifyingGlass } from '@phosphor-icons/react'
+import { CaretLeft, List, MagnifyingGlass } from '@phosphor-icons/react'
 import { SearchIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
@@ -57,7 +57,7 @@ const SearchSuggestion = () => {
   const router = useRouter()
 
   return (
-    <div className="relative w-2/5" tabIndex={1}>
+    <div className="relative max-lg:w-full lg:w-2/5" tabIndex={1}>
       <form
         onSubmit={(e) => {
           e.preventDefault()
@@ -112,6 +112,7 @@ const SearchSuggestion = () => {
 
 const Navbar = ({ id }: { id: Maybe<Number | undefined> }) => {
   const [openMenu, setOpenMenu] = useState(false)
+  const [openSearch, setOpenSearch] = useState(false)
 
   const pathname = usePathname()
 
@@ -156,14 +157,39 @@ const Navbar = ({ id }: { id: Maybe<Number | undefined> }) => {
       </header>
 
       <header className="lg:hidden sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="flex h-16 w-full px-4 items-center justify-between">
-          <List className="w-6 h-6 cursor-pointer" onClick={() => setOpenMenu(true)} />
-          <Link href="/" className="flex items-center">
-            <Typography variant="h3" fontWeight="bold">
-              chao chao
-            </Typography>
-          </Link>
-          <MagnifyingGlass className="w-6 h-6 cursor-pointer" />
+        <div className="flex h-16 w-full gap-4 px-4 items-center justify-between">
+          {!openSearch && (
+            <>
+              <List className="w-6 h-6 cursor-pointer" onClick={() => setOpenMenu(true)} />
+              <Link href="/" className="flex items-center">
+                <Typography variant="h3" fontWeight="bold">
+                  chao chao
+                </Typography>
+              </Link>
+            </>
+          )}
+          {openSearch ? (
+            <>
+              <button
+                type="button"
+                onClick={() => {
+                  setOpenSearch(!openSearch)
+                }}
+              >
+                <CaretLeft className="w-6 h-6" />
+              </button>
+              <SearchSuggestion />
+            </>
+          ) : (
+            <button
+              type="button"
+              onClick={() => {
+                setOpenSearch(!openSearch)
+              }}
+            >
+              <MagnifyingGlass className="w-6 h-6" />
+            </button>
+          )}
         </div>
         <MenuSheet open={openMenu} setOpen={setOpenMenu} pathname={pathname} id={id} />
       </header>
