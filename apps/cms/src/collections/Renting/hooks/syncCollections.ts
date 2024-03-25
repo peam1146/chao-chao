@@ -9,6 +9,8 @@ export const syncCollections: AfterChangeHook<Renting> = async ({ req, doc }) =>
   const rentedByID = typeof rentedBy.user === 'object' ? rentedBy.user.id : rentedBy.user
   const rentedToID = typeof rentedTo.user === 'object' ? rentedTo.user.id : rentedTo.user
 
+  const itemId = typeof rentedTo.item === 'object' ? rentedTo.item.id : rentedTo.item
+
   if (!rentedByID) {
     payload.logger.error('Error in `syncCollections` hook: No user ID found on renting')
   }
@@ -27,6 +29,11 @@ export const syncCollections: AfterChangeHook<Renting> = async ({ req, doc }) =>
   const userBeingRented: User = await req.payload.findByID({
     collection: 'users',
     id: rentedToID,
+  })
+
+  const item = await req.payload.findByID({
+    collection: 'items',
+    id: itemId,
   })
 
   if (
@@ -100,6 +107,14 @@ export const syncCollections: AfterChangeHook<Renting> = async ({ req, doc }) =>
     //ไปที่ collections payment
   }
   if (status === 'PROCESSING') {
-    //บอกให้รู้สำหรับ negotiating ใน ui
+    if (item) {
+      await req.payload.update({
+        collection: 'items',
+        id: item.id,
+        data: {
+          rentingStatus: 'negotiating',
+        },
+      })
+    }
   }
 }

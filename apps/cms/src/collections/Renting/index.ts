@@ -35,7 +35,6 @@ export const Renting: CollectionConfig = {
           defaultValue: ({ user }) => user.id,
           relationTo: 'users',
           hasMany: false,
-          required: true,
           maxDepth: 3,
         },
       ],
@@ -50,7 +49,6 @@ export const Renting: CollectionConfig = {
           type: 'relationship',
           relationTo: 'users',
           hasMany: false,
-          required: true,
           maxDepth: 3,
         },
         {
@@ -58,7 +56,6 @@ export const Renting: CollectionConfig = {
           type: 'relationship',
           relationTo: 'items',
           hasMany: false,
-          required: true,
           maxDepth: 3,
         },
       ],

@@ -133,6 +133,7 @@ export const Users: CollectionConfig = {
       relationTo: 'renting',
       hasMany: true,
       unique: true,
+      maxDepth: 4,
     },
     {
       name: 'requestsReceived',
@@ -141,6 +142,7 @@ export const Users: CollectionConfig = {
       relationTo: 'renting',
       hasMany: true,
       unique: true,
+      maxDepth: 4,
     },
   ],
 }

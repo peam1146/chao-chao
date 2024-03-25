@@ -24,12 +24,7 @@ export default function Profile() {
   const user = query.meUser?.user
 
   useEffect(() => {
-    if (
-      user?.bio === '' ||
-      user?.firstName === '' ||
-      user?.lastName === '' ||
-      user?.profileImage?.url === ''
-    ) {
+    if (!user?.bio && !user?.firstName && !user?.lastName && user?.profileImage?.url === '') {
       router.push('/profile/edit')
     }
   }, [user?.bio, user?.firstName, user?.lastName, user?.profileImage?.url])

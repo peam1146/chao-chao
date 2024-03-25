@@ -94,6 +94,10 @@ export const Item: CollectionConfig = {
           label: 'Unavailable',
           value: 'unavailable',
         },
+        {
+          label: 'Negotiating',
+          value: 'negotiating',
+        },
       ],
     },
     {
