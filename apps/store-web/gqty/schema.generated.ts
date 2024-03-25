@@ -153,6 +153,7 @@ export enum ItemUpdate_periodType_MutationInput {
 
 export enum ItemUpdate_rentingStatus_MutationInput {
   available = 'available',
+  negotiating = 'negotiating',
   unavailable = 'unavailable',
 }
 
@@ -170,6 +171,7 @@ export enum ItemVersion_Version_periodType {
 
 export enum ItemVersion_Version_rentingStatus {
   available = 'available',
+  negotiating = 'negotiating',
   unavailable = 'unavailable',
 }
 
@@ -336,16 +338,19 @@ export interface Item_rating_operator {
 
 export enum Item_rentingStatus {
   available = 'available',
+  negotiating = 'negotiating',
   unavailable = 'unavailable',
 }
 
 export enum Item_rentingStatus_Input {
   available = 'available',
+  negotiating = 'negotiating',
   unavailable = 'unavailable',
 }
 
 export enum Item_rentingStatus_MutationInput {
   available = 'available',
+  negotiating = 'negotiating',
   unavailable = 'unavailable',
 }
 
@@ -899,6 +904,7 @@ export interface Renting_rentalFee_operator {
 export interface Renting_rentedBy__user_operator {
   all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   equals?: InputMaybe<Scalars['JSON']>
+  exists?: InputMaybe<Scalars['Boolean']>
   in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   not_equals?: InputMaybe<Scalars['JSON']>
   not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
@@ -907,6 +913,7 @@ export interface Renting_rentedBy__user_operator {
 export interface Renting_rentedTo__item_operator {
   all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   equals?: InputMaybe<Scalars['JSON']>
+  exists?: InputMaybe<Scalars['Boolean']>
   in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   not_equals?: InputMaybe<Scalars['JSON']>
   not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
@@ -915,6 +922,7 @@ export interface Renting_rentedTo__item_operator {
 export interface Renting_rentedTo__user_operator {
   all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   equals?: InputMaybe<Scalars['JSON']>
+  exists?: InputMaybe<Scalars['Boolean']>
   in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   not_equals?: InputMaybe<Scalars['JSON']>
   not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
@@ -1450,8 +1458,8 @@ export interface mutationRentingInput {
   file?: InputMaybe<Scalars['Int']>
   insuranceFee?: InputMaybe<Scalars['Float']>
   rentalFee?: InputMaybe<Scalars['Float']>
-  rentedBy: mutationRenting_RentedByInput
-  rentedTo: mutationRenting_RentedToInput
+  rentedBy?: InputMaybe<mutationRenting_RentedByInput>
+  rentedTo?: InputMaybe<mutationRenting_RentedToInput>
   startDate: Scalars['String']
   status?: InputMaybe<Renting_status_MutationInput>
   totalPrice?: InputMaybe<Scalars['Float']>
@@ -1466,8 +1474,8 @@ export interface mutationRentingUpdateInput {
   file?: InputMaybe<Scalars['Int']>
   insuranceFee?: InputMaybe<Scalars['Float']>
   rentalFee?: InputMaybe<Scalars['Float']>
-  rentedBy: mutationRentingUpdate_RentedByInput
-  rentedTo: mutationRentingUpdate_RentedToInput
+  rentedBy?: InputMaybe<mutationRentingUpdate_RentedByInput>
+  rentedTo?: InputMaybe<mutationRentingUpdate_RentedToInput>
   startDate?: InputMaybe<Scalars['String']>
   status?: InputMaybe<RentingUpdate_status_MutationInput>
   totalPrice?: InputMaybe<Scalars['Float']>
@@ -1735,6 +1743,7 @@ export interface versionsItem_version__rating_operator {
 
 export enum versionsItem_version__rentingStatus_Input {
   available = 'available',
+  negotiating = 'negotiating',
   unavailable = 'unavailable',
 }
 
@@ -5892,6 +5901,7 @@ export const generatedSchema = {
   Renting_rentedBy__user_operator: {
     all: { __type: '[JSON]' },
     equals: { __type: 'JSON' },
+    exists: { __type: 'Boolean' },
     in: { __type: '[JSON]' },
     not_equals: { __type: 'JSON' },
     not_in: { __type: '[JSON]' },
@@ -5899,6 +5909,7 @@ export const generatedSchema = {
   Renting_rentedTo__item_operator: {
     all: { __type: '[JSON]' },
     equals: { __type: 'JSON' },
+    exists: { __type: 'Boolean' },
     in: { __type: '[JSON]' },
     not_equals: { __type: 'JSON' },
     not_in: { __type: '[JSON]' },
@@ -5906,6 +5917,7 @@ export const generatedSchema = {
   Renting_rentedTo__user_operator: {
     all: { __type: '[JSON]' },
     equals: { __type: 'JSON' },
+    exists: { __type: 'Boolean' },
     in: { __type: '[JSON]' },
     not_equals: { __type: 'JSON' },
     not_in: { __type: '[JSON]' },
@@ -7539,8 +7551,8 @@ export const generatedSchema = {
     file: { __type: 'Int' },
     insuranceFee: { __type: 'Float' },
     rentalFee: { __type: 'Float' },
-    rentedBy: { __type: 'mutationRenting_RentedByInput!' },
-    rentedTo: { __type: 'mutationRenting_RentedToInput!' },
+    rentedBy: { __type: 'mutationRenting_RentedByInput' },
+    rentedTo: { __type: 'mutationRenting_RentedToInput' },
     startDate: { __type: 'String!' },
     status: { __type: 'Renting_status_MutationInput' },
     totalPrice: { __type: 'Float' },
@@ -7554,8 +7566,8 @@ export const generatedSchema = {
     file: { __type: 'Int' },
     insuranceFee: { __type: 'Float' },
     rentalFee: { __type: 'Float' },
-    rentedBy: { __type: 'mutationRentingUpdate_RentedByInput!' },
-    rentedTo: { __type: 'mutationRentingUpdate_RentedToInput!' },
+    rentedBy: { __type: 'mutationRentingUpdate_RentedByInput' },
+    rentedTo: { __type: 'mutationRentingUpdate_RentedToInput' },
     startDate: { __type: 'String' },
     status: { __type: 'RentingUpdate_status_MutationInput' },
     totalPrice: { __type: 'Float' },

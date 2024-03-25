@@ -59,12 +59,12 @@ export interface Media {
 }
 export interface Renting {
   id: string;
-  rentedBy: {
-    user: string | User;
+  rentedBy?: {
+    user?: string | User;
   };
-  rentedTo: {
-    user: string | User;
-    item: string | Item;
+  rentedTo?: {
+    user?: string | User;
+    item?: string | Item;
   };
   startDate: string;
   endDate: string;
@@ -87,7 +87,7 @@ export interface Item {
   availableAt?: string;
   period?: number;
   periodType?: 'days' | 'weeks' | 'months' | 'years';
-  rentingStatus?: 'available' | 'unavailable';
+  rentingStatus?: 'available' | 'unavailable' | 'negotiating';
   start?: string;
   end?: string;
   tags?: string[] | Tag[];

@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils'
 import { ArrowDown, ArrowUp, CaretUpDown, Funnel } from '@phosphor-icons/react'
 import { useSearchParams } from 'next/navigation'
 
-import { Items, Maybe, useQuery } from '../../../gqty'
+import { Item_rentingStatus, Items, Maybe, useQuery } from '../../../gqty'
 import SmallCard from '../components/SmallCard'
 import { FilterInput } from './components/FilterInput'
 import { FilterModal } from './components/FilterModal'
@@ -30,13 +30,11 @@ export default function SearchPage() {
   const search = searchParams.get('search')
 
   const query = useQuery({
-    fetchPolicy: 'cache-first',
+    fetchPolicy: 'network-only',
     suspense: true,
   })
 
   const me = query.meUser?.user
-
-  console.log(me)
 
   const itemsArray = query.Items({
     draft: false,
@@ -150,7 +148,7 @@ export default function SearchPage() {
   }
 
   const items = itemsSorted(itemsArray)?.filter(
-    (item) => item?.rentingStatus !== 'unavailable' && item
+    (item) => item?.rentingStatus === Item_rentingStatus.available && item
   )
 
   return (

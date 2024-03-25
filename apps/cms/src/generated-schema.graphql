@@ -135,6 +135,7 @@ enum Item_periodType {
 enum Item_rentingStatus {
   available
   unavailable
+  negotiating
 }
 
 type Tag {
@@ -883,6 +884,7 @@ input Item_rentingStatus_operator {
 enum Item_rentingStatus_Input {
   available
   unavailable
+  negotiating
 }
 
 input Item_start_operator {
@@ -1479,6 +1481,7 @@ enum ItemVersion_Version_periodType {
 enum ItemVersion_Version_rentingStatus {
   available
   unavailable
+  negotiating
 }
 
 enum ItemVersion_Version__status {
@@ -1620,6 +1623,7 @@ input versionsItem_version__rentingStatus_operator {
 enum versionsItem_version__rentingStatus_Input {
   available
   unavailable
+  negotiating
 }
 
 input versionsItem_version__start_operator {
@@ -3098,6 +3102,7 @@ input Renting_rentedBy__user_operator {
   in: [JSON]
   not_in: [JSON]
   all: [JSON]
+  exists: Boolean
 }
 
 input Renting_rentedTo__user_operator {
@@ -3106,6 +3111,7 @@ input Renting_rentedTo__user_operator {
   in: [JSON]
   not_in: [JSON]
   all: [JSON]
+  exists: Boolean
 }
 
 input Renting_rentedTo__item_operator {
@@ -3114,6 +3120,7 @@ input Renting_rentedTo__item_operator {
   in: [JSON]
   not_in: [JSON]
   all: [JSON]
+  exists: Boolean
 }
 
 input Renting_startDate_operator {
@@ -6251,6 +6258,7 @@ enum Item_periodType_MutationInput {
 enum Item_rentingStatus_MutationInput {
   available
   unavailable
+  negotiating
 }
 
 enum Item__status_MutationInput {
@@ -6287,6 +6295,7 @@ enum ItemUpdate_periodType_MutationInput {
 enum ItemUpdate_rentingStatus_MutationInput {
   available
   unavailable
+  negotiating
 }
 
 enum ItemUpdate__status_MutationInput {
@@ -6375,8 +6384,8 @@ input mutationMessageUpdateInput {
 }
 
 input mutationRentingInput {
-  rentedBy: mutationRenting_RentedByInput!
-  rentedTo: mutationRenting_RentedToInput!
+  rentedBy: mutationRenting_RentedByInput
+  rentedTo: mutationRenting_RentedToInput
   startDate: String!
   endDate: String!
   status: Renting_status_MutationInput
@@ -6406,8 +6415,8 @@ enum Renting_status_MutationInput {
 }
 
 input mutationRentingUpdateInput {
-  rentedBy: mutationRentingUpdate_RentedByInput!
-  rentedTo: mutationRentingUpdate_RentedToInput!
+  rentedBy: mutationRentingUpdate_RentedByInput
+  rentedTo: mutationRentingUpdate_RentedToInput
   startDate: String
   endDate: String
   status: RentingUpdate_status_MutationInput
