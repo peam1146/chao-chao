@@ -17,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Spinner } from '@/components/ui/spinner'
 import { Textarea } from '@/components/ui/textarea'
 import Typography from '@/components/ui/typography'
 import { useToast } from '@/components/ui/use-toast'
@@ -55,7 +56,7 @@ export default function EditCard() {
   const [imageUrl, setImageUrl] = useState<File[]>([])
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [prevImages, setPrevImages] = useState<{ id: number; url: string }[]>([])
-
+  const [isLoadingBtn, setIsLoadingBtn] = useState(false)
   const handleButtonClick = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click()
@@ -97,26 +98,6 @@ export default function EditCard() {
     return { id: tag?.id!, text: tag?.name! }
   })
   const [isLoading, setisLoading] = useState(false)
-  // const { Item, $state } = useQuery({ fetchPolicy: 'cache-first' })
-  // const item_name = Item({ id: item_id })?.name
-  // const item_price = Item({ id: item_id })?.price
-  // const item_description = Item({ id: item_id })?.description
-  // const item_periodType = Item({ id: item_id })?.periodType
-  // const item_tags = Item({ id: item_id })?.tags?.map((tag) => {
-  //   return { id: tag?.id!, text: tag?.name! }
-  // })
-  // const item_images = Item({ id: item_id })?.image?.map((image) => {
-  //   return { id: image?.id!, url: image?.url! }
-  // })
-  // form.reset({
-  //   name: item_name ?? '',
-  //   fee: item_price ?? 0,
-  //   description: item_description ?? '',
-  //   periodType: item_periodType ?? 'days',
-  // })
-  // setTags(item_tags?.map(({ id, text }) => ({ id, text })) ?? [])
-  // setListImg(item_images?.map((image) => image.url) ?? [])
-  // setPrevImages(item_images?.map((image) => image) ?? [])
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -155,6 +136,7 @@ export default function EditCard() {
     fetchData()
   }, [form])
   async function onSubmit(data: z.infer<typeof assetSchema>) {
+    setIsLoadingBtn(true)
     const prevImagesId = prevImages
       .filter((image) => listImg.includes(image.url))
       .map((image) => image.id!)
@@ -228,8 +210,10 @@ export default function EditCard() {
         description: 'Your asset has been edited.',
         success: true,
       })
+      setIsLoadingBtn(false)
       router.push('/myAssets')
     } catch (e) {
+      setIsLoadingBtn(false)
       toast({
         title: 'Not Success',
         description: 'At least one image must be uploaded.',
@@ -389,7 +373,7 @@ export default function EditCard() {
                   </Button>
                 </Link>
                 <Button type="submit" className="min-w-[130px] max-lg:w-1/2">
-                  <Typography variant="h5">Confirm</Typography>
+                  <Typography variant="h5">{isLoadingBtn ? <Spinner /> : 'Confirm'}</Typography>
                 </Button>
               </div>
             </form>
