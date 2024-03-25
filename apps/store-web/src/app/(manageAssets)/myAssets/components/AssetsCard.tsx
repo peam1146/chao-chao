@@ -8,15 +8,17 @@ import { DotsThreeVertical, PencilSimple, Trash } from '@phosphor-icons/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Maybe, Media } from '../../../../gqty'
+import { Maybe, Media } from '../../../../../gqty'
 
 export default function AssetsCard({
+  id,
   name,
   image,
   rating,
   price,
   periodType,
 }: {
+  id: number
   name: string
   image?: Maybe<Media[]>
   rating: number
@@ -24,7 +26,7 @@ export default function AssetsCard({
   periodType: string
 }) {
   return (
-    <Link href="./detail/1">
+    <Link href={`/detail/${id}`}>
       <div className="flex flex-col h-fit w-full bg-card rounded-2xl p-4 gap-2 border lg:border-2 border-transparent hover:border-primary hover:border-opacity-100">
         <div className="relative">
           <Popover>

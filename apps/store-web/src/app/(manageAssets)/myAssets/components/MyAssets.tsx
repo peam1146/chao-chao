@@ -16,25 +16,26 @@ import { Plus, Tray } from '@phosphor-icons/react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 
-import { useQuery } from '../../../../gqty'
+import { useQuery } from '../../../../../gqty'
 import AssetsCard from './AssetsCard'
 import SearchMyAssets from './SearchMyAssets'
 
 export default function MyAssets() {
-  const { Items } = useQuery({ fetchPolicy: 'cache-first' })
+  const { Items, meUser } = useQuery({ fetchPolicy: 'cache-and-network' })
 
   const searchParams = useSearchParams()
   const search = searchParams.get('search') ? searchParams.get('search') : undefined
 
+  const userId = meUser?.user?.id
+
   const items = Items({
     draft: false,
-    limit: 30,
     where: {
       name: {
         contains: search,
       },
       createdBy: {
-        equals: 1,
+        equals: userId,
       },
     },
   })
@@ -77,6 +78,7 @@ export default function MyAssets() {
                   return (
                     <AssetsCard
                       key={item?.id}
+                      id={Number(item?.id)}
                       name={item?.name ?? ''}
                       image={item?.image}
                       rating={item?.rating ?? 0}
@@ -95,6 +97,7 @@ export default function MyAssets() {
                   return (
                     <AssetsCard
                       key={item?.id}
+                      id={Number(item?.id)}
                       name={item?.name ?? ''}
                       image={item?.image}
                       rating={item?.rating ?? 0}
@@ -113,6 +116,7 @@ export default function MyAssets() {
                   return (
                     <AssetsCard
                       key={item?.id}
+                      id={Number(item?.id)}
                       name={item?.name ?? ''}
                       image={item?.image}
                       rating={item?.rating ?? 0}

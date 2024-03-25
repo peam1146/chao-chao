@@ -7,7 +7,7 @@ import { SearchIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-import { useQuery } from '../../../../gqty'
+import { useQuery } from '../../../../../gqty'
 
 export default function SearchMyAssets() {
   const [search, setSearch] = useState('')
@@ -18,9 +18,11 @@ export default function SearchMyAssets() {
     setSearch(e.target.value)
   }, 250)
 
-  const { Items } = useQuery({
-    fetchPolicy: 'cache-and-network',
+  const { Items, meUser } = useQuery({
+    fetchPolicy: 'cache-first',
   })
+
+  const userId = meUser?.user?.id
 
   const items = Items({
     draft: false,
@@ -30,7 +32,7 @@ export default function SearchMyAssets() {
         contains: search,
       },
       createdBy: {
-        equals: 1,
+        equals: userId,
       },
     },
   })!.docs

@@ -1,5 +1,5 @@
-import Card from './components/PromoteCard'
 import CategoryBlock from './components/CategoryBlock'
+import { PromoteCard } from './components/PromoteCard'
 import SmallCard from './components/SmallCard'
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
     <main className="container flex w-full bg-background min-h-[calc(100vh-64px)] flex-col items-center justify-between pb-10">
       <CategoryBlock />
       <div className="flex flex-col w-full gap-20 pt-10">
-        <Card />
+        <PromoteCard />
         <div className="grid grid-cols-1 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 2xl:gap-2 lg:gap-3 md:gap-2 gap-3 pt-10">
           {mockData.map((item, index) => (
             <SmallCard key={index} name={item.name} rating={item.rating} price={item.price} />

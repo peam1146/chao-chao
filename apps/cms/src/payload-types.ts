@@ -12,6 +12,9 @@ export interface Config {
     items: Item;
     medias: Media;
     tags: Tag;
+    chatroom: Chatroom;
+    message: Message;
+    renting: Renting;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -24,9 +27,19 @@ export interface User {
   firstName?: string;
   lastName?: string;
   bio?: string;
-  province?: string;
   rating?: number;
+  province?: string;
   roles: ('admin' | 'User')[];
+  requestsMade?: {
+    user: string | User;
+    item: string | Item;
+    id?: string;
+  }[];
+  requestsReceived?: {
+    user: string | User;
+    item: string | Item;
+    id?: string;
+  }[];
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -40,6 +53,7 @@ export interface User {
 }
 export interface Media {
   id: string;
+  name?: string;
   alt?: string;
   createdBy: string | User;
   updatedAt: string;
@@ -55,17 +69,17 @@ export interface Item {
   id: string;
   name: string;
   description?: string;
-  image?: string | Media;
-  price: number;
-  rating?: number;
+  image: string[] | Media[];
+  price?: number;
   availableAt?: string;
   period?: number;
   periodType?: 'days' | 'weeks' | 'months' | 'years';
   rentingStatus?: 'available' | 'unavailable';
+  start?: string;
+  end?: string;
   tags?: string[] | Tag[];
   createdBy: string | User;
-  start: string;
-  end: string;
+  rating?: number;
   updatedAt: string;
   createdAt: string;
   _status?: 'draft' | 'published';
@@ -74,6 +88,41 @@ export interface Tag {
   id: string;
   name: string;
   alt?: string;
+  createdBy: string | User;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Chatroom {
+  id: string;
+  user1_id: string | User;
+  user2_id: string | User;
+  lastMessage?: string | Message;
+  user1LastViewed?: string;
+  user2LastViewed?: string;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Message {
+  id: string;
+  message?: string;
+  createdAt: string;
+  createdBy: string | User;
+  room: string | Chatroom;
+  updatedAt: string;
+}
+export interface Renting {
+  id: string;
+  rentedBy: {
+    user: string | User;
+  };
+  rentedTo: {
+    user: string | User;
+    item: string | Item;
+  };
+  startDate: string;
+  endDate: string;
+  status?: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'CANCELLED';
+  totalPrice?: number;
   createdBy: string | User;
   updatedAt: string;
   createdAt: string;
@@ -113,6 +162,9 @@ declare module 'payload' {
       'items': Item
       'medias': Media
       'tags': Tag
+      'chatroom': Chatroom
+      'message': Message
+      'renting': Renting
       'payload-preferences': PayloadPreference
       'payload-migrations': PayloadMigration
     }

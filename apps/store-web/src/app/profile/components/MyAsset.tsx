@@ -3,134 +3,137 @@
 import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from '@/components/ui/pagination'
 import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
 import { ArrowDown, ArrowUp, CaretUpDown } from '@phosphor-icons/react'
 
+import { Items, Maybe, useQuery } from '../../../../gqty'
 import { AssetCard } from './AssetCard'
 
-enum Filter {
-  RELEVANCE = 'RELEVANCE',
-  PRICE_LESS = 'PRICE_LESS',
-  PRICE_MORE = 'PRICE_MORE',
-  LATEST = 'LATEST',
-  SCORE = 'SCORE',
-}
-
-const mockData = [
-  { name: 'Samsung Galaxy S21 Ultra 5G', rating: 4.0, price: 100 },
-  { name: 'Jujutsu kaisen Vol.4', rating: 4.0, price: 500 },
-  { name: 'Iphone 13 Pro Max', rating: 3.0, price: 20 },
-  { name: 'Macbook Pro 2021', rating: 2.0, price: 10 },
-  { name: 'Samsung Galaxy S21 Ultra 5G', rating: 4.0, price: 100 },
-  { name: 'Jujutsu kaisen Vol.4', rating: 4.0, price: 500 },
-]
+type Filter = 'RELEVANCE' | 'PRICE_LESS' | 'PRICE_MORE' | 'LATEST' | 'SCORE'
 
 export function MyAsset() {
-  const [filter, setFilter] = useState<Filter>(Filter.RELEVANCE)
+  const [filter, setFilter] = useState<Filter>('RELEVANCE')
+
+  const query = useQuery({
+    fetchPolicy: 'cache-first',
+  })
+
+  const userId = query.meUser?.user?.id
+
+  const itemsArray = query.Items({
+    draft: false,
+    where: {
+      createdBy: {
+        equals: userId,
+      },
+    },
+  })
+  const SortingSection = () => (
+    <div className="flex  justify-between w-full border-b items-center max-md:flex-col max-md:items-start">
+      <Typography variant="h4" fontWeight="bold">
+        Assets
+      </Typography>
+      <div className="flex gap-2 h-fit max-md:space-x-5 max-md:self-center">
+        <Button
+          variant="ghost"
+          onClick={() => setFilter('RELEVANCE')}
+          className={cn(
+            'p-0 hover:bg-transparent text-light',
+            filter === 'RELEVANCE' && 'text-white'
+          )}
+        >
+          Relevance
+        </Button>
+        <Button
+          variant="ghost"
+          onClick={() => {
+            setFilter(filter === 'PRICE_LESS' ? 'PRICE_MORE' : 'PRICE_LESS')
+          }}
+          className={cn(
+            'p-0 hover:bg-transparent text-light flex items-center',
+            (filter === 'PRICE_LESS' || filter === 'PRICE_MORE') && 'text-white'
+          )}
+        >
+          {filter === 'PRICE_LESS' || filter === 'PRICE_MORE' ? (
+            {
+              ['PRICE_LESS']: <ArrowUp className="h-4" />,
+              ['PRICE_MORE']: <ArrowDown className="h-4" />,
+            }[filter]
+          ) : (
+            <CaretUpDown className="h-4" />
+          )}
+          Price
+        </Button>
+        <Button
+          variant="ghost"
+          onClick={() => setFilter('LATEST')}
+          className={cn('p-0 hover:bg-transparent text-light', filter === 'LATEST' && 'text-white')}
+        >
+          Latest
+        </Button>
+        <Button
+          variant="ghost"
+          onClick={() => setFilter('SCORE')}
+          className={cn('p-0 hover:bg-transparent text-light', filter === 'SCORE' && 'text-white')}
+        >
+          Score
+        </Button>
+      </div>
+    </div>
+  )
+
+  const itemsSorted = (items: Maybe<Items>) => {
+    if (filter === 'RELEVANCE') {
+      return items?.docs?.filter((item) => item?.id !== undefined)
+    }
+    if (filter === 'PRICE_LESS') {
+      return items?.docs
+        ?.filter((item) => item?.id !== undefined)
+        .sort((a, b) => (a?.price ?? 0) - (b?.price ?? 0))
+    }
+    if (filter === 'PRICE_MORE') {
+      return items?.docs
+        ?.filter((item) => item?.id !== undefined)
+        .sort((a, b) => (b?.price ?? 0) - (a?.price ?? 0))
+    }
+    if (filter === 'LATEST') {
+      return items?.docs
+        ?.filter((item) => item?.id !== undefined)
+        .sort((a, b) => ((a?.createdAt ?? 0) as number) - ((b?.createdAt ?? 0) as number))
+    }
+    if (filter === 'SCORE') {
+      return items?.docs
+        ?.filter((item) => item?.id !== undefined)
+        .sort((a, b) => ((a?.rating ?? 0) as number) - ((b?.rating ?? 0) as number))
+    }
+
+    return items?.docs?.filter((item) => item?.id !== undefined)
+  }
 
   return (
     <>
-      <div className="flex items-center justify-between border-b w-full">
-        <Typography variant="h4" fontWeight="bold">
-          Assets
-        </Typography>
-        <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            onClick={() => setFilter(Filter.RELEVANCE)}
-            className={cn(
-              'px-0 hover:bg-transparent text-light',
-              filter === Filter.RELEVANCE && 'text-white'
-            )}
-          >
-            Relevance
-          </Button>
-          <Button
-            variant="ghost"
-            onClick={() => {
-              setFilter(filter === Filter.PRICE_LESS ? Filter.PRICE_MORE : Filter.PRICE_LESS)
-            }}
-            className={cn(
-              'px-0 text-light flex items-center hover:bg-transparent',
-              (filter === Filter.PRICE_LESS || filter === Filter.PRICE_MORE) && 'text-white'
-            )}
-          >
-            {filter === Filter.PRICE_LESS || filter === Filter.PRICE_MORE ? (
-              {
-                [Filter.PRICE_LESS]: <ArrowUp className="h-4" />,
-                [Filter.PRICE_MORE]: <ArrowDown className="h-4" />,
-              }[filter]
-            ) : (
-              <CaretUpDown className="h-4" />
-            )}
-            Price
-          </Button>
-          <Button
-            variant="ghost"
-            onClick={() => setFilter(Filter.LATEST)}
-            className={cn(
-              'px-0 text-light hover:bg-transparent',
-              filter === Filter.LATEST && 'text-white'
-            )}
-          >
-            Latest
-          </Button>
-          <Button
-            variant="ghost"
-            onClick={() => setFilter(Filter.SCORE)}
-            className={cn(
-              'px-0 text-light hover:bg-transparent',
-              filter === Filter.SCORE && 'text-white'
-            )}
-          >
-            Score
-          </Button>
-        </div>
-      </div>
+      <SortingSection />
       <div className="py-4 w-full">
         <div className="mx-auto w-full grid grid-cols-2 2xl:grid-cols-6 lg:grid-cols-4 gap-4">
-          {mockData.map((item, index) => (
-            <AssetCard key={index} name={item.name} rating={item.rating} price={item.price} />
-          ))}
+          {!itemsArray?.docs?.length && (
+            <Typography variant="h6" fontWeight="bold" className="self-center w-full">
+              No assets found
+            </Typography>
+          )}
+          {itemsSorted(itemsArray) &&
+            itemsSorted(itemsArray)?.map((item, index) => (
+              <AssetCard
+                key={index}
+                id={item?.id}
+                name={item?.name ?? ''}
+                image={item?.image}
+                rating={item?.rating ?? 0}
+                price={item?.price ?? 0}
+              />
+            ))}
         </div>
       </div>
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious href="#" />
-          </PaginationItem>
-
-          <PaginationItem>
-            <PaginationLink isActive>1</PaginationLink>
-          </PaginationItem>
-
-          <PaginationItem>
-            <PaginationLink href="#">2</PaginationLink>
-          </PaginationItem>
-
-          <PaginationItem>
-            <PaginationLink href="#">3</PaginationLink>
-          </PaginationItem>
-
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-
-          <PaginationItem>
-            <PaginationNext href="#" />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
     </>
   )
 }

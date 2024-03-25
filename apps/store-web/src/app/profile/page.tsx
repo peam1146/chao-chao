@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import profile from '@/assets/images/profileLogo.png'
 import { Button } from '@/components/ui/button'
@@ -10,38 +10,29 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-import { resolve } from '../../../gqty'
+import { useQuery } from '../../../gqty'
 import { MyAsset } from './components/MyAsset'
 import { Review } from './components/Review'
 
 export default function Profile() {
-  const [user, setUser] = useState({
-    bio: '',
-    firstName: '',
-    lastName: '',
-    profileImg: '',
+  const router = useRouter()
+
+  const query = useQuery({
+    fetchPolicy: 'no-cache',
   })
 
-  const router = useRouter()
-  useEffect(() => {
-    const fetchData = async () => {
-      const { bio, firstName, lastName, profileImg } = await resolve(({ query }) => {
-        return {
-          id: query.meUser?.user?.id ?? '',
-          firstName: query.meUser?.user?.firstName ?? '',
-          lastName: query.meUser?.user?.lastName ?? '',
-          bio: query.meUser?.user?.bio ?? '',
-          profileImg: query.meUser?.user?.profileImage?.url ?? '',
-        }
-      })
+  const user = query.meUser?.user
 
-      if (bio === '' || firstName === '' || lastName === '' || profileImg === '') {
-        router.push('/profile/edit')
-      }
-      setUser({ bio, firstName, lastName, profileImg })
+  useEffect(() => {
+    if (
+      user?.bio === '' ||
+      user?.firstName === '' ||
+      user?.lastName === '' ||
+      user?.profileImage?.url === ''
+    ) {
+      router.push('/profile/edit')
     }
-    fetchData()
-  }, [])
+  }, [user?.bio, user?.firstName, user?.lastName, user?.profileImage?.url])
 
   return (
     <main className="container flex w-full bg-background min-h-[calc(100vh-64px)] flex-col items-center py-4 lg:py-12 my-auto gap-6">
@@ -50,15 +41,15 @@ export default function Profile() {
           <div className="flex flex-row gap-4 items-center">
             <Image
               className="w-[80px] h-[80px] rounded-full object-cover"
-              src={user.profileImg === '' ? profile : user.profileImg}
+              src={user?.profileImage?.url === '' ? profile : user?.profileImage?.url ?? ''}
               width="100"
               height="100"
               alt="profile"
             />
             <div className="flex flex-col gap-1">
-              {user.firstName !== '' || user.lastName !== '' ? (
+              {user?.firstName !== '' || user.lastName !== '' ? (
                 <Typography variant="h5" fontWeight="bold">
-                  {user.firstName} {user.lastName}
+                  {user?.firstName} {user?.lastName}
                 </Typography>
               ) : (
                 <Typography variant="h5" className="text-light">
@@ -66,9 +57,9 @@ export default function Profile() {
                 </Typography>
               )}
               <div className="flex flex-row gap-0.5 ">
-                <Rating name="read-only" value={4} max={5} readOnly size="small" />
+                <Rating name="read-only" value={user?.rating} max={5} readOnly size="small" />
                 <Typography variant="h6" className="text-light my-auto">
-                  4.0
+                  {user?.rating ? user?.rating : '0'}.0
                 </Typography>
               </div>
             </div>
@@ -86,8 +77,8 @@ export default function Profile() {
             </Link>
           </div>
         </div>
-        {user.bio !== '' ? (
-          <Typography variant="h6">{user.bio}</Typography>
+        {user?.bio !== '' ? (
+          <Typography variant="h6">{user?.bio}</Typography>
         ) : (
           <Typography variant="h6" className="text-light"></Typography>
         )}

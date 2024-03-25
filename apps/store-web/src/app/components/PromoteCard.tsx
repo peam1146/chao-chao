@@ -5,7 +5,7 @@ import Typography from '@/components/ui/typography'
 import { Rating } from '@mui/material'
 import Image from 'next/image'
 
-export default function Card() {
+export function PromoteCard() {
   return (
     <main className="flex flex-col lg:flex-row w-full bg-card rounded-md items-start lg:items-center justify-center lg:gap-x-8 p-4 gap-2 ">
       <div className="flex lg:w-1/2 lg:h-[306px] justify-center">

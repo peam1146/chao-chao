@@ -25,6 +25,120 @@ export interface Scalars {
   JSONObject: any
 }
 
+export interface Chatroom_createdAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Chatroom_id_operator {
+  equals?: InputMaybe<Scalars['Int']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Int']>
+  greater_than_equal?: InputMaybe<Scalars['Int']>
+  less_than?: InputMaybe<Scalars['Int']>
+  less_than_equal?: InputMaybe<Scalars['Int']>
+  not_equals?: InputMaybe<Scalars['Int']>
+}
+
+export interface Chatroom_lastMessage_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Chatroom_updatedAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Chatroom_user1LastViewed_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Chatroom_user1_id_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Chatroom_user2LastViewed_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Chatroom_user2_id_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Chatroom_where {
+  AND?: InputMaybe<Array<InputMaybe<Chatroom_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Chatroom_where_or>>>
+  createdAt?: InputMaybe<Chatroom_createdAt_operator>
+  id?: InputMaybe<Chatroom_id_operator>
+  lastMessage?: InputMaybe<Chatroom_lastMessage_operator>
+  updatedAt?: InputMaybe<Chatroom_updatedAt_operator>
+  user1LastViewed?: InputMaybe<Chatroom_user1LastViewed_operator>
+  user1_id?: InputMaybe<Chatroom_user1_id_operator>
+  user2LastViewed?: InputMaybe<Chatroom_user2LastViewed_operator>
+  user2_id?: InputMaybe<Chatroom_user2_id_operator>
+}
+
+export interface Chatroom_where_and {
+  createdAt?: InputMaybe<Chatroom_createdAt_operator>
+  id?: InputMaybe<Chatroom_id_operator>
+  lastMessage?: InputMaybe<Chatroom_lastMessage_operator>
+  updatedAt?: InputMaybe<Chatroom_updatedAt_operator>
+  user1LastViewed?: InputMaybe<Chatroom_user1LastViewed_operator>
+  user1_id?: InputMaybe<Chatroom_user1_id_operator>
+  user2LastViewed?: InputMaybe<Chatroom_user2LastViewed_operator>
+  user2_id?: InputMaybe<Chatroom_user2_id_operator>
+}
+
+export interface Chatroom_where_or {
+  createdAt?: InputMaybe<Chatroom_createdAt_operator>
+  id?: InputMaybe<Chatroom_id_operator>
+  lastMessage?: InputMaybe<Chatroom_lastMessage_operator>
+  updatedAt?: InputMaybe<Chatroom_updatedAt_operator>
+  user1LastViewed?: InputMaybe<Chatroom_user1LastViewed_operator>
+  user1_id?: InputMaybe<Chatroom_user1_id_operator>
+  user2LastViewed?: InputMaybe<Chatroom_user2LastViewed_operator>
+  user2_id?: InputMaybe<Chatroom_user2_id_operator>
+}
+
 export enum ItemUpdate__status_MutationInput {
   draft = 'draft',
   published = 'published',
@@ -498,6 +612,93 @@ export interface Media_width_operator {
   not_equals?: InputMaybe<Scalars['Float']>
 }
 
+export interface Message_createdAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Message_createdBy_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Message_id_operator {
+  equals?: InputMaybe<Scalars['Int']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Int']>
+  greater_than_equal?: InputMaybe<Scalars['Int']>
+  less_than?: InputMaybe<Scalars['Int']>
+  less_than_equal?: InputMaybe<Scalars['Int']>
+  not_equals?: InputMaybe<Scalars['Int']>
+}
+
+export interface Message_message_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  contains?: InputMaybe<Scalars['String']>
+  equals?: InputMaybe<Scalars['String']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  like?: InputMaybe<Scalars['String']>
+  not_equals?: InputMaybe<Scalars['String']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export interface Message_room_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Message_updatedAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Message_where {
+  AND?: InputMaybe<Array<InputMaybe<Message_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Message_where_or>>>
+  createdAt?: InputMaybe<Message_createdAt_operator>
+  createdBy?: InputMaybe<Message_createdBy_operator>
+  id?: InputMaybe<Message_id_operator>
+  message?: InputMaybe<Message_message_operator>
+  room?: InputMaybe<Message_room_operator>
+  updatedAt?: InputMaybe<Message_updatedAt_operator>
+}
+
+export interface Message_where_and {
+  createdAt?: InputMaybe<Message_createdAt_operator>
+  createdBy?: InputMaybe<Message_createdBy_operator>
+  id?: InputMaybe<Message_id_operator>
+  message?: InputMaybe<Message_message_operator>
+  room?: InputMaybe<Message_room_operator>
+  updatedAt?: InputMaybe<Message_updatedAt_operator>
+}
+
+export interface Message_where_or {
+  createdAt?: InputMaybe<Message_createdAt_operator>
+  createdBy?: InputMaybe<Message_createdBy_operator>
+  id?: InputMaybe<Message_id_operator>
+  message?: InputMaybe<Message_message_operator>
+  room?: InputMaybe<Message_room_operator>
+  updatedAt?: InputMaybe<Message_updatedAt_operator>
+}
+
 export interface PayloadPreferenceUpdate_UserRelationshipInput {
   relationTo?: InputMaybe<PayloadPreferenceUpdate_UserRelationshipInputRelationTo>
   value?: InputMaybe<Scalars['JSON']>
@@ -609,6 +810,181 @@ export interface PayloadPreference_where_or {
   updatedAt?: InputMaybe<PayloadPreference_updatedAt_operator>
   user?: InputMaybe<PayloadPreference_user_Relation>
   value?: InputMaybe<PayloadPreference_value_operator>
+}
+
+export enum RentingUpdate_status_MutationInput {
+  CANCELLED = 'CANCELLED',
+  COMPLETED = 'COMPLETED',
+  PENDING = 'PENDING',
+  PROCESSING = 'PROCESSING',
+}
+
+export interface Renting_createdAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Renting_createdBy_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Renting_endDate_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Renting_id_operator {
+  equals?: InputMaybe<Scalars['Int']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Int']>
+  greater_than_equal?: InputMaybe<Scalars['Int']>
+  less_than?: InputMaybe<Scalars['Int']>
+  less_than_equal?: InputMaybe<Scalars['Int']>
+  not_equals?: InputMaybe<Scalars['Int']>
+}
+
+export interface Renting_rentedBy__user_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Renting_rentedTo__item_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Renting_rentedTo__user_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Renting_startDate_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export enum Renting_status {
+  CANCELLED = 'CANCELLED',
+  COMPLETED = 'COMPLETED',
+  PENDING = 'PENDING',
+  PROCESSING = 'PROCESSING',
+}
+
+export enum Renting_status_Input {
+  CANCELLED = 'CANCELLED',
+  COMPLETED = 'COMPLETED',
+  PENDING = 'PENDING',
+  PROCESSING = 'PROCESSING',
+}
+
+export enum Renting_status_MutationInput {
+  CANCELLED = 'CANCELLED',
+  COMPLETED = 'COMPLETED',
+  PENDING = 'PENDING',
+  PROCESSING = 'PROCESSING',
+}
+
+export interface Renting_status_operator {
+  all?: InputMaybe<Array<InputMaybe<Renting_status_Input>>>
+  equals?: InputMaybe<Renting_status_Input>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Renting_status_Input>>>
+  not_equals?: InputMaybe<Renting_status_Input>
+  not_in?: InputMaybe<Array<InputMaybe<Renting_status_Input>>>
+}
+
+export interface Renting_totalPrice_operator {
+  equals?: InputMaybe<Scalars['Float']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Float']>
+  greater_than_equal?: InputMaybe<Scalars['Float']>
+  less_than?: InputMaybe<Scalars['Float']>
+  less_than_equal?: InputMaybe<Scalars['Float']>
+  not_equals?: InputMaybe<Scalars['Float']>
+}
+
+export interface Renting_updatedAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Renting_where {
+  AND?: InputMaybe<Array<InputMaybe<Renting_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Renting_where_or>>>
+  createdAt?: InputMaybe<Renting_createdAt_operator>
+  createdBy?: InputMaybe<Renting_createdBy_operator>
+  endDate?: InputMaybe<Renting_endDate_operator>
+  id?: InputMaybe<Renting_id_operator>
+  rentedBy__user?: InputMaybe<Renting_rentedBy__user_operator>
+  rentedTo__item?: InputMaybe<Renting_rentedTo__item_operator>
+  rentedTo__user?: InputMaybe<Renting_rentedTo__user_operator>
+  startDate?: InputMaybe<Renting_startDate_operator>
+  status?: InputMaybe<Renting_status_operator>
+  totalPrice?: InputMaybe<Renting_totalPrice_operator>
+  updatedAt?: InputMaybe<Renting_updatedAt_operator>
+}
+
+export interface Renting_where_and {
+  createdAt?: InputMaybe<Renting_createdAt_operator>
+  createdBy?: InputMaybe<Renting_createdBy_operator>
+  endDate?: InputMaybe<Renting_endDate_operator>
+  id?: InputMaybe<Renting_id_operator>
+  rentedBy__user?: InputMaybe<Renting_rentedBy__user_operator>
+  rentedTo__item?: InputMaybe<Renting_rentedTo__item_operator>
+  rentedTo__user?: InputMaybe<Renting_rentedTo__user_operator>
+  startDate?: InputMaybe<Renting_startDate_operator>
+  status?: InputMaybe<Renting_status_operator>
+  totalPrice?: InputMaybe<Renting_totalPrice_operator>
+  updatedAt?: InputMaybe<Renting_updatedAt_operator>
+}
+
+export interface Renting_where_or {
+  createdAt?: InputMaybe<Renting_createdAt_operator>
+  createdBy?: InputMaybe<Renting_createdBy_operator>
+  endDate?: InputMaybe<Renting_endDate_operator>
+  id?: InputMaybe<Renting_id_operator>
+  rentedBy__user?: InputMaybe<Renting_rentedBy__user_operator>
+  rentedTo__item?: InputMaybe<Renting_rentedTo__item_operator>
+  rentedTo__user?: InputMaybe<Renting_rentedTo__user_operator>
+  startDate?: InputMaybe<Renting_startDate_operator>
+  status?: InputMaybe<Renting_status_operator>
+  totalPrice?: InputMaybe<Renting_totalPrice_operator>
+  updatedAt?: InputMaybe<Renting_updatedAt_operator>
 }
 
 export interface Tag_alt_operator {
@@ -796,6 +1172,60 @@ export interface User_rating_operator {
   not_equals?: InputMaybe<Scalars['Float']>
 }
 
+export interface User_requestsMade__id_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  contains?: InputMaybe<Scalars['String']>
+  equals?: InputMaybe<Scalars['String']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  like?: InputMaybe<Scalars['String']>
+  not_equals?: InputMaybe<Scalars['String']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export interface User_requestsMade__item_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface User_requestsMade__user_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface User_requestsReceived__id_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  contains?: InputMaybe<Scalars['String']>
+  equals?: InputMaybe<Scalars['String']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  like?: InputMaybe<Scalars['String']>
+  not_equals?: InputMaybe<Scalars['String']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export interface User_requestsReceived__item_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface User_requestsReceived__user_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
 export enum User_roles {
   User = 'User',
   admin = 'admin',
@@ -843,6 +1273,12 @@ export interface User_where {
   profileImage?: InputMaybe<User_profileImage_operator>
   province?: InputMaybe<User_province_operator>
   rating?: InputMaybe<User_rating_operator>
+  requestsMade__id?: InputMaybe<User_requestsMade__id_operator>
+  requestsMade__item?: InputMaybe<User_requestsMade__item_operator>
+  requestsMade__user?: InputMaybe<User_requestsMade__user_operator>
+  requestsReceived__id?: InputMaybe<User_requestsReceived__id_operator>
+  requestsReceived__item?: InputMaybe<User_requestsReceived__item_operator>
+  requestsReceived__user?: InputMaybe<User_requestsReceived__user_operator>
   roles?: InputMaybe<User_roles_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
 }
@@ -858,6 +1294,12 @@ export interface User_where_and {
   profileImage?: InputMaybe<User_profileImage_operator>
   province?: InputMaybe<User_province_operator>
   rating?: InputMaybe<User_rating_operator>
+  requestsMade__id?: InputMaybe<User_requestsMade__id_operator>
+  requestsMade__item?: InputMaybe<User_requestsMade__item_operator>
+  requestsMade__user?: InputMaybe<User_requestsMade__user_operator>
+  requestsReceived__id?: InputMaybe<User_requestsReceived__id_operator>
+  requestsReceived__item?: InputMaybe<User_requestsReceived__item_operator>
+  requestsReceived__user?: InputMaybe<User_requestsReceived__user_operator>
   roles?: InputMaybe<User_roles_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
 }
@@ -873,8 +1315,34 @@ export interface User_where_or {
   profileImage?: InputMaybe<User_profileImage_operator>
   province?: InputMaybe<User_province_operator>
   rating?: InputMaybe<User_rating_operator>
+  requestsMade__id?: InputMaybe<User_requestsMade__id_operator>
+  requestsMade__item?: InputMaybe<User_requestsMade__item_operator>
+  requestsMade__user?: InputMaybe<User_requestsMade__user_operator>
+  requestsReceived__id?: InputMaybe<User_requestsReceived__id_operator>
+  requestsReceived__item?: InputMaybe<User_requestsReceived__item_operator>
+  requestsReceived__user?: InputMaybe<User_requestsReceived__user_operator>
   roles?: InputMaybe<User_roles_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
+}
+
+export interface mutationChatroomInput {
+  createdAt?: InputMaybe<Scalars['String']>
+  lastMessage?: InputMaybe<Scalars['Int']>
+  updatedAt?: InputMaybe<Scalars['String']>
+  user1LastViewed?: InputMaybe<Scalars['String']>
+  user1_id?: InputMaybe<Scalars['Int']>
+  user2LastViewed?: InputMaybe<Scalars['String']>
+  user2_id?: InputMaybe<Scalars['Int']>
+}
+
+export interface mutationChatroomUpdateInput {
+  createdAt?: InputMaybe<Scalars['String']>
+  lastMessage?: InputMaybe<Scalars['Int']>
+  updatedAt?: InputMaybe<Scalars['String']>
+  user1LastViewed?: InputMaybe<Scalars['String']>
+  user1_id?: InputMaybe<Scalars['Int']>
+  user2LastViewed?: InputMaybe<Scalars['String']>
+  user2_id?: InputMaybe<Scalars['Int']>
 }
 
 export interface mutationItemInput {
@@ -943,6 +1411,22 @@ export interface mutationMediaUpdateInput {
   width?: InputMaybe<Scalars['Float']>
 }
 
+export interface mutationMessageInput {
+  createdAt?: InputMaybe<Scalars['String']>
+  createdBy?: InputMaybe<Scalars['Int']>
+  message?: InputMaybe<Scalars['String']>
+  room?: InputMaybe<Scalars['Int']>
+  updatedAt?: InputMaybe<Scalars['String']>
+}
+
+export interface mutationMessageUpdateInput {
+  createdAt?: InputMaybe<Scalars['String']>
+  createdBy?: InputMaybe<Scalars['Int']>
+  message?: InputMaybe<Scalars['String']>
+  room?: InputMaybe<Scalars['Int']>
+  updatedAt?: InputMaybe<Scalars['String']>
+}
+
 export interface mutationPayloadPreferenceInput {
   createdAt?: InputMaybe<Scalars['String']>
   key?: InputMaybe<Scalars['String']>
@@ -957,6 +1441,48 @@ export interface mutationPayloadPreferenceUpdateInput {
   updatedAt?: InputMaybe<Scalars['String']>
   user?: InputMaybe<PayloadPreferenceUpdate_UserRelationshipInput>
   value?: InputMaybe<Scalars['JSON']>
+}
+
+export interface mutationRentingInput {
+  createdAt?: InputMaybe<Scalars['String']>
+  createdBy?: InputMaybe<Scalars['Int']>
+  endDate: Scalars['String']
+  rentedBy: mutationRenting_RentedByInput
+  rentedTo: mutationRenting_RentedToInput
+  startDate: Scalars['String']
+  status?: InputMaybe<Renting_status_MutationInput>
+  totalPrice?: InputMaybe<Scalars['Float']>
+  updatedAt?: InputMaybe<Scalars['String']>
+}
+
+export interface mutationRentingUpdateInput {
+  createdAt?: InputMaybe<Scalars['String']>
+  createdBy?: InputMaybe<Scalars['Int']>
+  endDate?: InputMaybe<Scalars['String']>
+  rentedBy: mutationRentingUpdate_RentedByInput
+  rentedTo: mutationRentingUpdate_RentedToInput
+  startDate?: InputMaybe<Scalars['String']>
+  status?: InputMaybe<RentingUpdate_status_MutationInput>
+  totalPrice?: InputMaybe<Scalars['Float']>
+  updatedAt?: InputMaybe<Scalars['String']>
+}
+
+export interface mutationRentingUpdate_RentedByInput {
+  user?: InputMaybe<Scalars['Int']>
+}
+
+export interface mutationRentingUpdate_RentedToInput {
+  item?: InputMaybe<Scalars['Int']>
+  user?: InputMaybe<Scalars['Int']>
+}
+
+export interface mutationRenting_RentedByInput {
+  user?: InputMaybe<Scalars['Int']>
+}
+
+export interface mutationRenting_RentedToInput {
+  item?: InputMaybe<Scalars['Int']>
+  user?: InputMaybe<Scalars['Int']>
 }
 
 export interface mutationTagInput {
@@ -989,6 +1515,8 @@ export interface mutationUserInput {
   profileImage?: InputMaybe<Scalars['Int']>
   province?: InputMaybe<Scalars['String']>
   rating?: InputMaybe<Scalars['Float']>
+  requestsMade?: InputMaybe<Array<InputMaybe<mutationUser_RequestsMadeInput>>>
+  requestsReceived?: InputMaybe<Array<InputMaybe<mutationUser_RequestsReceivedInput>>>
   resetPasswordExpiration?: InputMaybe<Scalars['String']>
   resetPasswordToken?: InputMaybe<Scalars['String']>
   roles: Array<InputMaybe<User_roles_MutationInput>>
@@ -1010,11 +1538,37 @@ export interface mutationUserUpdateInput {
   profileImage?: InputMaybe<Scalars['Int']>
   province?: InputMaybe<Scalars['String']>
   rating?: InputMaybe<Scalars['Float']>
+  requestsMade?: InputMaybe<Array<InputMaybe<mutationUserUpdate_RequestsMadeInput>>>
+  requestsReceived?: InputMaybe<Array<InputMaybe<mutationUserUpdate_RequestsReceivedInput>>>
   resetPasswordExpiration?: InputMaybe<Scalars['String']>
   resetPasswordToken?: InputMaybe<Scalars['String']>
   roles?: InputMaybe<Array<InputMaybe<UserUpdate_roles_MutationInput>>>
   salt?: InputMaybe<Scalars['String']>
   updatedAt?: InputMaybe<Scalars['String']>
+}
+
+export interface mutationUserUpdate_RequestsMadeInput {
+  id?: InputMaybe<Scalars['String']>
+  item?: InputMaybe<Scalars['Int']>
+  user?: InputMaybe<Scalars['Int']>
+}
+
+export interface mutationUserUpdate_RequestsReceivedInput {
+  id?: InputMaybe<Scalars['String']>
+  item?: InputMaybe<Scalars['Int']>
+  user?: InputMaybe<Scalars['Int']>
+}
+
+export interface mutationUser_RequestsMadeInput {
+  id?: InputMaybe<Scalars['String']>
+  item?: InputMaybe<Scalars['Int']>
+  user?: InputMaybe<Scalars['Int']>
+}
+
+export interface mutationUser_RequestsReceivedInput {
+  id?: InputMaybe<Scalars['String']>
+  item?: InputMaybe<Scalars['Int']>
+  user?: InputMaybe<Scalars['Int']>
 }
 
 export enum usersJWT_roles {
@@ -1342,6 +1896,10 @@ export const scalarsEnumsHash: import('gqty').ScalarsEnumsHash = {
   PayloadPreference_UserRelationshipInputRelationTo: true,
   PayloadPreference_User_RelationTo: true,
   PayloadPreference_user_Relation_RelationTo: true,
+  RentingUpdate_status_MutationInput: true,
+  Renting_status: true,
+  Renting_status_Input: true,
+  Renting_status_MutationInput: true,
   String: true,
   UserUpdate_roles_MutationInput: true,
   User_roles: true,
@@ -1356,11 +1914,524 @@ export const generatedSchema = {
   Access: {
     __typename: { __type: 'String!' },
     canAccessAdmin: { __type: 'Boolean!' },
+    chatroom: { __type: 'chatroomAccess' },
     items: { __type: 'itemsAccess' },
     medias: { __type: 'mediasAccess' },
+    message: { __type: 'messageAccess' },
     payload_preferences: { __type: 'payload_preferencesAccess' },
+    renting: { __type: 'rentingAccess' },
     tags: { __type: 'tagsAccess' },
     users: { __type: 'usersAccess' },
+  },
+  Chatroom: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'DateTime' },
+    id: { __type: 'Int' },
+    lastMessage: { __type: 'Message' },
+    updatedAt: { __type: 'DateTime' },
+    user1LastViewed: { __type: 'DateTime' },
+    user1_id: { __type: 'User!' },
+    user2LastViewed: { __type: 'DateTime' },
+    user2_id: { __type: 'User!' },
+  },
+  ChatroomCreateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ChatroomCreateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ChatroomDeleteAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ChatroomDeleteDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ChatroomDocAccessFields: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'ChatroomDocAccessFields_createdAt' },
+    lastMessage: { __type: 'ChatroomDocAccessFields_lastMessage' },
+    updatedAt: { __type: 'ChatroomDocAccessFields_updatedAt' },
+    user1LastViewed: { __type: 'ChatroomDocAccessFields_user1LastViewed' },
+    user1_id: { __type: 'ChatroomDocAccessFields_user1_id' },
+    user2LastViewed: { __type: 'ChatroomDocAccessFields_user2LastViewed' },
+    user2_id: { __type: 'ChatroomDocAccessFields_user2_id' },
+  },
+  ChatroomDocAccessFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomDocAccessFields_createdAt_Create' },
+    delete: { __type: 'ChatroomDocAccessFields_createdAt_Delete' },
+    read: { __type: 'ChatroomDocAccessFields_createdAt_Read' },
+    update: { __type: 'ChatroomDocAccessFields_createdAt_Update' },
+  },
+  ChatroomDocAccessFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_lastMessage: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomDocAccessFields_lastMessage_Create' },
+    delete: { __type: 'ChatroomDocAccessFields_lastMessage_Delete' },
+    read: { __type: 'ChatroomDocAccessFields_lastMessage_Read' },
+    update: { __type: 'ChatroomDocAccessFields_lastMessage_Update' },
+  },
+  ChatroomDocAccessFields_lastMessage_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_lastMessage_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_lastMessage_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_lastMessage_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomDocAccessFields_updatedAt_Create' },
+    delete: { __type: 'ChatroomDocAccessFields_updatedAt_Delete' },
+    read: { __type: 'ChatroomDocAccessFields_updatedAt_Read' },
+    update: { __type: 'ChatroomDocAccessFields_updatedAt_Update' },
+  },
+  ChatroomDocAccessFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1LastViewed: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomDocAccessFields_user1LastViewed_Create' },
+    delete: { __type: 'ChatroomDocAccessFields_user1LastViewed_Delete' },
+    read: { __type: 'ChatroomDocAccessFields_user1LastViewed_Read' },
+    update: { __type: 'ChatroomDocAccessFields_user1LastViewed_Update' },
+  },
+  ChatroomDocAccessFields_user1LastViewed_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1LastViewed_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1LastViewed_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1LastViewed_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1_id: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomDocAccessFields_user1_id_Create' },
+    delete: { __type: 'ChatroomDocAccessFields_user1_id_Delete' },
+    read: { __type: 'ChatroomDocAccessFields_user1_id_Read' },
+    update: { __type: 'ChatroomDocAccessFields_user1_id_Update' },
+  },
+  ChatroomDocAccessFields_user1_id_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1_id_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1_id_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user1_id_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2LastViewed: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomDocAccessFields_user2LastViewed_Create' },
+    delete: { __type: 'ChatroomDocAccessFields_user2LastViewed_Delete' },
+    read: { __type: 'ChatroomDocAccessFields_user2LastViewed_Read' },
+    update: { __type: 'ChatroomDocAccessFields_user2LastViewed_Update' },
+  },
+  ChatroomDocAccessFields_user2LastViewed_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2LastViewed_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2LastViewed_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2LastViewed_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2_id: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomDocAccessFields_user2_id_Create' },
+    delete: { __type: 'ChatroomDocAccessFields_user2_id_Delete' },
+    read: { __type: 'ChatroomDocAccessFields_user2_id_Read' },
+    update: { __type: 'ChatroomDocAccessFields_user2_id_Update' },
+  },
+  ChatroomDocAccessFields_user2_id_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2_id_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2_id_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomDocAccessFields_user2_id_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'ChatroomFields_createdAt' },
+    lastMessage: { __type: 'ChatroomFields_lastMessage' },
+    updatedAt: { __type: 'ChatroomFields_updatedAt' },
+    user1LastViewed: { __type: 'ChatroomFields_user1LastViewed' },
+    user1_id: { __type: 'ChatroomFields_user1_id' },
+    user2LastViewed: { __type: 'ChatroomFields_user2LastViewed' },
+    user2_id: { __type: 'ChatroomFields_user2_id' },
+  },
+  ChatroomFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomFields_createdAt_Create' },
+    delete: { __type: 'ChatroomFields_createdAt_Delete' },
+    read: { __type: 'ChatroomFields_createdAt_Read' },
+    update: { __type: 'ChatroomFields_createdAt_Update' },
+  },
+  ChatroomFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_lastMessage: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomFields_lastMessage_Create' },
+    delete: { __type: 'ChatroomFields_lastMessage_Delete' },
+    read: { __type: 'ChatroomFields_lastMessage_Read' },
+    update: { __type: 'ChatroomFields_lastMessage_Update' },
+  },
+  ChatroomFields_lastMessage_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_lastMessage_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_lastMessage_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_lastMessage_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomFields_updatedAt_Create' },
+    delete: { __type: 'ChatroomFields_updatedAt_Delete' },
+    read: { __type: 'ChatroomFields_updatedAt_Read' },
+    update: { __type: 'ChatroomFields_updatedAt_Update' },
+  },
+  ChatroomFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1LastViewed: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomFields_user1LastViewed_Create' },
+    delete: { __type: 'ChatroomFields_user1LastViewed_Delete' },
+    read: { __type: 'ChatroomFields_user1LastViewed_Read' },
+    update: { __type: 'ChatroomFields_user1LastViewed_Update' },
+  },
+  ChatroomFields_user1LastViewed_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1LastViewed_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1LastViewed_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1LastViewed_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1_id: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomFields_user1_id_Create' },
+    delete: { __type: 'ChatroomFields_user1_id_Delete' },
+    read: { __type: 'ChatroomFields_user1_id_Read' },
+    update: { __type: 'ChatroomFields_user1_id_Update' },
+  },
+  ChatroomFields_user1_id_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1_id_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1_id_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user1_id_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2LastViewed: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomFields_user2LastViewed_Create' },
+    delete: { __type: 'ChatroomFields_user2LastViewed_Delete' },
+    read: { __type: 'ChatroomFields_user2LastViewed_Read' },
+    update: { __type: 'ChatroomFields_user2LastViewed_Update' },
+  },
+  ChatroomFields_user2LastViewed_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2LastViewed_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2LastViewed_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2LastViewed_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2_id: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomFields_user2_id_Create' },
+    delete: { __type: 'ChatroomFields_user2_id_Delete' },
+    read: { __type: 'ChatroomFields_user2_id_Read' },
+    update: { __type: 'ChatroomFields_user2_id_Update' },
+  },
+  ChatroomFields_user2_id_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2_id_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2_id_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomFields_user2_id_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ChatroomReadAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ChatroomReadDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ChatroomUpdateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ChatroomUpdateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  Chatroom_createdAt_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Chatroom_id_operator: {
+    equals: { __type: 'Int' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Int' },
+    greater_than_equal: { __type: 'Int' },
+    less_than: { __type: 'Int' },
+    less_than_equal: { __type: 'Int' },
+    not_equals: { __type: 'Int' },
+  },
+  Chatroom_lastMessage_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Chatroom_updatedAt_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Chatroom_user1LastViewed_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Chatroom_user1_id_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Chatroom_user2LastViewed_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Chatroom_user2_id_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Chatroom_where: {
+    AND: { __type: '[Chatroom_where_and]' },
+    OR: { __type: '[Chatroom_where_or]' },
+    createdAt: { __type: 'Chatroom_createdAt_operator' },
+    id: { __type: 'Chatroom_id_operator' },
+    lastMessage: { __type: 'Chatroom_lastMessage_operator' },
+    updatedAt: { __type: 'Chatroom_updatedAt_operator' },
+    user1LastViewed: { __type: 'Chatroom_user1LastViewed_operator' },
+    user1_id: { __type: 'Chatroom_user1_id_operator' },
+    user2LastViewed: { __type: 'Chatroom_user2LastViewed_operator' },
+    user2_id: { __type: 'Chatroom_user2_id_operator' },
+  },
+  Chatroom_where_and: {
+    createdAt: { __type: 'Chatroom_createdAt_operator' },
+    id: { __type: 'Chatroom_id_operator' },
+    lastMessage: { __type: 'Chatroom_lastMessage_operator' },
+    updatedAt: { __type: 'Chatroom_updatedAt_operator' },
+    user1LastViewed: { __type: 'Chatroom_user1LastViewed_operator' },
+    user1_id: { __type: 'Chatroom_user1_id_operator' },
+    user2LastViewed: { __type: 'Chatroom_user2LastViewed_operator' },
+    user2_id: { __type: 'Chatroom_user2_id_operator' },
+  },
+  Chatroom_where_or: {
+    createdAt: { __type: 'Chatroom_createdAt_operator' },
+    id: { __type: 'Chatroom_id_operator' },
+    lastMessage: { __type: 'Chatroom_lastMessage_operator' },
+    updatedAt: { __type: 'Chatroom_updatedAt_operator' },
+    user1LastViewed: { __type: 'Chatroom_user1LastViewed_operator' },
+    user1_id: { __type: 'Chatroom_user1_id_operator' },
+    user2LastViewed: { __type: 'Chatroom_user2LastViewed_operator' },
+    user2_id: { __type: 'Chatroom_user2_id_operator' },
+  },
+  Chatrooms: {
+    __typename: { __type: 'String!' },
+    docs: { __type: '[Chatroom]' },
+    hasNextPage: { __type: 'Boolean' },
+    hasPrevPage: { __type: 'Boolean' },
+    limit: { __type: 'Int' },
+    nextPage: { __type: 'Int' },
+    offset: { __type: 'Int' },
+    page: { __type: 'Int' },
+    pagingCounter: { __type: 'Int' },
+    prevPage: { __type: 'Int' },
+    totalDocs: { __type: 'Int' },
+    totalPages: { __type: 'Int' },
   },
   Item: {
     __typename: { __type: 'String!' },
@@ -3121,6 +4192,393 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
     where: { __type: 'JSONObject' },
   },
+  Message: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'DateTime' },
+    createdBy: { __type: 'User!' },
+    id: { __type: 'Int' },
+    message: { __type: 'String' },
+    room: { __type: 'Chatroom!' },
+    updatedAt: { __type: 'DateTime' },
+  },
+  MessageCreateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  MessageCreateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  MessageDeleteAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  MessageDeleteDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  MessageDocAccessFields: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'MessageDocAccessFields_createdAt' },
+    createdBy: { __type: 'MessageDocAccessFields_createdBy' },
+    message: { __type: 'MessageDocAccessFields_message' },
+    room: { __type: 'MessageDocAccessFields_room' },
+    updatedAt: { __type: 'MessageDocAccessFields_updatedAt' },
+  },
+  MessageDocAccessFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageDocAccessFields_createdAt_Create' },
+    delete: { __type: 'MessageDocAccessFields_createdAt_Delete' },
+    read: { __type: 'MessageDocAccessFields_createdAt_Read' },
+    update: { __type: 'MessageDocAccessFields_createdAt_Update' },
+  },
+  MessageDocAccessFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_createdBy: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageDocAccessFields_createdBy_Create' },
+    delete: { __type: 'MessageDocAccessFields_createdBy_Delete' },
+    read: { __type: 'MessageDocAccessFields_createdBy_Read' },
+    update: { __type: 'MessageDocAccessFields_createdBy_Update' },
+  },
+  MessageDocAccessFields_createdBy_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_createdBy_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_createdBy_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_createdBy_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_message: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageDocAccessFields_message_Create' },
+    delete: { __type: 'MessageDocAccessFields_message_Delete' },
+    read: { __type: 'MessageDocAccessFields_message_Read' },
+    update: { __type: 'MessageDocAccessFields_message_Update' },
+  },
+  MessageDocAccessFields_message_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_message_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_message_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_message_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_room: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageDocAccessFields_room_Create' },
+    delete: { __type: 'MessageDocAccessFields_room_Delete' },
+    read: { __type: 'MessageDocAccessFields_room_Read' },
+    update: { __type: 'MessageDocAccessFields_room_Update' },
+  },
+  MessageDocAccessFields_room_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_room_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_room_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_room_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageDocAccessFields_updatedAt_Create' },
+    delete: { __type: 'MessageDocAccessFields_updatedAt_Delete' },
+    read: { __type: 'MessageDocAccessFields_updatedAt_Read' },
+    update: { __type: 'MessageDocAccessFields_updatedAt_Update' },
+  },
+  MessageDocAccessFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageDocAccessFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'MessageFields_createdAt' },
+    createdBy: { __type: 'MessageFields_createdBy' },
+    message: { __type: 'MessageFields_message' },
+    room: { __type: 'MessageFields_room' },
+    updatedAt: { __type: 'MessageFields_updatedAt' },
+  },
+  MessageFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageFields_createdAt_Create' },
+    delete: { __type: 'MessageFields_createdAt_Delete' },
+    read: { __type: 'MessageFields_createdAt_Read' },
+    update: { __type: 'MessageFields_createdAt_Update' },
+  },
+  MessageFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_createdBy: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageFields_createdBy_Create' },
+    delete: { __type: 'MessageFields_createdBy_Delete' },
+    read: { __type: 'MessageFields_createdBy_Read' },
+    update: { __type: 'MessageFields_createdBy_Update' },
+  },
+  MessageFields_createdBy_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_createdBy_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_createdBy_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_createdBy_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_message: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageFields_message_Create' },
+    delete: { __type: 'MessageFields_message_Delete' },
+    read: { __type: 'MessageFields_message_Read' },
+    update: { __type: 'MessageFields_message_Update' },
+  },
+  MessageFields_message_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_message_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_message_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_message_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_room: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageFields_room_Create' },
+    delete: { __type: 'MessageFields_room_Delete' },
+    read: { __type: 'MessageFields_room_Read' },
+    update: { __type: 'MessageFields_room_Update' },
+  },
+  MessageFields_room_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_room_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_room_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_room_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageFields_updatedAt_Create' },
+    delete: { __type: 'MessageFields_updatedAt_Delete' },
+    read: { __type: 'MessageFields_updatedAt_Read' },
+    update: { __type: 'MessageFields_updatedAt_Update' },
+  },
+  MessageFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  MessageReadAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  MessageReadDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  MessageUpdateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  MessageUpdateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  Message_createdAt_operator: {
+    equals: { __type: 'DateTime' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Message_createdBy_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Message_id_operator: {
+    equals: { __type: 'Int' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Int' },
+    greater_than_equal: { __type: 'Int' },
+    less_than: { __type: 'Int' },
+    less_than_equal: { __type: 'Int' },
+    not_equals: { __type: 'Int' },
+  },
+  Message_message_operator: {
+    all: { __type: '[String]' },
+    contains: { __type: 'String' },
+    equals: { __type: 'String' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[String]' },
+    like: { __type: 'String' },
+    not_equals: { __type: 'String' },
+    not_in: { __type: '[String]' },
+  },
+  Message_room_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Message_updatedAt_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Message_where: {
+    AND: { __type: '[Message_where_and]' },
+    OR: { __type: '[Message_where_or]' },
+    createdAt: { __type: 'Message_createdAt_operator' },
+    createdBy: { __type: 'Message_createdBy_operator' },
+    id: { __type: 'Message_id_operator' },
+    message: { __type: 'Message_message_operator' },
+    room: { __type: 'Message_room_operator' },
+    updatedAt: { __type: 'Message_updatedAt_operator' },
+  },
+  Message_where_and: {
+    createdAt: { __type: 'Message_createdAt_operator' },
+    createdBy: { __type: 'Message_createdBy_operator' },
+    id: { __type: 'Message_id_operator' },
+    message: { __type: 'Message_message_operator' },
+    room: { __type: 'Message_room_operator' },
+    updatedAt: { __type: 'Message_updatedAt_operator' },
+  },
+  Message_where_or: {
+    createdAt: { __type: 'Message_createdAt_operator' },
+    createdBy: { __type: 'Message_createdBy_operator' },
+    id: { __type: 'Message_id_operator' },
+    message: { __type: 'Message_message_operator' },
+    room: { __type: 'Message_room_operator' },
+    updatedAt: { __type: 'Message_updatedAt_operator' },
+  },
+  Messages: {
+    __typename: { __type: 'String!' },
+    docs: { __type: '[Message]' },
+    hasNextPage: { __type: 'Boolean' },
+    hasPrevPage: { __type: 'Boolean' },
+    limit: { __type: 'Int' },
+    nextPage: { __type: 'Int' },
+    offset: { __type: 'Int' },
+    page: { __type: 'Int' },
+    pagingCounter: { __type: 'Int' },
+    prevPage: { __type: 'Int' },
+    totalDocs: { __type: 'Int' },
+    totalPages: { __type: 'Int' },
+  },
   PayloadPreference: {
     __typename: { __type: 'String!' },
     createdAt: { __type: 'DateTime' },
@@ -3525,6 +4983,810 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
     where: { __type: 'JSONObject' },
   },
+  Renting: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'DateTime' },
+    createdBy: { __type: 'User!' },
+    endDate: { __type: 'DateTime!' },
+    id: { __type: 'Int' },
+    rentedBy: { __type: 'Renting_RentedBy' },
+    rentedTo: { __type: 'Renting_RentedTo' },
+    startDate: { __type: 'DateTime!' },
+    status: { __type: 'Renting_status' },
+    totalPrice: { __type: 'Float' },
+    updatedAt: { __type: 'DateTime' },
+  },
+  RentingCreateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  RentingCreateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  RentingDeleteAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  RentingDeleteDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  RentingDocAccessFields: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'RentingDocAccessFields_createdAt' },
+    createdBy: { __type: 'RentingDocAccessFields_createdBy' },
+    endDate: { __type: 'RentingDocAccessFields_endDate' },
+    rentedBy: { __type: 'RentingDocAccessFields_rentedBy' },
+    rentedTo: { __type: 'RentingDocAccessFields_rentedTo' },
+    startDate: { __type: 'RentingDocAccessFields_startDate' },
+    status: { __type: 'RentingDocAccessFields_status' },
+    totalPrice: { __type: 'RentingDocAccessFields_totalPrice' },
+    updatedAt: { __type: 'RentingDocAccessFields_updatedAt' },
+  },
+  RentingDocAccessFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_createdAt_Create' },
+    delete: { __type: 'RentingDocAccessFields_createdAt_Delete' },
+    read: { __type: 'RentingDocAccessFields_createdAt_Read' },
+    update: { __type: 'RentingDocAccessFields_createdAt_Update' },
+  },
+  RentingDocAccessFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_createdBy: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_createdBy_Create' },
+    delete: { __type: 'RentingDocAccessFields_createdBy_Delete' },
+    read: { __type: 'RentingDocAccessFields_createdBy_Read' },
+    update: { __type: 'RentingDocAccessFields_createdBy_Update' },
+  },
+  RentingDocAccessFields_createdBy_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_createdBy_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_createdBy_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_createdBy_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_endDate: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_endDate_Create' },
+    delete: { __type: 'RentingDocAccessFields_endDate_Delete' },
+    read: { __type: 'RentingDocAccessFields_endDate_Read' },
+    update: { __type: 'RentingDocAccessFields_endDate_Update' },
+  },
+  RentingDocAccessFields_endDate_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_endDate_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_endDate_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_endDate_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedBy: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_rentedBy_Create' },
+    delete: { __type: 'RentingDocAccessFields_rentedBy_Delete' },
+    fields: { __type: 'RentingDocAccessFields_rentedBy_Fields' },
+    read: { __type: 'RentingDocAccessFields_rentedBy_Read' },
+    update: { __type: 'RentingDocAccessFields_rentedBy_Update' },
+  },
+  RentingDocAccessFields_rentedBy_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedBy_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedBy_Fields: {
+    __typename: { __type: 'String!' },
+    user: { __type: 'RentingDocAccessFields_rentedBy_user' },
+  },
+  RentingDocAccessFields_rentedBy_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedBy_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedBy_user: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_rentedBy_user_Create' },
+    delete: { __type: 'RentingDocAccessFields_rentedBy_user_Delete' },
+    read: { __type: 'RentingDocAccessFields_rentedBy_user_Read' },
+    update: { __type: 'RentingDocAccessFields_rentedBy_user_Update' },
+  },
+  RentingDocAccessFields_rentedBy_user_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedBy_user_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedBy_user_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedBy_user_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedTo: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_rentedTo_Create' },
+    delete: { __type: 'RentingDocAccessFields_rentedTo_Delete' },
+    fields: { __type: 'RentingDocAccessFields_rentedTo_Fields' },
+    read: { __type: 'RentingDocAccessFields_rentedTo_Read' },
+    update: { __type: 'RentingDocAccessFields_rentedTo_Update' },
+  },
+  RentingDocAccessFields_rentedTo_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedTo_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedTo_Fields: {
+    __typename: { __type: 'String!' },
+    item: { __type: 'RentingDocAccessFields_rentedTo_item' },
+    user: { __type: 'RentingDocAccessFields_rentedTo_user' },
+  },
+  RentingDocAccessFields_rentedTo_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedTo_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedTo_item: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_rentedTo_item_Create' },
+    delete: { __type: 'RentingDocAccessFields_rentedTo_item_Delete' },
+    read: { __type: 'RentingDocAccessFields_rentedTo_item_Read' },
+    update: { __type: 'RentingDocAccessFields_rentedTo_item_Update' },
+  },
+  RentingDocAccessFields_rentedTo_item_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedTo_item_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedTo_item_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedTo_item_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedTo_user: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_rentedTo_user_Create' },
+    delete: { __type: 'RentingDocAccessFields_rentedTo_user_Delete' },
+    read: { __type: 'RentingDocAccessFields_rentedTo_user_Read' },
+    update: { __type: 'RentingDocAccessFields_rentedTo_user_Update' },
+  },
+  RentingDocAccessFields_rentedTo_user_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedTo_user_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedTo_user_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_rentedTo_user_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_startDate: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_startDate_Create' },
+    delete: { __type: 'RentingDocAccessFields_startDate_Delete' },
+    read: { __type: 'RentingDocAccessFields_startDate_Read' },
+    update: { __type: 'RentingDocAccessFields_startDate_Update' },
+  },
+  RentingDocAccessFields_startDate_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_startDate_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_startDate_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_startDate_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_status: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_status_Create' },
+    delete: { __type: 'RentingDocAccessFields_status_Delete' },
+    read: { __type: 'RentingDocAccessFields_status_Read' },
+    update: { __type: 'RentingDocAccessFields_status_Update' },
+  },
+  RentingDocAccessFields_status_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_status_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_status_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_status_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_totalPrice: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_totalPrice_Create' },
+    delete: { __type: 'RentingDocAccessFields_totalPrice_Delete' },
+    read: { __type: 'RentingDocAccessFields_totalPrice_Read' },
+    update: { __type: 'RentingDocAccessFields_totalPrice_Update' },
+  },
+  RentingDocAccessFields_totalPrice_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_totalPrice_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_totalPrice_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_totalPrice_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingDocAccessFields_updatedAt_Create' },
+    delete: { __type: 'RentingDocAccessFields_updatedAt_Delete' },
+    read: { __type: 'RentingDocAccessFields_updatedAt_Read' },
+    update: { __type: 'RentingDocAccessFields_updatedAt_Update' },
+  },
+  RentingDocAccessFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingDocAccessFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'RentingFields_createdAt' },
+    createdBy: { __type: 'RentingFields_createdBy' },
+    endDate: { __type: 'RentingFields_endDate' },
+    rentedBy: { __type: 'RentingFields_rentedBy' },
+    rentedTo: { __type: 'RentingFields_rentedTo' },
+    startDate: { __type: 'RentingFields_startDate' },
+    status: { __type: 'RentingFields_status' },
+    totalPrice: { __type: 'RentingFields_totalPrice' },
+    updatedAt: { __type: 'RentingFields_updatedAt' },
+  },
+  RentingFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_createdAt_Create' },
+    delete: { __type: 'RentingFields_createdAt_Delete' },
+    read: { __type: 'RentingFields_createdAt_Read' },
+    update: { __type: 'RentingFields_createdAt_Update' },
+  },
+  RentingFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_createdBy: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_createdBy_Create' },
+    delete: { __type: 'RentingFields_createdBy_Delete' },
+    read: { __type: 'RentingFields_createdBy_Read' },
+    update: { __type: 'RentingFields_createdBy_Update' },
+  },
+  RentingFields_createdBy_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_createdBy_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_createdBy_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_createdBy_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_endDate: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_endDate_Create' },
+    delete: { __type: 'RentingFields_endDate_Delete' },
+    read: { __type: 'RentingFields_endDate_Read' },
+    update: { __type: 'RentingFields_endDate_Update' },
+  },
+  RentingFields_endDate_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_endDate_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_endDate_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_endDate_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedBy: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_rentedBy_Create' },
+    delete: { __type: 'RentingFields_rentedBy_Delete' },
+    fields: { __type: 'RentingFields_rentedBy_Fields' },
+    read: { __type: 'RentingFields_rentedBy_Read' },
+    update: { __type: 'RentingFields_rentedBy_Update' },
+  },
+  RentingFields_rentedBy_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedBy_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedBy_Fields: {
+    __typename: { __type: 'String!' },
+    user: { __type: 'RentingFields_rentedBy_user' },
+  },
+  RentingFields_rentedBy_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedBy_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedBy_user: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_rentedBy_user_Create' },
+    delete: { __type: 'RentingFields_rentedBy_user_Delete' },
+    read: { __type: 'RentingFields_rentedBy_user_Read' },
+    update: { __type: 'RentingFields_rentedBy_user_Update' },
+  },
+  RentingFields_rentedBy_user_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedBy_user_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedBy_user_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedBy_user_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedTo: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_rentedTo_Create' },
+    delete: { __type: 'RentingFields_rentedTo_Delete' },
+    fields: { __type: 'RentingFields_rentedTo_Fields' },
+    read: { __type: 'RentingFields_rentedTo_Read' },
+    update: { __type: 'RentingFields_rentedTo_Update' },
+  },
+  RentingFields_rentedTo_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedTo_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedTo_Fields: {
+    __typename: { __type: 'String!' },
+    item: { __type: 'RentingFields_rentedTo_item' },
+    user: { __type: 'RentingFields_rentedTo_user' },
+  },
+  RentingFields_rentedTo_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedTo_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedTo_item: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_rentedTo_item_Create' },
+    delete: { __type: 'RentingFields_rentedTo_item_Delete' },
+    read: { __type: 'RentingFields_rentedTo_item_Read' },
+    update: { __type: 'RentingFields_rentedTo_item_Update' },
+  },
+  RentingFields_rentedTo_item_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedTo_item_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedTo_item_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedTo_item_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedTo_user: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_rentedTo_user_Create' },
+    delete: { __type: 'RentingFields_rentedTo_user_Delete' },
+    read: { __type: 'RentingFields_rentedTo_user_Read' },
+    update: { __type: 'RentingFields_rentedTo_user_Update' },
+  },
+  RentingFields_rentedTo_user_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedTo_user_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedTo_user_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_rentedTo_user_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_startDate: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_startDate_Create' },
+    delete: { __type: 'RentingFields_startDate_Delete' },
+    read: { __type: 'RentingFields_startDate_Read' },
+    update: { __type: 'RentingFields_startDate_Update' },
+  },
+  RentingFields_startDate_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_startDate_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_startDate_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_startDate_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_status: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_status_Create' },
+    delete: { __type: 'RentingFields_status_Delete' },
+    read: { __type: 'RentingFields_status_Read' },
+    update: { __type: 'RentingFields_status_Update' },
+  },
+  RentingFields_status_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_status_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_status_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_status_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_totalPrice: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_totalPrice_Create' },
+    delete: { __type: 'RentingFields_totalPrice_Delete' },
+    read: { __type: 'RentingFields_totalPrice_Read' },
+    update: { __type: 'RentingFields_totalPrice_Update' },
+  },
+  RentingFields_totalPrice_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_totalPrice_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_totalPrice_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_totalPrice_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingFields_updatedAt_Create' },
+    delete: { __type: 'RentingFields_updatedAt_Delete' },
+    read: { __type: 'RentingFields_updatedAt_Read' },
+    update: { __type: 'RentingFields_updatedAt_Update' },
+  },
+  RentingFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  RentingReadAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  RentingReadDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  RentingUpdateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  RentingUpdateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  Renting_RentedBy: { __typename: { __type: 'String!' }, user: { __type: 'User' } },
+  Renting_RentedTo: {
+    __typename: { __type: 'String!' },
+    item: { __type: 'Item' },
+    user: { __type: 'User' },
+  },
+  Renting_createdAt_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Renting_createdBy_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Renting_endDate_operator: {
+    equals: { __type: 'DateTime' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Renting_id_operator: {
+    equals: { __type: 'Int' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Int' },
+    greater_than_equal: { __type: 'Int' },
+    less_than: { __type: 'Int' },
+    less_than_equal: { __type: 'Int' },
+    not_equals: { __type: 'Int' },
+  },
+  Renting_rentedBy__user_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Renting_rentedTo__item_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Renting_rentedTo__user_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Renting_startDate_operator: {
+    equals: { __type: 'DateTime' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Renting_status_operator: {
+    all: { __type: '[Renting_status_Input]' },
+    equals: { __type: 'Renting_status_Input' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[Renting_status_Input]' },
+    not_equals: { __type: 'Renting_status_Input' },
+    not_in: { __type: '[Renting_status_Input]' },
+  },
+  Renting_totalPrice_operator: {
+    equals: { __type: 'Float' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Float' },
+    greater_than_equal: { __type: 'Float' },
+    less_than: { __type: 'Float' },
+    less_than_equal: { __type: 'Float' },
+    not_equals: { __type: 'Float' },
+  },
+  Renting_updatedAt_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Renting_where: {
+    AND: { __type: '[Renting_where_and]' },
+    OR: { __type: '[Renting_where_or]' },
+    createdAt: { __type: 'Renting_createdAt_operator' },
+    createdBy: { __type: 'Renting_createdBy_operator' },
+    endDate: { __type: 'Renting_endDate_operator' },
+    id: { __type: 'Renting_id_operator' },
+    rentedBy__user: { __type: 'Renting_rentedBy__user_operator' },
+    rentedTo__item: { __type: 'Renting_rentedTo__item_operator' },
+    rentedTo__user: { __type: 'Renting_rentedTo__user_operator' },
+    startDate: { __type: 'Renting_startDate_operator' },
+    status: { __type: 'Renting_status_operator' },
+    totalPrice: { __type: 'Renting_totalPrice_operator' },
+    updatedAt: { __type: 'Renting_updatedAt_operator' },
+  },
+  Renting_where_and: {
+    createdAt: { __type: 'Renting_createdAt_operator' },
+    createdBy: { __type: 'Renting_createdBy_operator' },
+    endDate: { __type: 'Renting_endDate_operator' },
+    id: { __type: 'Renting_id_operator' },
+    rentedBy__user: { __type: 'Renting_rentedBy__user_operator' },
+    rentedTo__item: { __type: 'Renting_rentedTo__item_operator' },
+    rentedTo__user: { __type: 'Renting_rentedTo__user_operator' },
+    startDate: { __type: 'Renting_startDate_operator' },
+    status: { __type: 'Renting_status_operator' },
+    totalPrice: { __type: 'Renting_totalPrice_operator' },
+    updatedAt: { __type: 'Renting_updatedAt_operator' },
+  },
+  Renting_where_or: {
+    createdAt: { __type: 'Renting_createdAt_operator' },
+    createdBy: { __type: 'Renting_createdBy_operator' },
+    endDate: { __type: 'Renting_endDate_operator' },
+    id: { __type: 'Renting_id_operator' },
+    rentedBy__user: { __type: 'Renting_rentedBy__user_operator' },
+    rentedTo__item: { __type: 'Renting_rentedTo__item_operator' },
+    rentedTo__user: { __type: 'Renting_rentedTo__user_operator' },
+    startDate: { __type: 'Renting_startDate_operator' },
+    status: { __type: 'Renting_status_operator' },
+    totalPrice: { __type: 'Renting_totalPrice_operator' },
+    updatedAt: { __type: 'Renting_updatedAt_operator' },
+  },
+  Rentings: {
+    __typename: { __type: 'String!' },
+    docs: { __type: '[Renting]' },
+    hasNextPage: { __type: 'Boolean' },
+    hasPrevPage: { __type: 'Boolean' },
+    limit: { __type: 'Int' },
+    nextPage: { __type: 'Int' },
+    offset: { __type: 'Int' },
+    page: { __type: 'Int' },
+    pagingCounter: { __type: 'Int' },
+    prevPage: { __type: 'Int' },
+    totalDocs: { __type: 'Int' },
+    totalPages: { __type: 'Int' },
+  },
   Tag: {
     __typename: { __type: 'String!' },
     alt: { __type: 'String' },
@@ -3849,11 +6111,25 @@ export const generatedSchema = {
     profileImage: { __type: 'Media' },
     province: { __type: 'String' },
     rating: { __type: 'Float' },
+    requestsMade: { __type: '[User_RequestsMade!]' },
+    requestsReceived: { __type: '[User_RequestsReceived!]' },
     resetPasswordExpiration: { __type: 'DateTime' },
     resetPasswordToken: { __type: 'String' },
     roles: { __type: '[User_roles!]!' },
     salt: { __type: 'String' },
     updatedAt: { __type: 'DateTime' },
+  },
+  User_RequestsMade: {
+    __typename: { __type: 'String!' },
+    id: { __type: 'String' },
+    item: { __type: 'Item' },
+    user: { __type: 'User' },
+  },
+  User_RequestsReceived: {
+    __typename: { __type: 'String!' },
+    id: { __type: 'String' },
+    item: { __type: 'Item' },
+    user: { __type: 'User' },
   },
   User_bio_operator: {
     contains: { __type: 'String' },
@@ -3946,6 +6222,54 @@ export const generatedSchema = {
     less_than_equal: { __type: 'Float' },
     not_equals: { __type: 'Float' },
   },
+  User_requestsMade__id_operator: {
+    all: { __type: '[String]' },
+    contains: { __type: 'String' },
+    equals: { __type: 'String' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[String]' },
+    like: { __type: 'String' },
+    not_equals: { __type: 'String' },
+    not_in: { __type: '[String]' },
+  },
+  User_requestsMade__item_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  User_requestsMade__user_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  User_requestsReceived__id_operator: {
+    all: { __type: '[String]' },
+    contains: { __type: 'String' },
+    equals: { __type: 'String' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[String]' },
+    like: { __type: 'String' },
+    not_equals: { __type: 'String' },
+    not_in: { __type: '[String]' },
+  },
+  User_requestsReceived__item_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  User_requestsReceived__user_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
   User_roles_operator: {
     all: { __type: '[User_roles_Input]' },
     equals: { __type: 'User_roles_Input' },
@@ -3976,6 +6300,12 @@ export const generatedSchema = {
     profileImage: { __type: 'User_profileImage_operator' },
     province: { __type: 'User_province_operator' },
     rating: { __type: 'User_rating_operator' },
+    requestsMade__id: { __type: 'User_requestsMade__id_operator' },
+    requestsMade__item: { __type: 'User_requestsMade__item_operator' },
+    requestsMade__user: { __type: 'User_requestsMade__user_operator' },
+    requestsReceived__id: { __type: 'User_requestsReceived__id_operator' },
+    requestsReceived__item: { __type: 'User_requestsReceived__item_operator' },
+    requestsReceived__user: { __type: 'User_requestsReceived__user_operator' },
     roles: { __type: 'User_roles_operator' },
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
@@ -3990,6 +6320,12 @@ export const generatedSchema = {
     profileImage: { __type: 'User_profileImage_operator' },
     province: { __type: 'User_province_operator' },
     rating: { __type: 'User_rating_operator' },
+    requestsMade__id: { __type: 'User_requestsMade__id_operator' },
+    requestsMade__item: { __type: 'User_requestsMade__item_operator' },
+    requestsMade__user: { __type: 'User_requestsMade__user_operator' },
+    requestsReceived__id: { __type: 'User_requestsReceived__id_operator' },
+    requestsReceived__item: { __type: 'User_requestsReceived__item_operator' },
+    requestsReceived__user: { __type: 'User_requestsReceived__user_operator' },
     roles: { __type: 'User_roles_operator' },
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
@@ -4004,6 +6340,12 @@ export const generatedSchema = {
     profileImage: { __type: 'User_profileImage_operator' },
     province: { __type: 'User_province_operator' },
     rating: { __type: 'User_rating_operator' },
+    requestsMade__id: { __type: 'User_requestsMade__id_operator' },
+    requestsMade__item: { __type: 'User_requestsMade__item_operator' },
+    requestsMade__user: { __type: 'User_requestsMade__user_operator' },
+    requestsReceived__id: { __type: 'User_requestsReceived__id_operator' },
+    requestsReceived__item: { __type: 'User_requestsReceived__item_operator' },
+    requestsReceived__user: { __type: 'User_requestsReceived__user_operator' },
     roles: { __type: 'User_roles_operator' },
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
@@ -4053,6 +6395,8 @@ export const generatedSchema = {
     profileImage: { __type: 'UsersDocAccessFields_profileImage' },
     province: { __type: 'UsersDocAccessFields_province' },
     rating: { __type: 'UsersDocAccessFields_rating' },
+    requestsMade: { __type: 'UsersDocAccessFields_requestsMade' },
+    requestsReceived: { __type: 'UsersDocAccessFields_requestsReceived' },
     roles: { __type: 'UsersDocAccessFields_roles' },
     updatedAt: { __type: 'UsersDocAccessFields_updatedAt' },
   },
@@ -4286,6 +6630,204 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  UsersDocAccessFields_requestsMade: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_requestsMade_Create' },
+    delete: { __type: 'UsersDocAccessFields_requestsMade_Delete' },
+    fields: { __type: 'UsersDocAccessFields_requestsMade_Fields' },
+    read: { __type: 'UsersDocAccessFields_requestsMade_Read' },
+    update: { __type: 'UsersDocAccessFields_requestsMade_Update' },
+  },
+  UsersDocAccessFields_requestsMade_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsMade_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsMade_Fields: {
+    __typename: { __type: 'String!' },
+    id: { __type: 'UsersDocAccessFields_requestsMade_id' },
+    item: { __type: 'UsersDocAccessFields_requestsMade_item' },
+    user: { __type: 'UsersDocAccessFields_requestsMade_user' },
+  },
+  UsersDocAccessFields_requestsMade_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsMade_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsMade_id: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_requestsMade_id_Create' },
+    delete: { __type: 'UsersDocAccessFields_requestsMade_id_Delete' },
+    read: { __type: 'UsersDocAccessFields_requestsMade_id_Read' },
+    update: { __type: 'UsersDocAccessFields_requestsMade_id_Update' },
+  },
+  UsersDocAccessFields_requestsMade_id_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsMade_id_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsMade_id_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsMade_id_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsMade_item: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_requestsMade_item_Create' },
+    delete: { __type: 'UsersDocAccessFields_requestsMade_item_Delete' },
+    read: { __type: 'UsersDocAccessFields_requestsMade_item_Read' },
+    update: { __type: 'UsersDocAccessFields_requestsMade_item_Update' },
+  },
+  UsersDocAccessFields_requestsMade_item_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsMade_item_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsMade_item_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsMade_item_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsMade_user: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_requestsMade_user_Create' },
+    delete: { __type: 'UsersDocAccessFields_requestsMade_user_Delete' },
+    read: { __type: 'UsersDocAccessFields_requestsMade_user_Read' },
+    update: { __type: 'UsersDocAccessFields_requestsMade_user_Update' },
+  },
+  UsersDocAccessFields_requestsMade_user_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsMade_user_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsMade_user_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsMade_user_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_requestsReceived_Create' },
+    delete: { __type: 'UsersDocAccessFields_requestsReceived_Delete' },
+    fields: { __type: 'UsersDocAccessFields_requestsReceived_Fields' },
+    read: { __type: 'UsersDocAccessFields_requestsReceived_Read' },
+    update: { __type: 'UsersDocAccessFields_requestsReceived_Update' },
+  },
+  UsersDocAccessFields_requestsReceived_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived_Fields: {
+    __typename: { __type: 'String!' },
+    id: { __type: 'UsersDocAccessFields_requestsReceived_id' },
+    item: { __type: 'UsersDocAccessFields_requestsReceived_item' },
+    user: { __type: 'UsersDocAccessFields_requestsReceived_user' },
+  },
+  UsersDocAccessFields_requestsReceived_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived_id: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_requestsReceived_id_Create' },
+    delete: { __type: 'UsersDocAccessFields_requestsReceived_id_Delete' },
+    read: { __type: 'UsersDocAccessFields_requestsReceived_id_Read' },
+    update: { __type: 'UsersDocAccessFields_requestsReceived_id_Update' },
+  },
+  UsersDocAccessFields_requestsReceived_id_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived_id_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived_id_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived_id_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived_item: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_requestsReceived_item_Create' },
+    delete: { __type: 'UsersDocAccessFields_requestsReceived_item_Delete' },
+    read: { __type: 'UsersDocAccessFields_requestsReceived_item_Read' },
+    update: { __type: 'UsersDocAccessFields_requestsReceived_item_Update' },
+  },
+  UsersDocAccessFields_requestsReceived_item_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived_item_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived_item_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived_item_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived_user: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_requestsReceived_user_Create' },
+    delete: { __type: 'UsersDocAccessFields_requestsReceived_user_Delete' },
+    read: { __type: 'UsersDocAccessFields_requestsReceived_user_Read' },
+    update: { __type: 'UsersDocAccessFields_requestsReceived_user_Update' },
+  },
+  UsersDocAccessFields_requestsReceived_user_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived_user_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived_user_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_requestsReceived_user_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   UsersDocAccessFields_roles: {
     __typename: { __type: 'String!' },
     create: { __type: 'UsersDocAccessFields_roles_Create' },
@@ -4344,6 +6886,8 @@ export const generatedSchema = {
     profileImage: { __type: 'UsersFields_profileImage' },
     province: { __type: 'UsersFields_province' },
     rating: { __type: 'UsersFields_rating' },
+    requestsMade: { __type: 'UsersFields_requestsMade' },
+    requestsReceived: { __type: 'UsersFields_requestsReceived' },
     roles: { __type: 'UsersFields_roles' },
     updatedAt: { __type: 'UsersFields_updatedAt' },
   },
@@ -4559,6 +7103,204 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  UsersFields_requestsMade: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_requestsMade_Create' },
+    delete: { __type: 'UsersFields_requestsMade_Delete' },
+    fields: { __type: 'UsersFields_requestsMade_Fields' },
+    read: { __type: 'UsersFields_requestsMade_Read' },
+    update: { __type: 'UsersFields_requestsMade_Update' },
+  },
+  UsersFields_requestsMade_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsMade_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsMade_Fields: {
+    __typename: { __type: 'String!' },
+    id: { __type: 'UsersFields_requestsMade_id' },
+    item: { __type: 'UsersFields_requestsMade_item' },
+    user: { __type: 'UsersFields_requestsMade_user' },
+  },
+  UsersFields_requestsMade_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsMade_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsMade_id: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_requestsMade_id_Create' },
+    delete: { __type: 'UsersFields_requestsMade_id_Delete' },
+    read: { __type: 'UsersFields_requestsMade_id_Read' },
+    update: { __type: 'UsersFields_requestsMade_id_Update' },
+  },
+  UsersFields_requestsMade_id_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsMade_id_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsMade_id_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsMade_id_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsMade_item: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_requestsMade_item_Create' },
+    delete: { __type: 'UsersFields_requestsMade_item_Delete' },
+    read: { __type: 'UsersFields_requestsMade_item_Read' },
+    update: { __type: 'UsersFields_requestsMade_item_Update' },
+  },
+  UsersFields_requestsMade_item_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsMade_item_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsMade_item_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsMade_item_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsMade_user: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_requestsMade_user_Create' },
+    delete: { __type: 'UsersFields_requestsMade_user_Delete' },
+    read: { __type: 'UsersFields_requestsMade_user_Read' },
+    update: { __type: 'UsersFields_requestsMade_user_Update' },
+  },
+  UsersFields_requestsMade_user_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsMade_user_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsMade_user_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsMade_user_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_requestsReceived_Create' },
+    delete: { __type: 'UsersFields_requestsReceived_Delete' },
+    fields: { __type: 'UsersFields_requestsReceived_Fields' },
+    read: { __type: 'UsersFields_requestsReceived_Read' },
+    update: { __type: 'UsersFields_requestsReceived_Update' },
+  },
+  UsersFields_requestsReceived_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived_Fields: {
+    __typename: { __type: 'String!' },
+    id: { __type: 'UsersFields_requestsReceived_id' },
+    item: { __type: 'UsersFields_requestsReceived_item' },
+    user: { __type: 'UsersFields_requestsReceived_user' },
+  },
+  UsersFields_requestsReceived_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived_id: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_requestsReceived_id_Create' },
+    delete: { __type: 'UsersFields_requestsReceived_id_Delete' },
+    read: { __type: 'UsersFields_requestsReceived_id_Read' },
+    update: { __type: 'UsersFields_requestsReceived_id_Update' },
+  },
+  UsersFields_requestsReceived_id_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived_id_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived_id_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived_id_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived_item: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_requestsReceived_item_Create' },
+    delete: { __type: 'UsersFields_requestsReceived_item_Delete' },
+    read: { __type: 'UsersFields_requestsReceived_item_Read' },
+    update: { __type: 'UsersFields_requestsReceived_item_Update' },
+  },
+  UsersFields_requestsReceived_item_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived_item_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived_item_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived_item_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived_user: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_requestsReceived_user_Create' },
+    delete: { __type: 'UsersFields_requestsReceived_user_Delete' },
+    read: { __type: 'UsersFields_requestsReceived_user_Read' },
+    update: { __type: 'UsersFields_requestsReceived_user_Update' },
+  },
+  UsersFields_requestsReceived_user_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived_user_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived_user_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_requestsReceived_user_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   UsersFields_roles: {
     __typename: { __type: 'String!' },
     create: { __type: 'UsersFields_roles_Create' },
@@ -4632,6 +7374,22 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
     where: { __type: 'JSONObject' },
   },
+  chatroomAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomCreateAccess' },
+    delete: { __type: 'ChatroomDeleteAccess' },
+    fields: { __type: 'ChatroomFields' },
+    read: { __type: 'ChatroomReadAccess' },
+    update: { __type: 'ChatroomUpdateAccess' },
+  },
+  chatroomDocAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ChatroomCreateDocAccess' },
+    delete: { __type: 'ChatroomDeleteDocAccess' },
+    fields: { __type: 'ChatroomDocAccessFields' },
+    read: { __type: 'ChatroomReadDocAccess' },
+    update: { __type: 'ChatroomUpdateDocAccess' },
+  },
   itemsAccess: {
     __typename: { __type: 'String!' },
     create: { __type: 'ItemsCreateAccess' },
@@ -4666,19 +7424,50 @@ export const generatedSchema = {
     read: { __type: 'MediasReadDocAccess' },
     update: { __type: 'MediasUpdateDocAccess' },
   },
+  messageAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageCreateAccess' },
+    delete: { __type: 'MessageDeleteAccess' },
+    fields: { __type: 'MessageFields' },
+    read: { __type: 'MessageReadAccess' },
+    update: { __type: 'MessageUpdateAccess' },
+  },
+  messageDocAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'MessageCreateDocAccess' },
+    delete: { __type: 'MessageDeleteDocAccess' },
+    fields: { __type: 'MessageDocAccessFields' },
+    read: { __type: 'MessageReadDocAccess' },
+    update: { __type: 'MessageUpdateDocAccess' },
+  },
   mutation: {
     __typename: { __type: 'String!' },
+    createChatroom: {
+      __type: 'Chatroom',
+      __args: { data: 'mutationChatroomInput!', draft: 'Boolean' },
+    },
     createItem: { __type: 'Item', __args: { data: 'mutationItemInput!', draft: 'Boolean' } },
     createMedia: { __type: 'Media', __args: { data: 'mutationMediaInput!', draft: 'Boolean' } },
+    createMessage: {
+      __type: 'Message',
+      __args: { data: 'mutationMessageInput!', draft: 'Boolean' },
+    },
     createPayloadPreference: {
       __type: 'PayloadPreference',
       __args: { data: 'mutationPayloadPreferenceInput!', draft: 'Boolean' },
     },
+    createRenting: {
+      __type: 'Renting',
+      __args: { data: 'mutationRentingInput!', draft: 'Boolean' },
+    },
     createTag: { __type: 'Tag', __args: { data: 'mutationTagInput!', draft: 'Boolean' } },
     createUser: { __type: 'User', __args: { data: 'mutationUserInput!', draft: 'Boolean' } },
+    deleteChatroom: { __type: 'Chatroom', __args: { id: 'Int!' } },
     deleteItem: { __type: 'Item', __args: { id: 'Int!' } },
     deleteMedia: { __type: 'Media', __args: { id: 'Int!' } },
+    deleteMessage: { __type: 'Message', __args: { id: 'Int!' } },
     deletePayloadPreference: { __type: 'PayloadPreference', __args: { id: 'Int!' } },
+    deleteRenting: { __type: 'Renting', __args: { id: 'Int!' } },
     deleteTag: { __type: 'Tag', __args: { id: 'Int!' } },
     deleteUser: { __type: 'User', __args: { id: 'Int!' } },
     forgotPasswordUser: {
@@ -4694,6 +7483,15 @@ export const generatedSchema = {
     },
     restoreVersionItem: { __type: 'Item', __args: { id: 'Int' } },
     unlockUser: { __type: 'Boolean!', __args: { email: 'String!' } },
+    updateChatroom: {
+      __type: 'Chatroom',
+      __args: {
+        autosave: 'Boolean',
+        data: 'mutationChatroomUpdateInput!',
+        draft: 'Boolean',
+        id: 'Int!',
+      },
+    },
     updateItem: {
       __type: 'Item',
       __args: {
@@ -4712,11 +7510,29 @@ export const generatedSchema = {
         id: 'Int!',
       },
     },
+    updateMessage: {
+      __type: 'Message',
+      __args: {
+        autosave: 'Boolean',
+        data: 'mutationMessageUpdateInput!',
+        draft: 'Boolean',
+        id: 'Int!',
+      },
+    },
     updatePayloadPreference: {
       __type: 'PayloadPreference',
       __args: {
         autosave: 'Boolean',
         data: 'mutationPayloadPreferenceUpdateInput!',
+        draft: 'Boolean',
+        id: 'Int!',
+      },
+    },
+    updateRenting: {
+      __type: 'Renting',
+      __args: {
+        autosave: 'Boolean',
+        data: 'mutationRentingUpdateInput!',
         draft: 'Boolean',
         id: 'Int!',
       },
@@ -4740,6 +7556,24 @@ export const generatedSchema = {
       },
     },
     verifyEmailUser: { __type: 'Boolean', __args: { token: 'String' } },
+  },
+  mutationChatroomInput: {
+    createdAt: { __type: 'String' },
+    lastMessage: { __type: 'Int' },
+    updatedAt: { __type: 'String' },
+    user1LastViewed: { __type: 'String' },
+    user1_id: { __type: 'Int' },
+    user2LastViewed: { __type: 'String' },
+    user2_id: { __type: 'Int' },
+  },
+  mutationChatroomUpdateInput: {
+    createdAt: { __type: 'String' },
+    lastMessage: { __type: 'Int' },
+    updatedAt: { __type: 'String' },
+    user1LastViewed: { __type: 'String' },
+    user1_id: { __type: 'Int' },
+    user2LastViewed: { __type: 'String' },
+    user2_id: { __type: 'Int' },
   },
   mutationItemInput: {
     _status: { __type: 'Item__status_MutationInput' },
@@ -4803,6 +7637,20 @@ export const generatedSchema = {
     url: { __type: 'String' },
     width: { __type: 'Float' },
   },
+  mutationMessageInput: {
+    createdAt: { __type: 'String' },
+    createdBy: { __type: 'Int' },
+    message: { __type: 'String' },
+    room: { __type: 'Int' },
+    updatedAt: { __type: 'String' },
+  },
+  mutationMessageUpdateInput: {
+    createdAt: { __type: 'String' },
+    createdBy: { __type: 'Int' },
+    message: { __type: 'String' },
+    room: { __type: 'Int' },
+    updatedAt: { __type: 'String' },
+  },
   mutationPayloadPreferenceInput: {
     createdAt: { __type: 'String' },
     key: { __type: 'String' },
@@ -4817,6 +7665,32 @@ export const generatedSchema = {
     user: { __type: 'PayloadPreferenceUpdate_UserRelationshipInput' },
     value: { __type: 'JSON' },
   },
+  mutationRentingInput: {
+    createdAt: { __type: 'String' },
+    createdBy: { __type: 'Int' },
+    endDate: { __type: 'String!' },
+    rentedBy: { __type: 'mutationRenting_RentedByInput!' },
+    rentedTo: { __type: 'mutationRenting_RentedToInput!' },
+    startDate: { __type: 'String!' },
+    status: { __type: 'Renting_status_MutationInput' },
+    totalPrice: { __type: 'Float' },
+    updatedAt: { __type: 'String' },
+  },
+  mutationRentingUpdateInput: {
+    createdAt: { __type: 'String' },
+    createdBy: { __type: 'Int' },
+    endDate: { __type: 'String' },
+    rentedBy: { __type: 'mutationRentingUpdate_RentedByInput!' },
+    rentedTo: { __type: 'mutationRentingUpdate_RentedToInput!' },
+    startDate: { __type: 'String' },
+    status: { __type: 'RentingUpdate_status_MutationInput' },
+    totalPrice: { __type: 'Float' },
+    updatedAt: { __type: 'String' },
+  },
+  mutationRentingUpdate_RentedByInput: { user: { __type: 'Int' } },
+  mutationRentingUpdate_RentedToInput: { item: { __type: 'Int' }, user: { __type: 'Int' } },
+  mutationRenting_RentedByInput: { user: { __type: 'Int' } },
+  mutationRenting_RentedToInput: { item: { __type: 'Int' }, user: { __type: 'Int' } },
   mutationTagInput: {
     alt: { __type: 'String' },
     createdAt: { __type: 'String' },
@@ -4845,6 +7719,8 @@ export const generatedSchema = {
     profileImage: { __type: 'Int' },
     province: { __type: 'String' },
     rating: { __type: 'Float' },
+    requestsMade: { __type: '[mutationUser_RequestsMadeInput]' },
+    requestsReceived: { __type: '[mutationUser_RequestsReceivedInput]' },
     resetPasswordExpiration: { __type: 'String' },
     resetPasswordToken: { __type: 'String' },
     roles: { __type: '[User_roles_MutationInput]!' },
@@ -4865,11 +7741,33 @@ export const generatedSchema = {
     profileImage: { __type: 'Int' },
     province: { __type: 'String' },
     rating: { __type: 'Float' },
+    requestsMade: { __type: '[mutationUserUpdate_RequestsMadeInput]' },
+    requestsReceived: { __type: '[mutationUserUpdate_RequestsReceivedInput]' },
     resetPasswordExpiration: { __type: 'String' },
     resetPasswordToken: { __type: 'String' },
     roles: { __type: '[UserUpdate_roles_MutationInput]' },
     salt: { __type: 'String' },
     updatedAt: { __type: 'String' },
+  },
+  mutationUserUpdate_RequestsMadeInput: {
+    id: { __type: 'String' },
+    item: { __type: 'Int' },
+    user: { __type: 'Int' },
+  },
+  mutationUserUpdate_RequestsReceivedInput: {
+    id: { __type: 'String' },
+    item: { __type: 'Int' },
+    user: { __type: 'Int' },
+  },
+  mutationUser_RequestsMadeInput: {
+    id: { __type: 'String' },
+    item: { __type: 'Int' },
+    user: { __type: 'Int' },
+  },
+  mutationUser_RequestsReceivedInput: {
+    id: { __type: 'String' },
+    item: { __type: 'Int' },
+    user: { __type: 'Int' },
   },
   payload_preferencesAccess: {
     __typename: { __type: 'String!' },
@@ -4890,6 +7788,17 @@ export const generatedSchema = {
   query: {
     __typename: { __type: 'String!' },
     Access: { __type: 'Access' },
+    Chatroom: { __type: 'Chatroom', __args: { draft: 'Boolean', id: 'Int!' } },
+    Chatrooms: {
+      __type: 'Chatrooms',
+      __args: {
+        draft: 'Boolean',
+        limit: 'Int',
+        page: 'Int',
+        sort: 'String',
+        where: 'Chatroom_where',
+      },
+    },
     Item: { __type: 'Item', __args: { draft: 'Boolean', id: 'Int!' } },
     Items: {
       __type: 'Items',
@@ -4899,6 +7808,17 @@ export const generatedSchema = {
     Medias: {
       __type: 'Medias',
       __args: { draft: 'Boolean', limit: 'Int', page: 'Int', sort: 'String', where: 'Media_where' },
+    },
+    Message: { __type: 'Message', __args: { draft: 'Boolean', id: 'Int!' } },
+    Messages: {
+      __type: 'Messages',
+      __args: {
+        draft: 'Boolean',
+        limit: 'Int',
+        page: 'Int',
+        sort: 'String',
+        where: 'Message_where',
+      },
     },
     PayloadPreference: { __type: 'PayloadPreference', __args: { draft: 'Boolean', id: 'Int!' } },
     PayloadPreferences: {
@@ -4911,6 +7831,17 @@ export const generatedSchema = {
         where: 'PayloadPreference_where',
       },
     },
+    Renting: { __type: 'Renting', __args: { draft: 'Boolean', id: 'Int!' } },
+    Rentings: {
+      __type: 'Rentings',
+      __args: {
+        draft: 'Boolean',
+        limit: 'Int',
+        page: 'Int',
+        sort: 'String',
+        where: 'Renting_where',
+      },
+    },
     Tag: { __type: 'Tag', __args: { draft: 'Boolean', id: 'Int!' } },
     Tags: {
       __type: 'Tags',
@@ -4921,9 +7852,12 @@ export const generatedSchema = {
       __type: 'Users',
       __args: { draft: 'Boolean', limit: 'Int', page: 'Int', sort: 'String', where: 'User_where' },
     },
+    docAccessChatroom: { __type: 'chatroomDocAccess', __args: { id: 'Int!' } },
     docAccessItem: { __type: 'itemsDocAccess', __args: { id: 'Int!' } },
     docAccessMedia: { __type: 'mediasDocAccess', __args: { id: 'Int!' } },
+    docAccessMessage: { __type: 'messageDocAccess', __args: { id: 'Int!' } },
     docAccessPayloadPreference: { __type: 'payload_preferencesDocAccess', __args: { id: 'Int!' } },
+    docAccessRenting: { __type: 'rentingDocAccess', __args: { id: 'Int!' } },
     docAccessTag: { __type: 'tagsDocAccess', __args: { id: 'Int!' } },
     docAccessUser: { __type: 'usersDocAccess', __args: { id: 'Int!' } },
     initializedUser: { __type: 'Boolean' },
@@ -4933,6 +7867,22 @@ export const generatedSchema = {
       __type: 'versionsItems',
       __args: { limit: 'Int', page: 'Int', sort: 'String', where: 'versionsItem_where' },
     },
+  },
+  rentingAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingCreateAccess' },
+    delete: { __type: 'RentingDeleteAccess' },
+    fields: { __type: 'RentingFields' },
+    read: { __type: 'RentingReadAccess' },
+    update: { __type: 'RentingUpdateAccess' },
+  },
+  rentingDocAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'RentingCreateDocAccess' },
+    delete: { __type: 'RentingDeleteDocAccess' },
+    fields: { __type: 'RentingDocAccessFields' },
+    read: { __type: 'RentingReadDocAccess' },
+    update: { __type: 'RentingUpdateDocAccess' },
   },
   subscription: {},
   tagsAccess: {
@@ -5271,11 +8221,503 @@ export const generatedSchema = {
 export interface Access {
   __typename?: 'Access'
   canAccessAdmin: ScalarsEnums['Boolean']
+  chatroom?: Maybe<chatroomAccess>
   items?: Maybe<itemsAccess>
   medias?: Maybe<mediasAccess>
+  message?: Maybe<messageAccess>
   payload_preferences?: Maybe<payload_preferencesAccess>
+  renting?: Maybe<rentingAccess>
   tags?: Maybe<tagsAccess>
   users?: Maybe<usersAccess>
+}
+
+export interface Chatroom {
+  __typename?: 'Chatroom'
+  createdAt?: Maybe<ScalarsEnums['DateTime']>
+  id?: Maybe<ScalarsEnums['Int']>
+  lastMessage?: Maybe<Message>
+  updatedAt?: Maybe<ScalarsEnums['DateTime']>
+  user1LastViewed?: Maybe<ScalarsEnums['DateTime']>
+  user1_id: User
+  user2LastViewed?: Maybe<ScalarsEnums['DateTime']>
+  user2_id: User
+}
+
+export interface ChatroomCreateAccess {
+  __typename?: 'ChatroomCreateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ChatroomCreateDocAccess {
+  __typename?: 'ChatroomCreateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ChatroomDeleteAccess {
+  __typename?: 'ChatroomDeleteAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ChatroomDeleteDocAccess {
+  __typename?: 'ChatroomDeleteDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ChatroomDocAccessFields {
+  __typename?: 'ChatroomDocAccessFields'
+  createdAt?: Maybe<ChatroomDocAccessFields_createdAt>
+  lastMessage?: Maybe<ChatroomDocAccessFields_lastMessage>
+  updatedAt?: Maybe<ChatroomDocAccessFields_updatedAt>
+  user1LastViewed?: Maybe<ChatroomDocAccessFields_user1LastViewed>
+  user1_id?: Maybe<ChatroomDocAccessFields_user1_id>
+  user2LastViewed?: Maybe<ChatroomDocAccessFields_user2LastViewed>
+  user2_id?: Maybe<ChatroomDocAccessFields_user2_id>
+}
+
+export interface ChatroomDocAccessFields_createdAt {
+  __typename?: 'ChatroomDocAccessFields_createdAt'
+  create?: Maybe<ChatroomDocAccessFields_createdAt_Create>
+  delete?: Maybe<ChatroomDocAccessFields_createdAt_Delete>
+  read?: Maybe<ChatroomDocAccessFields_createdAt_Read>
+  update?: Maybe<ChatroomDocAccessFields_createdAt_Update>
+}
+
+export interface ChatroomDocAccessFields_createdAt_Create {
+  __typename?: 'ChatroomDocAccessFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_createdAt_Delete {
+  __typename?: 'ChatroomDocAccessFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_createdAt_Read {
+  __typename?: 'ChatroomDocAccessFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_createdAt_Update {
+  __typename?: 'ChatroomDocAccessFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_lastMessage {
+  __typename?: 'ChatroomDocAccessFields_lastMessage'
+  create?: Maybe<ChatroomDocAccessFields_lastMessage_Create>
+  delete?: Maybe<ChatroomDocAccessFields_lastMessage_Delete>
+  read?: Maybe<ChatroomDocAccessFields_lastMessage_Read>
+  update?: Maybe<ChatroomDocAccessFields_lastMessage_Update>
+}
+
+export interface ChatroomDocAccessFields_lastMessage_Create {
+  __typename?: 'ChatroomDocAccessFields_lastMessage_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_lastMessage_Delete {
+  __typename?: 'ChatroomDocAccessFields_lastMessage_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_lastMessage_Read {
+  __typename?: 'ChatroomDocAccessFields_lastMessage_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_lastMessage_Update {
+  __typename?: 'ChatroomDocAccessFields_lastMessage_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_updatedAt {
+  __typename?: 'ChatroomDocAccessFields_updatedAt'
+  create?: Maybe<ChatroomDocAccessFields_updatedAt_Create>
+  delete?: Maybe<ChatroomDocAccessFields_updatedAt_Delete>
+  read?: Maybe<ChatroomDocAccessFields_updatedAt_Read>
+  update?: Maybe<ChatroomDocAccessFields_updatedAt_Update>
+}
+
+export interface ChatroomDocAccessFields_updatedAt_Create {
+  __typename?: 'ChatroomDocAccessFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_updatedAt_Delete {
+  __typename?: 'ChatroomDocAccessFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_updatedAt_Read {
+  __typename?: 'ChatroomDocAccessFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_updatedAt_Update {
+  __typename?: 'ChatroomDocAccessFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1LastViewed {
+  __typename?: 'ChatroomDocAccessFields_user1LastViewed'
+  create?: Maybe<ChatroomDocAccessFields_user1LastViewed_Create>
+  delete?: Maybe<ChatroomDocAccessFields_user1LastViewed_Delete>
+  read?: Maybe<ChatroomDocAccessFields_user1LastViewed_Read>
+  update?: Maybe<ChatroomDocAccessFields_user1LastViewed_Update>
+}
+
+export interface ChatroomDocAccessFields_user1LastViewed_Create {
+  __typename?: 'ChatroomDocAccessFields_user1LastViewed_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1LastViewed_Delete {
+  __typename?: 'ChatroomDocAccessFields_user1LastViewed_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1LastViewed_Read {
+  __typename?: 'ChatroomDocAccessFields_user1LastViewed_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1LastViewed_Update {
+  __typename?: 'ChatroomDocAccessFields_user1LastViewed_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1_id {
+  __typename?: 'ChatroomDocAccessFields_user1_id'
+  create?: Maybe<ChatroomDocAccessFields_user1_id_Create>
+  delete?: Maybe<ChatroomDocAccessFields_user1_id_Delete>
+  read?: Maybe<ChatroomDocAccessFields_user1_id_Read>
+  update?: Maybe<ChatroomDocAccessFields_user1_id_Update>
+}
+
+export interface ChatroomDocAccessFields_user1_id_Create {
+  __typename?: 'ChatroomDocAccessFields_user1_id_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1_id_Delete {
+  __typename?: 'ChatroomDocAccessFields_user1_id_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1_id_Read {
+  __typename?: 'ChatroomDocAccessFields_user1_id_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user1_id_Update {
+  __typename?: 'ChatroomDocAccessFields_user1_id_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2LastViewed {
+  __typename?: 'ChatroomDocAccessFields_user2LastViewed'
+  create?: Maybe<ChatroomDocAccessFields_user2LastViewed_Create>
+  delete?: Maybe<ChatroomDocAccessFields_user2LastViewed_Delete>
+  read?: Maybe<ChatroomDocAccessFields_user2LastViewed_Read>
+  update?: Maybe<ChatroomDocAccessFields_user2LastViewed_Update>
+}
+
+export interface ChatroomDocAccessFields_user2LastViewed_Create {
+  __typename?: 'ChatroomDocAccessFields_user2LastViewed_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2LastViewed_Delete {
+  __typename?: 'ChatroomDocAccessFields_user2LastViewed_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2LastViewed_Read {
+  __typename?: 'ChatroomDocAccessFields_user2LastViewed_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2LastViewed_Update {
+  __typename?: 'ChatroomDocAccessFields_user2LastViewed_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2_id {
+  __typename?: 'ChatroomDocAccessFields_user2_id'
+  create?: Maybe<ChatroomDocAccessFields_user2_id_Create>
+  delete?: Maybe<ChatroomDocAccessFields_user2_id_Delete>
+  read?: Maybe<ChatroomDocAccessFields_user2_id_Read>
+  update?: Maybe<ChatroomDocAccessFields_user2_id_Update>
+}
+
+export interface ChatroomDocAccessFields_user2_id_Create {
+  __typename?: 'ChatroomDocAccessFields_user2_id_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2_id_Delete {
+  __typename?: 'ChatroomDocAccessFields_user2_id_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2_id_Read {
+  __typename?: 'ChatroomDocAccessFields_user2_id_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomDocAccessFields_user2_id_Update {
+  __typename?: 'ChatroomDocAccessFields_user2_id_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields {
+  __typename?: 'ChatroomFields'
+  createdAt?: Maybe<ChatroomFields_createdAt>
+  lastMessage?: Maybe<ChatroomFields_lastMessage>
+  updatedAt?: Maybe<ChatroomFields_updatedAt>
+  user1LastViewed?: Maybe<ChatroomFields_user1LastViewed>
+  user1_id?: Maybe<ChatroomFields_user1_id>
+  user2LastViewed?: Maybe<ChatroomFields_user2LastViewed>
+  user2_id?: Maybe<ChatroomFields_user2_id>
+}
+
+export interface ChatroomFields_createdAt {
+  __typename?: 'ChatroomFields_createdAt'
+  create?: Maybe<ChatroomFields_createdAt_Create>
+  delete?: Maybe<ChatroomFields_createdAt_Delete>
+  read?: Maybe<ChatroomFields_createdAt_Read>
+  update?: Maybe<ChatroomFields_createdAt_Update>
+}
+
+export interface ChatroomFields_createdAt_Create {
+  __typename?: 'ChatroomFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_createdAt_Delete {
+  __typename?: 'ChatroomFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_createdAt_Read {
+  __typename?: 'ChatroomFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_createdAt_Update {
+  __typename?: 'ChatroomFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_lastMessage {
+  __typename?: 'ChatroomFields_lastMessage'
+  create?: Maybe<ChatroomFields_lastMessage_Create>
+  delete?: Maybe<ChatroomFields_lastMessage_Delete>
+  read?: Maybe<ChatroomFields_lastMessage_Read>
+  update?: Maybe<ChatroomFields_lastMessage_Update>
+}
+
+export interface ChatroomFields_lastMessage_Create {
+  __typename?: 'ChatroomFields_lastMessage_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_lastMessage_Delete {
+  __typename?: 'ChatroomFields_lastMessage_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_lastMessage_Read {
+  __typename?: 'ChatroomFields_lastMessage_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_lastMessage_Update {
+  __typename?: 'ChatroomFields_lastMessage_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_updatedAt {
+  __typename?: 'ChatroomFields_updatedAt'
+  create?: Maybe<ChatroomFields_updatedAt_Create>
+  delete?: Maybe<ChatroomFields_updatedAt_Delete>
+  read?: Maybe<ChatroomFields_updatedAt_Read>
+  update?: Maybe<ChatroomFields_updatedAt_Update>
+}
+
+export interface ChatroomFields_updatedAt_Create {
+  __typename?: 'ChatroomFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_updatedAt_Delete {
+  __typename?: 'ChatroomFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_updatedAt_Read {
+  __typename?: 'ChatroomFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_updatedAt_Update {
+  __typename?: 'ChatroomFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1LastViewed {
+  __typename?: 'ChatroomFields_user1LastViewed'
+  create?: Maybe<ChatroomFields_user1LastViewed_Create>
+  delete?: Maybe<ChatroomFields_user1LastViewed_Delete>
+  read?: Maybe<ChatroomFields_user1LastViewed_Read>
+  update?: Maybe<ChatroomFields_user1LastViewed_Update>
+}
+
+export interface ChatroomFields_user1LastViewed_Create {
+  __typename?: 'ChatroomFields_user1LastViewed_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1LastViewed_Delete {
+  __typename?: 'ChatroomFields_user1LastViewed_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1LastViewed_Read {
+  __typename?: 'ChatroomFields_user1LastViewed_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1LastViewed_Update {
+  __typename?: 'ChatroomFields_user1LastViewed_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1_id {
+  __typename?: 'ChatroomFields_user1_id'
+  create?: Maybe<ChatroomFields_user1_id_Create>
+  delete?: Maybe<ChatroomFields_user1_id_Delete>
+  read?: Maybe<ChatroomFields_user1_id_Read>
+  update?: Maybe<ChatroomFields_user1_id_Update>
+}
+
+export interface ChatroomFields_user1_id_Create {
+  __typename?: 'ChatroomFields_user1_id_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1_id_Delete {
+  __typename?: 'ChatroomFields_user1_id_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1_id_Read {
+  __typename?: 'ChatroomFields_user1_id_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user1_id_Update {
+  __typename?: 'ChatroomFields_user1_id_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2LastViewed {
+  __typename?: 'ChatroomFields_user2LastViewed'
+  create?: Maybe<ChatroomFields_user2LastViewed_Create>
+  delete?: Maybe<ChatroomFields_user2LastViewed_Delete>
+  read?: Maybe<ChatroomFields_user2LastViewed_Read>
+  update?: Maybe<ChatroomFields_user2LastViewed_Update>
+}
+
+export interface ChatroomFields_user2LastViewed_Create {
+  __typename?: 'ChatroomFields_user2LastViewed_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2LastViewed_Delete {
+  __typename?: 'ChatroomFields_user2LastViewed_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2LastViewed_Read {
+  __typename?: 'ChatroomFields_user2LastViewed_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2LastViewed_Update {
+  __typename?: 'ChatroomFields_user2LastViewed_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2_id {
+  __typename?: 'ChatroomFields_user2_id'
+  create?: Maybe<ChatroomFields_user2_id_Create>
+  delete?: Maybe<ChatroomFields_user2_id_Delete>
+  read?: Maybe<ChatroomFields_user2_id_Read>
+  update?: Maybe<ChatroomFields_user2_id_Update>
+}
+
+export interface ChatroomFields_user2_id_Create {
+  __typename?: 'ChatroomFields_user2_id_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2_id_Delete {
+  __typename?: 'ChatroomFields_user2_id_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2_id_Read {
+  __typename?: 'ChatroomFields_user2_id_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomFields_user2_id_Update {
+  __typename?: 'ChatroomFields_user2_id_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ChatroomReadAccess {
+  __typename?: 'ChatroomReadAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ChatroomReadDocAccess {
+  __typename?: 'ChatroomReadDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ChatroomUpdateAccess {
+  __typename?: 'ChatroomUpdateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ChatroomUpdateDocAccess {
+  __typename?: 'ChatroomUpdateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface Chatrooms {
+  __typename?: 'Chatrooms'
+  docs?: Maybe<Array<Maybe<Chatroom>>>
+  hasNextPage?: Maybe<ScalarsEnums['Boolean']>
+  hasPrevPage?: Maybe<ScalarsEnums['Boolean']>
+  limit?: Maybe<ScalarsEnums['Int']>
+  nextPage?: Maybe<ScalarsEnums['Int']>
+  offset?: Maybe<ScalarsEnums['Int']>
+  page?: Maybe<ScalarsEnums['Int']>
+  pagingCounter?: Maybe<ScalarsEnums['Int']>
+  prevPage?: Maybe<ScalarsEnums['Int']>
+  totalDocs?: Maybe<ScalarsEnums['Int']>
+  totalPages?: Maybe<ScalarsEnums['Int']>
 }
 
 export interface Item {
@@ -7007,6 +10449,377 @@ export interface MediasUpdateDocAccess {
   where?: Maybe<ScalarsEnums['JSONObject']>
 }
 
+export interface Message {
+  __typename?: 'Message'
+  createdAt?: Maybe<ScalarsEnums['DateTime']>
+  createdBy: User
+  id?: Maybe<ScalarsEnums['Int']>
+  message?: Maybe<ScalarsEnums['String']>
+  room: Chatroom
+  updatedAt?: Maybe<ScalarsEnums['DateTime']>
+}
+
+export interface MessageCreateAccess {
+  __typename?: 'MessageCreateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface MessageCreateDocAccess {
+  __typename?: 'MessageCreateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface MessageDeleteAccess {
+  __typename?: 'MessageDeleteAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface MessageDeleteDocAccess {
+  __typename?: 'MessageDeleteDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface MessageDocAccessFields {
+  __typename?: 'MessageDocAccessFields'
+  createdAt?: Maybe<MessageDocAccessFields_createdAt>
+  createdBy?: Maybe<MessageDocAccessFields_createdBy>
+  message?: Maybe<MessageDocAccessFields_message>
+  room?: Maybe<MessageDocAccessFields_room>
+  updatedAt?: Maybe<MessageDocAccessFields_updatedAt>
+}
+
+export interface MessageDocAccessFields_createdAt {
+  __typename?: 'MessageDocAccessFields_createdAt'
+  create?: Maybe<MessageDocAccessFields_createdAt_Create>
+  delete?: Maybe<MessageDocAccessFields_createdAt_Delete>
+  read?: Maybe<MessageDocAccessFields_createdAt_Read>
+  update?: Maybe<MessageDocAccessFields_createdAt_Update>
+}
+
+export interface MessageDocAccessFields_createdAt_Create {
+  __typename?: 'MessageDocAccessFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_createdAt_Delete {
+  __typename?: 'MessageDocAccessFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_createdAt_Read {
+  __typename?: 'MessageDocAccessFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_createdAt_Update {
+  __typename?: 'MessageDocAccessFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_createdBy {
+  __typename?: 'MessageDocAccessFields_createdBy'
+  create?: Maybe<MessageDocAccessFields_createdBy_Create>
+  delete?: Maybe<MessageDocAccessFields_createdBy_Delete>
+  read?: Maybe<MessageDocAccessFields_createdBy_Read>
+  update?: Maybe<MessageDocAccessFields_createdBy_Update>
+}
+
+export interface MessageDocAccessFields_createdBy_Create {
+  __typename?: 'MessageDocAccessFields_createdBy_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_createdBy_Delete {
+  __typename?: 'MessageDocAccessFields_createdBy_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_createdBy_Read {
+  __typename?: 'MessageDocAccessFields_createdBy_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_createdBy_Update {
+  __typename?: 'MessageDocAccessFields_createdBy_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_message {
+  __typename?: 'MessageDocAccessFields_message'
+  create?: Maybe<MessageDocAccessFields_message_Create>
+  delete?: Maybe<MessageDocAccessFields_message_Delete>
+  read?: Maybe<MessageDocAccessFields_message_Read>
+  update?: Maybe<MessageDocAccessFields_message_Update>
+}
+
+export interface MessageDocAccessFields_message_Create {
+  __typename?: 'MessageDocAccessFields_message_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_message_Delete {
+  __typename?: 'MessageDocAccessFields_message_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_message_Read {
+  __typename?: 'MessageDocAccessFields_message_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_message_Update {
+  __typename?: 'MessageDocAccessFields_message_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_room {
+  __typename?: 'MessageDocAccessFields_room'
+  create?: Maybe<MessageDocAccessFields_room_Create>
+  delete?: Maybe<MessageDocAccessFields_room_Delete>
+  read?: Maybe<MessageDocAccessFields_room_Read>
+  update?: Maybe<MessageDocAccessFields_room_Update>
+}
+
+export interface MessageDocAccessFields_room_Create {
+  __typename?: 'MessageDocAccessFields_room_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_room_Delete {
+  __typename?: 'MessageDocAccessFields_room_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_room_Read {
+  __typename?: 'MessageDocAccessFields_room_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_room_Update {
+  __typename?: 'MessageDocAccessFields_room_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_updatedAt {
+  __typename?: 'MessageDocAccessFields_updatedAt'
+  create?: Maybe<MessageDocAccessFields_updatedAt_Create>
+  delete?: Maybe<MessageDocAccessFields_updatedAt_Delete>
+  read?: Maybe<MessageDocAccessFields_updatedAt_Read>
+  update?: Maybe<MessageDocAccessFields_updatedAt_Update>
+}
+
+export interface MessageDocAccessFields_updatedAt_Create {
+  __typename?: 'MessageDocAccessFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_updatedAt_Delete {
+  __typename?: 'MessageDocAccessFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_updatedAt_Read {
+  __typename?: 'MessageDocAccessFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageDocAccessFields_updatedAt_Update {
+  __typename?: 'MessageDocAccessFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields {
+  __typename?: 'MessageFields'
+  createdAt?: Maybe<MessageFields_createdAt>
+  createdBy?: Maybe<MessageFields_createdBy>
+  message?: Maybe<MessageFields_message>
+  room?: Maybe<MessageFields_room>
+  updatedAt?: Maybe<MessageFields_updatedAt>
+}
+
+export interface MessageFields_createdAt {
+  __typename?: 'MessageFields_createdAt'
+  create?: Maybe<MessageFields_createdAt_Create>
+  delete?: Maybe<MessageFields_createdAt_Delete>
+  read?: Maybe<MessageFields_createdAt_Read>
+  update?: Maybe<MessageFields_createdAt_Update>
+}
+
+export interface MessageFields_createdAt_Create {
+  __typename?: 'MessageFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_createdAt_Delete {
+  __typename?: 'MessageFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_createdAt_Read {
+  __typename?: 'MessageFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_createdAt_Update {
+  __typename?: 'MessageFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_createdBy {
+  __typename?: 'MessageFields_createdBy'
+  create?: Maybe<MessageFields_createdBy_Create>
+  delete?: Maybe<MessageFields_createdBy_Delete>
+  read?: Maybe<MessageFields_createdBy_Read>
+  update?: Maybe<MessageFields_createdBy_Update>
+}
+
+export interface MessageFields_createdBy_Create {
+  __typename?: 'MessageFields_createdBy_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_createdBy_Delete {
+  __typename?: 'MessageFields_createdBy_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_createdBy_Read {
+  __typename?: 'MessageFields_createdBy_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_createdBy_Update {
+  __typename?: 'MessageFields_createdBy_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_message {
+  __typename?: 'MessageFields_message'
+  create?: Maybe<MessageFields_message_Create>
+  delete?: Maybe<MessageFields_message_Delete>
+  read?: Maybe<MessageFields_message_Read>
+  update?: Maybe<MessageFields_message_Update>
+}
+
+export interface MessageFields_message_Create {
+  __typename?: 'MessageFields_message_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_message_Delete {
+  __typename?: 'MessageFields_message_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_message_Read {
+  __typename?: 'MessageFields_message_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_message_Update {
+  __typename?: 'MessageFields_message_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_room {
+  __typename?: 'MessageFields_room'
+  create?: Maybe<MessageFields_room_Create>
+  delete?: Maybe<MessageFields_room_Delete>
+  read?: Maybe<MessageFields_room_Read>
+  update?: Maybe<MessageFields_room_Update>
+}
+
+export interface MessageFields_room_Create {
+  __typename?: 'MessageFields_room_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_room_Delete {
+  __typename?: 'MessageFields_room_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_room_Read {
+  __typename?: 'MessageFields_room_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_room_Update {
+  __typename?: 'MessageFields_room_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_updatedAt {
+  __typename?: 'MessageFields_updatedAt'
+  create?: Maybe<MessageFields_updatedAt_Create>
+  delete?: Maybe<MessageFields_updatedAt_Delete>
+  read?: Maybe<MessageFields_updatedAt_Read>
+  update?: Maybe<MessageFields_updatedAt_Update>
+}
+
+export interface MessageFields_updatedAt_Create {
+  __typename?: 'MessageFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_updatedAt_Delete {
+  __typename?: 'MessageFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_updatedAt_Read {
+  __typename?: 'MessageFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageFields_updatedAt_Update {
+  __typename?: 'MessageFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface MessageReadAccess {
+  __typename?: 'MessageReadAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface MessageReadDocAccess {
+  __typename?: 'MessageReadDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface MessageUpdateAccess {
+  __typename?: 'MessageUpdateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface MessageUpdateDocAccess {
+  __typename?: 'MessageUpdateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface Messages {
+  __typename?: 'Messages'
+  docs?: Maybe<Array<Maybe<Message>>>
+  hasNextPage?: Maybe<ScalarsEnums['Boolean']>
+  hasPrevPage?: Maybe<ScalarsEnums['Boolean']>
+  limit?: Maybe<ScalarsEnums['Int']>
+  nextPage?: Maybe<ScalarsEnums['Int']>
+  offset?: Maybe<ScalarsEnums['Int']>
+  page?: Maybe<ScalarsEnums['Int']>
+  pagingCounter?: Maybe<ScalarsEnums['Int']>
+  prevPage?: Maybe<ScalarsEnums['Int']>
+  totalDocs?: Maybe<ScalarsEnums['Int']>
+  totalPages?: Maybe<ScalarsEnums['Int']>
+}
+
 export interface PayloadPreference {
   __typename?: 'PayloadPreference'
   createdAt?: Maybe<ScalarsEnums['DateTime']>
@@ -7389,6 +11202,818 @@ export interface PayloadPreferencesUpdateDocAccess {
   where?: Maybe<ScalarsEnums['JSONObject']>
 }
 
+export interface Renting {
+  __typename?: 'Renting'
+  createdAt?: Maybe<ScalarsEnums['DateTime']>
+  createdBy: User
+  endDate: ScalarsEnums['DateTime']
+  id?: Maybe<ScalarsEnums['Int']>
+  rentedBy?: Maybe<Renting_RentedBy>
+  rentedTo?: Maybe<Renting_RentedTo>
+  startDate: ScalarsEnums['DateTime']
+  status?: Maybe<ScalarsEnums['Renting_status']>
+  totalPrice?: Maybe<ScalarsEnums['Float']>
+  updatedAt?: Maybe<ScalarsEnums['DateTime']>
+}
+
+export interface RentingCreateAccess {
+  __typename?: 'RentingCreateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface RentingCreateDocAccess {
+  __typename?: 'RentingCreateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface RentingDeleteAccess {
+  __typename?: 'RentingDeleteAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface RentingDeleteDocAccess {
+  __typename?: 'RentingDeleteDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface RentingDocAccessFields {
+  __typename?: 'RentingDocAccessFields'
+  createdAt?: Maybe<RentingDocAccessFields_createdAt>
+  createdBy?: Maybe<RentingDocAccessFields_createdBy>
+  endDate?: Maybe<RentingDocAccessFields_endDate>
+  rentedBy?: Maybe<RentingDocAccessFields_rentedBy>
+  rentedTo?: Maybe<RentingDocAccessFields_rentedTo>
+  startDate?: Maybe<RentingDocAccessFields_startDate>
+  status?: Maybe<RentingDocAccessFields_status>
+  totalPrice?: Maybe<RentingDocAccessFields_totalPrice>
+  updatedAt?: Maybe<RentingDocAccessFields_updatedAt>
+}
+
+export interface RentingDocAccessFields_createdAt {
+  __typename?: 'RentingDocAccessFields_createdAt'
+  create?: Maybe<RentingDocAccessFields_createdAt_Create>
+  delete?: Maybe<RentingDocAccessFields_createdAt_Delete>
+  read?: Maybe<RentingDocAccessFields_createdAt_Read>
+  update?: Maybe<RentingDocAccessFields_createdAt_Update>
+}
+
+export interface RentingDocAccessFields_createdAt_Create {
+  __typename?: 'RentingDocAccessFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_createdAt_Delete {
+  __typename?: 'RentingDocAccessFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_createdAt_Read {
+  __typename?: 'RentingDocAccessFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_createdAt_Update {
+  __typename?: 'RentingDocAccessFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_createdBy {
+  __typename?: 'RentingDocAccessFields_createdBy'
+  create?: Maybe<RentingDocAccessFields_createdBy_Create>
+  delete?: Maybe<RentingDocAccessFields_createdBy_Delete>
+  read?: Maybe<RentingDocAccessFields_createdBy_Read>
+  update?: Maybe<RentingDocAccessFields_createdBy_Update>
+}
+
+export interface RentingDocAccessFields_createdBy_Create {
+  __typename?: 'RentingDocAccessFields_createdBy_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_createdBy_Delete {
+  __typename?: 'RentingDocAccessFields_createdBy_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_createdBy_Read {
+  __typename?: 'RentingDocAccessFields_createdBy_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_createdBy_Update {
+  __typename?: 'RentingDocAccessFields_createdBy_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_endDate {
+  __typename?: 'RentingDocAccessFields_endDate'
+  create?: Maybe<RentingDocAccessFields_endDate_Create>
+  delete?: Maybe<RentingDocAccessFields_endDate_Delete>
+  read?: Maybe<RentingDocAccessFields_endDate_Read>
+  update?: Maybe<RentingDocAccessFields_endDate_Update>
+}
+
+export interface RentingDocAccessFields_endDate_Create {
+  __typename?: 'RentingDocAccessFields_endDate_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_endDate_Delete {
+  __typename?: 'RentingDocAccessFields_endDate_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_endDate_Read {
+  __typename?: 'RentingDocAccessFields_endDate_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_endDate_Update {
+  __typename?: 'RentingDocAccessFields_endDate_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedBy {
+  __typename?: 'RentingDocAccessFields_rentedBy'
+  create?: Maybe<RentingDocAccessFields_rentedBy_Create>
+  delete?: Maybe<RentingDocAccessFields_rentedBy_Delete>
+  fields?: Maybe<RentingDocAccessFields_rentedBy_Fields>
+  read?: Maybe<RentingDocAccessFields_rentedBy_Read>
+  update?: Maybe<RentingDocAccessFields_rentedBy_Update>
+}
+
+export interface RentingDocAccessFields_rentedBy_Create {
+  __typename?: 'RentingDocAccessFields_rentedBy_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedBy_Delete {
+  __typename?: 'RentingDocAccessFields_rentedBy_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedBy_Fields {
+  __typename?: 'RentingDocAccessFields_rentedBy_Fields'
+  user?: Maybe<RentingDocAccessFields_rentedBy_user>
+}
+
+export interface RentingDocAccessFields_rentedBy_Read {
+  __typename?: 'RentingDocAccessFields_rentedBy_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedBy_Update {
+  __typename?: 'RentingDocAccessFields_rentedBy_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedBy_user {
+  __typename?: 'RentingDocAccessFields_rentedBy_user'
+  create?: Maybe<RentingDocAccessFields_rentedBy_user_Create>
+  delete?: Maybe<RentingDocAccessFields_rentedBy_user_Delete>
+  read?: Maybe<RentingDocAccessFields_rentedBy_user_Read>
+  update?: Maybe<RentingDocAccessFields_rentedBy_user_Update>
+}
+
+export interface RentingDocAccessFields_rentedBy_user_Create {
+  __typename?: 'RentingDocAccessFields_rentedBy_user_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedBy_user_Delete {
+  __typename?: 'RentingDocAccessFields_rentedBy_user_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedBy_user_Read {
+  __typename?: 'RentingDocAccessFields_rentedBy_user_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedBy_user_Update {
+  __typename?: 'RentingDocAccessFields_rentedBy_user_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedTo {
+  __typename?: 'RentingDocAccessFields_rentedTo'
+  create?: Maybe<RentingDocAccessFields_rentedTo_Create>
+  delete?: Maybe<RentingDocAccessFields_rentedTo_Delete>
+  fields?: Maybe<RentingDocAccessFields_rentedTo_Fields>
+  read?: Maybe<RentingDocAccessFields_rentedTo_Read>
+  update?: Maybe<RentingDocAccessFields_rentedTo_Update>
+}
+
+export interface RentingDocAccessFields_rentedTo_Create {
+  __typename?: 'RentingDocAccessFields_rentedTo_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedTo_Delete {
+  __typename?: 'RentingDocAccessFields_rentedTo_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedTo_Fields {
+  __typename?: 'RentingDocAccessFields_rentedTo_Fields'
+  item?: Maybe<RentingDocAccessFields_rentedTo_item>
+  user?: Maybe<RentingDocAccessFields_rentedTo_user>
+}
+
+export interface RentingDocAccessFields_rentedTo_Read {
+  __typename?: 'RentingDocAccessFields_rentedTo_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedTo_Update {
+  __typename?: 'RentingDocAccessFields_rentedTo_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedTo_item {
+  __typename?: 'RentingDocAccessFields_rentedTo_item'
+  create?: Maybe<RentingDocAccessFields_rentedTo_item_Create>
+  delete?: Maybe<RentingDocAccessFields_rentedTo_item_Delete>
+  read?: Maybe<RentingDocAccessFields_rentedTo_item_Read>
+  update?: Maybe<RentingDocAccessFields_rentedTo_item_Update>
+}
+
+export interface RentingDocAccessFields_rentedTo_item_Create {
+  __typename?: 'RentingDocAccessFields_rentedTo_item_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedTo_item_Delete {
+  __typename?: 'RentingDocAccessFields_rentedTo_item_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedTo_item_Read {
+  __typename?: 'RentingDocAccessFields_rentedTo_item_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedTo_item_Update {
+  __typename?: 'RentingDocAccessFields_rentedTo_item_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedTo_user {
+  __typename?: 'RentingDocAccessFields_rentedTo_user'
+  create?: Maybe<RentingDocAccessFields_rentedTo_user_Create>
+  delete?: Maybe<RentingDocAccessFields_rentedTo_user_Delete>
+  read?: Maybe<RentingDocAccessFields_rentedTo_user_Read>
+  update?: Maybe<RentingDocAccessFields_rentedTo_user_Update>
+}
+
+export interface RentingDocAccessFields_rentedTo_user_Create {
+  __typename?: 'RentingDocAccessFields_rentedTo_user_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedTo_user_Delete {
+  __typename?: 'RentingDocAccessFields_rentedTo_user_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedTo_user_Read {
+  __typename?: 'RentingDocAccessFields_rentedTo_user_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_rentedTo_user_Update {
+  __typename?: 'RentingDocAccessFields_rentedTo_user_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_startDate {
+  __typename?: 'RentingDocAccessFields_startDate'
+  create?: Maybe<RentingDocAccessFields_startDate_Create>
+  delete?: Maybe<RentingDocAccessFields_startDate_Delete>
+  read?: Maybe<RentingDocAccessFields_startDate_Read>
+  update?: Maybe<RentingDocAccessFields_startDate_Update>
+}
+
+export interface RentingDocAccessFields_startDate_Create {
+  __typename?: 'RentingDocAccessFields_startDate_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_startDate_Delete {
+  __typename?: 'RentingDocAccessFields_startDate_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_startDate_Read {
+  __typename?: 'RentingDocAccessFields_startDate_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_startDate_Update {
+  __typename?: 'RentingDocAccessFields_startDate_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_status {
+  __typename?: 'RentingDocAccessFields_status'
+  create?: Maybe<RentingDocAccessFields_status_Create>
+  delete?: Maybe<RentingDocAccessFields_status_Delete>
+  read?: Maybe<RentingDocAccessFields_status_Read>
+  update?: Maybe<RentingDocAccessFields_status_Update>
+}
+
+export interface RentingDocAccessFields_status_Create {
+  __typename?: 'RentingDocAccessFields_status_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_status_Delete {
+  __typename?: 'RentingDocAccessFields_status_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_status_Read {
+  __typename?: 'RentingDocAccessFields_status_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_status_Update {
+  __typename?: 'RentingDocAccessFields_status_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_totalPrice {
+  __typename?: 'RentingDocAccessFields_totalPrice'
+  create?: Maybe<RentingDocAccessFields_totalPrice_Create>
+  delete?: Maybe<RentingDocAccessFields_totalPrice_Delete>
+  read?: Maybe<RentingDocAccessFields_totalPrice_Read>
+  update?: Maybe<RentingDocAccessFields_totalPrice_Update>
+}
+
+export interface RentingDocAccessFields_totalPrice_Create {
+  __typename?: 'RentingDocAccessFields_totalPrice_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_totalPrice_Delete {
+  __typename?: 'RentingDocAccessFields_totalPrice_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_totalPrice_Read {
+  __typename?: 'RentingDocAccessFields_totalPrice_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_totalPrice_Update {
+  __typename?: 'RentingDocAccessFields_totalPrice_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_updatedAt {
+  __typename?: 'RentingDocAccessFields_updatedAt'
+  create?: Maybe<RentingDocAccessFields_updatedAt_Create>
+  delete?: Maybe<RentingDocAccessFields_updatedAt_Delete>
+  read?: Maybe<RentingDocAccessFields_updatedAt_Read>
+  update?: Maybe<RentingDocAccessFields_updatedAt_Update>
+}
+
+export interface RentingDocAccessFields_updatedAt_Create {
+  __typename?: 'RentingDocAccessFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_updatedAt_Delete {
+  __typename?: 'RentingDocAccessFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_updatedAt_Read {
+  __typename?: 'RentingDocAccessFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingDocAccessFields_updatedAt_Update {
+  __typename?: 'RentingDocAccessFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields {
+  __typename?: 'RentingFields'
+  createdAt?: Maybe<RentingFields_createdAt>
+  createdBy?: Maybe<RentingFields_createdBy>
+  endDate?: Maybe<RentingFields_endDate>
+  rentedBy?: Maybe<RentingFields_rentedBy>
+  rentedTo?: Maybe<RentingFields_rentedTo>
+  startDate?: Maybe<RentingFields_startDate>
+  status?: Maybe<RentingFields_status>
+  totalPrice?: Maybe<RentingFields_totalPrice>
+  updatedAt?: Maybe<RentingFields_updatedAt>
+}
+
+export interface RentingFields_createdAt {
+  __typename?: 'RentingFields_createdAt'
+  create?: Maybe<RentingFields_createdAt_Create>
+  delete?: Maybe<RentingFields_createdAt_Delete>
+  read?: Maybe<RentingFields_createdAt_Read>
+  update?: Maybe<RentingFields_createdAt_Update>
+}
+
+export interface RentingFields_createdAt_Create {
+  __typename?: 'RentingFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_createdAt_Delete {
+  __typename?: 'RentingFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_createdAt_Read {
+  __typename?: 'RentingFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_createdAt_Update {
+  __typename?: 'RentingFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_createdBy {
+  __typename?: 'RentingFields_createdBy'
+  create?: Maybe<RentingFields_createdBy_Create>
+  delete?: Maybe<RentingFields_createdBy_Delete>
+  read?: Maybe<RentingFields_createdBy_Read>
+  update?: Maybe<RentingFields_createdBy_Update>
+}
+
+export interface RentingFields_createdBy_Create {
+  __typename?: 'RentingFields_createdBy_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_createdBy_Delete {
+  __typename?: 'RentingFields_createdBy_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_createdBy_Read {
+  __typename?: 'RentingFields_createdBy_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_createdBy_Update {
+  __typename?: 'RentingFields_createdBy_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_endDate {
+  __typename?: 'RentingFields_endDate'
+  create?: Maybe<RentingFields_endDate_Create>
+  delete?: Maybe<RentingFields_endDate_Delete>
+  read?: Maybe<RentingFields_endDate_Read>
+  update?: Maybe<RentingFields_endDate_Update>
+}
+
+export interface RentingFields_endDate_Create {
+  __typename?: 'RentingFields_endDate_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_endDate_Delete {
+  __typename?: 'RentingFields_endDate_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_endDate_Read {
+  __typename?: 'RentingFields_endDate_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_endDate_Update {
+  __typename?: 'RentingFields_endDate_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedBy {
+  __typename?: 'RentingFields_rentedBy'
+  create?: Maybe<RentingFields_rentedBy_Create>
+  delete?: Maybe<RentingFields_rentedBy_Delete>
+  fields?: Maybe<RentingFields_rentedBy_Fields>
+  read?: Maybe<RentingFields_rentedBy_Read>
+  update?: Maybe<RentingFields_rentedBy_Update>
+}
+
+export interface RentingFields_rentedBy_Create {
+  __typename?: 'RentingFields_rentedBy_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedBy_Delete {
+  __typename?: 'RentingFields_rentedBy_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedBy_Fields {
+  __typename?: 'RentingFields_rentedBy_Fields'
+  user?: Maybe<RentingFields_rentedBy_user>
+}
+
+export interface RentingFields_rentedBy_Read {
+  __typename?: 'RentingFields_rentedBy_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedBy_Update {
+  __typename?: 'RentingFields_rentedBy_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedBy_user {
+  __typename?: 'RentingFields_rentedBy_user'
+  create?: Maybe<RentingFields_rentedBy_user_Create>
+  delete?: Maybe<RentingFields_rentedBy_user_Delete>
+  read?: Maybe<RentingFields_rentedBy_user_Read>
+  update?: Maybe<RentingFields_rentedBy_user_Update>
+}
+
+export interface RentingFields_rentedBy_user_Create {
+  __typename?: 'RentingFields_rentedBy_user_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedBy_user_Delete {
+  __typename?: 'RentingFields_rentedBy_user_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedBy_user_Read {
+  __typename?: 'RentingFields_rentedBy_user_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedBy_user_Update {
+  __typename?: 'RentingFields_rentedBy_user_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedTo {
+  __typename?: 'RentingFields_rentedTo'
+  create?: Maybe<RentingFields_rentedTo_Create>
+  delete?: Maybe<RentingFields_rentedTo_Delete>
+  fields?: Maybe<RentingFields_rentedTo_Fields>
+  read?: Maybe<RentingFields_rentedTo_Read>
+  update?: Maybe<RentingFields_rentedTo_Update>
+}
+
+export interface RentingFields_rentedTo_Create {
+  __typename?: 'RentingFields_rentedTo_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedTo_Delete {
+  __typename?: 'RentingFields_rentedTo_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedTo_Fields {
+  __typename?: 'RentingFields_rentedTo_Fields'
+  item?: Maybe<RentingFields_rentedTo_item>
+  user?: Maybe<RentingFields_rentedTo_user>
+}
+
+export interface RentingFields_rentedTo_Read {
+  __typename?: 'RentingFields_rentedTo_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedTo_Update {
+  __typename?: 'RentingFields_rentedTo_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedTo_item {
+  __typename?: 'RentingFields_rentedTo_item'
+  create?: Maybe<RentingFields_rentedTo_item_Create>
+  delete?: Maybe<RentingFields_rentedTo_item_Delete>
+  read?: Maybe<RentingFields_rentedTo_item_Read>
+  update?: Maybe<RentingFields_rentedTo_item_Update>
+}
+
+export interface RentingFields_rentedTo_item_Create {
+  __typename?: 'RentingFields_rentedTo_item_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedTo_item_Delete {
+  __typename?: 'RentingFields_rentedTo_item_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedTo_item_Read {
+  __typename?: 'RentingFields_rentedTo_item_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedTo_item_Update {
+  __typename?: 'RentingFields_rentedTo_item_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedTo_user {
+  __typename?: 'RentingFields_rentedTo_user'
+  create?: Maybe<RentingFields_rentedTo_user_Create>
+  delete?: Maybe<RentingFields_rentedTo_user_Delete>
+  read?: Maybe<RentingFields_rentedTo_user_Read>
+  update?: Maybe<RentingFields_rentedTo_user_Update>
+}
+
+export interface RentingFields_rentedTo_user_Create {
+  __typename?: 'RentingFields_rentedTo_user_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedTo_user_Delete {
+  __typename?: 'RentingFields_rentedTo_user_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedTo_user_Read {
+  __typename?: 'RentingFields_rentedTo_user_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_rentedTo_user_Update {
+  __typename?: 'RentingFields_rentedTo_user_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_startDate {
+  __typename?: 'RentingFields_startDate'
+  create?: Maybe<RentingFields_startDate_Create>
+  delete?: Maybe<RentingFields_startDate_Delete>
+  read?: Maybe<RentingFields_startDate_Read>
+  update?: Maybe<RentingFields_startDate_Update>
+}
+
+export interface RentingFields_startDate_Create {
+  __typename?: 'RentingFields_startDate_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_startDate_Delete {
+  __typename?: 'RentingFields_startDate_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_startDate_Read {
+  __typename?: 'RentingFields_startDate_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_startDate_Update {
+  __typename?: 'RentingFields_startDate_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_status {
+  __typename?: 'RentingFields_status'
+  create?: Maybe<RentingFields_status_Create>
+  delete?: Maybe<RentingFields_status_Delete>
+  read?: Maybe<RentingFields_status_Read>
+  update?: Maybe<RentingFields_status_Update>
+}
+
+export interface RentingFields_status_Create {
+  __typename?: 'RentingFields_status_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_status_Delete {
+  __typename?: 'RentingFields_status_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_status_Read {
+  __typename?: 'RentingFields_status_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_status_Update {
+  __typename?: 'RentingFields_status_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_totalPrice {
+  __typename?: 'RentingFields_totalPrice'
+  create?: Maybe<RentingFields_totalPrice_Create>
+  delete?: Maybe<RentingFields_totalPrice_Delete>
+  read?: Maybe<RentingFields_totalPrice_Read>
+  update?: Maybe<RentingFields_totalPrice_Update>
+}
+
+export interface RentingFields_totalPrice_Create {
+  __typename?: 'RentingFields_totalPrice_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_totalPrice_Delete {
+  __typename?: 'RentingFields_totalPrice_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_totalPrice_Read {
+  __typename?: 'RentingFields_totalPrice_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_totalPrice_Update {
+  __typename?: 'RentingFields_totalPrice_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_updatedAt {
+  __typename?: 'RentingFields_updatedAt'
+  create?: Maybe<RentingFields_updatedAt_Create>
+  delete?: Maybe<RentingFields_updatedAt_Delete>
+  read?: Maybe<RentingFields_updatedAt_Read>
+  update?: Maybe<RentingFields_updatedAt_Update>
+}
+
+export interface RentingFields_updatedAt_Create {
+  __typename?: 'RentingFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_updatedAt_Delete {
+  __typename?: 'RentingFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_updatedAt_Read {
+  __typename?: 'RentingFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingFields_updatedAt_Update {
+  __typename?: 'RentingFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface RentingReadAccess {
+  __typename?: 'RentingReadAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface RentingReadDocAccess {
+  __typename?: 'RentingReadDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface RentingUpdateAccess {
+  __typename?: 'RentingUpdateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface RentingUpdateDocAccess {
+  __typename?: 'RentingUpdateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface Renting_RentedBy {
+  __typename?: 'Renting_RentedBy'
+  user?: Maybe<User>
+}
+
+export interface Renting_RentedTo {
+  __typename?: 'Renting_RentedTo'
+  item?: Maybe<Item>
+  user?: Maybe<User>
+}
+
+export interface Rentings {
+  __typename?: 'Rentings'
+  docs?: Maybe<Array<Maybe<Renting>>>
+  hasNextPage?: Maybe<ScalarsEnums['Boolean']>
+  hasPrevPage?: Maybe<ScalarsEnums['Boolean']>
+  limit?: Maybe<ScalarsEnums['Int']>
+  nextPage?: Maybe<ScalarsEnums['Int']>
+  offset?: Maybe<ScalarsEnums['Int']>
+  page?: Maybe<ScalarsEnums['Int']>
+  pagingCounter?: Maybe<ScalarsEnums['Int']>
+  prevPage?: Maybe<ScalarsEnums['Int']>
+  totalDocs?: Maybe<ScalarsEnums['Int']>
+  totalPages?: Maybe<ScalarsEnums['Int']>
+}
+
 export interface Tag {
   __typename?: 'Tag'
   alt?: Maybe<ScalarsEnums['String']>
@@ -7718,11 +12343,27 @@ export interface User {
   profileImage?: Maybe<Media>
   province?: Maybe<ScalarsEnums['String']>
   rating?: Maybe<ScalarsEnums['Float']>
+  requestsMade?: Maybe<Array<User_RequestsMade>>
+  requestsReceived?: Maybe<Array<User_RequestsReceived>>
   resetPasswordExpiration?: Maybe<ScalarsEnums['DateTime']>
   resetPasswordToken?: Maybe<ScalarsEnums['String']>
   roles: Array<ScalarsEnums['User_roles']>
   salt?: Maybe<ScalarsEnums['String']>
   updatedAt?: Maybe<ScalarsEnums['DateTime']>
+}
+
+export interface User_RequestsMade {
+  __typename?: 'User_RequestsMade'
+  id?: Maybe<ScalarsEnums['String']>
+  item?: Maybe<Item>
+  user?: Maybe<User>
+}
+
+export interface User_RequestsReceived {
+  __typename?: 'User_RequestsReceived'
+  id?: Maybe<ScalarsEnums['String']>
+  item?: Maybe<Item>
+  user?: Maybe<User>
 }
 
 export interface Users {
@@ -7776,6 +12417,8 @@ export interface UsersDocAccessFields {
   profileImage?: Maybe<UsersDocAccessFields_profileImage>
   province?: Maybe<UsersDocAccessFields_province>
   rating?: Maybe<UsersDocAccessFields_rating>
+  requestsMade?: Maybe<UsersDocAccessFields_requestsMade>
+  requestsReceived?: Maybe<UsersDocAccessFields_requestsReceived>
   roles?: Maybe<UsersDocAccessFields_roles>
   updatedAt?: Maybe<UsersDocAccessFields_updatedAt>
 }
@@ -8060,6 +12703,246 @@ export interface UsersDocAccessFields_rating_Update {
   permission: ScalarsEnums['Boolean']
 }
 
+export interface UsersDocAccessFields_requestsMade {
+  __typename?: 'UsersDocAccessFields_requestsMade'
+  create?: Maybe<UsersDocAccessFields_requestsMade_Create>
+  delete?: Maybe<UsersDocAccessFields_requestsMade_Delete>
+  fields?: Maybe<UsersDocAccessFields_requestsMade_Fields>
+  read?: Maybe<UsersDocAccessFields_requestsMade_Read>
+  update?: Maybe<UsersDocAccessFields_requestsMade_Update>
+}
+
+export interface UsersDocAccessFields_requestsMade_Create {
+  __typename?: 'UsersDocAccessFields_requestsMade_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsMade_Delete {
+  __typename?: 'UsersDocAccessFields_requestsMade_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsMade_Fields {
+  __typename?: 'UsersDocAccessFields_requestsMade_Fields'
+  id?: Maybe<UsersDocAccessFields_requestsMade_id>
+  item?: Maybe<UsersDocAccessFields_requestsMade_item>
+  user?: Maybe<UsersDocAccessFields_requestsMade_user>
+}
+
+export interface UsersDocAccessFields_requestsMade_Read {
+  __typename?: 'UsersDocAccessFields_requestsMade_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsMade_Update {
+  __typename?: 'UsersDocAccessFields_requestsMade_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsMade_id {
+  __typename?: 'UsersDocAccessFields_requestsMade_id'
+  create?: Maybe<UsersDocAccessFields_requestsMade_id_Create>
+  delete?: Maybe<UsersDocAccessFields_requestsMade_id_Delete>
+  read?: Maybe<UsersDocAccessFields_requestsMade_id_Read>
+  update?: Maybe<UsersDocAccessFields_requestsMade_id_Update>
+}
+
+export interface UsersDocAccessFields_requestsMade_id_Create {
+  __typename?: 'UsersDocAccessFields_requestsMade_id_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsMade_id_Delete {
+  __typename?: 'UsersDocAccessFields_requestsMade_id_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsMade_id_Read {
+  __typename?: 'UsersDocAccessFields_requestsMade_id_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsMade_id_Update {
+  __typename?: 'UsersDocAccessFields_requestsMade_id_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsMade_item {
+  __typename?: 'UsersDocAccessFields_requestsMade_item'
+  create?: Maybe<UsersDocAccessFields_requestsMade_item_Create>
+  delete?: Maybe<UsersDocAccessFields_requestsMade_item_Delete>
+  read?: Maybe<UsersDocAccessFields_requestsMade_item_Read>
+  update?: Maybe<UsersDocAccessFields_requestsMade_item_Update>
+}
+
+export interface UsersDocAccessFields_requestsMade_item_Create {
+  __typename?: 'UsersDocAccessFields_requestsMade_item_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsMade_item_Delete {
+  __typename?: 'UsersDocAccessFields_requestsMade_item_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsMade_item_Read {
+  __typename?: 'UsersDocAccessFields_requestsMade_item_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsMade_item_Update {
+  __typename?: 'UsersDocAccessFields_requestsMade_item_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsMade_user {
+  __typename?: 'UsersDocAccessFields_requestsMade_user'
+  create?: Maybe<UsersDocAccessFields_requestsMade_user_Create>
+  delete?: Maybe<UsersDocAccessFields_requestsMade_user_Delete>
+  read?: Maybe<UsersDocAccessFields_requestsMade_user_Read>
+  update?: Maybe<UsersDocAccessFields_requestsMade_user_Update>
+}
+
+export interface UsersDocAccessFields_requestsMade_user_Create {
+  __typename?: 'UsersDocAccessFields_requestsMade_user_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsMade_user_Delete {
+  __typename?: 'UsersDocAccessFields_requestsMade_user_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsMade_user_Read {
+  __typename?: 'UsersDocAccessFields_requestsMade_user_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsMade_user_Update {
+  __typename?: 'UsersDocAccessFields_requestsMade_user_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived {
+  __typename?: 'UsersDocAccessFields_requestsReceived'
+  create?: Maybe<UsersDocAccessFields_requestsReceived_Create>
+  delete?: Maybe<UsersDocAccessFields_requestsReceived_Delete>
+  fields?: Maybe<UsersDocAccessFields_requestsReceived_Fields>
+  read?: Maybe<UsersDocAccessFields_requestsReceived_Read>
+  update?: Maybe<UsersDocAccessFields_requestsReceived_Update>
+}
+
+export interface UsersDocAccessFields_requestsReceived_Create {
+  __typename?: 'UsersDocAccessFields_requestsReceived_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived_Delete {
+  __typename?: 'UsersDocAccessFields_requestsReceived_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived_Fields {
+  __typename?: 'UsersDocAccessFields_requestsReceived_Fields'
+  id?: Maybe<UsersDocAccessFields_requestsReceived_id>
+  item?: Maybe<UsersDocAccessFields_requestsReceived_item>
+  user?: Maybe<UsersDocAccessFields_requestsReceived_user>
+}
+
+export interface UsersDocAccessFields_requestsReceived_Read {
+  __typename?: 'UsersDocAccessFields_requestsReceived_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived_Update {
+  __typename?: 'UsersDocAccessFields_requestsReceived_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived_id {
+  __typename?: 'UsersDocAccessFields_requestsReceived_id'
+  create?: Maybe<UsersDocAccessFields_requestsReceived_id_Create>
+  delete?: Maybe<UsersDocAccessFields_requestsReceived_id_Delete>
+  read?: Maybe<UsersDocAccessFields_requestsReceived_id_Read>
+  update?: Maybe<UsersDocAccessFields_requestsReceived_id_Update>
+}
+
+export interface UsersDocAccessFields_requestsReceived_id_Create {
+  __typename?: 'UsersDocAccessFields_requestsReceived_id_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived_id_Delete {
+  __typename?: 'UsersDocAccessFields_requestsReceived_id_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived_id_Read {
+  __typename?: 'UsersDocAccessFields_requestsReceived_id_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived_id_Update {
+  __typename?: 'UsersDocAccessFields_requestsReceived_id_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived_item {
+  __typename?: 'UsersDocAccessFields_requestsReceived_item'
+  create?: Maybe<UsersDocAccessFields_requestsReceived_item_Create>
+  delete?: Maybe<UsersDocAccessFields_requestsReceived_item_Delete>
+  read?: Maybe<UsersDocAccessFields_requestsReceived_item_Read>
+  update?: Maybe<UsersDocAccessFields_requestsReceived_item_Update>
+}
+
+export interface UsersDocAccessFields_requestsReceived_item_Create {
+  __typename?: 'UsersDocAccessFields_requestsReceived_item_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived_item_Delete {
+  __typename?: 'UsersDocAccessFields_requestsReceived_item_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived_item_Read {
+  __typename?: 'UsersDocAccessFields_requestsReceived_item_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived_item_Update {
+  __typename?: 'UsersDocAccessFields_requestsReceived_item_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived_user {
+  __typename?: 'UsersDocAccessFields_requestsReceived_user'
+  create?: Maybe<UsersDocAccessFields_requestsReceived_user_Create>
+  delete?: Maybe<UsersDocAccessFields_requestsReceived_user_Delete>
+  read?: Maybe<UsersDocAccessFields_requestsReceived_user_Read>
+  update?: Maybe<UsersDocAccessFields_requestsReceived_user_Update>
+}
+
+export interface UsersDocAccessFields_requestsReceived_user_Create {
+  __typename?: 'UsersDocAccessFields_requestsReceived_user_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived_user_Delete {
+  __typename?: 'UsersDocAccessFields_requestsReceived_user_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived_user_Read {
+  __typename?: 'UsersDocAccessFields_requestsReceived_user_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_requestsReceived_user_Update {
+  __typename?: 'UsersDocAccessFields_requestsReceived_user_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
 export interface UsersDocAccessFields_roles {
   __typename?: 'UsersDocAccessFields_roles'
   create?: Maybe<UsersDocAccessFields_roles_Create>
@@ -8128,6 +13011,8 @@ export interface UsersFields {
   profileImage?: Maybe<UsersFields_profileImage>
   province?: Maybe<UsersFields_province>
   rating?: Maybe<UsersFields_rating>
+  requestsMade?: Maybe<UsersFields_requestsMade>
+  requestsReceived?: Maybe<UsersFields_requestsReceived>
   roles?: Maybe<UsersFields_roles>
   updatedAt?: Maybe<UsersFields_updatedAt>
 }
@@ -8412,6 +13297,246 @@ export interface UsersFields_rating_Update {
   permission: ScalarsEnums['Boolean']
 }
 
+export interface UsersFields_requestsMade {
+  __typename?: 'UsersFields_requestsMade'
+  create?: Maybe<UsersFields_requestsMade_Create>
+  delete?: Maybe<UsersFields_requestsMade_Delete>
+  fields?: Maybe<UsersFields_requestsMade_Fields>
+  read?: Maybe<UsersFields_requestsMade_Read>
+  update?: Maybe<UsersFields_requestsMade_Update>
+}
+
+export interface UsersFields_requestsMade_Create {
+  __typename?: 'UsersFields_requestsMade_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsMade_Delete {
+  __typename?: 'UsersFields_requestsMade_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsMade_Fields {
+  __typename?: 'UsersFields_requestsMade_Fields'
+  id?: Maybe<UsersFields_requestsMade_id>
+  item?: Maybe<UsersFields_requestsMade_item>
+  user?: Maybe<UsersFields_requestsMade_user>
+}
+
+export interface UsersFields_requestsMade_Read {
+  __typename?: 'UsersFields_requestsMade_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsMade_Update {
+  __typename?: 'UsersFields_requestsMade_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsMade_id {
+  __typename?: 'UsersFields_requestsMade_id'
+  create?: Maybe<UsersFields_requestsMade_id_Create>
+  delete?: Maybe<UsersFields_requestsMade_id_Delete>
+  read?: Maybe<UsersFields_requestsMade_id_Read>
+  update?: Maybe<UsersFields_requestsMade_id_Update>
+}
+
+export interface UsersFields_requestsMade_id_Create {
+  __typename?: 'UsersFields_requestsMade_id_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsMade_id_Delete {
+  __typename?: 'UsersFields_requestsMade_id_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsMade_id_Read {
+  __typename?: 'UsersFields_requestsMade_id_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsMade_id_Update {
+  __typename?: 'UsersFields_requestsMade_id_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsMade_item {
+  __typename?: 'UsersFields_requestsMade_item'
+  create?: Maybe<UsersFields_requestsMade_item_Create>
+  delete?: Maybe<UsersFields_requestsMade_item_Delete>
+  read?: Maybe<UsersFields_requestsMade_item_Read>
+  update?: Maybe<UsersFields_requestsMade_item_Update>
+}
+
+export interface UsersFields_requestsMade_item_Create {
+  __typename?: 'UsersFields_requestsMade_item_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsMade_item_Delete {
+  __typename?: 'UsersFields_requestsMade_item_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsMade_item_Read {
+  __typename?: 'UsersFields_requestsMade_item_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsMade_item_Update {
+  __typename?: 'UsersFields_requestsMade_item_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsMade_user {
+  __typename?: 'UsersFields_requestsMade_user'
+  create?: Maybe<UsersFields_requestsMade_user_Create>
+  delete?: Maybe<UsersFields_requestsMade_user_Delete>
+  read?: Maybe<UsersFields_requestsMade_user_Read>
+  update?: Maybe<UsersFields_requestsMade_user_Update>
+}
+
+export interface UsersFields_requestsMade_user_Create {
+  __typename?: 'UsersFields_requestsMade_user_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsMade_user_Delete {
+  __typename?: 'UsersFields_requestsMade_user_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsMade_user_Read {
+  __typename?: 'UsersFields_requestsMade_user_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsMade_user_Update {
+  __typename?: 'UsersFields_requestsMade_user_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived {
+  __typename?: 'UsersFields_requestsReceived'
+  create?: Maybe<UsersFields_requestsReceived_Create>
+  delete?: Maybe<UsersFields_requestsReceived_Delete>
+  fields?: Maybe<UsersFields_requestsReceived_Fields>
+  read?: Maybe<UsersFields_requestsReceived_Read>
+  update?: Maybe<UsersFields_requestsReceived_Update>
+}
+
+export interface UsersFields_requestsReceived_Create {
+  __typename?: 'UsersFields_requestsReceived_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived_Delete {
+  __typename?: 'UsersFields_requestsReceived_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived_Fields {
+  __typename?: 'UsersFields_requestsReceived_Fields'
+  id?: Maybe<UsersFields_requestsReceived_id>
+  item?: Maybe<UsersFields_requestsReceived_item>
+  user?: Maybe<UsersFields_requestsReceived_user>
+}
+
+export interface UsersFields_requestsReceived_Read {
+  __typename?: 'UsersFields_requestsReceived_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived_Update {
+  __typename?: 'UsersFields_requestsReceived_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived_id {
+  __typename?: 'UsersFields_requestsReceived_id'
+  create?: Maybe<UsersFields_requestsReceived_id_Create>
+  delete?: Maybe<UsersFields_requestsReceived_id_Delete>
+  read?: Maybe<UsersFields_requestsReceived_id_Read>
+  update?: Maybe<UsersFields_requestsReceived_id_Update>
+}
+
+export interface UsersFields_requestsReceived_id_Create {
+  __typename?: 'UsersFields_requestsReceived_id_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived_id_Delete {
+  __typename?: 'UsersFields_requestsReceived_id_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived_id_Read {
+  __typename?: 'UsersFields_requestsReceived_id_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived_id_Update {
+  __typename?: 'UsersFields_requestsReceived_id_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived_item {
+  __typename?: 'UsersFields_requestsReceived_item'
+  create?: Maybe<UsersFields_requestsReceived_item_Create>
+  delete?: Maybe<UsersFields_requestsReceived_item_Delete>
+  read?: Maybe<UsersFields_requestsReceived_item_Read>
+  update?: Maybe<UsersFields_requestsReceived_item_Update>
+}
+
+export interface UsersFields_requestsReceived_item_Create {
+  __typename?: 'UsersFields_requestsReceived_item_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived_item_Delete {
+  __typename?: 'UsersFields_requestsReceived_item_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived_item_Read {
+  __typename?: 'UsersFields_requestsReceived_item_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived_item_Update {
+  __typename?: 'UsersFields_requestsReceived_item_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived_user {
+  __typename?: 'UsersFields_requestsReceived_user'
+  create?: Maybe<UsersFields_requestsReceived_user_Create>
+  delete?: Maybe<UsersFields_requestsReceived_user_Delete>
+  read?: Maybe<UsersFields_requestsReceived_user_Read>
+  update?: Maybe<UsersFields_requestsReceived_user_Update>
+}
+
+export interface UsersFields_requestsReceived_user_Create {
+  __typename?: 'UsersFields_requestsReceived_user_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived_user_Delete {
+  __typename?: 'UsersFields_requestsReceived_user_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived_user_Read {
+  __typename?: 'UsersFields_requestsReceived_user_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_requestsReceived_user_Update {
+  __typename?: 'UsersFields_requestsReceived_user_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
 export interface UsersFields_roles {
   __typename?: 'UsersFields_roles'
   create?: Maybe<UsersFields_roles_Create>
@@ -8504,6 +13629,24 @@ export interface UsersUpdateDocAccess {
   where?: Maybe<ScalarsEnums['JSONObject']>
 }
 
+export interface chatroomAccess {
+  __typename?: 'chatroomAccess'
+  create?: Maybe<ChatroomCreateAccess>
+  delete?: Maybe<ChatroomDeleteAccess>
+  fields?: Maybe<ChatroomFields>
+  read?: Maybe<ChatroomReadAccess>
+  update?: Maybe<ChatroomUpdateAccess>
+}
+
+export interface chatroomDocAccess {
+  __typename?: 'chatroomDocAccess'
+  create?: Maybe<ChatroomCreateDocAccess>
+  delete?: Maybe<ChatroomDeleteDocAccess>
+  fields?: Maybe<ChatroomDocAccessFields>
+  read?: Maybe<ChatroomReadDocAccess>
+  update?: Maybe<ChatroomUpdateDocAccess>
+}
+
 export interface itemsAccess {
   __typename?: 'itemsAccess'
   create?: Maybe<ItemsCreateAccess>
@@ -8542,8 +13685,32 @@ export interface mediasDocAccess {
   update?: Maybe<MediasUpdateDocAccess>
 }
 
+export interface messageAccess {
+  __typename?: 'messageAccess'
+  create?: Maybe<MessageCreateAccess>
+  delete?: Maybe<MessageDeleteAccess>
+  fields?: Maybe<MessageFields>
+  read?: Maybe<MessageReadAccess>
+  update?: Maybe<MessageUpdateAccess>
+}
+
+export interface messageDocAccess {
+  __typename?: 'messageDocAccess'
+  create?: Maybe<MessageCreateDocAccess>
+  delete?: Maybe<MessageDeleteDocAccess>
+  fields?: Maybe<MessageDocAccessFields>
+  read?: Maybe<MessageReadDocAccess>
+  update?: Maybe<MessageUpdateDocAccess>
+}
+
 export interface Mutation {
   __typename?: 'Mutation'
+  createChatroom: (
+    args: {
+      data: mutationChatroomInput
+      draft?: Maybe<Scalars['Boolean']>
+    }
+  ) => Maybe<Chatroom>
   createItem: (args: { data: mutationItemInput; draft?: Maybe<Scalars['Boolean']> }) => Maybe<Item>
   createMedia: (
     args: {
@@ -8551,17 +13718,32 @@ export interface Mutation {
       draft?: Maybe<Scalars['Boolean']>
     }
   ) => Maybe<Media>
+  createMessage: (
+    args: {
+      data: mutationMessageInput
+      draft?: Maybe<Scalars['Boolean']>
+    }
+  ) => Maybe<Message>
   createPayloadPreference: (
     args: {
       data: mutationPayloadPreferenceInput
       draft?: Maybe<Scalars['Boolean']>
     }
   ) => Maybe<PayloadPreference>
+  createRenting: (
+    args: {
+      data: mutationRentingInput
+      draft?: Maybe<Scalars['Boolean']>
+    }
+  ) => Maybe<Renting>
   createTag: (args: { data: mutationTagInput; draft?: Maybe<Scalars['Boolean']> }) => Maybe<Tag>
   createUser: (args: { data: mutationUserInput; draft?: Maybe<Scalars['Boolean']> }) => Maybe<User>
+  deleteChatroom: (args: { id: Scalars['Int'] }) => Maybe<Chatroom>
   deleteItem: (args: { id: Scalars['Int'] }) => Maybe<Item>
   deleteMedia: (args: { id: Scalars['Int'] }) => Maybe<Media>
+  deleteMessage: (args: { id: Scalars['Int'] }) => Maybe<Message>
   deletePayloadPreference: (args: { id: Scalars['Int'] }) => Maybe<PayloadPreference>
+  deleteRenting: (args: { id: Scalars['Int'] }) => Maybe<Renting>
   deleteTag: (args: { id: Scalars['Int'] }) => Maybe<Tag>
   deleteUser: (args: { id: Scalars['Int'] }) => Maybe<User>
   forgotPasswordUser: (
@@ -8587,6 +13769,14 @@ export interface Mutation {
   ) => Maybe<usersResetPassword>
   restoreVersionItem: (args?: { id?: Maybe<Scalars['Int']> }) => Maybe<Item>
   unlockUser: (args: { email: Scalars['String'] }) => ScalarsEnums['Boolean']
+  updateChatroom: (
+    args: {
+      autosave?: Maybe<Scalars['Boolean']>
+      data: mutationChatroomUpdateInput
+      draft?: Maybe<Scalars['Boolean']>
+      id: Scalars['Int']
+    }
+  ) => Maybe<Chatroom>
   updateItem: (
     args: {
       autosave?: Maybe<Scalars['Boolean']>
@@ -8603,6 +13793,14 @@ export interface Mutation {
       id: Scalars['Int']
     }
   ) => Maybe<Media>
+  updateMessage: (
+    args: {
+      autosave?: Maybe<Scalars['Boolean']>
+      data: mutationMessageUpdateInput
+      draft?: Maybe<Scalars['Boolean']>
+      id: Scalars['Int']
+    }
+  ) => Maybe<Message>
   updatePayloadPreference: (
     args: {
       autosave?: Maybe<Scalars['Boolean']>
@@ -8611,6 +13809,14 @@ export interface Mutation {
       id: Scalars['Int']
     }
   ) => Maybe<PayloadPreference>
+  updateRenting: (
+    args: {
+      autosave?: Maybe<Scalars['Boolean']>
+      data: mutationRentingUpdateInput
+      draft?: Maybe<Scalars['Boolean']>
+      id: Scalars['Int']
+    }
+  ) => Maybe<Renting>
   updateTag: (
     args: {
       autosave?: Maybe<Scalars['Boolean']>
@@ -8651,6 +13857,16 @@ export interface payload_preferencesDocAccess {
 export interface Query {
   __typename?: 'Query'
   Access?: Maybe<Access>
+  Chatroom: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Chatroom>
+  Chatrooms: (
+    args?: {
+      draft?: Maybe<Scalars['Boolean']>
+      limit?: Maybe<Scalars['Int']>
+      page?: Maybe<Scalars['Int']>
+      sort?: Maybe<Scalars['String']>
+      where?: Maybe<Chatroom_where>
+    }
+  ) => Maybe<Chatrooms>
   Item: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Item>
   Items: (
     args?: {
@@ -8671,6 +13887,16 @@ export interface Query {
       where?: Maybe<Media_where>
     }
   ) => Maybe<Medias>
+  Message: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Message>
+  Messages: (
+    args?: {
+      draft?: Maybe<Scalars['Boolean']>
+      limit?: Maybe<Scalars['Int']>
+      page?: Maybe<Scalars['Int']>
+      sort?: Maybe<Scalars['String']>
+      where?: Maybe<Message_where>
+    }
+  ) => Maybe<Messages>
   PayloadPreference: (
     args: {
       draft?: Maybe<Scalars['Boolean']>
@@ -8686,6 +13912,16 @@ export interface Query {
       where?: Maybe<PayloadPreference_where>
     }
   ) => Maybe<PayloadPreferences>
+  Renting: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Renting>
+  Rentings: (
+    args?: {
+      draft?: Maybe<Scalars['Boolean']>
+      limit?: Maybe<Scalars['Int']>
+      page?: Maybe<Scalars['Int']>
+      sort?: Maybe<Scalars['String']>
+      where?: Maybe<Renting_where>
+    }
+  ) => Maybe<Rentings>
   Tag: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Tag>
   Tags: (
     args?: {
@@ -8706,9 +13942,12 @@ export interface Query {
       where?: Maybe<User_where>
     }
   ) => Maybe<Users>
+  docAccessChatroom: (args: { id: Scalars['Int'] }) => Maybe<chatroomDocAccess>
   docAccessItem: (args: { id: Scalars['Int'] }) => Maybe<itemsDocAccess>
   docAccessMedia: (args: { id: Scalars['Int'] }) => Maybe<mediasDocAccess>
+  docAccessMessage: (args: { id: Scalars['Int'] }) => Maybe<messageDocAccess>
   docAccessPayloadPreference: (args: { id: Scalars['Int'] }) => Maybe<payload_preferencesDocAccess>
+  docAccessRenting: (args: { id: Scalars['Int'] }) => Maybe<rentingDocAccess>
   docAccessTag: (args: { id: Scalars['Int'] }) => Maybe<tagsDocAccess>
   docAccessUser: (args: { id: Scalars['Int'] }) => Maybe<usersDocAccess>
   initializedUser?: Maybe<ScalarsEnums['Boolean']>
@@ -8722,6 +13961,24 @@ export interface Query {
       where?: Maybe<versionsItem_where>
     }
   ) => Maybe<versionsItems>
+}
+
+export interface rentingAccess {
+  __typename?: 'rentingAccess'
+  create?: Maybe<RentingCreateAccess>
+  delete?: Maybe<RentingDeleteAccess>
+  fields?: Maybe<RentingFields>
+  read?: Maybe<RentingReadAccess>
+  update?: Maybe<RentingUpdateAccess>
+}
+
+export interface rentingDocAccess {
+  __typename?: 'rentingDocAccess'
+  create?: Maybe<RentingCreateDocAccess>
+  delete?: Maybe<RentingDeleteDocAccess>
+  fields?: Maybe<RentingDocAccessFields>
+  read?: Maybe<RentingReadDocAccess>
+  update?: Maybe<RentingUpdateDocAccess>
 }
 
 export interface Subscription {
@@ -8854,6 +14111,10 @@ export interface ScalarsEnums extends MakeNullable<Scalars> {
     | undefined
   PayloadPreference_User_RelationTo: PayloadPreference_User_RelationTo | undefined
   PayloadPreference_user_Relation_RelationTo: PayloadPreference_user_Relation_RelationTo | undefined
+  RentingUpdate_status_MutationInput: RentingUpdate_status_MutationInput | undefined
+  Renting_status: Renting_status | undefined
+  Renting_status_Input: Renting_status_Input | undefined
+  Renting_status_MutationInput: Renting_status_MutationInput | undefined
   UserUpdate_roles_MutationInput: UserUpdate_roles_MutationInput | undefined
   User_roles: User_roles | undefined
   User_roles_Input: User_roles_Input | undefined
