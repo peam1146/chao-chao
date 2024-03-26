@@ -42,7 +42,7 @@ export const Review: CollectionConfig = {
       name: 'reviewToItem',
     },
     {
-      name: 'status',
+      name: 'option',
       type: 'select',
       options: [
         { label: 'item', value: 'ITEM' },

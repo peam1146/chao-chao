@@ -161,13 +161,13 @@ type Review {
   rating: Float!
   reviewToUser: User
   reviewToItem: Item
-  status: Review_status!
+  option: Review_option!
   createdBy: User!
   updatedAt: DateTime
   createdAt: DateTime
 }
 
-enum Review_status {
+enum Review_option {
   ITEM
   USER
 }
@@ -3835,7 +3835,7 @@ input Review_where {
   rating: Review_rating_operator
   reviewToUser: Review_reviewToUser_operator
   reviewToItem: Review_reviewToItem_operator
-  status: Review_status_operator
+  option: Review_option_operator
   updatedAt: Review_updatedAt_operator
   createdAt: Review_createdAt_operator
   id: Review_id_operator
@@ -3880,15 +3880,15 @@ input Review_reviewToItem_operator {
   exists: Boolean
 }
 
-input Review_status_operator {
-  equals: Review_status_Input
-  not_equals: Review_status_Input
-  in: [Review_status_Input]
-  not_in: [Review_status_Input]
-  all: [Review_status_Input]
+input Review_option_operator {
+  equals: Review_option_Input
+  not_equals: Review_option_Input
+  in: [Review_option_Input]
+  not_in: [Review_option_Input]
+  all: [Review_option_Input]
 }
 
-enum Review_status_Input {
+enum Review_option_Input {
   ITEM
   USER
 }
@@ -3930,7 +3930,7 @@ input Review_where_and {
   rating: Review_rating_operator
   reviewToUser: Review_reviewToUser_operator
   reviewToItem: Review_reviewToItem_operator
-  status: Review_status_operator
+  option: Review_option_operator
   updatedAt: Review_updatedAt_operator
   createdAt: Review_createdAt_operator
   id: Review_id_operator
@@ -3941,7 +3941,7 @@ input Review_where_or {
   rating: Review_rating_operator
   reviewToUser: Review_reviewToUser_operator
   reviewToItem: Review_reviewToItem_operator
-  status: Review_status_operator
+  option: Review_option_operator
   updatedAt: Review_updatedAt_operator
   createdAt: Review_createdAt_operator
   id: Review_id_operator
@@ -3960,7 +3960,7 @@ type ReviewsDocAccessFields {
   rating: ReviewsDocAccessFields_rating
   reviewToUser: ReviewsDocAccessFields_reviewToUser
   reviewToItem: ReviewsDocAccessFields_reviewToItem
-  status: ReviewsDocAccessFields_status
+  option: ReviewsDocAccessFields_option
   updatedAt: ReviewsDocAccessFields_updatedAt
   createdAt: ReviewsDocAccessFields_createdAt
 }
@@ -4057,26 +4057,26 @@ type ReviewsDocAccessFields_reviewToItem_Delete {
   permission: Boolean!
 }
 
-type ReviewsDocAccessFields_status {
-  create: ReviewsDocAccessFields_status_Create
-  read: ReviewsDocAccessFields_status_Read
-  update: ReviewsDocAccessFields_status_Update
-  delete: ReviewsDocAccessFields_status_Delete
+type ReviewsDocAccessFields_option {
+  create: ReviewsDocAccessFields_option_Create
+  read: ReviewsDocAccessFields_option_Read
+  update: ReviewsDocAccessFields_option_Update
+  delete: ReviewsDocAccessFields_option_Delete
 }
 
-type ReviewsDocAccessFields_status_Create {
+type ReviewsDocAccessFields_option_Create {
   permission: Boolean!
 }
 
-type ReviewsDocAccessFields_status_Read {
+type ReviewsDocAccessFields_option_Read {
   permission: Boolean!
 }
 
-type ReviewsDocAccessFields_status_Update {
+type ReviewsDocAccessFields_option_Update {
   permission: Boolean!
 }
 
-type ReviewsDocAccessFields_status_Delete {
+type ReviewsDocAccessFields_option_Delete {
   permission: Boolean!
 }
 
@@ -4182,9 +4182,6 @@ input Report_reportMessage_operator {
   not_equals: String
   like: String
   contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
 }
 
 input Report_updatedAt_operator {
@@ -6652,7 +6649,7 @@ type ReviewsFields {
   rating: ReviewsFields_rating
   reviewToUser: ReviewsFields_reviewToUser
   reviewToItem: ReviewsFields_reviewToItem
-  status: ReviewsFields_status
+  option: ReviewsFields_option
   updatedAt: ReviewsFields_updatedAt
   createdAt: ReviewsFields_createdAt
 }
@@ -6749,26 +6746,26 @@ type ReviewsFields_reviewToItem_Delete {
   permission: Boolean!
 }
 
-type ReviewsFields_status {
-  create: ReviewsFields_status_Create
-  read: ReviewsFields_status_Read
-  update: ReviewsFields_status_Update
-  delete: ReviewsFields_status_Delete
+type ReviewsFields_option {
+  create: ReviewsFields_option_Create
+  read: ReviewsFields_option_Read
+  update: ReviewsFields_option_Update
+  delete: ReviewsFields_option_Delete
 }
 
-type ReviewsFields_status_Create {
+type ReviewsFields_option_Create {
   permission: Boolean!
 }
 
-type ReviewsFields_status_Read {
+type ReviewsFields_option_Read {
   permission: Boolean!
 }
 
-type ReviewsFields_status_Update {
+type ReviewsFields_option_Update {
   permission: Boolean!
 }
 
-type ReviewsFields_status_Delete {
+type ReviewsFields_option_Delete {
   permission: Boolean!
 }
 
@@ -7442,13 +7439,13 @@ input mutationReviewInput {
   rating: Float!
   reviewToUser: Int
   reviewToItem: Int
-  status: Review_status_MutationInput!
+  option: Review_option_MutationInput!
   createdBy: Int
   updatedAt: String
   createdAt: String
 }
 
-enum Review_status_MutationInput {
+enum Review_option_MutationInput {
   ITEM
   USER
 }
@@ -7458,13 +7455,13 @@ input mutationReviewUpdateInput {
   rating: Float
   reviewToUser: Int
   reviewToItem: Int
-  status: ReviewUpdate_status_MutationInput
+  option: ReviewUpdate_option_MutationInput
   createdBy: Int
   updatedAt: String
   createdAt: String
 }
 
-enum ReviewUpdate_status_MutationInput {
+enum ReviewUpdate_option_MutationInput {
   ITEM
   USER
 }

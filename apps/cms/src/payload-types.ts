@@ -115,7 +115,7 @@ export interface Review {
   rating: number;
   reviewToUser?: string | User;
   reviewToItem?: string | Item;
-  status: 'ITEM' | 'USER';
+  option: 'ITEM' | 'USER';
   createdBy: string | User;
   updatedAt: string;
   createdAt: string;

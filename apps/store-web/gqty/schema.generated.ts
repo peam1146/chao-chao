@@ -1076,13 +1076,10 @@ export interface Report_id_operator {
 }
 
 export interface Report_reportMessage_operator {
-  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   contains?: InputMaybe<Scalars['String']>
   equals?: InputMaybe<Scalars['String']>
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   like?: InputMaybe<Scalars['String']>
   not_equals?: InputMaybe<Scalars['String']>
-  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
 export interface Report_updatedAt_operator {
@@ -1119,7 +1116,7 @@ export interface Report_where_or {
   updatedAt?: InputMaybe<Report_updatedAt_operator>
 }
 
-export enum ReviewUpdate_status_MutationInput {
+export enum ReviewUpdate_option_MutationInput {
   ITEM = 'ITEM',
   USER = 'USER',
 }
@@ -1155,6 +1152,29 @@ export interface Review_id_operator {
   not_equals?: InputMaybe<Scalars['Int']>
 }
 
+export enum Review_option {
+  ITEM = 'ITEM',
+  USER = 'USER',
+}
+
+export enum Review_option_Input {
+  ITEM = 'ITEM',
+  USER = 'USER',
+}
+
+export enum Review_option_MutationInput {
+  ITEM = 'ITEM',
+  USER = 'USER',
+}
+
+export interface Review_option_operator {
+  all?: InputMaybe<Array<InputMaybe<Review_option_Input>>>
+  equals?: InputMaybe<Review_option_Input>
+  in?: InputMaybe<Array<InputMaybe<Review_option_Input>>>
+  not_equals?: InputMaybe<Review_option_Input>
+  not_in?: InputMaybe<Array<InputMaybe<Review_option_Input>>>
+}
+
 export interface Review_rating_operator {
   equals?: InputMaybe<Scalars['Float']>
   greater_than?: InputMaybe<Scalars['Float']>
@@ -1182,29 +1202,6 @@ export interface Review_reviewToUser_operator {
   not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
 }
 
-export enum Review_status {
-  ITEM = 'ITEM',
-  USER = 'USER',
-}
-
-export enum Review_status_Input {
-  ITEM = 'ITEM',
-  USER = 'USER',
-}
-
-export enum Review_status_MutationInput {
-  ITEM = 'ITEM',
-  USER = 'USER',
-}
-
-export interface Review_status_operator {
-  all?: InputMaybe<Array<InputMaybe<Review_status_Input>>>
-  equals?: InputMaybe<Review_status_Input>
-  in?: InputMaybe<Array<InputMaybe<Review_status_Input>>>
-  not_equals?: InputMaybe<Review_status_Input>
-  not_in?: InputMaybe<Array<InputMaybe<Review_status_Input>>>
-}
-
 export interface Review_updatedAt_operator {
   equals?: InputMaybe<Scalars['DateTime']>
   exists?: InputMaybe<Scalars['Boolean']>
@@ -1222,10 +1219,10 @@ export interface Review_where {
   createdAt?: InputMaybe<Review_createdAt_operator>
   description?: InputMaybe<Review_description_operator>
   id?: InputMaybe<Review_id_operator>
+  option?: InputMaybe<Review_option_operator>
   rating?: InputMaybe<Review_rating_operator>
   reviewToItem?: InputMaybe<Review_reviewToItem_operator>
   reviewToUser?: InputMaybe<Review_reviewToUser_operator>
-  status?: InputMaybe<Review_status_operator>
   updatedAt?: InputMaybe<Review_updatedAt_operator>
 }
 
@@ -1233,10 +1230,10 @@ export interface Review_where_and {
   createdAt?: InputMaybe<Review_createdAt_operator>
   description?: InputMaybe<Review_description_operator>
   id?: InputMaybe<Review_id_operator>
+  option?: InputMaybe<Review_option_operator>
   rating?: InputMaybe<Review_rating_operator>
   reviewToItem?: InputMaybe<Review_reviewToItem_operator>
   reviewToUser?: InputMaybe<Review_reviewToUser_operator>
-  status?: InputMaybe<Review_status_operator>
   updatedAt?: InputMaybe<Review_updatedAt_operator>
 }
 
@@ -1244,10 +1241,10 @@ export interface Review_where_or {
   createdAt?: InputMaybe<Review_createdAt_operator>
   description?: InputMaybe<Review_description_operator>
   id?: InputMaybe<Review_id_operator>
+  option?: InputMaybe<Review_option_operator>
   rating?: InputMaybe<Review_rating_operator>
   reviewToItem?: InputMaybe<Review_reviewToItem_operator>
   reviewToUser?: InputMaybe<Review_reviewToUser_operator>
-  status?: InputMaybe<Review_status_operator>
   updatedAt?: InputMaybe<Review_updatedAt_operator>
 }
 
@@ -1741,10 +1738,10 @@ export interface mutationReviewInput {
   createdAt?: InputMaybe<Scalars['String']>
   createdBy?: InputMaybe<Scalars['Int']>
   description: Scalars['String']
+  option: Review_option_MutationInput
   rating: Scalars['Float']
   reviewToItem?: InputMaybe<Scalars['Int']>
   reviewToUser?: InputMaybe<Scalars['Int']>
-  status: Review_status_MutationInput
   updatedAt?: InputMaybe<Scalars['String']>
 }
 
@@ -1752,10 +1749,10 @@ export interface mutationReviewUpdateInput {
   createdAt?: InputMaybe<Scalars['String']>
   createdBy?: InputMaybe<Scalars['Int']>
   description?: InputMaybe<Scalars['String']>
+  option?: InputMaybe<ReviewUpdate_option_MutationInput>
   rating?: InputMaybe<Scalars['Float']>
   reviewToItem?: InputMaybe<Scalars['Int']>
   reviewToUser?: InputMaybe<Scalars['Int']>
-  status?: InputMaybe<ReviewUpdate_status_MutationInput>
   updatedAt?: InputMaybe<Scalars['String']>
 }
 
@@ -2165,10 +2162,10 @@ export const scalarsEnumsHash: import('gqty').ScalarsEnumsHash = {
   Renting_status: true,
   Renting_status_Input: true,
   Renting_status_MutationInput: true,
-  ReviewUpdate_status_MutationInput: true,
-  Review_status: true,
-  Review_status_Input: true,
-  Review_status_MutationInput: true,
+  ReviewUpdate_option_MutationInput: true,
+  Review_option: true,
+  Review_option_Input: true,
+  Review_option_MutationInput: true,
   String: true,
   UserUpdate_roles_MutationInput: true,
   User_roles: true,
@@ -6583,13 +6580,10 @@ export const generatedSchema = {
     not_equals: { __type: 'Int' },
   },
   Report_reportMessage_operator: {
-    all: { __type: '[String]' },
     contains: { __type: 'String' },
     equals: { __type: 'String' },
-    in: { __type: '[String]' },
     like: { __type: 'String' },
     not_equals: { __type: 'String' },
-    not_in: { __type: '[String]' },
   },
   Report_updatedAt_operator: {
     equals: { __type: 'DateTime' },
@@ -6641,10 +6635,10 @@ export const generatedSchema = {
     createdBy: { __type: 'User!' },
     description: { __type: 'String!' },
     id: { __type: 'Int' },
+    option: { __type: 'Review_option!' },
     rating: { __type: 'Float!' },
     reviewToItem: { __type: 'Item' },
     reviewToUser: { __type: 'User' },
-    status: { __type: 'Review_status!' },
     updatedAt: { __type: 'DateTime' },
   },
   Review_createdAt_operator: {
@@ -6675,6 +6669,13 @@ export const generatedSchema = {
     less_than_equal: { __type: 'Int' },
     not_equals: { __type: 'Int' },
   },
+  Review_option_operator: {
+    all: { __type: '[Review_option_Input]' },
+    equals: { __type: 'Review_option_Input' },
+    in: { __type: '[Review_option_Input]' },
+    not_equals: { __type: 'Review_option_Input' },
+    not_in: { __type: '[Review_option_Input]' },
+  },
   Review_rating_operator: {
     equals: { __type: 'Float' },
     greater_than: { __type: 'Float' },
@@ -6699,13 +6700,6 @@ export const generatedSchema = {
     not_equals: { __type: 'JSON' },
     not_in: { __type: '[JSON]' },
   },
-  Review_status_operator: {
-    all: { __type: '[Review_status_Input]' },
-    equals: { __type: 'Review_status_Input' },
-    in: { __type: '[Review_status_Input]' },
-    not_equals: { __type: 'Review_status_Input' },
-    not_in: { __type: '[Review_status_Input]' },
-  },
   Review_updatedAt_operator: {
     equals: { __type: 'DateTime' },
     exists: { __type: 'Boolean' },
@@ -6722,30 +6716,30 @@ export const generatedSchema = {
     createdAt: { __type: 'Review_createdAt_operator' },
     description: { __type: 'Review_description_operator' },
     id: { __type: 'Review_id_operator' },
+    option: { __type: 'Review_option_operator' },
     rating: { __type: 'Review_rating_operator' },
     reviewToItem: { __type: 'Review_reviewToItem_operator' },
     reviewToUser: { __type: 'Review_reviewToUser_operator' },
-    status: { __type: 'Review_status_operator' },
     updatedAt: { __type: 'Review_updatedAt_operator' },
   },
   Review_where_and: {
     createdAt: { __type: 'Review_createdAt_operator' },
     description: { __type: 'Review_description_operator' },
     id: { __type: 'Review_id_operator' },
+    option: { __type: 'Review_option_operator' },
     rating: { __type: 'Review_rating_operator' },
     reviewToItem: { __type: 'Review_reviewToItem_operator' },
     reviewToUser: { __type: 'Review_reviewToUser_operator' },
-    status: { __type: 'Review_status_operator' },
     updatedAt: { __type: 'Review_updatedAt_operator' },
   },
   Review_where_or: {
     createdAt: { __type: 'Review_createdAt_operator' },
     description: { __type: 'Review_description_operator' },
     id: { __type: 'Review_id_operator' },
+    option: { __type: 'Review_option_operator' },
     rating: { __type: 'Review_rating_operator' },
     reviewToItem: { __type: 'Review_reviewToItem_operator' },
     reviewToUser: { __type: 'Review_reviewToUser_operator' },
-    status: { __type: 'Review_status_operator' },
     updatedAt: { __type: 'Review_updatedAt_operator' },
   },
   Reviews: {
@@ -6786,10 +6780,10 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     createdAt: { __type: 'ReviewsDocAccessFields_createdAt' },
     description: { __type: 'ReviewsDocAccessFields_description' },
+    option: { __type: 'ReviewsDocAccessFields_option' },
     rating: { __type: 'ReviewsDocAccessFields_rating' },
     reviewToItem: { __type: 'ReviewsDocAccessFields_reviewToItem' },
     reviewToUser: { __type: 'ReviewsDocAccessFields_reviewToUser' },
-    status: { __type: 'ReviewsDocAccessFields_status' },
     updatedAt: { __type: 'ReviewsDocAccessFields_updatedAt' },
   },
   ReviewsDocAccessFields_createdAt: {
@@ -6835,6 +6829,29 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   ReviewsDocAccessFields_description_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_option: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsDocAccessFields_option_Create' },
+    delete: { __type: 'ReviewsDocAccessFields_option_Delete' },
+    read: { __type: 'ReviewsDocAccessFields_option_Read' },
+    update: { __type: 'ReviewsDocAccessFields_option_Update' },
+  },
+  ReviewsDocAccessFields_option_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_option_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_option_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_option_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -6907,29 +6924,6 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
-  ReviewsDocAccessFields_status: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'ReviewsDocAccessFields_status_Create' },
-    delete: { __type: 'ReviewsDocAccessFields_status_Delete' },
-    read: { __type: 'ReviewsDocAccessFields_status_Read' },
-    update: { __type: 'ReviewsDocAccessFields_status_Update' },
-  },
-  ReviewsDocAccessFields_status_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ReviewsDocAccessFields_status_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ReviewsDocAccessFields_status_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ReviewsDocAccessFields_status_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
   ReviewsDocAccessFields_updatedAt: {
     __typename: { __type: 'String!' },
     create: { __type: 'ReviewsDocAccessFields_updatedAt_Create' },
@@ -6957,10 +6951,10 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     createdAt: { __type: 'ReviewsFields_createdAt' },
     description: { __type: 'ReviewsFields_description' },
+    option: { __type: 'ReviewsFields_option' },
     rating: { __type: 'ReviewsFields_rating' },
     reviewToItem: { __type: 'ReviewsFields_reviewToItem' },
     reviewToUser: { __type: 'ReviewsFields_reviewToUser' },
-    status: { __type: 'ReviewsFields_status' },
     updatedAt: { __type: 'ReviewsFields_updatedAt' },
   },
   ReviewsFields_createdAt: {
@@ -7006,6 +7000,29 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   ReviewsFields_description_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_option: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsFields_option_Create' },
+    delete: { __type: 'ReviewsFields_option_Delete' },
+    read: { __type: 'ReviewsFields_option_Read' },
+    update: { __type: 'ReviewsFields_option_Update' },
+  },
+  ReviewsFields_option_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_option_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_option_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_option_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -7075,29 +7092,6 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   ReviewsFields_reviewToUser_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ReviewsFields_status: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'ReviewsFields_status_Create' },
-    delete: { __type: 'ReviewsFields_status_Delete' },
-    read: { __type: 'ReviewsFields_status_Read' },
-    update: { __type: 'ReviewsFields_status_Update' },
-  },
-  ReviewsFields_status_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ReviewsFields_status_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ReviewsFields_status_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ReviewsFields_status_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -8796,20 +8790,20 @@ export const generatedSchema = {
     createdAt: { __type: 'String' },
     createdBy: { __type: 'Int' },
     description: { __type: 'String!' },
+    option: { __type: 'Review_option_MutationInput!' },
     rating: { __type: 'Float!' },
     reviewToItem: { __type: 'Int' },
     reviewToUser: { __type: 'Int' },
-    status: { __type: 'Review_status_MutationInput!' },
     updatedAt: { __type: 'String' },
   },
   mutationReviewUpdateInput: {
     createdAt: { __type: 'String' },
     createdBy: { __type: 'Int' },
     description: { __type: 'String' },
+    option: { __type: 'ReviewUpdate_option_MutationInput' },
     rating: { __type: 'Float' },
     reviewToItem: { __type: 'Int' },
     reviewToUser: { __type: 'Int' },
-    status: { __type: 'ReviewUpdate_status_MutationInput' },
     updatedAt: { __type: 'String' },
   },
   mutationTagInput: {
@@ -13742,10 +13736,10 @@ export interface Review {
   createdBy: User
   description: ScalarsEnums['String']
   id?: Maybe<ScalarsEnums['Int']>
+  option: ScalarsEnums['Review_option']
   rating: ScalarsEnums['Float']
   reviewToItem?: Maybe<Item>
   reviewToUser?: Maybe<User>
-  status: ScalarsEnums['Review_status']
   updatedAt?: Maybe<ScalarsEnums['DateTime']>
 }
 
@@ -13792,10 +13786,10 @@ export interface ReviewsDocAccessFields {
   __typename?: 'ReviewsDocAccessFields'
   createdAt?: Maybe<ReviewsDocAccessFields_createdAt>
   description?: Maybe<ReviewsDocAccessFields_description>
+  option?: Maybe<ReviewsDocAccessFields_option>
   rating?: Maybe<ReviewsDocAccessFields_rating>
   reviewToItem?: Maybe<ReviewsDocAccessFields_reviewToItem>
   reviewToUser?: Maybe<ReviewsDocAccessFields_reviewToUser>
-  status?: Maybe<ReviewsDocAccessFields_status>
   updatedAt?: Maybe<ReviewsDocAccessFields_updatedAt>
 }
 
@@ -13852,6 +13846,34 @@ export interface ReviewsDocAccessFields_description_Read {
 
 export interface ReviewsDocAccessFields_description_Update {
   __typename?: 'ReviewsDocAccessFields_description_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_option {
+  __typename?: 'ReviewsDocAccessFields_option'
+  create?: Maybe<ReviewsDocAccessFields_option_Create>
+  delete?: Maybe<ReviewsDocAccessFields_option_Delete>
+  read?: Maybe<ReviewsDocAccessFields_option_Read>
+  update?: Maybe<ReviewsDocAccessFields_option_Update>
+}
+
+export interface ReviewsDocAccessFields_option_Create {
+  __typename?: 'ReviewsDocAccessFields_option_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_option_Delete {
+  __typename?: 'ReviewsDocAccessFields_option_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_option_Read {
+  __typename?: 'ReviewsDocAccessFields_option_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_option_Update {
+  __typename?: 'ReviewsDocAccessFields_option_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -13939,34 +13961,6 @@ export interface ReviewsDocAccessFields_reviewToUser_Update {
   permission: ScalarsEnums['Boolean']
 }
 
-export interface ReviewsDocAccessFields_status {
-  __typename?: 'ReviewsDocAccessFields_status'
-  create?: Maybe<ReviewsDocAccessFields_status_Create>
-  delete?: Maybe<ReviewsDocAccessFields_status_Delete>
-  read?: Maybe<ReviewsDocAccessFields_status_Read>
-  update?: Maybe<ReviewsDocAccessFields_status_Update>
-}
-
-export interface ReviewsDocAccessFields_status_Create {
-  __typename?: 'ReviewsDocAccessFields_status_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ReviewsDocAccessFields_status_Delete {
-  __typename?: 'ReviewsDocAccessFields_status_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ReviewsDocAccessFields_status_Read {
-  __typename?: 'ReviewsDocAccessFields_status_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ReviewsDocAccessFields_status_Update {
-  __typename?: 'ReviewsDocAccessFields_status_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
 export interface ReviewsDocAccessFields_updatedAt {
   __typename?: 'ReviewsDocAccessFields_updatedAt'
   create?: Maybe<ReviewsDocAccessFields_updatedAt_Create>
@@ -13999,10 +13993,10 @@ export interface ReviewsFields {
   __typename?: 'ReviewsFields'
   createdAt?: Maybe<ReviewsFields_createdAt>
   description?: Maybe<ReviewsFields_description>
+  option?: Maybe<ReviewsFields_option>
   rating?: Maybe<ReviewsFields_rating>
   reviewToItem?: Maybe<ReviewsFields_reviewToItem>
   reviewToUser?: Maybe<ReviewsFields_reviewToUser>
-  status?: Maybe<ReviewsFields_status>
   updatedAt?: Maybe<ReviewsFields_updatedAt>
 }
 
@@ -14059,6 +14053,34 @@ export interface ReviewsFields_description_Read {
 
 export interface ReviewsFields_description_Update {
   __typename?: 'ReviewsFields_description_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_option {
+  __typename?: 'ReviewsFields_option'
+  create?: Maybe<ReviewsFields_option_Create>
+  delete?: Maybe<ReviewsFields_option_Delete>
+  read?: Maybe<ReviewsFields_option_Read>
+  update?: Maybe<ReviewsFields_option_Update>
+}
+
+export interface ReviewsFields_option_Create {
+  __typename?: 'ReviewsFields_option_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_option_Delete {
+  __typename?: 'ReviewsFields_option_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_option_Read {
+  __typename?: 'ReviewsFields_option_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_option_Update {
+  __typename?: 'ReviewsFields_option_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -14143,34 +14165,6 @@ export interface ReviewsFields_reviewToUser_Read {
 
 export interface ReviewsFields_reviewToUser_Update {
   __typename?: 'ReviewsFields_reviewToUser_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ReviewsFields_status {
-  __typename?: 'ReviewsFields_status'
-  create?: Maybe<ReviewsFields_status_Create>
-  delete?: Maybe<ReviewsFields_status_Delete>
-  read?: Maybe<ReviewsFields_status_Read>
-  update?: Maybe<ReviewsFields_status_Update>
-}
-
-export interface ReviewsFields_status_Create {
-  __typename?: 'ReviewsFields_status_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ReviewsFields_status_Delete {
-  __typename?: 'ReviewsFields_status_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ReviewsFields_status_Read {
-  __typename?: 'ReviewsFields_status_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ReviewsFields_status_Update {
-  __typename?: 'ReviewsFields_status_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -16092,10 +16086,10 @@ export interface ScalarsEnums extends MakeNullable<Scalars> {
   Renting_status: Renting_status | undefined
   Renting_status_Input: Renting_status_Input | undefined
   Renting_status_MutationInput: Renting_status_MutationInput | undefined
-  ReviewUpdate_status_MutationInput: ReviewUpdate_status_MutationInput | undefined
-  Review_status: Review_status | undefined
-  Review_status_Input: Review_status_Input | undefined
-  Review_status_MutationInput: Review_status_MutationInput | undefined
+  ReviewUpdate_option_MutationInput: ReviewUpdate_option_MutationInput | undefined
+  Review_option: Review_option | undefined
+  Review_option_Input: Review_option_Input | undefined
+  Review_option_MutationInput: Review_option_MutationInput | undefined
   UserUpdate_roles_MutationInput: UserUpdate_roles_MutationInput | undefined
   User_roles: User_roles | undefined
   User_roles_Input: User_roles_Input | undefined
