@@ -223,7 +223,7 @@ const ChatPage = ({ children }: { children: React.ReactNode }) => {
             ))}
         </div>
         <ChatContext.Provider value={{ refetch }}>
-          <div className="flex-1 max-md:hidden">{children}</div>
+          <div className="w-full lg:max-h-[80vh] max-md:hidden">{children}</div>
         </ChatContext.Provider>
       </div>
     </div>
