@@ -1,39 +1,14 @@
 'use client'
 
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from '@/components/ui/pagination'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Typography from '@/components/ui/typography'
 import { ListDashes } from '@phosphor-icons/react'
 
-import NeigotiatingContractsCard from './NeigotiatingContractsCard'
-import RentingContractsCard from './RentingContractsCard'
-
-// import { useQuery } from '../../../../../gqty'
+import { BeingRentedContainer } from './BeingRentedContainer'
+import { NegotiatingContainer } from './NegotiatingContainer'
+import { RentingContainer } from './RentingContainer'
 
 export default function ContractsContainer() {
-  // const { Items } = useQuery({ fetchPolicy: 'cache-first' })
-
-  // const items = Items({
-  //   draft: false,
-  //   limit: 30,
-  //   where: {
-  //     name: {
-  //       contains: search,
-  //     },
-  //     createdBy: {
-  //       equals: 1,
-  //     },
-  //   },
-  // })
-
   return (
     <div className="flex flex-col w-full gap-y-4">
       <div className="flex justify-between">
@@ -59,121 +34,21 @@ export default function ContractsContainer() {
           </TabsList>
           <TabsContent value="negotiating">
             <div className="flex flex-col gap-4">
-              <NeigotiatingContractsCard
-                name="จักรยานแพะภูเขา1"
-                price={20}
-                periodType="day"
-                status="renting"
-              />
-              <NeigotiatingContractsCard
-                name="จักรยานแพะภูเขา2"
-                price={20}
-                periodType="day"
-                status="renting"
-              />
-              <NeigotiatingContractsCard
-                name="จักรยานแพะภูเขา3"
-                price={20}
-                periodType="day"
-                status="beingRented"
-              />
-              {/* {items?.docs
-                ?.filter((item) => item?.id !== undefined)
-                .map((item) => {
-                  return (
-                    // <AssetsCard
-                    //   key={item?.id}
-                    //   name={item?.name ?? ''}
-                    //   image={item?.image}
-                    //   rating={item?.rating ?? 0}
-                    //   price={item?.price ?? 0}
-                    //   periodType={item?.periodType ?? 'days'}
-                    // />
-                    <div>card จ้า</div>
-                  )
-                })} */}
+              <NegotiatingContainer />
             </div>
           </TabsContent>
           <TabsContent value="renting">
             <div className="flex flex-col gap-4">
-              <RentingContractsCard
-                name="จักรยานแพะภูเขา4หหหหหหหหหหหหหหหหหหหหหหหหหหหหห"
-                price={20}
-                periodType="day"
-                status="renting"
-              />
-              {/* {items?.docs
-                ?.filter((item) => item?.id !== undefined && item.rentingStatus === 'unavailable')
-                .map((item) => {
-                  return (
-                    // <AssetsCard
-                    //   key={item?.id}
-                    //   name={item?.name ?? ''}
-                    //   image={item?.image}
-                    //   rating={item?.rating ?? 0}
-                    //   price={item?.price ?? 0}
-                    //   periodType={item?.periodType ?? 'Days'}
-                    // />
-                    <div>card จ้า</div>
-                  )
-                })} */}
+              <RentingContainer />
             </div>
           </TabsContent>
           <TabsContent value="beingRented">
             <div className="flex flex-col gap-4">
-              <RentingContractsCard
-                name="จักรยานแพะภูเขา5"
-                price={20}
-                periodType="day"
-                status="beingRented"
-              />
-              {/* {items?.docs
-                ?.filter((item) => item?.id !== undefined && item.rentingStatus === 'available')
-                .map((item) => {
-                  return (
-                    // <AssetsCard
-                    //   key={item?.id}
-                    //   name={item?.name ?? ''}
-                    //   image={item?.image}
-                    //   rating={item?.rating ?? 0}
-                    //   price={item?.price ?? 0}
-                    //   periodType={item?.periodType ?? 'Days'}
-                    // />
-                    <div>card จ้า</div>
-                  )
-                })} */}
+              <BeingRentedContainer />
             </div>
           </TabsContent>
         </Tabs>
       </div>
-
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious href="#" />
-          </PaginationItem>
-
-          <PaginationItem>
-            <PaginationLink isActive>1</PaginationLink>
-          </PaginationItem>
-
-          <PaginationItem>
-            <PaginationLink href="#">2</PaginationLink>
-          </PaginationItem>
-
-          <PaginationItem>
-            <PaginationLink href="#">3</PaginationLink>
-          </PaginationItem>
-
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-
-          <PaginationItem>
-            <PaginationNext href="#" />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
     </div>
   )
 }

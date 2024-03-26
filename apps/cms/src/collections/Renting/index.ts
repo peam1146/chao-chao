@@ -2,6 +2,7 @@ import { CollectionConfig } from 'payload/types'
 
 import { isAdminOrSelf } from '../../access'
 import { afterDelete } from './hooks/afterDelete'
+import { beforeRead } from './hooks/beforeRead'
 import { syncCollections } from './hooks/syncCollections'
 import { syncTotalPrice } from './hooks/syncTotalPrice'
 
@@ -12,8 +13,9 @@ export const Renting: CollectionConfig = {
     defaultColumns: ['createdAt'],
   },
   hooks: {
-    afterChange: [syncCollections, syncTotalPrice],
-    afterDelete: [afterDelete],
+    afterChange: [syncCollections, syncTotalPrice], //เชื่อมต่อกับ collection อื่นๆให้ status เปลี่ยน
+    afterDelete: [afterDelete], //ลบข้อมูลที่เชื่อมกับ request นี้
+    beforeRead: [beforeRead], //ถ้าเกินวันที่กำหนดจะลบข้อมูล
   },
   access: {
     read: () => true,
@@ -104,7 +106,7 @@ export const Renting: CollectionConfig = {
       name: 'file',
       relationTo: 'medias',
       hasMany: false,
-      maxDepth: 3,
+      maxDepth: 4,
     },
     {
       type: 'relationship',

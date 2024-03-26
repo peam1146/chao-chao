@@ -16,7 +16,7 @@ export function MyAsset() {
   const [filter, setFilter] = useState<Filter>('RELEVANCE')
 
   const query = useQuery({
-    fetchPolicy: 'cache-first',
+    fetchPolicy: 'network-only',
   })
 
   const userId = query.meUser?.user?.id

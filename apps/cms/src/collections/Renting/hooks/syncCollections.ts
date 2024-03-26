@@ -102,19 +102,27 @@ export const syncCollections: AfterChangeHook<Renting> = async ({ req, doc }) =>
         })
       }
     }
-  }
-  if (status === 'COMPLETED') {
-    //ไปที่ collections payment
-  }
-  if (status === 'PROCESSING') {
-    if (item) {
-      await req.payload.update({
-        collection: 'items',
-        id: item.id,
-        data: {
-          rentingStatus: 'negotiating',
-        },
-      })
+    if (status === 'COMPLETED') {
+      if (item) {
+        await req.payload.update({
+          collection: 'items',
+          id: item.id,
+          data: {
+            rentingStatus: 'unavailable',
+          },
+        })
+      }
+    }
+    if (status === 'PROCESSING') {
+      if (item) {
+        await req.payload.update({
+          collection: 'items',
+          id: item.id,
+          data: {
+            rentingStatus: 'negotiating',
+          },
+        })
+      }
     }
   }
 }
