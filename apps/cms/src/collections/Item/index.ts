@@ -145,5 +145,11 @@ export const Item: CollectionConfig = {
         th: 'คะแนน',
       },
     },
+    {
+      type: 'relationship',
+      name: 'review',
+      relationTo: 'reviews',
+      hasMany: true,
+    },
   ],
 }

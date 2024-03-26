@@ -24,6 +24,12 @@ type Query {
   Renting(id: Int!, draft: Boolean): Renting
   Rentings(draft: Boolean, where: Renting_where, limit: Int, page: Int, sort: String): Rentings
   docAccessRenting(id: Int!): rentingDocAccess
+  Review(id: Int!, draft: Boolean): Review
+  Reviews(draft: Boolean, where: Review_where, limit: Int, page: Int, sort: String): Reviews
+  docAccessReview(id: Int!): reviewsDocAccess
+  Report(id: Int!, draft: Boolean): Report
+  Reports(draft: Boolean, where: Report_where, limit: Int, page: Int, sort: String): Reports
+  docAccessReport(id: Int!): reportDocAccess
   PayloadPreference(id: Int!, draft: Boolean): PayloadPreference
   PayloadPreferences(draft: Boolean, where: PayloadPreference_where, limit: Int, page: Int, sort: String): PayloadPreferences
   docAccessPayloadPreference(id: Int!): payload_preferencesDocAccess
@@ -42,6 +48,7 @@ type User {
   roles: [User_roles!]!
   requestsMade: [Renting!]
   requestsReceived: [Renting!]
+  review: [Review!]
   updatedAt: DateTime
   createdAt: DateTime
   email: EmailAddress!
@@ -120,6 +127,7 @@ type Item {
   tags: [Tag!]
   createdBy: User
   rating: Float
+  review: [Review!]
   updatedAt: DateTime
   createdAt: DateTime
   _status: Item__status
@@ -145,6 +153,23 @@ type Tag {
   createdBy: User!
   updatedAt: DateTime
   createdAt: DateTime
+}
+
+type Review {
+  id: Int
+  description: String!
+  rating: Float!
+  reviewToUser: User
+  reviewToItem: Item
+  status: Review_status!
+  createdBy: User!
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+enum Review_status {
+  ITEM
+  USER
 }
 
 enum Item__status {
@@ -188,6 +213,7 @@ input User_where {
   roles: User_roles_operator
   requestsMade: User_requestsMade_operator
   requestsReceived: User_requestsReceived_operator
+  review: User_review_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
   email: User_email_operator
@@ -302,6 +328,15 @@ input User_requestsReceived_operator {
   exists: Boolean
 }
 
+input User_review_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
 input User_updatedAt_operator {
   equals: DateTime
   not_equals: DateTime
@@ -355,6 +390,7 @@ input User_where_and {
   roles: User_roles_operator
   requestsMade: User_requestsMade_operator
   requestsReceived: User_requestsReceived_operator
+  review: User_review_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
   email: User_email_operator
@@ -372,6 +408,7 @@ input User_where_or {
   roles: User_roles_operator
   requestsMade: User_requestsMade_operator
   requestsReceived: User_requestsReceived_operator
+  review: User_review_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
   email: User_email_operator
@@ -398,6 +435,7 @@ type UsersDocAccessFields {
   roles: UsersDocAccessFields_roles
   requestsMade: UsersDocAccessFields_requestsMade
   requestsReceived: UsersDocAccessFields_requestsReceived
+  review: UsersDocAccessFields_review
   updatedAt: UsersDocAccessFields_updatedAt
   createdAt: UsersDocAccessFields_createdAt
   email: UsersDocAccessFields_email
@@ -634,6 +672,29 @@ type UsersDocAccessFields_requestsReceived_Delete {
   permission: Boolean!
 }
 
+type UsersDocAccessFields_review {
+  create: UsersDocAccessFields_review_Create
+  read: UsersDocAccessFields_review_Read
+  update: UsersDocAccessFields_review_Update
+  delete: UsersDocAccessFields_review_Delete
+}
+
+type UsersDocAccessFields_review_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_review_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_review_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_review_Delete {
+  permission: Boolean!
+}
+
 type UsersDocAccessFields_updatedAt {
   create: UsersDocAccessFields_updatedAt_Create
   read: UsersDocAccessFields_updatedAt_Read
@@ -791,6 +852,7 @@ input Item_where {
   tags: Item_tags_operator
   createdBy: Item_createdBy_operator
   rating: Item_rating_operator
+  review: Item_review_operator
   updatedAt: Item_updatedAt_operator
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
@@ -936,6 +998,15 @@ input Item_rating_operator {
   exists: Boolean
 }
 
+input Item_review_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
 input Item_updatedAt_operator {
   equals: DateTime
   not_equals: DateTime
@@ -996,6 +1067,7 @@ input Item_where_and {
   tags: Item_tags_operator
   createdBy: Item_createdBy_operator
   rating: Item_rating_operator
+  review: Item_review_operator
   updatedAt: Item_updatedAt_operator
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
@@ -1016,6 +1088,7 @@ input Item_where_or {
   tags: Item_tags_operator
   createdBy: Item_createdBy_operator
   rating: Item_rating_operator
+  review: Item_review_operator
   updatedAt: Item_updatedAt_operator
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
@@ -1045,6 +1118,7 @@ type ItemsDocAccessFields {
   tags: ItemsDocAccessFields_tags
   createdBy: ItemsDocAccessFields_createdBy
   rating: ItemsDocAccessFields_rating
+  review: ItemsDocAccessFields_review
   updatedAt: ItemsDocAccessFields_updatedAt
   createdAt: ItemsDocAccessFields_createdAt
   _status: ItemsDocAccessFields__status
@@ -1349,6 +1423,29 @@ type ItemsDocAccessFields_rating_Delete {
   permission: Boolean!
 }
 
+type ItemsDocAccessFields_review {
+  create: ItemsDocAccessFields_review_Create
+  read: ItemsDocAccessFields_review_Read
+  update: ItemsDocAccessFields_review_Update
+  delete: ItemsDocAccessFields_review_Delete
+}
+
+type ItemsDocAccessFields_review_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_review_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_review_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_review_Delete {
+  permission: Boolean!
+}
+
 type ItemsDocAccessFields_updatedAt {
   create: ItemsDocAccessFields_updatedAt_Create
   read: ItemsDocAccessFields_updatedAt_Read
@@ -1466,6 +1563,7 @@ type ItemVersion_Version {
   tags: [Tag!]
   createdBy: User
   rating: Float
+  review: [Review!]
   updatedAt: DateTime
   createdAt: DateTime
   _status: ItemVersion_Version__status
@@ -1518,6 +1616,7 @@ input versionsItem_where {
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
   version__rating: versionsItem_version__rating_operator
+  version__review: versionsItem_version__review_operator
   version__updatedAt: versionsItem_version__updatedAt_operator
   version__createdAt: versionsItem_version__createdAt_operator
   version___status: versionsItem_version___status_operator
@@ -1675,6 +1774,15 @@ input versionsItem_version__rating_operator {
   exists: Boolean
 }
 
+input versionsItem_version__review_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
 input versionsItem_version__updatedAt_operator {
   equals: DateTime
   not_equals: DateTime
@@ -1764,6 +1872,7 @@ input versionsItem_where_and {
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
   version__rating: versionsItem_version__rating_operator
+  version__review: versionsItem_version__review_operator
   version__updatedAt: versionsItem_version__updatedAt_operator
   version__createdAt: versionsItem_version__createdAt_operator
   version___status: versionsItem_version___status_operator
@@ -1788,6 +1897,7 @@ input versionsItem_where_or {
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
   version__rating: versionsItem_version__rating_operator
+  version__review: versionsItem_version__review_operator
   version__updatedAt: versionsItem_version__updatedAt_operator
   version__createdAt: versionsItem_version__createdAt_operator
   version___status: versionsItem_version___status_operator
@@ -3706,6 +3816,526 @@ type RentingDeleteDocAccess {
   where: JSONObject
 }
 
+type Reviews {
+  docs: [Review]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Review_where {
+  description: Review_description_operator
+  rating: Review_rating_operator
+  reviewToUser: Review_reviewToUser_operator
+  reviewToItem: Review_reviewToItem_operator
+  status: Review_status_operator
+  updatedAt: Review_updatedAt_operator
+  createdAt: Review_createdAt_operator
+  id: Review_id_operator
+  AND: [Review_where_and]
+  OR: [Review_where_or]
+}
+
+input Review_description_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Review_rating_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+}
+
+input Review_reviewToUser_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input Review_reviewToItem_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input Review_status_operator {
+  equals: Review_status_Input
+  not_equals: Review_status_Input
+  in: [Review_status_Input]
+  not_in: [Review_status_Input]
+  all: [Review_status_Input]
+}
+
+enum Review_status_Input {
+  ITEM
+  USER
+}
+
+input Review_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Review_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Review_id_operator {
+  equals: Int
+  not_equals: Int
+  greater_than_equal: Int
+  greater_than: Int
+  less_than_equal: Int
+  less_than: Int
+  exists: Boolean
+}
+
+input Review_where_and {
+  description: Review_description_operator
+  rating: Review_rating_operator
+  reviewToUser: Review_reviewToUser_operator
+  reviewToItem: Review_reviewToItem_operator
+  status: Review_status_operator
+  updatedAt: Review_updatedAt_operator
+  createdAt: Review_createdAt_operator
+  id: Review_id_operator
+}
+
+input Review_where_or {
+  description: Review_description_operator
+  rating: Review_rating_operator
+  reviewToUser: Review_reviewToUser_operator
+  reviewToItem: Review_reviewToItem_operator
+  status: Review_status_operator
+  updatedAt: Review_updatedAt_operator
+  createdAt: Review_createdAt_operator
+  id: Review_id_operator
+}
+
+type reviewsDocAccess {
+  fields: ReviewsDocAccessFields
+  create: ReviewsCreateDocAccess
+  read: ReviewsReadDocAccess
+  update: ReviewsUpdateDocAccess
+  delete: ReviewsDeleteDocAccess
+}
+
+type ReviewsDocAccessFields {
+  description: ReviewsDocAccessFields_description
+  rating: ReviewsDocAccessFields_rating
+  reviewToUser: ReviewsDocAccessFields_reviewToUser
+  reviewToItem: ReviewsDocAccessFields_reviewToItem
+  status: ReviewsDocAccessFields_status
+  updatedAt: ReviewsDocAccessFields_updatedAt
+  createdAt: ReviewsDocAccessFields_createdAt
+}
+
+type ReviewsDocAccessFields_description {
+  create: ReviewsDocAccessFields_description_Create
+  read: ReviewsDocAccessFields_description_Read
+  update: ReviewsDocAccessFields_description_Update
+  delete: ReviewsDocAccessFields_description_Delete
+}
+
+type ReviewsDocAccessFields_description_Create {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_description_Read {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_description_Update {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_description_Delete {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_rating {
+  create: ReviewsDocAccessFields_rating_Create
+  read: ReviewsDocAccessFields_rating_Read
+  update: ReviewsDocAccessFields_rating_Update
+  delete: ReviewsDocAccessFields_rating_Delete
+}
+
+type ReviewsDocAccessFields_rating_Create {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_rating_Read {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_rating_Update {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_rating_Delete {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_reviewToUser {
+  create: ReviewsDocAccessFields_reviewToUser_Create
+  read: ReviewsDocAccessFields_reviewToUser_Read
+  update: ReviewsDocAccessFields_reviewToUser_Update
+  delete: ReviewsDocAccessFields_reviewToUser_Delete
+}
+
+type ReviewsDocAccessFields_reviewToUser_Create {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_reviewToUser_Read {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_reviewToUser_Update {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_reviewToUser_Delete {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_reviewToItem {
+  create: ReviewsDocAccessFields_reviewToItem_Create
+  read: ReviewsDocAccessFields_reviewToItem_Read
+  update: ReviewsDocAccessFields_reviewToItem_Update
+  delete: ReviewsDocAccessFields_reviewToItem_Delete
+}
+
+type ReviewsDocAccessFields_reviewToItem_Create {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_reviewToItem_Read {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_reviewToItem_Update {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_reviewToItem_Delete {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_status {
+  create: ReviewsDocAccessFields_status_Create
+  read: ReviewsDocAccessFields_status_Read
+  update: ReviewsDocAccessFields_status_Update
+  delete: ReviewsDocAccessFields_status_Delete
+}
+
+type ReviewsDocAccessFields_status_Create {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_status_Read {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_status_Update {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_status_Delete {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_updatedAt {
+  create: ReviewsDocAccessFields_updatedAt_Create
+  read: ReviewsDocAccessFields_updatedAt_Read
+  update: ReviewsDocAccessFields_updatedAt_Update
+  delete: ReviewsDocAccessFields_updatedAt_Delete
+}
+
+type ReviewsDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_createdAt {
+  create: ReviewsDocAccessFields_createdAt_Create
+  read: ReviewsDocAccessFields_createdAt_Read
+  update: ReviewsDocAccessFields_createdAt_Update
+  delete: ReviewsDocAccessFields_createdAt_Delete
+}
+
+type ReviewsDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type ReviewsCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ReviewsReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ReviewsUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ReviewsDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type Report {
+  id: Int
+  reportMessage: String!
+  createdBy: User!
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type Reports {
+  docs: [Report]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Report_where {
+  reportMessage: Report_reportMessage_operator
+  updatedAt: Report_updatedAt_operator
+  createdAt: Report_createdAt_operator
+  id: Report_id_operator
+  AND: [Report_where_and]
+  OR: [Report_where_or]
+}
+
+input Report_reportMessage_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Report_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Report_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Report_id_operator {
+  equals: Int
+  not_equals: Int
+  greater_than_equal: Int
+  greater_than: Int
+  less_than_equal: Int
+  less_than: Int
+  exists: Boolean
+}
+
+input Report_where_and {
+  reportMessage: Report_reportMessage_operator
+  updatedAt: Report_updatedAt_operator
+  createdAt: Report_createdAt_operator
+  id: Report_id_operator
+}
+
+input Report_where_or {
+  reportMessage: Report_reportMessage_operator
+  updatedAt: Report_updatedAt_operator
+  createdAt: Report_createdAt_operator
+  id: Report_id_operator
+}
+
+type reportDocAccess {
+  fields: ReportDocAccessFields
+  create: ReportCreateDocAccess
+  read: ReportReadDocAccess
+  update: ReportUpdateDocAccess
+  delete: ReportDeleteDocAccess
+}
+
+type ReportDocAccessFields {
+  reportMessage: ReportDocAccessFields_reportMessage
+  updatedAt: ReportDocAccessFields_updatedAt
+  createdAt: ReportDocAccessFields_createdAt
+}
+
+type ReportDocAccessFields_reportMessage {
+  create: ReportDocAccessFields_reportMessage_Create
+  read: ReportDocAccessFields_reportMessage_Read
+  update: ReportDocAccessFields_reportMessage_Update
+  delete: ReportDocAccessFields_reportMessage_Delete
+}
+
+type ReportDocAccessFields_reportMessage_Create {
+  permission: Boolean!
+}
+
+type ReportDocAccessFields_reportMessage_Read {
+  permission: Boolean!
+}
+
+type ReportDocAccessFields_reportMessage_Update {
+  permission: Boolean!
+}
+
+type ReportDocAccessFields_reportMessage_Delete {
+  permission: Boolean!
+}
+
+type ReportDocAccessFields_updatedAt {
+  create: ReportDocAccessFields_updatedAt_Create
+  read: ReportDocAccessFields_updatedAt_Read
+  update: ReportDocAccessFields_updatedAt_Update
+  delete: ReportDocAccessFields_updatedAt_Delete
+}
+
+type ReportDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type ReportDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type ReportDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type ReportDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type ReportDocAccessFields_createdAt {
+  create: ReportDocAccessFields_createdAt_Create
+  read: ReportDocAccessFields_createdAt_Read
+  update: ReportDocAccessFields_createdAt_Update
+  delete: ReportDocAccessFields_createdAt_Delete
+}
+
+type ReportDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type ReportDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type ReportDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type ReportDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type ReportCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ReportReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ReportUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ReportDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type PayloadPreference {
   id: Int
   user: PayloadPreference_User_Relationship!
@@ -3991,6 +4621,8 @@ type Access {
   chatroom: chatroomAccess
   message: messageAccess
   renting: rentingAccess
+  reviews: reviewsAccess
+  report: reportAccess
   payload_preferences: payload_preferencesAccess
 }
 
@@ -4014,6 +4646,7 @@ type UsersFields {
   roles: UsersFields_roles
   requestsMade: UsersFields_requestsMade
   requestsReceived: UsersFields_requestsReceived
+  review: UsersFields_review
   updatedAt: UsersFields_updatedAt
   createdAt: UsersFields_createdAt
   email: UsersFields_email
@@ -4250,6 +4883,29 @@ type UsersFields_requestsReceived_Delete {
   permission: Boolean!
 }
 
+type UsersFields_review {
+  create: UsersFields_review_Create
+  read: UsersFields_review_Read
+  update: UsersFields_review_Update
+  delete: UsersFields_review_Delete
+}
+
+type UsersFields_review_Create {
+  permission: Boolean!
+}
+
+type UsersFields_review_Read {
+  permission: Boolean!
+}
+
+type UsersFields_review_Update {
+  permission: Boolean!
+}
+
+type UsersFields_review_Delete {
+  permission: Boolean!
+}
+
 type UsersFields_updatedAt {
   create: UsersFields_updatedAt_Create
   read: UsersFields_updatedAt_Read
@@ -4390,6 +5046,7 @@ type ItemsFields {
   tags: ItemsFields_tags
   createdBy: ItemsFields_createdBy
   rating: ItemsFields_rating
+  review: ItemsFields_review
   updatedAt: ItemsFields_updatedAt
   createdAt: ItemsFields_createdAt
   _status: ItemsFields__status
@@ -4691,6 +5348,29 @@ type ItemsFields_rating_Update {
 }
 
 type ItemsFields_rating_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_review {
+  create: ItemsFields_review_Create
+  read: ItemsFields_review_Read
+  update: ItemsFields_review_Update
+  delete: ItemsFields_review_Delete
+}
+
+type ItemsFields_review_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_review_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_review_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_review_Delete {
   permission: Boolean!
 }
 
@@ -5959,6 +6639,308 @@ type RentingDeleteAccess {
   where: JSONObject
 }
 
+type reviewsAccess {
+  fields: ReviewsFields
+  create: ReviewsCreateAccess
+  read: ReviewsReadAccess
+  update: ReviewsUpdateAccess
+  delete: ReviewsDeleteAccess
+}
+
+type ReviewsFields {
+  description: ReviewsFields_description
+  rating: ReviewsFields_rating
+  reviewToUser: ReviewsFields_reviewToUser
+  reviewToItem: ReviewsFields_reviewToItem
+  status: ReviewsFields_status
+  updatedAt: ReviewsFields_updatedAt
+  createdAt: ReviewsFields_createdAt
+}
+
+type ReviewsFields_description {
+  create: ReviewsFields_description_Create
+  read: ReviewsFields_description_Read
+  update: ReviewsFields_description_Update
+  delete: ReviewsFields_description_Delete
+}
+
+type ReviewsFields_description_Create {
+  permission: Boolean!
+}
+
+type ReviewsFields_description_Read {
+  permission: Boolean!
+}
+
+type ReviewsFields_description_Update {
+  permission: Boolean!
+}
+
+type ReviewsFields_description_Delete {
+  permission: Boolean!
+}
+
+type ReviewsFields_rating {
+  create: ReviewsFields_rating_Create
+  read: ReviewsFields_rating_Read
+  update: ReviewsFields_rating_Update
+  delete: ReviewsFields_rating_Delete
+}
+
+type ReviewsFields_rating_Create {
+  permission: Boolean!
+}
+
+type ReviewsFields_rating_Read {
+  permission: Boolean!
+}
+
+type ReviewsFields_rating_Update {
+  permission: Boolean!
+}
+
+type ReviewsFields_rating_Delete {
+  permission: Boolean!
+}
+
+type ReviewsFields_reviewToUser {
+  create: ReviewsFields_reviewToUser_Create
+  read: ReviewsFields_reviewToUser_Read
+  update: ReviewsFields_reviewToUser_Update
+  delete: ReviewsFields_reviewToUser_Delete
+}
+
+type ReviewsFields_reviewToUser_Create {
+  permission: Boolean!
+}
+
+type ReviewsFields_reviewToUser_Read {
+  permission: Boolean!
+}
+
+type ReviewsFields_reviewToUser_Update {
+  permission: Boolean!
+}
+
+type ReviewsFields_reviewToUser_Delete {
+  permission: Boolean!
+}
+
+type ReviewsFields_reviewToItem {
+  create: ReviewsFields_reviewToItem_Create
+  read: ReviewsFields_reviewToItem_Read
+  update: ReviewsFields_reviewToItem_Update
+  delete: ReviewsFields_reviewToItem_Delete
+}
+
+type ReviewsFields_reviewToItem_Create {
+  permission: Boolean!
+}
+
+type ReviewsFields_reviewToItem_Read {
+  permission: Boolean!
+}
+
+type ReviewsFields_reviewToItem_Update {
+  permission: Boolean!
+}
+
+type ReviewsFields_reviewToItem_Delete {
+  permission: Boolean!
+}
+
+type ReviewsFields_status {
+  create: ReviewsFields_status_Create
+  read: ReviewsFields_status_Read
+  update: ReviewsFields_status_Update
+  delete: ReviewsFields_status_Delete
+}
+
+type ReviewsFields_status_Create {
+  permission: Boolean!
+}
+
+type ReviewsFields_status_Read {
+  permission: Boolean!
+}
+
+type ReviewsFields_status_Update {
+  permission: Boolean!
+}
+
+type ReviewsFields_status_Delete {
+  permission: Boolean!
+}
+
+type ReviewsFields_updatedAt {
+  create: ReviewsFields_updatedAt_Create
+  read: ReviewsFields_updatedAt_Read
+  update: ReviewsFields_updatedAt_Update
+  delete: ReviewsFields_updatedAt_Delete
+}
+
+type ReviewsFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type ReviewsFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type ReviewsFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type ReviewsFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type ReviewsFields_createdAt {
+  create: ReviewsFields_createdAt_Create
+  read: ReviewsFields_createdAt_Read
+  update: ReviewsFields_createdAt_Update
+  delete: ReviewsFields_createdAt_Delete
+}
+
+type ReviewsFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type ReviewsFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type ReviewsFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type ReviewsFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type ReviewsCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ReviewsReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ReviewsUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ReviewsDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type reportAccess {
+  fields: ReportFields
+  create: ReportCreateAccess
+  read: ReportReadAccess
+  update: ReportUpdateAccess
+  delete: ReportDeleteAccess
+}
+
+type ReportFields {
+  reportMessage: ReportFields_reportMessage
+  updatedAt: ReportFields_updatedAt
+  createdAt: ReportFields_createdAt
+}
+
+type ReportFields_reportMessage {
+  create: ReportFields_reportMessage_Create
+  read: ReportFields_reportMessage_Read
+  update: ReportFields_reportMessage_Update
+  delete: ReportFields_reportMessage_Delete
+}
+
+type ReportFields_reportMessage_Create {
+  permission: Boolean!
+}
+
+type ReportFields_reportMessage_Read {
+  permission: Boolean!
+}
+
+type ReportFields_reportMessage_Update {
+  permission: Boolean!
+}
+
+type ReportFields_reportMessage_Delete {
+  permission: Boolean!
+}
+
+type ReportFields_updatedAt {
+  create: ReportFields_updatedAt_Create
+  read: ReportFields_updatedAt_Read
+  update: ReportFields_updatedAt_Update
+  delete: ReportFields_updatedAt_Delete
+}
+
+type ReportFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type ReportFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type ReportFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type ReportFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type ReportFields_createdAt {
+  create: ReportFields_createdAt_Create
+  read: ReportFields_createdAt_Read
+  update: ReportFields_createdAt_Update
+  delete: ReportFields_createdAt_Delete
+}
+
+type ReportFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type ReportFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type ReportFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type ReportFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type ReportCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ReportReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ReportUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type ReportDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type payload_preferencesAccess {
   fields: PayloadPreferencesFields
   create: PayloadPreferencesCreateAccess
@@ -6140,6 +7122,12 @@ type Mutation {
   createRenting(data: mutationRentingInput!, draft: Boolean): Renting
   updateRenting(id: Int!, autosave: Boolean, data: mutationRentingUpdateInput!, draft: Boolean): Renting
   deleteRenting(id: Int!): Renting
+  createReview(data: mutationReviewInput!, draft: Boolean): Review
+  updateReview(id: Int!, autosave: Boolean, data: mutationReviewUpdateInput!, draft: Boolean): Review
+  deleteReview(id: Int!): Review
+  createReport(data: mutationReportInput!, draft: Boolean): Report
+  updateReport(id: Int!, autosave: Boolean, data: mutationReportUpdateInput!, draft: Boolean): Report
+  deleteReport(id: Int!): Report
   createPayloadPreference(data: mutationPayloadPreferenceInput!, draft: Boolean): PayloadPreference
   updatePayloadPreference(id: Int!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean): PayloadPreference
   deletePayloadPreference(id: Int!): PayloadPreference
@@ -6156,6 +7144,7 @@ input mutationUserInput {
   roles: [User_roles_MutationInput]!
   requestsMade: [Int]
   requestsReceived: [Int]
+  review: [Int]
   updatedAt: String
   createdAt: String
   email: String!
@@ -6184,6 +7173,7 @@ input mutationUserUpdateInput {
   roles: [UserUpdate_roles_MutationInput]
   requestsMade: [Int]
   requestsReceived: [Int]
+  review: [Int]
   updatedAt: String
   createdAt: String
   email: String
@@ -6243,6 +7233,7 @@ input mutationItemInput {
   tags: [Int]
   createdBy: Int
   rating: Float
+  review: [Int]
   updatedAt: String
   createdAt: String
   _status: Item__status_MutationInput
@@ -6280,6 +7271,7 @@ input mutationItemUpdateInput {
   tags: [Int]
   createdBy: Int
   rating: Float
+  review: [Int]
   updatedAt: String
   createdAt: String
   _status: ItemUpdate__status_MutationInput
@@ -6443,6 +7435,52 @@ enum RentingUpdate_status_MutationInput {
   PENDING
   PROCESSING
   COMPLETED
+}
+
+input mutationReviewInput {
+  description: String!
+  rating: Float!
+  reviewToUser: Int
+  reviewToItem: Int
+  status: Review_status_MutationInput!
+  createdBy: Int
+  updatedAt: String
+  createdAt: String
+}
+
+enum Review_status_MutationInput {
+  ITEM
+  USER
+}
+
+input mutationReviewUpdateInput {
+  description: String
+  rating: Float
+  reviewToUser: Int
+  reviewToItem: Int
+  status: ReviewUpdate_status_MutationInput
+  createdBy: Int
+  updatedAt: String
+  createdAt: String
+}
+
+enum ReviewUpdate_status_MutationInput {
+  ITEM
+  USER
+}
+
+input mutationReportInput {
+  reportMessage: String!
+  createdBy: Int
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationReportUpdateInput {
+  reportMessage: String
+  createdBy: Int
+  updatedAt: String
+  createdAt: String
 }
 
 input mutationPayloadPreferenceInput {
