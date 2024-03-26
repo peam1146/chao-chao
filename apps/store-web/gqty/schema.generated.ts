@@ -363,6 +363,15 @@ export interface Item_rentingStatus_operator {
   not_in?: InputMaybe<Array<InputMaybe<Item_rentingStatus_Input>>>
 }
 
+export interface Item_review_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
 export interface Item_start_operator {
   equals?: InputMaybe<Scalars['DateTime']>
   exists?: InputMaybe<Scalars['Boolean']>
@@ -411,6 +420,7 @@ export interface Item_where {
   price?: InputMaybe<Item_price_operator>
   rating?: InputMaybe<Item_rating_operator>
   rentingStatus?: InputMaybe<Item_rentingStatus_operator>
+  review?: InputMaybe<Item_review_operator>
   start?: InputMaybe<Item_start_operator>
   tags?: InputMaybe<Item_tags_operator>
   updatedAt?: InputMaybe<Item_updatedAt_operator>
@@ -431,6 +441,7 @@ export interface Item_where_and {
   price?: InputMaybe<Item_price_operator>
   rating?: InputMaybe<Item_rating_operator>
   rentingStatus?: InputMaybe<Item_rentingStatus_operator>
+  review?: InputMaybe<Item_review_operator>
   start?: InputMaybe<Item_start_operator>
   tags?: InputMaybe<Item_tags_operator>
   updatedAt?: InputMaybe<Item_updatedAt_operator>
@@ -451,6 +462,7 @@ export interface Item_where_or {
   price?: InputMaybe<Item_price_operator>
   rating?: InputMaybe<Item_rating_operator>
   rentingStatus?: InputMaybe<Item_rentingStatus_operator>
+  review?: InputMaybe<Item_review_operator>
   start?: InputMaybe<Item_start_operator>
   tags?: InputMaybe<Item_tags_operator>
   updatedAt?: InputMaybe<Item_updatedAt_operator>
@@ -1042,6 +1054,203 @@ export interface Renting_where_or {
   updatedAt?: InputMaybe<Renting_updatedAt_operator>
 }
 
+export interface Report_createdAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Report_id_operator {
+  equals?: InputMaybe<Scalars['Int']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Int']>
+  greater_than_equal?: InputMaybe<Scalars['Int']>
+  less_than?: InputMaybe<Scalars['Int']>
+  less_than_equal?: InputMaybe<Scalars['Int']>
+  not_equals?: InputMaybe<Scalars['Int']>
+}
+
+export interface Report_reportMessage_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  contains?: InputMaybe<Scalars['String']>
+  equals?: InputMaybe<Scalars['String']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  like?: InputMaybe<Scalars['String']>
+  not_equals?: InputMaybe<Scalars['String']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export interface Report_updatedAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Report_where {
+  AND?: InputMaybe<Array<InputMaybe<Report_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Report_where_or>>>
+  createdAt?: InputMaybe<Report_createdAt_operator>
+  id?: InputMaybe<Report_id_operator>
+  reportMessage?: InputMaybe<Report_reportMessage_operator>
+  updatedAt?: InputMaybe<Report_updatedAt_operator>
+}
+
+export interface Report_where_and {
+  createdAt?: InputMaybe<Report_createdAt_operator>
+  id?: InputMaybe<Report_id_operator>
+  reportMessage?: InputMaybe<Report_reportMessage_operator>
+  updatedAt?: InputMaybe<Report_updatedAt_operator>
+}
+
+export interface Report_where_or {
+  createdAt?: InputMaybe<Report_createdAt_operator>
+  id?: InputMaybe<Report_id_operator>
+  reportMessage?: InputMaybe<Report_reportMessage_operator>
+  updatedAt?: InputMaybe<Report_updatedAt_operator>
+}
+
+export enum ReviewUpdate_status_MutationInput {
+  ITEM = 'ITEM',
+  USER = 'USER',
+}
+
+export interface Review_createdAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Review_description_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  contains?: InputMaybe<Scalars['String']>
+  equals?: InputMaybe<Scalars['String']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  like?: InputMaybe<Scalars['String']>
+  not_equals?: InputMaybe<Scalars['String']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export interface Review_id_operator {
+  equals?: InputMaybe<Scalars['Int']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Int']>
+  greater_than_equal?: InputMaybe<Scalars['Int']>
+  less_than?: InputMaybe<Scalars['Int']>
+  less_than_equal?: InputMaybe<Scalars['Int']>
+  not_equals?: InputMaybe<Scalars['Int']>
+}
+
+export interface Review_rating_operator {
+  equals?: InputMaybe<Scalars['Float']>
+  greater_than?: InputMaybe<Scalars['Float']>
+  greater_than_equal?: InputMaybe<Scalars['Float']>
+  less_than?: InputMaybe<Scalars['Float']>
+  less_than_equal?: InputMaybe<Scalars['Float']>
+  not_equals?: InputMaybe<Scalars['Float']>
+}
+
+export interface Review_reviewToItem_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Review_reviewToUser_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export enum Review_status {
+  ITEM = 'ITEM',
+  USER = 'USER',
+}
+
+export enum Review_status_Input {
+  ITEM = 'ITEM',
+  USER = 'USER',
+}
+
+export enum Review_status_MutationInput {
+  ITEM = 'ITEM',
+  USER = 'USER',
+}
+
+export interface Review_status_operator {
+  all?: InputMaybe<Array<InputMaybe<Review_status_Input>>>
+  equals?: InputMaybe<Review_status_Input>
+  in?: InputMaybe<Array<InputMaybe<Review_status_Input>>>
+  not_equals?: InputMaybe<Review_status_Input>
+  not_in?: InputMaybe<Array<InputMaybe<Review_status_Input>>>
+}
+
+export interface Review_updatedAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Review_where {
+  AND?: InputMaybe<Array<InputMaybe<Review_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Review_where_or>>>
+  createdAt?: InputMaybe<Review_createdAt_operator>
+  description?: InputMaybe<Review_description_operator>
+  id?: InputMaybe<Review_id_operator>
+  rating?: InputMaybe<Review_rating_operator>
+  reviewToItem?: InputMaybe<Review_reviewToItem_operator>
+  reviewToUser?: InputMaybe<Review_reviewToUser_operator>
+  status?: InputMaybe<Review_status_operator>
+  updatedAt?: InputMaybe<Review_updatedAt_operator>
+}
+
+export interface Review_where_and {
+  createdAt?: InputMaybe<Review_createdAt_operator>
+  description?: InputMaybe<Review_description_operator>
+  id?: InputMaybe<Review_id_operator>
+  rating?: InputMaybe<Review_rating_operator>
+  reviewToItem?: InputMaybe<Review_reviewToItem_operator>
+  reviewToUser?: InputMaybe<Review_reviewToUser_operator>
+  status?: InputMaybe<Review_status_operator>
+  updatedAt?: InputMaybe<Review_updatedAt_operator>
+}
+
+export interface Review_where_or {
+  createdAt?: InputMaybe<Review_createdAt_operator>
+  description?: InputMaybe<Review_description_operator>
+  id?: InputMaybe<Review_id_operator>
+  rating?: InputMaybe<Review_rating_operator>
+  reviewToItem?: InputMaybe<Review_reviewToItem_operator>
+  reviewToUser?: InputMaybe<Review_reviewToUser_operator>
+  status?: InputMaybe<Review_status_operator>
+  updatedAt?: InputMaybe<Review_updatedAt_operator>
+}
+
 export interface Tag_alt_operator {
   all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   contains?: InputMaybe<Scalars['String']>
@@ -1245,6 +1454,15 @@ export interface User_requestsReceived_operator {
   not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
 }
 
+export interface User_review_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
 export enum User_roles {
   User = 'User',
   admin = 'admin',
@@ -1294,6 +1512,7 @@ export interface User_where {
   rating?: InputMaybe<User_rating_operator>
   requestsMade?: InputMaybe<User_requestsMade_operator>
   requestsReceived?: InputMaybe<User_requestsReceived_operator>
+  review?: InputMaybe<User_review_operator>
   roles?: InputMaybe<User_roles_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
 }
@@ -1311,6 +1530,7 @@ export interface User_where_and {
   rating?: InputMaybe<User_rating_operator>
   requestsMade?: InputMaybe<User_requestsMade_operator>
   requestsReceived?: InputMaybe<User_requestsReceived_operator>
+  review?: InputMaybe<User_review_operator>
   roles?: InputMaybe<User_roles_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
 }
@@ -1328,6 +1548,7 @@ export interface User_where_or {
   rating?: InputMaybe<User_rating_operator>
   requestsMade?: InputMaybe<User_requestsMade_operator>
   requestsReceived?: InputMaybe<User_requestsReceived_operator>
+  review?: InputMaybe<User_review_operator>
   roles?: InputMaybe<User_roles_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
 }
@@ -1366,6 +1587,7 @@ export interface mutationItemInput {
   price?: InputMaybe<Scalars['Float']>
   rating?: InputMaybe<Scalars['Float']>
   rentingStatus?: InputMaybe<Item_rentingStatus_MutationInput>
+  review?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   start?: InputMaybe<Scalars['String']>
   tags?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   updatedAt?: InputMaybe<Scalars['String']>
@@ -1385,6 +1607,7 @@ export interface mutationItemUpdateInput {
   price?: InputMaybe<Scalars['Float']>
   rating?: InputMaybe<Scalars['Float']>
   rentingStatus?: InputMaybe<ItemUpdate_rentingStatus_MutationInput>
+  review?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   start?: InputMaybe<Scalars['String']>
   tags?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   updatedAt?: InputMaybe<Scalars['String']>
@@ -1500,6 +1723,42 @@ export interface mutationRenting_RentedToInput {
   user?: InputMaybe<Scalars['Int']>
 }
 
+export interface mutationReportInput {
+  createdAt?: InputMaybe<Scalars['String']>
+  createdBy?: InputMaybe<Scalars['Int']>
+  reportMessage: Scalars['String']
+  updatedAt?: InputMaybe<Scalars['String']>
+}
+
+export interface mutationReportUpdateInput {
+  createdAt?: InputMaybe<Scalars['String']>
+  createdBy?: InputMaybe<Scalars['Int']>
+  reportMessage?: InputMaybe<Scalars['String']>
+  updatedAt?: InputMaybe<Scalars['String']>
+}
+
+export interface mutationReviewInput {
+  createdAt?: InputMaybe<Scalars['String']>
+  createdBy?: InputMaybe<Scalars['Int']>
+  description: Scalars['String']
+  rating: Scalars['Float']
+  reviewToItem?: InputMaybe<Scalars['Int']>
+  reviewToUser?: InputMaybe<Scalars['Int']>
+  status: Review_status_MutationInput
+  updatedAt?: InputMaybe<Scalars['String']>
+}
+
+export interface mutationReviewUpdateInput {
+  createdAt?: InputMaybe<Scalars['String']>
+  createdBy?: InputMaybe<Scalars['Int']>
+  description?: InputMaybe<Scalars['String']>
+  rating?: InputMaybe<Scalars['Float']>
+  reviewToItem?: InputMaybe<Scalars['Int']>
+  reviewToUser?: InputMaybe<Scalars['Int']>
+  status?: InputMaybe<ReviewUpdate_status_MutationInput>
+  updatedAt?: InputMaybe<Scalars['String']>
+}
+
 export interface mutationTagInput {
   alt?: InputMaybe<Scalars['String']>
   createdAt?: InputMaybe<Scalars['String']>
@@ -1534,6 +1793,7 @@ export interface mutationUserInput {
   requestsReceived?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   resetPasswordExpiration?: InputMaybe<Scalars['String']>
   resetPasswordToken?: InputMaybe<Scalars['String']>
+  review?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   roles: Array<InputMaybe<User_roles_MutationInput>>
   salt?: InputMaybe<Scalars['String']>
   updatedAt?: InputMaybe<Scalars['String']>
@@ -1557,6 +1817,7 @@ export interface mutationUserUpdateInput {
   requestsReceived?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   resetPasswordExpiration?: InputMaybe<Scalars['String']>
   resetPasswordToken?: InputMaybe<Scalars['String']>
+  review?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   roles?: InputMaybe<Array<InputMaybe<UserUpdate_roles_MutationInput>>>
   salt?: InputMaybe<Scalars['String']>
   updatedAt?: InputMaybe<Scalars['String']>
@@ -1756,6 +2017,15 @@ export interface versionsItem_version__rentingStatus_operator {
   not_in?: InputMaybe<Array<InputMaybe<versionsItem_version__rentingStatus_Input>>>
 }
 
+export interface versionsItem_version__review_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
 export interface versionsItem_version__start_operator {
   equals?: InputMaybe<Scalars['DateTime']>
   exists?: InputMaybe<Scalars['Boolean']>
@@ -1808,6 +2078,7 @@ export interface versionsItem_where {
   version__price?: InputMaybe<versionsItem_version__price_operator>
   version__rating?: InputMaybe<versionsItem_version__rating_operator>
   version__rentingStatus?: InputMaybe<versionsItem_version__rentingStatus_operator>
+  version__review?: InputMaybe<versionsItem_version__review_operator>
   version__start?: InputMaybe<versionsItem_version__start_operator>
   version__tags?: InputMaybe<versionsItem_version__tags_operator>
   version__updatedAt?: InputMaybe<versionsItem_version__updatedAt_operator>
@@ -1832,6 +2103,7 @@ export interface versionsItem_where_and {
   version__price?: InputMaybe<versionsItem_version__price_operator>
   version__rating?: InputMaybe<versionsItem_version__rating_operator>
   version__rentingStatus?: InputMaybe<versionsItem_version__rentingStatus_operator>
+  version__review?: InputMaybe<versionsItem_version__review_operator>
   version__start?: InputMaybe<versionsItem_version__start_operator>
   version__tags?: InputMaybe<versionsItem_version__tags_operator>
   version__updatedAt?: InputMaybe<versionsItem_version__updatedAt_operator>
@@ -1856,6 +2128,7 @@ export interface versionsItem_where_or {
   version__price?: InputMaybe<versionsItem_version__price_operator>
   version__rating?: InputMaybe<versionsItem_version__rating_operator>
   version__rentingStatus?: InputMaybe<versionsItem_version__rentingStatus_operator>
+  version__review?: InputMaybe<versionsItem_version__review_operator>
   version__start?: InputMaybe<versionsItem_version__start_operator>
   version__tags?: InputMaybe<versionsItem_version__tags_operator>
   version__updatedAt?: InputMaybe<versionsItem_version__updatedAt_operator>
@@ -1892,6 +2165,10 @@ export const scalarsEnumsHash: import('gqty').ScalarsEnumsHash = {
   Renting_status: true,
   Renting_status_Input: true,
   Renting_status_MutationInput: true,
+  ReviewUpdate_status_MutationInput: true,
+  Review_status: true,
+  Review_status_Input: true,
+  Review_status_MutationInput: true,
   String: true,
   UserUpdate_roles_MutationInput: true,
   User_roles: true,
@@ -1912,6 +2189,8 @@ export const generatedSchema = {
     message: { __type: 'messageAccess' },
     payload_preferences: { __type: 'payload_preferencesAccess' },
     renting: { __type: 'rentingAccess' },
+    report: { __type: 'reportAccess' },
+    reviews: { __type: 'reviewsAccess' },
     tags: { __type: 'tagsAccess' },
     users: { __type: 'usersAccess' },
   },
@@ -2441,6 +2720,7 @@ export const generatedSchema = {
     price: { __type: 'Float' },
     rating: { __type: 'Float' },
     rentingStatus: { __type: 'Item_rentingStatus' },
+    review: { __type: '[Review!]' },
     start: { __type: 'DateTime' },
     tags: { __type: '[Tag!]' },
     updatedAt: { __type: 'DateTime' },
@@ -2469,6 +2749,7 @@ export const generatedSchema = {
     price: { __type: 'Float' },
     rating: { __type: 'Float' },
     rentingStatus: { __type: 'ItemVersion_Version_rentingStatus' },
+    review: { __type: '[Review!]' },
     start: { __type: 'DateTime' },
     tags: { __type: '[Tag!]' },
     updatedAt: { __type: 'DateTime' },
@@ -2593,6 +2874,14 @@ export const generatedSchema = {
     not_equals: { __type: 'Item_rentingStatus_Input' },
     not_in: { __type: '[Item_rentingStatus_Input]' },
   },
+  Item_review_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
   Item_start_operator: {
     equals: { __type: 'DateTime' },
     exists: { __type: 'Boolean' },
@@ -2638,6 +2927,7 @@ export const generatedSchema = {
     price: { __type: 'Item_price_operator' },
     rating: { __type: 'Item_rating_operator' },
     rentingStatus: { __type: 'Item_rentingStatus_operator' },
+    review: { __type: 'Item_review_operator' },
     start: { __type: 'Item_start_operator' },
     tags: { __type: 'Item_tags_operator' },
     updatedAt: { __type: 'Item_updatedAt_operator' },
@@ -2657,6 +2947,7 @@ export const generatedSchema = {
     price: { __type: 'Item_price_operator' },
     rating: { __type: 'Item_rating_operator' },
     rentingStatus: { __type: 'Item_rentingStatus_operator' },
+    review: { __type: 'Item_review_operator' },
     start: { __type: 'Item_start_operator' },
     tags: { __type: 'Item_tags_operator' },
     updatedAt: { __type: 'Item_updatedAt_operator' },
@@ -2676,6 +2967,7 @@ export const generatedSchema = {
     price: { __type: 'Item_price_operator' },
     rating: { __type: 'Item_rating_operator' },
     rentingStatus: { __type: 'Item_rentingStatus_operator' },
+    review: { __type: 'Item_review_operator' },
     start: { __type: 'Item_start_operator' },
     tags: { __type: 'Item_tags_operator' },
     updatedAt: { __type: 'Item_updatedAt_operator' },
@@ -2729,6 +3021,7 @@ export const generatedSchema = {
     price: { __type: 'ItemsDocAccessFields_price' },
     rating: { __type: 'ItemsDocAccessFields_rating' },
     rentingStatus: { __type: 'ItemsDocAccessFields_rentingStatus' },
+    review: { __type: 'ItemsDocAccessFields_review' },
     start: { __type: 'ItemsDocAccessFields_start' },
     tags: { __type: 'ItemsDocAccessFields_tags' },
     updatedAt: { __type: 'ItemsDocAccessFields_updatedAt' },
@@ -3032,6 +3325,29 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  ItemsDocAccessFields_review: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsDocAccessFields_review_Create' },
+    delete: { __type: 'ItemsDocAccessFields_review_Delete' },
+    read: { __type: 'ItemsDocAccessFields_review_Read' },
+    update: { __type: 'ItemsDocAccessFields_review_Update' },
+  },
+  ItemsDocAccessFields_review_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_review_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_review_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_review_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   ItemsDocAccessFields_start: {
     __typename: { __type: 'String!' },
     create: { __type: 'ItemsDocAccessFields_start_Create' },
@@ -3116,6 +3432,7 @@ export const generatedSchema = {
     price: { __type: 'ItemsFields_price' },
     rating: { __type: 'ItemsFields_rating' },
     rentingStatus: { __type: 'ItemsFields_rentingStatus' },
+    review: { __type: 'ItemsFields_review' },
     start: { __type: 'ItemsFields_start' },
     tags: { __type: 'ItemsFields_tags' },
     updatedAt: { __type: 'ItemsFields_updatedAt' },
@@ -3395,6 +3712,29 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   ItemsFields_rentingStatus_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_review: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsFields_review_Create' },
+    delete: { __type: 'ItemsFields_review_Delete' },
+    read: { __type: 'ItemsFields_review_Read' },
+    update: { __type: 'ItemsFields_review_Update' },
+  },
+  ItemsFields_review_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_review_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_review_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_review_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -6025,6 +6365,785 @@ export const generatedSchema = {
     totalDocs: { __type: 'Int' },
     totalPages: { __type: 'Int' },
   },
+  Report: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'DateTime' },
+    createdBy: { __type: 'User!' },
+    id: { __type: 'Int' },
+    reportMessage: { __type: 'String!' },
+    updatedAt: { __type: 'DateTime' },
+  },
+  ReportCreateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ReportCreateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ReportDeleteAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ReportDeleteDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ReportDocAccessFields: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'ReportDocAccessFields_createdAt' },
+    reportMessage: { __type: 'ReportDocAccessFields_reportMessage' },
+    updatedAt: { __type: 'ReportDocAccessFields_updatedAt' },
+  },
+  ReportDocAccessFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReportDocAccessFields_createdAt_Create' },
+    delete: { __type: 'ReportDocAccessFields_createdAt_Delete' },
+    read: { __type: 'ReportDocAccessFields_createdAt_Read' },
+    update: { __type: 'ReportDocAccessFields_createdAt_Update' },
+  },
+  ReportDocAccessFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportDocAccessFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportDocAccessFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportDocAccessFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportDocAccessFields_reportMessage: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReportDocAccessFields_reportMessage_Create' },
+    delete: { __type: 'ReportDocAccessFields_reportMessage_Delete' },
+    read: { __type: 'ReportDocAccessFields_reportMessage_Read' },
+    update: { __type: 'ReportDocAccessFields_reportMessage_Update' },
+  },
+  ReportDocAccessFields_reportMessage_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportDocAccessFields_reportMessage_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportDocAccessFields_reportMessage_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportDocAccessFields_reportMessage_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportDocAccessFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReportDocAccessFields_updatedAt_Create' },
+    delete: { __type: 'ReportDocAccessFields_updatedAt_Delete' },
+    read: { __type: 'ReportDocAccessFields_updatedAt_Read' },
+    update: { __type: 'ReportDocAccessFields_updatedAt_Update' },
+  },
+  ReportDocAccessFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportDocAccessFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportDocAccessFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportDocAccessFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'ReportFields_createdAt' },
+    reportMessage: { __type: 'ReportFields_reportMessage' },
+    updatedAt: { __type: 'ReportFields_updatedAt' },
+  },
+  ReportFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReportFields_createdAt_Create' },
+    delete: { __type: 'ReportFields_createdAt_Delete' },
+    read: { __type: 'ReportFields_createdAt_Read' },
+    update: { __type: 'ReportFields_createdAt_Update' },
+  },
+  ReportFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields_reportMessage: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReportFields_reportMessage_Create' },
+    delete: { __type: 'ReportFields_reportMessage_Delete' },
+    read: { __type: 'ReportFields_reportMessage_Read' },
+    update: { __type: 'ReportFields_reportMessage_Update' },
+  },
+  ReportFields_reportMessage_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields_reportMessage_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields_reportMessage_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields_reportMessage_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReportFields_updatedAt_Create' },
+    delete: { __type: 'ReportFields_updatedAt_Delete' },
+    read: { __type: 'ReportFields_updatedAt_Read' },
+    update: { __type: 'ReportFields_updatedAt_Update' },
+  },
+  ReportFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportReadAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ReportReadDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ReportUpdateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ReportUpdateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  Report_createdAt_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Report_id_operator: {
+    equals: { __type: 'Int' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Int' },
+    greater_than_equal: { __type: 'Int' },
+    less_than: { __type: 'Int' },
+    less_than_equal: { __type: 'Int' },
+    not_equals: { __type: 'Int' },
+  },
+  Report_reportMessage_operator: {
+    all: { __type: '[String]' },
+    contains: { __type: 'String' },
+    equals: { __type: 'String' },
+    in: { __type: '[String]' },
+    like: { __type: 'String' },
+    not_equals: { __type: 'String' },
+    not_in: { __type: '[String]' },
+  },
+  Report_updatedAt_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Report_where: {
+    AND: { __type: '[Report_where_and]' },
+    OR: { __type: '[Report_where_or]' },
+    createdAt: { __type: 'Report_createdAt_operator' },
+    id: { __type: 'Report_id_operator' },
+    reportMessage: { __type: 'Report_reportMessage_operator' },
+    updatedAt: { __type: 'Report_updatedAt_operator' },
+  },
+  Report_where_and: {
+    createdAt: { __type: 'Report_createdAt_operator' },
+    id: { __type: 'Report_id_operator' },
+    reportMessage: { __type: 'Report_reportMessage_operator' },
+    updatedAt: { __type: 'Report_updatedAt_operator' },
+  },
+  Report_where_or: {
+    createdAt: { __type: 'Report_createdAt_operator' },
+    id: { __type: 'Report_id_operator' },
+    reportMessage: { __type: 'Report_reportMessage_operator' },
+    updatedAt: { __type: 'Report_updatedAt_operator' },
+  },
+  Reports: {
+    __typename: { __type: 'String!' },
+    docs: { __type: '[Report]' },
+    hasNextPage: { __type: 'Boolean' },
+    hasPrevPage: { __type: 'Boolean' },
+    limit: { __type: 'Int' },
+    nextPage: { __type: 'Int' },
+    offset: { __type: 'Int' },
+    page: { __type: 'Int' },
+    pagingCounter: { __type: 'Int' },
+    prevPage: { __type: 'Int' },
+    totalDocs: { __type: 'Int' },
+    totalPages: { __type: 'Int' },
+  },
+  Review: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'DateTime' },
+    createdBy: { __type: 'User!' },
+    description: { __type: 'String!' },
+    id: { __type: 'Int' },
+    rating: { __type: 'Float!' },
+    reviewToItem: { __type: 'Item' },
+    reviewToUser: { __type: 'User' },
+    status: { __type: 'Review_status!' },
+    updatedAt: { __type: 'DateTime' },
+  },
+  Review_createdAt_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Review_description_operator: {
+    all: { __type: '[String]' },
+    contains: { __type: 'String' },
+    equals: { __type: 'String' },
+    in: { __type: '[String]' },
+    like: { __type: 'String' },
+    not_equals: { __type: 'String' },
+    not_in: { __type: '[String]' },
+  },
+  Review_id_operator: {
+    equals: { __type: 'Int' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Int' },
+    greater_than_equal: { __type: 'Int' },
+    less_than: { __type: 'Int' },
+    less_than_equal: { __type: 'Int' },
+    not_equals: { __type: 'Int' },
+  },
+  Review_rating_operator: {
+    equals: { __type: 'Float' },
+    greater_than: { __type: 'Float' },
+    greater_than_equal: { __type: 'Float' },
+    less_than: { __type: 'Float' },
+    less_than_equal: { __type: 'Float' },
+    not_equals: { __type: 'Float' },
+  },
+  Review_reviewToItem_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Review_reviewToUser_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Review_status_operator: {
+    all: { __type: '[Review_status_Input]' },
+    equals: { __type: 'Review_status_Input' },
+    in: { __type: '[Review_status_Input]' },
+    not_equals: { __type: 'Review_status_Input' },
+    not_in: { __type: '[Review_status_Input]' },
+  },
+  Review_updatedAt_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Review_where: {
+    AND: { __type: '[Review_where_and]' },
+    OR: { __type: '[Review_where_or]' },
+    createdAt: { __type: 'Review_createdAt_operator' },
+    description: { __type: 'Review_description_operator' },
+    id: { __type: 'Review_id_operator' },
+    rating: { __type: 'Review_rating_operator' },
+    reviewToItem: { __type: 'Review_reviewToItem_operator' },
+    reviewToUser: { __type: 'Review_reviewToUser_operator' },
+    status: { __type: 'Review_status_operator' },
+    updatedAt: { __type: 'Review_updatedAt_operator' },
+  },
+  Review_where_and: {
+    createdAt: { __type: 'Review_createdAt_operator' },
+    description: { __type: 'Review_description_operator' },
+    id: { __type: 'Review_id_operator' },
+    rating: { __type: 'Review_rating_operator' },
+    reviewToItem: { __type: 'Review_reviewToItem_operator' },
+    reviewToUser: { __type: 'Review_reviewToUser_operator' },
+    status: { __type: 'Review_status_operator' },
+    updatedAt: { __type: 'Review_updatedAt_operator' },
+  },
+  Review_where_or: {
+    createdAt: { __type: 'Review_createdAt_operator' },
+    description: { __type: 'Review_description_operator' },
+    id: { __type: 'Review_id_operator' },
+    rating: { __type: 'Review_rating_operator' },
+    reviewToItem: { __type: 'Review_reviewToItem_operator' },
+    reviewToUser: { __type: 'Review_reviewToUser_operator' },
+    status: { __type: 'Review_status_operator' },
+    updatedAt: { __type: 'Review_updatedAt_operator' },
+  },
+  Reviews: {
+    __typename: { __type: 'String!' },
+    docs: { __type: '[Review]' },
+    hasNextPage: { __type: 'Boolean' },
+    hasPrevPage: { __type: 'Boolean' },
+    limit: { __type: 'Int' },
+    nextPage: { __type: 'Int' },
+    offset: { __type: 'Int' },
+    page: { __type: 'Int' },
+    pagingCounter: { __type: 'Int' },
+    prevPage: { __type: 'Int' },
+    totalDocs: { __type: 'Int' },
+    totalPages: { __type: 'Int' },
+  },
+  ReviewsCreateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ReviewsCreateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ReviewsDeleteAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ReviewsDeleteDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ReviewsDocAccessFields: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'ReviewsDocAccessFields_createdAt' },
+    description: { __type: 'ReviewsDocAccessFields_description' },
+    rating: { __type: 'ReviewsDocAccessFields_rating' },
+    reviewToItem: { __type: 'ReviewsDocAccessFields_reviewToItem' },
+    reviewToUser: { __type: 'ReviewsDocAccessFields_reviewToUser' },
+    status: { __type: 'ReviewsDocAccessFields_status' },
+    updatedAt: { __type: 'ReviewsDocAccessFields_updatedAt' },
+  },
+  ReviewsDocAccessFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsDocAccessFields_createdAt_Create' },
+    delete: { __type: 'ReviewsDocAccessFields_createdAt_Delete' },
+    read: { __type: 'ReviewsDocAccessFields_createdAt_Read' },
+    update: { __type: 'ReviewsDocAccessFields_createdAt_Update' },
+  },
+  ReviewsDocAccessFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_description: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsDocAccessFields_description_Create' },
+    delete: { __type: 'ReviewsDocAccessFields_description_Delete' },
+    read: { __type: 'ReviewsDocAccessFields_description_Read' },
+    update: { __type: 'ReviewsDocAccessFields_description_Update' },
+  },
+  ReviewsDocAccessFields_description_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_description_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_description_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_description_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_rating: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsDocAccessFields_rating_Create' },
+    delete: { __type: 'ReviewsDocAccessFields_rating_Delete' },
+    read: { __type: 'ReviewsDocAccessFields_rating_Read' },
+    update: { __type: 'ReviewsDocAccessFields_rating_Update' },
+  },
+  ReviewsDocAccessFields_rating_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_rating_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_rating_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_rating_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_reviewToItem: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsDocAccessFields_reviewToItem_Create' },
+    delete: { __type: 'ReviewsDocAccessFields_reviewToItem_Delete' },
+    read: { __type: 'ReviewsDocAccessFields_reviewToItem_Read' },
+    update: { __type: 'ReviewsDocAccessFields_reviewToItem_Update' },
+  },
+  ReviewsDocAccessFields_reviewToItem_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_reviewToItem_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_reviewToItem_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_reviewToItem_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_reviewToUser: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsDocAccessFields_reviewToUser_Create' },
+    delete: { __type: 'ReviewsDocAccessFields_reviewToUser_Delete' },
+    read: { __type: 'ReviewsDocAccessFields_reviewToUser_Read' },
+    update: { __type: 'ReviewsDocAccessFields_reviewToUser_Update' },
+  },
+  ReviewsDocAccessFields_reviewToUser_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_reviewToUser_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_reviewToUser_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_reviewToUser_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_status: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsDocAccessFields_status_Create' },
+    delete: { __type: 'ReviewsDocAccessFields_status_Delete' },
+    read: { __type: 'ReviewsDocAccessFields_status_Read' },
+    update: { __type: 'ReviewsDocAccessFields_status_Update' },
+  },
+  ReviewsDocAccessFields_status_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_status_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_status_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_status_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsDocAccessFields_updatedAt_Create' },
+    delete: { __type: 'ReviewsDocAccessFields_updatedAt_Delete' },
+    read: { __type: 'ReviewsDocAccessFields_updatedAt_Read' },
+    update: { __type: 'ReviewsDocAccessFields_updatedAt_Update' },
+  },
+  ReviewsDocAccessFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields: {
+    __typename: { __type: 'String!' },
+    createdAt: { __type: 'ReviewsFields_createdAt' },
+    description: { __type: 'ReviewsFields_description' },
+    rating: { __type: 'ReviewsFields_rating' },
+    reviewToItem: { __type: 'ReviewsFields_reviewToItem' },
+    reviewToUser: { __type: 'ReviewsFields_reviewToUser' },
+    status: { __type: 'ReviewsFields_status' },
+    updatedAt: { __type: 'ReviewsFields_updatedAt' },
+  },
+  ReviewsFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsFields_createdAt_Create' },
+    delete: { __type: 'ReviewsFields_createdAt_Delete' },
+    read: { __type: 'ReviewsFields_createdAt_Read' },
+    update: { __type: 'ReviewsFields_createdAt_Update' },
+  },
+  ReviewsFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_description: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsFields_description_Create' },
+    delete: { __type: 'ReviewsFields_description_Delete' },
+    read: { __type: 'ReviewsFields_description_Read' },
+    update: { __type: 'ReviewsFields_description_Update' },
+  },
+  ReviewsFields_description_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_description_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_description_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_description_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_rating: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsFields_rating_Create' },
+    delete: { __type: 'ReviewsFields_rating_Delete' },
+    read: { __type: 'ReviewsFields_rating_Read' },
+    update: { __type: 'ReviewsFields_rating_Update' },
+  },
+  ReviewsFields_rating_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_rating_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_rating_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_rating_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_reviewToItem: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsFields_reviewToItem_Create' },
+    delete: { __type: 'ReviewsFields_reviewToItem_Delete' },
+    read: { __type: 'ReviewsFields_reviewToItem_Read' },
+    update: { __type: 'ReviewsFields_reviewToItem_Update' },
+  },
+  ReviewsFields_reviewToItem_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_reviewToItem_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_reviewToItem_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_reviewToItem_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_reviewToUser: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsFields_reviewToUser_Create' },
+    delete: { __type: 'ReviewsFields_reviewToUser_Delete' },
+    read: { __type: 'ReviewsFields_reviewToUser_Read' },
+    update: { __type: 'ReviewsFields_reviewToUser_Update' },
+  },
+  ReviewsFields_reviewToUser_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_reviewToUser_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_reviewToUser_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_reviewToUser_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_status: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsFields_status_Create' },
+    delete: { __type: 'ReviewsFields_status_Delete' },
+    read: { __type: 'ReviewsFields_status_Read' },
+    update: { __type: 'ReviewsFields_status_Update' },
+  },
+  ReviewsFields_status_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_status_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_status_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_status_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsFields_updatedAt_Create' },
+    delete: { __type: 'ReviewsFields_updatedAt_Delete' },
+    read: { __type: 'ReviewsFields_updatedAt_Read' },
+    update: { __type: 'ReviewsFields_updatedAt_Update' },
+  },
+  ReviewsFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsReadAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ReviewsReadDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ReviewsUpdateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  ReviewsUpdateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
   Tag: {
     __typename: { __type: 'String!' },
     alt: { __type: 'String' },
@@ -6353,6 +7472,7 @@ export const generatedSchema = {
     requestsReceived: { __type: '[Renting!]' },
     resetPasswordExpiration: { __type: 'DateTime' },
     resetPasswordToken: { __type: 'String' },
+    review: { __type: '[Review!]' },
     roles: { __type: '[User_roles!]!' },
     salt: { __type: 'String' },
     updatedAt: { __type: 'DateTime' },
@@ -6464,6 +7584,14 @@ export const generatedSchema = {
     not_equals: { __type: 'JSON' },
     not_in: { __type: '[JSON]' },
   },
+  User_review_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
   User_roles_operator: {
     all: { __type: '[User_roles_Input]' },
     equals: { __type: 'User_roles_Input' },
@@ -6496,6 +7624,7 @@ export const generatedSchema = {
     rating: { __type: 'User_rating_operator' },
     requestsMade: { __type: 'User_requestsMade_operator' },
     requestsReceived: { __type: 'User_requestsReceived_operator' },
+    review: { __type: 'User_review_operator' },
     roles: { __type: 'User_roles_operator' },
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
@@ -6512,6 +7641,7 @@ export const generatedSchema = {
     rating: { __type: 'User_rating_operator' },
     requestsMade: { __type: 'User_requestsMade_operator' },
     requestsReceived: { __type: 'User_requestsReceived_operator' },
+    review: { __type: 'User_review_operator' },
     roles: { __type: 'User_roles_operator' },
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
@@ -6528,6 +7658,7 @@ export const generatedSchema = {
     rating: { __type: 'User_rating_operator' },
     requestsMade: { __type: 'User_requestsMade_operator' },
     requestsReceived: { __type: 'User_requestsReceived_operator' },
+    review: { __type: 'User_review_operator' },
     roles: { __type: 'User_roles_operator' },
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
@@ -6579,6 +7710,7 @@ export const generatedSchema = {
     rating: { __type: 'UsersDocAccessFields_rating' },
     requestsMade: { __type: 'UsersDocAccessFields_requestsMade' },
     requestsReceived: { __type: 'UsersDocAccessFields_requestsReceived' },
+    review: { __type: 'UsersDocAccessFields_review' },
     roles: { __type: 'UsersDocAccessFields_roles' },
     updatedAt: { __type: 'UsersDocAccessFields_updatedAt' },
   },
@@ -6858,6 +7990,29 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  UsersDocAccessFields_review: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_review_Create' },
+    delete: { __type: 'UsersDocAccessFields_review_Delete' },
+    read: { __type: 'UsersDocAccessFields_review_Read' },
+    update: { __type: 'UsersDocAccessFields_review_Update' },
+  },
+  UsersDocAccessFields_review_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_review_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_review_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_review_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   UsersDocAccessFields_roles: {
     __typename: { __type: 'String!' },
     create: { __type: 'UsersDocAccessFields_roles_Create' },
@@ -6918,6 +8073,7 @@ export const generatedSchema = {
     rating: { __type: 'UsersFields_rating' },
     requestsMade: { __type: 'UsersFields_requestsMade' },
     requestsReceived: { __type: 'UsersFields_requestsReceived' },
+    review: { __type: 'UsersFields_review' },
     roles: { __type: 'UsersFields_roles' },
     updatedAt: { __type: 'UsersFields_updatedAt' },
   },
@@ -7179,6 +8335,29 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  UsersFields_review: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_review_Create' },
+    delete: { __type: 'UsersFields_review_Delete' },
+    read: { __type: 'UsersFields_review_Read' },
+    update: { __type: 'UsersFields_review_Update' },
+  },
+  UsersFields_review_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_review_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_review_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_review_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   UsersFields_roles: {
     __typename: { __type: 'String!' },
     create: { __type: 'UsersFields_roles_Create' },
@@ -7338,6 +8517,8 @@ export const generatedSchema = {
       __type: 'Renting',
       __args: { data: 'mutationRentingInput!', draft: 'Boolean' },
     },
+    createReport: { __type: 'Report', __args: { data: 'mutationReportInput!', draft: 'Boolean' } },
+    createReview: { __type: 'Review', __args: { data: 'mutationReviewInput!', draft: 'Boolean' } },
     createTag: { __type: 'Tag', __args: { data: 'mutationTagInput!', draft: 'Boolean' } },
     createUser: { __type: 'User', __args: { data: 'mutationUserInput!', draft: 'Boolean' } },
     deleteChatroom: { __type: 'Chatroom', __args: { id: 'Int!' } },
@@ -7346,6 +8527,8 @@ export const generatedSchema = {
     deleteMessage: { __type: 'Message', __args: { id: 'Int!' } },
     deletePayloadPreference: { __type: 'PayloadPreference', __args: { id: 'Int!' } },
     deleteRenting: { __type: 'Renting', __args: { id: 'Int!' } },
+    deleteReport: { __type: 'Report', __args: { id: 'Int!' } },
+    deleteReview: { __type: 'Review', __args: { id: 'Int!' } },
     deleteTag: { __type: 'Tag', __args: { id: 'Int!' } },
     deleteUser: { __type: 'User', __args: { id: 'Int!' } },
     forgotPasswordUser: {
@@ -7415,6 +8598,24 @@ export const generatedSchema = {
         id: 'Int!',
       },
     },
+    updateReport: {
+      __type: 'Report',
+      __args: {
+        autosave: 'Boolean',
+        data: 'mutationReportUpdateInput!',
+        draft: 'Boolean',
+        id: 'Int!',
+      },
+    },
+    updateReview: {
+      __type: 'Review',
+      __args: {
+        autosave: 'Boolean',
+        data: 'mutationReviewUpdateInput!',
+        draft: 'Boolean',
+        id: 'Int!',
+      },
+    },
     updateTag: {
       __type: 'Tag',
       __args: {
@@ -7467,6 +8668,7 @@ export const generatedSchema = {
     price: { __type: 'Float' },
     rating: { __type: 'Float' },
     rentingStatus: { __type: 'Item_rentingStatus_MutationInput' },
+    review: { __type: '[Int]' },
     start: { __type: 'String' },
     tags: { __type: '[Int]' },
     updatedAt: { __type: 'String' },
@@ -7485,6 +8687,7 @@ export const generatedSchema = {
     price: { __type: 'Float' },
     rating: { __type: 'Float' },
     rentingStatus: { __type: 'ItemUpdate_rentingStatus_MutationInput' },
+    review: { __type: '[Int]' },
     start: { __type: 'String' },
     tags: { __type: '[Int]' },
     updatedAt: { __type: 'String' },
@@ -7577,6 +8780,38 @@ export const generatedSchema = {
   mutationRentingUpdate_RentedToInput: { item: { __type: 'Int' }, user: { __type: 'Int' } },
   mutationRenting_RentedByInput: { user: { __type: 'Int' } },
   mutationRenting_RentedToInput: { item: { __type: 'Int' }, user: { __type: 'Int' } },
+  mutationReportInput: {
+    createdAt: { __type: 'String' },
+    createdBy: { __type: 'Int' },
+    reportMessage: { __type: 'String!' },
+    updatedAt: { __type: 'String' },
+  },
+  mutationReportUpdateInput: {
+    createdAt: { __type: 'String' },
+    createdBy: { __type: 'Int' },
+    reportMessage: { __type: 'String' },
+    updatedAt: { __type: 'String' },
+  },
+  mutationReviewInput: {
+    createdAt: { __type: 'String' },
+    createdBy: { __type: 'Int' },
+    description: { __type: 'String!' },
+    rating: { __type: 'Float!' },
+    reviewToItem: { __type: 'Int' },
+    reviewToUser: { __type: 'Int' },
+    status: { __type: 'Review_status_MutationInput!' },
+    updatedAt: { __type: 'String' },
+  },
+  mutationReviewUpdateInput: {
+    createdAt: { __type: 'String' },
+    createdBy: { __type: 'Int' },
+    description: { __type: 'String' },
+    rating: { __type: 'Float' },
+    reviewToItem: { __type: 'Int' },
+    reviewToUser: { __type: 'Int' },
+    status: { __type: 'ReviewUpdate_status_MutationInput' },
+    updatedAt: { __type: 'String' },
+  },
   mutationTagInput: {
     alt: { __type: 'String' },
     createdAt: { __type: 'String' },
@@ -7609,6 +8844,7 @@ export const generatedSchema = {
     requestsReceived: { __type: '[Int]' },
     resetPasswordExpiration: { __type: 'String' },
     resetPasswordToken: { __type: 'String' },
+    review: { __type: '[Int]' },
     roles: { __type: '[User_roles_MutationInput]!' },
     salt: { __type: 'String' },
     updatedAt: { __type: 'String' },
@@ -7631,6 +8867,7 @@ export const generatedSchema = {
     requestsReceived: { __type: '[Int]' },
     resetPasswordExpiration: { __type: 'String' },
     resetPasswordToken: { __type: 'String' },
+    review: { __type: '[Int]' },
     roles: { __type: '[UserUpdate_roles_MutationInput]' },
     salt: { __type: 'String' },
     updatedAt: { __type: 'String' },
@@ -7708,6 +8945,28 @@ export const generatedSchema = {
         where: 'Renting_where',
       },
     },
+    Report: { __type: 'Report', __args: { draft: 'Boolean', id: 'Int!' } },
+    Reports: {
+      __type: 'Reports',
+      __args: {
+        draft: 'Boolean',
+        limit: 'Int',
+        page: 'Int',
+        sort: 'String',
+        where: 'Report_where',
+      },
+    },
+    Review: { __type: 'Review', __args: { draft: 'Boolean', id: 'Int!' } },
+    Reviews: {
+      __type: 'Reviews',
+      __args: {
+        draft: 'Boolean',
+        limit: 'Int',
+        page: 'Int',
+        sort: 'String',
+        where: 'Review_where',
+      },
+    },
     Tag: { __type: 'Tag', __args: { draft: 'Boolean', id: 'Int!' } },
     Tags: {
       __type: 'Tags',
@@ -7724,6 +8983,8 @@ export const generatedSchema = {
     docAccessMessage: { __type: 'messageDocAccess', __args: { id: 'Int!' } },
     docAccessPayloadPreference: { __type: 'payload_preferencesDocAccess', __args: { id: 'Int!' } },
     docAccessRenting: { __type: 'rentingDocAccess', __args: { id: 'Int!' } },
+    docAccessReport: { __type: 'reportDocAccess', __args: { id: 'Int!' } },
+    docAccessReview: { __type: 'reviewsDocAccess', __args: { id: 'Int!' } },
     docAccessTag: { __type: 'tagsDocAccess', __args: { id: 'Int!' } },
     docAccessUser: { __type: 'usersDocAccess', __args: { id: 'Int!' } },
     initializedUser: { __type: 'Boolean' },
@@ -7749,6 +9010,38 @@ export const generatedSchema = {
     fields: { __type: 'RentingDocAccessFields' },
     read: { __type: 'RentingReadDocAccess' },
     update: { __type: 'RentingUpdateDocAccess' },
+  },
+  reportAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReportCreateAccess' },
+    delete: { __type: 'ReportDeleteAccess' },
+    fields: { __type: 'ReportFields' },
+    read: { __type: 'ReportReadAccess' },
+    update: { __type: 'ReportUpdateAccess' },
+  },
+  reportDocAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReportCreateDocAccess' },
+    delete: { __type: 'ReportDeleteDocAccess' },
+    fields: { __type: 'ReportDocAccessFields' },
+    read: { __type: 'ReportReadDocAccess' },
+    update: { __type: 'ReportUpdateDocAccess' },
+  },
+  reviewsAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsCreateAccess' },
+    delete: { __type: 'ReviewsDeleteAccess' },
+    fields: { __type: 'ReviewsFields' },
+    read: { __type: 'ReviewsReadAccess' },
+    update: { __type: 'ReviewsUpdateAccess' },
+  },
+  reviewsDocAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsCreateDocAccess' },
+    delete: { __type: 'ReviewsDeleteDocAccess' },
+    fields: { __type: 'ReviewsDocAccessFields' },
+    read: { __type: 'ReviewsReadDocAccess' },
+    update: { __type: 'ReviewsUpdateDocAccess' },
   },
   subscription: {},
   tagsAccess: {
@@ -7968,6 +9261,14 @@ export const generatedSchema = {
     not_equals: { __type: 'versionsItem_version__rentingStatus_Input' },
     not_in: { __type: '[versionsItem_version__rentingStatus_Input]' },
   },
+  versionsItem_version__review_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
   versionsItem_version__start_operator: {
     equals: { __type: 'DateTime' },
     exists: { __type: 'Boolean' },
@@ -8017,6 +9318,7 @@ export const generatedSchema = {
     version__price: { __type: 'versionsItem_version__price_operator' },
     version__rating: { __type: 'versionsItem_version__rating_operator' },
     version__rentingStatus: { __type: 'versionsItem_version__rentingStatus_operator' },
+    version__review: { __type: 'versionsItem_version__review_operator' },
     version__start: { __type: 'versionsItem_version__start_operator' },
     version__tags: { __type: 'versionsItem_version__tags_operator' },
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
@@ -8040,6 +9342,7 @@ export const generatedSchema = {
     version__price: { __type: 'versionsItem_version__price_operator' },
     version__rating: { __type: 'versionsItem_version__rating_operator' },
     version__rentingStatus: { __type: 'versionsItem_version__rentingStatus_operator' },
+    version__review: { __type: 'versionsItem_version__review_operator' },
     version__start: { __type: 'versionsItem_version__start_operator' },
     version__tags: { __type: 'versionsItem_version__tags_operator' },
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
@@ -8063,6 +9366,7 @@ export const generatedSchema = {
     version__price: { __type: 'versionsItem_version__price_operator' },
     version__rating: { __type: 'versionsItem_version__rating_operator' },
     version__rentingStatus: { __type: 'versionsItem_version__rentingStatus_operator' },
+    version__review: { __type: 'versionsItem_version__review_operator' },
     version__start: { __type: 'versionsItem_version__start_operator' },
     version__tags: { __type: 'versionsItem_version__tags_operator' },
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
@@ -8093,6 +9397,8 @@ export interface Access {
   message?: Maybe<messageAccess>
   payload_preferences?: Maybe<payload_preferencesAccess>
   renting?: Maybe<rentingAccess>
+  report?: Maybe<reportAccess>
+  reviews?: Maybe<reviewsAccess>
   tags?: Maybe<tagsAccess>
   users?: Maybe<usersAccess>
 }
@@ -8602,6 +9908,7 @@ export interface Item {
   price?: Maybe<ScalarsEnums['Float']>
   rating?: Maybe<ScalarsEnums['Float']>
   rentingStatus?: Maybe<ScalarsEnums['Item_rentingStatus']>
+  review?: Maybe<Array<Review>>
   start?: Maybe<ScalarsEnums['DateTime']>
   tags?: Maybe<Array<Tag>>
   updatedAt?: Maybe<ScalarsEnums['DateTime']>
@@ -8632,6 +9939,7 @@ export interface ItemVersion_Version {
   price?: Maybe<ScalarsEnums['Float']>
   rating?: Maybe<ScalarsEnums['Float']>
   rentingStatus?: Maybe<ScalarsEnums['ItemVersion_Version_rentingStatus']>
+  review?: Maybe<Array<Review>>
   start?: Maybe<ScalarsEnums['DateTime']>
   tags?: Maybe<Array<Tag>>
   updatedAt?: Maybe<ScalarsEnums['DateTime']>
@@ -8691,6 +9999,7 @@ export interface ItemsDocAccessFields {
   price?: Maybe<ItemsDocAccessFields_price>
   rating?: Maybe<ItemsDocAccessFields_rating>
   rentingStatus?: Maybe<ItemsDocAccessFields_rentingStatus>
+  review?: Maybe<ItemsDocAccessFields_review>
   start?: Maybe<ItemsDocAccessFields_start>
   tags?: Maybe<ItemsDocAccessFields_tags>
   updatedAt?: Maybe<ItemsDocAccessFields_updatedAt>
@@ -9060,6 +10369,34 @@ export interface ItemsDocAccessFields_rentingStatus_Update {
   permission: ScalarsEnums['Boolean']
 }
 
+export interface ItemsDocAccessFields_review {
+  __typename?: 'ItemsDocAccessFields_review'
+  create?: Maybe<ItemsDocAccessFields_review_Create>
+  delete?: Maybe<ItemsDocAccessFields_review_Delete>
+  read?: Maybe<ItemsDocAccessFields_review_Read>
+  update?: Maybe<ItemsDocAccessFields_review_Update>
+}
+
+export interface ItemsDocAccessFields_review_Create {
+  __typename?: 'ItemsDocAccessFields_review_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_review_Delete {
+  __typename?: 'ItemsDocAccessFields_review_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_review_Read {
+  __typename?: 'ItemsDocAccessFields_review_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_review_Update {
+  __typename?: 'ItemsDocAccessFields_review_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
 export interface ItemsDocAccessFields_start {
   __typename?: 'ItemsDocAccessFields_start'
   create?: Maybe<ItemsDocAccessFields_start_Create>
@@ -9159,6 +10496,7 @@ export interface ItemsFields {
   price?: Maybe<ItemsFields_price>
   rating?: Maybe<ItemsFields_rating>
   rentingStatus?: Maybe<ItemsFields_rentingStatus>
+  review?: Maybe<ItemsFields_review>
   start?: Maybe<ItemsFields_start>
   tags?: Maybe<ItemsFields_tags>
   updatedAt?: Maybe<ItemsFields_updatedAt>
@@ -9525,6 +10863,34 @@ export interface ItemsFields_rentingStatus_Read {
 
 export interface ItemsFields_rentingStatus_Update {
   __typename?: 'ItemsFields_rentingStatus_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_review {
+  __typename?: 'ItemsFields_review'
+  create?: Maybe<ItemsFields_review_Create>
+  delete?: Maybe<ItemsFields_review_Delete>
+  read?: Maybe<ItemsFields_review_Read>
+  update?: Maybe<ItemsFields_review_Update>
+}
+
+export interface ItemsFields_review_Create {
+  __typename?: 'ItemsFields_review_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_review_Delete {
+  __typename?: 'ItemsFields_review_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_review_Read {
+  __typename?: 'ItemsFields_review_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_review_Update {
+  __typename?: 'ItemsFields_review_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -12116,6 +13482,750 @@ export interface Rentings {
   totalPages?: Maybe<ScalarsEnums['Int']>
 }
 
+export interface Report {
+  __typename?: 'Report'
+  createdAt?: Maybe<ScalarsEnums['DateTime']>
+  createdBy: User
+  id?: Maybe<ScalarsEnums['Int']>
+  reportMessage: ScalarsEnums['String']
+  updatedAt?: Maybe<ScalarsEnums['DateTime']>
+}
+
+export interface ReportCreateAccess {
+  __typename?: 'ReportCreateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ReportCreateDocAccess {
+  __typename?: 'ReportCreateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ReportDeleteAccess {
+  __typename?: 'ReportDeleteAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ReportDeleteDocAccess {
+  __typename?: 'ReportDeleteDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ReportDocAccessFields {
+  __typename?: 'ReportDocAccessFields'
+  createdAt?: Maybe<ReportDocAccessFields_createdAt>
+  reportMessage?: Maybe<ReportDocAccessFields_reportMessage>
+  updatedAt?: Maybe<ReportDocAccessFields_updatedAt>
+}
+
+export interface ReportDocAccessFields_createdAt {
+  __typename?: 'ReportDocAccessFields_createdAt'
+  create?: Maybe<ReportDocAccessFields_createdAt_Create>
+  delete?: Maybe<ReportDocAccessFields_createdAt_Delete>
+  read?: Maybe<ReportDocAccessFields_createdAt_Read>
+  update?: Maybe<ReportDocAccessFields_createdAt_Update>
+}
+
+export interface ReportDocAccessFields_createdAt_Create {
+  __typename?: 'ReportDocAccessFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportDocAccessFields_createdAt_Delete {
+  __typename?: 'ReportDocAccessFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportDocAccessFields_createdAt_Read {
+  __typename?: 'ReportDocAccessFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportDocAccessFields_createdAt_Update {
+  __typename?: 'ReportDocAccessFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportDocAccessFields_reportMessage {
+  __typename?: 'ReportDocAccessFields_reportMessage'
+  create?: Maybe<ReportDocAccessFields_reportMessage_Create>
+  delete?: Maybe<ReportDocAccessFields_reportMessage_Delete>
+  read?: Maybe<ReportDocAccessFields_reportMessage_Read>
+  update?: Maybe<ReportDocAccessFields_reportMessage_Update>
+}
+
+export interface ReportDocAccessFields_reportMessage_Create {
+  __typename?: 'ReportDocAccessFields_reportMessage_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportDocAccessFields_reportMessage_Delete {
+  __typename?: 'ReportDocAccessFields_reportMessage_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportDocAccessFields_reportMessage_Read {
+  __typename?: 'ReportDocAccessFields_reportMessage_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportDocAccessFields_reportMessage_Update {
+  __typename?: 'ReportDocAccessFields_reportMessage_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportDocAccessFields_updatedAt {
+  __typename?: 'ReportDocAccessFields_updatedAt'
+  create?: Maybe<ReportDocAccessFields_updatedAt_Create>
+  delete?: Maybe<ReportDocAccessFields_updatedAt_Delete>
+  read?: Maybe<ReportDocAccessFields_updatedAt_Read>
+  update?: Maybe<ReportDocAccessFields_updatedAt_Update>
+}
+
+export interface ReportDocAccessFields_updatedAt_Create {
+  __typename?: 'ReportDocAccessFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportDocAccessFields_updatedAt_Delete {
+  __typename?: 'ReportDocAccessFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportDocAccessFields_updatedAt_Read {
+  __typename?: 'ReportDocAccessFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportDocAccessFields_updatedAt_Update {
+  __typename?: 'ReportDocAccessFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields {
+  __typename?: 'ReportFields'
+  createdAt?: Maybe<ReportFields_createdAt>
+  reportMessage?: Maybe<ReportFields_reportMessage>
+  updatedAt?: Maybe<ReportFields_updatedAt>
+}
+
+export interface ReportFields_createdAt {
+  __typename?: 'ReportFields_createdAt'
+  create?: Maybe<ReportFields_createdAt_Create>
+  delete?: Maybe<ReportFields_createdAt_Delete>
+  read?: Maybe<ReportFields_createdAt_Read>
+  update?: Maybe<ReportFields_createdAt_Update>
+}
+
+export interface ReportFields_createdAt_Create {
+  __typename?: 'ReportFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields_createdAt_Delete {
+  __typename?: 'ReportFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields_createdAt_Read {
+  __typename?: 'ReportFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields_createdAt_Update {
+  __typename?: 'ReportFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields_reportMessage {
+  __typename?: 'ReportFields_reportMessage'
+  create?: Maybe<ReportFields_reportMessage_Create>
+  delete?: Maybe<ReportFields_reportMessage_Delete>
+  read?: Maybe<ReportFields_reportMessage_Read>
+  update?: Maybe<ReportFields_reportMessage_Update>
+}
+
+export interface ReportFields_reportMessage_Create {
+  __typename?: 'ReportFields_reportMessage_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields_reportMessage_Delete {
+  __typename?: 'ReportFields_reportMessage_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields_reportMessage_Read {
+  __typename?: 'ReportFields_reportMessage_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields_reportMessage_Update {
+  __typename?: 'ReportFields_reportMessage_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields_updatedAt {
+  __typename?: 'ReportFields_updatedAt'
+  create?: Maybe<ReportFields_updatedAt_Create>
+  delete?: Maybe<ReportFields_updatedAt_Delete>
+  read?: Maybe<ReportFields_updatedAt_Read>
+  update?: Maybe<ReportFields_updatedAt_Update>
+}
+
+export interface ReportFields_updatedAt_Create {
+  __typename?: 'ReportFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields_updatedAt_Delete {
+  __typename?: 'ReportFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields_updatedAt_Read {
+  __typename?: 'ReportFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields_updatedAt_Update {
+  __typename?: 'ReportFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportReadAccess {
+  __typename?: 'ReportReadAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ReportReadDocAccess {
+  __typename?: 'ReportReadDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ReportUpdateAccess {
+  __typename?: 'ReportUpdateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ReportUpdateDocAccess {
+  __typename?: 'ReportUpdateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface Reports {
+  __typename?: 'Reports'
+  docs?: Maybe<Array<Maybe<Report>>>
+  hasNextPage?: Maybe<ScalarsEnums['Boolean']>
+  hasPrevPage?: Maybe<ScalarsEnums['Boolean']>
+  limit?: Maybe<ScalarsEnums['Int']>
+  nextPage?: Maybe<ScalarsEnums['Int']>
+  offset?: Maybe<ScalarsEnums['Int']>
+  page?: Maybe<ScalarsEnums['Int']>
+  pagingCounter?: Maybe<ScalarsEnums['Int']>
+  prevPage?: Maybe<ScalarsEnums['Int']>
+  totalDocs?: Maybe<ScalarsEnums['Int']>
+  totalPages?: Maybe<ScalarsEnums['Int']>
+}
+
+export interface Review {
+  __typename?: 'Review'
+  createdAt?: Maybe<ScalarsEnums['DateTime']>
+  createdBy: User
+  description: ScalarsEnums['String']
+  id?: Maybe<ScalarsEnums['Int']>
+  rating: ScalarsEnums['Float']
+  reviewToItem?: Maybe<Item>
+  reviewToUser?: Maybe<User>
+  status: ScalarsEnums['Review_status']
+  updatedAt?: Maybe<ScalarsEnums['DateTime']>
+}
+
+export interface Reviews {
+  __typename?: 'Reviews'
+  docs?: Maybe<Array<Maybe<Review>>>
+  hasNextPage?: Maybe<ScalarsEnums['Boolean']>
+  hasPrevPage?: Maybe<ScalarsEnums['Boolean']>
+  limit?: Maybe<ScalarsEnums['Int']>
+  nextPage?: Maybe<ScalarsEnums['Int']>
+  offset?: Maybe<ScalarsEnums['Int']>
+  page?: Maybe<ScalarsEnums['Int']>
+  pagingCounter?: Maybe<ScalarsEnums['Int']>
+  prevPage?: Maybe<ScalarsEnums['Int']>
+  totalDocs?: Maybe<ScalarsEnums['Int']>
+  totalPages?: Maybe<ScalarsEnums['Int']>
+}
+
+export interface ReviewsCreateAccess {
+  __typename?: 'ReviewsCreateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ReviewsCreateDocAccess {
+  __typename?: 'ReviewsCreateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ReviewsDeleteAccess {
+  __typename?: 'ReviewsDeleteAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ReviewsDeleteDocAccess {
+  __typename?: 'ReviewsDeleteDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ReviewsDocAccessFields {
+  __typename?: 'ReviewsDocAccessFields'
+  createdAt?: Maybe<ReviewsDocAccessFields_createdAt>
+  description?: Maybe<ReviewsDocAccessFields_description>
+  rating?: Maybe<ReviewsDocAccessFields_rating>
+  reviewToItem?: Maybe<ReviewsDocAccessFields_reviewToItem>
+  reviewToUser?: Maybe<ReviewsDocAccessFields_reviewToUser>
+  status?: Maybe<ReviewsDocAccessFields_status>
+  updatedAt?: Maybe<ReviewsDocAccessFields_updatedAt>
+}
+
+export interface ReviewsDocAccessFields_createdAt {
+  __typename?: 'ReviewsDocAccessFields_createdAt'
+  create?: Maybe<ReviewsDocAccessFields_createdAt_Create>
+  delete?: Maybe<ReviewsDocAccessFields_createdAt_Delete>
+  read?: Maybe<ReviewsDocAccessFields_createdAt_Read>
+  update?: Maybe<ReviewsDocAccessFields_createdAt_Update>
+}
+
+export interface ReviewsDocAccessFields_createdAt_Create {
+  __typename?: 'ReviewsDocAccessFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_createdAt_Delete {
+  __typename?: 'ReviewsDocAccessFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_createdAt_Read {
+  __typename?: 'ReviewsDocAccessFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_createdAt_Update {
+  __typename?: 'ReviewsDocAccessFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_description {
+  __typename?: 'ReviewsDocAccessFields_description'
+  create?: Maybe<ReviewsDocAccessFields_description_Create>
+  delete?: Maybe<ReviewsDocAccessFields_description_Delete>
+  read?: Maybe<ReviewsDocAccessFields_description_Read>
+  update?: Maybe<ReviewsDocAccessFields_description_Update>
+}
+
+export interface ReviewsDocAccessFields_description_Create {
+  __typename?: 'ReviewsDocAccessFields_description_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_description_Delete {
+  __typename?: 'ReviewsDocAccessFields_description_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_description_Read {
+  __typename?: 'ReviewsDocAccessFields_description_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_description_Update {
+  __typename?: 'ReviewsDocAccessFields_description_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_rating {
+  __typename?: 'ReviewsDocAccessFields_rating'
+  create?: Maybe<ReviewsDocAccessFields_rating_Create>
+  delete?: Maybe<ReviewsDocAccessFields_rating_Delete>
+  read?: Maybe<ReviewsDocAccessFields_rating_Read>
+  update?: Maybe<ReviewsDocAccessFields_rating_Update>
+}
+
+export interface ReviewsDocAccessFields_rating_Create {
+  __typename?: 'ReviewsDocAccessFields_rating_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_rating_Delete {
+  __typename?: 'ReviewsDocAccessFields_rating_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_rating_Read {
+  __typename?: 'ReviewsDocAccessFields_rating_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_rating_Update {
+  __typename?: 'ReviewsDocAccessFields_rating_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_reviewToItem {
+  __typename?: 'ReviewsDocAccessFields_reviewToItem'
+  create?: Maybe<ReviewsDocAccessFields_reviewToItem_Create>
+  delete?: Maybe<ReviewsDocAccessFields_reviewToItem_Delete>
+  read?: Maybe<ReviewsDocAccessFields_reviewToItem_Read>
+  update?: Maybe<ReviewsDocAccessFields_reviewToItem_Update>
+}
+
+export interface ReviewsDocAccessFields_reviewToItem_Create {
+  __typename?: 'ReviewsDocAccessFields_reviewToItem_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_reviewToItem_Delete {
+  __typename?: 'ReviewsDocAccessFields_reviewToItem_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_reviewToItem_Read {
+  __typename?: 'ReviewsDocAccessFields_reviewToItem_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_reviewToItem_Update {
+  __typename?: 'ReviewsDocAccessFields_reviewToItem_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_reviewToUser {
+  __typename?: 'ReviewsDocAccessFields_reviewToUser'
+  create?: Maybe<ReviewsDocAccessFields_reviewToUser_Create>
+  delete?: Maybe<ReviewsDocAccessFields_reviewToUser_Delete>
+  read?: Maybe<ReviewsDocAccessFields_reviewToUser_Read>
+  update?: Maybe<ReviewsDocAccessFields_reviewToUser_Update>
+}
+
+export interface ReviewsDocAccessFields_reviewToUser_Create {
+  __typename?: 'ReviewsDocAccessFields_reviewToUser_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_reviewToUser_Delete {
+  __typename?: 'ReviewsDocAccessFields_reviewToUser_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_reviewToUser_Read {
+  __typename?: 'ReviewsDocAccessFields_reviewToUser_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_reviewToUser_Update {
+  __typename?: 'ReviewsDocAccessFields_reviewToUser_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_status {
+  __typename?: 'ReviewsDocAccessFields_status'
+  create?: Maybe<ReviewsDocAccessFields_status_Create>
+  delete?: Maybe<ReviewsDocAccessFields_status_Delete>
+  read?: Maybe<ReviewsDocAccessFields_status_Read>
+  update?: Maybe<ReviewsDocAccessFields_status_Update>
+}
+
+export interface ReviewsDocAccessFields_status_Create {
+  __typename?: 'ReviewsDocAccessFields_status_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_status_Delete {
+  __typename?: 'ReviewsDocAccessFields_status_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_status_Read {
+  __typename?: 'ReviewsDocAccessFields_status_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_status_Update {
+  __typename?: 'ReviewsDocAccessFields_status_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_updatedAt {
+  __typename?: 'ReviewsDocAccessFields_updatedAt'
+  create?: Maybe<ReviewsDocAccessFields_updatedAt_Create>
+  delete?: Maybe<ReviewsDocAccessFields_updatedAt_Delete>
+  read?: Maybe<ReviewsDocAccessFields_updatedAt_Read>
+  update?: Maybe<ReviewsDocAccessFields_updatedAt_Update>
+}
+
+export interface ReviewsDocAccessFields_updatedAt_Create {
+  __typename?: 'ReviewsDocAccessFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_updatedAt_Delete {
+  __typename?: 'ReviewsDocAccessFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_updatedAt_Read {
+  __typename?: 'ReviewsDocAccessFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_updatedAt_Update {
+  __typename?: 'ReviewsDocAccessFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields {
+  __typename?: 'ReviewsFields'
+  createdAt?: Maybe<ReviewsFields_createdAt>
+  description?: Maybe<ReviewsFields_description>
+  rating?: Maybe<ReviewsFields_rating>
+  reviewToItem?: Maybe<ReviewsFields_reviewToItem>
+  reviewToUser?: Maybe<ReviewsFields_reviewToUser>
+  status?: Maybe<ReviewsFields_status>
+  updatedAt?: Maybe<ReviewsFields_updatedAt>
+}
+
+export interface ReviewsFields_createdAt {
+  __typename?: 'ReviewsFields_createdAt'
+  create?: Maybe<ReviewsFields_createdAt_Create>
+  delete?: Maybe<ReviewsFields_createdAt_Delete>
+  read?: Maybe<ReviewsFields_createdAt_Read>
+  update?: Maybe<ReviewsFields_createdAt_Update>
+}
+
+export interface ReviewsFields_createdAt_Create {
+  __typename?: 'ReviewsFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_createdAt_Delete {
+  __typename?: 'ReviewsFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_createdAt_Read {
+  __typename?: 'ReviewsFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_createdAt_Update {
+  __typename?: 'ReviewsFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_description {
+  __typename?: 'ReviewsFields_description'
+  create?: Maybe<ReviewsFields_description_Create>
+  delete?: Maybe<ReviewsFields_description_Delete>
+  read?: Maybe<ReviewsFields_description_Read>
+  update?: Maybe<ReviewsFields_description_Update>
+}
+
+export interface ReviewsFields_description_Create {
+  __typename?: 'ReviewsFields_description_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_description_Delete {
+  __typename?: 'ReviewsFields_description_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_description_Read {
+  __typename?: 'ReviewsFields_description_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_description_Update {
+  __typename?: 'ReviewsFields_description_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_rating {
+  __typename?: 'ReviewsFields_rating'
+  create?: Maybe<ReviewsFields_rating_Create>
+  delete?: Maybe<ReviewsFields_rating_Delete>
+  read?: Maybe<ReviewsFields_rating_Read>
+  update?: Maybe<ReviewsFields_rating_Update>
+}
+
+export interface ReviewsFields_rating_Create {
+  __typename?: 'ReviewsFields_rating_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_rating_Delete {
+  __typename?: 'ReviewsFields_rating_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_rating_Read {
+  __typename?: 'ReviewsFields_rating_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_rating_Update {
+  __typename?: 'ReviewsFields_rating_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_reviewToItem {
+  __typename?: 'ReviewsFields_reviewToItem'
+  create?: Maybe<ReviewsFields_reviewToItem_Create>
+  delete?: Maybe<ReviewsFields_reviewToItem_Delete>
+  read?: Maybe<ReviewsFields_reviewToItem_Read>
+  update?: Maybe<ReviewsFields_reviewToItem_Update>
+}
+
+export interface ReviewsFields_reviewToItem_Create {
+  __typename?: 'ReviewsFields_reviewToItem_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_reviewToItem_Delete {
+  __typename?: 'ReviewsFields_reviewToItem_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_reviewToItem_Read {
+  __typename?: 'ReviewsFields_reviewToItem_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_reviewToItem_Update {
+  __typename?: 'ReviewsFields_reviewToItem_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_reviewToUser {
+  __typename?: 'ReviewsFields_reviewToUser'
+  create?: Maybe<ReviewsFields_reviewToUser_Create>
+  delete?: Maybe<ReviewsFields_reviewToUser_Delete>
+  read?: Maybe<ReviewsFields_reviewToUser_Read>
+  update?: Maybe<ReviewsFields_reviewToUser_Update>
+}
+
+export interface ReviewsFields_reviewToUser_Create {
+  __typename?: 'ReviewsFields_reviewToUser_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_reviewToUser_Delete {
+  __typename?: 'ReviewsFields_reviewToUser_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_reviewToUser_Read {
+  __typename?: 'ReviewsFields_reviewToUser_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_reviewToUser_Update {
+  __typename?: 'ReviewsFields_reviewToUser_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_status {
+  __typename?: 'ReviewsFields_status'
+  create?: Maybe<ReviewsFields_status_Create>
+  delete?: Maybe<ReviewsFields_status_Delete>
+  read?: Maybe<ReviewsFields_status_Read>
+  update?: Maybe<ReviewsFields_status_Update>
+}
+
+export interface ReviewsFields_status_Create {
+  __typename?: 'ReviewsFields_status_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_status_Delete {
+  __typename?: 'ReviewsFields_status_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_status_Read {
+  __typename?: 'ReviewsFields_status_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_status_Update {
+  __typename?: 'ReviewsFields_status_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_updatedAt {
+  __typename?: 'ReviewsFields_updatedAt'
+  create?: Maybe<ReviewsFields_updatedAt_Create>
+  delete?: Maybe<ReviewsFields_updatedAt_Delete>
+  read?: Maybe<ReviewsFields_updatedAt_Read>
+  update?: Maybe<ReviewsFields_updatedAt_Update>
+}
+
+export interface ReviewsFields_updatedAt_Create {
+  __typename?: 'ReviewsFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_updatedAt_Delete {
+  __typename?: 'ReviewsFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_updatedAt_Read {
+  __typename?: 'ReviewsFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_updatedAt_Update {
+  __typename?: 'ReviewsFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsReadAccess {
+  __typename?: 'ReviewsReadAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ReviewsReadDocAccess {
+  __typename?: 'ReviewsReadDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ReviewsUpdateAccess {
+  __typename?: 'ReviewsUpdateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface ReviewsUpdateDocAccess {
+  __typename?: 'ReviewsUpdateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
 export interface Tag {
   __typename?: 'Tag'
   alt?: Maybe<ScalarsEnums['String']>
@@ -12449,6 +14559,7 @@ export interface User {
   requestsReceived?: Maybe<Array<Renting>>
   resetPasswordExpiration?: Maybe<ScalarsEnums['DateTime']>
   resetPasswordToken?: Maybe<ScalarsEnums['String']>
+  review?: Maybe<Array<Review>>
   roles: Array<ScalarsEnums['User_roles']>
   salt?: Maybe<ScalarsEnums['String']>
   updatedAt?: Maybe<ScalarsEnums['DateTime']>
@@ -12507,6 +14618,7 @@ export interface UsersDocAccessFields {
   rating?: Maybe<UsersDocAccessFields_rating>
   requestsMade?: Maybe<UsersDocAccessFields_requestsMade>
   requestsReceived?: Maybe<UsersDocAccessFields_requestsReceived>
+  review?: Maybe<UsersDocAccessFields_review>
   roles?: Maybe<UsersDocAccessFields_roles>
   updatedAt?: Maybe<UsersDocAccessFields_updatedAt>
 }
@@ -12847,6 +14959,34 @@ export interface UsersDocAccessFields_requestsReceived_Update {
   permission: ScalarsEnums['Boolean']
 }
 
+export interface UsersDocAccessFields_review {
+  __typename?: 'UsersDocAccessFields_review'
+  create?: Maybe<UsersDocAccessFields_review_Create>
+  delete?: Maybe<UsersDocAccessFields_review_Delete>
+  read?: Maybe<UsersDocAccessFields_review_Read>
+  update?: Maybe<UsersDocAccessFields_review_Update>
+}
+
+export interface UsersDocAccessFields_review_Create {
+  __typename?: 'UsersDocAccessFields_review_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_review_Delete {
+  __typename?: 'UsersDocAccessFields_review_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_review_Read {
+  __typename?: 'UsersDocAccessFields_review_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_review_Update {
+  __typename?: 'UsersDocAccessFields_review_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
 export interface UsersDocAccessFields_roles {
   __typename?: 'UsersDocAccessFields_roles'
   create?: Maybe<UsersDocAccessFields_roles_Create>
@@ -12917,6 +15057,7 @@ export interface UsersFields {
   rating?: Maybe<UsersFields_rating>
   requestsMade?: Maybe<UsersFields_requestsMade>
   requestsReceived?: Maybe<UsersFields_requestsReceived>
+  review?: Maybe<UsersFields_review>
   roles?: Maybe<UsersFields_roles>
   updatedAt?: Maybe<UsersFields_updatedAt>
 }
@@ -13257,6 +15398,34 @@ export interface UsersFields_requestsReceived_Update {
   permission: ScalarsEnums['Boolean']
 }
 
+export interface UsersFields_review {
+  __typename?: 'UsersFields_review'
+  create?: Maybe<UsersFields_review_Create>
+  delete?: Maybe<UsersFields_review_Delete>
+  read?: Maybe<UsersFields_review_Read>
+  update?: Maybe<UsersFields_review_Update>
+}
+
+export interface UsersFields_review_Create {
+  __typename?: 'UsersFields_review_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_review_Delete {
+  __typename?: 'UsersFields_review_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_review_Read {
+  __typename?: 'UsersFields_review_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_review_Update {
+  __typename?: 'UsersFields_review_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
 export interface UsersFields_roles {
   __typename?: 'UsersFields_roles'
   create?: Maybe<UsersFields_roles_Create>
@@ -13456,6 +15625,18 @@ export interface Mutation {
       draft?: Maybe<Scalars['Boolean']>
     }
   ) => Maybe<Renting>
+  createReport: (
+    args: {
+      data: mutationReportInput
+      draft?: Maybe<Scalars['Boolean']>
+    }
+  ) => Maybe<Report>
+  createReview: (
+    args: {
+      data: mutationReviewInput
+      draft?: Maybe<Scalars['Boolean']>
+    }
+  ) => Maybe<Review>
   createTag: (args: { data: mutationTagInput; draft?: Maybe<Scalars['Boolean']> }) => Maybe<Tag>
   createUser: (args: { data: mutationUserInput; draft?: Maybe<Scalars['Boolean']> }) => Maybe<User>
   deleteChatroom: (args: { id: Scalars['Int'] }) => Maybe<Chatroom>
@@ -13464,6 +15645,8 @@ export interface Mutation {
   deleteMessage: (args: { id: Scalars['Int'] }) => Maybe<Message>
   deletePayloadPreference: (args: { id: Scalars['Int'] }) => Maybe<PayloadPreference>
   deleteRenting: (args: { id: Scalars['Int'] }) => Maybe<Renting>
+  deleteReport: (args: { id: Scalars['Int'] }) => Maybe<Report>
+  deleteReview: (args: { id: Scalars['Int'] }) => Maybe<Review>
   deleteTag: (args: { id: Scalars['Int'] }) => Maybe<Tag>
   deleteUser: (args: { id: Scalars['Int'] }) => Maybe<User>
   forgotPasswordUser: (
@@ -13537,6 +15720,22 @@ export interface Mutation {
       id: Scalars['Int']
     }
   ) => Maybe<Renting>
+  updateReport: (
+    args: {
+      autosave?: Maybe<Scalars['Boolean']>
+      data: mutationReportUpdateInput
+      draft?: Maybe<Scalars['Boolean']>
+      id: Scalars['Int']
+    }
+  ) => Maybe<Report>
+  updateReview: (
+    args: {
+      autosave?: Maybe<Scalars['Boolean']>
+      data: mutationReviewUpdateInput
+      draft?: Maybe<Scalars['Boolean']>
+      id: Scalars['Int']
+    }
+  ) => Maybe<Review>
   updateTag: (
     args: {
       autosave?: Maybe<Scalars['Boolean']>
@@ -13642,6 +15841,26 @@ export interface Query {
       where?: Maybe<Renting_where>
     }
   ) => Maybe<Rentings>
+  Report: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Report>
+  Reports: (
+    args?: {
+      draft?: Maybe<Scalars['Boolean']>
+      limit?: Maybe<Scalars['Int']>
+      page?: Maybe<Scalars['Int']>
+      sort?: Maybe<Scalars['String']>
+      where?: Maybe<Report_where>
+    }
+  ) => Maybe<Reports>
+  Review: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Review>
+  Reviews: (
+    args?: {
+      draft?: Maybe<Scalars['Boolean']>
+      limit?: Maybe<Scalars['Int']>
+      page?: Maybe<Scalars['Int']>
+      sort?: Maybe<Scalars['String']>
+      where?: Maybe<Review_where>
+    }
+  ) => Maybe<Reviews>
   Tag: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Tag>
   Tags: (
     args?: {
@@ -13668,6 +15887,8 @@ export interface Query {
   docAccessMessage: (args: { id: Scalars['Int'] }) => Maybe<messageDocAccess>
   docAccessPayloadPreference: (args: { id: Scalars['Int'] }) => Maybe<payload_preferencesDocAccess>
   docAccessRenting: (args: { id: Scalars['Int'] }) => Maybe<rentingDocAccess>
+  docAccessReport: (args: { id: Scalars['Int'] }) => Maybe<reportDocAccess>
+  docAccessReview: (args: { id: Scalars['Int'] }) => Maybe<reviewsDocAccess>
   docAccessTag: (args: { id: Scalars['Int'] }) => Maybe<tagsDocAccess>
   docAccessUser: (args: { id: Scalars['Int'] }) => Maybe<usersDocAccess>
   initializedUser?: Maybe<ScalarsEnums['Boolean']>
@@ -13699,6 +15920,42 @@ export interface rentingDocAccess {
   fields?: Maybe<RentingDocAccessFields>
   read?: Maybe<RentingReadDocAccess>
   update?: Maybe<RentingUpdateDocAccess>
+}
+
+export interface reportAccess {
+  __typename?: 'reportAccess'
+  create?: Maybe<ReportCreateAccess>
+  delete?: Maybe<ReportDeleteAccess>
+  fields?: Maybe<ReportFields>
+  read?: Maybe<ReportReadAccess>
+  update?: Maybe<ReportUpdateAccess>
+}
+
+export interface reportDocAccess {
+  __typename?: 'reportDocAccess'
+  create?: Maybe<ReportCreateDocAccess>
+  delete?: Maybe<ReportDeleteDocAccess>
+  fields?: Maybe<ReportDocAccessFields>
+  read?: Maybe<ReportReadDocAccess>
+  update?: Maybe<ReportUpdateDocAccess>
+}
+
+export interface reviewsAccess {
+  __typename?: 'reviewsAccess'
+  create?: Maybe<ReviewsCreateAccess>
+  delete?: Maybe<ReviewsDeleteAccess>
+  fields?: Maybe<ReviewsFields>
+  read?: Maybe<ReviewsReadAccess>
+  update?: Maybe<ReviewsUpdateAccess>
+}
+
+export interface reviewsDocAccess {
+  __typename?: 'reviewsDocAccess'
+  create?: Maybe<ReviewsCreateDocAccess>
+  delete?: Maybe<ReviewsDeleteDocAccess>
+  fields?: Maybe<ReviewsDocAccessFields>
+  read?: Maybe<ReviewsReadDocAccess>
+  update?: Maybe<ReviewsUpdateDocAccess>
 }
 
 export interface Subscription {
@@ -13835,6 +16092,10 @@ export interface ScalarsEnums extends MakeNullable<Scalars> {
   Renting_status: Renting_status | undefined
   Renting_status_Input: Renting_status_Input | undefined
   Renting_status_MutationInput: Renting_status_MutationInput | undefined
+  ReviewUpdate_status_MutationInput: ReviewUpdate_status_MutationInput | undefined
+  Review_status: Review_status | undefined
+  Review_status_Input: Review_status_Input | undefined
+  Review_status_MutationInput: Review_status_MutationInput | undefined
   UserUpdate_roles_MutationInput: UserUpdate_roles_MutationInput | undefined
   User_roles: User_roles | undefined
   User_roles_Input: User_roles_Input | undefined

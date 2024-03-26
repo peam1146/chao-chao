@@ -144,5 +144,11 @@ export const Users: CollectionConfig = {
       unique: true,
       maxDepth: 4,
     },
+    {
+      type: 'relationship',
+      name: 'review',
+      relationTo: 'reviews',
+      hasMany: true,
+    },
   ],
 }

@@ -10,6 +10,8 @@ import s3Upload from 'payload-s3-upload'
 import { buildConfig } from 'payload/config'
 
 import { Chatroom, Item, Media, Message, Renting, Tag, Users } from './collections'
+import { Report } from './collections/Report'
+import { Review } from './collections/Review'
 import { ACCESS_KEY_ID, REGION, SECRET_KEY_ID } from './common/env'
 import { Logo } from './components/Logo'
 
@@ -29,7 +31,7 @@ export default buildConfig({
   //   resources: i18n(),
   // },
   editor: slateEditor({}),
-  collections: [Users, Item, Media, Tag, Chatroom, Message, Renting],
+  collections: [Users, Item, Media, Tag, Chatroom, Message, Renting, Review, Report],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },

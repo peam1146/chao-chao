@@ -15,6 +15,8 @@ export interface Config {
     chatroom: Chatroom;
     message: Message;
     renting: Renting;
+    reviews: Review;
+    report: Report;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -32,6 +34,7 @@ export interface User {
   roles: ('admin' | 'User')[];
   requestsMade?: string[] | Renting[];
   requestsReceived?: string[] | Renting[];
+  review?: string[] | Review[];
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -93,6 +96,7 @@ export interface Item {
   tags?: string[] | Tag[];
   createdBy: string | User;
   rating?: number;
+  review?: string[] | Review[];
   updatedAt: string;
   createdAt: string;
   _status?: 'draft' | 'published';
@@ -101,6 +105,17 @@ export interface Tag {
   id: string;
   name: string;
   alt?: string;
+  createdBy: string | User;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Review {
+  id: string;
+  description: string;
+  rating: number;
+  reviewToUser?: string | User;
+  reviewToItem?: string | Item;
+  status: 'ITEM' | 'USER';
   createdBy: string | User;
   updatedAt: string;
   createdAt: string;
@@ -122,6 +137,13 @@ export interface Message {
   createdBy: string | User;
   room: string | Chatroom;
   updatedAt: string;
+}
+export interface Report {
+  id: string;
+  reportMessage: string;
+  createdBy: string | User;
+  updatedAt: string;
+  createdAt: string;
 }
 export interface PayloadPreference {
   id: string;
@@ -161,6 +183,8 @@ declare module 'payload' {
       'chatroom': Chatroom
       'message': Message
       'renting': Renting
+      'reviews': Review
+      'report': Report
       'payload-preferences': PayloadPreference
       'payload-migrations': PayloadMigration
     }
