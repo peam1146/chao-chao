@@ -11,7 +11,7 @@ export const Item: CollectionConfig = {
     read: () => true,
     update: isAdminOrSelf,
     create: isAdminOrSelf,
-    delete: isAdminOrSelf,
+    delete: () => true,
     readVersions: isAdminOrSelf,
   },
   versions: {

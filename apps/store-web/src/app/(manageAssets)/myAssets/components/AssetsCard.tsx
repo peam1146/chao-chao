@@ -8,7 +8,7 @@ import { DotsThreeVertical, PencilSimple, Trash } from '@phosphor-icons/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Maybe, Media } from '../../../../../gqty'
+import { Maybe, Media, resolve } from '../../../../../gqty'
 
 export default function AssetsCard({
   id,
@@ -25,6 +25,18 @@ export default function AssetsCard({
   price: number
   periodType: string
 }) {
+  async function handleDelete() {
+    try {
+      await resolve(async ({ mutation }) => {
+        const asset = mutation.deleteItem({
+          id: id,
+        })
+        return asset
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
   return (
     <Link href={`/detail/${id}`}>
       <div className="flex flex-col h-fit w-full bg-card rounded-2xl p-4 gap-2 border lg:border-2 border-transparent hover:border-primary hover:border-opacity-100">
@@ -44,12 +56,20 @@ export default function AssetsCard({
             </PopoverTrigger>
 
             <PopoverContent className="w-fit p-1 mr-44">
-              <div className="flex flex-row w-[186px] p-2 gap-2 hover:bg-muted text-muted-foreground rounded-md">
-                <PencilSimple size={16} className="my-auto" />
-                <Typography variant="h6">Edit</Typography>
-              </div>
+              <Link href={`asset/edit/${id}`}>
+                <div className="flex flex-row w-[186px] p-2 gap-2 hover:bg-muted text-muted-foreground rounded-md">
+                  <PencilSimple size={16} className="my-auto" />
+                  <Typography variant="h6">Edit</Typography>
+                </div>
+              </Link>
 
-              <div className="flex flex-row p-2 gap-2 hover:bg-muted text-muted-foreground rounded-md">
+              <div
+                className="flex flex-row p-2 gap-2 hover:bg-muted text-muted-foreground rounded-md cursor-pointer"
+                onClick={(e) => {
+                  handleDelete()
+                  e.preventDefault()
+                }}
+              >
                 <Trash size={16} className="my-auto" />
                 <Typography variant="h6">Delete</Typography>
               </div>

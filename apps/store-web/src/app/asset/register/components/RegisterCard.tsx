@@ -265,7 +265,7 @@ export default function RegisterCard() {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Textarea {...field} />
+                        <Textarea placeholder="Type here..." {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -276,8 +276,11 @@ export default function RegisterCard() {
                 <Typography variant="h5">Image</Typography>
 
                 <div className="grid gap-2 2xl:grid-cols-9 xl:grid-cols-6 lg:grid-cols-5 sm:grid-cols-3 grid-cols-2 ">
-                  <div className="flex md:w-[120px] w-[80px] md:h-[120px] h-[80px] justify-center items-center rounded-[8px] border-primary border-dashed border-2 cursor-pointer">
-                    <p onClick={handleButtonClick}>
+                  <div
+                    className="flex md:w-[120px] w-[80px] md:h-[120px] h-[80px] justify-center items-center rounded-[8px] border-primary border-dashed border-2 cursor-pointer"
+                    onClick={handleButtonClick}
+                  >
+                    <p>
                       <Plus className="w-4 h-4 text-primary" />
                     </p>
                     <Input
