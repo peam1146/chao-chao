@@ -148,7 +148,7 @@ export default function Description({ isSelf, item }: { isSelf: boolean; item: M
             </Typography>
             <hr />
             <div className="h-fit lg:h-7 flex flex-col lg:flex-row justify-between">
-              <Typography variant="h6" fontWeight="bold" className="my-auto">
+              <Typography variant="h6" fontWeight="bold" className="whitespace-nowrap my-auto">
                 Date
               </Typography>
               <div className="flex justify-between gap-x-2">
@@ -169,7 +169,7 @@ export default function Description({ isSelf, item }: { isSelf: boolean; item: M
                               {field.value ? (
                                 dayjs(field.value).format('DD/MM/YY')
                               ) : (
-                                <span>Pick a date</span>
+                                <span>Pick date</span>
                               )}
                             </Button>
                           </FormControl>
@@ -177,6 +177,7 @@ export default function Description({ isSelf, item }: { isSelf: boolean; item: M
                         <PopoverContent className="w-full">
                           <Calendar
                             mode="single"
+                            disabled={{ before: new Date() }}
                             selected={field.value}
                             onSelect={field.onChange}
                             initialFocus
@@ -206,7 +207,7 @@ export default function Description({ isSelf, item }: { isSelf: boolean; item: M
                               {field.value ? (
                                 dayjs(field.value).format('DD/MM/YY')
                               ) : (
-                                <span>Pick a date</span>
+                                <span>Pick date</span>
                               )}
                             </Button>
                           </FormControl>
@@ -215,6 +216,7 @@ export default function Description({ isSelf, item }: { isSelf: boolean; item: M
                           <Calendar
                             mode="single"
                             selected={field.value}
+                            disabled={{ before: new Date() }}
                             onSelect={field.onChange}
                             initialFocus
                           />
