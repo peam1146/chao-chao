@@ -17,7 +17,7 @@ export const Report: CollectionConfig = {
   },
   fields: [
     {
-      type: 'text',
+      type: 'textarea',
       name: 'reportMessage',
       required: true,
     },
