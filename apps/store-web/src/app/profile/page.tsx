@@ -24,10 +24,10 @@ export default function Profile() {
   const user = query.meUser?.user
 
   useEffect(() => {
-    if (!user?.bio && !user?.firstName && !user?.lastName && user?.profileImage?.url === '') {
+    if (user?.firstName === '' || user?.lastName === '') {
       router.push('/profile/edit')
     }
-  }, [user?.bio, user?.firstName, user?.lastName, user?.profileImage?.url])
+  }, [])
 
   return (
     <main className="container flex w-full bg-background min-h-[calc(100vh-64px)] flex-col items-center py-4 lg:py-12 my-auto gap-6">

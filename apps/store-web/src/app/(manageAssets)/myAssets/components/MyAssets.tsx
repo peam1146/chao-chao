@@ -1,15 +1,6 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from '@/components/ui/pagination'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Typography from '@/components/ui/typography'
 import { Plus, Tray } from '@phosphor-icons/react'
@@ -71,6 +62,7 @@ export default function MyAssets() {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="all">
+            {items?.docs?.length === 0 && <div className="flex justify-center">No item found</div>}
             <div className="grid grid-cols-2 2xl:grid-cols-5 lg:grid-cols-3 grid-s-3 gap-3">
               {items?.docs
                 ?.filter((item) => item?.id !== undefined)
@@ -90,6 +82,9 @@ export default function MyAssets() {
             </div>
           </TabsContent>
           <TabsContent value="beingRented">
+            {items?.docs?.filter(
+              (item) => item?.id !== undefined && item.rentingStatus === 'unavailable'
+            ).length === 0 && <div className="flex justify-center">No item found</div>}
             <div className="grid grid-cols-2 2xl:grid-cols-5 lg:grid-cols-3 grid-s-3 gap-3">
               {items?.docs
                 ?.filter((item) => item?.id !== undefined && item.rentingStatus === 'unavailable')
@@ -109,9 +104,18 @@ export default function MyAssets() {
             </div>
           </TabsContent>
           <TabsContent value="available">
+            {items?.docs?.filter(
+              (item) =>
+                item?.id !== undefined &&
+                (item.rentingStatus === 'available' || item.rentingStatus === 'negotiating')
+            ).length === 0 && <div className="flex justify-center">No item found</div>}
             <div className="grid grid-cols-2 2xl:grid-cols-5 lg:grid-cols-3 grid-s-3 gap-3">
               {items?.docs
-                ?.filter((item) => item?.id !== undefined && item.rentingStatus === 'available')
+                ?.filter(
+                  (item) =>
+                    item?.id !== undefined &&
+                    (item.rentingStatus === 'available' || item.rentingStatus === 'negotiating')
+                )
                 .map((item) => {
                   return (
                     <AssetsCard
@@ -129,34 +133,6 @@ export default function MyAssets() {
           </TabsContent>
         </Tabs>
       </div>
-
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious href="#" />
-          </PaginationItem>
-
-          <PaginationItem>
-            <PaginationLink isActive>1</PaginationLink>
-          </PaginationItem>
-
-          <PaginationItem>
-            <PaginationLink href="#">2</PaginationLink>
-          </PaginationItem>
-
-          <PaginationItem>
-            <PaginationLink href="#">3</PaginationLink>
-          </PaginationItem>
-
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-
-          <PaginationItem>
-            <PaginationNext href="#" />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
     </div>
   )
 }

@@ -13,7 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { CloudArrowUp, Paperclip, Trash } from '@phosphor-icons/react'
 import { z } from 'zod'
 
-import { RentingUpdate_status_MutationInput, resolve } from '../../../../../gqty'
+import { RentingUpdate_status_MutationInput, resolve, useRefetch } from '../../../../../gqty'
 
 interface RequestAcceptModalProps {
   onClose: (open: boolean) => void
@@ -88,7 +88,6 @@ export function RequestAcceptModal({ onClose, requestId, refetch }: RequestAccep
         })
           .then((response) => response.json())
           .then(async (result) => {
-            console.log(result)
             fileId = result.doc.id
           })
           .catch((error) => console.error(error))
@@ -118,7 +117,9 @@ export function RequestAcceptModal({ onClose, requestId, refetch }: RequestAccep
         success: true,
       })
       setIsLoading(false)
-      refetch
+      useRefetch({
+        operationName: 'Renting',
+      })
       onClose(false)
     } catch {
       toast({
