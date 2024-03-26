@@ -49,6 +49,7 @@ export default buildConfig({
             [path.resolve(__dirname, './endpoints')]: mockModulePath,
             [path.resolve(__dirname, 'collections/User/hooks/createStripeCustomer')]:
               mockModulePath,
+            [path.resolve(__dirname, 'collections/Item/hooks/beforeChange')]: mockModulePath,
           },
         },
       }

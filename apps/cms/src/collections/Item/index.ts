@@ -1,6 +1,8 @@
 import { CollectionConfig } from 'payload/types'
 
 import { isAdminOrSelf } from '../../access'
+import { beforeProductChange } from './hooks/beforeChange'
+import { ProductSelect } from './ui/ProductSelect'
 
 export const Item: CollectionConfig = {
   slug: 'items',
@@ -13,6 +15,9 @@ export const Item: CollectionConfig = {
     create: isAdminOrSelf,
     delete: () => true,
     readVersions: isAdminOrSelf,
+  },
+  hooks: {
+    beforeChange: [beforeProductChange],
   },
   versions: {
     drafts: true,
@@ -146,10 +151,20 @@ export const Item: CollectionConfig = {
       },
     },
     {
-      type: 'relationship',
+      name: 'stripeProductID',
+      label: 'Stripe Product',
+      type: 'text',
+      admin: {
+        components: {
+          Field: ProductSelect,
+        },
+      },
+    },
+	{
+type: 'relationship',
       name: 'review',
       relationTo: 'reviews',
       hasMany: true,
-    },
+},
   ],
 }
