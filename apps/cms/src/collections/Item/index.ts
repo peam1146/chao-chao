@@ -160,11 +160,11 @@ export const Item: CollectionConfig = {
         },
       },
     },
-	{
-type: 'relationship',
+    {
+      type: 'relationship',
       name: 'review',
       relationTo: 'reviews',
       hasMany: true,
-},
+    },
   ],
 }

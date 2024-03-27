@@ -1,4 +1,6 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
+import dotenv from 'dotenv'
+
 import { S3Client } from '@aws-sdk/client-s3'
 import { webpackBundler } from '@payloadcms/bundler-webpack'
 import { postgresAdapter } from '@payloadcms/db-postgres'
