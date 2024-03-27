@@ -12,9 +12,12 @@ import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { Textarea } from '@/components/ui/textarea'
 import Typography from '@/components/ui/typography'
+import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Headset, Info, PaperPlaneTilt } from '@phosphor-icons/react'
 import { z } from 'zod'
+
+import { resolve } from '../../../gqty'
 
 const validationSchema = z.object({
   problem: z
@@ -28,12 +31,38 @@ const validationSchema = z.object({
 
 type ValidationSchema = z.infer<typeof validationSchema>
 
-function onSubmit(data: z.infer<typeof validationSchema>) {}
-
 export default function HelpPage() {
   const form = useForm<ValidationSchema>({
     resolver: zodResolver(validationSchema),
   })
+  const { toast } = useToast()
+
+  async function onSubmit(data: z.infer<typeof validationSchema>) {
+    try {
+      await resolve(
+        async ({ mutation }) => {
+          return mutation.createReport({
+            data: {
+              reportMessage: data.problem,
+            },
+          })
+        },
+        {
+          cachePolicy: 'no-store',
+        }
+      )
+      toast({
+        title: 'Report Successful',
+        success: true,
+      })
+      form.reset({ problem: '' })
+    } catch (e) {
+      toast({
+        title: 'Report Fail',
+        error: true,
+      })
+    }
+  }
 
   return (
     <div className="container flex flex-col gap-10 my-10">
