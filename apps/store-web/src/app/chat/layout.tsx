@@ -126,13 +126,13 @@ const ChatPage = ({ children }: { children: React.ReactNode }) => {
             id: room?.user1_id.id,
             firstName: room?.user1_id.firstName,
             lastName: room?.user1_id.lastName,
-            profileImage: room?.user1_id.profileImage,
+            profileImage: room?.user1_id.profileImage?.url,
           },
           user2_id: {
             id: room?.user2_id.id,
             firstName: room?.user2_id.firstName,
             lastName: room?.user2_id.lastName,
-            profileImage: room?.user2_id.profileImage,
+            profileImage: room?.user2_id.profileImage?.url,
           },
           lastMessage: room?.lastMessage?.message,
           lastMessageCreatedAt: room?.lastMessage?.createdAt,
@@ -146,7 +146,7 @@ const ChatPage = ({ children }: { children: React.ReactNode }) => {
         const user = room?.user1_id.id === id ? room?.user2_id : room?.user1_id
         return {
           name: `${user?.firstName} ${user?.lastName}`,
-          profileImage: user?.profileImage?.url,
+          profileImage: user?.profileImage,
           id: room?.id,
           userId: user?.id,
           lastMessage: room?.lastMessage,

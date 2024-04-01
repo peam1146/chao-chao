@@ -27,7 +27,6 @@ export const Report: CollectionConfig = {
       name: 'createdBy',
       defaultValue: ({ user }) => user.id,
       required: true,
-      hidden: true,
     },
   ],
 }

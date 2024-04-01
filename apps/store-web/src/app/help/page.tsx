@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import {
@@ -10,6 +11,7 @@ import {
 } from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
+import { Spinner } from '@/components/ui/spinner'
 import { Textarea } from '@/components/ui/textarea'
 import Typography from '@/components/ui/typography'
 import { useToast } from '@/components/ui/use-toast'
@@ -37,7 +39,10 @@ export default function HelpPage() {
   })
   const { toast } = useToast()
 
+  const [isLoading, setIsLoading] = useState(false)
+
   async function onSubmit(data: z.infer<typeof validationSchema>) {
+    setIsLoading(true)
     try {
       await resolve(
         async ({ mutation }) => {
@@ -62,6 +67,7 @@ export default function HelpPage() {
         error: true,
       })
     }
+    setIsLoading(false)
   }
 
   return (
@@ -158,8 +164,14 @@ export default function HelpPage() {
 
             <div className="flex justify-end">
               <Button type="submit" className="gap-2 w-full lg:w-[108px]">
-                <PaperPlaneTilt size={20} />
-                Send
+                {isLoading ? (
+                  <Spinner />
+                ) : (
+                  <>
+                    <PaperPlaneTilt size={20} />
+                    Send
+                  </>
+                )}
               </Button>
             </div>
           </form>

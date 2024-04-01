@@ -383,6 +383,17 @@ export interface Item_start_operator {
   not_equals?: InputMaybe<Scalars['DateTime']>
 }
 
+export interface Item_stripeProductID_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  contains?: InputMaybe<Scalars['String']>
+  equals?: InputMaybe<Scalars['String']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  like?: InputMaybe<Scalars['String']>
+  not_equals?: InputMaybe<Scalars['String']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
 export interface Item_tags_operator {
   all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   equals?: InputMaybe<Scalars['JSON']>
@@ -422,6 +433,7 @@ export interface Item_where {
   rentingStatus?: InputMaybe<Item_rentingStatus_operator>
   review?: InputMaybe<Item_review_operator>
   start?: InputMaybe<Item_start_operator>
+  stripeProductID?: InputMaybe<Item_stripeProductID_operator>
   tags?: InputMaybe<Item_tags_operator>
   updatedAt?: InputMaybe<Item_updatedAt_operator>
 }
@@ -443,6 +455,7 @@ export interface Item_where_and {
   rentingStatus?: InputMaybe<Item_rentingStatus_operator>
   review?: InputMaybe<Item_review_operator>
   start?: InputMaybe<Item_start_operator>
+  stripeProductID?: InputMaybe<Item_stripeProductID_operator>
   tags?: InputMaybe<Item_tags_operator>
   updatedAt?: InputMaybe<Item_updatedAt_operator>
 }
@@ -464,6 +477,7 @@ export interface Item_where_or {
   rentingStatus?: InputMaybe<Item_rentingStatus_operator>
   review?: InputMaybe<Item_review_operator>
   start?: InputMaybe<Item_start_operator>
+  stripeProductID?: InputMaybe<Item_stripeProductID_operator>
   tags?: InputMaybe<Item_tags_operator>
   updatedAt?: InputMaybe<Item_updatedAt_operator>
 }
@@ -1483,6 +1497,17 @@ export interface User_roles_operator {
   not_in?: InputMaybe<Array<InputMaybe<User_roles_Input>>>
 }
 
+export interface User_stripeCustomerID_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  contains?: InputMaybe<Scalars['String']>
+  equals?: InputMaybe<Scalars['String']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  like?: InputMaybe<Scalars['String']>
+  not_equals?: InputMaybe<Scalars['String']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
 export interface User_updatedAt_operator {
   equals?: InputMaybe<Scalars['DateTime']>
   exists?: InputMaybe<Scalars['Boolean']>
@@ -1511,6 +1536,7 @@ export interface User_where {
   requestsReceived?: InputMaybe<User_requestsReceived_operator>
   review?: InputMaybe<User_review_operator>
   roles?: InputMaybe<User_roles_operator>
+  stripeCustomerID?: InputMaybe<User_stripeCustomerID_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
 }
 
@@ -1529,6 +1555,7 @@ export interface User_where_and {
   requestsReceived?: InputMaybe<User_requestsReceived_operator>
   review?: InputMaybe<User_review_operator>
   roles?: InputMaybe<User_roles_operator>
+  stripeCustomerID?: InputMaybe<User_stripeCustomerID_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
 }
 
@@ -1547,6 +1574,7 @@ export interface User_where_or {
   requestsReceived?: InputMaybe<User_requestsReceived_operator>
   review?: InputMaybe<User_review_operator>
   roles?: InputMaybe<User_roles_operator>
+  stripeCustomerID?: InputMaybe<User_stripeCustomerID_operator>
   updatedAt?: InputMaybe<User_updatedAt_operator>
 }
 
@@ -1586,6 +1614,7 @@ export interface mutationItemInput {
   rentingStatus?: InputMaybe<Item_rentingStatus_MutationInput>
   review?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   start?: InputMaybe<Scalars['String']>
+  stripeProductID?: InputMaybe<Scalars['String']>
   tags?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   updatedAt?: InputMaybe<Scalars['String']>
 }
@@ -1606,6 +1635,7 @@ export interface mutationItemUpdateInput {
   rentingStatus?: InputMaybe<ItemUpdate_rentingStatus_MutationInput>
   review?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   start?: InputMaybe<Scalars['String']>
+  stripeProductID?: InputMaybe<Scalars['String']>
   tags?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   updatedAt?: InputMaybe<Scalars['String']>
 }
@@ -1793,6 +1823,7 @@ export interface mutationUserInput {
   review?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   roles: Array<InputMaybe<User_roles_MutationInput>>
   salt?: InputMaybe<Scalars['String']>
+  stripeCustomerID?: InputMaybe<Scalars['String']>
   updatedAt?: InputMaybe<Scalars['String']>
 }
 
@@ -1817,6 +1848,7 @@ export interface mutationUserUpdateInput {
   review?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   roles?: InputMaybe<Array<InputMaybe<UserUpdate_roles_MutationInput>>>
   salt?: InputMaybe<Scalars['String']>
+  stripeCustomerID?: InputMaybe<Scalars['String']>
   updatedAt?: InputMaybe<Scalars['String']>
 }
 
@@ -2034,6 +2066,17 @@ export interface versionsItem_version__start_operator {
   not_equals?: InputMaybe<Scalars['DateTime']>
 }
 
+export interface versionsItem_version__stripeProductID_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  contains?: InputMaybe<Scalars['String']>
+  equals?: InputMaybe<Scalars['String']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  like?: InputMaybe<Scalars['String']>
+  not_equals?: InputMaybe<Scalars['String']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
 export interface versionsItem_version__tags_operator {
   all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   equals?: InputMaybe<Scalars['JSON']>
@@ -2077,6 +2120,7 @@ export interface versionsItem_where {
   version__rentingStatus?: InputMaybe<versionsItem_version__rentingStatus_operator>
   version__review?: InputMaybe<versionsItem_version__review_operator>
   version__start?: InputMaybe<versionsItem_version__start_operator>
+  version__stripeProductID?: InputMaybe<versionsItem_version__stripeProductID_operator>
   version__tags?: InputMaybe<versionsItem_version__tags_operator>
   version__updatedAt?: InputMaybe<versionsItem_version__updatedAt_operator>
 }
@@ -2102,6 +2146,7 @@ export interface versionsItem_where_and {
   version__rentingStatus?: InputMaybe<versionsItem_version__rentingStatus_operator>
   version__review?: InputMaybe<versionsItem_version__review_operator>
   version__start?: InputMaybe<versionsItem_version__start_operator>
+  version__stripeProductID?: InputMaybe<versionsItem_version__stripeProductID_operator>
   version__tags?: InputMaybe<versionsItem_version__tags_operator>
   version__updatedAt?: InputMaybe<versionsItem_version__updatedAt_operator>
 }
@@ -2127,6 +2172,7 @@ export interface versionsItem_where_or {
   version__rentingStatus?: InputMaybe<versionsItem_version__rentingStatus_operator>
   version__review?: InputMaybe<versionsItem_version__review_operator>
   version__start?: InputMaybe<versionsItem_version__start_operator>
+  version__stripeProductID?: InputMaybe<versionsItem_version__stripeProductID_operator>
   version__tags?: InputMaybe<versionsItem_version__tags_operator>
   version__updatedAt?: InputMaybe<versionsItem_version__updatedAt_operator>
 }
@@ -2719,6 +2765,7 @@ export const generatedSchema = {
     rentingStatus: { __type: 'Item_rentingStatus' },
     review: { __type: '[Review!]' },
     start: { __type: 'DateTime' },
+    stripeProductID: { __type: 'String' },
     tags: { __type: '[Tag!]' },
     updatedAt: { __type: 'DateTime' },
   },
@@ -2748,6 +2795,7 @@ export const generatedSchema = {
     rentingStatus: { __type: 'ItemVersion_Version_rentingStatus' },
     review: { __type: '[Review!]' },
     start: { __type: 'DateTime' },
+    stripeProductID: { __type: 'String' },
     tags: { __type: '[Tag!]' },
     updatedAt: { __type: 'DateTime' },
   },
@@ -2889,6 +2937,16 @@ export const generatedSchema = {
     like: { __type: 'DateTime' },
     not_equals: { __type: 'DateTime' },
   },
+  Item_stripeProductID_operator: {
+    all: { __type: '[String]' },
+    contains: { __type: 'String' },
+    equals: { __type: 'String' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[String]' },
+    like: { __type: 'String' },
+    not_equals: { __type: 'String' },
+    not_in: { __type: '[String]' },
+  },
   Item_tags_operator: {
     all: { __type: '[JSON]' },
     equals: { __type: 'JSON' },
@@ -2926,6 +2984,7 @@ export const generatedSchema = {
     rentingStatus: { __type: 'Item_rentingStatus_operator' },
     review: { __type: 'Item_review_operator' },
     start: { __type: 'Item_start_operator' },
+    stripeProductID: { __type: 'Item_stripeProductID_operator' },
     tags: { __type: 'Item_tags_operator' },
     updatedAt: { __type: 'Item_updatedAt_operator' },
   },
@@ -2946,6 +3005,7 @@ export const generatedSchema = {
     rentingStatus: { __type: 'Item_rentingStatus_operator' },
     review: { __type: 'Item_review_operator' },
     start: { __type: 'Item_start_operator' },
+    stripeProductID: { __type: 'Item_stripeProductID_operator' },
     tags: { __type: 'Item_tags_operator' },
     updatedAt: { __type: 'Item_updatedAt_operator' },
   },
@@ -2966,6 +3026,7 @@ export const generatedSchema = {
     rentingStatus: { __type: 'Item_rentingStatus_operator' },
     review: { __type: 'Item_review_operator' },
     start: { __type: 'Item_start_operator' },
+    stripeProductID: { __type: 'Item_stripeProductID_operator' },
     tags: { __type: 'Item_tags_operator' },
     updatedAt: { __type: 'Item_updatedAt_operator' },
   },
@@ -3020,6 +3081,7 @@ export const generatedSchema = {
     rentingStatus: { __type: 'ItemsDocAccessFields_rentingStatus' },
     review: { __type: 'ItemsDocAccessFields_review' },
     start: { __type: 'ItemsDocAccessFields_start' },
+    stripeProductID: { __type: 'ItemsDocAccessFields_stripeProductID' },
     tags: { __type: 'ItemsDocAccessFields_tags' },
     updatedAt: { __type: 'ItemsDocAccessFields_updatedAt' },
   },
@@ -3368,6 +3430,29 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  ItemsDocAccessFields_stripeProductID: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsDocAccessFields_stripeProductID_Create' },
+    delete: { __type: 'ItemsDocAccessFields_stripeProductID_Delete' },
+    read: { __type: 'ItemsDocAccessFields_stripeProductID_Read' },
+    update: { __type: 'ItemsDocAccessFields_stripeProductID_Update' },
+  },
+  ItemsDocAccessFields_stripeProductID_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_stripeProductID_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_stripeProductID_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_stripeProductID_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   ItemsDocAccessFields_tags: {
     __typename: { __type: 'String!' },
     create: { __type: 'ItemsDocAccessFields_tags_Create' },
@@ -3431,6 +3516,7 @@ export const generatedSchema = {
     rentingStatus: { __type: 'ItemsFields_rentingStatus' },
     review: { __type: 'ItemsFields_review' },
     start: { __type: 'ItemsFields_start' },
+    stripeProductID: { __type: 'ItemsFields_stripeProductID' },
     tags: { __type: 'ItemsFields_tags' },
     updatedAt: { __type: 'ItemsFields_updatedAt' },
   },
@@ -3752,6 +3838,29 @@ export const generatedSchema = {
   },
   ItemsFields_start_Read: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
   ItemsFields_start_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_stripeProductID: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsFields_stripeProductID_Create' },
+    delete: { __type: 'ItemsFields_stripeProductID_Delete' },
+    read: { __type: 'ItemsFields_stripeProductID_Read' },
+    update: { __type: 'ItemsFields_stripeProductID_Update' },
+  },
+  ItemsFields_stripeProductID_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_stripeProductID_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_stripeProductID_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_stripeProductID_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -7469,6 +7578,7 @@ export const generatedSchema = {
     review: { __type: '[Review!]' },
     roles: { __type: '[User_roles!]!' },
     salt: { __type: 'String' },
+    stripeCustomerID: { __type: 'String' },
     updatedAt: { __type: 'DateTime' },
   },
   User_bio_operator: {
@@ -7593,6 +7703,16 @@ export const generatedSchema = {
     not_equals: { __type: 'User_roles_Input' },
     not_in: { __type: '[User_roles_Input]' },
   },
+  User_stripeCustomerID_operator: {
+    all: { __type: '[String]' },
+    contains: { __type: 'String' },
+    equals: { __type: 'String' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[String]' },
+    like: { __type: 'String' },
+    not_equals: { __type: 'String' },
+    not_in: { __type: '[String]' },
+  },
   User_updatedAt_operator: {
     equals: { __type: 'DateTime' },
     exists: { __type: 'Boolean' },
@@ -7620,6 +7740,7 @@ export const generatedSchema = {
     requestsReceived: { __type: 'User_requestsReceived_operator' },
     review: { __type: 'User_review_operator' },
     roles: { __type: 'User_roles_operator' },
+    stripeCustomerID: { __type: 'User_stripeCustomerID_operator' },
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
   User_where_and: {
@@ -7637,6 +7758,7 @@ export const generatedSchema = {
     requestsReceived: { __type: 'User_requestsReceived_operator' },
     review: { __type: 'User_review_operator' },
     roles: { __type: 'User_roles_operator' },
+    stripeCustomerID: { __type: 'User_stripeCustomerID_operator' },
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
   User_where_or: {
@@ -7654,6 +7776,7 @@ export const generatedSchema = {
     requestsReceived: { __type: 'User_requestsReceived_operator' },
     review: { __type: 'User_review_operator' },
     roles: { __type: 'User_roles_operator' },
+    stripeCustomerID: { __type: 'User_stripeCustomerID_operator' },
     updatedAt: { __type: 'User_updatedAt_operator' },
   },
   Users: {
@@ -7706,6 +7829,7 @@ export const generatedSchema = {
     requestsReceived: { __type: 'UsersDocAccessFields_requestsReceived' },
     review: { __type: 'UsersDocAccessFields_review' },
     roles: { __type: 'UsersDocAccessFields_roles' },
+    stripeCustomerID: { __type: 'UsersDocAccessFields_stripeCustomerID' },
     updatedAt: { __type: 'UsersDocAccessFields_updatedAt' },
   },
   UsersDocAccessFields_bio: {
@@ -8030,6 +8154,29 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  UsersDocAccessFields_stripeCustomerID: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersDocAccessFields_stripeCustomerID_Create' },
+    delete: { __type: 'UsersDocAccessFields_stripeCustomerID_Delete' },
+    read: { __type: 'UsersDocAccessFields_stripeCustomerID_Read' },
+    update: { __type: 'UsersDocAccessFields_stripeCustomerID_Update' },
+  },
+  UsersDocAccessFields_stripeCustomerID_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_stripeCustomerID_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_stripeCustomerID_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersDocAccessFields_stripeCustomerID_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   UsersDocAccessFields_updatedAt: {
     __typename: { __type: 'String!' },
     create: { __type: 'UsersDocAccessFields_updatedAt_Create' },
@@ -8069,6 +8216,7 @@ export const generatedSchema = {
     requestsReceived: { __type: 'UsersFields_requestsReceived' },
     review: { __type: 'UsersFields_review' },
     roles: { __type: 'UsersFields_roles' },
+    stripeCustomerID: { __type: 'UsersFields_stripeCustomerID' },
     updatedAt: { __type: 'UsersFields_updatedAt' },
   },
   UsersFields_bio: {
@@ -8372,6 +8520,29 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
+  UsersFields_stripeCustomerID: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'UsersFields_stripeCustomerID_Create' },
+    delete: { __type: 'UsersFields_stripeCustomerID_Delete' },
+    read: { __type: 'UsersFields_stripeCustomerID_Read' },
+    update: { __type: 'UsersFields_stripeCustomerID_Update' },
+  },
+  UsersFields_stripeCustomerID_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_stripeCustomerID_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_stripeCustomerID_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  UsersFields_stripeCustomerID_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
   UsersFields_updatedAt: {
     __typename: { __type: 'String!' },
     create: { __type: 'UsersFields_updatedAt_Create' },
@@ -8664,6 +8835,7 @@ export const generatedSchema = {
     rentingStatus: { __type: 'Item_rentingStatus_MutationInput' },
     review: { __type: '[Int]' },
     start: { __type: 'String' },
+    stripeProductID: { __type: 'String' },
     tags: { __type: '[Int]' },
     updatedAt: { __type: 'String' },
   },
@@ -8683,6 +8855,7 @@ export const generatedSchema = {
     rentingStatus: { __type: 'ItemUpdate_rentingStatus_MutationInput' },
     review: { __type: '[Int]' },
     start: { __type: 'String' },
+    stripeProductID: { __type: 'String' },
     tags: { __type: '[Int]' },
     updatedAt: { __type: 'String' },
   },
@@ -8841,6 +9014,7 @@ export const generatedSchema = {
     review: { __type: '[Int]' },
     roles: { __type: '[User_roles_MutationInput]!' },
     salt: { __type: 'String' },
+    stripeCustomerID: { __type: 'String' },
     updatedAt: { __type: 'String' },
   },
   mutationUserUpdateInput: {
@@ -8864,6 +9038,7 @@ export const generatedSchema = {
     review: { __type: '[Int]' },
     roles: { __type: '[UserUpdate_roles_MutationInput]' },
     salt: { __type: 'String' },
+    stripeCustomerID: { __type: 'String' },
     updatedAt: { __type: 'String' },
   },
   payload_preferencesAccess: {
@@ -9273,6 +9448,16 @@ export const generatedSchema = {
     like: { __type: 'DateTime' },
     not_equals: { __type: 'DateTime' },
   },
+  versionsItem_version__stripeProductID_operator: {
+    all: { __type: '[String]' },
+    contains: { __type: 'String' },
+    equals: { __type: 'String' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[String]' },
+    like: { __type: 'String' },
+    not_equals: { __type: 'String' },
+    not_in: { __type: '[String]' },
+  },
   versionsItem_version__tags_operator: {
     all: { __type: '[JSON]' },
     equals: { __type: 'JSON' },
@@ -9314,6 +9499,7 @@ export const generatedSchema = {
     version__rentingStatus: { __type: 'versionsItem_version__rentingStatus_operator' },
     version__review: { __type: 'versionsItem_version__review_operator' },
     version__start: { __type: 'versionsItem_version__start_operator' },
+    version__stripeProductID: { __type: 'versionsItem_version__stripeProductID_operator' },
     version__tags: { __type: 'versionsItem_version__tags_operator' },
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
   },
@@ -9338,6 +9524,7 @@ export const generatedSchema = {
     version__rentingStatus: { __type: 'versionsItem_version__rentingStatus_operator' },
     version__review: { __type: 'versionsItem_version__review_operator' },
     version__start: { __type: 'versionsItem_version__start_operator' },
+    version__stripeProductID: { __type: 'versionsItem_version__stripeProductID_operator' },
     version__tags: { __type: 'versionsItem_version__tags_operator' },
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
   },
@@ -9362,6 +9549,7 @@ export const generatedSchema = {
     version__rentingStatus: { __type: 'versionsItem_version__rentingStatus_operator' },
     version__review: { __type: 'versionsItem_version__review_operator' },
     version__start: { __type: 'versionsItem_version__start_operator' },
+    version__stripeProductID: { __type: 'versionsItem_version__stripeProductID_operator' },
     version__tags: { __type: 'versionsItem_version__tags_operator' },
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
   },
@@ -9904,6 +10092,7 @@ export interface Item {
   rentingStatus?: Maybe<ScalarsEnums['Item_rentingStatus']>
   review?: Maybe<Array<Review>>
   start?: Maybe<ScalarsEnums['DateTime']>
+  stripeProductID?: Maybe<ScalarsEnums['String']>
   tags?: Maybe<Array<Tag>>
   updatedAt?: Maybe<ScalarsEnums['DateTime']>
 }
@@ -9935,6 +10124,7 @@ export interface ItemVersion_Version {
   rentingStatus?: Maybe<ScalarsEnums['ItemVersion_Version_rentingStatus']>
   review?: Maybe<Array<Review>>
   start?: Maybe<ScalarsEnums['DateTime']>
+  stripeProductID?: Maybe<ScalarsEnums['String']>
   tags?: Maybe<Array<Tag>>
   updatedAt?: Maybe<ScalarsEnums['DateTime']>
 }
@@ -9995,6 +10185,7 @@ export interface ItemsDocAccessFields {
   rentingStatus?: Maybe<ItemsDocAccessFields_rentingStatus>
   review?: Maybe<ItemsDocAccessFields_review>
   start?: Maybe<ItemsDocAccessFields_start>
+  stripeProductID?: Maybe<ItemsDocAccessFields_stripeProductID>
   tags?: Maybe<ItemsDocAccessFields_tags>
   updatedAt?: Maybe<ItemsDocAccessFields_updatedAt>
 }
@@ -10419,6 +10610,34 @@ export interface ItemsDocAccessFields_start_Update {
   permission: ScalarsEnums['Boolean']
 }
 
+export interface ItemsDocAccessFields_stripeProductID {
+  __typename?: 'ItemsDocAccessFields_stripeProductID'
+  create?: Maybe<ItemsDocAccessFields_stripeProductID_Create>
+  delete?: Maybe<ItemsDocAccessFields_stripeProductID_Delete>
+  read?: Maybe<ItemsDocAccessFields_stripeProductID_Read>
+  update?: Maybe<ItemsDocAccessFields_stripeProductID_Update>
+}
+
+export interface ItemsDocAccessFields_stripeProductID_Create {
+  __typename?: 'ItemsDocAccessFields_stripeProductID_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_stripeProductID_Delete {
+  __typename?: 'ItemsDocAccessFields_stripeProductID_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_stripeProductID_Read {
+  __typename?: 'ItemsDocAccessFields_stripeProductID_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_stripeProductID_Update {
+  __typename?: 'ItemsDocAccessFields_stripeProductID_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
 export interface ItemsDocAccessFields_tags {
   __typename?: 'ItemsDocAccessFields_tags'
   create?: Maybe<ItemsDocAccessFields_tags_Create>
@@ -10492,6 +10711,7 @@ export interface ItemsFields {
   rentingStatus?: Maybe<ItemsFields_rentingStatus>
   review?: Maybe<ItemsFields_review>
   start?: Maybe<ItemsFields_start>
+  stripeProductID?: Maybe<ItemsFields_stripeProductID>
   tags?: Maybe<ItemsFields_tags>
   updatedAt?: Maybe<ItemsFields_updatedAt>
 }
@@ -10913,6 +11133,34 @@ export interface ItemsFields_start_Read {
 
 export interface ItemsFields_start_Update {
   __typename?: 'ItemsFields_start_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_stripeProductID {
+  __typename?: 'ItemsFields_stripeProductID'
+  create?: Maybe<ItemsFields_stripeProductID_Create>
+  delete?: Maybe<ItemsFields_stripeProductID_Delete>
+  read?: Maybe<ItemsFields_stripeProductID_Read>
+  update?: Maybe<ItemsFields_stripeProductID_Update>
+}
+
+export interface ItemsFields_stripeProductID_Create {
+  __typename?: 'ItemsFields_stripeProductID_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_stripeProductID_Delete {
+  __typename?: 'ItemsFields_stripeProductID_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_stripeProductID_Read {
+  __typename?: 'ItemsFields_stripeProductID_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_stripeProductID_Update {
+  __typename?: 'ItemsFields_stripeProductID_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -14556,6 +14804,7 @@ export interface User {
   review?: Maybe<Array<Review>>
   roles: Array<ScalarsEnums['User_roles']>
   salt?: Maybe<ScalarsEnums['String']>
+  stripeCustomerID?: Maybe<ScalarsEnums['String']>
   updatedAt?: Maybe<ScalarsEnums['DateTime']>
 }
 
@@ -14614,6 +14863,7 @@ export interface UsersDocAccessFields {
   requestsReceived?: Maybe<UsersDocAccessFields_requestsReceived>
   review?: Maybe<UsersDocAccessFields_review>
   roles?: Maybe<UsersDocAccessFields_roles>
+  stripeCustomerID?: Maybe<UsersDocAccessFields_stripeCustomerID>
   updatedAt?: Maybe<UsersDocAccessFields_updatedAt>
 }
 
@@ -15009,6 +15259,34 @@ export interface UsersDocAccessFields_roles_Update {
   permission: ScalarsEnums['Boolean']
 }
 
+export interface UsersDocAccessFields_stripeCustomerID {
+  __typename?: 'UsersDocAccessFields_stripeCustomerID'
+  create?: Maybe<UsersDocAccessFields_stripeCustomerID_Create>
+  delete?: Maybe<UsersDocAccessFields_stripeCustomerID_Delete>
+  read?: Maybe<UsersDocAccessFields_stripeCustomerID_Read>
+  update?: Maybe<UsersDocAccessFields_stripeCustomerID_Update>
+}
+
+export interface UsersDocAccessFields_stripeCustomerID_Create {
+  __typename?: 'UsersDocAccessFields_stripeCustomerID_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_stripeCustomerID_Delete {
+  __typename?: 'UsersDocAccessFields_stripeCustomerID_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_stripeCustomerID_Read {
+  __typename?: 'UsersDocAccessFields_stripeCustomerID_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersDocAccessFields_stripeCustomerID_Update {
+  __typename?: 'UsersDocAccessFields_stripeCustomerID_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
 export interface UsersDocAccessFields_updatedAt {
   __typename?: 'UsersDocAccessFields_updatedAt'
   create?: Maybe<UsersDocAccessFields_updatedAt_Create>
@@ -15053,6 +15331,7 @@ export interface UsersFields {
   requestsReceived?: Maybe<UsersFields_requestsReceived>
   review?: Maybe<UsersFields_review>
   roles?: Maybe<UsersFields_roles>
+  stripeCustomerID?: Maybe<UsersFields_stripeCustomerID>
   updatedAt?: Maybe<UsersFields_updatedAt>
 }
 
@@ -15445,6 +15724,34 @@ export interface UsersFields_roles_Read {
 
 export interface UsersFields_roles_Update {
   __typename?: 'UsersFields_roles_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_stripeCustomerID {
+  __typename?: 'UsersFields_stripeCustomerID'
+  create?: Maybe<UsersFields_stripeCustomerID_Create>
+  delete?: Maybe<UsersFields_stripeCustomerID_Delete>
+  read?: Maybe<UsersFields_stripeCustomerID_Read>
+  update?: Maybe<UsersFields_stripeCustomerID_Update>
+}
+
+export interface UsersFields_stripeCustomerID_Create {
+  __typename?: 'UsersFields_stripeCustomerID_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_stripeCustomerID_Delete {
+  __typename?: 'UsersFields_stripeCustomerID_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_stripeCustomerID_Read {
+  __typename?: 'UsersFields_stripeCustomerID_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface UsersFields_stripeCustomerID_Update {
+  __typename?: 'UsersFields_stripeCustomerID_Update'
   permission: ScalarsEnums['Boolean']
 }
 

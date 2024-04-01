@@ -13,7 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { CloudArrowUp, Paperclip, Trash } from '@phosphor-icons/react'
 import { z } from 'zod'
 
-import { RentingUpdate_status_MutationInput, resolve, useRefetch } from '../../../../../gqty'
+import { RentingUpdate_status_MutationInput, resolve } from '../../../../../gqty'
 
 interface RequestAcceptModalProps {
   onClose: (open: boolean) => void
@@ -95,7 +95,7 @@ export function RequestAcceptModal({ onClose, requestId, refetch }: RequestAccep
 
       await resolve(
         async ({ mutation }) => {
-          const user = mutation.updateRenting({
+          const request = mutation.updateRenting({
             data: {
               insuranceFee: Number(data.insuranceFee),
               deliveryFee: Number(data.deliveryFee),
@@ -105,7 +105,7 @@ export function RequestAcceptModal({ onClose, requestId, refetch }: RequestAccep
             id: Number(requestId),
             autosave: true,
           })
-          return user
+          return request
         },
         {
           cachePolicy: 'no-store',
@@ -117,9 +117,6 @@ export function RequestAcceptModal({ onClose, requestId, refetch }: RequestAccep
         success: true,
       })
       setIsLoading(false)
-      useRefetch({
-        operationName: 'Renting',
-      })
       onClose(false)
     } catch {
       toast({
