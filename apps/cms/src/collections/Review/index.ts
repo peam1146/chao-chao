@@ -1,8 +1,9 @@
 import { User } from 'payload/generated-types'
 import { CollectionConfig } from 'payload/types'
 
-import { isAdmin } from '../../access'
+import { isAdmin, isAdminOrSelf } from '../../access'
 import { checkRole } from '../../access/check-role'
+import { syncCollections } from './hooks/syncCollections'
 
 export const Review: CollectionConfig = {
   slug: 'reviews',
@@ -10,10 +11,10 @@ export const Review: CollectionConfig = {
     read: () => true,
     create: () => true,
     update: isAdmin,
-    delete: isAdmin,
+    delete: isAdminOrSelf,
   },
   hooks: {
-    afterChange: [], //ไปอัพเดทค่าใน collection user หรือ item ตาม option จะ review อะไร
+    afterChange: [syncCollections], //ไปอัพเดทค่าใน collection user หรือ item ตาม option จะ review อะไร
   },
   admin: {
     hidden: ({ user }) => !checkRole(['admin'], user as unknown as User),
@@ -56,7 +57,6 @@ export const Review: CollectionConfig = {
       name: 'createdBy',
       defaultValue: ({ user }) => user.id,
       required: true,
-      hidden: true,
     },
   ],
 }

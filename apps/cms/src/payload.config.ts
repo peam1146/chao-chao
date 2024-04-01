@@ -8,12 +8,11 @@ import { payloadCloud } from '@payloadcms/plugin-cloud'
 import stripePlugin from '@payloadcms/plugin-stripe'
 import { slateEditor } from '@payloadcms/richtext-slate'
 import path from 'path'
-import { openapi, redoc } from 'payload-oapi'
+import { openapi, swaggerUI } from 'payload-oapi'
 import s3Upload from 'payload-s3-upload'
 import { buildConfig } from 'payload/config'
 
-import { Item, Media, Renting, Tag, Users } from './collections'
-import { Chatroom, Message } from './collections'
+import { Chatroom, Item, Media, Message, Renting, Tag, Users } from './collections'
 import { Report } from './collections/Report'
 import { Review } from './collections/Review'
 import { ACCESS_KEY_ID, REGION, SECRET_KEY_ID } from './common/env'
@@ -71,7 +70,7 @@ export default buildConfig({
       openapiVersion: '3.0',
       metadata: { title: 'Dev API', version: '0.0.1' },
     }),
-    redoc({}),
+    swaggerUI({}),
     s3Upload(
       new S3Client({
         region: REGION,

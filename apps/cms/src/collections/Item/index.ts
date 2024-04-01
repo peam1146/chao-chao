@@ -1,7 +1,6 @@
 import { CollectionConfig } from 'payload/types'
 
 import { isAdminOrSelf } from '../../access'
-import { beforeProductChange } from './hooks/beforeChange'
 import { ProductSelect } from './ui/ProductSelect'
 
 export const Item: CollectionConfig = {
@@ -16,9 +15,9 @@ export const Item: CollectionConfig = {
     delete: () => true,
     readVersions: isAdminOrSelf,
   },
-  hooks: {
-    beforeChange: [beforeProductChange],
-  },
+  // hooks: {
+  //   beforeChange: [beforeProductChange],
+  // },
   versions: {
     drafts: true,
   },
@@ -165,6 +164,10 @@ export const Item: CollectionConfig = {
       name: 'review',
       relationTo: 'reviews',
       hasMany: true,
+      maxDepth: 4,
+      access: {
+        update: () => true,
+      },
     },
   ],
 }
