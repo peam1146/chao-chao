@@ -16149,49 +16149,35 @@ export interface messageDocAccess {
 
 export interface Mutation {
   __typename?: 'Mutation'
-  createChatroom: (
-    args: {
-      data: mutationChatroomInput
-      draft?: Maybe<Scalars['Boolean']>
-    }
-  ) => Maybe<Chatroom>
+  createChatroom: (args: {
+    data: mutationChatroomInput
+    draft?: Maybe<Scalars['Boolean']>
+  }) => Maybe<Chatroom>
   createItem: (args: { data: mutationItemInput; draft?: Maybe<Scalars['Boolean']> }) => Maybe<Item>
-  createMedia: (
-    args: {
-      data: mutationMediaInput
-      draft?: Maybe<Scalars['Boolean']>
-    }
-  ) => Maybe<Media>
-  createMessage: (
-    args: {
-      data: mutationMessageInput
-      draft?: Maybe<Scalars['Boolean']>
-    }
-  ) => Maybe<Message>
-  createPayloadPreference: (
-    args: {
-      data: mutationPayloadPreferenceInput
-      draft?: Maybe<Scalars['Boolean']>
-    }
-  ) => Maybe<PayloadPreference>
-  createRenting: (
-    args: {
-      data: mutationRentingInput
-      draft?: Maybe<Scalars['Boolean']>
-    }
-  ) => Maybe<Renting>
-  createReport: (
-    args: {
-      data: mutationReportInput
-      draft?: Maybe<Scalars['Boolean']>
-    }
-  ) => Maybe<Report>
-  createReview: (
-    args: {
-      data: mutationReviewInput
-      draft?: Maybe<Scalars['Boolean']>
-    }
-  ) => Maybe<Review>
+  createMedia: (args: {
+    data: mutationMediaInput
+    draft?: Maybe<Scalars['Boolean']>
+  }) => Maybe<Media>
+  createMessage: (args: {
+    data: mutationMessageInput
+    draft?: Maybe<Scalars['Boolean']>
+  }) => Maybe<Message>
+  createPayloadPreference: (args: {
+    data: mutationPayloadPreferenceInput
+    draft?: Maybe<Scalars['Boolean']>
+  }) => Maybe<PayloadPreference>
+  createRenting: (args: {
+    data: mutationRentingInput
+    draft?: Maybe<Scalars['Boolean']>
+  }) => Maybe<Renting>
+  createReport: (args: {
+    data: mutationReportInput
+    draft?: Maybe<Scalars['Boolean']>
+  }) => Maybe<Report>
+  createReview: (args: {
+    data: mutationReviewInput
+    draft?: Maybe<Scalars['Boolean']>
+  }) => Maybe<Review>
   createTag: (args: { data: mutationTagInput; draft?: Maybe<Scalars['Boolean']> }) => Maybe<Tag>
   createUser: (args: { data: mutationUserInput; draft?: Maybe<Scalars['Boolean']> }) => Maybe<User>
   deleteChatroom: (args: { id: Scalars['Int'] }) => Maybe<Chatroom>
@@ -16204,109 +16190,83 @@ export interface Mutation {
   deleteReview: (args: { id: Scalars['Int'] }) => Maybe<Review>
   deleteTag: (args: { id: Scalars['Int'] }) => Maybe<Tag>
   deleteUser: (args: { id: Scalars['Int'] }) => Maybe<User>
-  forgotPasswordUser: (
-    args: {
-      disableEmail?: Maybe<Scalars['Boolean']>
-      email: Scalars['String']
-      expiration?: Maybe<Scalars['Int']>
-    }
-  ) => ScalarsEnums['Boolean']
-  loginUser: (
-    args?: {
-      email?: Maybe<Scalars['String']>
-      password?: Maybe<Scalars['String']>
-    }
-  ) => Maybe<usersLoginResult>
+  forgotPasswordUser: (args: {
+    disableEmail?: Maybe<Scalars['Boolean']>
+    email: Scalars['String']
+    expiration?: Maybe<Scalars['Int']>
+  }) => ScalarsEnums['Boolean']
+  loginUser: (args?: {
+    email?: Maybe<Scalars['String']>
+    password?: Maybe<Scalars['String']>
+  }) => Maybe<usersLoginResult>
   logoutUser?: Maybe<ScalarsEnums['String']>
   refreshTokenUser: (args?: { token?: Maybe<Scalars['String']> }) => Maybe<usersRefreshedUser>
-  resetPasswordUser: (
-    args?: {
-      password?: Maybe<Scalars['String']>
-      token?: Maybe<Scalars['String']>
-    }
-  ) => Maybe<usersResetPassword>
+  resetPasswordUser: (args?: {
+    password?: Maybe<Scalars['String']>
+    token?: Maybe<Scalars['String']>
+  }) => Maybe<usersResetPassword>
   restoreVersionItem: (args?: { id?: Maybe<Scalars['Int']> }) => Maybe<Item>
   unlockUser: (args: { email: Scalars['String'] }) => ScalarsEnums['Boolean']
-  updateChatroom: (
-    args: {
-      autosave?: Maybe<Scalars['Boolean']>
-      data: mutationChatroomUpdateInput
-      draft?: Maybe<Scalars['Boolean']>
-      id: Scalars['Int']
-    }
-  ) => Maybe<Chatroom>
-  updateItem: (
-    args: {
-      autosave?: Maybe<Scalars['Boolean']>
-      data: mutationItemUpdateInput
-      draft?: Maybe<Scalars['Boolean']>
-      id: Scalars['Int']
-    }
-  ) => Maybe<Item>
-  updateMedia: (
-    args: {
-      autosave?: Maybe<Scalars['Boolean']>
-      data: mutationMediaUpdateInput
-      draft?: Maybe<Scalars['Boolean']>
-      id: Scalars['Int']
-    }
-  ) => Maybe<Media>
-  updateMessage: (
-    args: {
-      autosave?: Maybe<Scalars['Boolean']>
-      data: mutationMessageUpdateInput
-      draft?: Maybe<Scalars['Boolean']>
-      id: Scalars['Int']
-    }
-  ) => Maybe<Message>
-  updatePayloadPreference: (
-    args: {
-      autosave?: Maybe<Scalars['Boolean']>
-      data: mutationPayloadPreferenceUpdateInput
-      draft?: Maybe<Scalars['Boolean']>
-      id: Scalars['Int']
-    }
-  ) => Maybe<PayloadPreference>
-  updateRenting: (
-    args: {
-      autosave?: Maybe<Scalars['Boolean']>
-      data: mutationRentingUpdateInput
-      draft?: Maybe<Scalars['Boolean']>
-      id: Scalars['Int']
-    }
-  ) => Maybe<Renting>
-  updateReport: (
-    args: {
-      autosave?: Maybe<Scalars['Boolean']>
-      data: mutationReportUpdateInput
-      draft?: Maybe<Scalars['Boolean']>
-      id: Scalars['Int']
-    }
-  ) => Maybe<Report>
-  updateReview: (
-    args: {
-      autosave?: Maybe<Scalars['Boolean']>
-      data: mutationReviewUpdateInput
-      draft?: Maybe<Scalars['Boolean']>
-      id: Scalars['Int']
-    }
-  ) => Maybe<Review>
-  updateTag: (
-    args: {
-      autosave?: Maybe<Scalars['Boolean']>
-      data: mutationTagUpdateInput
-      draft?: Maybe<Scalars['Boolean']>
-      id: Scalars['Int']
-    }
-  ) => Maybe<Tag>
-  updateUser: (
-    args: {
-      autosave?: Maybe<Scalars['Boolean']>
-      data: mutationUserUpdateInput
-      draft?: Maybe<Scalars['Boolean']>
-      id: Scalars['Int']
-    }
-  ) => Maybe<User>
+  updateChatroom: (args: {
+    autosave?: Maybe<Scalars['Boolean']>
+    data: mutationChatroomUpdateInput
+    draft?: Maybe<Scalars['Boolean']>
+    id: Scalars['Int']
+  }) => Maybe<Chatroom>
+  updateItem: (args: {
+    autosave?: Maybe<Scalars['Boolean']>
+    data: mutationItemUpdateInput
+    draft?: Maybe<Scalars['Boolean']>
+    id: Scalars['Int']
+  }) => Maybe<Item>
+  updateMedia: (args: {
+    autosave?: Maybe<Scalars['Boolean']>
+    data: mutationMediaUpdateInput
+    draft?: Maybe<Scalars['Boolean']>
+    id: Scalars['Int']
+  }) => Maybe<Media>
+  updateMessage: (args: {
+    autosave?: Maybe<Scalars['Boolean']>
+    data: mutationMessageUpdateInput
+    draft?: Maybe<Scalars['Boolean']>
+    id: Scalars['Int']
+  }) => Maybe<Message>
+  updatePayloadPreference: (args: {
+    autosave?: Maybe<Scalars['Boolean']>
+    data: mutationPayloadPreferenceUpdateInput
+    draft?: Maybe<Scalars['Boolean']>
+    id: Scalars['Int']
+  }) => Maybe<PayloadPreference>
+  updateRenting: (args: {
+    autosave?: Maybe<Scalars['Boolean']>
+    data: mutationRentingUpdateInput
+    draft?: Maybe<Scalars['Boolean']>
+    id: Scalars['Int']
+  }) => Maybe<Renting>
+  updateReport: (args: {
+    autosave?: Maybe<Scalars['Boolean']>
+    data: mutationReportUpdateInput
+    draft?: Maybe<Scalars['Boolean']>
+    id: Scalars['Int']
+  }) => Maybe<Report>
+  updateReview: (args: {
+    autosave?: Maybe<Scalars['Boolean']>
+    data: mutationReviewUpdateInput
+    draft?: Maybe<Scalars['Boolean']>
+    id: Scalars['Int']
+  }) => Maybe<Review>
+  updateTag: (args: {
+    autosave?: Maybe<Scalars['Boolean']>
+    data: mutationTagUpdateInput
+    draft?: Maybe<Scalars['Boolean']>
+    id: Scalars['Int']
+  }) => Maybe<Tag>
+  updateUser: (args: {
+    autosave?: Maybe<Scalars['Boolean']>
+    data: mutationUserUpdateInput
+    draft?: Maybe<Scalars['Boolean']>
+    id: Scalars['Int']
+  }) => Maybe<User>
   verifyEmailUser: (args?: { token?: Maybe<Scalars['String']> }) => Maybe<ScalarsEnums['Boolean']>
 }
 
@@ -16332,110 +16292,88 @@ export interface Query {
   __typename?: 'Query'
   Access?: Maybe<Access>
   Chatroom: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Chatroom>
-  Chatrooms: (
-    args?: {
-      draft?: Maybe<Scalars['Boolean']>
-      limit?: Maybe<Scalars['Int']>
-      page?: Maybe<Scalars['Int']>
-      sort?: Maybe<Scalars['String']>
-      where?: Maybe<Chatroom_where>
-    }
-  ) => Maybe<Chatrooms>
+  Chatrooms: (args?: {
+    draft?: Maybe<Scalars['Boolean']>
+    limit?: Maybe<Scalars['Int']>
+    page?: Maybe<Scalars['Int']>
+    sort?: Maybe<Scalars['String']>
+    where?: Maybe<Chatroom_where>
+  }) => Maybe<Chatrooms>
   Item: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Item>
-  Items: (
-    args?: {
-      draft?: Maybe<Scalars['Boolean']>
-      limit?: Maybe<Scalars['Int']>
-      page?: Maybe<Scalars['Int']>
-      sort?: Maybe<Scalars['String']>
-      where?: Maybe<Item_where>
-    }
-  ) => Maybe<Items>
+  Items: (args?: {
+    draft?: Maybe<Scalars['Boolean']>
+    limit?: Maybe<Scalars['Int']>
+    page?: Maybe<Scalars['Int']>
+    sort?: Maybe<Scalars['String']>
+    where?: Maybe<Item_where>
+  }) => Maybe<Items>
   Media: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Media>
-  Medias: (
-    args?: {
-      draft?: Maybe<Scalars['Boolean']>
-      limit?: Maybe<Scalars['Int']>
-      page?: Maybe<Scalars['Int']>
-      sort?: Maybe<Scalars['String']>
-      where?: Maybe<Media_where>
-    }
-  ) => Maybe<Medias>
+  Medias: (args?: {
+    draft?: Maybe<Scalars['Boolean']>
+    limit?: Maybe<Scalars['Int']>
+    page?: Maybe<Scalars['Int']>
+    sort?: Maybe<Scalars['String']>
+    where?: Maybe<Media_where>
+  }) => Maybe<Medias>
   Message: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Message>
-  Messages: (
-    args?: {
-      draft?: Maybe<Scalars['Boolean']>
-      limit?: Maybe<Scalars['Int']>
-      page?: Maybe<Scalars['Int']>
-      sort?: Maybe<Scalars['String']>
-      where?: Maybe<Message_where>
-    }
-  ) => Maybe<Messages>
-  PayloadPreference: (
-    args: {
-      draft?: Maybe<Scalars['Boolean']>
-      id: Scalars['Int']
-    }
-  ) => Maybe<PayloadPreference>
-  PayloadPreferences: (
-    args?: {
-      draft?: Maybe<Scalars['Boolean']>
-      limit?: Maybe<Scalars['Int']>
-      page?: Maybe<Scalars['Int']>
-      sort?: Maybe<Scalars['String']>
-      where?: Maybe<PayloadPreference_where>
-    }
-  ) => Maybe<PayloadPreferences>
+  Messages: (args?: {
+    draft?: Maybe<Scalars['Boolean']>
+    limit?: Maybe<Scalars['Int']>
+    page?: Maybe<Scalars['Int']>
+    sort?: Maybe<Scalars['String']>
+    where?: Maybe<Message_where>
+  }) => Maybe<Messages>
+  PayloadPreference: (args: {
+    draft?: Maybe<Scalars['Boolean']>
+    id: Scalars['Int']
+  }) => Maybe<PayloadPreference>
+  PayloadPreferences: (args?: {
+    draft?: Maybe<Scalars['Boolean']>
+    limit?: Maybe<Scalars['Int']>
+    page?: Maybe<Scalars['Int']>
+    sort?: Maybe<Scalars['String']>
+    where?: Maybe<PayloadPreference_where>
+  }) => Maybe<PayloadPreferences>
   Renting: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Renting>
-  Rentings: (
-    args?: {
-      draft?: Maybe<Scalars['Boolean']>
-      limit?: Maybe<Scalars['Int']>
-      page?: Maybe<Scalars['Int']>
-      sort?: Maybe<Scalars['String']>
-      where?: Maybe<Renting_where>
-    }
-  ) => Maybe<Rentings>
+  Rentings: (args?: {
+    draft?: Maybe<Scalars['Boolean']>
+    limit?: Maybe<Scalars['Int']>
+    page?: Maybe<Scalars['Int']>
+    sort?: Maybe<Scalars['String']>
+    where?: Maybe<Renting_where>
+  }) => Maybe<Rentings>
   Report: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Report>
-  Reports: (
-    args?: {
-      draft?: Maybe<Scalars['Boolean']>
-      limit?: Maybe<Scalars['Int']>
-      page?: Maybe<Scalars['Int']>
-      sort?: Maybe<Scalars['String']>
-      where?: Maybe<Report_where>
-    }
-  ) => Maybe<Reports>
+  Reports: (args?: {
+    draft?: Maybe<Scalars['Boolean']>
+    limit?: Maybe<Scalars['Int']>
+    page?: Maybe<Scalars['Int']>
+    sort?: Maybe<Scalars['String']>
+    where?: Maybe<Report_where>
+  }) => Maybe<Reports>
   Review: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Review>
-  Reviews: (
-    args?: {
-      draft?: Maybe<Scalars['Boolean']>
-      limit?: Maybe<Scalars['Int']>
-      page?: Maybe<Scalars['Int']>
-      sort?: Maybe<Scalars['String']>
-      where?: Maybe<Review_where>
-    }
-  ) => Maybe<Reviews>
+  Reviews: (args?: {
+    draft?: Maybe<Scalars['Boolean']>
+    limit?: Maybe<Scalars['Int']>
+    page?: Maybe<Scalars['Int']>
+    sort?: Maybe<Scalars['String']>
+    where?: Maybe<Review_where>
+  }) => Maybe<Reviews>
   Tag: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Tag>
-  Tags: (
-    args?: {
-      draft?: Maybe<Scalars['Boolean']>
-      limit?: Maybe<Scalars['Int']>
-      page?: Maybe<Scalars['Int']>
-      sort?: Maybe<Scalars['String']>
-      where?: Maybe<Tag_where>
-    }
-  ) => Maybe<Tags>
+  Tags: (args?: {
+    draft?: Maybe<Scalars['Boolean']>
+    limit?: Maybe<Scalars['Int']>
+    page?: Maybe<Scalars['Int']>
+    sort?: Maybe<Scalars['String']>
+    where?: Maybe<Tag_where>
+  }) => Maybe<Tags>
   User: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<User>
-  Users: (
-    args?: {
-      draft?: Maybe<Scalars['Boolean']>
-      limit?: Maybe<Scalars['Int']>
-      page?: Maybe<Scalars['Int']>
-      sort?: Maybe<Scalars['String']>
-      where?: Maybe<User_where>
-    }
-  ) => Maybe<Users>
+  Users: (args?: {
+    draft?: Maybe<Scalars['Boolean']>
+    limit?: Maybe<Scalars['Int']>
+    page?: Maybe<Scalars['Int']>
+    sort?: Maybe<Scalars['String']>
+    where?: Maybe<User_where>
+  }) => Maybe<Users>
   docAccessChatroom: (args: { id: Scalars['Int'] }) => Maybe<chatroomDocAccess>
   docAccessItem: (args: { id: Scalars['Int'] }) => Maybe<itemsDocAccess>
   docAccessMedia: (args: { id: Scalars['Int'] }) => Maybe<mediasDocAccess>
@@ -16449,14 +16387,12 @@ export interface Query {
   initializedUser?: Maybe<ScalarsEnums['Boolean']>
   meUser?: Maybe<usersMe>
   versionItem: (args?: { id?: Maybe<Scalars['Int']> }) => Maybe<ItemVersion>
-  versionsItems: (
-    args?: {
-      limit?: Maybe<Scalars['Int']>
-      page?: Maybe<Scalars['Int']>
-      sort?: Maybe<Scalars['String']>
-      where?: Maybe<versionsItem_where>
-    }
-  ) => Maybe<versionsItems>
+  versionsItems: (args?: {
+    limit?: Maybe<Scalars['Int']>
+    page?: Maybe<Scalars['Int']>
+    sort?: Maybe<Scalars['String']>
+    where?: Maybe<versionsItem_where>
+  }) => Maybe<versionsItems>
 }
 
 export interface rentingAccess {

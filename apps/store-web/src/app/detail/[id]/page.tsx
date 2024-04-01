@@ -1,5 +1,6 @@
 'use client'
 
+import { Reviews } from '@/components/layout/Reviews'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -15,7 +16,6 @@ import Description from './components/Description'
 import Details from './components/Details'
 import Gallery from './components/Gallery'
 import Lessor from './components/Lessor'
-import Reviews from './components/Reviews'
 
 export default function DetailPage() {
   const router = useRouter()
@@ -24,6 +24,7 @@ export default function DetailPage() {
 
   const query = useQuery({
     fetchPolicy: 'network-only',
+    suspense: true,
   })
 
   const item = query.Item({
@@ -31,6 +32,28 @@ export default function DetailPage() {
   })
 
   const userId = query.meUser?.user?.id
+
+  const reviewsArray = query.Reviews({
+    where: {
+      rating: {
+        greater_than: 0,
+      },
+    },
+  })
+
+  const reviews =
+    reviewsArray?.docs
+      ?.filter((review) => review?.reviewToItem?.id === Number(id))
+      .map((review) => {
+        return {
+          image:
+            'https://chaochao-bucket.s3-ap-southeast-2.amazonaws.com/images/Facebook Photo.jpg',
+          name: 'mockname',
+          date: review?.updatedAt ?? '',
+          rating: review?.rating,
+          description: review?.description,
+        }
+      }) ?? []
 
   return (
     <div className="container flex flex-col gap-y-4 py-4 lg:py-12">
@@ -51,7 +74,7 @@ export default function DetailPage() {
       </div>
       <Lessor isSelf={item?.createdBy?.id === userId} user={item?.createdBy} />
       {!(item?.createdBy?.id === userId) && <Details details={item?.description} />}
-      <Reviews />
+      <Reviews reviews={reviews} />
     </div>
   )
 }

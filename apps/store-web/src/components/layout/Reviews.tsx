@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-
 import {
   Pagination,
   PaginationContent,
@@ -15,8 +13,24 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Typography from '@/components/ui/typography'
 import { Rating } from '@mui/material'
 
-export function Review() {
-  const [value, setValue] = useState<number | null>(2)
+import TabContent, { Review } from './TabContent'
+
+export type ReviewsProps = {
+  reviews: Review[]
+}
+
+function avgRating(reviews: Review[]) {
+  const totalRating = reviews.reduce((acc, review) => {
+    if (!review?.rating) return acc
+    return acc + review?.rating
+  }, 0)
+  return totalRating / reviews.length
+}
+
+export function Reviews(props: ReviewsProps) {
+  const { reviews } = props
+
+  if (!reviews) return null
 
   return (
     <div className="flex flex-col gap-y-4 p-6 bg-card rounded-2xl w-full">
@@ -27,7 +41,7 @@ export function Review() {
         <div className="flex flex-col">
           <div className="flex justify-center">
             <Typography variant="h3" fontWeight="bold">
-              {(4).toFixed(1)}
+              {avgRating(reviews).toFixed(1)}
             </Typography>
             <Typography variant="h5" className="text-light my-auto">
               /5
@@ -66,14 +80,28 @@ export function Review() {
               1 star
             </TabsTrigger>
           </TabsList>
-          <TabsContent value="all"></TabsContent>
-          <TabsContent value="star5"></TabsContent>
-          <TabsContent value="star4"></TabsContent>
-          <TabsContent value="star3"></TabsContent>
-          <TabsContent value="star2"></TabsContent>
-          <TabsContent value="star1"></TabsContent>
+          <TabsContent value="all">
+            <TabContent reviews={reviews} />
+          </TabsContent>
+          <TabsContent value="star5">
+            <TabContent reviews={reviews} starRating={5} />
+          </TabsContent>
+          <TabsContent value="star4">
+            <TabContent reviews={reviews} starRating={4} />
+          </TabsContent>
+          <TabsContent value="star3">
+            <TabContent reviews={reviews} starRating={3} />
+          </TabsContent>
+          <TabsContent value="star2">
+            <TabContent reviews={reviews} starRating={2} />
+          </TabsContent>
+          <TabsContent value="star1">
+            <TabContent reviews={reviews} starRating={1} />
+          </TabsContent>
         </Tabs>
       </div>
+
+      {/*waiting for backend to query*/}
       <Pagination>
         <PaginationContent>
           <PaginationItem>

@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 
 import profile from '@/assets/images/profileLogo.png'
+import { Reviews } from '@/components/layout/Reviews'
 import { Button } from '@/components/ui/button'
 import Typography from '@/components/ui/typography'
 import Rating from '@mui/material/Rating'
@@ -12,7 +13,6 @@ import { useRouter } from 'next/navigation'
 
 import { useQuery } from '../../../gqty'
 import { MyAsset } from './components/MyAsset'
-import { Review } from './components/Review'
 
 export default function Profile() {
   const router = useRouter()
@@ -22,6 +22,28 @@ export default function Profile() {
   })
 
   const user = query.meUser?.user
+
+  const reviewsArray = query.Reviews({
+    where: {
+      rating: {
+        greater_than: 0,
+      },
+    },
+  })
+
+  const reviews =
+    reviewsArray?.docs
+      ?.filter((review) => review?.reviewToUser?.id === user?.id)
+      .map((review) => {
+        return {
+          image:
+            'https://chaochao-bucket.s3-ap-southeast-2.amazonaws.com/images/Facebook Photo.jpg',
+          name: 'mockname',
+          date: review?.updatedAt ?? '',
+          rating: review?.rating,
+          description: review?.description,
+        }
+      }) ?? []
 
   useEffect(() => {
     if (user?.firstName === '' || user?.lastName === '') {
@@ -95,7 +117,7 @@ export default function Profile() {
         </div>
       </div>
       <MyAsset />
-      <Review />
+      <Reviews reviews={reviews} />
     </main>
   )
 }
