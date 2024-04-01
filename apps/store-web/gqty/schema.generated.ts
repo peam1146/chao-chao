@@ -1079,6 +1079,14 @@ export interface Report_createdAt_operator {
   not_equals?: InputMaybe<Scalars['DateTime']>
 }
 
+export interface Report_createdBy_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
 export interface Report_id_operator {
   equals?: InputMaybe<Scalars['Int']>
   exists?: InputMaybe<Scalars['Boolean']>
@@ -1111,6 +1119,7 @@ export interface Report_where {
   AND?: InputMaybe<Array<InputMaybe<Report_where_and>>>
   OR?: InputMaybe<Array<InputMaybe<Report_where_or>>>
   createdAt?: InputMaybe<Report_createdAt_operator>
+  createdBy?: InputMaybe<Report_createdBy_operator>
   id?: InputMaybe<Report_id_operator>
   reportMessage?: InputMaybe<Report_reportMessage_operator>
   updatedAt?: InputMaybe<Report_updatedAt_operator>
@@ -1118,6 +1127,7 @@ export interface Report_where {
 
 export interface Report_where_and {
   createdAt?: InputMaybe<Report_createdAt_operator>
+  createdBy?: InputMaybe<Report_createdBy_operator>
   id?: InputMaybe<Report_id_operator>
   reportMessage?: InputMaybe<Report_reportMessage_operator>
   updatedAt?: InputMaybe<Report_updatedAt_operator>
@@ -1125,6 +1135,7 @@ export interface Report_where_and {
 
 export interface Report_where_or {
   createdAt?: InputMaybe<Report_createdAt_operator>
+  createdBy?: InputMaybe<Report_createdBy_operator>
   id?: InputMaybe<Report_id_operator>
   reportMessage?: InputMaybe<Report_reportMessage_operator>
   updatedAt?: InputMaybe<Report_updatedAt_operator>
@@ -1144,6 +1155,14 @@ export interface Review_createdAt_operator {
   less_than_equal?: InputMaybe<Scalars['DateTime']>
   like?: InputMaybe<Scalars['DateTime']>
   not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Review_createdBy_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
 }
 
 export interface Review_description_operator {
@@ -1231,6 +1250,7 @@ export interface Review_where {
   AND?: InputMaybe<Array<InputMaybe<Review_where_and>>>
   OR?: InputMaybe<Array<InputMaybe<Review_where_or>>>
   createdAt?: InputMaybe<Review_createdAt_operator>
+  createdBy?: InputMaybe<Review_createdBy_operator>
   description?: InputMaybe<Review_description_operator>
   id?: InputMaybe<Review_id_operator>
   option?: InputMaybe<Review_option_operator>
@@ -1242,6 +1262,7 @@ export interface Review_where {
 
 export interface Review_where_and {
   createdAt?: InputMaybe<Review_createdAt_operator>
+  createdBy?: InputMaybe<Review_createdBy_operator>
   description?: InputMaybe<Review_description_operator>
   id?: InputMaybe<Review_id_operator>
   option?: InputMaybe<Review_option_operator>
@@ -1253,6 +1274,7 @@ export interface Review_where_and {
 
 export interface Review_where_or {
   createdAt?: InputMaybe<Review_createdAt_operator>
+  createdBy?: InputMaybe<Review_createdBy_operator>
   description?: InputMaybe<Review_description_operator>
   id?: InputMaybe<Review_id_operator>
   option?: InputMaybe<Review_option_operator>
@@ -6502,6 +6524,7 @@ export const generatedSchema = {
   ReportDocAccessFields: {
     __typename: { __type: 'String!' },
     createdAt: { __type: 'ReportDocAccessFields_createdAt' },
+    createdBy: { __type: 'ReportDocAccessFields_createdBy' },
     reportMessage: { __type: 'ReportDocAccessFields_reportMessage' },
     updatedAt: { __type: 'ReportDocAccessFields_updatedAt' },
   },
@@ -6525,6 +6548,29 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   ReportDocAccessFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportDocAccessFields_createdBy: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReportDocAccessFields_createdBy_Create' },
+    delete: { __type: 'ReportDocAccessFields_createdBy_Delete' },
+    read: { __type: 'ReportDocAccessFields_createdBy_Read' },
+    update: { __type: 'ReportDocAccessFields_createdBy_Update' },
+  },
+  ReportDocAccessFields_createdBy_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportDocAccessFields_createdBy_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportDocAccessFields_createdBy_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportDocAccessFields_createdBy_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -6577,6 +6623,7 @@ export const generatedSchema = {
   ReportFields: {
     __typename: { __type: 'String!' },
     createdAt: { __type: 'ReportFields_createdAt' },
+    createdBy: { __type: 'ReportFields_createdBy' },
     reportMessage: { __type: 'ReportFields_reportMessage' },
     updatedAt: { __type: 'ReportFields_updatedAt' },
   },
@@ -6600,6 +6647,29 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   ReportFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields_createdBy: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReportFields_createdBy_Create' },
+    delete: { __type: 'ReportFields_createdBy_Delete' },
+    read: { __type: 'ReportFields_createdBy_Read' },
+    update: { __type: 'ReportFields_createdBy_Update' },
+  },
+  ReportFields_createdBy_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields_createdBy_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields_createdBy_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReportFields_createdBy_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -6679,6 +6749,13 @@ export const generatedSchema = {
     like: { __type: 'DateTime' },
     not_equals: { __type: 'DateTime' },
   },
+  Report_createdBy_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
   Report_id_operator: {
     equals: { __type: 'Int' },
     exists: { __type: 'Boolean' },
@@ -6708,18 +6785,21 @@ export const generatedSchema = {
     AND: { __type: '[Report_where_and]' },
     OR: { __type: '[Report_where_or]' },
     createdAt: { __type: 'Report_createdAt_operator' },
+    createdBy: { __type: 'Report_createdBy_operator' },
     id: { __type: 'Report_id_operator' },
     reportMessage: { __type: 'Report_reportMessage_operator' },
     updatedAt: { __type: 'Report_updatedAt_operator' },
   },
   Report_where_and: {
     createdAt: { __type: 'Report_createdAt_operator' },
+    createdBy: { __type: 'Report_createdBy_operator' },
     id: { __type: 'Report_id_operator' },
     reportMessage: { __type: 'Report_reportMessage_operator' },
     updatedAt: { __type: 'Report_updatedAt_operator' },
   },
   Report_where_or: {
     createdAt: { __type: 'Report_createdAt_operator' },
+    createdBy: { __type: 'Report_createdBy_operator' },
     id: { __type: 'Report_id_operator' },
     reportMessage: { __type: 'Report_reportMessage_operator' },
     updatedAt: { __type: 'Report_updatedAt_operator' },
@@ -6759,6 +6839,13 @@ export const generatedSchema = {
     less_than_equal: { __type: 'DateTime' },
     like: { __type: 'DateTime' },
     not_equals: { __type: 'DateTime' },
+  },
+  Review_createdBy_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
   },
   Review_description_operator: {
     all: { __type: '[String]' },
@@ -6823,6 +6910,7 @@ export const generatedSchema = {
     AND: { __type: '[Review_where_and]' },
     OR: { __type: '[Review_where_or]' },
     createdAt: { __type: 'Review_createdAt_operator' },
+    createdBy: { __type: 'Review_createdBy_operator' },
     description: { __type: 'Review_description_operator' },
     id: { __type: 'Review_id_operator' },
     option: { __type: 'Review_option_operator' },
@@ -6833,6 +6921,7 @@ export const generatedSchema = {
   },
   Review_where_and: {
     createdAt: { __type: 'Review_createdAt_operator' },
+    createdBy: { __type: 'Review_createdBy_operator' },
     description: { __type: 'Review_description_operator' },
     id: { __type: 'Review_id_operator' },
     option: { __type: 'Review_option_operator' },
@@ -6843,6 +6932,7 @@ export const generatedSchema = {
   },
   Review_where_or: {
     createdAt: { __type: 'Review_createdAt_operator' },
+    createdBy: { __type: 'Review_createdBy_operator' },
     description: { __type: 'Review_description_operator' },
     id: { __type: 'Review_id_operator' },
     option: { __type: 'Review_option_operator' },
@@ -6888,6 +6978,7 @@ export const generatedSchema = {
   ReviewsDocAccessFields: {
     __typename: { __type: 'String!' },
     createdAt: { __type: 'ReviewsDocAccessFields_createdAt' },
+    createdBy: { __type: 'ReviewsDocAccessFields_createdBy' },
     description: { __type: 'ReviewsDocAccessFields_description' },
     option: { __type: 'ReviewsDocAccessFields_option' },
     rating: { __type: 'ReviewsDocAccessFields_rating' },
@@ -6915,6 +7006,29 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   ReviewsDocAccessFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_createdBy: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsDocAccessFields_createdBy_Create' },
+    delete: { __type: 'ReviewsDocAccessFields_createdBy_Delete' },
+    read: { __type: 'ReviewsDocAccessFields_createdBy_Read' },
+    update: { __type: 'ReviewsDocAccessFields_createdBy_Update' },
+  },
+  ReviewsDocAccessFields_createdBy_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_createdBy_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_createdBy_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsDocAccessFields_createdBy_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -7059,6 +7173,7 @@ export const generatedSchema = {
   ReviewsFields: {
     __typename: { __type: 'String!' },
     createdAt: { __type: 'ReviewsFields_createdAt' },
+    createdBy: { __type: 'ReviewsFields_createdBy' },
     description: { __type: 'ReviewsFields_description' },
     option: { __type: 'ReviewsFields_option' },
     rating: { __type: 'ReviewsFields_rating' },
@@ -7086,6 +7201,29 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   ReviewsFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_createdBy: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ReviewsFields_createdBy_Create' },
+    delete: { __type: 'ReviewsFields_createdBy_Delete' },
+    read: { __type: 'ReviewsFields_createdBy_Read' },
+    update: { __type: 'ReviewsFields_createdBy_Update' },
+  },
+  ReviewsFields_createdBy_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_createdBy_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_createdBy_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ReviewsFields_createdBy_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -13760,6 +13898,7 @@ export interface ReportDeleteDocAccess {
 export interface ReportDocAccessFields {
   __typename?: 'ReportDocAccessFields'
   createdAt?: Maybe<ReportDocAccessFields_createdAt>
+  createdBy?: Maybe<ReportDocAccessFields_createdBy>
   reportMessage?: Maybe<ReportDocAccessFields_reportMessage>
   updatedAt?: Maybe<ReportDocAccessFields_updatedAt>
 }
@@ -13789,6 +13928,34 @@ export interface ReportDocAccessFields_createdAt_Read {
 
 export interface ReportDocAccessFields_createdAt_Update {
   __typename?: 'ReportDocAccessFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportDocAccessFields_createdBy {
+  __typename?: 'ReportDocAccessFields_createdBy'
+  create?: Maybe<ReportDocAccessFields_createdBy_Create>
+  delete?: Maybe<ReportDocAccessFields_createdBy_Delete>
+  read?: Maybe<ReportDocAccessFields_createdBy_Read>
+  update?: Maybe<ReportDocAccessFields_createdBy_Update>
+}
+
+export interface ReportDocAccessFields_createdBy_Create {
+  __typename?: 'ReportDocAccessFields_createdBy_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportDocAccessFields_createdBy_Delete {
+  __typename?: 'ReportDocAccessFields_createdBy_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportDocAccessFields_createdBy_Read {
+  __typename?: 'ReportDocAccessFields_createdBy_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportDocAccessFields_createdBy_Update {
+  __typename?: 'ReportDocAccessFields_createdBy_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -13851,6 +14018,7 @@ export interface ReportDocAccessFields_updatedAt_Update {
 export interface ReportFields {
   __typename?: 'ReportFields'
   createdAt?: Maybe<ReportFields_createdAt>
+  createdBy?: Maybe<ReportFields_createdBy>
   reportMessage?: Maybe<ReportFields_reportMessage>
   updatedAt?: Maybe<ReportFields_updatedAt>
 }
@@ -13880,6 +14048,34 @@ export interface ReportFields_createdAt_Read {
 
 export interface ReportFields_createdAt_Update {
   __typename?: 'ReportFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields_createdBy {
+  __typename?: 'ReportFields_createdBy'
+  create?: Maybe<ReportFields_createdBy_Create>
+  delete?: Maybe<ReportFields_createdBy_Delete>
+  read?: Maybe<ReportFields_createdBy_Read>
+  update?: Maybe<ReportFields_createdBy_Update>
+}
+
+export interface ReportFields_createdBy_Create {
+  __typename?: 'ReportFields_createdBy_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields_createdBy_Delete {
+  __typename?: 'ReportFields_createdBy_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields_createdBy_Read {
+  __typename?: 'ReportFields_createdBy_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReportFields_createdBy_Update {
+  __typename?: 'ReportFields_createdBy_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -14033,6 +14229,7 @@ export interface ReviewsDeleteDocAccess {
 export interface ReviewsDocAccessFields {
   __typename?: 'ReviewsDocAccessFields'
   createdAt?: Maybe<ReviewsDocAccessFields_createdAt>
+  createdBy?: Maybe<ReviewsDocAccessFields_createdBy>
   description?: Maybe<ReviewsDocAccessFields_description>
   option?: Maybe<ReviewsDocAccessFields_option>
   rating?: Maybe<ReviewsDocAccessFields_rating>
@@ -14066,6 +14263,34 @@ export interface ReviewsDocAccessFields_createdAt_Read {
 
 export interface ReviewsDocAccessFields_createdAt_Update {
   __typename?: 'ReviewsDocAccessFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_createdBy {
+  __typename?: 'ReviewsDocAccessFields_createdBy'
+  create?: Maybe<ReviewsDocAccessFields_createdBy_Create>
+  delete?: Maybe<ReviewsDocAccessFields_createdBy_Delete>
+  read?: Maybe<ReviewsDocAccessFields_createdBy_Read>
+  update?: Maybe<ReviewsDocAccessFields_createdBy_Update>
+}
+
+export interface ReviewsDocAccessFields_createdBy_Create {
+  __typename?: 'ReviewsDocAccessFields_createdBy_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_createdBy_Delete {
+  __typename?: 'ReviewsDocAccessFields_createdBy_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_createdBy_Read {
+  __typename?: 'ReviewsDocAccessFields_createdBy_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsDocAccessFields_createdBy_Update {
+  __typename?: 'ReviewsDocAccessFields_createdBy_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -14240,6 +14465,7 @@ export interface ReviewsDocAccessFields_updatedAt_Update {
 export interface ReviewsFields {
   __typename?: 'ReviewsFields'
   createdAt?: Maybe<ReviewsFields_createdAt>
+  createdBy?: Maybe<ReviewsFields_createdBy>
   description?: Maybe<ReviewsFields_description>
   option?: Maybe<ReviewsFields_option>
   rating?: Maybe<ReviewsFields_rating>
@@ -14273,6 +14499,34 @@ export interface ReviewsFields_createdAt_Read {
 
 export interface ReviewsFields_createdAt_Update {
   __typename?: 'ReviewsFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_createdBy {
+  __typename?: 'ReviewsFields_createdBy'
+  create?: Maybe<ReviewsFields_createdBy_Create>
+  delete?: Maybe<ReviewsFields_createdBy_Delete>
+  read?: Maybe<ReviewsFields_createdBy_Read>
+  update?: Maybe<ReviewsFields_createdBy_Update>
+}
+
+export interface ReviewsFields_createdBy_Create {
+  __typename?: 'ReviewsFields_createdBy_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_createdBy_Delete {
+  __typename?: 'ReviewsFields_createdBy_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_createdBy_Read {
+  __typename?: 'ReviewsFields_createdBy_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ReviewsFields_createdBy_Update {
+  __typename?: 'ReviewsFields_createdBy_Update'
   permission: ScalarsEnums['Boolean']
 }
 

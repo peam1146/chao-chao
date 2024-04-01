@@ -22,7 +22,7 @@ export default function RequestReceivedContainer() {
   const [open, setOpen] = useState(false)
 
   const query = useQuery({
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'network-only',
     suspense: true,
     refetchOnRender: true,
   })
@@ -42,7 +42,7 @@ export default function RequestReceivedContainer() {
           return request
         },
         {
-          cachePolicy: 'reload',
+          cachePolicy: 'no-cache',
         }
       )
       toast({

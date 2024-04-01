@@ -93,7 +93,10 @@ export default function RequestMadeContainer() {
                       onSubmit(Number(request.id))
                     }}
                   >
-                    <Typography variant={isDesktop ? 'h6' : 'h5'} className="items-center">
+                    <Typography
+                      variant={isDesktop ? 'h6' : 'h5'}
+                      className="items-center flex justify-center"
+                    >
                       {isLoading ? <Spinner size="xs" /> : 'Cancel'}
                     </Typography>
                   </Button>

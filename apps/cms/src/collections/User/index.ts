@@ -168,6 +168,10 @@ export const Users: CollectionConfig = {
       name: 'review',
       relationTo: 'reviews',
       hasMany: true,
+      maxDepth: 4,
+      access: {
+        update: () => true,
+      },
     },
   ],
 }

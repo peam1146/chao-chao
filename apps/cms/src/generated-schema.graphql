@@ -3929,6 +3929,7 @@ input Review_where {
   reviewToUser: Review_reviewToUser_operator
   reviewToItem: Review_reviewToItem_operator
   option: Review_option_operator
+  createdBy: Review_createdBy_operator
   updatedAt: Review_updatedAt_operator
   createdAt: Review_createdAt_operator
   id: Review_id_operator
@@ -3986,6 +3987,14 @@ enum Review_option_Input {
   USER
 }
 
+input Review_createdBy_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
 input Review_updatedAt_operator {
   equals: DateTime
   not_equals: DateTime
@@ -4024,6 +4033,7 @@ input Review_where_and {
   reviewToUser: Review_reviewToUser_operator
   reviewToItem: Review_reviewToItem_operator
   option: Review_option_operator
+  createdBy: Review_createdBy_operator
   updatedAt: Review_updatedAt_operator
   createdAt: Review_createdAt_operator
   id: Review_id_operator
@@ -4035,6 +4045,7 @@ input Review_where_or {
   reviewToUser: Review_reviewToUser_operator
   reviewToItem: Review_reviewToItem_operator
   option: Review_option_operator
+  createdBy: Review_createdBy_operator
   updatedAt: Review_updatedAt_operator
   createdAt: Review_createdAt_operator
   id: Review_id_operator
@@ -4054,6 +4065,7 @@ type ReviewsDocAccessFields {
   reviewToUser: ReviewsDocAccessFields_reviewToUser
   reviewToItem: ReviewsDocAccessFields_reviewToItem
   option: ReviewsDocAccessFields_option
+  createdBy: ReviewsDocAccessFields_createdBy
   updatedAt: ReviewsDocAccessFields_updatedAt
   createdAt: ReviewsDocAccessFields_createdAt
 }
@@ -4173,6 +4185,29 @@ type ReviewsDocAccessFields_option_Delete {
   permission: Boolean!
 }
 
+type ReviewsDocAccessFields_createdBy {
+  create: ReviewsDocAccessFields_createdBy_Create
+  read: ReviewsDocAccessFields_createdBy_Read
+  update: ReviewsDocAccessFields_createdBy_Update
+  delete: ReviewsDocAccessFields_createdBy_Delete
+}
+
+type ReviewsDocAccessFields_createdBy_Create {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_createdBy_Read {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_createdBy_Update {
+  permission: Boolean!
+}
+
+type ReviewsDocAccessFields_createdBy_Delete {
+  permission: Boolean!
+}
+
 type ReviewsDocAccessFields_updatedAt {
   create: ReviewsDocAccessFields_updatedAt_Create
   read: ReviewsDocAccessFields_updatedAt_Read
@@ -4263,6 +4298,7 @@ type Reports {
 
 input Report_where {
   reportMessage: Report_reportMessage_operator
+  createdBy: Report_createdBy_operator
   updatedAt: Report_updatedAt_operator
   createdAt: Report_createdAt_operator
   id: Report_id_operator
@@ -4275,6 +4311,14 @@ input Report_reportMessage_operator {
   not_equals: String
   like: String
   contains: String
+}
+
+input Report_createdBy_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
 }
 
 input Report_updatedAt_operator {
@@ -4311,6 +4355,7 @@ input Report_id_operator {
 
 input Report_where_and {
   reportMessage: Report_reportMessage_operator
+  createdBy: Report_createdBy_operator
   updatedAt: Report_updatedAt_operator
   createdAt: Report_createdAt_operator
   id: Report_id_operator
@@ -4318,6 +4363,7 @@ input Report_where_and {
 
 input Report_where_or {
   reportMessage: Report_reportMessage_operator
+  createdBy: Report_createdBy_operator
   updatedAt: Report_updatedAt_operator
   createdAt: Report_createdAt_operator
   id: Report_id_operator
@@ -4333,6 +4379,7 @@ type reportDocAccess {
 
 type ReportDocAccessFields {
   reportMessage: ReportDocAccessFields_reportMessage
+  createdBy: ReportDocAccessFields_createdBy
   updatedAt: ReportDocAccessFields_updatedAt
   createdAt: ReportDocAccessFields_createdAt
 }
@@ -4357,6 +4404,29 @@ type ReportDocAccessFields_reportMessage_Update {
 }
 
 type ReportDocAccessFields_reportMessage_Delete {
+  permission: Boolean!
+}
+
+type ReportDocAccessFields_createdBy {
+  create: ReportDocAccessFields_createdBy_Create
+  read: ReportDocAccessFields_createdBy_Read
+  update: ReportDocAccessFields_createdBy_Update
+  delete: ReportDocAccessFields_createdBy_Delete
+}
+
+type ReportDocAccessFields_createdBy_Create {
+  permission: Boolean!
+}
+
+type ReportDocAccessFields_createdBy_Read {
+  permission: Boolean!
+}
+
+type ReportDocAccessFields_createdBy_Update {
+  permission: Boolean!
+}
+
+type ReportDocAccessFields_createdBy_Delete {
   permission: Boolean!
 }
 
@@ -6791,6 +6861,7 @@ type ReviewsFields {
   reviewToUser: ReviewsFields_reviewToUser
   reviewToItem: ReviewsFields_reviewToItem
   option: ReviewsFields_option
+  createdBy: ReviewsFields_createdBy
   updatedAt: ReviewsFields_updatedAt
   createdAt: ReviewsFields_createdAt
 }
@@ -6910,6 +6981,29 @@ type ReviewsFields_option_Delete {
   permission: Boolean!
 }
 
+type ReviewsFields_createdBy {
+  create: ReviewsFields_createdBy_Create
+  read: ReviewsFields_createdBy_Read
+  update: ReviewsFields_createdBy_Update
+  delete: ReviewsFields_createdBy_Delete
+}
+
+type ReviewsFields_createdBy_Create {
+  permission: Boolean!
+}
+
+type ReviewsFields_createdBy_Read {
+  permission: Boolean!
+}
+
+type ReviewsFields_createdBy_Update {
+  permission: Boolean!
+}
+
+type ReviewsFields_createdBy_Delete {
+  permission: Boolean!
+}
+
 type ReviewsFields_updatedAt {
   create: ReviewsFields_updatedAt_Create
   read: ReviewsFields_updatedAt_Read
@@ -6986,6 +7080,7 @@ type reportAccess {
 
 type ReportFields {
   reportMessage: ReportFields_reportMessage
+  createdBy: ReportFields_createdBy
   updatedAt: ReportFields_updatedAt
   createdAt: ReportFields_createdAt
 }
@@ -7010,6 +7105,29 @@ type ReportFields_reportMessage_Update {
 }
 
 type ReportFields_reportMessage_Delete {
+  permission: Boolean!
+}
+
+type ReportFields_createdBy {
+  create: ReportFields_createdBy_Create
+  read: ReportFields_createdBy_Read
+  update: ReportFields_createdBy_Update
+  delete: ReportFields_createdBy_Delete
+}
+
+type ReportFields_createdBy_Create {
+  permission: Boolean!
+}
+
+type ReportFields_createdBy_Read {
+  permission: Boolean!
+}
+
+type ReportFields_createdBy_Update {
+  permission: Boolean!
+}
+
+type ReportFields_createdBy_Delete {
   permission: Boolean!
 }
 

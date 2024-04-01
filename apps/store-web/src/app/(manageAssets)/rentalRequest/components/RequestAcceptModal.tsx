@@ -18,7 +18,7 @@ import { RentingUpdate_status_MutationInput, resolve } from '../../../../../gqty
 interface RequestAcceptModalProps {
   onClose: (open: boolean) => void
   requestId?: number
-  refetch?: () => void
+  refetch: () => void
 }
 
 const submitAcceptRequestSchema = z.object({
@@ -116,6 +116,7 @@ export function RequestAcceptModal({ onClose, requestId, refetch }: RequestAccep
         description: 'Accept request successfully',
         success: true,
       })
+      refetch()
       setIsLoading(false)
       onClose(false)
     } catch {
