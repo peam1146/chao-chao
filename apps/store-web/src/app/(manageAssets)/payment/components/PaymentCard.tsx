@@ -22,6 +22,7 @@ export type PaymentCardContainerProps = {
 }
 
 export type ExpensesCardButtonProps = {
+  onClick?: () => void
   dueDate: Date
 }
 
@@ -57,7 +58,13 @@ export function PaymentCardContainer(props: PaymentCardContainerProps) {
   const assetFromLabel = variant === 'receivable' ? 'Request from:' : 'Asset from:'
   return (
     <div className="flex gap-3 w-full pt-2 pb-2 ">
-      <Image src={thumbnail} alt="thumbnail" className="w-[100px] h-[100px]" />
+      <Image
+        src={thumbnail}
+        alt="thumbnail"
+        className="w-[100px] h-[100px]"
+        width={100}
+        height={100}
+      />
       <div className="flex flex-col gap-1 w-full">
         <Button variant="link" className="p-0 w-fit h-fit">
           <Typography variant="h5">{title}</Typography>
@@ -123,7 +130,7 @@ export function PaymentCardContainer(props: PaymentCardContainerProps) {
 }
 
 export function ExpensesCardButton(props: ExpensesCardButtonProps) {
-  const { dueDate } = props
+  const { dueDate, onClick } = props
   const dueDateText = `${dueDate.getDate()}/${dueDate.toLocaleString('default', {
     month: '2-digit',
     year: '2-digit',
@@ -142,7 +149,7 @@ export function ExpensesCardButton(props: ExpensesCardButtonProps) {
             <Typography variant="tiny">{dueDateText}</Typography>
           </div>
         </div>
-        <Button variant="default" className="flex gap-2 w-full">
+        <Button onClick={onClick} variant="default" className="flex gap-2 w-full">
           <Typography>Pay Now</Typography>
         </Button>
       </div>

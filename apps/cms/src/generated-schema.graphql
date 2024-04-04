@@ -182,6 +182,7 @@ enum Item__status {
 enum Renting_status {
   PENDING
   PROCESSING
+  WAIT_PAID
   COMPLETED
 }
 
@@ -3358,6 +3359,7 @@ input Renting_status_operator {
 enum Renting_status_Input {
   PENDING
   PROCESSING
+  WAIT_PAID
   COMPLETED
 }
 
@@ -7663,6 +7665,7 @@ input mutationRenting_RentedToInput {
 enum Renting_status_MutationInput {
   PENDING
   PROCESSING
+  WAIT_PAID
   COMPLETED
 }
 
@@ -7694,6 +7697,7 @@ input mutationRentingUpdate_RentedToInput {
 enum RentingUpdate_status_MutationInput {
   PENDING
   PROCESSING
+  WAIT_PAID
   COMPLETED
 }
 

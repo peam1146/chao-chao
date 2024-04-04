@@ -847,6 +847,7 @@ export enum RentingUpdate_status_MutationInput {
   COMPLETED = 'COMPLETED',
   PENDING = 'PENDING',
   PROCESSING = 'PROCESSING',
+  WAIT_PAID = 'WAIT_PAID',
 }
 
 export interface Renting_createdAt_operator {
@@ -968,18 +969,21 @@ export enum Renting_status {
   COMPLETED = 'COMPLETED',
   PENDING = 'PENDING',
   PROCESSING = 'PROCESSING',
+  WAIT_PAID = 'WAIT_PAID',
 }
 
 export enum Renting_status_Input {
   COMPLETED = 'COMPLETED',
   PENDING = 'PENDING',
   PROCESSING = 'PROCESSING',
+  WAIT_PAID = 'WAIT_PAID',
 }
 
 export enum Renting_status_MutationInput {
   COMPLETED = 'COMPLETED',
   PENDING = 'PENDING',
   PROCESSING = 'PROCESSING',
+  WAIT_PAID = 'WAIT_PAID',
 }
 
 export interface Renting_status_operator {

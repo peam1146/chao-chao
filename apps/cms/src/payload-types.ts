@@ -72,7 +72,7 @@ export interface Renting {
   };
   startDate: string;
   endDate: string;
-  status?: 'PENDING' | 'PROCESSING' | 'COMPLETED';
+  status?: 'PENDING' | 'PROCESSING' | 'WAIT_PAID' | 'COMPLETED';
   totalPrice?: number;
   rentalFee?: number;
   insuranceFee?: number;

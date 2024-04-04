@@ -24,6 +24,7 @@ export default function SigninForm() {
   })
   const { toast } = useToast()
   async function onSubmit(data: z.infer<typeof loginSchema>) {
+    console.log(data)
     try {
       await userLogin(data)
       toast({

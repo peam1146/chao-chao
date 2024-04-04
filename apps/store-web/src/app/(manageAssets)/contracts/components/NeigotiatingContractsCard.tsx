@@ -63,7 +63,7 @@ export default function NeigotiatingContractsCard(props: ContractCardprop) {
           const update = mutation.updateRenting({
             id: Number(request?.id),
             data: {
-              status: RentingUpdate_status_MutationInput.COMPLETED,
+              status: RentingUpdate_status_MutationInput.WAIT_PAID,
             },
           })
           return update
