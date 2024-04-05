@@ -28,9 +28,12 @@ export default function PaymentHistoryContainer() {
 						rentalFee={50}
 						totalFee={1100}
 					/>
-					<div className="flex justify-center items-center w-max">
-						<div className="flex flex-col gap-2 w-max items-center justify-center">
-							<Typography variant="h6" className="text-unavailable">
+					<div className="flex justify-center items-center xl:w-max max-xl:w-full">
+						<div className="flex xl:flex-col max-xl:flex-row-reverse max-xl:w-full gap-2 xl:w-max items-center justify-center">
+							<Typography
+								variant="h6"
+								className="text-unavailable w-full text-center"
+							>
 								- ฿1,110
 							</Typography>
 							<Button
@@ -58,9 +61,12 @@ export default function PaymentHistoryContainer() {
 						totalFee={1100}
 						variant="receivable"
 					/>
-					<div className="flex justify-center items-center w-max">
-						<div className="flex flex-col gap-2 w-max items-center justify-center">
-							<Typography variant="h6" className="text-available">
+					<div className="flex justify-center items-center xl:w-max max-xl:w-full">
+						<div className="flex xl:flex-col max-xl:flex-row-reverse max-xl:w-full gap-2 xl:w-max items-center justify-center">
+							<Typography
+								variant="h6"
+								className="text-available w-full text-center"
+							>
 								+ ฿1,110
 							</Typography>
 							<Button
@@ -81,6 +87,8 @@ export default function PaymentHistoryContainer() {
 				onOpenChange={setOpenRenterReviewModal}
 			>
 				<PaymentHistoryRenterReviewModal
+					reviewToUser={1}
+					reviewToItem={1}
 					onClick={() => setOpenRenterReviewModal(false)}
 				/>
 			</Modal>
@@ -89,6 +97,7 @@ export default function PaymentHistoryContainer() {
 				onOpenChange={SetOpenLessorReviewModal}
 			>
 				<PaymentHistoryLessorReviewModal
+					reviewToUser={1}
 					onClick={() => SetOpenLessorReviewModal(false)}
 				/>
 			</Modal>
