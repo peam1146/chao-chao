@@ -1,6 +1,5 @@
 import type { FieldHook } from 'payload/types'
 
-
 // ensure the first user created is an admin
 // 1. lookup a single user on create as succinctly as possible
 // 2. if there are no users found, append `admin` to the roles array
