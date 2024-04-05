@@ -14,6 +14,7 @@ import Typography from '@/components/ui/typography'
 import { CreditCard } from '@phosphor-icons/react'
 
 import ExpensesContainer from './ExpensesContainer'
+import HistoryContainer from './HistoryContainer'
 import ReceivableContainer from './ReceivableContainer'
 
 export function PaymentContainer() {
@@ -44,7 +45,9 @@ export function PaymentContainer() {
           <TabsContent value="receivables">
             <ReceivableContainer />
           </TabsContent>
-          <TabsContent value="paymentHistory"></TabsContent>
+          <TabsContent value="paymentHistory">
+            <HistoryContainer />
+          </TabsContent>
         </Tabs>
       </div>
 

@@ -16,19 +16,17 @@ import {
 
 // real
 export default function ExpensesContainer() {
-  const searchParams = useSearchParams()
-
-  const stripeSuccess = searchParams.get('success')
-
-  const { Rentings } = useQuery()
+  const { Rentings, meUser } = useQuery()
 
   const toPay = Rentings({
     where: {
       status: { equals: Renting_status_Input.WAIT_PAID },
     },
-  })?.docs?.map((renting) => ({
-    ...renting,
-  }))
+  })
+    ?.docs?.filter((renting) => renting?.rentedBy?.user?.id === meUser?.user?.id)
+    ?.map((renting) => ({
+      ...renting,
+    }))
 
   const handlePay = async (
     productId: number | undefined,

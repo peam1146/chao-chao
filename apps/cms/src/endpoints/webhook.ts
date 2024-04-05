@@ -5,22 +5,17 @@ import type { PayloadRequest } from 'payload/types'
 export const webhook: PayloadHandler = async (req: PayloadRequest, res) => {
   const event = req.body
 
-  console.log('Received event', JSON.stringify(event, null, 2))
-
   switch (event.type) {
     case 'checkout.session.completed':
-      console.log('Checkout session completed', event, event.data.object.metadata.rentingId)
+      await req.payload.update({
+        collection: 'renting',
+        id: event.data.object.metadata.rentingId,
+        data: {
+          status: 'COMPLETED',
+        },
+      })
 
-      console.log(
-        payload.update({
-          collection: 'renting',
-          id: event.data.object.metadata.rentingId,
-          data: {
-            status: 'COMPLETED',
-          },
-        })
-      )
-
+      res.json({ received: true })
       break
     default:
       console.log(`Unhandled event type ${event.type}`)
