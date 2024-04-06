@@ -87,7 +87,7 @@ export default function AssetsCard({
             )}
           </div>
         </div>
-        <div className="flex flex-col gap-1 lg:gap-4 w-fit items-start">
+        <div className="flex flex-col gap-1 w-fit items-start">
           <div className="lg:gap-2 gap-1">
             <Typography variant="tiny" fontWeight="bold" className="lg:h4 line-clamp-1">
               {name}
@@ -110,7 +110,7 @@ export default function AssetsCard({
               </Typography>
             </div>
           </div>
-          <Typography variant="h6" className="lg:h4">
+          <Typography variant="h6">
             {price}฿/{periodType}
           </Typography>
         </div>
