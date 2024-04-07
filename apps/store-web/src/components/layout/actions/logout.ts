@@ -1,18 +1,21 @@
 'use server'
 
 import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
-
-import { resolve } from '../../../../gqty'
 
 export async function logout() {
-  const { res } = await resolve(({ mutation }) => {
-    const res = mutation.logoutUser
-    return { res }
-  })
+  try {
+    const req = await fetch('http://localhost:3001/api/users/logout', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
 
-  if (res) {
-    cookies().set('payload-token', '', { secure: false })
-    redirect('/')
+    if (req) {
+      cookies().set('payload-token', '', { secure: false, priority: 'high' })
+    }
+  } catch (err) {
+    console.log(err)
   }
 }

@@ -1,11 +1,13 @@
 'use client'
 
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import signupLogo from '@/assets/images/Saly-1.png'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { Spinner } from '@/components/ui/spinner'
 import Typography from '@/components/ui/typography'
 import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -40,7 +42,10 @@ export default function SignupForm() {
   const { toast } = useToast()
   const router = useRouter()
 
+  const [isLoading, setIsLoading] = useState(false)
+
   async function onSubmit(data: z.infer<typeof validationSchema>) {
+    setIsLoading(true)
     try {
       await resolve(
         async ({ mutation }) => {
@@ -58,18 +63,18 @@ export default function SignupForm() {
           cachePolicy: 'no-store',
         }
       )
-
       toast({
         title: 'Sign up Successful',
         success: true,
       })
-
+      setIsLoading(false)
       router.push('/signin')
     } catch (e) {
       toast({
         title: 'This email is already registered.',
         error: true,
       })
+      setIsLoading(false)
     }
   }
 
@@ -161,8 +166,8 @@ export default function SignupForm() {
             />
           </div>
           <div className="flex flex-col items-center gap-y-2 w-full">
-            <Button type="submit" className="bg-primary w-full lg:w-[108px]">
-              Sign up
+            <Button type="submit" className="bg-primary w-full lg:w-[108px]" disabled={isLoading}>
+              {isLoading ? <Spinner className="flex justify-center" /> : 'Sign up'}
             </Button>
             <div className="text-h6 flex flex-row gap-x-1">
               <Typography variant="h6"> Already have an account?</Typography>

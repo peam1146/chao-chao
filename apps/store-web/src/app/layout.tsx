@@ -4,7 +4,6 @@ import { ThemeProvider } from '@/providers/Theme'
 import type { Metadata } from 'next'
 import { IBM_Plex_Sans_Thai_Looped } from 'next/font/google'
 
-import { resolve } from '../../gqty'
 import './globals.css'
 
 const sans = IBM_Plex_Sans_Thai_Looped({
@@ -21,12 +20,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const { id } = await resolve(({ query }) => {
-    return {
-      id: query.meUser?.user?.id,
-    }
-  })
-
   return (
     <html lang="en">
       <body className={sans.className}>
@@ -38,7 +31,7 @@ export default async function RootLayout({
         >
           <Toaster />
           <div className="min-h-screen max-w-screen flex flex-col bg-background">
-            <Navbar id={id} />
+            <Navbar />
             <div className="flex-1 flex-col flex relative w-full">{children}</div>
           </div>
         </ThemeProvider>

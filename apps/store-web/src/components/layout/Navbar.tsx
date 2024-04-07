@@ -8,7 +8,7 @@ import { SearchIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 
-import { Maybe, useQuery } from '../../../gqty'
+import { useQuery } from '../../../gqty'
 import Typography from '../ui/typography'
 import { MenuSheet } from './components/MenuSheet'
 import { ProfileToggle } from './components/profile-toggle'
@@ -26,7 +26,6 @@ const SearchSuggestion = () => {
 
   const { Items, meUser } = useQuery({
     fetchPolicy: 'cache-and-network',
-    refetchOnWindowVisible: false,
   })
 
   const me = meUser?.user?.id
@@ -110,11 +109,15 @@ const SearchSuggestion = () => {
   )
 }
 
-const Navbar = ({ id }: { id: Maybe<Number | undefined> }) => {
+const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false)
   const [openSearch, setOpenSearch] = useState(false)
 
   const pathname = usePathname()
+
+  const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
+
+  const id = token['payload-token']
 
   return (
     <>
@@ -127,7 +130,7 @@ const Navbar = ({ id }: { id: Maybe<Number | undefined> }) => {
           </Link>
           <SearchSuggestion />
           <div className="flex items-center gap-4">
-            {!id && (
+            {id === '' && (
               <>
                 <Link href="/signin" className="flex flex-row gap-0.5 items-center">
                   <Typography variant="h5" className={cn(pathname !== '/signin' && 'text-light')}>
@@ -141,7 +144,7 @@ const Navbar = ({ id }: { id: Maybe<Number | undefined> }) => {
                 </Link>
               </>
             )}
-            {id && (
+            {id !== '' && (
               <>
                 <Link href="/myAssets" className="flex flex-row gap-0.5 items-center">
                   <Typography variant="h5" className={cn(pathname !== '/asset' && 'text-light')}>
@@ -175,6 +178,7 @@ const Navbar = ({ id }: { id: Maybe<Number | undefined> }) => {
                 onClick={() => {
                   setOpenSearch(!openSearch)
                 }}
+                title="search"
               >
                 <CaretLeft className="w-6 h-6" />
               </button>
@@ -182,6 +186,7 @@ const Navbar = ({ id }: { id: Maybe<Number | undefined> }) => {
             </>
           ) : (
             <button
+              title="search"
               type="button"
               onClick={() => {
                 setOpenSearch(!openSearch)
@@ -191,7 +196,7 @@ const Navbar = ({ id }: { id: Maybe<Number | undefined> }) => {
             </button>
           )}
         </div>
-        <MenuSheet open={openMenu} setOpen={setOpenMenu} pathname={pathname} id={id} />
+        <MenuSheet open={openMenu} setOpen={setOpenMenu} pathname={pathname} />
       </header>
     </>
   )
