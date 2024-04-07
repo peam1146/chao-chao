@@ -1,10 +1,11 @@
 'use client'
 
-import React from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Spinner } from '@/components/ui/spinner'
 import Typography from '@/components/ui/typography'
 import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -23,20 +24,24 @@ export default function SigninForm() {
     resolver: zodResolver(loginSchema),
   })
   const { toast } = useToast()
+
+  const [isLoading, setIsLoading] = useState(false)
   async function onSubmit(data: z.infer<typeof loginSchema>) {
-    console.log(data)
+    setIsLoading(true)
     try {
       await userLogin(data)
       toast({
         title: 'Sign in Successful',
         success: true,
       })
+      setIsLoading(false)
     } catch (err) {
       toast({
         title: 'Incorrect email or password',
         description: 'Try entering your information again.',
         error: true,
       })
+      setIsLoading(false)
     }
   }
   return (
@@ -84,8 +89,8 @@ export default function SigninForm() {
             </div>
           </div>
           <div className="w-full flex flex-col justify-center items-center gap-y-2">
-            <Button type="submit" className="w-full lg:w-[108px]">
-              Sign In
+            <Button type="submit" className="w-full lg:w-[108px]" disabled={isLoading}>
+              {isLoading ? <Spinner className="flex justify-center" /> : 'Sign in'}
             </Button>
             <Typography variant="h6" className="flex gap-1">
               Don't have an account?

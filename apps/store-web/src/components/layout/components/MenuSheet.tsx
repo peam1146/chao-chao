@@ -4,7 +4,6 @@ import {
   Chats,
   CreditCard,
   Envelope,
-  HandCoins,
   House,
   Info,
   ListDashes,
@@ -16,7 +15,6 @@ import {
   UserCirclePlus,
 } from '@phosphor-icons/react'
 
-import { Maybe } from '../../../../gqty'
 import { logout } from '../actions/logout'
 import { MenuCard } from './MenuCard'
 import { ModeToggle } from './theme-toggle'
@@ -25,13 +23,16 @@ interface MenuSheetProps {
   open: boolean
   setOpen: (open: boolean) => void
   pathname: string
-  id: Maybe<Number | undefined>
 }
 
 export function MenuSheet(props: MenuSheetProps) {
-  const { open, setOpen, pathname, id } = props
+  const { open, setOpen, pathname } = props
 
-  if (id) {
+  const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
+
+  const id = token['payload-token']
+
+  if (id !== '') {
     return (
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent side="left" className="border-0 flex flex-col justify-between">

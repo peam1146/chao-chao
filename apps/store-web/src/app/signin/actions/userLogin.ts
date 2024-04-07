@@ -27,7 +27,7 @@ export async function userLogin(data: LoginValues) {
         cachePolicy: 'no-store',
       }
     )
-    cookies().set('payload-token', token!, { secure: false })
+    cookies().set('payload-token', token!, { secure: false, priority: 'high' })
   } catch (error) {
     throw error
   }
