@@ -1,58 +1,64 @@
-'use client'
+"use client";
 
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren } from "react";
 
-import { Button } from '@/components/ui/button'
-import Typography from '@/components/ui/typography'
-import { Clock, Warning } from '@phosphor-icons/react'
-import { Separator } from '@radix-ui/react-separator'
-import Image from 'next/image'
+import { Button } from "@/components/ui/button";
+import Typography from "@/components/ui/typography";
+import { Clock, Warning } from "@phosphor-icons/react";
+import { Separator } from "@radix-ui/react-separator";
+import Image from "next/image";
 
 export type PaymentCardContainerProps = {
-  title: string
-  assetFrom: string
-  thumbnail: string
-  startDate: Date
-  endDate: Date
-  insuranceFee: number
-  rentalFee: number
-  deliveryFee: number
-  totalFee: number
-  variant?: 'expenses' | 'receivable'
-}
+	title: string;
+	assetFrom: string;
+	thumbnail: string;
+	startDate: Date;
+	endDate: Date;
+	insuranceFee: number;
+	rentalFee: number;
+	deliveryFee: number;
+	totalFee: number;
+	variant?: "expenses" | "receivable";
+};
 
 export type ExpensesCardButtonProps = {
   onClick?: () => void
   dueDate: Date
-}
+};
 
 export type ReceivableCardProps = {
-  dueDate: Date
-}
+	dueDate: Date;
+};
 
 export function PaymentCardContainer(props: PaymentCardContainerProps) {
-  const {
-    title,
-    assetFrom,
-    thumbnail,
-    startDate,
-    endDate,
-    insuranceFee,
-    deliveryFee,
-    rentalFee,
-    totalFee,
-    variant = 'expenses',
-  } = props
+	const {
+		title,
+		assetFrom,
+		thumbnail,
+		startDate,
+		endDate,
+		insuranceFee,
+		deliveryFee,
+		rentalFee,
+		totalFee,
+		variant = "expenses",
+	} = props;
 
-  const startDateText = `${startDate.getDate()}/${startDate.toLocaleString('default', {
-    month: '2-digit',
-    year: '2-digit',
-  })}`
+	const startDateText = `${startDate.getDate()}/${startDate.toLocaleString(
+		"default",
+		{
+			month: "2-digit",
+			year: "2-digit",
+		},
+	)}`;
 
-  const endDateText = `${endDate.getDate()}/${endDate.toLocaleString('default', {
-    month: '2-digit',
-    year: '2-digit',
-  })}`
+	const endDateText = `${endDate.getDate()}/${endDate.toLocaleString(
+		"default",
+		{
+			month: "2-digit",
+			year: "2-digit",
+		},
+	)}`;
 
   const daysDiff = Math.round((endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000))
   const assetFromLabel = variant === 'receivable' ? 'Request from:' : 'Asset from:'
@@ -158,81 +164,86 @@ export function ExpensesCardButton(props: ExpensesCardButtonProps) {
 }
 
 export function ExpensesCardOverDueButton() {
-  return (
-    <div className="max-xl:w-full xl:w-[180px]">
-      <div className="flex flex-col items-center justify-center w-full h-full gap-1">
-        <div className="flex xl:flex-col flex-row items-center">
-          <div className="flex gap-2">
-            <Warning size={16} className="text-unavailable self-center" />
-            <Typography variant="h6" className="text-unavailable">
-              Payment Late
-            </Typography>
-          </div>
-        </div>
-        <div className="flex xl:flex-col flex-row xl:gap-2 gap-3 w-full">
-          <Button variant="default" className="flex gap-2 w-full">
-            <Typography>Rent again</Typography>
-          </Button>
-          <Button variant="outline" className="flex gap-2 w-full">
-            <Typography>Close</Typography>
-          </Button>
-        </div>
-      </div>
-    </div>
-  )
+	return (
+		<div className="max-xl:w-full xl:w-[180px]">
+			<div className="flex flex-col items-center justify-center w-full h-full gap-1">
+				<div className="flex xl:flex-col flex-row items-center">
+					<div className="flex gap-2">
+						<Warning size={16} className="text-unavailable self-center" />
+						<Typography variant="h6" className="text-unavailable">
+							Payment Late
+						</Typography>
+					</div>
+				</div>
+				<div className="flex xl:flex-col flex-row xl:gap-2 gap-3 w-full">
+					<Button variant="default" className="flex gap-2 w-full">
+						<Typography>Rent again</Typography>
+					</Button>
+					<Button variant="outline" className="flex gap-2 w-full">
+						<Typography>Close</Typography>
+					</Button>
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export function PaymentCard(props: PropsWithChildren) {
-  return (
-    <div className="flex max-xl:flex-col xl:flex-row px-3 py-2 max-xl:gap-2 xl:gap-4 rounded-xl bg-card">
-      {props.children}
-    </div>
-  )
+	return (
+		<div className="flex max-xl:flex-col xl:flex-row px-3 py-2 max-xl:gap-2 xl:gap-4 rounded-xl bg-card">
+			{props.children}
+		</div>
+	);
 }
 
 export function ReceivablesCardButton(props: ReceivableCardProps) {
-  const { dueDate } = props
-  const dueDateText = `${dueDate.getDate()}/${dueDate.toLocaleString('default', {
-    month: '2-digit',
-    year: '2-digit',
-  })}`
-  const daysLeft = Math.round((dueDate.getTime() - new Date().getTime()) / (24 * 60 * 60 * 1000))
-  return (
-    <div className="max-xl:w-full xl:w-[180px]">
-      <div className="flex flex-col items-center justify-center w-full h-full gap-3">
-        <div className="flex flex-col gap-1 items-center">
-          <div className="flex gap-2">
-            <Clock size={16} className="self-center" />
-            <Typography variant="h6">{`${daysLeft}d left`}</Typography>
-          </div>
-          <div className="flex gap-1">
-            <Typography variant="tiny">Due date:</Typography>
-            <Typography variant="tiny">{dueDateText}</Typography>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+	const { dueDate } = props;
+	const dueDateText = `${dueDate.getDate()}/${dueDate.toLocaleString(
+		"default",
+		{
+			month: "2-digit",
+			year: "2-digit",
+		},
+	)}`;
+	const daysLeft = Math.round(
+		(dueDate.getTime() - new Date().getTime()) / (24 * 60 * 60 * 1000),
+	);
+	return (
+		<div className="max-xl:w-full xl:w-[180px]">
+			<div className="flex flex-col items-center justify-center w-full h-full gap-3">
+				<div className="flex flex-col gap-1 items-center">
+					<div className="flex gap-2">
+						<Clock size={16} className="self-center" />
+						<Typography variant="h6">{`${daysLeft}d left`}</Typography>
+					</div>
+					<div className="flex gap-1">
+						<Typography variant="tiny">Due date:</Typography>
+						<Typography variant="tiny">{dueDateText}</Typography>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export function ReceivableCardOverDueButton() {
-  return (
-    <div className="max-xl:w-full xl:w-[180px]">
-      <div className="flex flex-col items-center justify-center w-full h-full gap-1">
-        <div className="flex xl:flex-col flex-row items-center">
-          <div className="flex gap-2">
-            <Warning size={16} className="text-unavailable self-center" />
-            <Typography variant="h6" className="text-unavailable">
-              Payment Late
-            </Typography>
-          </div>
-        </div>
-        <div className="flex xl:flex-col flex-row xl:gap-2 gap-3 w-full">
-          <Button variant="outline" className="flex gap-2 w-full">
-            <Typography>Close</Typography>
-          </Button>
-        </div>
-      </div>
-    </div>
-  )
+	return (
+		<div className="max-xl:w-full xl:w-[180px]">
+			<div className="flex flex-col items-center justify-center w-full h-full gap-1">
+				<div className="flex xl:flex-col flex-row items-center">
+					<div className="flex gap-2">
+						<Warning size={16} className="text-unavailable self-center" />
+						<Typography variant="h6" className="text-unavailable">
+							Payment Late
+						</Typography>
+					</div>
+				</div>
+				<div className="flex xl:flex-col flex-row xl:gap-2 gap-3 w-full">
+					<Button variant="outline" className="flex gap-2 w-full">
+						<Typography>Close</Typography>
+					</Button>
+				</div>
+			</div>
+		</div>
+	);
 }

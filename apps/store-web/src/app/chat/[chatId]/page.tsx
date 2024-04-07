@@ -263,10 +263,9 @@ export default function ChatRoom() {
         <Link href="/chat" className="lg:hidden md:hidden">
           <ArrowLeft size={24} />
         </Link>
-        <Typography
-          variant="h4"
-          fontWeight="bold"
-        >{`${currentRoom?.user?.firstName ?? ''} ${currentRoom?.user?.lastName ?? ''}`}</Typography>
+        <Typography variant="h4" fontWeight="bold">{`${currentRoom?.user?.firstName ?? ''} ${
+          currentRoom?.user?.lastName ?? ''
+        }`}</Typography>
         <Link href={`/profile/${currentRoom?.user?.id}`}>
           <UserCircle size={24} />
         </Link>
