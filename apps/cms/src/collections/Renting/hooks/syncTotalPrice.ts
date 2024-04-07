@@ -3,6 +3,7 @@ import type { AfterChangeHook } from 'payload/dist/collections/config/types'
 import type { Renting } from '../../../payload-types'
 
 export const syncTotalPrice: AfterChangeHook<Renting> = async ({ req, doc }) => {
+  console.log('syncTotalPrice')
   const { deliveryFee, insuranceFee, rentalFee } = doc
 
   // await req.payload.update({

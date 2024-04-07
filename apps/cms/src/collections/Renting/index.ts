@@ -13,7 +13,7 @@ export const Renting: CollectionConfig = {
     defaultColumns: ['createdAt'],
   },
   hooks: {
-    afterChange: [syncCollections, syncTotalPrice], //เชื่อมต่อกับ collection อื่นๆให้ status เปลี่ยน
+    afterChange: [syncCollections], //เชื่อมต่อกับ collection อื่นๆให้ status เปลี่ยน
     afterDelete: [afterDelete], //ลบข้อมูลที่เชื่อมกับ request นี้
     beforeRead: [beforeRead], //ถ้าเกินวันที่กำหนดจะลบข้อมูล
   },
@@ -78,6 +78,7 @@ export const Renting: CollectionConfig = {
       options: [
         { label: 'Pending', value: 'PENDING' },
         { label: 'Processing', value: 'PROCESSING' },
+        { label: 'Waiting for Payment', value: 'WAIT_PAID' },
         { label: 'Completed', value: 'COMPLETED' },
       ],
     },

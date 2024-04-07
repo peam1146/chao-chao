@@ -15,9 +15,6 @@ export const Item: CollectionConfig = {
     delete: () => true,
     readVersions: isAdminOrSelf,
   },
-  // hooks: {
-  //   beforeChange: [beforeProductChange],
-  // },
   versions: {
     drafts: true,
   },

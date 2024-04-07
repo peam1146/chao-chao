@@ -1,8 +1,10 @@
+import { eq } from 'drizzle-orm'
 import type { AfterChangeHook } from 'payload/dist/collections/config/types'
 
 import type { Renting, User } from '../../../payload-types'
 
 export const syncCollections: AfterChangeHook<Renting> = async ({ req, doc }) => {
+  console.log('syncCollections', doc)
   const { payload } = req
   const { rentedTo, rentedBy, status, id } = doc
 
@@ -102,7 +104,7 @@ export const syncCollections: AfterChangeHook<Renting> = async ({ req, doc }) =>
         })
       }
     }
-    if (status === 'COMPLETED') {
+    if (status === 'WAIT_PAID') {
       if (item) {
         await req.payload.update({
           collection: 'items',
@@ -125,4 +127,5 @@ export const syncCollections: AfterChangeHook<Renting> = async ({ req, doc }) =>
       }
     }
   }
+  return doc
 }
