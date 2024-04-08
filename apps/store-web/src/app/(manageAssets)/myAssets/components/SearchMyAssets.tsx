@@ -3,6 +3,7 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import { useDebounce } from '@/components/layout/hooks/use-debounce'
 import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
+import { useUserToken } from '@/providers/User'
 import { SearchIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -18,11 +19,11 @@ export default function SearchMyAssets() {
     setSearch(e.target.value)
   }, 250)
 
-  const { Items, meUser } = useQuery({
+  const { Items } = useQuery({
     fetchPolicy: 'cache-first',
   })
 
-  const userId = meUser?.user?.id
+  const { userId } = useUserToken()
 
   const items = Items({
     draft: false,
@@ -32,7 +33,7 @@ export default function SearchMyAssets() {
         contains: search,
       },
       createdBy: {
-        equals: userId,
+        equals: userId === '' ? undefined : userId,
       },
     },
   })!.docs

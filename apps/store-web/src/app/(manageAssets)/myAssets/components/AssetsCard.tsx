@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import Typography from '@/components/ui/typography'
+import { useToast } from '@/components/ui/use-toast'
 import { Rating } from '@mui/material'
 import { DotsThreeVertical, PencilSimple, Trash } from '@phosphor-icons/react'
 import Image from 'next/image'
@@ -17,6 +18,7 @@ export default function AssetsCard({
   rating,
   price,
   periodType,
+  refetch,
 }: {
   id: number
   name: string
@@ -24,7 +26,9 @@ export default function AssetsCard({
   rating: number
   price: number
   periodType: string
+  refetch: () => void
 }) {
+  const { toast } = useToast()
   async function handleDelete() {
     try {
       await resolve(async ({ mutation }) => {
@@ -33,6 +37,13 @@ export default function AssetsCard({
         })
         return asset
       })
+      toast({
+        title: 'Success',
+        description: 'Asset deleted successfully',
+        success: true,
+      })
+
+      refetch()
     } catch (error) {
       console.error(error)
     }

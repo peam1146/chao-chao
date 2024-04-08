@@ -4,37 +4,22 @@ import { ChangeEvent, Dispatch, SetStateAction } from 'react'
 
 import { useDebounce } from '@/components/layout/hooks/use-debounce'
 import { Checkbox } from '@/components/ui/checkbox'
-import { DatePicker } from '@/components/ui/datepicker'
 import { Input } from '@/components/ui/input'
 
 import { useQuery } from '../../../../gqty'
 
 interface FilterInputProps {
   category: number[]
-  startDate?: Date
-  endDate?: Date
   setCategory: Dispatch<SetStateAction<number[]>>
-  setStartDate: Dispatch<SetStateAction<Date | undefined>>
-  setEndDate: Dispatch<SetStateAction<Date | undefined>>
   setMinPrice: Dispatch<SetStateAction<number | undefined>>
   setMaxPrice: Dispatch<SetStateAction<number | undefined>>
 }
 
 export function FilterInput(props: FilterInputProps) {
-  const {
-    startDate,
-    endDate,
-    category,
-    setCategory,
-    setEndDate,
-    setMaxPrice,
-    setMinPrice,
-    setStartDate,
-  } = props
+  const { category, setCategory, setMaxPrice, setMinPrice } = props
 
   const query = useQuery({
     fetchPolicy: 'cache-first',
-    refetchOnWindowVisible: false,
     suspense: true,
   })
 
@@ -78,13 +63,6 @@ export function FilterInput(props: FilterInputProps) {
               />
             </div>
           ))}
-      </div>
-      <h6 className="flex mt-4 font-bold text-sm">Date</h6>
-      <hr />
-      <div className="flex justify-between space-x-1 items-center">
-        <DatePicker value={startDate} onChange={setStartDate} />
-        <p>-</p>
-        <DatePicker value={endDate} onChange={setEndDate} />
       </div>
       <h6 className="font-bold text-sm">Price</h6>
       <hr />

@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Typography from '@/components/ui/typography'
+import { useUserToken } from '@/providers/User'
 import { Plus, Tray } from '@phosphor-icons/react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
@@ -12,21 +13,21 @@ import AssetsCard from './AssetsCard'
 import SearchMyAssets from './SearchMyAssets'
 
 export default function MyAssets() {
-  const { Items, meUser } = useQuery({ fetchPolicy: 'cache-and-network' })
+  const query = useQuery({ fetchPolicy: 'network-only' })
 
   const searchParams = useSearchParams()
   const search = searchParams.get('search') ? searchParams.get('search') : undefined
 
-  const userId = meUser?.user?.id
+  const { userId } = useUserToken()
 
-  const items = Items({
+  const items = query.Items({
     draft: false,
     where: {
       name: {
         contains: search,
       },
       createdBy: {
-        equals: userId,
+        equals: userId === '' ? undefined : userId,
       },
     },
   })
@@ -76,6 +77,7 @@ export default function MyAssets() {
                       rating={item?.rating ?? 0}
                       price={item?.price ?? 0}
                       periodType={item?.periodType ?? 'days'}
+                      refetch={query.$refetch}
                     />
                   )
                 })}
@@ -98,6 +100,7 @@ export default function MyAssets() {
                       rating={item?.rating ?? 0}
                       price={item?.price ?? 0}
                       periodType={item?.periodType ?? 'Days'}
+                      refetch={query.$refetch}
                     />
                   )
                 })}
@@ -126,6 +129,7 @@ export default function MyAssets() {
                       rating={item?.rating ?? 0}
                       price={item?.price ?? 0}
                       periodType={item?.periodType ?? 'Days'}
+                      refetch={query.$refetch}
                     />
                   )
                 })}

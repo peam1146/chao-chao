@@ -19,7 +19,7 @@ export default function AssetRegist() {
 
   const { userToken: me } = useUserToken()
 
-  if (me !== '') {
+  if (me === '') {
     router.push('/')
   }
   return (
