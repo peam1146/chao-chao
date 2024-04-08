@@ -101,9 +101,12 @@ const TagInput = React.forwardRef<HTMLInputElement, TagInputProps>((props, ref) 
       setInputValue('')
     }
   }
-
-  const removeTag = (idToRemove: number) => {
-    setTags(tags.filter((tag) => tag.id !== idToRemove))
+  const removeTag = (idToRemove: number, textRemove: string) => {
+    if (isNaN(idToRemove)) {
+      setTags(tags.filter((tag) => tag.text != textRemove))
+    } else {
+      setTags(tags.filter((tag) => tag.id !== idToRemove))
+    }
     onTagRemove?.(tags.find((tag) => tag.id === idToRemove)?.text || '')
   }
 

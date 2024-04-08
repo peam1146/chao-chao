@@ -60,12 +60,14 @@ export default function RegisterCard() {
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0]
-      const newfile = [...imageUrl, file]
-      setImageUrl(newfile)
-      if (!file) return
-      const url = URL.createObjectURL(file)
-      const newList = [...listImg, url]
-      setListImg(newList)
+      if (file.type.startsWith('image/')) {
+        const newfile = [...imageUrl, file]
+        setImageUrl(newfile)
+        if (!file) return
+        const url = URL.createObjectURL(file)
+        const newList = [...listImg, url]
+        setListImg(newList)
+      }
     }
   }
 
@@ -212,7 +214,7 @@ export default function RegisterCard() {
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder="0.00" {...field} />
+                            <Input type="number" placeholder="0.00" min="0" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
