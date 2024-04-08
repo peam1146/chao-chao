@@ -3,6 +3,7 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 
 import { cn } from '@/lib/utils'
+import { useUserToken } from '@/providers/User'
 import { CaretLeft, List, MagnifyingGlass } from '@phosphor-icons/react'
 import { SearchIcon } from 'lucide-react'
 import Link from 'next/link'
@@ -115,9 +116,7 @@ const Navbar = () => {
 
   const pathname = usePathname()
 
-  const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
-
-  const id = token['payload-token']
+  const { userToken: id } = useUserToken()
 
   return (
     <>
