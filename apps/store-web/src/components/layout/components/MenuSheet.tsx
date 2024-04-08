@@ -1,5 +1,6 @@
 import { Sheet, SheetClose, SheetContent } from '@/components/ui/sheet'
 import Typography from '@/components/ui/typography'
+import { useUserToken } from '@/providers/User'
 import {
   Chats,
   CreditCard,
@@ -28,9 +29,7 @@ interface MenuSheetProps {
 export function MenuSheet(props: MenuSheetProps) {
   const { open, setOpen, pathname } = props
 
-  const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
-
-  const id = token['payload-token']
+  const { userToken: id } = useUserToken()
 
   if (id !== '') {
     return (
