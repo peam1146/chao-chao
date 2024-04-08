@@ -86,13 +86,15 @@ export default function RegisterCard() {
   })
   const router = useRouter()
   const { toast } = useToast()
-  const { Tags } = useQuery({ fetchPolicy: 'cache-first' })
-  const tagsDB = Tags({
-    draft: false,
-    limit: 100,
-  })?.docs?.map((tag) => {
-    return { id: tag?.id!, text: tag?.name! }
-  })
+  const query = useQuery({ fetchPolicy: 'cache-first' })
+  const tagsDB = query
+    .Tags({
+      draft: false,
+      limit: 100,
+    })
+    ?.docs?.map((tag) => {
+      return { id: tag?.id!, text: tag?.name! }
+    })
   async function onSubmit(data: z.infer<typeof assetSchema>) {
     setIsLoading(true)
     try {
@@ -163,6 +165,7 @@ export default function RegisterCard() {
         success: true,
       })
       setIsLoading(false)
+      query.$refetch()
       router.push('/myAssets')
     } catch (e) {
       setIsLoading(false)
@@ -322,7 +325,7 @@ export default function RegisterCard() {
                 <Typography variant="h5">Cancel</Typography>
               </Button>
             </Link>
-            <Button type="submit" className="min-w-[130px] max-lg:w-1/2">
+            <Button type="submit" className="min-w-[130px] max-lg:w-1/2" disabled={isLoading}>
               <Typography variant="h5" className="flex items-center">
                 {isLoading ? <Spinner /> : 'Confirm'}
               </Typography>

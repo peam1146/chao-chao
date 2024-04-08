@@ -9,6 +9,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
+import { useUserToken } from '@/providers/User'
 import { useParams, useRouter } from 'next/navigation'
 
 import { useQuery } from '../../../../gqty'
@@ -22,6 +23,12 @@ export default function DetailPage() {
 
   const { id } = useParams<{ id: string }>()
 
+  const { userId, userToken } = useUserToken()
+
+  if (userToken === '') {
+    router.push('/signin')
+  }
+
   const query = useQuery({
     fetchPolicy: 'network-only',
     suspense: true,
@@ -30,8 +37,6 @@ export default function DetailPage() {
   const item = query.Item({
     id: Number(id),
   })
-
-  const userId = query.meUser?.user?.id
 
   const reviewsArray = query.Reviews({
     where: {
@@ -69,10 +74,10 @@ export default function DetailPage() {
       </Breadcrumb>
       <div className="flex flex-col lg:flex-row p-6 gap-10 bg-card rounded-2xl justify-items-center">
         <Gallery imgList={item?.image} />
-        <Description isSelf={item?.createdBy?.id === userId} item={item} />
+        <Description isSelf={item?.createdBy?.id === Number(userId)} item={item} />
       </div>
-      <Lessor isSelf={item?.createdBy?.id === userId} user={item?.createdBy} />
-      {!(item?.createdBy?.id === userId) && <Details details={item?.description} />}
+      <Lessor isSelf={item?.createdBy?.id === Number(userId)} user={item?.createdBy} />
+      {!(item?.createdBy?.id === Number(userId)) && <Details details={item?.description} />}
       <Reviews reviews={reviews} />
     </div>
   )

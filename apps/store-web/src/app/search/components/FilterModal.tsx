@@ -4,7 +4,6 @@ import { Dispatch, SetStateAction, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
-import { DatePicker } from '@/components/ui/datepicker'
 import { Input } from '@/components/ui/input'
 import Typography from '@/components/ui/typography'
 
@@ -13,26 +12,20 @@ import { useQuery } from '../../../../gqty'
 interface FilterModalProps {
   onClose: () => void
   setCategory: Dispatch<SetStateAction<number[]>>
-  setStartDate: Dispatch<SetStateAction<Date | undefined>>
-  setEndDate: Dispatch<SetStateAction<Date | undefined>>
   setMinPrice: Dispatch<SetStateAction<number | undefined>>
   setMaxPrice: Dispatch<SetStateAction<number | undefined>>
 }
 
 export function FilterModal(props: FilterModalProps) {
-  const { onClose, setCategory, setEndDate, setMaxPrice, setMinPrice, setStartDate } = props
+  const { onClose, setCategory, setMaxPrice, setMinPrice } = props
 
   const [categoryModal, setModalCategory] = useState<number[]>([])
-  const [startDateModal, setModalStartDate] = useState<Date>()
-  const [endDateModal, setModalEndDate] = useState<Date>()
   const [minPriceModal, setModalMinPrice] = useState<number>()
   const [maxPriceModal, setModalMaxPrice] = useState<number>()
 
   const query = useQuery({
     fetchPolicy: 'cache-first',
     suspense: true,
-    refetchOnRender: false,
-    refetchOnWindowVisible: false,
   })
 
   const tags = query.Tags({
@@ -41,8 +34,6 @@ export function FilterModal(props: FilterModalProps) {
 
   const onSubmit = () => {
     setCategory(categoryModal)
-    setStartDate(startDateModal)
-    setEndDate(endDateModal)
     setMinPrice(minPriceModal)
     setMaxPrice(maxPriceModal)
     onClose()
@@ -81,14 +72,6 @@ export function FilterModal(props: FilterModalProps) {
             ))}
         </div>
         <Typography variant="h5" fontWeight="bold" className="pb-2 border-b">
-          Date
-        </Typography>
-        <div className="flex justify-between space-x-1 items-center">
-          <DatePicker value={startDateModal} onChange={setModalStartDate} />
-          <p>-</p>
-          <DatePicker value={endDateModal} onChange={setModalEndDate} />
-        </div>
-        <Typography variant="h5" fontWeight="bold" className="pb-2 border-b">
           Price
         </Typography>
         <div className="flex justify-between space-x-1 items-center">
@@ -106,11 +89,11 @@ export function FilterModal(props: FilterModalProps) {
             placeholder="0.00"
           />
         </div>
-        <div className="flex gap-1">
-          <Button className="w-1/2" variant="outline" size="sm" onClick={onClose}>
+        <div className="flex gap-2">
+          <Button className="w-1/2" variant="outline" size="default" onClick={onClose}>
             Cancel
           </Button>
-          <Button type="submit" className="w-1/2" size="sm">
+          <Button type="submit" className="w-1/2" size="default">
             Apply
           </Button>
         </div>

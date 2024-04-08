@@ -7,6 +7,7 @@ import { Modal } from '@/components/ui/dialog'
 import { Spinner } from '@/components/ui/spinner'
 import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
+import { useUserToken } from '@/providers/User'
 import { ArrowDown, ArrowUp, CaretUpDown, Funnel } from '@phosphor-icons/react'
 import { useSearchParams } from 'next/navigation'
 
@@ -21,8 +22,6 @@ export default function SearchPage() {
   const [filter, setFilter] = useState<Filter>('RELEVANCE')
 
   const [category, setCategory] = useState<number[]>([])
-  const [startDate, setStartDate] = useState<Date>()
-  const [endDate, setEndDate] = useState<Date>()
   const [minPrice, setMinPrice] = useState<number>()
   const [maxPrice, setMaxPrice] = useState<number>()
 
@@ -34,7 +33,7 @@ export default function SearchPage() {
     suspense: true,
   })
 
-  const me = query.meUser?.user
+  const { userId } = useUserToken()
 
   const itemsArray = query.Items({
     draft: false,
@@ -49,14 +48,8 @@ export default function SearchPage() {
         greater_than_equal: minPrice,
         less_than_equal: maxPrice,
       },
-      start: {
-        less_than: startDate?.toISOString(),
-      },
-      end: {
-        greater_than: endDate?.toISOString(),
-      },
       createdBy: {
-        not_equals: me?.id,
+        not_equals: userId === '' ? undefined : userId,
       },
     },
   })
@@ -155,12 +148,8 @@ export default function SearchPage() {
     <>
       <div className="container flex flex-row gap-4">
         <FilterInput
-          startDate={startDate}
-          endDate={endDate}
           category={category}
           setCategory={setCategory}
-          setEndDate={setEndDate}
-          setStartDate={setStartDate}
           setMaxPrice={setMaxPrice}
           setMinPrice={setMinPrice}
         />
@@ -220,8 +209,6 @@ export default function SearchPage() {
             setOpen(false)
           }}
           setCategory={setCategory}
-          setEndDate={setEndDate}
-          setStartDate={setStartDate}
           setMaxPrice={setMaxPrice}
           setMinPrice={setMinPrice}
         />
