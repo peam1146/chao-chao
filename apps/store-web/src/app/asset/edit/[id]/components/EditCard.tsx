@@ -1,9 +1,6 @@
 'use client'
 
-import { ChangeEvent } from 'react'
-import React from 'react'
-import { useRef, useState } from 'react'
-import { useEffect } from 'react'
+import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
@@ -22,20 +19,18 @@ import { Textarea } from '@/components/ui/textarea'
 import Typography from '@/components/ui/typography'
 import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Plus } from '@phosphor-icons/react'
-import { ListPlus, XCircle } from '@phosphor-icons/react'
+import { ListPlus, Plus, XCircle } from '@phosphor-icons/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { z } from 'zod'
 
 import {
   ItemUpdate_periodType_MutationInput,
   ItemUpdate_rentingStatus_MutationInput,
+  resolve,
   useQuery,
 } from '../../../../../../gqty'
-import { resolve } from '../../../../../../gqty'
 import { Tag, TagInput } from '../../../../../components/ui/tags/tag-input'
 
 export const assetSchema = z.object({
@@ -374,8 +369,10 @@ export default function EditCard() {
                     <Typography variant="h5">Cancel</Typography>
                   </Button>
                 </Link>
-                <Button type="submit" className="min-w-[130px] max-lg:w-1/2">
-                  <Typography variant="h5">{isLoadingBtn ? <Spinner /> : 'Confirm'}</Typography>
+                <Button type="submit" className="min-w-[130px] max-lg:w-1/2" disabled={isLoading}>
+                  <Typography variant="h5">
+                    {isLoadingBtn ? <Spinner className="flex justify-center" /> : 'Confirm'}
+                  </Typography>
                 </Button>
               </div>
             </form>

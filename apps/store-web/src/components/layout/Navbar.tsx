@@ -31,8 +31,6 @@ const SearchSuggestion = () => {
 
   const { userId: me } = useUserToken()
 
-  console.log(me)
-
   const items = Items({
     draft: false,
     limit: 5,
@@ -119,6 +117,7 @@ const Navbar = () => {
   const pathname = usePathname()
 
   const { userToken: id } = useUserToken()
+
 
   return (
     <>
