@@ -11,7 +11,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-import { useQuery } from '../../../gqty'
+import { resolve, useQuery } from '../../../gqty'
 import { MyAsset } from './components/MyAsset'
 
 export default function Profile() {
@@ -45,9 +45,19 @@ export default function Profile() {
       }) ?? []
 
   useEffect(() => {
-    if (user?.firstName === '' || user?.lastName === '') {
-      router.push('/profile/edit')
+    async function fetchData() {
+      const { bio, firstName, lastName } = await resolve(({ query }) => {
+        return {
+          firstName: query.meUser?.user?.firstName,
+          lastName: query.meUser?.user?.lastName,
+          bio: query.meUser?.user?.bio,
+        }
+      })
+      if (!firstName || !lastName || !bio) {
+        router.push('/profile/edit')
+      }
     }
+    fetchData()
   }, [])
 
   return (
@@ -57,7 +67,7 @@ export default function Profile() {
           <div className="flex flex-row gap-4 items-center">
             <Image
               className="w-[80px] h-[80px] rounded-full object-cover"
-              src={user?.profileImage?.url === '' ? profile : user?.profileImage?.url ?? ''}
+              src={user?.profileImage?.url ? user?.profileImage?.url : profile}
               width="100"
               height="100"
               alt="profile"
