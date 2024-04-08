@@ -95,6 +95,10 @@ export default buildConfig({
     }),
   ],
   endpoints: endpoints,
+  rateLimit: {
+    window: 5 * 60 * 1000, // 5 minutes,
+    max: 5000,
+  },
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI,
