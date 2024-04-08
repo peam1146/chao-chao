@@ -18,16 +18,17 @@ export async function userLogin(data: LoginValues) {
       email: data.email as string,
       password: data.password as string,
     }
-    const { token } = await resolve(
+    const { token, id } = await resolve(
       ({ mutation }) => {
         const loginInfo = mutation.loginUser(args)
-        return { token: loginInfo?.token }
+        return { token: loginInfo?.token, id: loginInfo?.user?.id }
       },
       {
         cachePolicy: 'no-store',
       }
     )
     cookies().set('payload-token', token!, { secure: false, priority: 'high' })
+    cookies().set('user-id', id ? id.toString() : '', { secure: false, priority: 'high' })
   } catch (error) {
     throw error
   }

@@ -1,16 +1,19 @@
+'use client'
+
+import { useUserToken } from '@/providers/User'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
-import { resolve } from '../../../gqty'
-import SigninForm from './components/SigninForm'
+const SignInNoSSR = dynamic(() => import('./components/SigninForm'), { ssr: false })
 
-export default async function SignInPage() {
-  const user = await resolve(({ query }) => {
-    return query.meUser?.user?.id
-  })
+export default function SignInPage() {
+  const router = useRouter()
 
-  if (user) {
-    redirect('/')
+  const { userToken: me } = useUserToken()
+
+  if (me !== '') {
+    router.push('/')
   }
 
   return (
@@ -19,7 +22,7 @@ export default async function SignInPage() {
         <Image src="/login.svg" alt="Sign in picture" width={497} height={602} />
       </div>
       <div className="flex w-full lg:w-1/2 h-full items-center">
-        <SigninForm />
+        <SignInNoSSR />
       </div>
     </main>
   )

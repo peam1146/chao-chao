@@ -7,10 +7,11 @@ import { Input } from '@/components/ui/input'
 import Typography from '@/components/ui/typography'
 import { socket } from '@/lib/socket'
 import { cn } from '@/lib/utils'
+import { useUserToken } from '@/providers/User'
 import { ArrowLeft, PaperPlaneRight, UserCircle } from '@phosphor-icons/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 
 import { Maybe, mutationChatroomUpdateInput, resolve } from '../../../../gqty'
 import { ChatContext } from '../layout'
@@ -84,6 +85,14 @@ export default function ChatRoom() {
   }>()
   const [messages, setMessages] = useState<Message[]>([])
   const { refetch } = useContext(ChatContext)
+
+  const router = useRouter()
+
+  const { userToken: me } = useUserToken()
+
+  if (me === '') {
+    router.push('/signin')
+  }
 
   useEffect(() => {
     ;(async () => {

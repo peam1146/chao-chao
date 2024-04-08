@@ -14,6 +14,7 @@ export async function logout() {
 
     if (req) {
       cookies().set('payload-token', '', { secure: false, priority: 'high' })
+      cookies().set('user-id', '', { secure: false, priority: 'high' })
     }
   } catch (err) {
     console.log(err)
