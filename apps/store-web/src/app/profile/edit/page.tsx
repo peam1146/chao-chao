@@ -27,9 +27,14 @@ export const editProfileSchema = z.object({
   lastName: z.string().min(1, {
     message: 'Last name is required.',
   }),
-  bio: z.string().min(10, {
-    message: 'Short bio must not exceed 10 characters.',
-  }),
+  bio: z
+    .string()
+    .min(10, {
+      message: 'Short bio must be at least 10 characters.',
+    })
+    .max(150, {
+      message: 'Short bio must not exceed 150 characters.',
+    }),
   province: z.string().min(1, {
     message: 'Province is required.',
   }),
@@ -160,7 +165,7 @@ export default function ProfileEdit() {
               <div className="relative h-fit max-lg:self-center">
                 <Image
                   className="w-[150px] h-[150px] flex-none max-lg:self-center rounded-full object-cover"
-                  src={imageUrl ?? profile}
+                  src={imageUrl !== '' ? imageUrl : profile}
                   alt="profile"
                   width={150}
                   height={150}
