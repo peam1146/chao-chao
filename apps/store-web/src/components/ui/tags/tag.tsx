@@ -7,7 +7,7 @@ import { TagInputProps, type Tag as TagType } from './tag-input'
 
 export type TagProps = {
   tagObj: TagType
-  onRemoveTag: (id: number) => void
+  onRemoveTag: (id: number, text: string) => void
 } & Pick<TagInputProps, 'direction' | 'onTagClick'>
 
 export const Tag: React.FC<TagProps> = ({ tagObj, onTagClick, onRemoveTag }) => {
@@ -25,7 +25,7 @@ export const Tag: React.FC<TagProps> = ({ tagObj, onTagClick, onRemoveTag }) => 
         variant="ghost"
         onClick={(e) => {
           e.stopPropagation()
-          onRemoveTag(tagObj.id)
+          onRemoveTag(tagObj.id, tagObj.text)
         }}
         className={cn('py-1 px-1 h-full')}
       >
