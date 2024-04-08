@@ -9,7 +9,7 @@ import { SearchIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 
-import { useQuery } from '../../../gqty'
+import { Item_rentingStatus, useQuery } from '../../../gqty'
 import Typography from '../ui/typography'
 import { MenuSheet } from './components/MenuSheet'
 import { ProfileToggle } from './components/profile-toggle'
@@ -25,11 +25,13 @@ const SearchSuggestion = () => {
     setSearch(e.target.value)
   }, 250)
 
-  const { Items, meUser } = useQuery({
+  const { Items } = useQuery({
     fetchPolicy: 'cache-and-network',
   })
 
-  const me = meUser?.user?.id
+  const { userId: me } = useUserToken()
+
+  console.log(me)
 
   const items = Items({
     draft: false,
@@ -39,10 +41,10 @@ const SearchSuggestion = () => {
         contains: search,
       },
       createdBy: {
-        not_equals: me,
+        not_equals: Number(me),
       },
     },
-  })!.docs
+  })!.docs?.filter((item) => item?.rentingStatus === Item_rentingStatus.available)
 
   if (!items) return null
 
