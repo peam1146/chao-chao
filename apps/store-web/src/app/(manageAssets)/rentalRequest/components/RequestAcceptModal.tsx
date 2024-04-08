@@ -233,7 +233,6 @@ export function RequestAcceptModal({ onClose, requestId, refetch }: RequestAccep
           </Button>
           <Button variant="default" type="submit" size="lg" className="w-full lg:w-[108px] ">
             <Typography variant="h5">
-              {' '}
               {isLoading ? <Spinner className="flex justify-center" /> : 'Submit'}
             </Typography>
           </Button>

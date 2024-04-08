@@ -1,17 +1,18 @@
-"use client";
+'use client'
 
-import React from "react";
+import React from 'react'
+
 import bicycle from '@/assets/images/bicycle.svg'
 import { addDays } from 'date-fns'
 import { useSearchParams } from 'next/navigation'
 
 import { Renting_status_Input, resolve, useQuery } from '../../../../../gqty'
 import {
-	ExpensesCardButton,
-	ExpensesCardOverDueButton,
-	PaymentCard,
-	PaymentCardContainer,
-} from "./PaymentCard";
+  ExpensesCardButton,
+  ExpensesCardOverDueButton,
+  PaymentCard,
+  PaymentCardContainer,
+} from './PaymentCard'
 
 // real
 export default function ExpensesContainer() {

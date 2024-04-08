@@ -67,20 +67,20 @@ export interface Renting {
     user?: string | User
   }
   rentedTo?: {
-    user?: string | User;
-    item?: string | Item;
-  };
-  startDate: string;
-  endDate: string;
-  status?: 'PENDING' | 'PROCESSING' | 'WAIT_PAID' | 'COMPLETED';
-  totalPrice?: number;
-  rentalFee?: number;
-  insuranceFee?: number;
-  deliveryFee?: number;
-  file?: string | Media;
-  createdBy: string | User;
-  updatedAt: string;
-  createdAt: string;
+    user?: string | User
+    item?: string | Item
+  }
+  startDate: string
+  endDate: string
+  status?: 'PENDING' | 'PROCESSING' | 'WAIT_PAID' | 'COMPLETED'
+  totalPrice?: number
+  rentalFee?: number
+  insuranceFee?: number
+  deliveryFee?: number
+  file?: string | Media
+  createdBy: string | User
+  updatedAt: string
+  createdAt: string
 }
 export interface Item {
   id: string
