@@ -1,5 +1,7 @@
 'use client'
 
+import { Spinner } from '@/components/ui/spinner'
+
 import { Renting_status, useQuery } from '../../../../../gqty'
 import RentingContractsCard from './RentingContractsCard'
 
@@ -13,7 +15,11 @@ export function RentingContainer() {
     (request) => request.status === Renting_status.COMPLETED
   )
 
-  if (requestsMade?.length === 0) {
+  if (query.$state.isLoading) {
+    return <Spinner className="flex justify-center" />
+  }
+
+  if (requestsMade?.length === 0 && !query.$state.isLoading) {
     return <div className="self-center">No item found</div>
   }
 

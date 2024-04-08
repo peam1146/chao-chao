@@ -1,6 +1,6 @@
 'use client'
 
-import React, { PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
 
 import { Button } from '@/components/ui/button'
 import Typography from '@/components/ui/typography'
@@ -104,7 +104,7 @@ export function PaymentCardContainer(props: PaymentCardContainerProps) {
             </div>
           </div>
           <div className="flex xl:flex-row flex-col xl:gap-8 gap-1">
-            <div className="flex w-[180px] gap-1">
+            <div className="flex gap-1">
               <Typography variant="h6" className="text-light">
                 Rental fee:
               </Typography>
