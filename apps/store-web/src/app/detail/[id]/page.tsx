@@ -30,7 +30,7 @@ export default function DetailPage() {
   }
 
   const query = useQuery({
-    fetchPolicy: 'network-only',
+    fetchPolicy: 'cache-and-network',
     suspense: true,
   })
 

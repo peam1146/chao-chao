@@ -1,5 +1,7 @@
 'use client'
 
+import { Spinner } from '@/components/ui/spinner'
+import { useUserToken } from '@/providers/User'
 import { addDays } from 'date-fns'
 
 import { Renting_status_Input, useQuery } from '../../../../../gqty'
@@ -7,17 +9,23 @@ import { ExpensesCardButton, PaymentCard, PaymentCardContainer } from './Payment
 
 // real
 export default function ExpensesContainer() {
-  const { Rentings, meUser } = useQuery()
-
-  const toPay = Rentings({
-    where: {
-      status: { equals: Renting_status_Input.WAIT_PAID },
-    },
+  const query = useQuery({
+    fetchPolicy: 'cache-and-network',
   })
-    ?.docs?.filter((renting) => renting?.rentedBy?.user?.id === meUser?.user?.id)
+
+  const { userId } = useUserToken()
+
+  const toPay = query
+    .Rentings({
+      where: {
+        status: { equals: Renting_status_Input.WAIT_PAID },
+      },
+    })
+    ?.docs?.filter((renting) => renting?.rentedBy?.user?.id === Number(userId))
     ?.map((renting) => ({
       ...renting,
     }))
+    .filter((renting) => renting?.id !== undefined)
 
   const handlePay = async (
     productId: number | undefined,
@@ -41,6 +49,18 @@ export default function ExpensesContainer() {
     if (data.id) {
       window.location = data.url
     }
+  }
+
+  if (query.$state.isLoading || query.$state.error) {
+    return (
+      <div className="flex justify-center">
+        <Spinner className="self-center" />
+      </div>
+    )
+  }
+
+  if (toPay?.length === 0) {
+    return <div className="flex justify-center">No assets to pay</div>
   }
 
   return (

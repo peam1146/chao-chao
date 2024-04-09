@@ -19,9 +19,7 @@ export default function RequestMadeContainer() {
   const isDesktop = useMediaQuery('(min-width: 821px)')
 
   const query = useQuery({
-    fetchPolicy: 'network-only',
-    suspense: true,
-    refetchOnRender: true,
+    fetchPolicy: 'cache-and-network',
   })
 
   const requestMade = query.meUser?.user?.requestsMade
@@ -60,6 +58,14 @@ export default function RequestMadeContainer() {
   }
 
   const requestList = requestMade?.filter((request) => request.status === Renting_status.PENDING)
+
+  if (query.$state.isLoading) {
+    return (
+      <div className="flex justify-center">
+        <Spinner className="self-center" />
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col gap-4 w-full">

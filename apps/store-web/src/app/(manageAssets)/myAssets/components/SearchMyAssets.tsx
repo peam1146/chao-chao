@@ -20,7 +20,7 @@ export default function SearchMyAssets() {
   }, 250)
 
   const { Items } = useQuery({
-    fetchPolicy: 'cache-first',
+    fetchPolicy: 'cache-and-network',
   })
 
   const { userId } = useUserToken()

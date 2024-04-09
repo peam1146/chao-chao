@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Modal } from '@/components/ui/dialog'
+import { Spinner } from '@/components/ui/spinner'
 import Typography from '@/components/ui/typography'
 import { toast } from '@/components/ui/use-toast'
 import { useMediaQuery } from '@/hooks/use-media-query'
@@ -22,13 +23,10 @@ export default function RequestReceivedContainer() {
   const [open, setOpen] = useState(false)
 
   const query = useQuery({
-    fetchPolicy: 'network-only',
-    suspense: true,
-    refetchOnRender: true,
+    fetchPolicy: 'cache-and-network',
   })
 
   const requestReceived = query.meUser?.user?.requestsReceived
-
   const [isLoading, setIsLoading] = useState(false)
 
   async function onSubmitDecline(id: number) {
@@ -67,6 +65,14 @@ export default function RequestReceivedContainer() {
   const requestList = requestReceived?.filter(
     (request) => request.status === Renting_status.PENDING
   )
+
+  if (query.$state.isLoading) {
+    return (
+      <div className="flex justify-center">
+        <Spinner className="self-center" />
+      </div>
+    )
+  }
 
   return (
     <>

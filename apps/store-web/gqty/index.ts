@@ -93,6 +93,7 @@ export const { resolve, subscribe, schema } = client
 export const { query, mutation, mutate, subscription, resolved, refetch, track } = client
 
 export const {
+  state,
   graphql,
   useQuery,
   usePaginatedQuery,
@@ -107,7 +108,7 @@ export const {
 } = createReactClient<GeneratedSchema>(client, {
   defaults: {
     // Enable Suspense, you can override this option for each hook.
-    suspense: true,
+    suspense: false,
   },
 })
 

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: 'ChaoChao',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
@@ -24,20 +24,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={sans.className}>
-        <UserTokenProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <UserTokenProvider>
             <Toaster />
             <div className="min-h-screen max-w-screen flex flex-col bg-background">
               <Navbar />
               <div className="flex-1 flex-col flex relative w-full">{children}</div>
             </div>
-          </ThemeProvider>
-        </UserTokenProvider>
+          </UserTokenProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

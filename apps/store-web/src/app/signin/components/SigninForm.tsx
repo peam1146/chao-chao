@@ -11,6 +11,7 @@ import { useToast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Key, UserCircle } from '@phosphor-icons/react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 
 import { userLogin } from '../actions/userLogin'
@@ -25,16 +26,20 @@ export default function SigninForm() {
   })
   const { toast } = useToast()
 
+  const router = useRouter()
+
   const [isLoading, setIsLoading] = useState(false)
   async function onSubmit(data: z.infer<typeof loginSchema>) {
     setIsLoading(true)
     try {
       await userLogin(data)
+
       toast({
         title: 'Sign in Successful',
         success: true,
       })
       setIsLoading(false)
+      router.push('/')
     } catch (err) {
       toast({
         title: 'Incorrect email or password',
