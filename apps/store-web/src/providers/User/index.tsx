@@ -13,11 +13,14 @@ export const useUserToken = () => useContext(UserTokenContext)
 export const UserTokenProvider = ({ children }: { children: ReactNode }) => {
   let userToken = ''
   let userId = ''
-  if (typeof window !== 'undefined') {
-    const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
-    userToken = token['payload-token']
-    userId = token['user-id']
-  }
+
+  const token = Object.fromEntries(
+    document !== undefined ? document.cookie.split('; ').map((c) => c.split('=')) : []
+  )
+  userToken = token['payload-token'] ? token['payload-token'] : ''
+  userId = token['user-id'] ? token['user-id'] : ''
+
+  console.log(userToken, userId)
 
   const value = useMemo(() => ({ userToken, userId }), [userToken, userId])
 

@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { Spinner } from '@/components/ui/spinner'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Typography from '@/components/ui/typography'
 import { useUserToken } from '@/providers/User'
@@ -13,7 +14,7 @@ import AssetsCard from './AssetsCard'
 import SearchMyAssets from './SearchMyAssets'
 
 export default function MyAssets() {
-  const query = useQuery({ fetchPolicy: 'network-only' })
+  const query = useQuery({ fetchPolicy: 'cache-and-network' })
 
   const searchParams = useSearchParams()
   const search = searchParams.get('search') ? searchParams.get('search') : undefined
@@ -63,6 +64,11 @@ export default function MyAssets() {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="all">
+            {query.$state.isLoading && (
+              <div className="flex justify-center">
+                <Spinner className="self-center" />
+              </div>
+            )}
             {items?.docs?.length === 0 && <div className="flex justify-center">No item found</div>}
             <div className="grid grid-cols-2 2xl:grid-cols-5 lg:grid-cols-3 grid-s-3 gap-3">
               {items?.docs
@@ -84,6 +90,11 @@ export default function MyAssets() {
             </div>
           </TabsContent>
           <TabsContent value="beingRented">
+            {query.$state.isLoading && (
+              <div className="flex justify-center">
+                <Spinner className="self-center" />
+              </div>
+            )}
             {items?.docs?.filter(
               (item) => item?.id !== undefined && item.rentingStatus === 'unavailable'
             ).length === 0 && <div className="flex justify-center">No item found</div>}
@@ -107,6 +118,11 @@ export default function MyAssets() {
             </div>
           </TabsContent>
           <TabsContent value="available">
+            {query.$state.isLoading && (
+              <div className="flex justify-center">
+                <Spinner className="self-center" />
+              </div>
+            )}
             {items?.docs?.filter(
               (item) =>
                 item?.id !== undefined &&

@@ -1,8 +1,6 @@
 'use server'
 
-import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
 import { z } from 'zod'
 
 import { resolve } from '../../../../gqty'
@@ -13,25 +11,22 @@ const LoginSchema = z.object({
 })
 type LoginValues = z.infer<typeof LoginSchema>
 export async function userLogin(data: LoginValues) {
-  try {
-    const args = {
-      email: data.email as string,
-      password: data.password as string,
-    }
-    const { token, id } = await resolve(
-      ({ mutation }) => {
-        const loginInfo = mutation.loginUser(args)
-        return { token: loginInfo?.token, id: loginInfo?.user?.id }
-      },
-      {
-        cachePolicy: 'no-store',
-      }
-    )
-    cookies().set('payload-token', token!, { secure: false, priority: 'high' })
-    cookies().set('user-id', id ? id.toString() : '', { secure: false, priority: 'high' })
-  } catch (error) {
-    throw error
+  const args = {
+    email: data.email as string,
+    password: data.password as string,
   }
-  revalidatePath('/')
-  redirect('/')
+  const { token, id } = await resolve(
+    ({ mutation }) => {
+      const loginInfo = mutation.loginUser(args)
+      return { token: loginInfo?.token, id: loginInfo?.user?.id }
+    },
+    {
+      cachePolicy: 'no-store',
+    }
+  )
+
+  cookies().set('payload-token', token!, { secure: false, priority: 'high' })
+  cookies().set('user-id', id ? id.toString() : '', { secure: false, priority: 'high' })
+
+  return { token, id }
 }

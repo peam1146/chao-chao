@@ -7,8 +7,7 @@ import RentingContractsCard from './RentingContractsCard'
 
 export function RentingContainer() {
   const query = useQuery({
-    fetchPolicy: 'network-only',
-    suspense: true,
+    fetchPolicy: 'cache-and-network',
   })
 
   const requestsMade = query.meUser?.user?.requestsMade?.filter(
@@ -16,7 +15,11 @@ export function RentingContainer() {
   )
 
   if (query.$state.isLoading) {
-    return <Spinner className="flex justify-center" />
+    return (
+      <div className="flex justify-center">
+        <Spinner className="self-center" />
+      </div>
+    )
   }
 
   if (requestsMade?.length === 0 && !query.$state.isLoading) {

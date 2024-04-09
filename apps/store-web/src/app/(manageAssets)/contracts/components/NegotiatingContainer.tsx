@@ -1,12 +1,13 @@
 'use client'
 
+import { Spinner } from '@/components/ui/spinner'
+
 import { Renting_status, useQuery } from '../../../../../gqty'
 import NeigotiatingContractsCard from './NeigotiatingContractsCard'
 
 export function NegotiatingContainer() {
   const queryRequest = useQuery({
-    fetchPolicy: 'network-only',
-    suspense: true,
+    fetchPolicy: 'cache-and-network',
   })
 
   const requestsMade = queryRequest.meUser?.user?.requestsMade?.filter(
@@ -16,6 +17,14 @@ export function NegotiatingContainer() {
   const requestsReceived = queryRequest.meUser?.user?.requestsReceived?.filter(
     (request) => request.status === Renting_status.PROCESSING
   )
+
+  if (queryRequest.$state.isLoading) {
+    return (
+      <div className="flex justify-center">
+        <Spinner className="self-center" />
+      </div>
+    )
+  }
 
   if (requestsMade?.length === 0 && requestsReceived?.length === 0) {
     return <div className="self-center">No item found</div>

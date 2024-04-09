@@ -97,6 +97,15 @@ export default function ProfileEdit() {
     try {
       let imageId: number
       if (fileInputRef.current?.files && fileInputRef.current?.files.length > 0) {
+        if (fileInputRef.current.files[0].type.split('/')[0] !== 'image') {
+          toast({
+            title: 'Error',
+            description: 'Invalid file type',
+            error: true,
+          })
+          setIsLoading(false)
+          return
+        }
         const data = new FormData()
         const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
         data.append('file', fileInputRef.current.files[0])

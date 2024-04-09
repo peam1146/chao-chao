@@ -29,8 +29,7 @@ export default function SearchPage() {
   const search = searchParams.get('search')
 
   const query = useQuery({
-    fetchPolicy: 'network-only',
-    suspense: true,
+    fetchPolicy: 'cache-and-network',
   })
 
   const { userId } = useUserToken()
@@ -63,7 +62,7 @@ export default function SearchPage() {
         onClick={() => setFilter('RELEVANCE')}
         className={cn(
           'p-0 hover:bg-transparent text-light',
-          filter === 'RELEVANCE' && 'text-white'
+          filter === 'RELEVANCE' && 'text-secondary'
         )}
       >
         Relevance
@@ -75,7 +74,7 @@ export default function SearchPage() {
         }}
         className={cn(
           'p-0 hover:bg-transparent text-light flex items-center',
-          (filter === 'PRICE_LESS' || filter === 'PRICE_MORE') && 'text-white'
+          (filter === 'PRICE_LESS' || filter === 'PRICE_MORE') && 'text-secondary'
         )}
       >
         {filter === 'PRICE_LESS' || filter === 'PRICE_MORE' ? (
@@ -91,14 +90,20 @@ export default function SearchPage() {
       <Button
         variant="ghost"
         onClick={() => setFilter('LATEST')}
-        className={cn('p-0 hover:bg-transparent text-light', filter === 'LATEST' && 'text-white')}
+        className={cn(
+          'p-0 hover:bg-transparent text-light',
+          filter === 'LATEST' && 'text-secondary'
+        )}
       >
         Latest
       </Button>
       <Button
         variant="ghost"
         onClick={() => setFilter('SCORE')}
-        className={cn('p-0 hover:bg-transparent text-light', filter === 'SCORE' && 'text-white')}
+        className={cn(
+          'p-0 hover:bg-transparent text-light',
+          filter === 'SCORE' && 'text-secondary'
+        )}
       >
         Score
       </Button>

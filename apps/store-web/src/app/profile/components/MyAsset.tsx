@@ -3,8 +3,10 @@
 import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
+import { Spinner } from '@/components/ui/spinner'
 import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
+import { useUserToken } from '@/providers/User'
 import { ArrowDown, ArrowUp, CaretUpDown } from '@phosphor-icons/react'
 
 import { Items, Maybe, useQuery } from '../../../../gqty'
@@ -16,10 +18,10 @@ export function MyAsset() {
   const [filter, setFilter] = useState<Filter>('RELEVANCE')
 
   const query = useQuery({
-    fetchPolicy: 'network-only',
+    fetchPolicy: 'cache-and-network',
   })
 
-  const userId = query.meUser?.user?.id
+  const { userId } = useUserToken()
 
   const itemsArray = query.Items({
     draft: false,
@@ -117,9 +119,18 @@ export function MyAsset() {
     <>
       <SortingSection />
       <div className="py-4 w-full">
+        {query.$state.isLoading && (
+          <div className="flex justify-center items-center">
+            <Spinner className="self-center" />
+          </div>
+        )}
         <div className="mx-auto w-full grid grid-cols-2 2xl:grid-cols-6 lg:grid-cols-4 gap-4">
           {items?.length === 0 ? (
-            <Typography variant="h6" fontWeight="bold" className="self-center w-full">
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+              className="flex items-center justify-center w-full"
+            >
               No assets found
             </Typography>
           ) : (

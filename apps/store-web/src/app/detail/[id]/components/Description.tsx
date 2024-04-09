@@ -42,7 +42,7 @@ export default function Description({ isSelf, item }: { isSelf: boolean; item: M
   const { toast } = useToast()
 
   const query = useQuery({
-    fetchPolicy: 'cache-first',
+    fetchPolicy: 'cache-and-network',
   })
   const userId = query.meUser?.user?.id
 
