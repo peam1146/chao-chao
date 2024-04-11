@@ -99,6 +99,18 @@ export default function RegisterCard() {
     setIsLoading(true)
     try {
       let imageIds: number[] = []
+      // Check if there is file that is not image
+      for (let i = 0; i < imageUrl.length; i++) {
+        if (imageUrl[i].type.split('/')[0] !== 'image') {
+          toast({
+            title: 'Error',
+            description: 'Invalid file type',
+            error: true,
+          })
+          setIsLoading(false)
+          return
+        }
+      }
       for (let i = 0; i < imageUrl.length; i++) {
         if (fileInputRef.current?.files && fileInputRef.current?.files.length > 0) {
           const formData = new FormData()
