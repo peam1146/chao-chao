@@ -17,12 +17,16 @@ export const syncCollections: AfterChangeHook<Review> = async ({ req, doc }) => 
 
     if (review && review.length > 0) {
       const reviewUserList = [...review.map((r) => (typeof r === 'object' ? r.id : r)), id]
+      const rating = Math.floor(
+        (review.reduce((acc, r: Review) => acc + r.rating, 0) + doc.rating) / (review.length + 1)
+      )
 
       await req.payload.update({
         collection: 'users',
         id: reviewToUserID,
         data: {
           review: reviewUserList,
+          rating: rating,
         },
       })
     } else {
@@ -31,6 +35,7 @@ export const syncCollections: AfterChangeHook<Review> = async ({ req, doc }) => 
         id: reviewToUserID,
         data: {
           review: [id],
+          rating: doc.rating,
         },
       })
     }
@@ -47,11 +52,16 @@ export const syncCollections: AfterChangeHook<Review> = async ({ req, doc }) => 
     if (review && review.length > 0) {
       const reviewItemList = [...review.map((r) => (typeof r === 'object' ? r.id : r)), id]
 
+      const rating = Math.floor(
+        (review.reduce((acc, r: Review) => acc + r.rating, 0) + doc.rating) / (review.length + 1)
+      )
+
       await req.payload.update({
         collection: 'items',
         id: reviewToItemID,
         data: {
           review: reviewItemList,
+          rating: rating,
         },
       })
     } else {
@@ -60,6 +70,7 @@ export const syncCollections: AfterChangeHook<Review> = async ({ req, doc }) => 
         id: reviewToItemID,
         data: {
           review: [id],
+          rating: doc.rating,
         },
       })
     }

@@ -369,7 +369,11 @@ export default function EditCard() {
                     <Typography variant="h5">Cancel</Typography>
                   </Button>
                 </Link>
-                <Button type="submit" className="min-w-[130px] max-lg:w-1/2" disabled={isLoading}>
+                <Button
+                  type="submit"
+                  className="min-w-[130px] max-lg:w-1/2"
+                  disabled={isLoadingBtn}
+                >
                   <Typography variant="h5">
                     {isLoadingBtn ? <Spinner className="flex justify-center" /> : 'Confirm'}
                   </Typography>

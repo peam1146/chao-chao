@@ -2,9 +2,7 @@ import { User } from 'payload/generated-types'
 import { CollectionConfig } from 'payload/types'
 
 import { checkRole, isAdmin } from '../../access/'
-import createStripeCustomer from './hooks/createStripeCustomer'
 import { ensureFirstUserIsAdmin } from './hooks/ensureFirstUserIsAdmin'
-import { CustomerSelect } from './ui/CustomerSelect'
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -12,9 +10,6 @@ export const Users: CollectionConfig = {
   admin: {
     useAsTitle: 'email',
     hidden: ({ user }) => !checkRole(['admin'], user as unknown as User),
-  },
-  hooks: {
-    beforeChange: [createStripeCustomer],
   },
   access: {
     update: () => true,
@@ -97,20 +92,6 @@ export const Users: CollectionConfig = {
         en: 'province',
       },
       required: false,
-    },
-    {
-      name: 'stripeCustomerID',
-      label: 'Stripe Customer',
-      type: 'text',
-      access: {
-        read: ({ req: { user } }) => checkRole(['admin'], user),
-      },
-      admin: {
-        position: 'sidebar',
-        components: {
-          Field: CustomerSelect,
-        },
-      },
     },
     {
       label: {

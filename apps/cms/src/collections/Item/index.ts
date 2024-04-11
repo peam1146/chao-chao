@@ -1,7 +1,6 @@
 import { CollectionConfig } from 'payload/types'
 
 import { isAdminOrSelf } from '../../access'
-import { ProductSelect } from './ui/ProductSelect'
 
 export const Item: CollectionConfig = {
   slug: 'items',
@@ -144,16 +143,6 @@ export const Item: CollectionConfig = {
       label: {
         en: 'Rating',
         th: 'คะแนน',
-      },
-    },
-    {
-      name: 'stripeProductID',
-      label: 'Stripe Product',
-      type: 'text',
-      admin: {
-        components: {
-          Field: ProductSelect,
-        },
       },
     },
     {

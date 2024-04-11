@@ -1,8 +1,9 @@
-import React from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
+import { Spinner } from '@/components/ui/spinner'
 import Typography from '@/components/ui/typography'
 import { toast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -13,7 +14,7 @@ import { ReviewPayment } from '../../types/types'
 import { ReviewContent } from './ReviewContent'
 
 type PaymentHistoryLessorReviewModalProps = {
-  reviewToUser: number
+  reviewToUser?: number
   onClick: () => void
 }
 
@@ -40,11 +41,14 @@ export default function PaymentHistoryLessorReviewModal(
     },
   })
 
+  const [isLoading, setIsLoading] = useState(false)
+
   const onSubmit = (data: ReviewPayment) => {
+    setIsLoading(true)
     try {
       resolve(
         async ({ mutation }) => {
-          const request = mutation.createReview({
+          const request = await mutation.createReview({
             data: {
               description: data.description,
               rating: Number(data.rating),
@@ -70,6 +74,7 @@ export default function PaymentHistoryLessorReviewModal(
         error: true,
       })
     } finally {
+      setIsLoading(false)
       onClick()
     }
   }
@@ -88,8 +93,18 @@ export default function PaymentHistoryLessorReviewModal(
           >
             <Typography variant="h5">Cancel</Typography>
           </Button>
-          <Button type="submit" variant="default" size="lg" className="w-full lg:w-[108px]">
-            <Typography variant="h5">Submit</Typography>
+          <Button
+            type="submit"
+            variant="default"
+            size="lg"
+            className="w-full lg:w-[108px]"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <Spinner className="flex justify-center" />
+            ) : (
+              <Typography variant="h5">Submit</Typography>
+            )}
           </Button>
         </div>
       </form>

@@ -1,8 +1,9 @@
-import React from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
 import { Form } from '@/components/ui/form'
+import { Spinner } from '@/components/ui/spinner'
 import Typography from '@/components/ui/typography'
 import { toast } from '@/components/ui/use-toast'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -48,12 +49,14 @@ export default function PaymentHistoryRenterReviewModal(
     },
   })
 
-  const onSubmit = (data: duplicateReviewPayment) => {
+  const [isLoading, setIsLoading] = useState(false)
+
+  function onSubmit(data: duplicateReviewPayment) {
+    setIsLoading(true)
     try {
-      console.log('data:', data)
       resolve(
         async ({ mutation }) => {
-          const req1 = mutation.createReview({
+          const req1 = await mutation.createReview({
             data: {
               description: data.userDescription,
               rating: Number(data.userRating),
@@ -61,7 +64,15 @@ export default function PaymentHistoryRenterReviewModal(
               reviewToUser: data.reviewToUser,
             },
           })
-          const req2 = mutation.createReview({
+          return req1
+        },
+        {
+          cachePolicy: 'no-store',
+        }
+      )
+      resolve(
+        async ({ mutation }) => {
+          const req2 = await mutation.createReview({
             data: {
               description: data.itemDescription,
               rating: Number(data.itemRating),
@@ -69,7 +80,7 @@ export default function PaymentHistoryRenterReviewModal(
               reviewToItem: data.reviewToItem,
             },
           })
-          return req1 && req2
+          return req2
         },
         {
           cachePolicy: 'no-store',
@@ -87,6 +98,7 @@ export default function PaymentHistoryRenterReviewModal(
         error: true,
       })
     } finally {
+      setIsLoading(false)
       onClick()
     }
   }
@@ -105,8 +117,18 @@ export default function PaymentHistoryRenterReviewModal(
           >
             <Typography variant="h5">Cancel</Typography>
           </Button>
-          <Button variant="default" type="submit" size="lg" className="w-full lg:w-[108px]">
-            <Typography variant="h5">Submit</Typography>
+          <Button
+            variant="default"
+            type="submit"
+            size="lg"
+            className="w-full lg:w-[108px]"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <Spinner className="flex justify-center" />
+            ) : (
+              <Typography variant="h5">Submit</Typography>
+            )}
           </Button>
         </div>
       </form>

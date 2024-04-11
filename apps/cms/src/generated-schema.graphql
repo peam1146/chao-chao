@@ -45,7 +45,6 @@ type User {
   bio: String
   rating: Float
   province: String
-  stripeCustomerID: String
   roles: [User_roles!]!
   requestsMade: [Renting!]
   requestsReceived: [Renting!]
@@ -128,7 +127,6 @@ type Item {
   tags: [Tag!]
   createdBy: User
   rating: Float
-  stripeProductID: String
   review: [Review!]
   updatedAt: DateTime
   createdAt: DateTime
@@ -213,7 +211,6 @@ input User_where {
   bio: User_bio_operator
   rating: User_rating_operator
   province: User_province_operator
-  stripeCustomerID: User_stripeCustomerID_operator
   roles: User_roles_operator
   requestsMade: User_requestsMade_operator
   requestsReceived: User_requestsReceived_operator
@@ -291,17 +288,6 @@ input User_rating_operator {
 }
 
 input User_province_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input User_stripeCustomerID_operator {
   equals: String
   not_equals: String
   like: String
@@ -402,7 +388,6 @@ input User_where_and {
   bio: User_bio_operator
   rating: User_rating_operator
   province: User_province_operator
-  stripeCustomerID: User_stripeCustomerID_operator
   roles: User_roles_operator
   requestsMade: User_requestsMade_operator
   requestsReceived: User_requestsReceived_operator
@@ -421,7 +406,6 @@ input User_where_or {
   bio: User_bio_operator
   rating: User_rating_operator
   province: User_province_operator
-  stripeCustomerID: User_stripeCustomerID_operator
   roles: User_roles_operator
   requestsMade: User_requestsMade_operator
   requestsReceived: User_requestsReceived_operator
@@ -449,7 +433,6 @@ type UsersDocAccessFields {
   bio: UsersDocAccessFields_bio
   rating: UsersDocAccessFields_rating
   province: UsersDocAccessFields_province
-  stripeCustomerID: UsersDocAccessFields_stripeCustomerID
   roles: UsersDocAccessFields_roles
   requestsMade: UsersDocAccessFields_requestsMade
   requestsReceived: UsersDocAccessFields_requestsReceived
@@ -618,29 +601,6 @@ type UsersDocAccessFields_province_Update {
 }
 
 type UsersDocAccessFields_province_Delete {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_stripeCustomerID {
-  create: UsersDocAccessFields_stripeCustomerID_Create
-  read: UsersDocAccessFields_stripeCustomerID_Read
-  update: UsersDocAccessFields_stripeCustomerID_Update
-  delete: UsersDocAccessFields_stripeCustomerID_Delete
-}
-
-type UsersDocAccessFields_stripeCustomerID_Create {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_stripeCustomerID_Read {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_stripeCustomerID_Update {
-  permission: Boolean!
-}
-
-type UsersDocAccessFields_stripeCustomerID_Delete {
   permission: Boolean!
 }
 
@@ -893,7 +853,6 @@ input Item_where {
   tags: Item_tags_operator
   createdBy: Item_createdBy_operator
   rating: Item_rating_operator
-  stripeProductID: Item_stripeProductID_operator
   review: Item_review_operator
   updatedAt: Item_updatedAt_operator
   createdAt: Item_createdAt_operator
@@ -1040,17 +999,6 @@ input Item_rating_operator {
   exists: Boolean
 }
 
-input Item_stripeProductID_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
 input Item_review_operator {
   equals: JSON
   not_equals: JSON
@@ -1120,7 +1068,6 @@ input Item_where_and {
   tags: Item_tags_operator
   createdBy: Item_createdBy_operator
   rating: Item_rating_operator
-  stripeProductID: Item_stripeProductID_operator
   review: Item_review_operator
   updatedAt: Item_updatedAt_operator
   createdAt: Item_createdAt_operator
@@ -1142,7 +1089,6 @@ input Item_where_or {
   tags: Item_tags_operator
   createdBy: Item_createdBy_operator
   rating: Item_rating_operator
-  stripeProductID: Item_stripeProductID_operator
   review: Item_review_operator
   updatedAt: Item_updatedAt_operator
   createdAt: Item_createdAt_operator
@@ -1173,7 +1119,6 @@ type ItemsDocAccessFields {
   tags: ItemsDocAccessFields_tags
   createdBy: ItemsDocAccessFields_createdBy
   rating: ItemsDocAccessFields_rating
-  stripeProductID: ItemsDocAccessFields_stripeProductID
   review: ItemsDocAccessFields_review
   updatedAt: ItemsDocAccessFields_updatedAt
   createdAt: ItemsDocAccessFields_createdAt
@@ -1479,29 +1424,6 @@ type ItemsDocAccessFields_rating_Delete {
   permission: Boolean!
 }
 
-type ItemsDocAccessFields_stripeProductID {
-  create: ItemsDocAccessFields_stripeProductID_Create
-  read: ItemsDocAccessFields_stripeProductID_Read
-  update: ItemsDocAccessFields_stripeProductID_Update
-  delete: ItemsDocAccessFields_stripeProductID_Delete
-}
-
-type ItemsDocAccessFields_stripeProductID_Create {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_stripeProductID_Read {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_stripeProductID_Update {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_stripeProductID_Delete {
-  permission: Boolean!
-}
-
 type ItemsDocAccessFields_review {
   create: ItemsDocAccessFields_review_Create
   read: ItemsDocAccessFields_review_Read
@@ -1642,7 +1564,6 @@ type ItemVersion_Version {
   tags: [Tag!]
   createdBy: User
   rating: Float
-  stripeProductID: String
   review: [Review!]
   updatedAt: DateTime
   createdAt: DateTime
@@ -1696,7 +1617,6 @@ input versionsItem_where {
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
   version__rating: versionsItem_version__rating_operator
-  version__stripeProductID: versionsItem_version__stripeProductID_operator
   version__review: versionsItem_version__review_operator
   version__updatedAt: versionsItem_version__updatedAt_operator
   version__createdAt: versionsItem_version__createdAt_operator
@@ -1855,17 +1775,6 @@ input versionsItem_version__rating_operator {
   exists: Boolean
 }
 
-input versionsItem_version__stripeProductID_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
 input versionsItem_version__review_operator {
   equals: JSON
   not_equals: JSON
@@ -1964,7 +1873,6 @@ input versionsItem_where_and {
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
   version__rating: versionsItem_version__rating_operator
-  version__stripeProductID: versionsItem_version__stripeProductID_operator
   version__review: versionsItem_version__review_operator
   version__updatedAt: versionsItem_version__updatedAt_operator
   version__createdAt: versionsItem_version__createdAt_operator
@@ -1990,7 +1898,6 @@ input versionsItem_where_or {
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
   version__rating: versionsItem_version__rating_operator
-  version__stripeProductID: versionsItem_version__stripeProductID_operator
   version__review: versionsItem_version__review_operator
   version__updatedAt: versionsItem_version__updatedAt_operator
   version__createdAt: versionsItem_version__createdAt_operator
@@ -4805,7 +4712,6 @@ type UsersFields {
   bio: UsersFields_bio
   rating: UsersFields_rating
   province: UsersFields_province
-  stripeCustomerID: UsersFields_stripeCustomerID
   roles: UsersFields_roles
   requestsMade: UsersFields_requestsMade
   requestsReceived: UsersFields_requestsReceived
@@ -4974,29 +4880,6 @@ type UsersFields_province_Update {
 }
 
 type UsersFields_province_Delete {
-  permission: Boolean!
-}
-
-type UsersFields_stripeCustomerID {
-  create: UsersFields_stripeCustomerID_Create
-  read: UsersFields_stripeCustomerID_Read
-  update: UsersFields_stripeCustomerID_Update
-  delete: UsersFields_stripeCustomerID_Delete
-}
-
-type UsersFields_stripeCustomerID_Create {
-  permission: Boolean!
-}
-
-type UsersFields_stripeCustomerID_Read {
-  permission: Boolean!
-}
-
-type UsersFields_stripeCustomerID_Update {
-  permission: Boolean!
-}
-
-type UsersFields_stripeCustomerID_Delete {
   permission: Boolean!
 }
 
@@ -5232,7 +5115,6 @@ type ItemsFields {
   tags: ItemsFields_tags
   createdBy: ItemsFields_createdBy
   rating: ItemsFields_rating
-  stripeProductID: ItemsFields_stripeProductID
   review: ItemsFields_review
   updatedAt: ItemsFields_updatedAt
   createdAt: ItemsFields_createdAt
@@ -5535,29 +5417,6 @@ type ItemsFields_rating_Update {
 }
 
 type ItemsFields_rating_Delete {
-  permission: Boolean!
-}
-
-type ItemsFields_stripeProductID {
-  create: ItemsFields_stripeProductID_Create
-  read: ItemsFields_stripeProductID_Read
-  update: ItemsFields_stripeProductID_Update
-  delete: ItemsFields_stripeProductID_Delete
-}
-
-type ItemsFields_stripeProductID_Create {
-  permission: Boolean!
-}
-
-type ItemsFields_stripeProductID_Read {
-  permission: Boolean!
-}
-
-type ItemsFields_stripeProductID_Update {
-  permission: Boolean!
-}
-
-type ItemsFields_stripeProductID_Delete {
   permission: Boolean!
 }
 
@@ -7399,7 +7258,6 @@ input mutationUserInput {
   bio: String
   rating: Float
   province: String
-  stripeCustomerID: String
   roles: [User_roles_MutationInput]!
   requestsMade: [Int]
   requestsReceived: [Int]
@@ -7429,7 +7287,6 @@ input mutationUserUpdateInput {
   bio: String
   rating: Float
   province: String
-  stripeCustomerID: String
   roles: [UserUpdate_roles_MutationInput]
   requestsMade: [Int]
   requestsReceived: [Int]
@@ -7493,7 +7350,6 @@ input mutationItemInput {
   tags: [Int]
   createdBy: Int
   rating: Float
-  stripeProductID: String
   review: [Int]
   updatedAt: String
   createdAt: String
@@ -7532,7 +7388,6 @@ input mutationItemUpdateInput {
   tags: [Int]
   createdBy: Int
   rating: Float
-  stripeProductID: String
   review: [Int]
   updatedAt: String
   createdAt: String
