@@ -9,6 +9,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
+import { Spinner } from '@/components/ui/spinner'
 import { useUserToken } from '@/providers/User'
 import { useParams, useRouter } from 'next/navigation'
 
@@ -30,8 +31,7 @@ export default function DetailPage() {
   }
 
   const query = useQuery({
-    fetchPolicy: 'cache-and-network',
-    suspense: true,
+    fetchPolicy: 'network-only',
   })
 
   const item = query.Item({
@@ -72,9 +72,17 @@ export default function DetailPage() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <div className="flex flex-col lg:flex-row p-6 gap-10 bg-card rounded-2xl justify-items-center">
-        <Gallery imgList={item?.image} />
-        <Description isSelf={item?.createdBy?.id === Number(userId)} item={item} />
+      <div className="flex flex-col lg:flex-row p-6 gap-10 bg-card rounded-2xl justify-center">
+        {query.$state.isLoading ? (
+          <div className="flex justify-center items-center min-h-[500px]">
+            <Spinner />
+          </div>
+        ) : (
+          <>
+            <Gallery imgList={item?.image} />
+            <Description isSelf={item?.createdBy?.id === Number(userId)} item={item} />
+          </>
+        )}
       </div>
       <Lessor isSelf={item?.createdBy?.id === Number(userId)} user={item?.createdBy} />
       {!(item?.createdBy?.id === Number(userId)) && <Details details={item?.description} />}

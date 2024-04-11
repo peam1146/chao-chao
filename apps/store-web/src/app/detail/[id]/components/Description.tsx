@@ -23,7 +23,6 @@ import {
   Maybe,
   Renting_status_MutationInput,
   resolve,
-  useQuery,
 } from '../../../../../gqty'
 
 const requestSchema = z.object({
@@ -42,9 +41,6 @@ export default function Description({ isSelf, item }: { isSelf: boolean; item: M
 
   const { toast } = useToast()
 
-  const query = useQuery({
-    fetchPolicy: 'cache-and-network',
-  })
   const { userId } = useUserToken()
 
   async function onSubmit(data: z.infer<typeof requestSchema>) {

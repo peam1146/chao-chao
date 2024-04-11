@@ -31,6 +31,15 @@ export default function Profile() {
     },
   })
 
+  const itemsArray = query.Items({
+    draft: false,
+    where: {
+      createdBy: {
+        equals: user?.id,
+      },
+    },
+  })
+
   const reviews =
     reviewsArray?.docs
       ?.filter((review) => review?.reviewToUser?.id === user?.id)
@@ -125,7 +134,7 @@ export default function Profile() {
           </Link>
         </div>
       </div>
-      <MyAsset />
+      <MyAsset isLoading={query.$state.isLoading} items={itemsArray} />
       <Reviews reviews={reviews} />
     </main>
   )

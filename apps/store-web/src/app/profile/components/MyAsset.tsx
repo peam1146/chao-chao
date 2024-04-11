@@ -6,31 +6,22 @@ import { Button } from '@/components/ui/button'
 import { Spinner } from '@/components/ui/spinner'
 import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
-import { useUserToken } from '@/providers/User'
 import { ArrowDown, ArrowUp, CaretUpDown } from '@phosphor-icons/react'
 
-import { Items, Maybe, useQuery } from '../../../../gqty'
+import { Items, Maybe } from '../../../../gqty'
 import { AssetCard } from './AssetCard'
 
 type Filter = 'RELEVANCE' | 'PRICE_LESS' | 'PRICE_MORE' | 'LATEST' | 'SCORE'
 
-export function MyAsset() {
+export function MyAsset({
+  items: itemsArray,
+  isLoading,
+}: {
+  items: Maybe<Items>
+  isLoading: boolean
+}) {
   const [filter, setFilter] = useState<Filter>('RELEVANCE')
 
-  const query = useQuery({
-    fetchPolicy: 'cache-and-network',
-  })
-
-  const { userId } = useUserToken()
-
-  const itemsArray = query.Items({
-    draft: false,
-    where: {
-      createdBy: {
-        equals: userId,
-      },
-    },
-  })
   const SortingSection = () => (
     <div className="flex  justify-between w-full border-b items-center max-md:flex-col max-md:items-start">
       <Typography variant="h4" fontWeight="bold">
@@ -119,7 +110,7 @@ export function MyAsset() {
     <>
       <SortingSection />
       <div className="py-4 w-full">
-        {query.$state.isLoading && (
+        {isLoading && (
           <div className="flex justify-center items-center">
             <Spinner className="self-center" />
           </div>
