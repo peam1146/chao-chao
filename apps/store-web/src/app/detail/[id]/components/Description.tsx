@@ -11,6 +11,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Spinner } from '@/components/ui/spinner'
 import Typography from '@/components/ui/typography'
 import { useToast } from '@/components/ui/use-toast'
+import { useUserToken } from '@/providers/User'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Rating from '@mui/material/Rating'
 import { CalendarBlank } from '@phosphor-icons/react'
@@ -44,7 +45,7 @@ export default function Description({ isSelf, item }: { isSelf: boolean; item: M
   const query = useQuery({
     fetchPolicy: 'cache-and-network',
   })
-  const userId = query.meUser?.user?.id
+  const { userId } = useUserToken()
 
   async function onSubmit(data: z.infer<typeof requestSchema>) {
     setIsLoading(true)
@@ -65,7 +66,7 @@ export default function Description({ isSelf, item }: { isSelf: boolean; item: M
             data: {
               startDate: data.startDate?.toISOString(),
               endDate: data.endDate?.toISOString(),
-              rentedBy: { user: userId },
+              rentedBy: { user: userId !== '' ? Number(userId) : undefined },
               rentedTo: {
                 item: item?.id,
                 user: item?.createdBy?.id,
