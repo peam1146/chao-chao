@@ -11,7 +11,7 @@ import { useUserToken } from '@/providers/User'
 import { ArrowDown, ArrowUp, CaretUpDown, Funnel } from '@phosphor-icons/react'
 import { useSearchParams } from 'next/navigation'
 
-import { Item_rentingStatus, Items, Maybe, useQuery } from '../../../gqty'
+import { Item_Advertise_status, Item_rentingStatus, Items, Maybe, useQuery } from '../../../gqty'
 import SmallCard from '../components/SmallCard'
 import { FilterInput } from './components/FilterInput'
 import { FilterModal } from './components/FilterModal'
@@ -29,7 +29,7 @@ export default function SearchPage() {
   const search = searchParams.get('search')
 
   const query = useQuery({
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'network-only',
   })
 
   const { userId } = useUserToken()
@@ -192,6 +192,7 @@ export default function SearchPage() {
                         return (
                           <SmallCard
                             key={item?.id}
+                            isAdvertise={item?.advertise?.status === Item_Advertise_status.active}
                             id={item?.id}
                             name={item?.name ?? ''}
                             image={item?.image}

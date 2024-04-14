@@ -101,22 +101,6 @@ export const Item: CollectionConfig = {
       ],
     },
     {
-      type: 'date',
-      name: 'start',
-      label: {
-        en: 'Start Date',
-        th: 'วันที่เริ่มให้เช่า',
-      },
-    },
-    {
-      type: 'date',
-      name: 'end',
-      label: {
-        en: 'End Date',
-        th: 'วันที่สิ้นสุดให้เช่า',
-      },
-    },
-    {
       type: 'relationship',
       name: 'tags',
       label: {
@@ -134,6 +118,7 @@ export const Item: CollectionConfig = {
       defaultValue: ({ user }) => user.id,
       required: true,
       hidden: false,
+      maxDepth: 3,
     },
     {
       type: 'number',
@@ -154,6 +139,46 @@ export const Item: CollectionConfig = {
       access: {
         update: () => true,
       },
+    },
+    {
+      name: 'advertise',
+      type: 'group',
+      fields: [
+        {
+          type: 'select',
+          name: 'status',
+          defaultValue: 'inactive',
+          options: [
+            {
+              label: 'Active',
+              value: 'active',
+            },
+            {
+              label: 'Waiting for Payment',
+              value: 'waiting_for_payment',
+            },
+            {
+              label: 'Inactive',
+              value: 'inactive',
+            },
+          ],
+        },
+        {
+          type: 'date',
+          name: 'startDate',
+          label: 'Start Date',
+        },
+        {
+          type: 'date',
+          name: 'endDate',
+          label: 'End Date',
+        },
+        {
+          type: 'number',
+          name: 'price',
+          label: 'Price',
+        },
+      ],
     },
   ],
 }

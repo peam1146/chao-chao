@@ -38,6 +38,7 @@ export default function ExpensesContainer() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        option: 'item',
         productId,
         totalPrice,
         rentingId,

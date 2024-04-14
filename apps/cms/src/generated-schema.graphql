@@ -30,6 +30,9 @@ type Query {
   Report(id: Int!, draft: Boolean): Report
   Reports(draft: Boolean, where: Report_where, limit: Int, page: Int, sort: String): Reports
   docAccessReport(id: Int!): reportDocAccess
+  Payment(id: Int!, draft: Boolean): Payment
+  Payments(draft: Boolean, where: Payment_where, limit: Int, page: Int, sort: String): Payments
+  docAccessPayment(id: Int!): paymentDocAccess
   PayloadPreference(id: Int!, draft: Boolean): PayloadPreference
   PayloadPreferences(draft: Boolean, where: PayloadPreference_where, limit: Int, page: Int, sort: String): PayloadPreferences
   docAccessPayloadPreference(id: Int!): payload_preferencesDocAccess
@@ -122,12 +125,11 @@ type Item {
   period: Float
   periodType: Item_periodType
   rentingStatus: Item_rentingStatus
-  start: DateTime
-  end: DateTime
   tags: [Tag!]
   createdBy: User
   rating: Float
   review: [Review!]
+  advertise: Item_Advertise
   updatedAt: DateTime
   createdAt: DateTime
   _status: Item__status
@@ -170,6 +172,19 @@ type Review {
 enum Review_option {
   ITEM
   USER
+}
+
+type Item_Advertise {
+  status: Item_Advertise_status
+  startDate: DateTime
+  endDate: DateTime
+  price: Float
+}
+
+enum Item_Advertise_status {
+  active
+  waiting_for_payment
+  inactive
 }
 
 enum Item__status {
@@ -848,12 +863,14 @@ input Item_where {
   period: Item_period_operator
   periodType: Item_periodType_operator
   rentingStatus: Item_rentingStatus_operator
-  start: Item_start_operator
-  end: Item_end_operator
   tags: Item_tags_operator
   createdBy: Item_createdBy_operator
   rating: Item_rating_operator
   review: Item_review_operator
+  advertise__status: Item_advertise__status_operator
+  advertise__startDate: Item_advertise__startDate_operator
+  advertise__endDate: Item_advertise__endDate_operator
+  advertise__price: Item_advertise__price_operator
   updatedAt: Item_updatedAt_operator
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
@@ -950,28 +967,6 @@ enum Item_rentingStatus_Input {
   negotiating
 }
 
-input Item_start_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input Item_end_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
 input Item_tags_operator {
   equals: JSON
   not_equals: JSON
@@ -1005,6 +1000,53 @@ input Item_review_operator {
   in: [JSON]
   not_in: [JSON]
   all: [JSON]
+  exists: Boolean
+}
+
+input Item_advertise__status_operator {
+  equals: Item_advertise__status_Input
+  not_equals: Item_advertise__status_Input
+  in: [Item_advertise__status_Input]
+  not_in: [Item_advertise__status_Input]
+  all: [Item_advertise__status_Input]
+  exists: Boolean
+}
+
+enum Item_advertise__status_Input {
+  active
+  waiting_for_payment
+  inactive
+}
+
+input Item_advertise__startDate_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Item_advertise__endDate_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Item_advertise__price_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
   exists: Boolean
 }
 
@@ -1063,12 +1105,14 @@ input Item_where_and {
   period: Item_period_operator
   periodType: Item_periodType_operator
   rentingStatus: Item_rentingStatus_operator
-  start: Item_start_operator
-  end: Item_end_operator
   tags: Item_tags_operator
   createdBy: Item_createdBy_operator
   rating: Item_rating_operator
   review: Item_review_operator
+  advertise__status: Item_advertise__status_operator
+  advertise__startDate: Item_advertise__startDate_operator
+  advertise__endDate: Item_advertise__endDate_operator
+  advertise__price: Item_advertise__price_operator
   updatedAt: Item_updatedAt_operator
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
@@ -1084,12 +1128,14 @@ input Item_where_or {
   period: Item_period_operator
   periodType: Item_periodType_operator
   rentingStatus: Item_rentingStatus_operator
-  start: Item_start_operator
-  end: Item_end_operator
   tags: Item_tags_operator
   createdBy: Item_createdBy_operator
   rating: Item_rating_operator
   review: Item_review_operator
+  advertise__status: Item_advertise__status_operator
+  advertise__startDate: Item_advertise__startDate_operator
+  advertise__endDate: Item_advertise__endDate_operator
+  advertise__price: Item_advertise__price_operator
   updatedAt: Item_updatedAt_operator
   createdAt: Item_createdAt_operator
   _status: Item__status_operator
@@ -1114,12 +1160,11 @@ type ItemsDocAccessFields {
   period: ItemsDocAccessFields_period
   periodType: ItemsDocAccessFields_periodType
   rentingStatus: ItemsDocAccessFields_rentingStatus
-  start: ItemsDocAccessFields_start
-  end: ItemsDocAccessFields_end
   tags: ItemsDocAccessFields_tags
   createdBy: ItemsDocAccessFields_createdBy
   rating: ItemsDocAccessFields_rating
   review: ItemsDocAccessFields_review
+  advertise: ItemsDocAccessFields_advertise
   updatedAt: ItemsDocAccessFields_updatedAt
   createdAt: ItemsDocAccessFields_createdAt
   _status: ItemsDocAccessFields__status
@@ -1309,52 +1354,6 @@ type ItemsDocAccessFields_rentingStatus_Delete {
   permission: Boolean!
 }
 
-type ItemsDocAccessFields_start {
-  create: ItemsDocAccessFields_start_Create
-  read: ItemsDocAccessFields_start_Read
-  update: ItemsDocAccessFields_start_Update
-  delete: ItemsDocAccessFields_start_Delete
-}
-
-type ItemsDocAccessFields_start_Create {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_start_Read {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_start_Update {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_start_Delete {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_end {
-  create: ItemsDocAccessFields_end_Create
-  read: ItemsDocAccessFields_end_Read
-  update: ItemsDocAccessFields_end_Update
-  delete: ItemsDocAccessFields_end_Delete
-}
-
-type ItemsDocAccessFields_end_Create {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_end_Read {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_end_Update {
-  permission: Boolean!
-}
-
-type ItemsDocAccessFields_end_Delete {
-  permission: Boolean!
-}
-
 type ItemsDocAccessFields_tags {
   create: ItemsDocAccessFields_tags_Create
   read: ItemsDocAccessFields_tags_Read
@@ -1444,6 +1443,129 @@ type ItemsDocAccessFields_review_Update {
 }
 
 type ItemsDocAccessFields_review_Delete {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise {
+  create: ItemsDocAccessFields_advertise_Create
+  read: ItemsDocAccessFields_advertise_Read
+  update: ItemsDocAccessFields_advertise_Update
+  delete: ItemsDocAccessFields_advertise_Delete
+  fields: ItemsDocAccessFields_advertise_Fields
+}
+
+type ItemsDocAccessFields_advertise_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_Delete {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_Fields {
+  status: ItemsDocAccessFields_advertise_status
+  startDate: ItemsDocAccessFields_advertise_startDate
+  endDate: ItemsDocAccessFields_advertise_endDate
+  price: ItemsDocAccessFields_advertise_price
+}
+
+type ItemsDocAccessFields_advertise_status {
+  create: ItemsDocAccessFields_advertise_status_Create
+  read: ItemsDocAccessFields_advertise_status_Read
+  update: ItemsDocAccessFields_advertise_status_Update
+  delete: ItemsDocAccessFields_advertise_status_Delete
+}
+
+type ItemsDocAccessFields_advertise_status_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_status_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_status_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_status_Delete {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_startDate {
+  create: ItemsDocAccessFields_advertise_startDate_Create
+  read: ItemsDocAccessFields_advertise_startDate_Read
+  update: ItemsDocAccessFields_advertise_startDate_Update
+  delete: ItemsDocAccessFields_advertise_startDate_Delete
+}
+
+type ItemsDocAccessFields_advertise_startDate_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_startDate_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_startDate_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_startDate_Delete {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_endDate {
+  create: ItemsDocAccessFields_advertise_endDate_Create
+  read: ItemsDocAccessFields_advertise_endDate_Read
+  update: ItemsDocAccessFields_advertise_endDate_Update
+  delete: ItemsDocAccessFields_advertise_endDate_Delete
+}
+
+type ItemsDocAccessFields_advertise_endDate_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_endDate_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_endDate_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_endDate_Delete {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_price {
+  create: ItemsDocAccessFields_advertise_price_Create
+  read: ItemsDocAccessFields_advertise_price_Read
+  update: ItemsDocAccessFields_advertise_price_Update
+  delete: ItemsDocAccessFields_advertise_price_Delete
+}
+
+type ItemsDocAccessFields_advertise_price_Create {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_price_Read {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_price_Update {
+  permission: Boolean!
+}
+
+type ItemsDocAccessFields_advertise_price_Delete {
   permission: Boolean!
 }
 
@@ -1559,12 +1681,11 @@ type ItemVersion_Version {
   period: Float
   periodType: ItemVersion_Version_periodType
   rentingStatus: ItemVersion_Version_rentingStatus
-  start: DateTime
-  end: DateTime
   tags: [Tag!]
   createdBy: User
   rating: Float
   review: [Review!]
+  advertise: ItemVersion_Version_Advertise
   updatedAt: DateTime
   createdAt: DateTime
   _status: ItemVersion_Version__status
@@ -1581,6 +1702,19 @@ enum ItemVersion_Version_rentingStatus {
   available
   unavailable
   negotiating
+}
+
+type ItemVersion_Version_Advertise {
+  status: ItemVersion_Version_Advertise_status
+  startDate: DateTime
+  endDate: DateTime
+  price: Float
+}
+
+enum ItemVersion_Version_Advertise_status {
+  active
+  waiting_for_payment
+  inactive
 }
 
 enum ItemVersion_Version__status {
@@ -1612,12 +1746,14 @@ input versionsItem_where {
   version__period: versionsItem_version__period_operator
   version__periodType: versionsItem_version__periodType_operator
   version__rentingStatus: versionsItem_version__rentingStatus_operator
-  version__start: versionsItem_version__start_operator
-  version__end: versionsItem_version__end_operator
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
   version__rating: versionsItem_version__rating_operator
   version__review: versionsItem_version__review_operator
+  version__advertise__status: versionsItem_version__advertise__status_operator
+  version__advertise__startDate: versionsItem_version__advertise__startDate_operator
+  version__advertise__endDate: versionsItem_version__advertise__endDate_operator
+  version__advertise__price: versionsItem_version__advertise__price_operator
   version__updatedAt: versionsItem_version__updatedAt_operator
   version__createdAt: versionsItem_version__createdAt_operator
   version___status: versionsItem_version___status_operator
@@ -1726,28 +1862,6 @@ enum versionsItem_version__rentingStatus_Input {
   negotiating
 }
 
-input versionsItem_version__start_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input versionsItem_version__end_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
 input versionsItem_version__tags_operator {
   equals: JSON
   not_equals: JSON
@@ -1781,6 +1895,53 @@ input versionsItem_version__review_operator {
   in: [JSON]
   not_in: [JSON]
   all: [JSON]
+  exists: Boolean
+}
+
+input versionsItem_version__advertise__status_operator {
+  equals: versionsItem_version__advertise__status_Input
+  not_equals: versionsItem_version__advertise__status_Input
+  in: [versionsItem_version__advertise__status_Input]
+  not_in: [versionsItem_version__advertise__status_Input]
+  all: [versionsItem_version__advertise__status_Input]
+  exists: Boolean
+}
+
+enum versionsItem_version__advertise__status_Input {
+  active
+  waiting_for_payment
+  inactive
+}
+
+input versionsItem_version__advertise__startDate_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input versionsItem_version__advertise__endDate_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input versionsItem_version__advertise__price_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
   exists: Boolean
 }
 
@@ -1868,12 +2029,14 @@ input versionsItem_where_and {
   version__period: versionsItem_version__period_operator
   version__periodType: versionsItem_version__periodType_operator
   version__rentingStatus: versionsItem_version__rentingStatus_operator
-  version__start: versionsItem_version__start_operator
-  version__end: versionsItem_version__end_operator
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
   version__rating: versionsItem_version__rating_operator
   version__review: versionsItem_version__review_operator
+  version__advertise__status: versionsItem_version__advertise__status_operator
+  version__advertise__startDate: versionsItem_version__advertise__startDate_operator
+  version__advertise__endDate: versionsItem_version__advertise__endDate_operator
+  version__advertise__price: versionsItem_version__advertise__price_operator
   version__updatedAt: versionsItem_version__updatedAt_operator
   version__createdAt: versionsItem_version__createdAt_operator
   version___status: versionsItem_version___status_operator
@@ -1893,12 +2056,14 @@ input versionsItem_where_or {
   version__period: versionsItem_version__period_operator
   version__periodType: versionsItem_version__periodType_operator
   version__rentingStatus: versionsItem_version__rentingStatus_operator
-  version__start: versionsItem_version__start_operator
-  version__end: versionsItem_version__end_operator
   version__tags: versionsItem_version__tags_operator
   version__createdBy: versionsItem_version__createdBy_operator
   version__rating: versionsItem_version__rating_operator
   version__review: versionsItem_version__review_operator
+  version__advertise__status: versionsItem_version__advertise__status_operator
+  version__advertise__startDate: versionsItem_version__advertise__startDate_operator
+  version__advertise__endDate: versionsItem_version__advertise__endDate_operator
+  version__advertise__price: versionsItem_version__advertise__price_operator
   version__updatedAt: versionsItem_version__updatedAt_operator
   version__createdAt: versionsItem_version__createdAt_operator
   version___status: versionsItem_version___status_operator
@@ -4405,6 +4570,531 @@ type ReportDeleteDocAccess {
   where: JSONObject
 }
 
+type Payment {
+  id: Int
+  renting: Payment_Renting
+  advertise: Payment_Advertise
+  type: Payment_type
+  createdBy: User!
+  payTo: User
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type Payment_Renting {
+  renting: Renting
+}
+
+type Payment_Advertise {
+  item: Item
+  startDate: DateTime
+  endDate: DateTime
+  price: Float
+}
+
+enum Payment_type {
+  RENTING
+  ADVERTISE
+}
+
+type Payments {
+  docs: [Payment]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Payment_where {
+  renting__renting: Payment_renting__renting_operator
+  advertise__item: Payment_advertise__item_operator
+  advertise__startDate: Payment_advertise__startDate_operator
+  advertise__endDate: Payment_advertise__endDate_operator
+  advertise__price: Payment_advertise__price_operator
+  type: Payment_type_operator
+  createdBy: Payment_createdBy_operator
+  payTo: Payment_payTo_operator
+  updatedAt: Payment_updatedAt_operator
+  createdAt: Payment_createdAt_operator
+  id: Payment_id_operator
+  AND: [Payment_where_and]
+  OR: [Payment_where_or]
+}
+
+input Payment_renting__renting_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input Payment_advertise__item_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input Payment_advertise__startDate_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Payment_advertise__endDate_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Payment_advertise__price_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Payment_type_operator {
+  equals: Payment_type_Input
+  not_equals: Payment_type_Input
+  in: [Payment_type_Input]
+  not_in: [Payment_type_Input]
+  all: [Payment_type_Input]
+  exists: Boolean
+}
+
+enum Payment_type_Input {
+  RENTING
+  ADVERTISE
+}
+
+input Payment_createdBy_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input Payment_payTo_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input Payment_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Payment_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Payment_id_operator {
+  equals: Int
+  not_equals: Int
+  greater_than_equal: Int
+  greater_than: Int
+  less_than_equal: Int
+  less_than: Int
+  exists: Boolean
+}
+
+input Payment_where_and {
+  renting__renting: Payment_renting__renting_operator
+  advertise__item: Payment_advertise__item_operator
+  advertise__startDate: Payment_advertise__startDate_operator
+  advertise__endDate: Payment_advertise__endDate_operator
+  advertise__price: Payment_advertise__price_operator
+  type: Payment_type_operator
+  createdBy: Payment_createdBy_operator
+  payTo: Payment_payTo_operator
+  updatedAt: Payment_updatedAt_operator
+  createdAt: Payment_createdAt_operator
+  id: Payment_id_operator
+}
+
+input Payment_where_or {
+  renting__renting: Payment_renting__renting_operator
+  advertise__item: Payment_advertise__item_operator
+  advertise__startDate: Payment_advertise__startDate_operator
+  advertise__endDate: Payment_advertise__endDate_operator
+  advertise__price: Payment_advertise__price_operator
+  type: Payment_type_operator
+  createdBy: Payment_createdBy_operator
+  payTo: Payment_payTo_operator
+  updatedAt: Payment_updatedAt_operator
+  createdAt: Payment_createdAt_operator
+  id: Payment_id_operator
+}
+
+type paymentDocAccess {
+  fields: PaymentDocAccessFields
+  create: PaymentCreateDocAccess
+  read: PaymentReadDocAccess
+  update: PaymentUpdateDocAccess
+  delete: PaymentDeleteDocAccess
+}
+
+type PaymentDocAccessFields {
+  renting: PaymentDocAccessFields_renting
+  advertise: PaymentDocAccessFields_advertise
+  type: PaymentDocAccessFields_type
+  createdBy: PaymentDocAccessFields_createdBy
+  payTo: PaymentDocAccessFields_payTo
+  updatedAt: PaymentDocAccessFields_updatedAt
+  createdAt: PaymentDocAccessFields_createdAt
+}
+
+type PaymentDocAccessFields_renting {
+  create: PaymentDocAccessFields_renting_Create
+  read: PaymentDocAccessFields_renting_Read
+  update: PaymentDocAccessFields_renting_Update
+  delete: PaymentDocAccessFields_renting_Delete
+  fields: PaymentDocAccessFields_renting_Fields
+}
+
+type PaymentDocAccessFields_renting_Create {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_renting_Read {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_renting_Update {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_renting_Delete {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_renting_Fields {
+  renting: PaymentDocAccessFields_renting_renting
+}
+
+type PaymentDocAccessFields_renting_renting {
+  create: PaymentDocAccessFields_renting_renting_Create
+  read: PaymentDocAccessFields_renting_renting_Read
+  update: PaymentDocAccessFields_renting_renting_Update
+  delete: PaymentDocAccessFields_renting_renting_Delete
+}
+
+type PaymentDocAccessFields_renting_renting_Create {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_renting_renting_Read {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_renting_renting_Update {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_renting_renting_Delete {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise {
+  create: PaymentDocAccessFields_advertise_Create
+  read: PaymentDocAccessFields_advertise_Read
+  update: PaymentDocAccessFields_advertise_Update
+  delete: PaymentDocAccessFields_advertise_Delete
+  fields: PaymentDocAccessFields_advertise_Fields
+}
+
+type PaymentDocAccessFields_advertise_Create {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_Read {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_Update {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_Delete {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_Fields {
+  item: PaymentDocAccessFields_advertise_item
+  startDate: PaymentDocAccessFields_advertise_startDate
+  endDate: PaymentDocAccessFields_advertise_endDate
+  price: PaymentDocAccessFields_advertise_price
+}
+
+type PaymentDocAccessFields_advertise_item {
+  create: PaymentDocAccessFields_advertise_item_Create
+  read: PaymentDocAccessFields_advertise_item_Read
+  update: PaymentDocAccessFields_advertise_item_Update
+  delete: PaymentDocAccessFields_advertise_item_Delete
+}
+
+type PaymentDocAccessFields_advertise_item_Create {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_item_Read {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_item_Update {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_item_Delete {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_startDate {
+  create: PaymentDocAccessFields_advertise_startDate_Create
+  read: PaymentDocAccessFields_advertise_startDate_Read
+  update: PaymentDocAccessFields_advertise_startDate_Update
+  delete: PaymentDocAccessFields_advertise_startDate_Delete
+}
+
+type PaymentDocAccessFields_advertise_startDate_Create {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_startDate_Read {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_startDate_Update {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_startDate_Delete {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_endDate {
+  create: PaymentDocAccessFields_advertise_endDate_Create
+  read: PaymentDocAccessFields_advertise_endDate_Read
+  update: PaymentDocAccessFields_advertise_endDate_Update
+  delete: PaymentDocAccessFields_advertise_endDate_Delete
+}
+
+type PaymentDocAccessFields_advertise_endDate_Create {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_endDate_Read {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_endDate_Update {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_endDate_Delete {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_price {
+  create: PaymentDocAccessFields_advertise_price_Create
+  read: PaymentDocAccessFields_advertise_price_Read
+  update: PaymentDocAccessFields_advertise_price_Update
+  delete: PaymentDocAccessFields_advertise_price_Delete
+}
+
+type PaymentDocAccessFields_advertise_price_Create {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_price_Read {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_price_Update {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_advertise_price_Delete {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_type {
+  create: PaymentDocAccessFields_type_Create
+  read: PaymentDocAccessFields_type_Read
+  update: PaymentDocAccessFields_type_Update
+  delete: PaymentDocAccessFields_type_Delete
+}
+
+type PaymentDocAccessFields_type_Create {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_type_Read {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_type_Update {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_type_Delete {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_createdBy {
+  create: PaymentDocAccessFields_createdBy_Create
+  read: PaymentDocAccessFields_createdBy_Read
+  update: PaymentDocAccessFields_createdBy_Update
+  delete: PaymentDocAccessFields_createdBy_Delete
+}
+
+type PaymentDocAccessFields_createdBy_Create {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_createdBy_Read {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_createdBy_Update {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_createdBy_Delete {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_payTo {
+  create: PaymentDocAccessFields_payTo_Create
+  read: PaymentDocAccessFields_payTo_Read
+  update: PaymentDocAccessFields_payTo_Update
+  delete: PaymentDocAccessFields_payTo_Delete
+}
+
+type PaymentDocAccessFields_payTo_Create {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_payTo_Read {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_payTo_Update {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_payTo_Delete {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_updatedAt {
+  create: PaymentDocAccessFields_updatedAt_Create
+  read: PaymentDocAccessFields_updatedAt_Read
+  update: PaymentDocAccessFields_updatedAt_Update
+  delete: PaymentDocAccessFields_updatedAt_Delete
+}
+
+type PaymentDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_createdAt {
+  create: PaymentDocAccessFields_createdAt_Create
+  read: PaymentDocAccessFields_createdAt_Read
+  update: PaymentDocAccessFields_createdAt_Update
+  delete: PaymentDocAccessFields_createdAt_Delete
+}
+
+type PaymentDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type PaymentDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type PaymentCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PaymentReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PaymentUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PaymentDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type PayloadPreference {
   id: Int
   user: PayloadPreference_User_Relationship!
@@ -4692,6 +5382,7 @@ type Access {
   renting: rentingAccess
   reviews: reviewsAccess
   report: reportAccess
+  payment: paymentAccess
   payload_preferences: payload_preferencesAccess
 }
 
@@ -5110,12 +5801,11 @@ type ItemsFields {
   period: ItemsFields_period
   periodType: ItemsFields_periodType
   rentingStatus: ItemsFields_rentingStatus
-  start: ItemsFields_start
-  end: ItemsFields_end
   tags: ItemsFields_tags
   createdBy: ItemsFields_createdBy
   rating: ItemsFields_rating
   review: ItemsFields_review
+  advertise: ItemsFields_advertise
   updatedAt: ItemsFields_updatedAt
   createdAt: ItemsFields_createdAt
   _status: ItemsFields__status
@@ -5305,52 +5995,6 @@ type ItemsFields_rentingStatus_Delete {
   permission: Boolean!
 }
 
-type ItemsFields_start {
-  create: ItemsFields_start_Create
-  read: ItemsFields_start_Read
-  update: ItemsFields_start_Update
-  delete: ItemsFields_start_Delete
-}
-
-type ItemsFields_start_Create {
-  permission: Boolean!
-}
-
-type ItemsFields_start_Read {
-  permission: Boolean!
-}
-
-type ItemsFields_start_Update {
-  permission: Boolean!
-}
-
-type ItemsFields_start_Delete {
-  permission: Boolean!
-}
-
-type ItemsFields_end {
-  create: ItemsFields_end_Create
-  read: ItemsFields_end_Read
-  update: ItemsFields_end_Update
-  delete: ItemsFields_end_Delete
-}
-
-type ItemsFields_end_Create {
-  permission: Boolean!
-}
-
-type ItemsFields_end_Read {
-  permission: Boolean!
-}
-
-type ItemsFields_end_Update {
-  permission: Boolean!
-}
-
-type ItemsFields_end_Delete {
-  permission: Boolean!
-}
-
 type ItemsFields_tags {
   create: ItemsFields_tags_Create
   read: ItemsFields_tags_Read
@@ -5440,6 +6084,129 @@ type ItemsFields_review_Update {
 }
 
 type ItemsFields_review_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise {
+  create: ItemsFields_advertise_Create
+  read: ItemsFields_advertise_Read
+  update: ItemsFields_advertise_Update
+  delete: ItemsFields_advertise_Delete
+  fields: ItemsFields_advertise_Fields
+}
+
+type ItemsFields_advertise_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_Fields {
+  status: ItemsFields_advertise_status
+  startDate: ItemsFields_advertise_startDate
+  endDate: ItemsFields_advertise_endDate
+  price: ItemsFields_advertise_price
+}
+
+type ItemsFields_advertise_status {
+  create: ItemsFields_advertise_status_Create
+  read: ItemsFields_advertise_status_Read
+  update: ItemsFields_advertise_status_Update
+  delete: ItemsFields_advertise_status_Delete
+}
+
+type ItemsFields_advertise_status_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_status_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_status_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_status_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_startDate {
+  create: ItemsFields_advertise_startDate_Create
+  read: ItemsFields_advertise_startDate_Read
+  update: ItemsFields_advertise_startDate_Update
+  delete: ItemsFields_advertise_startDate_Delete
+}
+
+type ItemsFields_advertise_startDate_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_startDate_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_startDate_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_startDate_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_endDate {
+  create: ItemsFields_advertise_endDate_Create
+  read: ItemsFields_advertise_endDate_Read
+  update: ItemsFields_advertise_endDate_Update
+  delete: ItemsFields_advertise_endDate_Delete
+}
+
+type ItemsFields_advertise_endDate_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_endDate_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_endDate_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_endDate_Delete {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_price {
+  create: ItemsFields_advertise_price_Create
+  read: ItemsFields_advertise_price_Read
+  update: ItemsFields_advertise_price_Update
+  delete: ItemsFields_advertise_price_Delete
+}
+
+type ItemsFields_advertise_price_Create {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_price_Read {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_price_Update {
+  permission: Boolean!
+}
+
+type ItemsFields_advertise_price_Delete {
   permission: Boolean!
 }
 
@@ -7058,6 +7825,333 @@ type ReportDeleteAccess {
   where: JSONObject
 }
 
+type paymentAccess {
+  fields: PaymentFields
+  create: PaymentCreateAccess
+  read: PaymentReadAccess
+  update: PaymentUpdateAccess
+  delete: PaymentDeleteAccess
+}
+
+type PaymentFields {
+  renting: PaymentFields_renting
+  advertise: PaymentFields_advertise
+  type: PaymentFields_type
+  createdBy: PaymentFields_createdBy
+  payTo: PaymentFields_payTo
+  updatedAt: PaymentFields_updatedAt
+  createdAt: PaymentFields_createdAt
+}
+
+type PaymentFields_renting {
+  create: PaymentFields_renting_Create
+  read: PaymentFields_renting_Read
+  update: PaymentFields_renting_Update
+  delete: PaymentFields_renting_Delete
+  fields: PaymentFields_renting_Fields
+}
+
+type PaymentFields_renting_Create {
+  permission: Boolean!
+}
+
+type PaymentFields_renting_Read {
+  permission: Boolean!
+}
+
+type PaymentFields_renting_Update {
+  permission: Boolean!
+}
+
+type PaymentFields_renting_Delete {
+  permission: Boolean!
+}
+
+type PaymentFields_renting_Fields {
+  renting: PaymentFields_renting_renting
+}
+
+type PaymentFields_renting_renting {
+  create: PaymentFields_renting_renting_Create
+  read: PaymentFields_renting_renting_Read
+  update: PaymentFields_renting_renting_Update
+  delete: PaymentFields_renting_renting_Delete
+}
+
+type PaymentFields_renting_renting_Create {
+  permission: Boolean!
+}
+
+type PaymentFields_renting_renting_Read {
+  permission: Boolean!
+}
+
+type PaymentFields_renting_renting_Update {
+  permission: Boolean!
+}
+
+type PaymentFields_renting_renting_Delete {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise {
+  create: PaymentFields_advertise_Create
+  read: PaymentFields_advertise_Read
+  update: PaymentFields_advertise_Update
+  delete: PaymentFields_advertise_Delete
+  fields: PaymentFields_advertise_Fields
+}
+
+type PaymentFields_advertise_Create {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_Read {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_Update {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_Delete {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_Fields {
+  item: PaymentFields_advertise_item
+  startDate: PaymentFields_advertise_startDate
+  endDate: PaymentFields_advertise_endDate
+  price: PaymentFields_advertise_price
+}
+
+type PaymentFields_advertise_item {
+  create: PaymentFields_advertise_item_Create
+  read: PaymentFields_advertise_item_Read
+  update: PaymentFields_advertise_item_Update
+  delete: PaymentFields_advertise_item_Delete
+}
+
+type PaymentFields_advertise_item_Create {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_item_Read {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_item_Update {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_item_Delete {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_startDate {
+  create: PaymentFields_advertise_startDate_Create
+  read: PaymentFields_advertise_startDate_Read
+  update: PaymentFields_advertise_startDate_Update
+  delete: PaymentFields_advertise_startDate_Delete
+}
+
+type PaymentFields_advertise_startDate_Create {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_startDate_Read {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_startDate_Update {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_startDate_Delete {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_endDate {
+  create: PaymentFields_advertise_endDate_Create
+  read: PaymentFields_advertise_endDate_Read
+  update: PaymentFields_advertise_endDate_Update
+  delete: PaymentFields_advertise_endDate_Delete
+}
+
+type PaymentFields_advertise_endDate_Create {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_endDate_Read {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_endDate_Update {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_endDate_Delete {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_price {
+  create: PaymentFields_advertise_price_Create
+  read: PaymentFields_advertise_price_Read
+  update: PaymentFields_advertise_price_Update
+  delete: PaymentFields_advertise_price_Delete
+}
+
+type PaymentFields_advertise_price_Create {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_price_Read {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_price_Update {
+  permission: Boolean!
+}
+
+type PaymentFields_advertise_price_Delete {
+  permission: Boolean!
+}
+
+type PaymentFields_type {
+  create: PaymentFields_type_Create
+  read: PaymentFields_type_Read
+  update: PaymentFields_type_Update
+  delete: PaymentFields_type_Delete
+}
+
+type PaymentFields_type_Create {
+  permission: Boolean!
+}
+
+type PaymentFields_type_Read {
+  permission: Boolean!
+}
+
+type PaymentFields_type_Update {
+  permission: Boolean!
+}
+
+type PaymentFields_type_Delete {
+  permission: Boolean!
+}
+
+type PaymentFields_createdBy {
+  create: PaymentFields_createdBy_Create
+  read: PaymentFields_createdBy_Read
+  update: PaymentFields_createdBy_Update
+  delete: PaymentFields_createdBy_Delete
+}
+
+type PaymentFields_createdBy_Create {
+  permission: Boolean!
+}
+
+type PaymentFields_createdBy_Read {
+  permission: Boolean!
+}
+
+type PaymentFields_createdBy_Update {
+  permission: Boolean!
+}
+
+type PaymentFields_createdBy_Delete {
+  permission: Boolean!
+}
+
+type PaymentFields_payTo {
+  create: PaymentFields_payTo_Create
+  read: PaymentFields_payTo_Read
+  update: PaymentFields_payTo_Update
+  delete: PaymentFields_payTo_Delete
+}
+
+type PaymentFields_payTo_Create {
+  permission: Boolean!
+}
+
+type PaymentFields_payTo_Read {
+  permission: Boolean!
+}
+
+type PaymentFields_payTo_Update {
+  permission: Boolean!
+}
+
+type PaymentFields_payTo_Delete {
+  permission: Boolean!
+}
+
+type PaymentFields_updatedAt {
+  create: PaymentFields_updatedAt_Create
+  read: PaymentFields_updatedAt_Read
+  update: PaymentFields_updatedAt_Update
+  delete: PaymentFields_updatedAt_Delete
+}
+
+type PaymentFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type PaymentFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type PaymentFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type PaymentFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type PaymentFields_createdAt {
+  create: PaymentFields_createdAt_Create
+  read: PaymentFields_createdAt_Read
+  update: PaymentFields_createdAt_Update
+  delete: PaymentFields_createdAt_Delete
+}
+
+type PaymentFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type PaymentFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type PaymentFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type PaymentFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type PaymentCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PaymentReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PaymentUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PaymentDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type payload_preferencesAccess {
   fields: PayloadPreferencesFields
   create: PayloadPreferencesCreateAccess
@@ -7245,6 +8339,9 @@ type Mutation {
   createReport(data: mutationReportInput!, draft: Boolean): Report
   updateReport(id: Int!, autosave: Boolean, data: mutationReportUpdateInput!, draft: Boolean): Report
   deleteReport(id: Int!): Report
+  createPayment(data: mutationPaymentInput!, draft: Boolean): Payment
+  updatePayment(id: Int!, autosave: Boolean, data: mutationPaymentUpdateInput!, draft: Boolean): Payment
+  deletePayment(id: Int!): Payment
   createPayloadPreference(data: mutationPayloadPreferenceInput!, draft: Boolean): PayloadPreference
   updatePayloadPreference(id: Int!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean): PayloadPreference
   deletePayloadPreference(id: Int!): PayloadPreference
@@ -7345,12 +8442,11 @@ input mutationItemInput {
   period: Float
   periodType: Item_periodType_MutationInput
   rentingStatus: Item_rentingStatus_MutationInput
-  start: String
-  end: String
   tags: [Int]
   createdBy: Int
   rating: Float
   review: [Int]
+  advertise: mutationItem_AdvertiseInput
   updatedAt: String
   createdAt: String
   _status: Item__status_MutationInput
@@ -7369,6 +8465,19 @@ enum Item_rentingStatus_MutationInput {
   negotiating
 }
 
+input mutationItem_AdvertiseInput {
+  status: Item_Advertise_status_MutationInput
+  startDate: String
+  endDate: String
+  price: Float
+}
+
+enum Item_Advertise_status_MutationInput {
+  active
+  waiting_for_payment
+  inactive
+}
+
 enum Item__status_MutationInput {
   draft
   published
@@ -7383,12 +8492,11 @@ input mutationItemUpdateInput {
   period: Float
   periodType: ItemUpdate_periodType_MutationInput
   rentingStatus: ItemUpdate_rentingStatus_MutationInput
-  start: String
-  end: String
   tags: [Int]
   createdBy: Int
   rating: Float
   review: [Int]
+  advertise: mutationItemUpdate_AdvertiseInput
   updatedAt: String
   createdAt: String
   _status: ItemUpdate__status_MutationInput
@@ -7405,6 +8513,19 @@ enum ItemUpdate_rentingStatus_MutationInput {
   available
   unavailable
   negotiating
+}
+
+input mutationItemUpdate_AdvertiseInput {
+  status: ItemUpdate_Advertise_status_MutationInput
+  startDate: String
+  endDate: String
+  price: Float
+}
+
+enum ItemUpdate_Advertise_status_MutationInput {
+  active
+  waiting_for_payment
+  inactive
 }
 
 enum ItemUpdate__status_MutationInput {
@@ -7600,6 +8721,58 @@ input mutationReportUpdateInput {
   createdBy: Int
   updatedAt: String
   createdAt: String
+}
+
+input mutationPaymentInput {
+  renting: mutationPayment_RentingInput
+  advertise: mutationPayment_AdvertiseInput
+  type: Payment_type_MutationInput
+  createdBy: Int
+  payTo: Int
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationPayment_RentingInput {
+  renting: Int
+}
+
+input mutationPayment_AdvertiseInput {
+  item: Int
+  startDate: String
+  endDate: String
+  price: Float
+}
+
+enum Payment_type_MutationInput {
+  RENTING
+  ADVERTISE
+}
+
+input mutationPaymentUpdateInput {
+  renting: mutationPaymentUpdate_RentingInput
+  advertise: mutationPaymentUpdate_AdvertiseInput
+  type: PaymentUpdate_type_MutationInput
+  createdBy: Int
+  payTo: Int
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationPaymentUpdate_RentingInput {
+  renting: Int
+}
+
+input mutationPaymentUpdate_AdvertiseInput {
+  item: Int
+  startDate: String
+  endDate: String
+  price: Float
+}
+
+enum PaymentUpdate_type_MutationInput {
+  RENTING
+  ADVERTISE
 }
 
 input mutationPayloadPreferenceInput {

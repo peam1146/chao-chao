@@ -139,6 +139,12 @@ export interface Chatroom_where_or {
   user2_id?: InputMaybe<Chatroom_user2_id_operator>
 }
 
+export enum ItemUpdate_Advertise_status_MutationInput {
+  active = 'active',
+  inactive = 'inactive',
+  waiting_for_payment = 'waiting_for_payment',
+}
+
 export enum ItemUpdate__status_MutationInput {
   draft = 'draft',
   published = 'published',
@@ -157,6 +163,12 @@ export enum ItemUpdate_rentingStatus_MutationInput {
   unavailable = 'unavailable',
 }
 
+export enum ItemVersion_Version_Advertise_status {
+  active = 'active',
+  inactive = 'inactive',
+  waiting_for_payment = 'waiting_for_payment',
+}
+
 export enum ItemVersion_Version__status {
   draft = 'draft',
   published = 'published',
@@ -173,6 +185,18 @@ export enum ItemVersion_Version_rentingStatus {
   available = 'available',
   negotiating = 'negotiating',
   unavailable = 'unavailable',
+}
+
+export enum Item_Advertise_status {
+  active = 'active',
+  inactive = 'inactive',
+  waiting_for_payment = 'waiting_for_payment',
+}
+
+export enum Item_Advertise_status_MutationInput {
+  active = 'active',
+  inactive = 'inactive',
+  waiting_for_payment = 'waiting_for_payment',
 }
 
 export enum Item__status {
@@ -197,6 +221,53 @@ export interface Item__status_operator {
   in?: InputMaybe<Array<InputMaybe<Item__status_Input>>>
   not_equals?: InputMaybe<Item__status_Input>
   not_in?: InputMaybe<Array<InputMaybe<Item__status_Input>>>
+}
+
+export interface Item_advertise__endDate_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Item_advertise__price_operator {
+  equals?: InputMaybe<Scalars['Float']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Float']>
+  greater_than_equal?: InputMaybe<Scalars['Float']>
+  less_than?: InputMaybe<Scalars['Float']>
+  less_than_equal?: InputMaybe<Scalars['Float']>
+  not_equals?: InputMaybe<Scalars['Float']>
+}
+
+export interface Item_advertise__startDate_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export enum Item_advertise__status_Input {
+  active = 'active',
+  inactive = 'inactive',
+  waiting_for_payment = 'waiting_for_payment',
+}
+
+export interface Item_advertise__status_operator {
+  all?: InputMaybe<Array<InputMaybe<Item_advertise__status_Input>>>
+  equals?: InputMaybe<Item_advertise__status_Input>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Item_advertise__status_Input>>>
+  not_equals?: InputMaybe<Item_advertise__status_Input>
+  not_in?: InputMaybe<Array<InputMaybe<Item_advertise__status_Input>>>
 }
 
 export interface Item_availableAt_operator {
@@ -235,17 +306,6 @@ export interface Item_description_operator {
   exists?: InputMaybe<Scalars['Boolean']>
   like?: InputMaybe<Scalars['String']>
   not_equals?: InputMaybe<Scalars['String']>
-}
-
-export interface Item_end_operator {
-  equals?: InputMaybe<Scalars['DateTime']>
-  exists?: InputMaybe<Scalars['Boolean']>
-  greater_than?: InputMaybe<Scalars['DateTime']>
-  greater_than_equal?: InputMaybe<Scalars['DateTime']>
-  less_than?: InputMaybe<Scalars['DateTime']>
-  less_than_equal?: InputMaybe<Scalars['DateTime']>
-  like?: InputMaybe<Scalars['DateTime']>
-  not_equals?: InputMaybe<Scalars['DateTime']>
 }
 
 export interface Item_id_operator {
@@ -372,17 +432,6 @@ export interface Item_review_operator {
   not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
 }
 
-export interface Item_start_operator {
-  equals?: InputMaybe<Scalars['DateTime']>
-  exists?: InputMaybe<Scalars['Boolean']>
-  greater_than?: InputMaybe<Scalars['DateTime']>
-  greater_than_equal?: InputMaybe<Scalars['DateTime']>
-  less_than?: InputMaybe<Scalars['DateTime']>
-  less_than_equal?: InputMaybe<Scalars['DateTime']>
-  like?: InputMaybe<Scalars['DateTime']>
-  not_equals?: InputMaybe<Scalars['DateTime']>
-}
-
 export interface Item_tags_operator {
   all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   equals?: InputMaybe<Scalars['JSON']>
@@ -407,11 +456,14 @@ export interface Item_where {
   AND?: InputMaybe<Array<InputMaybe<Item_where_and>>>
   OR?: InputMaybe<Array<InputMaybe<Item_where_or>>>
   _status?: InputMaybe<Item__status_operator>
+  advertise__endDate?: InputMaybe<Item_advertise__endDate_operator>
+  advertise__price?: InputMaybe<Item_advertise__price_operator>
+  advertise__startDate?: InputMaybe<Item_advertise__startDate_operator>
+  advertise__status?: InputMaybe<Item_advertise__status_operator>
   availableAt?: InputMaybe<Item_availableAt_operator>
   createdAt?: InputMaybe<Item_createdAt_operator>
   createdBy?: InputMaybe<Item_createdBy_operator>
   description?: InputMaybe<Item_description_operator>
-  end?: InputMaybe<Item_end_operator>
   id?: InputMaybe<Item_id_operator>
   image?: InputMaybe<Item_image_operator>
   name?: InputMaybe<Item_name_operator>
@@ -421,18 +473,20 @@ export interface Item_where {
   rating?: InputMaybe<Item_rating_operator>
   rentingStatus?: InputMaybe<Item_rentingStatus_operator>
   review?: InputMaybe<Item_review_operator>
-  start?: InputMaybe<Item_start_operator>
   tags?: InputMaybe<Item_tags_operator>
   updatedAt?: InputMaybe<Item_updatedAt_operator>
 }
 
 export interface Item_where_and {
   _status?: InputMaybe<Item__status_operator>
+  advertise__endDate?: InputMaybe<Item_advertise__endDate_operator>
+  advertise__price?: InputMaybe<Item_advertise__price_operator>
+  advertise__startDate?: InputMaybe<Item_advertise__startDate_operator>
+  advertise__status?: InputMaybe<Item_advertise__status_operator>
   availableAt?: InputMaybe<Item_availableAt_operator>
   createdAt?: InputMaybe<Item_createdAt_operator>
   createdBy?: InputMaybe<Item_createdBy_operator>
   description?: InputMaybe<Item_description_operator>
-  end?: InputMaybe<Item_end_operator>
   id?: InputMaybe<Item_id_operator>
   image?: InputMaybe<Item_image_operator>
   name?: InputMaybe<Item_name_operator>
@@ -442,18 +496,20 @@ export interface Item_where_and {
   rating?: InputMaybe<Item_rating_operator>
   rentingStatus?: InputMaybe<Item_rentingStatus_operator>
   review?: InputMaybe<Item_review_operator>
-  start?: InputMaybe<Item_start_operator>
   tags?: InputMaybe<Item_tags_operator>
   updatedAt?: InputMaybe<Item_updatedAt_operator>
 }
 
 export interface Item_where_or {
   _status?: InputMaybe<Item__status_operator>
+  advertise__endDate?: InputMaybe<Item_advertise__endDate_operator>
+  advertise__price?: InputMaybe<Item_advertise__price_operator>
+  advertise__startDate?: InputMaybe<Item_advertise__startDate_operator>
+  advertise__status?: InputMaybe<Item_advertise__status_operator>
   availableAt?: InputMaybe<Item_availableAt_operator>
   createdAt?: InputMaybe<Item_createdAt_operator>
   createdBy?: InputMaybe<Item_createdBy_operator>
   description?: InputMaybe<Item_description_operator>
-  end?: InputMaybe<Item_end_operator>
   id?: InputMaybe<Item_id_operator>
   image?: InputMaybe<Item_image_operator>
   name?: InputMaybe<Item_name_operator>
@@ -463,7 +519,6 @@ export interface Item_where_or {
   rating?: InputMaybe<Item_rating_operator>
   rentingStatus?: InputMaybe<Item_rentingStatus_operator>
   review?: InputMaybe<Item_review_operator>
-  start?: InputMaybe<Item_start_operator>
   tags?: InputMaybe<Item_tags_operator>
   updatedAt?: InputMaybe<Item_updatedAt_operator>
 }
@@ -1598,11 +1653,11 @@ export interface mutationChatroomUpdateInput {
 
 export interface mutationItemInput {
   _status?: InputMaybe<Item__status_MutationInput>
+  advertise?: InputMaybe<mutationItem_AdvertiseInput>
   availableAt?: InputMaybe<Scalars['String']>
   createdAt?: InputMaybe<Scalars['String']>
   createdBy?: InputMaybe<Scalars['Int']>
   description?: InputMaybe<Scalars['String']>
-  end?: InputMaybe<Scalars['String']>
   image?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   name: Scalars['String']
   period?: InputMaybe<Scalars['Float']>
@@ -1611,18 +1666,17 @@ export interface mutationItemInput {
   rating?: InputMaybe<Scalars['Float']>
   rentingStatus?: InputMaybe<Item_rentingStatus_MutationInput>
   review?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
-  start?: InputMaybe<Scalars['String']>
   tags?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   updatedAt?: InputMaybe<Scalars['String']>
 }
 
 export interface mutationItemUpdateInput {
   _status?: InputMaybe<ItemUpdate__status_MutationInput>
+  advertise?: InputMaybe<mutationItemUpdate_AdvertiseInput>
   availableAt?: InputMaybe<Scalars['String']>
   createdAt?: InputMaybe<Scalars['String']>
   createdBy?: InputMaybe<Scalars['Int']>
   description?: InputMaybe<Scalars['String']>
-  end?: InputMaybe<Scalars['String']>
   image?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   name?: InputMaybe<Scalars['String']>
   period?: InputMaybe<Scalars['Float']>
@@ -1631,9 +1685,22 @@ export interface mutationItemUpdateInput {
   rating?: InputMaybe<Scalars['Float']>
   rentingStatus?: InputMaybe<ItemUpdate_rentingStatus_MutationInput>
   review?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
-  start?: InputMaybe<Scalars['String']>
   tags?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
   updatedAt?: InputMaybe<Scalars['String']>
+}
+
+export interface mutationItemUpdate_AdvertiseInput {
+  endDate?: InputMaybe<Scalars['String']>
+  price?: InputMaybe<Scalars['Float']>
+  startDate?: InputMaybe<Scalars['String']>
+  status?: InputMaybe<ItemUpdate_Advertise_status_MutationInput>
+}
+
+export interface mutationItem_AdvertiseInput {
+  endDate?: InputMaybe<Scalars['String']>
+  price?: InputMaybe<Scalars['Float']>
+  startDate?: InputMaybe<Scalars['String']>
+  status?: InputMaybe<Item_Advertise_status_MutationInput>
 }
 
 export interface mutationMediaInput {
@@ -1912,6 +1979,53 @@ export interface versionsItem_version___status_operator {
   not_in?: InputMaybe<Array<InputMaybe<versionsItem_version___status_Input>>>
 }
 
+export interface versionsItem_version__advertise__endDate_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface versionsItem_version__advertise__price_operator {
+  equals?: InputMaybe<Scalars['Float']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Float']>
+  greater_than_equal?: InputMaybe<Scalars['Float']>
+  less_than?: InputMaybe<Scalars['Float']>
+  less_than_equal?: InputMaybe<Scalars['Float']>
+  not_equals?: InputMaybe<Scalars['Float']>
+}
+
+export interface versionsItem_version__advertise__startDate_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export enum versionsItem_version__advertise__status_Input {
+  active = 'active',
+  inactive = 'inactive',
+  waiting_for_payment = 'waiting_for_payment',
+}
+
+export interface versionsItem_version__advertise__status_operator {
+  all?: InputMaybe<Array<InputMaybe<versionsItem_version__advertise__status_Input>>>
+  equals?: InputMaybe<versionsItem_version__advertise__status_Input>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<versionsItem_version__advertise__status_Input>>>
+  not_equals?: InputMaybe<versionsItem_version__advertise__status_Input>
+  not_in?: InputMaybe<Array<InputMaybe<versionsItem_version__advertise__status_Input>>>
+}
+
 export interface versionsItem_version__availableAt_operator {
   equals?: InputMaybe<Scalars['DateTime']>
   exists?: InputMaybe<Scalars['Boolean']>
@@ -1948,17 +2062,6 @@ export interface versionsItem_version__description_operator {
   exists?: InputMaybe<Scalars['Boolean']>
   like?: InputMaybe<Scalars['String']>
   not_equals?: InputMaybe<Scalars['String']>
-}
-
-export interface versionsItem_version__end_operator {
-  equals?: InputMaybe<Scalars['DateTime']>
-  exists?: InputMaybe<Scalars['Boolean']>
-  greater_than?: InputMaybe<Scalars['DateTime']>
-  greater_than_equal?: InputMaybe<Scalars['DateTime']>
-  less_than?: InputMaybe<Scalars['DateTime']>
-  less_than_equal?: InputMaybe<Scalars['DateTime']>
-  like?: InputMaybe<Scalars['DateTime']>
-  not_equals?: InputMaybe<Scalars['DateTime']>
 }
 
 export interface versionsItem_version__image_operator {
@@ -2049,17 +2152,6 @@ export interface versionsItem_version__review_operator {
   not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
 }
 
-export interface versionsItem_version__start_operator {
-  equals?: InputMaybe<Scalars['DateTime']>
-  exists?: InputMaybe<Scalars['Boolean']>
-  greater_than?: InputMaybe<Scalars['DateTime']>
-  greater_than_equal?: InputMaybe<Scalars['DateTime']>
-  less_than?: InputMaybe<Scalars['DateTime']>
-  less_than_equal?: InputMaybe<Scalars['DateTime']>
-  like?: InputMaybe<Scalars['DateTime']>
-  not_equals?: InputMaybe<Scalars['DateTime']>
-}
-
 export interface versionsItem_version__tags_operator {
   all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   equals?: InputMaybe<Scalars['JSON']>
@@ -2089,11 +2181,14 @@ export interface versionsItem_where {
   parent?: InputMaybe<versionsItem_parent_operator>
   updatedAt?: InputMaybe<versionsItem_updatedAt_operator>
   version___status?: InputMaybe<versionsItem_version___status_operator>
+  version__advertise__endDate?: InputMaybe<versionsItem_version__advertise__endDate_operator>
+  version__advertise__price?: InputMaybe<versionsItem_version__advertise__price_operator>
+  version__advertise__startDate?: InputMaybe<versionsItem_version__advertise__startDate_operator>
+  version__advertise__status?: InputMaybe<versionsItem_version__advertise__status_operator>
   version__availableAt?: InputMaybe<versionsItem_version__availableAt_operator>
   version__createdAt?: InputMaybe<versionsItem_version__createdAt_operator>
   version__createdBy?: InputMaybe<versionsItem_version__createdBy_operator>
   version__description?: InputMaybe<versionsItem_version__description_operator>
-  version__end?: InputMaybe<versionsItem_version__end_operator>
   version__image?: InputMaybe<versionsItem_version__image_operator>
   version__name?: InputMaybe<versionsItem_version__name_operator>
   version__period?: InputMaybe<versionsItem_version__period_operator>
@@ -2102,7 +2197,6 @@ export interface versionsItem_where {
   version__rating?: InputMaybe<versionsItem_version__rating_operator>
   version__rentingStatus?: InputMaybe<versionsItem_version__rentingStatus_operator>
   version__review?: InputMaybe<versionsItem_version__review_operator>
-  version__start?: InputMaybe<versionsItem_version__start_operator>
   version__tags?: InputMaybe<versionsItem_version__tags_operator>
   version__updatedAt?: InputMaybe<versionsItem_version__updatedAt_operator>
 }
@@ -2114,11 +2208,14 @@ export interface versionsItem_where_and {
   parent?: InputMaybe<versionsItem_parent_operator>
   updatedAt?: InputMaybe<versionsItem_updatedAt_operator>
   version___status?: InputMaybe<versionsItem_version___status_operator>
+  version__advertise__endDate?: InputMaybe<versionsItem_version__advertise__endDate_operator>
+  version__advertise__price?: InputMaybe<versionsItem_version__advertise__price_operator>
+  version__advertise__startDate?: InputMaybe<versionsItem_version__advertise__startDate_operator>
+  version__advertise__status?: InputMaybe<versionsItem_version__advertise__status_operator>
   version__availableAt?: InputMaybe<versionsItem_version__availableAt_operator>
   version__createdAt?: InputMaybe<versionsItem_version__createdAt_operator>
   version__createdBy?: InputMaybe<versionsItem_version__createdBy_operator>
   version__description?: InputMaybe<versionsItem_version__description_operator>
-  version__end?: InputMaybe<versionsItem_version__end_operator>
   version__image?: InputMaybe<versionsItem_version__image_operator>
   version__name?: InputMaybe<versionsItem_version__name_operator>
   version__period?: InputMaybe<versionsItem_version__period_operator>
@@ -2127,7 +2224,6 @@ export interface versionsItem_where_and {
   version__rating?: InputMaybe<versionsItem_version__rating_operator>
   version__rentingStatus?: InputMaybe<versionsItem_version__rentingStatus_operator>
   version__review?: InputMaybe<versionsItem_version__review_operator>
-  version__start?: InputMaybe<versionsItem_version__start_operator>
   version__tags?: InputMaybe<versionsItem_version__tags_operator>
   version__updatedAt?: InputMaybe<versionsItem_version__updatedAt_operator>
 }
@@ -2139,11 +2235,14 @@ export interface versionsItem_where_or {
   parent?: InputMaybe<versionsItem_parent_operator>
   updatedAt?: InputMaybe<versionsItem_updatedAt_operator>
   version___status?: InputMaybe<versionsItem_version___status_operator>
+  version__advertise__endDate?: InputMaybe<versionsItem_version__advertise__endDate_operator>
+  version__advertise__price?: InputMaybe<versionsItem_version__advertise__price_operator>
+  version__advertise__startDate?: InputMaybe<versionsItem_version__advertise__startDate_operator>
+  version__advertise__status?: InputMaybe<versionsItem_version__advertise__status_operator>
   version__availableAt?: InputMaybe<versionsItem_version__availableAt_operator>
   version__createdAt?: InputMaybe<versionsItem_version__createdAt_operator>
   version__createdBy?: InputMaybe<versionsItem_version__createdBy_operator>
   version__description?: InputMaybe<versionsItem_version__description_operator>
-  version__end?: InputMaybe<versionsItem_version__end_operator>
   version__image?: InputMaybe<versionsItem_version__image_operator>
   version__name?: InputMaybe<versionsItem_version__name_operator>
   version__period?: InputMaybe<versionsItem_version__period_operator>
@@ -2152,7 +2251,6 @@ export interface versionsItem_where_or {
   version__rating?: InputMaybe<versionsItem_version__rating_operator>
   version__rentingStatus?: InputMaybe<versionsItem_version__rentingStatus_operator>
   version__review?: InputMaybe<versionsItem_version__review_operator>
-  version__start?: InputMaybe<versionsItem_version__start_operator>
   version__tags?: InputMaybe<versionsItem_version__tags_operator>
   version__updatedAt?: InputMaybe<versionsItem_version__updatedAt_operator>
 }
@@ -2163,15 +2261,20 @@ export const scalarsEnumsHash: import('gqty').ScalarsEnumsHash = {
   EmailAddress: true,
   Float: true,
   Int: true,
+  ItemUpdate_Advertise_status_MutationInput: true,
   ItemUpdate__status_MutationInput: true,
   ItemUpdate_periodType_MutationInput: true,
   ItemUpdate_rentingStatus_MutationInput: true,
+  ItemVersion_Version_Advertise_status: true,
   ItemVersion_Version__status: true,
   ItemVersion_Version_periodType: true,
   ItemVersion_Version_rentingStatus: true,
+  Item_Advertise_status: true,
+  Item_Advertise_status_MutationInput: true,
   Item__status: true,
   Item__status_Input: true,
   Item__status_MutationInput: true,
+  Item_advertise__status_Input: true,
   Item_periodType: true,
   Item_periodType_Input: true,
   Item_periodType_MutationInput: true,
@@ -2199,6 +2302,7 @@ export const scalarsEnumsHash: import('gqty').ScalarsEnumsHash = {
   User_roles_MutationInput: true,
   usersJWT_roles: true,
   versionsItem_version___status_Input: true,
+  versionsItem_version__advertise__status_Input: true,
   versionsItem_version__periodType_Input: true,
   versionsItem_version__rentingStatus_Input: true,
 }
@@ -2730,11 +2834,11 @@ export const generatedSchema = {
   Item: {
     __typename: { __type: 'String!' },
     _status: { __type: 'Item__status' },
+    advertise: { __type: 'Item_Advertise' },
     availableAt: { __type: 'DateTime' },
     createdAt: { __type: 'DateTime' },
     createdBy: { __type: 'User' },
     description: { __type: 'String' },
-    end: { __type: 'DateTime' },
     id: { __type: 'Int' },
     image: { __type: '[Media!]' },
     name: { __type: 'String' },
@@ -2744,7 +2848,6 @@ export const generatedSchema = {
     rating: { __type: 'Float' },
     rentingStatus: { __type: 'Item_rentingStatus' },
     review: { __type: '[Review!]' },
-    start: { __type: 'DateTime' },
     tags: { __type: '[Tag!]' },
     updatedAt: { __type: 'DateTime' },
   },
@@ -2760,11 +2863,11 @@ export const generatedSchema = {
   ItemVersion_Version: {
     __typename: { __type: 'String!' },
     _status: { __type: 'ItemVersion_Version__status' },
+    advertise: { __type: 'ItemVersion_Version_Advertise' },
     availableAt: { __type: 'DateTime' },
     createdAt: { __type: 'DateTime' },
     createdBy: { __type: 'User' },
     description: { __type: 'String' },
-    end: { __type: 'DateTime' },
     image: { __type: '[Media!]' },
     name: { __type: 'String' },
     period: { __type: 'Float' },
@@ -2773,9 +2876,22 @@ export const generatedSchema = {
     rating: { __type: 'Float' },
     rentingStatus: { __type: 'ItemVersion_Version_rentingStatus' },
     review: { __type: '[Review!]' },
-    start: { __type: 'DateTime' },
     tags: { __type: '[Tag!]' },
     updatedAt: { __type: 'DateTime' },
+  },
+  ItemVersion_Version_Advertise: {
+    __typename: { __type: 'String!' },
+    endDate: { __type: 'DateTime' },
+    price: { __type: 'Float' },
+    startDate: { __type: 'DateTime' },
+    status: { __type: 'ItemVersion_Version_Advertise_status' },
+  },
+  Item_Advertise: {
+    __typename: { __type: 'String!' },
+    endDate: { __type: 'DateTime' },
+    price: { __type: 'Float' },
+    startDate: { __type: 'DateTime' },
+    status: { __type: 'Item_Advertise_status' },
   },
   Item__status_operator: {
     all: { __type: '[Item__status_Input]' },
@@ -2784,6 +2900,43 @@ export const generatedSchema = {
     in: { __type: '[Item__status_Input]' },
     not_equals: { __type: 'Item__status_Input' },
     not_in: { __type: '[Item__status_Input]' },
+  },
+  Item_advertise__endDate_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Item_advertise__price_operator: {
+    equals: { __type: 'Float' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Float' },
+    greater_than_equal: { __type: 'Float' },
+    less_than: { __type: 'Float' },
+    less_than_equal: { __type: 'Float' },
+    not_equals: { __type: 'Float' },
+  },
+  Item_advertise__startDate_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Item_advertise__status_operator: {
+    all: { __type: '[Item_advertise__status_Input]' },
+    equals: { __type: 'Item_advertise__status_Input' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[Item_advertise__status_Input]' },
+    not_equals: { __type: 'Item_advertise__status_Input' },
+    not_in: { __type: '[Item_advertise__status_Input]' },
   },
   Item_availableAt_operator: {
     equals: { __type: 'DateTime' },
@@ -2818,16 +2971,6 @@ export const generatedSchema = {
     exists: { __type: 'Boolean' },
     like: { __type: 'String' },
     not_equals: { __type: 'String' },
-  },
-  Item_end_operator: {
-    equals: { __type: 'DateTime' },
-    exists: { __type: 'Boolean' },
-    greater_than: { __type: 'DateTime' },
-    greater_than_equal: { __type: 'DateTime' },
-    less_than: { __type: 'DateTime' },
-    less_than_equal: { __type: 'DateTime' },
-    like: { __type: 'DateTime' },
-    not_equals: { __type: 'DateTime' },
   },
   Item_id_operator: {
     equals: { __type: 'Int' },
@@ -2905,16 +3048,6 @@ export const generatedSchema = {
     not_equals: { __type: 'JSON' },
     not_in: { __type: '[JSON]' },
   },
-  Item_start_operator: {
-    equals: { __type: 'DateTime' },
-    exists: { __type: 'Boolean' },
-    greater_than: { __type: 'DateTime' },
-    greater_than_equal: { __type: 'DateTime' },
-    less_than: { __type: 'DateTime' },
-    less_than_equal: { __type: 'DateTime' },
-    like: { __type: 'DateTime' },
-    not_equals: { __type: 'DateTime' },
-  },
   Item_tags_operator: {
     all: { __type: '[JSON]' },
     equals: { __type: 'JSON' },
@@ -2937,11 +3070,14 @@ export const generatedSchema = {
     AND: { __type: '[Item_where_and]' },
     OR: { __type: '[Item_where_or]' },
     _status: { __type: 'Item__status_operator' },
+    advertise__endDate: { __type: 'Item_advertise__endDate_operator' },
+    advertise__price: { __type: 'Item_advertise__price_operator' },
+    advertise__startDate: { __type: 'Item_advertise__startDate_operator' },
+    advertise__status: { __type: 'Item_advertise__status_operator' },
     availableAt: { __type: 'Item_availableAt_operator' },
     createdAt: { __type: 'Item_createdAt_operator' },
     createdBy: { __type: 'Item_createdBy_operator' },
     description: { __type: 'Item_description_operator' },
-    end: { __type: 'Item_end_operator' },
     id: { __type: 'Item_id_operator' },
     image: { __type: 'Item_image_operator' },
     name: { __type: 'Item_name_operator' },
@@ -2951,17 +3087,19 @@ export const generatedSchema = {
     rating: { __type: 'Item_rating_operator' },
     rentingStatus: { __type: 'Item_rentingStatus_operator' },
     review: { __type: 'Item_review_operator' },
-    start: { __type: 'Item_start_operator' },
     tags: { __type: 'Item_tags_operator' },
     updatedAt: { __type: 'Item_updatedAt_operator' },
   },
   Item_where_and: {
     _status: { __type: 'Item__status_operator' },
+    advertise__endDate: { __type: 'Item_advertise__endDate_operator' },
+    advertise__price: { __type: 'Item_advertise__price_operator' },
+    advertise__startDate: { __type: 'Item_advertise__startDate_operator' },
+    advertise__status: { __type: 'Item_advertise__status_operator' },
     availableAt: { __type: 'Item_availableAt_operator' },
     createdAt: { __type: 'Item_createdAt_operator' },
     createdBy: { __type: 'Item_createdBy_operator' },
     description: { __type: 'Item_description_operator' },
-    end: { __type: 'Item_end_operator' },
     id: { __type: 'Item_id_operator' },
     image: { __type: 'Item_image_operator' },
     name: { __type: 'Item_name_operator' },
@@ -2971,17 +3109,19 @@ export const generatedSchema = {
     rating: { __type: 'Item_rating_operator' },
     rentingStatus: { __type: 'Item_rentingStatus_operator' },
     review: { __type: 'Item_review_operator' },
-    start: { __type: 'Item_start_operator' },
     tags: { __type: 'Item_tags_operator' },
     updatedAt: { __type: 'Item_updatedAt_operator' },
   },
   Item_where_or: {
     _status: { __type: 'Item__status_operator' },
+    advertise__endDate: { __type: 'Item_advertise__endDate_operator' },
+    advertise__price: { __type: 'Item_advertise__price_operator' },
+    advertise__startDate: { __type: 'Item_advertise__startDate_operator' },
+    advertise__status: { __type: 'Item_advertise__status_operator' },
     availableAt: { __type: 'Item_availableAt_operator' },
     createdAt: { __type: 'Item_createdAt_operator' },
     createdBy: { __type: 'Item_createdBy_operator' },
     description: { __type: 'Item_description_operator' },
-    end: { __type: 'Item_end_operator' },
     id: { __type: 'Item_id_operator' },
     image: { __type: 'Item_image_operator' },
     name: { __type: 'Item_name_operator' },
@@ -2991,7 +3131,6 @@ export const generatedSchema = {
     rating: { __type: 'Item_rating_operator' },
     rentingStatus: { __type: 'Item_rentingStatus_operator' },
     review: { __type: 'Item_review_operator' },
-    start: { __type: 'Item_start_operator' },
     tags: { __type: 'Item_tags_operator' },
     updatedAt: { __type: 'Item_updatedAt_operator' },
   },
@@ -3032,11 +3171,11 @@ export const generatedSchema = {
   ItemsDocAccessFields: {
     __typename: { __type: 'String!' },
     _status: { __type: 'ItemsDocAccessFields__status' },
+    advertise: { __type: 'ItemsDocAccessFields_advertise' },
     availableAt: { __type: 'ItemsDocAccessFields_availableAt' },
     createdAt: { __type: 'ItemsDocAccessFields_createdAt' },
     createdBy: { __type: 'ItemsDocAccessFields_createdBy' },
     description: { __type: 'ItemsDocAccessFields_description' },
-    end: { __type: 'ItemsDocAccessFields_end' },
     image: { __type: 'ItemsDocAccessFields_image' },
     name: { __type: 'ItemsDocAccessFields_name' },
     period: { __type: 'ItemsDocAccessFields_period' },
@@ -3045,7 +3184,6 @@ export const generatedSchema = {
     rating: { __type: 'ItemsDocAccessFields_rating' },
     rentingStatus: { __type: 'ItemsDocAccessFields_rentingStatus' },
     review: { __type: 'ItemsDocAccessFields_review' },
-    start: { __type: 'ItemsDocAccessFields_start' },
     tags: { __type: 'ItemsDocAccessFields_tags' },
     updatedAt: { __type: 'ItemsDocAccessFields_updatedAt' },
   },
@@ -3069,6 +3207,129 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   ItemsDocAccessFields__status_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsDocAccessFields_advertise_Create' },
+    delete: { __type: 'ItemsDocAccessFields_advertise_Delete' },
+    fields: { __type: 'ItemsDocAccessFields_advertise_Fields' },
+    read: { __type: 'ItemsDocAccessFields_advertise_Read' },
+    update: { __type: 'ItemsDocAccessFields_advertise_Update' },
+  },
+  ItemsDocAccessFields_advertise_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_Fields: {
+    __typename: { __type: 'String!' },
+    endDate: { __type: 'ItemsDocAccessFields_advertise_endDate' },
+    price: { __type: 'ItemsDocAccessFields_advertise_price' },
+    startDate: { __type: 'ItemsDocAccessFields_advertise_startDate' },
+    status: { __type: 'ItemsDocAccessFields_advertise_status' },
+  },
+  ItemsDocAccessFields_advertise_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_endDate: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsDocAccessFields_advertise_endDate_Create' },
+    delete: { __type: 'ItemsDocAccessFields_advertise_endDate_Delete' },
+    read: { __type: 'ItemsDocAccessFields_advertise_endDate_Read' },
+    update: { __type: 'ItemsDocAccessFields_advertise_endDate_Update' },
+  },
+  ItemsDocAccessFields_advertise_endDate_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_endDate_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_endDate_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_endDate_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_price: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsDocAccessFields_advertise_price_Create' },
+    delete: { __type: 'ItemsDocAccessFields_advertise_price_Delete' },
+    read: { __type: 'ItemsDocAccessFields_advertise_price_Read' },
+    update: { __type: 'ItemsDocAccessFields_advertise_price_Update' },
+  },
+  ItemsDocAccessFields_advertise_price_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_price_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_price_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_price_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_startDate: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsDocAccessFields_advertise_startDate_Create' },
+    delete: { __type: 'ItemsDocAccessFields_advertise_startDate_Delete' },
+    read: { __type: 'ItemsDocAccessFields_advertise_startDate_Read' },
+    update: { __type: 'ItemsDocAccessFields_advertise_startDate_Update' },
+  },
+  ItemsDocAccessFields_advertise_startDate_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_startDate_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_startDate_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_startDate_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_status: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsDocAccessFields_advertise_status_Create' },
+    delete: { __type: 'ItemsDocAccessFields_advertise_status_Delete' },
+    read: { __type: 'ItemsDocAccessFields_advertise_status_Read' },
+    update: { __type: 'ItemsDocAccessFields_advertise_status_Update' },
+  },
+  ItemsDocAccessFields_advertise_status_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_status_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_status_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsDocAccessFields_advertise_status_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -3161,29 +3422,6 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   ItemsDocAccessFields_description_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ItemsDocAccessFields_end: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'ItemsDocAccessFields_end_Create' },
-    delete: { __type: 'ItemsDocAccessFields_end_Delete' },
-    read: { __type: 'ItemsDocAccessFields_end_Read' },
-    update: { __type: 'ItemsDocAccessFields_end_Update' },
-  },
-  ItemsDocAccessFields_end_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ItemsDocAccessFields_end_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ItemsDocAccessFields_end_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ItemsDocAccessFields_end_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -3371,29 +3609,6 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
-  ItemsDocAccessFields_start: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'ItemsDocAccessFields_start_Create' },
-    delete: { __type: 'ItemsDocAccessFields_start_Delete' },
-    read: { __type: 'ItemsDocAccessFields_start_Read' },
-    update: { __type: 'ItemsDocAccessFields_start_Update' },
-  },
-  ItemsDocAccessFields_start_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ItemsDocAccessFields_start_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ItemsDocAccessFields_start_Read: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ItemsDocAccessFields_start_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
   ItemsDocAccessFields_tags: {
     __typename: { __type: 'String!' },
     create: { __type: 'ItemsDocAccessFields_tags_Create' },
@@ -3443,11 +3658,11 @@ export const generatedSchema = {
   ItemsFields: {
     __typename: { __type: 'String!' },
     _status: { __type: 'ItemsFields__status' },
+    advertise: { __type: 'ItemsFields_advertise' },
     availableAt: { __type: 'ItemsFields_availableAt' },
     createdAt: { __type: 'ItemsFields_createdAt' },
     createdBy: { __type: 'ItemsFields_createdBy' },
     description: { __type: 'ItemsFields_description' },
-    end: { __type: 'ItemsFields_end' },
     image: { __type: 'ItemsFields_image' },
     name: { __type: 'ItemsFields_name' },
     period: { __type: 'ItemsFields_period' },
@@ -3456,7 +3671,6 @@ export const generatedSchema = {
     rating: { __type: 'ItemsFields_rating' },
     rentingStatus: { __type: 'ItemsFields_rentingStatus' },
     review: { __type: 'ItemsFields_review' },
-    start: { __type: 'ItemsFields_start' },
     tags: { __type: 'ItemsFields_tags' },
     updatedAt: { __type: 'ItemsFields_updatedAt' },
   },
@@ -3480,6 +3694,129 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   ItemsFields__status_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsFields_advertise_Create' },
+    delete: { __type: 'ItemsFields_advertise_Delete' },
+    fields: { __type: 'ItemsFields_advertise_Fields' },
+    read: { __type: 'ItemsFields_advertise_Read' },
+    update: { __type: 'ItemsFields_advertise_Update' },
+  },
+  ItemsFields_advertise_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_Fields: {
+    __typename: { __type: 'String!' },
+    endDate: { __type: 'ItemsFields_advertise_endDate' },
+    price: { __type: 'ItemsFields_advertise_price' },
+    startDate: { __type: 'ItemsFields_advertise_startDate' },
+    status: { __type: 'ItemsFields_advertise_status' },
+  },
+  ItemsFields_advertise_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_endDate: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsFields_advertise_endDate_Create' },
+    delete: { __type: 'ItemsFields_advertise_endDate_Delete' },
+    read: { __type: 'ItemsFields_advertise_endDate_Read' },
+    update: { __type: 'ItemsFields_advertise_endDate_Update' },
+  },
+  ItemsFields_advertise_endDate_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_endDate_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_endDate_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_endDate_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_price: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsFields_advertise_price_Create' },
+    delete: { __type: 'ItemsFields_advertise_price_Delete' },
+    read: { __type: 'ItemsFields_advertise_price_Read' },
+    update: { __type: 'ItemsFields_advertise_price_Update' },
+  },
+  ItemsFields_advertise_price_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_price_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_price_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_price_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_startDate: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsFields_advertise_startDate_Create' },
+    delete: { __type: 'ItemsFields_advertise_startDate_Delete' },
+    read: { __type: 'ItemsFields_advertise_startDate_Read' },
+    update: { __type: 'ItemsFields_advertise_startDate_Update' },
+  },
+  ItemsFields_advertise_startDate_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_startDate_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_startDate_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_startDate_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_status: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'ItemsFields_advertise_status_Create' },
+    delete: { __type: 'ItemsFields_advertise_status_Delete' },
+    read: { __type: 'ItemsFields_advertise_status_Read' },
+    update: { __type: 'ItemsFields_advertise_status_Update' },
+  },
+  ItemsFields_advertise_status_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_status_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_status_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  ItemsFields_advertise_status_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -3575,17 +3912,6 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
-  ItemsFields_end: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'ItemsFields_end_Create' },
-    delete: { __type: 'ItemsFields_end_Delete' },
-    read: { __type: 'ItemsFields_end_Read' },
-    update: { __type: 'ItemsFields_end_Update' },
-  },
-  ItemsFields_end_Create: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
-  ItemsFields_end_Delete: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
-  ItemsFields_end_Read: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
-  ItemsFields_end_Update: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
   ItemsFields_image: {
     __typename: { __type: 'String!' },
     create: { __type: 'ItemsFields_image_Create' },
@@ -3758,26 +4084,6 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
   },
   ItemsFields_review_Update: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ItemsFields_start: {
-    __typename: { __type: 'String!' },
-    create: { __type: 'ItemsFields_start_Create' },
-    delete: { __type: 'ItemsFields_start_Delete' },
-    read: { __type: 'ItemsFields_start_Read' },
-    update: { __type: 'ItemsFields_start_Update' },
-  },
-  ItemsFields_start_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ItemsFields_start_Delete: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  ItemsFields_start_Read: { __typename: { __type: 'String!' }, permission: { __type: 'Boolean!' } },
-  ItemsFields_start_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -8792,11 +9098,11 @@ export const generatedSchema = {
   },
   mutationItemInput: {
     _status: { __type: 'Item__status_MutationInput' },
+    advertise: { __type: 'mutationItem_AdvertiseInput' },
     availableAt: { __type: 'String' },
     createdAt: { __type: 'String' },
     createdBy: { __type: 'Int' },
     description: { __type: 'String' },
-    end: { __type: 'String' },
     image: { __type: '[Int]' },
     name: { __type: 'String!' },
     period: { __type: 'Float' },
@@ -8805,17 +9111,16 @@ export const generatedSchema = {
     rating: { __type: 'Float' },
     rentingStatus: { __type: 'Item_rentingStatus_MutationInput' },
     review: { __type: '[Int]' },
-    start: { __type: 'String' },
     tags: { __type: '[Int]' },
     updatedAt: { __type: 'String' },
   },
   mutationItemUpdateInput: {
     _status: { __type: 'ItemUpdate__status_MutationInput' },
+    advertise: { __type: 'mutationItemUpdate_AdvertiseInput' },
     availableAt: { __type: 'String' },
     createdAt: { __type: 'String' },
     createdBy: { __type: 'Int' },
     description: { __type: 'String' },
-    end: { __type: 'String' },
     image: { __type: '[Int]' },
     name: { __type: 'String' },
     period: { __type: 'Float' },
@@ -8824,9 +9129,20 @@ export const generatedSchema = {
     rating: { __type: 'Float' },
     rentingStatus: { __type: 'ItemUpdate_rentingStatus_MutationInput' },
     review: { __type: '[Int]' },
-    start: { __type: 'String' },
     tags: { __type: '[Int]' },
     updatedAt: { __type: 'String' },
+  },
+  mutationItemUpdate_AdvertiseInput: {
+    endDate: { __type: 'String' },
+    price: { __type: 'Float' },
+    startDate: { __type: 'String' },
+    status: { __type: 'ItemUpdate_Advertise_status_MutationInput' },
+  },
+  mutationItem_AdvertiseInput: {
+    endDate: { __type: 'String' },
+    price: { __type: 'Float' },
+    startDate: { __type: 'String' },
+    status: { __type: 'Item_Advertise_status_MutationInput' },
   },
   mutationMediaInput: {
     alt: { __type: 'String' },
@@ -9294,6 +9610,43 @@ export const generatedSchema = {
     not_equals: { __type: 'versionsItem_version___status_Input' },
     not_in: { __type: '[versionsItem_version___status_Input]' },
   },
+  versionsItem_version__advertise__endDate_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  versionsItem_version__advertise__price_operator: {
+    equals: { __type: 'Float' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Float' },
+    greater_than_equal: { __type: 'Float' },
+    less_than: { __type: 'Float' },
+    less_than_equal: { __type: 'Float' },
+    not_equals: { __type: 'Float' },
+  },
+  versionsItem_version__advertise__startDate_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  versionsItem_version__advertise__status_operator: {
+    all: { __type: '[versionsItem_version__advertise__status_Input]' },
+    equals: { __type: 'versionsItem_version__advertise__status_Input' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[versionsItem_version__advertise__status_Input]' },
+    not_equals: { __type: 'versionsItem_version__advertise__status_Input' },
+    not_in: { __type: '[versionsItem_version__advertise__status_Input]' },
+  },
   versionsItem_version__availableAt_operator: {
     equals: { __type: 'DateTime' },
     exists: { __type: 'Boolean' },
@@ -9327,16 +9680,6 @@ export const generatedSchema = {
     exists: { __type: 'Boolean' },
     like: { __type: 'String' },
     not_equals: { __type: 'String' },
-  },
-  versionsItem_version__end_operator: {
-    equals: { __type: 'DateTime' },
-    exists: { __type: 'Boolean' },
-    greater_than: { __type: 'DateTime' },
-    greater_than_equal: { __type: 'DateTime' },
-    less_than: { __type: 'DateTime' },
-    less_than_equal: { __type: 'DateTime' },
-    like: { __type: 'DateTime' },
-    not_equals: { __type: 'DateTime' },
   },
   versionsItem_version__image_operator: {
     all: { __type: '[JSON]' },
@@ -9405,16 +9748,6 @@ export const generatedSchema = {
     not_equals: { __type: 'JSON' },
     not_in: { __type: '[JSON]' },
   },
-  versionsItem_version__start_operator: {
-    equals: { __type: 'DateTime' },
-    exists: { __type: 'Boolean' },
-    greater_than: { __type: 'DateTime' },
-    greater_than_equal: { __type: 'DateTime' },
-    less_than: { __type: 'DateTime' },
-    less_than_equal: { __type: 'DateTime' },
-    like: { __type: 'DateTime' },
-    not_equals: { __type: 'DateTime' },
-  },
   versionsItem_version__tags_operator: {
     all: { __type: '[JSON]' },
     equals: { __type: 'JSON' },
@@ -9442,11 +9775,16 @@ export const generatedSchema = {
     parent: { __type: 'versionsItem_parent_operator' },
     updatedAt: { __type: 'versionsItem_updatedAt_operator' },
     version___status: { __type: 'versionsItem_version___status_operator' },
+    version__advertise__endDate: { __type: 'versionsItem_version__advertise__endDate_operator' },
+    version__advertise__price: { __type: 'versionsItem_version__advertise__price_operator' },
+    version__advertise__startDate: {
+      __type: 'versionsItem_version__advertise__startDate_operator',
+    },
+    version__advertise__status: { __type: 'versionsItem_version__advertise__status_operator' },
     version__availableAt: { __type: 'versionsItem_version__availableAt_operator' },
     version__createdAt: { __type: 'versionsItem_version__createdAt_operator' },
     version__createdBy: { __type: 'versionsItem_version__createdBy_operator' },
     version__description: { __type: 'versionsItem_version__description_operator' },
-    version__end: { __type: 'versionsItem_version__end_operator' },
     version__image: { __type: 'versionsItem_version__image_operator' },
     version__name: { __type: 'versionsItem_version__name_operator' },
     version__period: { __type: 'versionsItem_version__period_operator' },
@@ -9455,7 +9793,6 @@ export const generatedSchema = {
     version__rating: { __type: 'versionsItem_version__rating_operator' },
     version__rentingStatus: { __type: 'versionsItem_version__rentingStatus_operator' },
     version__review: { __type: 'versionsItem_version__review_operator' },
-    version__start: { __type: 'versionsItem_version__start_operator' },
     version__tags: { __type: 'versionsItem_version__tags_operator' },
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
   },
@@ -9466,11 +9803,16 @@ export const generatedSchema = {
     parent: { __type: 'versionsItem_parent_operator' },
     updatedAt: { __type: 'versionsItem_updatedAt_operator' },
     version___status: { __type: 'versionsItem_version___status_operator' },
+    version__advertise__endDate: { __type: 'versionsItem_version__advertise__endDate_operator' },
+    version__advertise__price: { __type: 'versionsItem_version__advertise__price_operator' },
+    version__advertise__startDate: {
+      __type: 'versionsItem_version__advertise__startDate_operator',
+    },
+    version__advertise__status: { __type: 'versionsItem_version__advertise__status_operator' },
     version__availableAt: { __type: 'versionsItem_version__availableAt_operator' },
     version__createdAt: { __type: 'versionsItem_version__createdAt_operator' },
     version__createdBy: { __type: 'versionsItem_version__createdBy_operator' },
     version__description: { __type: 'versionsItem_version__description_operator' },
-    version__end: { __type: 'versionsItem_version__end_operator' },
     version__image: { __type: 'versionsItem_version__image_operator' },
     version__name: { __type: 'versionsItem_version__name_operator' },
     version__period: { __type: 'versionsItem_version__period_operator' },
@@ -9479,7 +9821,6 @@ export const generatedSchema = {
     version__rating: { __type: 'versionsItem_version__rating_operator' },
     version__rentingStatus: { __type: 'versionsItem_version__rentingStatus_operator' },
     version__review: { __type: 'versionsItem_version__review_operator' },
-    version__start: { __type: 'versionsItem_version__start_operator' },
     version__tags: { __type: 'versionsItem_version__tags_operator' },
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
   },
@@ -9490,11 +9831,16 @@ export const generatedSchema = {
     parent: { __type: 'versionsItem_parent_operator' },
     updatedAt: { __type: 'versionsItem_updatedAt_operator' },
     version___status: { __type: 'versionsItem_version___status_operator' },
+    version__advertise__endDate: { __type: 'versionsItem_version__advertise__endDate_operator' },
+    version__advertise__price: { __type: 'versionsItem_version__advertise__price_operator' },
+    version__advertise__startDate: {
+      __type: 'versionsItem_version__advertise__startDate_operator',
+    },
+    version__advertise__status: { __type: 'versionsItem_version__advertise__status_operator' },
     version__availableAt: { __type: 'versionsItem_version__availableAt_operator' },
     version__createdAt: { __type: 'versionsItem_version__createdAt_operator' },
     version__createdBy: { __type: 'versionsItem_version__createdBy_operator' },
     version__description: { __type: 'versionsItem_version__description_operator' },
-    version__end: { __type: 'versionsItem_version__end_operator' },
     version__image: { __type: 'versionsItem_version__image_operator' },
     version__name: { __type: 'versionsItem_version__name_operator' },
     version__period: { __type: 'versionsItem_version__period_operator' },
@@ -9503,7 +9849,6 @@ export const generatedSchema = {
     version__rating: { __type: 'versionsItem_version__rating_operator' },
     version__rentingStatus: { __type: 'versionsItem_version__rentingStatus_operator' },
     version__review: { __type: 'versionsItem_version__review_operator' },
-    version__start: { __type: 'versionsItem_version__start_operator' },
     version__tags: { __type: 'versionsItem_version__tags_operator' },
     version__updatedAt: { __type: 'versionsItem_version__updatedAt_operator' },
   },
@@ -10031,11 +10376,11 @@ export interface Chatrooms {
 export interface Item {
   __typename?: 'Item'
   _status?: Maybe<ScalarsEnums['Item__status']>
+  advertise?: Maybe<Item_Advertise>
   availableAt?: Maybe<ScalarsEnums['DateTime']>
   createdAt?: Maybe<ScalarsEnums['DateTime']>
   createdBy?: Maybe<User>
   description?: Maybe<ScalarsEnums['String']>
-  end?: Maybe<ScalarsEnums['DateTime']>
   id?: Maybe<ScalarsEnums['Int']>
   image?: Maybe<Array<Media>>
   name?: Maybe<ScalarsEnums['String']>
@@ -10045,7 +10390,6 @@ export interface Item {
   rating?: Maybe<ScalarsEnums['Float']>
   rentingStatus?: Maybe<ScalarsEnums['Item_rentingStatus']>
   review?: Maybe<Array<Review>>
-  start?: Maybe<ScalarsEnums['DateTime']>
   tags?: Maybe<Array<Tag>>
   updatedAt?: Maybe<ScalarsEnums['DateTime']>
 }
@@ -10063,11 +10407,11 @@ export interface ItemVersion {
 export interface ItemVersion_Version {
   __typename?: 'ItemVersion_Version'
   _status?: Maybe<ScalarsEnums['ItemVersion_Version__status']>
+  advertise?: Maybe<ItemVersion_Version_Advertise>
   availableAt?: Maybe<ScalarsEnums['DateTime']>
   createdAt?: Maybe<ScalarsEnums['DateTime']>
   createdBy?: Maybe<User>
   description?: Maybe<ScalarsEnums['String']>
-  end?: Maybe<ScalarsEnums['DateTime']>
   image?: Maybe<Array<Media>>
   name?: Maybe<ScalarsEnums['String']>
   period?: Maybe<ScalarsEnums['Float']>
@@ -10076,9 +10420,24 @@ export interface ItemVersion_Version {
   rating?: Maybe<ScalarsEnums['Float']>
   rentingStatus?: Maybe<ScalarsEnums['ItemVersion_Version_rentingStatus']>
   review?: Maybe<Array<Review>>
-  start?: Maybe<ScalarsEnums['DateTime']>
   tags?: Maybe<Array<Tag>>
   updatedAt?: Maybe<ScalarsEnums['DateTime']>
+}
+
+export interface ItemVersion_Version_Advertise {
+  __typename?: 'ItemVersion_Version_Advertise'
+  endDate?: Maybe<ScalarsEnums['DateTime']>
+  price?: Maybe<ScalarsEnums['Float']>
+  startDate?: Maybe<ScalarsEnums['DateTime']>
+  status?: Maybe<ScalarsEnums['ItemVersion_Version_Advertise_status']>
+}
+
+export interface Item_Advertise {
+  __typename?: 'Item_Advertise'
+  endDate?: Maybe<ScalarsEnums['DateTime']>
+  price?: Maybe<ScalarsEnums['Float']>
+  startDate?: Maybe<ScalarsEnums['DateTime']>
+  status?: Maybe<ScalarsEnums['Item_Advertise_status']>
 }
 
 export interface Items {
@@ -10123,11 +10482,11 @@ export interface ItemsDeleteDocAccess {
 export interface ItemsDocAccessFields {
   __typename?: 'ItemsDocAccessFields'
   _status?: Maybe<ItemsDocAccessFields__status>
+  advertise?: Maybe<ItemsDocAccessFields_advertise>
   availableAt?: Maybe<ItemsDocAccessFields_availableAt>
   createdAt?: Maybe<ItemsDocAccessFields_createdAt>
   createdBy?: Maybe<ItemsDocAccessFields_createdBy>
   description?: Maybe<ItemsDocAccessFields_description>
-  end?: Maybe<ItemsDocAccessFields_end>
   image?: Maybe<ItemsDocAccessFields_image>
   name?: Maybe<ItemsDocAccessFields_name>
   period?: Maybe<ItemsDocAccessFields_period>
@@ -10136,7 +10495,6 @@ export interface ItemsDocAccessFields {
   rating?: Maybe<ItemsDocAccessFields_rating>
   rentingStatus?: Maybe<ItemsDocAccessFields_rentingStatus>
   review?: Maybe<ItemsDocAccessFields_review>
-  start?: Maybe<ItemsDocAccessFields_start>
   tags?: Maybe<ItemsDocAccessFields_tags>
   updatedAt?: Maybe<ItemsDocAccessFields_updatedAt>
 }
@@ -10166,6 +10524,155 @@ export interface ItemsDocAccessFields__status_Read {
 
 export interface ItemsDocAccessFields__status_Update {
   __typename?: 'ItemsDocAccessFields__status_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise {
+  __typename?: 'ItemsDocAccessFields_advertise'
+  create?: Maybe<ItemsDocAccessFields_advertise_Create>
+  delete?: Maybe<ItemsDocAccessFields_advertise_Delete>
+  fields?: Maybe<ItemsDocAccessFields_advertise_Fields>
+  read?: Maybe<ItemsDocAccessFields_advertise_Read>
+  update?: Maybe<ItemsDocAccessFields_advertise_Update>
+}
+
+export interface ItemsDocAccessFields_advertise_Create {
+  __typename?: 'ItemsDocAccessFields_advertise_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_Delete {
+  __typename?: 'ItemsDocAccessFields_advertise_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_Fields {
+  __typename?: 'ItemsDocAccessFields_advertise_Fields'
+  endDate?: Maybe<ItemsDocAccessFields_advertise_endDate>
+  price?: Maybe<ItemsDocAccessFields_advertise_price>
+  startDate?: Maybe<ItemsDocAccessFields_advertise_startDate>
+  status?: Maybe<ItemsDocAccessFields_advertise_status>
+}
+
+export interface ItemsDocAccessFields_advertise_Read {
+  __typename?: 'ItemsDocAccessFields_advertise_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_Update {
+  __typename?: 'ItemsDocAccessFields_advertise_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_endDate {
+  __typename?: 'ItemsDocAccessFields_advertise_endDate'
+  create?: Maybe<ItemsDocAccessFields_advertise_endDate_Create>
+  delete?: Maybe<ItemsDocAccessFields_advertise_endDate_Delete>
+  read?: Maybe<ItemsDocAccessFields_advertise_endDate_Read>
+  update?: Maybe<ItemsDocAccessFields_advertise_endDate_Update>
+}
+
+export interface ItemsDocAccessFields_advertise_endDate_Create {
+  __typename?: 'ItemsDocAccessFields_advertise_endDate_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_endDate_Delete {
+  __typename?: 'ItemsDocAccessFields_advertise_endDate_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_endDate_Read {
+  __typename?: 'ItemsDocAccessFields_advertise_endDate_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_endDate_Update {
+  __typename?: 'ItemsDocAccessFields_advertise_endDate_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_price {
+  __typename?: 'ItemsDocAccessFields_advertise_price'
+  create?: Maybe<ItemsDocAccessFields_advertise_price_Create>
+  delete?: Maybe<ItemsDocAccessFields_advertise_price_Delete>
+  read?: Maybe<ItemsDocAccessFields_advertise_price_Read>
+  update?: Maybe<ItemsDocAccessFields_advertise_price_Update>
+}
+
+export interface ItemsDocAccessFields_advertise_price_Create {
+  __typename?: 'ItemsDocAccessFields_advertise_price_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_price_Delete {
+  __typename?: 'ItemsDocAccessFields_advertise_price_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_price_Read {
+  __typename?: 'ItemsDocAccessFields_advertise_price_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_price_Update {
+  __typename?: 'ItemsDocAccessFields_advertise_price_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_startDate {
+  __typename?: 'ItemsDocAccessFields_advertise_startDate'
+  create?: Maybe<ItemsDocAccessFields_advertise_startDate_Create>
+  delete?: Maybe<ItemsDocAccessFields_advertise_startDate_Delete>
+  read?: Maybe<ItemsDocAccessFields_advertise_startDate_Read>
+  update?: Maybe<ItemsDocAccessFields_advertise_startDate_Update>
+}
+
+export interface ItemsDocAccessFields_advertise_startDate_Create {
+  __typename?: 'ItemsDocAccessFields_advertise_startDate_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_startDate_Delete {
+  __typename?: 'ItemsDocAccessFields_advertise_startDate_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_startDate_Read {
+  __typename?: 'ItemsDocAccessFields_advertise_startDate_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_startDate_Update {
+  __typename?: 'ItemsDocAccessFields_advertise_startDate_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_status {
+  __typename?: 'ItemsDocAccessFields_advertise_status'
+  create?: Maybe<ItemsDocAccessFields_advertise_status_Create>
+  delete?: Maybe<ItemsDocAccessFields_advertise_status_Delete>
+  read?: Maybe<ItemsDocAccessFields_advertise_status_Read>
+  update?: Maybe<ItemsDocAccessFields_advertise_status_Update>
+}
+
+export interface ItemsDocAccessFields_advertise_status_Create {
+  __typename?: 'ItemsDocAccessFields_advertise_status_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_status_Delete {
+  __typename?: 'ItemsDocAccessFields_advertise_status_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_status_Read {
+  __typename?: 'ItemsDocAccessFields_advertise_status_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsDocAccessFields_advertise_status_Update {
+  __typename?: 'ItemsDocAccessFields_advertise_status_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -10278,34 +10785,6 @@ export interface ItemsDocAccessFields_description_Read {
 
 export interface ItemsDocAccessFields_description_Update {
   __typename?: 'ItemsDocAccessFields_description_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ItemsDocAccessFields_end {
-  __typename?: 'ItemsDocAccessFields_end'
-  create?: Maybe<ItemsDocAccessFields_end_Create>
-  delete?: Maybe<ItemsDocAccessFields_end_Delete>
-  read?: Maybe<ItemsDocAccessFields_end_Read>
-  update?: Maybe<ItemsDocAccessFields_end_Update>
-}
-
-export interface ItemsDocAccessFields_end_Create {
-  __typename?: 'ItemsDocAccessFields_end_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ItemsDocAccessFields_end_Delete {
-  __typename?: 'ItemsDocAccessFields_end_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ItemsDocAccessFields_end_Read {
-  __typename?: 'ItemsDocAccessFields_end_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ItemsDocAccessFields_end_Update {
-  __typename?: 'ItemsDocAccessFields_end_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -10533,34 +11012,6 @@ export interface ItemsDocAccessFields_review_Update {
   permission: ScalarsEnums['Boolean']
 }
 
-export interface ItemsDocAccessFields_start {
-  __typename?: 'ItemsDocAccessFields_start'
-  create?: Maybe<ItemsDocAccessFields_start_Create>
-  delete?: Maybe<ItemsDocAccessFields_start_Delete>
-  read?: Maybe<ItemsDocAccessFields_start_Read>
-  update?: Maybe<ItemsDocAccessFields_start_Update>
-}
-
-export interface ItemsDocAccessFields_start_Create {
-  __typename?: 'ItemsDocAccessFields_start_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ItemsDocAccessFields_start_Delete {
-  __typename?: 'ItemsDocAccessFields_start_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ItemsDocAccessFields_start_Read {
-  __typename?: 'ItemsDocAccessFields_start_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ItemsDocAccessFields_start_Update {
-  __typename?: 'ItemsDocAccessFields_start_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
 export interface ItemsDocAccessFields_tags {
   __typename?: 'ItemsDocAccessFields_tags'
   create?: Maybe<ItemsDocAccessFields_tags_Create>
@@ -10620,11 +11071,11 @@ export interface ItemsDocAccessFields_updatedAt_Update {
 export interface ItemsFields {
   __typename?: 'ItemsFields'
   _status?: Maybe<ItemsFields__status>
+  advertise?: Maybe<ItemsFields_advertise>
   availableAt?: Maybe<ItemsFields_availableAt>
   createdAt?: Maybe<ItemsFields_createdAt>
   createdBy?: Maybe<ItemsFields_createdBy>
   description?: Maybe<ItemsFields_description>
-  end?: Maybe<ItemsFields_end>
   image?: Maybe<ItemsFields_image>
   name?: Maybe<ItemsFields_name>
   period?: Maybe<ItemsFields_period>
@@ -10633,7 +11084,6 @@ export interface ItemsFields {
   rating?: Maybe<ItemsFields_rating>
   rentingStatus?: Maybe<ItemsFields_rentingStatus>
   review?: Maybe<ItemsFields_review>
-  start?: Maybe<ItemsFields_start>
   tags?: Maybe<ItemsFields_tags>
   updatedAt?: Maybe<ItemsFields_updatedAt>
 }
@@ -10663,6 +11113,155 @@ export interface ItemsFields__status_Read {
 
 export interface ItemsFields__status_Update {
   __typename?: 'ItemsFields__status_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise {
+  __typename?: 'ItemsFields_advertise'
+  create?: Maybe<ItemsFields_advertise_Create>
+  delete?: Maybe<ItemsFields_advertise_Delete>
+  fields?: Maybe<ItemsFields_advertise_Fields>
+  read?: Maybe<ItemsFields_advertise_Read>
+  update?: Maybe<ItemsFields_advertise_Update>
+}
+
+export interface ItemsFields_advertise_Create {
+  __typename?: 'ItemsFields_advertise_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_Delete {
+  __typename?: 'ItemsFields_advertise_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_Fields {
+  __typename?: 'ItemsFields_advertise_Fields'
+  endDate?: Maybe<ItemsFields_advertise_endDate>
+  price?: Maybe<ItemsFields_advertise_price>
+  startDate?: Maybe<ItemsFields_advertise_startDate>
+  status?: Maybe<ItemsFields_advertise_status>
+}
+
+export interface ItemsFields_advertise_Read {
+  __typename?: 'ItemsFields_advertise_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_Update {
+  __typename?: 'ItemsFields_advertise_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_endDate {
+  __typename?: 'ItemsFields_advertise_endDate'
+  create?: Maybe<ItemsFields_advertise_endDate_Create>
+  delete?: Maybe<ItemsFields_advertise_endDate_Delete>
+  read?: Maybe<ItemsFields_advertise_endDate_Read>
+  update?: Maybe<ItemsFields_advertise_endDate_Update>
+}
+
+export interface ItemsFields_advertise_endDate_Create {
+  __typename?: 'ItemsFields_advertise_endDate_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_endDate_Delete {
+  __typename?: 'ItemsFields_advertise_endDate_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_endDate_Read {
+  __typename?: 'ItemsFields_advertise_endDate_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_endDate_Update {
+  __typename?: 'ItemsFields_advertise_endDate_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_price {
+  __typename?: 'ItemsFields_advertise_price'
+  create?: Maybe<ItemsFields_advertise_price_Create>
+  delete?: Maybe<ItemsFields_advertise_price_Delete>
+  read?: Maybe<ItemsFields_advertise_price_Read>
+  update?: Maybe<ItemsFields_advertise_price_Update>
+}
+
+export interface ItemsFields_advertise_price_Create {
+  __typename?: 'ItemsFields_advertise_price_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_price_Delete {
+  __typename?: 'ItemsFields_advertise_price_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_price_Read {
+  __typename?: 'ItemsFields_advertise_price_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_price_Update {
+  __typename?: 'ItemsFields_advertise_price_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_startDate {
+  __typename?: 'ItemsFields_advertise_startDate'
+  create?: Maybe<ItemsFields_advertise_startDate_Create>
+  delete?: Maybe<ItemsFields_advertise_startDate_Delete>
+  read?: Maybe<ItemsFields_advertise_startDate_Read>
+  update?: Maybe<ItemsFields_advertise_startDate_Update>
+}
+
+export interface ItemsFields_advertise_startDate_Create {
+  __typename?: 'ItemsFields_advertise_startDate_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_startDate_Delete {
+  __typename?: 'ItemsFields_advertise_startDate_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_startDate_Read {
+  __typename?: 'ItemsFields_advertise_startDate_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_startDate_Update {
+  __typename?: 'ItemsFields_advertise_startDate_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_status {
+  __typename?: 'ItemsFields_advertise_status'
+  create?: Maybe<ItemsFields_advertise_status_Create>
+  delete?: Maybe<ItemsFields_advertise_status_Delete>
+  read?: Maybe<ItemsFields_advertise_status_Read>
+  update?: Maybe<ItemsFields_advertise_status_Update>
+}
+
+export interface ItemsFields_advertise_status_Create {
+  __typename?: 'ItemsFields_advertise_status_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_status_Delete {
+  __typename?: 'ItemsFields_advertise_status_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_status_Read {
+  __typename?: 'ItemsFields_advertise_status_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface ItemsFields_advertise_status_Update {
+  __typename?: 'ItemsFields_advertise_status_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -10775,34 +11374,6 @@ export interface ItemsFields_description_Read {
 
 export interface ItemsFields_description_Update {
   __typename?: 'ItemsFields_description_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ItemsFields_end {
-  __typename?: 'ItemsFields_end'
-  create?: Maybe<ItemsFields_end_Create>
-  delete?: Maybe<ItemsFields_end_Delete>
-  read?: Maybe<ItemsFields_end_Read>
-  update?: Maybe<ItemsFields_end_Update>
-}
-
-export interface ItemsFields_end_Create {
-  __typename?: 'ItemsFields_end_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ItemsFields_end_Delete {
-  __typename?: 'ItemsFields_end_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ItemsFields_end_Read {
-  __typename?: 'ItemsFields_end_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ItemsFields_end_Update {
-  __typename?: 'ItemsFields_end_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -11027,34 +11598,6 @@ export interface ItemsFields_review_Read {
 
 export interface ItemsFields_review_Update {
   __typename?: 'ItemsFields_review_Update'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ItemsFields_start {
-  __typename?: 'ItemsFields_start'
-  create?: Maybe<ItemsFields_start_Create>
-  delete?: Maybe<ItemsFields_start_Delete>
-  read?: Maybe<ItemsFields_start_Read>
-  update?: Maybe<ItemsFields_start_Update>
-}
-
-export interface ItemsFields_start_Create {
-  __typename?: 'ItemsFields_start_Create'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ItemsFields_start_Delete {
-  __typename?: 'ItemsFields_start_Delete'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ItemsFields_start_Read {
-  __typename?: 'ItemsFields_start_Read'
-  permission: ScalarsEnums['Boolean']
-}
-
-export interface ItemsFields_start_Update {
-  __typename?: 'ItemsFields_start_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -16317,15 +16860,20 @@ export type MakeNullable<T> = {
 }
 
 export interface ScalarsEnums extends MakeNullable<Scalars> {
+  ItemUpdate_Advertise_status_MutationInput: ItemUpdate_Advertise_status_MutationInput | undefined
   ItemUpdate__status_MutationInput: ItemUpdate__status_MutationInput | undefined
   ItemUpdate_periodType_MutationInput: ItemUpdate_periodType_MutationInput | undefined
   ItemUpdate_rentingStatus_MutationInput: ItemUpdate_rentingStatus_MutationInput | undefined
+  ItemVersion_Version_Advertise_status: ItemVersion_Version_Advertise_status | undefined
   ItemVersion_Version__status: ItemVersion_Version__status | undefined
   ItemVersion_Version_periodType: ItemVersion_Version_periodType | undefined
   ItemVersion_Version_rentingStatus: ItemVersion_Version_rentingStatus | undefined
+  Item_Advertise_status: Item_Advertise_status | undefined
+  Item_Advertise_status_MutationInput: Item_Advertise_status_MutationInput | undefined
   Item__status: Item__status | undefined
   Item__status_Input: Item__status_Input | undefined
   Item__status_MutationInput: Item__status_MutationInput | undefined
+  Item_advertise__status_Input: Item_advertise__status_Input | undefined
   Item_periodType: Item_periodType | undefined
   Item_periodType_Input: Item_periodType_Input | undefined
   Item_periodType_MutationInput: Item_periodType_MutationInput | undefined
@@ -16354,6 +16902,9 @@ export interface ScalarsEnums extends MakeNullable<Scalars> {
   User_roles_MutationInput: User_roles_MutationInput | undefined
   usersJWT_roles: usersJWT_roles | undefined
   versionsItem_version___status_Input: versionsItem_version___status_Input | undefined
+  versionsItem_version__advertise__status_Input:
+    | versionsItem_version__advertise__status_Input
+    | undefined
   versionsItem_version__periodType_Input: versionsItem_version__periodType_Input | undefined
   versionsItem_version__rentingStatus_Input: versionsItem_version__rentingStatus_Input | undefined
 }

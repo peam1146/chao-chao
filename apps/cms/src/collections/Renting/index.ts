@@ -4,7 +4,6 @@ import { isAdminOrSelf } from '../../access'
 import { afterDelete } from './hooks/afterDelete'
 import { beforeRead } from './hooks/beforeRead'
 import { syncCollections } from './hooks/syncCollections'
-import { syncTotalPrice } from './hooks/syncTotalPrice'
 
 export const Renting: CollectionConfig = {
   slug: 'renting',

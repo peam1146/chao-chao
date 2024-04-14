@@ -4,25 +4,27 @@ import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Modal } from '@/components/ui/dialog'
+import { Spinner } from '@/components/ui/spinner'
 import Typography from '@/components/ui/typography'
+import { useUserToken } from '@/providers/User'
 import { Megaphone, Plus } from '@phosphor-icons/react'
 import { Separator } from '@radix-ui/react-separator'
 import { useSearchParams } from 'next/navigation'
 
-import { useQuery } from '../../../../../gqty'
+import { Item_advertise__status_Input, useQuery } from '../../../../../gqty'
 import AdvertisingCard from './AdvertisingCard'
 import { SelectAssetModal } from './SelectAssetModal'
 
 export default function AdvertisingContainer() {
-  const { Items, meUser } = useQuery({ fetchPolicy: 'cache-and-network' })
+  const query = useQuery({ fetchPolicy: 'cache-and-network' })
   const [open, setOpen] = useState(false)
 
   const searchParams = useSearchParams()
   const search = searchParams.get('search') ? searchParams.get('search') : undefined
 
-  const userId = meUser?.user?.id
+  const { userId } = useUserToken()
 
-  const items = Items({
+  const items = query.Items({
     draft: false,
     where: {
       name: {
@@ -30,6 +32,9 @@ export default function AdvertisingContainer() {
       },
       createdBy: {
         equals: userId,
+      },
+      advertise__status: {
+        equals: Item_advertise__status_Input.active,
       },
     },
   })
@@ -58,23 +63,29 @@ export default function AdvertisingContainer() {
           the top of search results for maximum exposure.
         </Typography>
         <Separator orientation="horizontal" className="border-b border-border" />
+        {query.$state.isLoading ? (
+          <div className="flex justify-center">
+            <Spinner className="self-center" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 2xl:grid-cols-5 lg:grid-cols-3 grid-s-3 gap-3">
+            {items?.docs
+              ?.filter((item) => item?.id !== undefined)
+              .map((item) => {
+                return (
+                  <AdvertisingCard
+                    key={item?.id}
+                    id={Number(item?.id)}
+                    name={item?.name ?? ''}
+                    image={item?.image}
+                    startDate={new Date(item?.advertise?.startDate ?? '')}
+                    endDate={new Date(item?.advertise?.endDate ?? '')}
+                  />
+                )
+              })}
+          </div>
+        )}
         {items?.docs?.length === 0 && <div className="flex justify-center">No item found</div>}
-        <div className="grid grid-cols-2 2xl:grid-cols-5 lg:grid-cols-3 grid-s-3 gap-3">
-          {items?.docs
-            ?.filter((item) => item?.id !== undefined)
-            .map((item) => {
-              return (
-                <AdvertisingCard
-                  key={item?.id}
-                  id={Number(item?.id)}
-                  name={item?.name ?? ''}
-                  image={item?.image}
-                  startDate={new Date(item?.start ?? '')}
-                  endDate={new Date(item?.end ?? '')}
-                />
-              )
-            })}
-        </div>
       </div>
       <Modal open={open} onOpenChange={setOpen} className="lg:max-w-[672px]">
         <SelectAssetModal handleOpenChange={handleOpenChange} />
