@@ -1,6 +1,8 @@
 'use client'
 
-import { ReactNode, createContext, useContext, useMemo } from 'react'
+import { ReactNode, createContext, useContext, useEffect, useMemo } from 'react'
+
+import { resolve } from '../../../gqty'
 
 interface UserTokenContextType {
   userToken: string
@@ -20,7 +22,18 @@ export const UserTokenProvider = ({ children }: { children: ReactNode }) => {
   userToken = token['payload-token'] ? token['payload-token'] : ''
   userId = token['user-id'] ? token['user-id'] : ''
 
-  console.log(userToken, userId)
+  useEffect(() => {
+    async function fetchUser() {
+      const user = await resolve((query) => {
+        return query.query.meUser?.user?.id
+      })
+      if (!user) {
+        userToken = ''
+        userId = ''
+      }
+    }
+    fetchUser()
+  }, [userToken, userId])
 
   const value = useMemo(() => ({ userToken, userId }), [userToken, userId])
 

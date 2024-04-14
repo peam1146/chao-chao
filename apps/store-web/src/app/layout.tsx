@@ -24,20 +24,20 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={sans.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <UserTokenProvider>
+        <UserTokenProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
             <Toaster />
             <div className="min-h-screen max-w-screen flex flex-col bg-background">
               <Navbar />
               <div className="flex-1 flex-col flex relative w-full">{children}</div>
             </div>
-          </UserTokenProvider>
-        </ThemeProvider>
+          </ThemeProvider>
+        </UserTokenProvider>
       </body>
     </html>
   )

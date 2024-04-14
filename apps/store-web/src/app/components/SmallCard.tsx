@@ -11,12 +11,14 @@ import Link from 'next/link'
 import { Maybe, Media } from '../../../gqty'
 
 export default function SmallCard({
+  isAdvertise = true,
   id,
   name,
   rating,
   price,
   image,
 }: {
+  isAdvertise?: boolean
   id?: Maybe<Number>
   name: string
   rating: number
@@ -27,12 +29,14 @@ export default function SmallCard({
     <Link href={`/detail/${id}`}>
       <div className="flex flex-col max-w-[350px] w-full bg-card rounded-lg p-4 lg:gap-4 gap-2 hover:border-primary border-background border-2">
         <div className="relative">
-          <Badge className="absolute py-1 px-3 flex flex-row gap-1">
-            <Lightning size={16} weight="fill" className="text-white" />
-            <Typography fontWeight="regular" className="max-md:hidden">
-              Recommend
-            </Typography>
-          </Badge>
+          {isAdvertise && (
+            <Badge className="absolute py-1 px-3 flex flex-row gap-1">
+              <Lightning size={16} weight="fill" className="text-white" />
+              <Typography fontWeight="regular" className="max-md:hidden">
+                Recommend
+              </Typography>
+            </Badge>
+          )}
           <div className="flex w-full h-[240px] justify-center">
             {image && (
               <Image

@@ -17,6 +17,7 @@ export interface Config {
     renting: Renting;
     reviews: Review;
     report: Report;
+    payment: Payment;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -91,12 +92,16 @@ export interface Item {
   period?: number;
   periodType?: 'days' | 'weeks' | 'months' | 'years';
   rentingStatus?: 'available' | 'unavailable' | 'negotiating';
-  start?: string;
-  end?: string;
   tags?: string[] | Tag[];
   createdBy: string | User;
   rating?: number;
   review?: string[] | Review[];
+  advertise?: {
+    status?: 'active' | 'waiting_for_payment' | 'inactive';
+    startDate?: string;
+    endDate?: string;
+    price?: number;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: 'draft' | 'published';
@@ -145,6 +150,23 @@ export interface Report {
   updatedAt: string;
   createdAt: string;
 }
+export interface Payment {
+  id: string;
+  renting?: {
+    renting?: string | Renting;
+  };
+  advertise?: {
+    item?: string | Item;
+    startDate?: string;
+    endDate?: string;
+    price?: number;
+  };
+  type?: 'RENTING' | 'ADVERTISE';
+  createdBy: string | User;
+  payTo?: string | User;
+  updatedAt: string;
+  createdAt: string;
+}
 export interface PayloadPreference {
   id: string;
   user: {
@@ -185,6 +207,7 @@ declare module 'payload' {
       'renting': Renting
       'reviews': Review
       'report': Report
+      'payment': Payment
       'payload-preferences': PayloadPreference
       'payload-migrations': PayloadMigration
     }

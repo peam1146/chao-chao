@@ -12,7 +12,7 @@ import { openapi, swaggerUI } from 'payload-oapi'
 import s3Upload from 'payload-s3-upload'
 import { buildConfig } from 'payload/config'
 
-import { Chatroom, Item, Media, Message, Renting, Tag, Users } from './collections'
+import { Chatroom, Item, Media, Message, Payment, Renting, Tag, Users } from './collections'
 import { Report } from './collections/Report'
 import { Review } from './collections/Review'
 import { ACCESS_KEY_ID, REGION, SECRET_KEY_ID } from './common/env'
@@ -58,7 +58,7 @@ export default buildConfig({
     },
   },
   editor: slateEditor({}),
-  collections: [Users, Item, Media, Tag, Chatroom, Message, Renting, Review, Report],
+  collections: [Users, Item, Media, Tag, Chatroom, Message, Renting, Review, Report, Payment],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
