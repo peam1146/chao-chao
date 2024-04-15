@@ -1,25 +1,29 @@
 'use client'
 
+import { ChangeEvent, useState } from 'react'
+
+import { useDebounce } from '@/components/layout/hooks/use-debounce'
 import { Button } from '@/components/ui/button'
 import { Spinner } from '@/components/ui/spinner'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Typography from '@/components/ui/typography'
 import { useUserToken } from '@/providers/User'
 import { Plus, Tray } from '@phosphor-icons/react'
+import { SearchIcon } from 'lucide-react'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
 
 import { useQuery } from '../../../../../gqty'
 import AssetsCard from './AssetsCard'
-import SearchMyAssets from './SearchMyAssets'
 
 export default function MyAssets() {
   const query = useQuery({ fetchPolicy: 'cache-and-network' })
-
-  const searchParams = useSearchParams()
-  const search = searchParams.get('search') ? searchParams.get('search') : undefined
+  const [search, setSearch] = useState('')
 
   const { userId } = useUserToken()
+
+  const debounce = useDebounce((e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value)
+  }, 250)
 
   const items = query.Items({
     draft: false,
@@ -49,7 +53,16 @@ export default function MyAssets() {
           </Button>
         </Link>
       </div>
-      <SearchMyAssets />
+      <div className="flex h-10 w-full items-center rounded-md border border-input bg-background p-2 text-sm ring-offset-background">
+        <SearchIcon className="h-4" />
+        <input
+          type="text"
+          onChange={debounce}
+          placeholder="Search My Assets"
+          className="w-full bg-transparent"
+        />
+        <input type="submit" className="hidden" />
+      </div>
       <div>
         <Tabs defaultValue="all" className="w-full">
           <TabsList className="w-full">

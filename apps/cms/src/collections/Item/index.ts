@@ -1,6 +1,7 @@
 import { CollectionConfig } from 'payload/types'
 
 import { isAdminOrSelf } from '../../access'
+import { CheckAdvertise } from './hooks/checkAdvertise'
 
 export const Item: CollectionConfig = {
   slug: 'items',
@@ -13,6 +14,9 @@ export const Item: CollectionConfig = {
     create: isAdminOrSelf,
     delete: () => true,
     readVersions: isAdminOrSelf,
+  },
+  hooks: {
+    beforeRead: [CheckAdvertise],
   },
   versions: {
     drafts: true,
