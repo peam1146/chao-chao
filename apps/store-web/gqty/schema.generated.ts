@@ -884,6 +884,178 @@ export interface PayloadPreference_where_or {
   value?: InputMaybe<PayloadPreference_value_operator>
 }
 
+export enum PaymentUpdate_type_MutationInput {
+  ADVERTISE = 'ADVERTISE',
+  RENTING = 'RENTING',
+}
+
+export interface Payment_advertise__endDate_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Payment_advertise__item_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Payment_advertise__price_operator {
+  equals?: InputMaybe<Scalars['Float']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Float']>
+  greater_than_equal?: InputMaybe<Scalars['Float']>
+  less_than?: InputMaybe<Scalars['Float']>
+  less_than_equal?: InputMaybe<Scalars['Float']>
+  not_equals?: InputMaybe<Scalars['Float']>
+}
+
+export interface Payment_advertise__startDate_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Payment_createdAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Payment_createdBy_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Payment_id_operator {
+  equals?: InputMaybe<Scalars['Int']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['Int']>
+  greater_than_equal?: InputMaybe<Scalars['Int']>
+  less_than?: InputMaybe<Scalars['Int']>
+  less_than_equal?: InputMaybe<Scalars['Int']>
+  not_equals?: InputMaybe<Scalars['Int']>
+}
+
+export interface Payment_payTo_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export interface Payment_renting__renting_operator {
+  all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  equals?: InputMaybe<Scalars['JSON']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  not_equals?: InputMaybe<Scalars['JSON']>
+  not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+}
+
+export enum Payment_type {
+  ADVERTISE = 'ADVERTISE',
+  RENTING = 'RENTING',
+}
+
+export enum Payment_type_Input {
+  ADVERTISE = 'ADVERTISE',
+  RENTING = 'RENTING',
+}
+
+export enum Payment_type_MutationInput {
+  ADVERTISE = 'ADVERTISE',
+  RENTING = 'RENTING',
+}
+
+export interface Payment_type_operator {
+  all?: InputMaybe<Array<InputMaybe<Payment_type_Input>>>
+  equals?: InputMaybe<Payment_type_Input>
+  exists?: InputMaybe<Scalars['Boolean']>
+  in?: InputMaybe<Array<InputMaybe<Payment_type_Input>>>
+  not_equals?: InputMaybe<Payment_type_Input>
+  not_in?: InputMaybe<Array<InputMaybe<Payment_type_Input>>>
+}
+
+export interface Payment_updatedAt_operator {
+  equals?: InputMaybe<Scalars['DateTime']>
+  exists?: InputMaybe<Scalars['Boolean']>
+  greater_than?: InputMaybe<Scalars['DateTime']>
+  greater_than_equal?: InputMaybe<Scalars['DateTime']>
+  less_than?: InputMaybe<Scalars['DateTime']>
+  less_than_equal?: InputMaybe<Scalars['DateTime']>
+  like?: InputMaybe<Scalars['DateTime']>
+  not_equals?: InputMaybe<Scalars['DateTime']>
+}
+
+export interface Payment_where {
+  AND?: InputMaybe<Array<InputMaybe<Payment_where_and>>>
+  OR?: InputMaybe<Array<InputMaybe<Payment_where_or>>>
+  advertise__endDate?: InputMaybe<Payment_advertise__endDate_operator>
+  advertise__item?: InputMaybe<Payment_advertise__item_operator>
+  advertise__price?: InputMaybe<Payment_advertise__price_operator>
+  advertise__startDate?: InputMaybe<Payment_advertise__startDate_operator>
+  createdAt?: InputMaybe<Payment_createdAt_operator>
+  createdBy?: InputMaybe<Payment_createdBy_operator>
+  id?: InputMaybe<Payment_id_operator>
+  payTo?: InputMaybe<Payment_payTo_operator>
+  renting__renting?: InputMaybe<Payment_renting__renting_operator>
+  type?: InputMaybe<Payment_type_operator>
+  updatedAt?: InputMaybe<Payment_updatedAt_operator>
+}
+
+export interface Payment_where_and {
+  advertise__endDate?: InputMaybe<Payment_advertise__endDate_operator>
+  advertise__item?: InputMaybe<Payment_advertise__item_operator>
+  advertise__price?: InputMaybe<Payment_advertise__price_operator>
+  advertise__startDate?: InputMaybe<Payment_advertise__startDate_operator>
+  createdAt?: InputMaybe<Payment_createdAt_operator>
+  createdBy?: InputMaybe<Payment_createdBy_operator>
+  id?: InputMaybe<Payment_id_operator>
+  payTo?: InputMaybe<Payment_payTo_operator>
+  renting__renting?: InputMaybe<Payment_renting__renting_operator>
+  type?: InputMaybe<Payment_type_operator>
+  updatedAt?: InputMaybe<Payment_updatedAt_operator>
+}
+
+export interface Payment_where_or {
+  advertise__endDate?: InputMaybe<Payment_advertise__endDate_operator>
+  advertise__item?: InputMaybe<Payment_advertise__item_operator>
+  advertise__price?: InputMaybe<Payment_advertise__price_operator>
+  advertise__startDate?: InputMaybe<Payment_advertise__startDate_operator>
+  createdAt?: InputMaybe<Payment_createdAt_operator>
+  createdBy?: InputMaybe<Payment_createdBy_operator>
+  id?: InputMaybe<Payment_id_operator>
+  payTo?: InputMaybe<Payment_payTo_operator>
+  renting__renting?: InputMaybe<Payment_renting__renting_operator>
+  type?: InputMaybe<Payment_type_operator>
+  updatedAt?: InputMaybe<Payment_updatedAt_operator>
+}
+
 export enum RentingUpdate_status_MutationInput {
   COMPLETED = 'COMPLETED',
   PENDING = 'PENDING',
@@ -1763,6 +1935,48 @@ export interface mutationPayloadPreferenceUpdateInput {
   value?: InputMaybe<Scalars['JSON']>
 }
 
+export interface mutationPaymentInput {
+  advertise?: InputMaybe<mutationPayment_AdvertiseInput>
+  createdAt?: InputMaybe<Scalars['String']>
+  createdBy?: InputMaybe<Scalars['Int']>
+  payTo?: InputMaybe<Scalars['Int']>
+  renting?: InputMaybe<mutationPayment_RentingInput>
+  type?: InputMaybe<Payment_type_MutationInput>
+  updatedAt?: InputMaybe<Scalars['String']>
+}
+
+export interface mutationPaymentUpdateInput {
+  advertise?: InputMaybe<mutationPaymentUpdate_AdvertiseInput>
+  createdAt?: InputMaybe<Scalars['String']>
+  createdBy?: InputMaybe<Scalars['Int']>
+  payTo?: InputMaybe<Scalars['Int']>
+  renting?: InputMaybe<mutationPaymentUpdate_RentingInput>
+  type?: InputMaybe<PaymentUpdate_type_MutationInput>
+  updatedAt?: InputMaybe<Scalars['String']>
+}
+
+export interface mutationPaymentUpdate_AdvertiseInput {
+  endDate?: InputMaybe<Scalars['String']>
+  item?: InputMaybe<Scalars['Int']>
+  price?: InputMaybe<Scalars['Float']>
+  startDate?: InputMaybe<Scalars['String']>
+}
+
+export interface mutationPaymentUpdate_RentingInput {
+  renting?: InputMaybe<Scalars['Int']>
+}
+
+export interface mutationPayment_AdvertiseInput {
+  endDate?: InputMaybe<Scalars['String']>
+  item?: InputMaybe<Scalars['Int']>
+  price?: InputMaybe<Scalars['Float']>
+  startDate?: InputMaybe<Scalars['String']>
+}
+
+export interface mutationPayment_RentingInput {
+  renting?: InputMaybe<Scalars['Int']>
+}
+
 export interface mutationRentingInput {
   createdAt?: InputMaybe<Scalars['String']>
   createdBy?: InputMaybe<Scalars['Int']>
@@ -2287,6 +2501,10 @@ export const scalarsEnumsHash: import('gqty').ScalarsEnumsHash = {
   PayloadPreference_UserRelationshipInputRelationTo: true,
   PayloadPreference_User_RelationTo: true,
   PayloadPreference_user_Relation_RelationTo: true,
+  PaymentUpdate_type_MutationInput: true,
+  Payment_type: true,
+  Payment_type_Input: true,
+  Payment_type_MutationInput: true,
   RentingUpdate_status_MutationInput: true,
   Renting_status: true,
   Renting_status_Input: true,
@@ -2315,6 +2533,7 @@ export const generatedSchema = {
     medias: { __type: 'mediasAccess' },
     message: { __type: 'messageAccess' },
     payload_preferences: { __type: 'payload_preferencesAccess' },
+    payment: { __type: 'paymentAccess' },
     renting: { __type: 'rentingAccess' },
     report: { __type: 'reportAccess' },
     reviews: { __type: 'reviewsAccess' },
@@ -5644,6 +5863,815 @@ export const generatedSchema = {
     permission: { __type: 'Boolean!' },
     where: { __type: 'JSONObject' },
   },
+  Payment: {
+    __typename: { __type: 'String!' },
+    advertise: { __type: 'Payment_Advertise' },
+    createdAt: { __type: 'DateTime' },
+    createdBy: { __type: 'User!' },
+    id: { __type: 'Int' },
+    payTo: { __type: 'User' },
+    renting: { __type: 'Payment_Renting' },
+    type: { __type: 'Payment_type' },
+    updatedAt: { __type: 'DateTime' },
+  },
+  PaymentCreateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  PaymentCreateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  PaymentDeleteAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  PaymentDeleteDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  PaymentDocAccessFields: {
+    __typename: { __type: 'String!' },
+    advertise: { __type: 'PaymentDocAccessFields_advertise' },
+    createdAt: { __type: 'PaymentDocAccessFields_createdAt' },
+    createdBy: { __type: 'PaymentDocAccessFields_createdBy' },
+    payTo: { __type: 'PaymentDocAccessFields_payTo' },
+    renting: { __type: 'PaymentDocAccessFields_renting' },
+    type: { __type: 'PaymentDocAccessFields_type' },
+    updatedAt: { __type: 'PaymentDocAccessFields_updatedAt' },
+  },
+  PaymentDocAccessFields_advertise: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentDocAccessFields_advertise_Create' },
+    delete: { __type: 'PaymentDocAccessFields_advertise_Delete' },
+    fields: { __type: 'PaymentDocAccessFields_advertise_Fields' },
+    read: { __type: 'PaymentDocAccessFields_advertise_Read' },
+    update: { __type: 'PaymentDocAccessFields_advertise_Update' },
+  },
+  PaymentDocAccessFields_advertise_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_Fields: {
+    __typename: { __type: 'String!' },
+    endDate: { __type: 'PaymentDocAccessFields_advertise_endDate' },
+    item: { __type: 'PaymentDocAccessFields_advertise_item' },
+    price: { __type: 'PaymentDocAccessFields_advertise_price' },
+    startDate: { __type: 'PaymentDocAccessFields_advertise_startDate' },
+  },
+  PaymentDocAccessFields_advertise_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_endDate: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentDocAccessFields_advertise_endDate_Create' },
+    delete: { __type: 'PaymentDocAccessFields_advertise_endDate_Delete' },
+    read: { __type: 'PaymentDocAccessFields_advertise_endDate_Read' },
+    update: { __type: 'PaymentDocAccessFields_advertise_endDate_Update' },
+  },
+  PaymentDocAccessFields_advertise_endDate_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_endDate_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_endDate_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_endDate_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_item: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentDocAccessFields_advertise_item_Create' },
+    delete: { __type: 'PaymentDocAccessFields_advertise_item_Delete' },
+    read: { __type: 'PaymentDocAccessFields_advertise_item_Read' },
+    update: { __type: 'PaymentDocAccessFields_advertise_item_Update' },
+  },
+  PaymentDocAccessFields_advertise_item_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_item_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_item_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_item_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_price: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentDocAccessFields_advertise_price_Create' },
+    delete: { __type: 'PaymentDocAccessFields_advertise_price_Delete' },
+    read: { __type: 'PaymentDocAccessFields_advertise_price_Read' },
+    update: { __type: 'PaymentDocAccessFields_advertise_price_Update' },
+  },
+  PaymentDocAccessFields_advertise_price_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_price_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_price_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_price_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_startDate: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentDocAccessFields_advertise_startDate_Create' },
+    delete: { __type: 'PaymentDocAccessFields_advertise_startDate_Delete' },
+    read: { __type: 'PaymentDocAccessFields_advertise_startDate_Read' },
+    update: { __type: 'PaymentDocAccessFields_advertise_startDate_Update' },
+  },
+  PaymentDocAccessFields_advertise_startDate_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_startDate_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_startDate_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_advertise_startDate_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentDocAccessFields_createdAt_Create' },
+    delete: { __type: 'PaymentDocAccessFields_createdAt_Delete' },
+    read: { __type: 'PaymentDocAccessFields_createdAt_Read' },
+    update: { __type: 'PaymentDocAccessFields_createdAt_Update' },
+  },
+  PaymentDocAccessFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_createdBy: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentDocAccessFields_createdBy_Create' },
+    delete: { __type: 'PaymentDocAccessFields_createdBy_Delete' },
+    read: { __type: 'PaymentDocAccessFields_createdBy_Read' },
+    update: { __type: 'PaymentDocAccessFields_createdBy_Update' },
+  },
+  PaymentDocAccessFields_createdBy_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_createdBy_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_createdBy_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_createdBy_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_payTo: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentDocAccessFields_payTo_Create' },
+    delete: { __type: 'PaymentDocAccessFields_payTo_Delete' },
+    read: { __type: 'PaymentDocAccessFields_payTo_Read' },
+    update: { __type: 'PaymentDocAccessFields_payTo_Update' },
+  },
+  PaymentDocAccessFields_payTo_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_payTo_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_payTo_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_payTo_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_renting: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentDocAccessFields_renting_Create' },
+    delete: { __type: 'PaymentDocAccessFields_renting_Delete' },
+    fields: { __type: 'PaymentDocAccessFields_renting_Fields' },
+    read: { __type: 'PaymentDocAccessFields_renting_Read' },
+    update: { __type: 'PaymentDocAccessFields_renting_Update' },
+  },
+  PaymentDocAccessFields_renting_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_renting_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_renting_Fields: {
+    __typename: { __type: 'String!' },
+    renting: { __type: 'PaymentDocAccessFields_renting_renting' },
+  },
+  PaymentDocAccessFields_renting_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_renting_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_renting_renting: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentDocAccessFields_renting_renting_Create' },
+    delete: { __type: 'PaymentDocAccessFields_renting_renting_Delete' },
+    read: { __type: 'PaymentDocAccessFields_renting_renting_Read' },
+    update: { __type: 'PaymentDocAccessFields_renting_renting_Update' },
+  },
+  PaymentDocAccessFields_renting_renting_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_renting_renting_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_renting_renting_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_renting_renting_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_type: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentDocAccessFields_type_Create' },
+    delete: { __type: 'PaymentDocAccessFields_type_Delete' },
+    read: { __type: 'PaymentDocAccessFields_type_Read' },
+    update: { __type: 'PaymentDocAccessFields_type_Update' },
+  },
+  PaymentDocAccessFields_type_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_type_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_type_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_type_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentDocAccessFields_updatedAt_Create' },
+    delete: { __type: 'PaymentDocAccessFields_updatedAt_Delete' },
+    read: { __type: 'PaymentDocAccessFields_updatedAt_Read' },
+    update: { __type: 'PaymentDocAccessFields_updatedAt_Update' },
+  },
+  PaymentDocAccessFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields: {
+    __typename: { __type: 'String!' },
+    advertise: { __type: 'PaymentFields_advertise' },
+    createdAt: { __type: 'PaymentFields_createdAt' },
+    createdBy: { __type: 'PaymentFields_createdBy' },
+    payTo: { __type: 'PaymentFields_payTo' },
+    renting: { __type: 'PaymentFields_renting' },
+    type: { __type: 'PaymentFields_type' },
+    updatedAt: { __type: 'PaymentFields_updatedAt' },
+  },
+  PaymentFields_advertise: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentFields_advertise_Create' },
+    delete: { __type: 'PaymentFields_advertise_Delete' },
+    fields: { __type: 'PaymentFields_advertise_Fields' },
+    read: { __type: 'PaymentFields_advertise_Read' },
+    update: { __type: 'PaymentFields_advertise_Update' },
+  },
+  PaymentFields_advertise_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_Fields: {
+    __typename: { __type: 'String!' },
+    endDate: { __type: 'PaymentFields_advertise_endDate' },
+    item: { __type: 'PaymentFields_advertise_item' },
+    price: { __type: 'PaymentFields_advertise_price' },
+    startDate: { __type: 'PaymentFields_advertise_startDate' },
+  },
+  PaymentFields_advertise_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_endDate: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentFields_advertise_endDate_Create' },
+    delete: { __type: 'PaymentFields_advertise_endDate_Delete' },
+    read: { __type: 'PaymentFields_advertise_endDate_Read' },
+    update: { __type: 'PaymentFields_advertise_endDate_Update' },
+  },
+  PaymentFields_advertise_endDate_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_endDate_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_endDate_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_endDate_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_item: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentFields_advertise_item_Create' },
+    delete: { __type: 'PaymentFields_advertise_item_Delete' },
+    read: { __type: 'PaymentFields_advertise_item_Read' },
+    update: { __type: 'PaymentFields_advertise_item_Update' },
+  },
+  PaymentFields_advertise_item_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_item_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_item_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_item_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_price: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentFields_advertise_price_Create' },
+    delete: { __type: 'PaymentFields_advertise_price_Delete' },
+    read: { __type: 'PaymentFields_advertise_price_Read' },
+    update: { __type: 'PaymentFields_advertise_price_Update' },
+  },
+  PaymentFields_advertise_price_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_price_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_price_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_price_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_startDate: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentFields_advertise_startDate_Create' },
+    delete: { __type: 'PaymentFields_advertise_startDate_Delete' },
+    read: { __type: 'PaymentFields_advertise_startDate_Read' },
+    update: { __type: 'PaymentFields_advertise_startDate_Update' },
+  },
+  PaymentFields_advertise_startDate_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_startDate_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_startDate_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_advertise_startDate_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_createdAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentFields_createdAt_Create' },
+    delete: { __type: 'PaymentFields_createdAt_Delete' },
+    read: { __type: 'PaymentFields_createdAt_Read' },
+    update: { __type: 'PaymentFields_createdAt_Update' },
+  },
+  PaymentFields_createdAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_createdAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_createdAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_createdAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_createdBy: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentFields_createdBy_Create' },
+    delete: { __type: 'PaymentFields_createdBy_Delete' },
+    read: { __type: 'PaymentFields_createdBy_Read' },
+    update: { __type: 'PaymentFields_createdBy_Update' },
+  },
+  PaymentFields_createdBy_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_createdBy_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_createdBy_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_createdBy_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_payTo: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentFields_payTo_Create' },
+    delete: { __type: 'PaymentFields_payTo_Delete' },
+    read: { __type: 'PaymentFields_payTo_Read' },
+    update: { __type: 'PaymentFields_payTo_Update' },
+  },
+  PaymentFields_payTo_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_payTo_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_payTo_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_payTo_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_renting: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentFields_renting_Create' },
+    delete: { __type: 'PaymentFields_renting_Delete' },
+    fields: { __type: 'PaymentFields_renting_Fields' },
+    read: { __type: 'PaymentFields_renting_Read' },
+    update: { __type: 'PaymentFields_renting_Update' },
+  },
+  PaymentFields_renting_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_renting_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_renting_Fields: {
+    __typename: { __type: 'String!' },
+    renting: { __type: 'PaymentFields_renting_renting' },
+  },
+  PaymentFields_renting_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_renting_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_renting_renting: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentFields_renting_renting_Create' },
+    delete: { __type: 'PaymentFields_renting_renting_Delete' },
+    read: { __type: 'PaymentFields_renting_renting_Read' },
+    update: { __type: 'PaymentFields_renting_renting_Update' },
+  },
+  PaymentFields_renting_renting_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_renting_renting_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_renting_renting_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_renting_renting_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_type: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentFields_type_Create' },
+    delete: { __type: 'PaymentFields_type_Delete' },
+    read: { __type: 'PaymentFields_type_Read' },
+    update: { __type: 'PaymentFields_type_Update' },
+  },
+  PaymentFields_type_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_type_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_type_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_type_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_updatedAt: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentFields_updatedAt_Create' },
+    delete: { __type: 'PaymentFields_updatedAt_Delete' },
+    read: { __type: 'PaymentFields_updatedAt_Read' },
+    update: { __type: 'PaymentFields_updatedAt_Update' },
+  },
+  PaymentFields_updatedAt_Create: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_updatedAt_Delete: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_updatedAt_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_updatedAt_Update: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentReadAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  PaymentReadDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  PaymentUpdateAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  PaymentUpdateDocAccess: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+    where: { __type: 'JSONObject' },
+  },
+  Payment_Advertise: {
+    __typename: { __type: 'String!' },
+    endDate: { __type: 'DateTime' },
+    item: { __type: 'Item' },
+    price: { __type: 'Float' },
+    startDate: { __type: 'DateTime' },
+  },
+  Payment_Renting: { __typename: { __type: 'String!' }, renting: { __type: 'Renting' } },
+  Payment_advertise__endDate_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Payment_advertise__item_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Payment_advertise__price_operator: {
+    equals: { __type: 'Float' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Float' },
+    greater_than_equal: { __type: 'Float' },
+    less_than: { __type: 'Float' },
+    less_than_equal: { __type: 'Float' },
+    not_equals: { __type: 'Float' },
+  },
+  Payment_advertise__startDate_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Payment_createdAt_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Payment_createdBy_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Payment_id_operator: {
+    equals: { __type: 'Int' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'Int' },
+    greater_than_equal: { __type: 'Int' },
+    less_than: { __type: 'Int' },
+    less_than_equal: { __type: 'Int' },
+    not_equals: { __type: 'Int' },
+  },
+  Payment_payTo_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Payment_renting__renting_operator: {
+    all: { __type: '[JSON]' },
+    equals: { __type: 'JSON' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[JSON]' },
+    not_equals: { __type: 'JSON' },
+    not_in: { __type: '[JSON]' },
+  },
+  Payment_type_operator: {
+    all: { __type: '[Payment_type_Input]' },
+    equals: { __type: 'Payment_type_Input' },
+    exists: { __type: 'Boolean' },
+    in: { __type: '[Payment_type_Input]' },
+    not_equals: { __type: 'Payment_type_Input' },
+    not_in: { __type: '[Payment_type_Input]' },
+  },
+  Payment_updatedAt_operator: {
+    equals: { __type: 'DateTime' },
+    exists: { __type: 'Boolean' },
+    greater_than: { __type: 'DateTime' },
+    greater_than_equal: { __type: 'DateTime' },
+    less_than: { __type: 'DateTime' },
+    less_than_equal: { __type: 'DateTime' },
+    like: { __type: 'DateTime' },
+    not_equals: { __type: 'DateTime' },
+  },
+  Payment_where: {
+    AND: { __type: '[Payment_where_and]' },
+    OR: { __type: '[Payment_where_or]' },
+    advertise__endDate: { __type: 'Payment_advertise__endDate_operator' },
+    advertise__item: { __type: 'Payment_advertise__item_operator' },
+    advertise__price: { __type: 'Payment_advertise__price_operator' },
+    advertise__startDate: { __type: 'Payment_advertise__startDate_operator' },
+    createdAt: { __type: 'Payment_createdAt_operator' },
+    createdBy: { __type: 'Payment_createdBy_operator' },
+    id: { __type: 'Payment_id_operator' },
+    payTo: { __type: 'Payment_payTo_operator' },
+    renting__renting: { __type: 'Payment_renting__renting_operator' },
+    type: { __type: 'Payment_type_operator' },
+    updatedAt: { __type: 'Payment_updatedAt_operator' },
+  },
+  Payment_where_and: {
+    advertise__endDate: { __type: 'Payment_advertise__endDate_operator' },
+    advertise__item: { __type: 'Payment_advertise__item_operator' },
+    advertise__price: { __type: 'Payment_advertise__price_operator' },
+    advertise__startDate: { __type: 'Payment_advertise__startDate_operator' },
+    createdAt: { __type: 'Payment_createdAt_operator' },
+    createdBy: { __type: 'Payment_createdBy_operator' },
+    id: { __type: 'Payment_id_operator' },
+    payTo: { __type: 'Payment_payTo_operator' },
+    renting__renting: { __type: 'Payment_renting__renting_operator' },
+    type: { __type: 'Payment_type_operator' },
+    updatedAt: { __type: 'Payment_updatedAt_operator' },
+  },
+  Payment_where_or: {
+    advertise__endDate: { __type: 'Payment_advertise__endDate_operator' },
+    advertise__item: { __type: 'Payment_advertise__item_operator' },
+    advertise__price: { __type: 'Payment_advertise__price_operator' },
+    advertise__startDate: { __type: 'Payment_advertise__startDate_operator' },
+    createdAt: { __type: 'Payment_createdAt_operator' },
+    createdBy: { __type: 'Payment_createdBy_operator' },
+    id: { __type: 'Payment_id_operator' },
+    payTo: { __type: 'Payment_payTo_operator' },
+    renting__renting: { __type: 'Payment_renting__renting_operator' },
+    type: { __type: 'Payment_type_operator' },
+    updatedAt: { __type: 'Payment_updatedAt_operator' },
+  },
+  Payments: {
+    __typename: { __type: 'String!' },
+    docs: { __type: '[Payment]' },
+    hasNextPage: { __type: 'Boolean' },
+    hasPrevPage: { __type: 'Boolean' },
+    limit: { __type: 'Int' },
+    nextPage: { __type: 'Int' },
+    offset: { __type: 'Int' },
+    page: { __type: 'Int' },
+    pagingCounter: { __type: 'Int' },
+    prevPage: { __type: 'Int' },
+    totalDocs: { __type: 'Int' },
+    totalPages: { __type: 'Int' },
+  },
   Renting: {
     __typename: { __type: 'String!' },
     createdAt: { __type: 'DateTime' },
@@ -8955,6 +9983,10 @@ export const generatedSchema = {
       __type: 'PayloadPreference',
       __args: { data: 'mutationPayloadPreferenceInput!', draft: 'Boolean' },
     },
+    createPayment: {
+      __type: 'Payment',
+      __args: { data: 'mutationPaymentInput!', draft: 'Boolean' },
+    },
     createRenting: {
       __type: 'Renting',
       __args: { data: 'mutationRentingInput!', draft: 'Boolean' },
@@ -8968,6 +10000,7 @@ export const generatedSchema = {
     deleteMedia: { __type: 'Media', __args: { id: 'Int!' } },
     deleteMessage: { __type: 'Message', __args: { id: 'Int!' } },
     deletePayloadPreference: { __type: 'PayloadPreference', __args: { id: 'Int!' } },
+    deletePayment: { __type: 'Payment', __args: { id: 'Int!' } },
     deleteRenting: { __type: 'Renting', __args: { id: 'Int!' } },
     deleteReport: { __type: 'Report', __args: { id: 'Int!' } },
     deleteReview: { __type: 'Review', __args: { id: 'Int!' } },
@@ -9027,6 +10060,15 @@ export const generatedSchema = {
       __args: {
         autosave: 'Boolean',
         data: 'mutationPayloadPreferenceUpdateInput!',
+        draft: 'Boolean',
+        id: 'Int!',
+      },
+    },
+    updatePayment: {
+      __type: 'Payment',
+      __args: {
+        autosave: 'Boolean',
+        data: 'mutationPaymentUpdateInput!',
         draft: 'Boolean',
         id: 'Int!',
       },
@@ -9198,6 +10240,38 @@ export const generatedSchema = {
     user: { __type: 'PayloadPreferenceUpdate_UserRelationshipInput' },
     value: { __type: 'JSON' },
   },
+  mutationPaymentInput: {
+    advertise: { __type: 'mutationPayment_AdvertiseInput' },
+    createdAt: { __type: 'String' },
+    createdBy: { __type: 'Int' },
+    payTo: { __type: 'Int' },
+    renting: { __type: 'mutationPayment_RentingInput' },
+    type: { __type: 'Payment_type_MutationInput' },
+    updatedAt: { __type: 'String' },
+  },
+  mutationPaymentUpdateInput: {
+    advertise: { __type: 'mutationPaymentUpdate_AdvertiseInput' },
+    createdAt: { __type: 'String' },
+    createdBy: { __type: 'Int' },
+    payTo: { __type: 'Int' },
+    renting: { __type: 'mutationPaymentUpdate_RentingInput' },
+    type: { __type: 'PaymentUpdate_type_MutationInput' },
+    updatedAt: { __type: 'String' },
+  },
+  mutationPaymentUpdate_AdvertiseInput: {
+    endDate: { __type: 'String' },
+    item: { __type: 'Int' },
+    price: { __type: 'Float' },
+    startDate: { __type: 'String' },
+  },
+  mutationPaymentUpdate_RentingInput: { renting: { __type: 'Int' } },
+  mutationPayment_AdvertiseInput: {
+    endDate: { __type: 'String' },
+    item: { __type: 'Int' },
+    price: { __type: 'Float' },
+    startDate: { __type: 'String' },
+  },
+  mutationPayment_RentingInput: { renting: { __type: 'Int' } },
   mutationRentingInput: {
     createdAt: { __type: 'String' },
     createdBy: { __type: 'Int' },
@@ -9340,6 +10414,22 @@ export const generatedSchema = {
     read: { __type: 'PayloadPreferencesReadDocAccess' },
     update: { __type: 'PayloadPreferencesUpdateDocAccess' },
   },
+  paymentAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentCreateAccess' },
+    delete: { __type: 'PaymentDeleteAccess' },
+    fields: { __type: 'PaymentFields' },
+    read: { __type: 'PaymentReadAccess' },
+    update: { __type: 'PaymentUpdateAccess' },
+  },
+  paymentDocAccess: {
+    __typename: { __type: 'String!' },
+    create: { __type: 'PaymentCreateDocAccess' },
+    delete: { __type: 'PaymentDeleteDocAccess' },
+    fields: { __type: 'PaymentDocAccessFields' },
+    read: { __type: 'PaymentReadDocAccess' },
+    update: { __type: 'PaymentUpdateDocAccess' },
+  },
   query: {
     __typename: { __type: 'String!' },
     Access: { __type: 'Access' },
@@ -9384,6 +10474,17 @@ export const generatedSchema = {
         page: 'Int',
         sort: 'String',
         where: 'PayloadPreference_where',
+      },
+    },
+    Payment: { __type: 'Payment', __args: { draft: 'Boolean', id: 'Int!' } },
+    Payments: {
+      __type: 'Payments',
+      __args: {
+        draft: 'Boolean',
+        limit: 'Int',
+        page: 'Int',
+        sort: 'String',
+        where: 'Payment_where',
       },
     },
     Renting: { __type: 'Renting', __args: { draft: 'Boolean', id: 'Int!' } },
@@ -9434,6 +10535,7 @@ export const generatedSchema = {
     docAccessMedia: { __type: 'mediasDocAccess', __args: { id: 'Int!' } },
     docAccessMessage: { __type: 'messageDocAccess', __args: { id: 'Int!' } },
     docAccessPayloadPreference: { __type: 'payload_preferencesDocAccess', __args: { id: 'Int!' } },
+    docAccessPayment: { __type: 'paymentDocAccess', __args: { id: 'Int!' } },
     docAccessRenting: { __type: 'rentingDocAccess', __args: { id: 'Int!' } },
     docAccessReport: { __type: 'reportDocAccess', __args: { id: 'Int!' } },
     docAccessReview: { __type: 'reviewsDocAccess', __args: { id: 'Int!' } },
@@ -9877,6 +10979,7 @@ export interface Access {
   medias?: Maybe<mediasAccess>
   message?: Maybe<messageAccess>
   payload_preferences?: Maybe<payload_preferencesAccess>
+  payment?: Maybe<paymentAccess>
   renting?: Maybe<rentingAccess>
   report?: Maybe<reportAccess>
   reviews?: Maybe<reviewsAccess>
@@ -13111,6 +14214,818 @@ export interface PayloadPreferencesUpdateDocAccess {
   __typename?: 'PayloadPreferencesUpdateDocAccess'
   permission: ScalarsEnums['Boolean']
   where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface Payment {
+  __typename?: 'Payment'
+  advertise?: Maybe<Payment_Advertise>
+  createdAt?: Maybe<ScalarsEnums['DateTime']>
+  createdBy: User
+  id?: Maybe<ScalarsEnums['Int']>
+  payTo?: Maybe<User>
+  renting?: Maybe<Payment_Renting>
+  type?: Maybe<ScalarsEnums['Payment_type']>
+  updatedAt?: Maybe<ScalarsEnums['DateTime']>
+}
+
+export interface PaymentCreateAccess {
+  __typename?: 'PaymentCreateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface PaymentCreateDocAccess {
+  __typename?: 'PaymentCreateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface PaymentDeleteAccess {
+  __typename?: 'PaymentDeleteAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface PaymentDeleteDocAccess {
+  __typename?: 'PaymentDeleteDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface PaymentDocAccessFields {
+  __typename?: 'PaymentDocAccessFields'
+  advertise?: Maybe<PaymentDocAccessFields_advertise>
+  createdAt?: Maybe<PaymentDocAccessFields_createdAt>
+  createdBy?: Maybe<PaymentDocAccessFields_createdBy>
+  payTo?: Maybe<PaymentDocAccessFields_payTo>
+  renting?: Maybe<PaymentDocAccessFields_renting>
+  type?: Maybe<PaymentDocAccessFields_type>
+  updatedAt?: Maybe<PaymentDocAccessFields_updatedAt>
+}
+
+export interface PaymentDocAccessFields_advertise {
+  __typename?: 'PaymentDocAccessFields_advertise'
+  create?: Maybe<PaymentDocAccessFields_advertise_Create>
+  delete?: Maybe<PaymentDocAccessFields_advertise_Delete>
+  fields?: Maybe<PaymentDocAccessFields_advertise_Fields>
+  read?: Maybe<PaymentDocAccessFields_advertise_Read>
+  update?: Maybe<PaymentDocAccessFields_advertise_Update>
+}
+
+export interface PaymentDocAccessFields_advertise_Create {
+  __typename?: 'PaymentDocAccessFields_advertise_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_Delete {
+  __typename?: 'PaymentDocAccessFields_advertise_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_Fields {
+  __typename?: 'PaymentDocAccessFields_advertise_Fields'
+  endDate?: Maybe<PaymentDocAccessFields_advertise_endDate>
+  item?: Maybe<PaymentDocAccessFields_advertise_item>
+  price?: Maybe<PaymentDocAccessFields_advertise_price>
+  startDate?: Maybe<PaymentDocAccessFields_advertise_startDate>
+}
+
+export interface PaymentDocAccessFields_advertise_Read {
+  __typename?: 'PaymentDocAccessFields_advertise_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_Update {
+  __typename?: 'PaymentDocAccessFields_advertise_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_endDate {
+  __typename?: 'PaymentDocAccessFields_advertise_endDate'
+  create?: Maybe<PaymentDocAccessFields_advertise_endDate_Create>
+  delete?: Maybe<PaymentDocAccessFields_advertise_endDate_Delete>
+  read?: Maybe<PaymentDocAccessFields_advertise_endDate_Read>
+  update?: Maybe<PaymentDocAccessFields_advertise_endDate_Update>
+}
+
+export interface PaymentDocAccessFields_advertise_endDate_Create {
+  __typename?: 'PaymentDocAccessFields_advertise_endDate_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_endDate_Delete {
+  __typename?: 'PaymentDocAccessFields_advertise_endDate_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_endDate_Read {
+  __typename?: 'PaymentDocAccessFields_advertise_endDate_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_endDate_Update {
+  __typename?: 'PaymentDocAccessFields_advertise_endDate_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_item {
+  __typename?: 'PaymentDocAccessFields_advertise_item'
+  create?: Maybe<PaymentDocAccessFields_advertise_item_Create>
+  delete?: Maybe<PaymentDocAccessFields_advertise_item_Delete>
+  read?: Maybe<PaymentDocAccessFields_advertise_item_Read>
+  update?: Maybe<PaymentDocAccessFields_advertise_item_Update>
+}
+
+export interface PaymentDocAccessFields_advertise_item_Create {
+  __typename?: 'PaymentDocAccessFields_advertise_item_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_item_Delete {
+  __typename?: 'PaymentDocAccessFields_advertise_item_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_item_Read {
+  __typename?: 'PaymentDocAccessFields_advertise_item_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_item_Update {
+  __typename?: 'PaymentDocAccessFields_advertise_item_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_price {
+  __typename?: 'PaymentDocAccessFields_advertise_price'
+  create?: Maybe<PaymentDocAccessFields_advertise_price_Create>
+  delete?: Maybe<PaymentDocAccessFields_advertise_price_Delete>
+  read?: Maybe<PaymentDocAccessFields_advertise_price_Read>
+  update?: Maybe<PaymentDocAccessFields_advertise_price_Update>
+}
+
+export interface PaymentDocAccessFields_advertise_price_Create {
+  __typename?: 'PaymentDocAccessFields_advertise_price_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_price_Delete {
+  __typename?: 'PaymentDocAccessFields_advertise_price_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_price_Read {
+  __typename?: 'PaymentDocAccessFields_advertise_price_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_price_Update {
+  __typename?: 'PaymentDocAccessFields_advertise_price_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_startDate {
+  __typename?: 'PaymentDocAccessFields_advertise_startDate'
+  create?: Maybe<PaymentDocAccessFields_advertise_startDate_Create>
+  delete?: Maybe<PaymentDocAccessFields_advertise_startDate_Delete>
+  read?: Maybe<PaymentDocAccessFields_advertise_startDate_Read>
+  update?: Maybe<PaymentDocAccessFields_advertise_startDate_Update>
+}
+
+export interface PaymentDocAccessFields_advertise_startDate_Create {
+  __typename?: 'PaymentDocAccessFields_advertise_startDate_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_startDate_Delete {
+  __typename?: 'PaymentDocAccessFields_advertise_startDate_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_startDate_Read {
+  __typename?: 'PaymentDocAccessFields_advertise_startDate_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_advertise_startDate_Update {
+  __typename?: 'PaymentDocAccessFields_advertise_startDate_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_createdAt {
+  __typename?: 'PaymentDocAccessFields_createdAt'
+  create?: Maybe<PaymentDocAccessFields_createdAt_Create>
+  delete?: Maybe<PaymentDocAccessFields_createdAt_Delete>
+  read?: Maybe<PaymentDocAccessFields_createdAt_Read>
+  update?: Maybe<PaymentDocAccessFields_createdAt_Update>
+}
+
+export interface PaymentDocAccessFields_createdAt_Create {
+  __typename?: 'PaymentDocAccessFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_createdAt_Delete {
+  __typename?: 'PaymentDocAccessFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_createdAt_Read {
+  __typename?: 'PaymentDocAccessFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_createdAt_Update {
+  __typename?: 'PaymentDocAccessFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_createdBy {
+  __typename?: 'PaymentDocAccessFields_createdBy'
+  create?: Maybe<PaymentDocAccessFields_createdBy_Create>
+  delete?: Maybe<PaymentDocAccessFields_createdBy_Delete>
+  read?: Maybe<PaymentDocAccessFields_createdBy_Read>
+  update?: Maybe<PaymentDocAccessFields_createdBy_Update>
+}
+
+export interface PaymentDocAccessFields_createdBy_Create {
+  __typename?: 'PaymentDocAccessFields_createdBy_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_createdBy_Delete {
+  __typename?: 'PaymentDocAccessFields_createdBy_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_createdBy_Read {
+  __typename?: 'PaymentDocAccessFields_createdBy_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_createdBy_Update {
+  __typename?: 'PaymentDocAccessFields_createdBy_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_payTo {
+  __typename?: 'PaymentDocAccessFields_payTo'
+  create?: Maybe<PaymentDocAccessFields_payTo_Create>
+  delete?: Maybe<PaymentDocAccessFields_payTo_Delete>
+  read?: Maybe<PaymentDocAccessFields_payTo_Read>
+  update?: Maybe<PaymentDocAccessFields_payTo_Update>
+}
+
+export interface PaymentDocAccessFields_payTo_Create {
+  __typename?: 'PaymentDocAccessFields_payTo_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_payTo_Delete {
+  __typename?: 'PaymentDocAccessFields_payTo_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_payTo_Read {
+  __typename?: 'PaymentDocAccessFields_payTo_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_payTo_Update {
+  __typename?: 'PaymentDocAccessFields_payTo_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_renting {
+  __typename?: 'PaymentDocAccessFields_renting'
+  create?: Maybe<PaymentDocAccessFields_renting_Create>
+  delete?: Maybe<PaymentDocAccessFields_renting_Delete>
+  fields?: Maybe<PaymentDocAccessFields_renting_Fields>
+  read?: Maybe<PaymentDocAccessFields_renting_Read>
+  update?: Maybe<PaymentDocAccessFields_renting_Update>
+}
+
+export interface PaymentDocAccessFields_renting_Create {
+  __typename?: 'PaymentDocAccessFields_renting_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_renting_Delete {
+  __typename?: 'PaymentDocAccessFields_renting_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_renting_Fields {
+  __typename?: 'PaymentDocAccessFields_renting_Fields'
+  renting?: Maybe<PaymentDocAccessFields_renting_renting>
+}
+
+export interface PaymentDocAccessFields_renting_Read {
+  __typename?: 'PaymentDocAccessFields_renting_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_renting_Update {
+  __typename?: 'PaymentDocAccessFields_renting_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_renting_renting {
+  __typename?: 'PaymentDocAccessFields_renting_renting'
+  create?: Maybe<PaymentDocAccessFields_renting_renting_Create>
+  delete?: Maybe<PaymentDocAccessFields_renting_renting_Delete>
+  read?: Maybe<PaymentDocAccessFields_renting_renting_Read>
+  update?: Maybe<PaymentDocAccessFields_renting_renting_Update>
+}
+
+export interface PaymentDocAccessFields_renting_renting_Create {
+  __typename?: 'PaymentDocAccessFields_renting_renting_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_renting_renting_Delete {
+  __typename?: 'PaymentDocAccessFields_renting_renting_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_renting_renting_Read {
+  __typename?: 'PaymentDocAccessFields_renting_renting_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_renting_renting_Update {
+  __typename?: 'PaymentDocAccessFields_renting_renting_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_type {
+  __typename?: 'PaymentDocAccessFields_type'
+  create?: Maybe<PaymentDocAccessFields_type_Create>
+  delete?: Maybe<PaymentDocAccessFields_type_Delete>
+  read?: Maybe<PaymentDocAccessFields_type_Read>
+  update?: Maybe<PaymentDocAccessFields_type_Update>
+}
+
+export interface PaymentDocAccessFields_type_Create {
+  __typename?: 'PaymentDocAccessFields_type_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_type_Delete {
+  __typename?: 'PaymentDocAccessFields_type_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_type_Read {
+  __typename?: 'PaymentDocAccessFields_type_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_type_Update {
+  __typename?: 'PaymentDocAccessFields_type_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_updatedAt {
+  __typename?: 'PaymentDocAccessFields_updatedAt'
+  create?: Maybe<PaymentDocAccessFields_updatedAt_Create>
+  delete?: Maybe<PaymentDocAccessFields_updatedAt_Delete>
+  read?: Maybe<PaymentDocAccessFields_updatedAt_Read>
+  update?: Maybe<PaymentDocAccessFields_updatedAt_Update>
+}
+
+export interface PaymentDocAccessFields_updatedAt_Create {
+  __typename?: 'PaymentDocAccessFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_updatedAt_Delete {
+  __typename?: 'PaymentDocAccessFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_updatedAt_Read {
+  __typename?: 'PaymentDocAccessFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentDocAccessFields_updatedAt_Update {
+  __typename?: 'PaymentDocAccessFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields {
+  __typename?: 'PaymentFields'
+  advertise?: Maybe<PaymentFields_advertise>
+  createdAt?: Maybe<PaymentFields_createdAt>
+  createdBy?: Maybe<PaymentFields_createdBy>
+  payTo?: Maybe<PaymentFields_payTo>
+  renting?: Maybe<PaymentFields_renting>
+  type?: Maybe<PaymentFields_type>
+  updatedAt?: Maybe<PaymentFields_updatedAt>
+}
+
+export interface PaymentFields_advertise {
+  __typename?: 'PaymentFields_advertise'
+  create?: Maybe<PaymentFields_advertise_Create>
+  delete?: Maybe<PaymentFields_advertise_Delete>
+  fields?: Maybe<PaymentFields_advertise_Fields>
+  read?: Maybe<PaymentFields_advertise_Read>
+  update?: Maybe<PaymentFields_advertise_Update>
+}
+
+export interface PaymentFields_advertise_Create {
+  __typename?: 'PaymentFields_advertise_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_Delete {
+  __typename?: 'PaymentFields_advertise_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_Fields {
+  __typename?: 'PaymentFields_advertise_Fields'
+  endDate?: Maybe<PaymentFields_advertise_endDate>
+  item?: Maybe<PaymentFields_advertise_item>
+  price?: Maybe<PaymentFields_advertise_price>
+  startDate?: Maybe<PaymentFields_advertise_startDate>
+}
+
+export interface PaymentFields_advertise_Read {
+  __typename?: 'PaymentFields_advertise_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_Update {
+  __typename?: 'PaymentFields_advertise_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_endDate {
+  __typename?: 'PaymentFields_advertise_endDate'
+  create?: Maybe<PaymentFields_advertise_endDate_Create>
+  delete?: Maybe<PaymentFields_advertise_endDate_Delete>
+  read?: Maybe<PaymentFields_advertise_endDate_Read>
+  update?: Maybe<PaymentFields_advertise_endDate_Update>
+}
+
+export interface PaymentFields_advertise_endDate_Create {
+  __typename?: 'PaymentFields_advertise_endDate_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_endDate_Delete {
+  __typename?: 'PaymentFields_advertise_endDate_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_endDate_Read {
+  __typename?: 'PaymentFields_advertise_endDate_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_endDate_Update {
+  __typename?: 'PaymentFields_advertise_endDate_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_item {
+  __typename?: 'PaymentFields_advertise_item'
+  create?: Maybe<PaymentFields_advertise_item_Create>
+  delete?: Maybe<PaymentFields_advertise_item_Delete>
+  read?: Maybe<PaymentFields_advertise_item_Read>
+  update?: Maybe<PaymentFields_advertise_item_Update>
+}
+
+export interface PaymentFields_advertise_item_Create {
+  __typename?: 'PaymentFields_advertise_item_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_item_Delete {
+  __typename?: 'PaymentFields_advertise_item_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_item_Read {
+  __typename?: 'PaymentFields_advertise_item_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_item_Update {
+  __typename?: 'PaymentFields_advertise_item_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_price {
+  __typename?: 'PaymentFields_advertise_price'
+  create?: Maybe<PaymentFields_advertise_price_Create>
+  delete?: Maybe<PaymentFields_advertise_price_Delete>
+  read?: Maybe<PaymentFields_advertise_price_Read>
+  update?: Maybe<PaymentFields_advertise_price_Update>
+}
+
+export interface PaymentFields_advertise_price_Create {
+  __typename?: 'PaymentFields_advertise_price_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_price_Delete {
+  __typename?: 'PaymentFields_advertise_price_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_price_Read {
+  __typename?: 'PaymentFields_advertise_price_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_price_Update {
+  __typename?: 'PaymentFields_advertise_price_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_startDate {
+  __typename?: 'PaymentFields_advertise_startDate'
+  create?: Maybe<PaymentFields_advertise_startDate_Create>
+  delete?: Maybe<PaymentFields_advertise_startDate_Delete>
+  read?: Maybe<PaymentFields_advertise_startDate_Read>
+  update?: Maybe<PaymentFields_advertise_startDate_Update>
+}
+
+export interface PaymentFields_advertise_startDate_Create {
+  __typename?: 'PaymentFields_advertise_startDate_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_startDate_Delete {
+  __typename?: 'PaymentFields_advertise_startDate_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_startDate_Read {
+  __typename?: 'PaymentFields_advertise_startDate_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_advertise_startDate_Update {
+  __typename?: 'PaymentFields_advertise_startDate_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_createdAt {
+  __typename?: 'PaymentFields_createdAt'
+  create?: Maybe<PaymentFields_createdAt_Create>
+  delete?: Maybe<PaymentFields_createdAt_Delete>
+  read?: Maybe<PaymentFields_createdAt_Read>
+  update?: Maybe<PaymentFields_createdAt_Update>
+}
+
+export interface PaymentFields_createdAt_Create {
+  __typename?: 'PaymentFields_createdAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_createdAt_Delete {
+  __typename?: 'PaymentFields_createdAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_createdAt_Read {
+  __typename?: 'PaymentFields_createdAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_createdAt_Update {
+  __typename?: 'PaymentFields_createdAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_createdBy {
+  __typename?: 'PaymentFields_createdBy'
+  create?: Maybe<PaymentFields_createdBy_Create>
+  delete?: Maybe<PaymentFields_createdBy_Delete>
+  read?: Maybe<PaymentFields_createdBy_Read>
+  update?: Maybe<PaymentFields_createdBy_Update>
+}
+
+export interface PaymentFields_createdBy_Create {
+  __typename?: 'PaymentFields_createdBy_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_createdBy_Delete {
+  __typename?: 'PaymentFields_createdBy_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_createdBy_Read {
+  __typename?: 'PaymentFields_createdBy_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_createdBy_Update {
+  __typename?: 'PaymentFields_createdBy_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_payTo {
+  __typename?: 'PaymentFields_payTo'
+  create?: Maybe<PaymentFields_payTo_Create>
+  delete?: Maybe<PaymentFields_payTo_Delete>
+  read?: Maybe<PaymentFields_payTo_Read>
+  update?: Maybe<PaymentFields_payTo_Update>
+}
+
+export interface PaymentFields_payTo_Create {
+  __typename?: 'PaymentFields_payTo_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_payTo_Delete {
+  __typename?: 'PaymentFields_payTo_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_payTo_Read {
+  __typename?: 'PaymentFields_payTo_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_payTo_Update {
+  __typename?: 'PaymentFields_payTo_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_renting {
+  __typename?: 'PaymentFields_renting'
+  create?: Maybe<PaymentFields_renting_Create>
+  delete?: Maybe<PaymentFields_renting_Delete>
+  fields?: Maybe<PaymentFields_renting_Fields>
+  read?: Maybe<PaymentFields_renting_Read>
+  update?: Maybe<PaymentFields_renting_Update>
+}
+
+export interface PaymentFields_renting_Create {
+  __typename?: 'PaymentFields_renting_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_renting_Delete {
+  __typename?: 'PaymentFields_renting_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_renting_Fields {
+  __typename?: 'PaymentFields_renting_Fields'
+  renting?: Maybe<PaymentFields_renting_renting>
+}
+
+export interface PaymentFields_renting_Read {
+  __typename?: 'PaymentFields_renting_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_renting_Update {
+  __typename?: 'PaymentFields_renting_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_renting_renting {
+  __typename?: 'PaymentFields_renting_renting'
+  create?: Maybe<PaymentFields_renting_renting_Create>
+  delete?: Maybe<PaymentFields_renting_renting_Delete>
+  read?: Maybe<PaymentFields_renting_renting_Read>
+  update?: Maybe<PaymentFields_renting_renting_Update>
+}
+
+export interface PaymentFields_renting_renting_Create {
+  __typename?: 'PaymentFields_renting_renting_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_renting_renting_Delete {
+  __typename?: 'PaymentFields_renting_renting_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_renting_renting_Read {
+  __typename?: 'PaymentFields_renting_renting_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_renting_renting_Update {
+  __typename?: 'PaymentFields_renting_renting_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_type {
+  __typename?: 'PaymentFields_type'
+  create?: Maybe<PaymentFields_type_Create>
+  delete?: Maybe<PaymentFields_type_Delete>
+  read?: Maybe<PaymentFields_type_Read>
+  update?: Maybe<PaymentFields_type_Update>
+}
+
+export interface PaymentFields_type_Create {
+  __typename?: 'PaymentFields_type_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_type_Delete {
+  __typename?: 'PaymentFields_type_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_type_Read {
+  __typename?: 'PaymentFields_type_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_type_Update {
+  __typename?: 'PaymentFields_type_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_updatedAt {
+  __typename?: 'PaymentFields_updatedAt'
+  create?: Maybe<PaymentFields_updatedAt_Create>
+  delete?: Maybe<PaymentFields_updatedAt_Delete>
+  read?: Maybe<PaymentFields_updatedAt_Read>
+  update?: Maybe<PaymentFields_updatedAt_Update>
+}
+
+export interface PaymentFields_updatedAt_Create {
+  __typename?: 'PaymentFields_updatedAt_Create'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_updatedAt_Delete {
+  __typename?: 'PaymentFields_updatedAt_Delete'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_updatedAt_Read {
+  __typename?: 'PaymentFields_updatedAt_Read'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentFields_updatedAt_Update {
+  __typename?: 'PaymentFields_updatedAt_Update'
+  permission: ScalarsEnums['Boolean']
+}
+
+export interface PaymentReadAccess {
+  __typename?: 'PaymentReadAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface PaymentReadDocAccess {
+  __typename?: 'PaymentReadDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface PaymentUpdateAccess {
+  __typename?: 'PaymentUpdateAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface PaymentUpdateDocAccess {
+  __typename?: 'PaymentUpdateDocAccess'
+  permission: ScalarsEnums['Boolean']
+  where?: Maybe<ScalarsEnums['JSONObject']>
+}
+
+export interface Payment_Advertise {
+  __typename?: 'Payment_Advertise'
+  endDate?: Maybe<ScalarsEnums['DateTime']>
+  item?: Maybe<Item>
+  price?: Maybe<ScalarsEnums['Float']>
+  startDate?: Maybe<ScalarsEnums['DateTime']>
+}
+
+export interface Payment_Renting {
+  __typename?: 'Payment_Renting'
+  renting?: Maybe<Renting>
+}
+
+export interface Payments {
+  __typename?: 'Payments'
+  docs?: Maybe<Array<Maybe<Payment>>>
+  hasNextPage?: Maybe<ScalarsEnums['Boolean']>
+  hasPrevPage?: Maybe<ScalarsEnums['Boolean']>
+  limit?: Maybe<ScalarsEnums['Int']>
+  nextPage?: Maybe<ScalarsEnums['Int']>
+  offset?: Maybe<ScalarsEnums['Int']>
+  page?: Maybe<ScalarsEnums['Int']>
+  pagingCounter?: Maybe<ScalarsEnums['Int']>
+  prevPage?: Maybe<ScalarsEnums['Int']>
+  totalDocs?: Maybe<ScalarsEnums['Int']>
+  totalPages?: Maybe<ScalarsEnums['Int']>
 }
 
 export interface Renting {
@@ -16414,6 +18329,12 @@ export interface Mutation {
       draft?: Maybe<Scalars['Boolean']>
     }
   ) => Maybe<PayloadPreference>
+  createPayment: (
+    args: {
+      data: mutationPaymentInput
+      draft?: Maybe<Scalars['Boolean']>
+    }
+  ) => Maybe<Payment>
   createRenting: (
     args: {
       data: mutationRentingInput
@@ -16439,6 +18360,7 @@ export interface Mutation {
   deleteMedia: (args: { id: Scalars['Int'] }) => Maybe<Media>
   deleteMessage: (args: { id: Scalars['Int'] }) => Maybe<Message>
   deletePayloadPreference: (args: { id: Scalars['Int'] }) => Maybe<PayloadPreference>
+  deletePayment: (args: { id: Scalars['Int'] }) => Maybe<Payment>
   deleteRenting: (args: { id: Scalars['Int'] }) => Maybe<Renting>
   deleteReport: (args: { id: Scalars['Int'] }) => Maybe<Report>
   deleteReview: (args: { id: Scalars['Int'] }) => Maybe<Review>
@@ -16507,6 +18429,14 @@ export interface Mutation {
       id: Scalars['Int']
     }
   ) => Maybe<PayloadPreference>
+  updatePayment: (
+    args: {
+      autosave?: Maybe<Scalars['Boolean']>
+      data: mutationPaymentUpdateInput
+      draft?: Maybe<Scalars['Boolean']>
+      id: Scalars['Int']
+    }
+  ) => Maybe<Payment>
   updateRenting: (
     args: {
       autosave?: Maybe<Scalars['Boolean']>
@@ -16568,6 +18498,24 @@ export interface payload_preferencesDocAccess {
   update?: Maybe<PayloadPreferencesUpdateDocAccess>
 }
 
+export interface paymentAccess {
+  __typename?: 'paymentAccess'
+  create?: Maybe<PaymentCreateAccess>
+  delete?: Maybe<PaymentDeleteAccess>
+  fields?: Maybe<PaymentFields>
+  read?: Maybe<PaymentReadAccess>
+  update?: Maybe<PaymentUpdateAccess>
+}
+
+export interface paymentDocAccess {
+  __typename?: 'paymentDocAccess'
+  create?: Maybe<PaymentCreateDocAccess>
+  delete?: Maybe<PaymentDeleteDocAccess>
+  fields?: Maybe<PaymentDocAccessFields>
+  read?: Maybe<PaymentReadDocAccess>
+  update?: Maybe<PaymentUpdateDocAccess>
+}
+
 export interface Query {
   __typename?: 'Query'
   Access?: Maybe<Access>
@@ -16626,6 +18574,16 @@ export interface Query {
       where?: Maybe<PayloadPreference_where>
     }
   ) => Maybe<PayloadPreferences>
+  Payment: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Payment>
+  Payments: (
+    args?: {
+      draft?: Maybe<Scalars['Boolean']>
+      limit?: Maybe<Scalars['Int']>
+      page?: Maybe<Scalars['Int']>
+      sort?: Maybe<Scalars['String']>
+      where?: Maybe<Payment_where>
+    }
+  ) => Maybe<Payments>
   Renting: (args: { draft?: Maybe<Scalars['Boolean']>; id: Scalars['Int'] }) => Maybe<Renting>
   Rentings: (
     args?: {
@@ -16681,6 +18639,7 @@ export interface Query {
   docAccessMedia: (args: { id: Scalars['Int'] }) => Maybe<mediasDocAccess>
   docAccessMessage: (args: { id: Scalars['Int'] }) => Maybe<messageDocAccess>
   docAccessPayloadPreference: (args: { id: Scalars['Int'] }) => Maybe<payload_preferencesDocAccess>
+  docAccessPayment: (args: { id: Scalars['Int'] }) => Maybe<paymentDocAccess>
   docAccessRenting: (args: { id: Scalars['Int'] }) => Maybe<rentingDocAccess>
   docAccessReport: (args: { id: Scalars['Int'] }) => Maybe<reportDocAccess>
   docAccessReview: (args: { id: Scalars['Int'] }) => Maybe<reviewsDocAccess>
@@ -16888,6 +18847,10 @@ export interface ScalarsEnums extends MakeNullable<Scalars> {
     | undefined
   PayloadPreference_User_RelationTo: PayloadPreference_User_RelationTo | undefined
   PayloadPreference_user_Relation_RelationTo: PayloadPreference_user_Relation_RelationTo | undefined
+  PaymentUpdate_type_MutationInput: PaymentUpdate_type_MutationInput | undefined
+  Payment_type: Payment_type | undefined
+  Payment_type_Input: Payment_type_Input | undefined
+  Payment_type_MutationInput: Payment_type_MutationInput | undefined
   RentingUpdate_status_MutationInput: RentingUpdate_status_MutationInput | undefined
   Renting_status: Renting_status | undefined
   Renting_status_Input: Renting_status_Input | undefined
