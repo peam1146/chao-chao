@@ -10,5 +10,6 @@ export const beforeRead: BeforeReadHook<Renting> = async ({ req, doc }) => {
       collection: 'renting',
       id: requestId,
     })
+    return
   }
 }

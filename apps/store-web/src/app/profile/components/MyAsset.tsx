@@ -8,7 +8,7 @@ import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
 import { ArrowDown, ArrowUp, CaretUpDown } from '@phosphor-icons/react'
 
-import { Items, Maybe } from '../../../../gqty'
+import { Item_Advertise_status, Items, Maybe } from '../../../../gqty'
 import { AssetCard } from './AssetCard'
 
 type Filter = 'RELEVANCE' | 'PRICE_LESS' | 'PRICE_MORE' | 'LATEST' | 'SCORE'
@@ -110,33 +110,35 @@ export function MyAsset({
     <>
       <SortingSection />
       <div className="py-4 w-full">
-        {isLoading && (
+        {isLoading ? (
           <div className="flex justify-center items-center">
             <Spinner className="self-center" />
           </div>
+        ) : (
+          <div className="mx-auto w-full grid grid-cols-2 2xl:grid-cols-6 lg:grid-cols-4 gap-4">
+            {items?.length === 0 ? (
+              <Typography
+                variant="h6"
+                fontWeight="bold"
+                className="flex items-center justify-center w-full"
+              >
+                No assets found
+              </Typography>
+            ) : (
+              items?.map((item, index) => (
+                <AssetCard
+                  isPromoted={item?.advertise?.status === Item_Advertise_status.active}
+                  key={index}
+                  id={item?.id}
+                  name={item?.name ?? ''}
+                  image={item?.image}
+                  rating={item?.rating ?? 0}
+                  price={item?.price ?? 0}
+                />
+              ))
+            )}
+          </div>
         )}
-        <div className="mx-auto w-full grid grid-cols-2 2xl:grid-cols-6 lg:grid-cols-4 gap-4">
-          {items?.length === 0 ? (
-            <Typography
-              variant="h6"
-              fontWeight="bold"
-              className="flex items-center justify-center w-full"
-            >
-              No assets found
-            </Typography>
-          ) : (
-            items?.map((item, index) => (
-              <AssetCard
-                key={index}
-                id={item?.id}
-                name={item?.name ?? ''}
-                image={item?.image}
-                rating={item?.rating ?? 0}
-                price={item?.price ?? 0}
-              />
-            ))
-          )}
-        </div>
       </div>
     </>
   )
