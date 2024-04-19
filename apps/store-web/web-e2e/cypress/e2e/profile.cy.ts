@@ -4,7 +4,7 @@ describe('profile', () => {
     cy.wait(2000)
     cy.get('p').contains('Sign in').click()
     cy.get('input[name="email"]').type('fortest@gmail.com')
-    cy.get('input[name="password"]').type('fortest')
+    cy.get('input[name="password"]').type('ForTest123')
     cy.get('button[type="submit"]').contains('Sign in').click()
     cy.wait(5000)
     cy.reload()
