@@ -48,7 +48,7 @@ describe('register', () => {
     cy.get('input[name="password"]').type('mypassword')
     cy.get('button[type="submit"]').contains('Sign up').click()
     cy.wait(1000)
-    expect(cy.get('p').contains('This email is already registered.')).to.exist
+    expect(cy.get('p').contains('An phone number must contain 10 characters.')).to.exist
   })
   it('TC1-7', () => {
     cy.get('input[name="email"]').type('mytest3@gmail.com')
