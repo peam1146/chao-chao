@@ -25,10 +25,7 @@ const validationSchema = z.object({
   }),
   phone: z
     .string()
-    .regex(
-      new RegExp(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/),
-      'An phone number must contain 10 characters.'
-    ),
+    .regex(new RegExp(/^([0-9]{10})/), 'An phone number must contain 10 characters.'),
   password: z.string().min(6, { message: 'An password must contain at least 6 characters.' }),
 })
 
