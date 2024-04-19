@@ -23,9 +23,10 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ],
+      ]
     },
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "next-env.d.ts",
