@@ -1,9 +1,9 @@
 describe('register', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/', { failOnStatusCode: false })
-    cy.wait(3000)
+    cy.wait(1000)
     cy.get('p').contains('Sign up').click()
-    cy.wait(3000)
+    cy.wait(1000)
   })
 
   it('TC1-1', () => {
