@@ -3,8 +3,8 @@
  */
 import { createReactClient } from '@gqty/react'
 import { Cache, GQtyError, type QueryFetcher, createClient } from 'gqty'
-import { cookies } from 'next/headers'
 
+import { getHeaders } from './cookies'
 import { type GeneratedSchema, generatedSchema, scalarsEnumsHash } from './schema.generated'
 
 const queryFetcher: QueryFetcher = async function (
@@ -15,7 +15,7 @@ const queryFetcher: QueryFetcher = async function (
 
   const header: Record<string, string> = {}
   if (typeof window === 'undefined') {
-    const cookieStore = cookies()
+    const cookieStore = getHeaders()
     payloadCookie = cookieStore.getAll().reduce(
       (acc, { name, value }) => {
         if (name.startsWith('payload')) {

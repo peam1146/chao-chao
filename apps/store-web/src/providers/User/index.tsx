@@ -2,11 +2,12 @@
 
 import { ReactNode, createContext, useContext, useEffect, useMemo } from 'react'
 
-import { resolve } from '../../../gqty'
+import { useLazyQuery } from '../../../gqty'
 
 interface UserTokenContextType {
   userToken: string
   userId: string
+  loadData: (() => void) | (() => Promise<void>)
 }
 const UserTokenContext = createContext<UserTokenContextType>({} as UserTokenContextType)
 
@@ -16,26 +17,21 @@ export const UserTokenProvider = ({ children }: { children: ReactNode }) => {
   let userToken = ''
   let userId = ''
 
-  const token = Object.fromEntries(
-    document !== undefined ? document.cookie.split('; ').map((c) => c.split('=')) : []
-  )
-  userToken = token['payload-token'] ? token['payload-token'] : ''
-  userId = token['user-id'] ? token['user-id'] : ''
+  const [loadData, { data, error, isLoading }] = useLazyQuery((query) => ({
+    id: query.meUser?.user?.id,
+    token: query.meUser?.token,
+  }))
+
+  if (!isLoading && data && !error) {
+    userToken = data.token ?? ''
+    userId = data.id?.toString() ?? ''
+  }
 
   useEffect(() => {
-    async function fetchUser() {
-      const user = await resolve((query) => {
-        return query.query.meUser?.user?.id
-      })
-      if (!user) {
-        userToken = ''
-        userId = ''
-      }
-    }
-    fetchUser()
-  }, [userToken, userId])
+    loadData()
+  }, [])
 
-  const value = useMemo(() => ({ userToken, userId }), [userToken, userId])
+  const value = useMemo(() => ({ userToken, userId, loadData }), [userToken, userId, loadData])
 
   return <UserTokenContext.Provider value={value}>{children}</UserTokenContext.Provider>
 }

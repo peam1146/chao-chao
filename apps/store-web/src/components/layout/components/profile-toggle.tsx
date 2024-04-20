@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { useToast } from '@/components/ui/use-toast'
+import { useUserToken } from '@/providers/User'
 import { Chats, House, Info, SignOut, User, UserCircle } from '@phosphor-icons/react'
 import { useRouter } from 'next/navigation'
 
@@ -16,6 +17,7 @@ import ProfileToggleMenuLink from './ProfileToggleMenuLink'
 
 export function ProfileToggle() {
   const { toast } = useToast()
+  const { loadData } = useUserToken()
   const router = useRouter()
   return (
     <DropdownMenu>
@@ -46,6 +48,7 @@ export function ProfileToggle() {
             className="flex gap-2 items-center w-full h-full"
             onClick={async () => {
               await logout()
+              await loadData()
               toast({
                 title: 'Sign out successfully',
                 success: true,

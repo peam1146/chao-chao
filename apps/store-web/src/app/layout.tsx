@@ -27,7 +27,7 @@ export default async function RootLayout({
         <UserTokenProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >

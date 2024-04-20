@@ -23,7 +23,7 @@ export default function AssetEdit() {
     router.push('/signin')
   }
   return (
-    <main className="container flex w-full bg-background min-h-[calc(100vh-64px)] justify-center pb-4">
+    <main className="container flex w-full bg-background h-full justify-center pb-4">
       <div className="flex flex-col w-full pt-5 ">
         <Breadcrumb className="py-2">
           <BreadcrumbList>

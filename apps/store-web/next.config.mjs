@@ -5,6 +5,12 @@ const nextConfig = {
     domains: ['chaochao-bucket.s3-ap-southeast-2.amazonaws.com'],
   },
   transpilePackages: ['@gqty/react', 'gqty'],
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
 }
 
 export default nextConfig

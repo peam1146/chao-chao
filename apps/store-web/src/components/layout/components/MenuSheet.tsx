@@ -1,5 +1,6 @@
 import { Sheet, SheetClose, SheetContent } from '@/components/ui/sheet'
 import Typography from '@/components/ui/typography'
+import { useToast } from '@/components/ui/use-toast'
 import { useUserToken } from '@/providers/User'
 import {
   Chats,
@@ -15,6 +16,7 @@ import {
   UserCircle,
   UserCirclePlus,
 } from '@phosphor-icons/react'
+import { useRouter } from 'next/navigation'
 
 import { logout } from '../actions/logout'
 import { MenuCard } from './MenuCard'
@@ -28,9 +30,10 @@ interface MenuSheetProps {
 
 export function MenuSheet(props: MenuSheetProps) {
   const { open, setOpen, pathname } = props
-
+  const { toast } = useToast()
+  const { loadData } = useUserToken()
   const { userToken: id } = useUserToken()
-
+  const router = useRouter()
   if (id !== '') {
     return (
       <Sheet open={open} onOpenChange={setOpen}>
@@ -108,8 +111,14 @@ export function MenuSheet(props: MenuSheetProps) {
               <SheetClose asChild>
                 <button
                   className="flex flex-row gap-2 items-stretch p-2"
-                  onClick={() => {
-                    logout()
+                  onClick={async () => {
+                    await logout()
+                    await loadData()
+                    toast({
+                      title: 'Sign out successfully',
+                      success: true,
+                    })
+                    router.push('/')
                   }}
                 >
                   <SignOut width="20px" height="20px" />

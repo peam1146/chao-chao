@@ -94,6 +94,8 @@ export default function ChatRoom() {
     router.push('/signin')
   }
 
+  const { chatId } = useParams<{ chatId: string }>()
+
   useEffect(() => {
     ;(async () => {
       const { id: userId } = await resolve(({ query }) => {
@@ -144,7 +146,6 @@ export default function ChatRoom() {
             })),
         }
       })
-      console.log('rooms', rooms)
       if (rooms?.length === 0 && Number(chatId) != userId) {
         const room = await resolve(
           ({ mutation }) => {
@@ -207,7 +208,6 @@ export default function ChatRoom() {
         })
         await resolve(({ mutation }) => {
           const data: mutationChatroomUpdateInput = {}
-          console.log('rooms![0]?.user1.id', rooms![0]?.user1.id, userId)
           data[rooms![0]?.user1.id === userId ? 'user1LastViewed' : 'user2LastViewed'] =
             new Date().toISOString()
 
@@ -217,10 +217,9 @@ export default function ChatRoom() {
             draft: false,
             autosave: true,
           })
-          console.log('result', result?.createdAt)
           return result
         })
-        refetch()
+        await refetch()
       }
     })()
   }, [])
@@ -236,8 +235,6 @@ export default function ChatRoom() {
     }
   }, [currentRoom])
 
-  const { chatId } = useParams<{ chatId: string }>()
-
   const sendData = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (currentMsg !== '') {
@@ -247,24 +244,27 @@ export default function ChatRoom() {
         createdBy: currentRoom?.me.id,
       })
       setCurrentMsg('')
-      refetch()
+      await refetch()
     }
   }
 
   useEffect(() => {
     const onMessage = (data: Message) => {
-      console.log('data', data)
       setMessages((current) => [data, ...current])
     }
 
+    ;async () => {
+      await refetch()
+    }
     socket.on('receive_msg', onMessage)
-
+    refetch()
     return () => {
+      ;async () => {
+        await refetch()
+      }
       socket.off('receive_msg', onMessage)
     }
   }, [socket])
-
-  console.log('message', messages, currentRoom)
 
   return (
     <div className="w-full h-full flex flex-col max-md:h-[calc(100vh-64px)]">
@@ -275,11 +275,11 @@ export default function ChatRoom() {
         <Typography variant="h4" fontWeight="bold">{`${currentRoom?.user?.firstName ?? ''} ${
           currentRoom?.user?.lastName ?? ''
         }`}</Typography>
-        <Link href={`/profile/${currentRoom?.user?.id}`}>
+        <Link href={`/profile/${chatId}`}>
           <UserCircle size={24} />
         </Link>
       </div>
-      <div className="flex-1 gap-2 flex flex-col-reverse pb-4 overflow-scroll max-md:px-4">
+      <div className="flex-1 gap-2 flex flex-col-reverse pb-4 overflow-y-auto max-md:px-4">
         {messages.map((msg, i) => (
           <MessageRow
             key={i}

@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+
 import { Spinner } from '@/components/ui/spinner'
 import { useUserToken } from '@/providers/User'
 import { addDays } from 'date-fns'
@@ -45,11 +47,13 @@ export default function ExpensesContainer() {
       }),
     })
 
-    const data = await result.json()
+    const stripeData = await result.json()
 
-    if (data.id) {
-      window.location = data.url
-    }
+    useEffect(() => {
+      if (stripeData.id) {
+        window.location.href = stripeData.url
+      }
+    }, [stripeData.id])
   }
 
   if (query.$state.isLoading || query.$state.error) {

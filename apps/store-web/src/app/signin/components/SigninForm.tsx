@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Spinner } from '@/components/ui/spinner'
 import Typography from '@/components/ui/typography'
 import { useToast } from '@/components/ui/use-toast'
+import { useUserToken } from '@/providers/User'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Key, UserCircle } from '@phosphor-icons/react'
 import Link from 'next/link'
@@ -28,12 +29,14 @@ export default function SigninForm() {
 
   const router = useRouter()
 
+  const { loadData } = useUserToken()
+
   const [isLoading, setIsLoading] = useState(false)
   async function onSubmit(data: z.infer<typeof loginSchema>) {
     setIsLoading(true)
     try {
       await userLogin(data)
-
+      await loadData()
       toast({
         title: 'Sign in Successful',
         success: true,

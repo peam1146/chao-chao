@@ -71,7 +71,7 @@ export default function Profile() {
   }, [])
 
   return (
-    <main className="container flex w-full bg-background min-h-[calc(100vh-64px)] flex-col items-center py-4 lg:py-12 my-auto gap-6">
+    <main className="container flex w-full bg-background h-full flex-col items-center py-4 lg:py-12 my-auto gap-6">
       <div className="flex flex-col w-full bg-card rounded-2xl px-6 py-5 gap-4">
         {query.$state.isLoading ? (
           <div className="flex justify-center items-center min-h-[200px]">

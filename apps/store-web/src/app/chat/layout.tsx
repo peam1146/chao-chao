@@ -1,7 +1,8 @@
 'use client'
 
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useMemo } from 'react'
 
+import { Spinner } from '@/components/ui/spinner'
 import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
 import { Chats } from '@phosphor-icons/react'
@@ -9,7 +10,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
-import { resolve } from '../../../gqty'
+import { useQuery } from '../../../gqty'
 
 const ChatRoom = ({
   name,
@@ -36,25 +37,23 @@ const ChatRoom = ({
         isActive && 'bg-primary-hover'
       )}
     >
-      <div className="flex items-center gap-2 overflow-hidden">
+      <div className="flex items-center gap-2 w-full">
         <Image
           src={profileImage ?? '/assets/images/avatar.png'}
           alt="avatar"
-          width={44}
-          height={44}
-          className="rounded-full"
+          width={40}
+          height={40}
+          className="rounded-full aspect-square h-10 object-cover"
         />
-        <div className="">
-          <div className="flex justify-between">
-            <Typography
-              variant="h6"
-              fontWeight="bold"
-              className="text-ellipsis truncate max-w-[calc(100%-50px)] overflow-hidden"
-            >
+        <div className="flex flex-col w-full">
+          <div className="flex justify-between w-full">
+            <Typography variant="h6" fontWeight="bold" className="line-clamp-1 flex-1">
               {name}
             </Typography>
-
-            <Typography variant="h6" className={isActive ? 'text-white' : 'text-light'}>
+            <Typography
+              variant="h6"
+              className={isActive ? 'text-white flex-none' : 'text-light flex-none'}
+            >
               {new Intl.DateTimeFormat('th-TH', {
                 hour: '2-digit',
                 minute: '2-digit',
@@ -63,7 +62,7 @@ const ChatRoom = ({
           </div>
           <div className="flex justify-between">
             <Typography variant="h6" className={isActive ? 'text-white' : 'text-light'}>
-              {lastMessage}
+              {lastMessage} {isActive ? '' : '...'}
             </Typography>
             {!!unread && unread > 0 && (
               <div className="w-4 h-4 text-sm bg-primary flex items-center justify-center rounded-full">
@@ -77,125 +76,90 @@ const ChatRoom = ({
   )
 }
 
-export const ChatContext = createContext<{
+interface ChatContextType {
+  chatId: string
   refetch: () => void
-}>({
-  refetch: () => {},
-})
+}
+export const ChatContext = createContext<ChatContextType>({} as ChatContextType)
 
 const ChatPage = ({ children }: { children: React.ReactNode }) => {
-  const [rooms, setRooms] = useState<
-    {
-      name?: string | null
-      profileImage?: string | null
-      id?: number | null
-      lastMessage?: string | null
-      isRead?: boolean
-      lastMessageCreatedAt?: Date
-      unread?: number
-      userId?: number | null
-    }[]
-  >([])
+  const { chatId } = useParams<{ chatId: string }>()
 
-  const { chatId } = useParams()
-  const refetch = async () => {
-    const { id } = await resolve(({ query }) => ({
-      id: query.meUser?.user?.id,
-    }))
-    const { rooms: roomData } = await resolve(({ query }) => ({
-      rooms: query
-        .Chatrooms({
-          where: {
-            OR: [
-              {
-                user1_id: {
-                  equals: id,
-                },
-              },
-              {
-                user2_id: {
-                  equals: id,
-                },
-              },
-            ],
+  const query = useQuery({ fetchPolicy: 'network-only' })
+
+  const userId = query.meUser?.user?.id
+
+  const roomsData = query
+    .Chatrooms({
+      where: {
+        OR: [
+          {
+            user1_id: {
+              equals: userId,
+            },
           },
-        })
-        ?.docs?.map((room) => ({
-          id: room?.id,
-          user1_id: {
-            id: room?.user1_id.id,
-            firstName: room?.user1_id.firstName,
-            lastName: room?.user1_id.lastName,
-            profileImage: room?.user1_id.profileImage?.url,
+          {
+            user2_id: {
+              equals: userId,
+            },
           },
-          user2_id: {
-            id: room?.user2_id.id,
-            firstName: room?.user2_id.firstName,
-            lastName: room?.user2_id.lastName,
-            profileImage: room?.user2_id.profileImage?.url,
-          },
-          lastMessage: room?.lastMessage?.message,
-          lastMessageCreatedAt: room?.lastMessage?.createdAt,
-          user1LastViewed: room?.user1LastViewed,
-          user2LastViewed: room?.user2LastViewed,
-        })),
+        ],
+      },
+    })
+    ?.docs?.filter((item) => item?.id !== undefined)
+    .map((room) => ({
+      id: room?.id,
+      user1_id: {
+        id: room?.user1_id.id,
+        firstName: room?.user1_id.firstName,
+        lastName: room?.user1_id.lastName,
+        profileImage: room?.user1_id.profileImage?.url,
+      },
+      user2_id: {
+        id: room?.user2_id.id,
+        firstName: room?.user2_id.firstName,
+        lastName: room?.user2_id.lastName,
+        profileImage: room?.user2_id.profileImage?.url,
+      },
+      lastMessage: room?.lastMessage?.message,
+      lastMessageCreatedAt: room?.lastMessage?.createdAt,
+      user1LastViewed: room?.user1LastViewed,
+      user2LastViewed: room?.user2LastViewed,
     }))
 
-    const roomsWithLastView =
-      roomData?.map((room) => {
-        const user = room?.user1_id.id === id ? room?.user2_id : room?.user1_id
-        return {
-          name: `${user?.firstName} ${user?.lastName}`,
-          profileImage: user?.profileImage,
-          id: room?.id,
-          userId: user?.id,
-          lastMessage: room?.lastMessage,
-          lastViewed: room?.user1_id.id === id ? room?.user1LastViewed : room?.user2LastViewed,
-          lastMessageCreatedAt: new Date(room?.lastMessageCreatedAt ?? 0),
-        }
-      }) ?? []
+  const roomsWithLastView =
+    roomsData?.map((room) => {
+      const user = room?.user1_id.id === Number(userId) ? room?.user2_id : room?.user1_id
+      return {
+        name: `${user?.firstName} ${user?.lastName}`,
+        profileImage: user?.profileImage,
+        id: room?.id,
+        userId: user?.id,
+        userId1: room?.user1_id.id,
+        userId2: room?.user2_id.id,
+        lastMessage: room?.lastMessage,
+        lastViewed:
+          room?.user1_id.id === Number(userId) ? room?.user1LastViewed : room?.user2LastViewed,
+        lastMessageCreatedAt: new Date(room?.lastMessageCreatedAt ?? 0),
+      }
+    }) ?? []
 
-    const unreadCount = await Promise.all(
-      roomsWithLastView.map((room) => {
-        return resolve(({ query }) => {
-          console.log('room.lastViewed', room.lastViewed)
-          return {
-            messages: query
-              .Messages({
-                where: {
-                  room: {
-                    equals: room.id,
-                  },
-                  createdAt: {
-                    greater_than_equal: room.lastViewed,
-                  },
-                },
-              })
-              ?.docs?.map((doc) => ({
-                id: doc?.id,
-                message: doc?.message,
-              })),
-          }
-        })
-      })
-    )
-
-    setRooms(
-      roomsWithLastView.map((room, index) => {
-        return {
-          ...room,
-          unread: unreadCount[index].messages?.filter((m) => m.id).length ?? 0,
-        }
-      })
-    )
+  const refetch = () => {
+    query.$refetch()
   }
 
-  useEffect(() => {
-    refetch()
-  }, [])
+  const value = useMemo(() => ({ refetch, chatId }), [refetch, chatId])
 
-  if (window.innerWidth < 768 && chatId !== undefined) {
+  if (typeof window !== 'undefined' && window.innerWidth < 768 && chatId !== undefined) {
     return children
+  }
+
+  if (query.$state.isLoading) {
+    return (
+      <div className="flex justify-center">
+        <Spinner className="self-center" />
+      </div>
+    )
   }
 
   return (
@@ -208,21 +172,25 @@ const ChatPage = ({ children }: { children: React.ReactNode }) => {
               <span>Chats</span>
             </Typography>
           </div>
-          {rooms &&
-            rooms?.map((room) => (
+          {roomsWithLastView &&
+            !query.$state.isLoading &&
+            roomsWithLastView.length !== 0 &&
+            roomsWithLastView?.map((room) => (
               <div key={room?.id}>
                 <ChatRoom
                   profileImage={room?.profileImage}
                   name={room?.name}
-                  isActive={chatId === room?.id?.toString()}
+                  isActive={
+                    chatId === room.userId1?.toString() || chatId === room.userId2?.toString()
+                  }
                   lastMessage={room?.lastMessage}
-                  unread={room?.unread}
+                  lastMessageCreatedAt={room?.lastMessageCreatedAt}
                   id={room.userId}
                 />
               </div>
             ))}
         </div>
-        <ChatContext.Provider value={{ refetch }}>
+        <ChatContext.Provider value={value}>
           <div className="w-full lg:max-h-[80vh] max-md:hidden">{children}</div>
         </ChatContext.Provider>
       </div>
