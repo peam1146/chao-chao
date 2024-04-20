@@ -968,7 +968,7 @@ export interface Payment_payTo_operator {
   not_in?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
 }
 
-export interface Payment_renting__renting_operator {
+export interface Payment_renting__relation_operator {
   all?: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
   equals?: InputMaybe<Scalars['JSON']>
   exists?: InputMaybe<Scalars['Boolean']>
@@ -1023,7 +1023,7 @@ export interface Payment_where {
   createdBy?: InputMaybe<Payment_createdBy_operator>
   id?: InputMaybe<Payment_id_operator>
   payTo?: InputMaybe<Payment_payTo_operator>
-  renting__renting?: InputMaybe<Payment_renting__renting_operator>
+  renting__relation?: InputMaybe<Payment_renting__relation_operator>
   type?: InputMaybe<Payment_type_operator>
   updatedAt?: InputMaybe<Payment_updatedAt_operator>
 }
@@ -1037,7 +1037,7 @@ export interface Payment_where_and {
   createdBy?: InputMaybe<Payment_createdBy_operator>
   id?: InputMaybe<Payment_id_operator>
   payTo?: InputMaybe<Payment_payTo_operator>
-  renting__renting?: InputMaybe<Payment_renting__renting_operator>
+  renting__relation?: InputMaybe<Payment_renting__relation_operator>
   type?: InputMaybe<Payment_type_operator>
   updatedAt?: InputMaybe<Payment_updatedAt_operator>
 }
@@ -1051,7 +1051,7 @@ export interface Payment_where_or {
   createdBy?: InputMaybe<Payment_createdBy_operator>
   id?: InputMaybe<Payment_id_operator>
   payTo?: InputMaybe<Payment_payTo_operator>
-  renting__renting?: InputMaybe<Payment_renting__renting_operator>
+  renting__relation?: InputMaybe<Payment_renting__relation_operator>
   type?: InputMaybe<Payment_type_operator>
   updatedAt?: InputMaybe<Payment_updatedAt_operator>
 }
@@ -1963,7 +1963,7 @@ export interface mutationPaymentUpdate_AdvertiseInput {
 }
 
 export interface mutationPaymentUpdate_RentingInput {
-  renting?: InputMaybe<Scalars['Int']>
+  relation?: InputMaybe<Scalars['Int']>
 }
 
 export interface mutationPayment_AdvertiseInput {
@@ -1974,7 +1974,7 @@ export interface mutationPayment_AdvertiseInput {
 }
 
 export interface mutationPayment_RentingInput {
-  renting?: InputMaybe<Scalars['Int']>
+  relation?: InputMaybe<Scalars['Int']>
 }
 
 export interface mutationRentingInput {
@@ -6114,7 +6114,7 @@ export const generatedSchema = {
   },
   PaymentDocAccessFields_renting_Fields: {
     __typename: { __type: 'String!' },
-    renting: { __type: 'PaymentDocAccessFields_renting_renting' },
+    relation: { __type: 'PaymentDocAccessFields_renting_relation' },
   },
   PaymentDocAccessFields_renting_Read: {
     __typename: { __type: 'String!' },
@@ -6124,26 +6124,26 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
-  PaymentDocAccessFields_renting_renting: {
+  PaymentDocAccessFields_renting_relation: {
     __typename: { __type: 'String!' },
-    create: { __type: 'PaymentDocAccessFields_renting_renting_Create' },
-    delete: { __type: 'PaymentDocAccessFields_renting_renting_Delete' },
-    read: { __type: 'PaymentDocAccessFields_renting_renting_Read' },
-    update: { __type: 'PaymentDocAccessFields_renting_renting_Update' },
+    create: { __type: 'PaymentDocAccessFields_renting_relation_Create' },
+    delete: { __type: 'PaymentDocAccessFields_renting_relation_Delete' },
+    read: { __type: 'PaymentDocAccessFields_renting_relation_Read' },
+    update: { __type: 'PaymentDocAccessFields_renting_relation_Update' },
   },
-  PaymentDocAccessFields_renting_renting_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  PaymentDocAccessFields_renting_renting_Delete: {
+  PaymentDocAccessFields_renting_relation_Create: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
-  PaymentDocAccessFields_renting_renting_Read: {
+  PaymentDocAccessFields_renting_relation_Delete: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
-  PaymentDocAccessFields_renting_renting_Update: {
+  PaymentDocAccessFields_renting_relation_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentDocAccessFields_renting_relation_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -6413,7 +6413,7 @@ export const generatedSchema = {
   },
   PaymentFields_renting_Fields: {
     __typename: { __type: 'String!' },
-    renting: { __type: 'PaymentFields_renting_renting' },
+    relation: { __type: 'PaymentFields_renting_relation' },
   },
   PaymentFields_renting_Read: {
     __typename: { __type: 'String!' },
@@ -6423,26 +6423,26 @@ export const generatedSchema = {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
-  PaymentFields_renting_renting: {
+  PaymentFields_renting_relation: {
     __typename: { __type: 'String!' },
-    create: { __type: 'PaymentFields_renting_renting_Create' },
-    delete: { __type: 'PaymentFields_renting_renting_Delete' },
-    read: { __type: 'PaymentFields_renting_renting_Read' },
-    update: { __type: 'PaymentFields_renting_renting_Update' },
+    create: { __type: 'PaymentFields_renting_relation_Create' },
+    delete: { __type: 'PaymentFields_renting_relation_Delete' },
+    read: { __type: 'PaymentFields_renting_relation_Read' },
+    update: { __type: 'PaymentFields_renting_relation_Update' },
   },
-  PaymentFields_renting_renting_Create: {
-    __typename: { __type: 'String!' },
-    permission: { __type: 'Boolean!' },
-  },
-  PaymentFields_renting_renting_Delete: {
+  PaymentFields_renting_relation_Create: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
-  PaymentFields_renting_renting_Read: {
+  PaymentFields_renting_relation_Delete: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
-  PaymentFields_renting_renting_Update: {
+  PaymentFields_renting_relation_Read: {
+    __typename: { __type: 'String!' },
+    permission: { __type: 'Boolean!' },
+  },
+  PaymentFields_renting_relation_Update: {
     __typename: { __type: 'String!' },
     permission: { __type: 'Boolean!' },
   },
@@ -6519,7 +6519,7 @@ export const generatedSchema = {
     price: { __type: 'Float' },
     startDate: { __type: 'DateTime' },
   },
-  Payment_Renting: { __typename: { __type: 'String!' }, renting: { __type: 'Renting' } },
+  Payment_Renting: { __typename: { __type: 'String!' }, relation: { __type: 'Renting' } },
   Payment_advertise__endDate_operator: {
     equals: { __type: 'DateTime' },
     exists: { __type: 'Boolean' },
@@ -6591,7 +6591,7 @@ export const generatedSchema = {
     not_equals: { __type: 'JSON' },
     not_in: { __type: '[JSON]' },
   },
-  Payment_renting__renting_operator: {
+  Payment_renting__relation_operator: {
     all: { __type: '[JSON]' },
     equals: { __type: 'JSON' },
     exists: { __type: 'Boolean' },
@@ -6628,7 +6628,7 @@ export const generatedSchema = {
     createdBy: { __type: 'Payment_createdBy_operator' },
     id: { __type: 'Payment_id_operator' },
     payTo: { __type: 'Payment_payTo_operator' },
-    renting__renting: { __type: 'Payment_renting__renting_operator' },
+    renting__relation: { __type: 'Payment_renting__relation_operator' },
     type: { __type: 'Payment_type_operator' },
     updatedAt: { __type: 'Payment_updatedAt_operator' },
   },
@@ -6641,7 +6641,7 @@ export const generatedSchema = {
     createdBy: { __type: 'Payment_createdBy_operator' },
     id: { __type: 'Payment_id_operator' },
     payTo: { __type: 'Payment_payTo_operator' },
-    renting__renting: { __type: 'Payment_renting__renting_operator' },
+    renting__relation: { __type: 'Payment_renting__relation_operator' },
     type: { __type: 'Payment_type_operator' },
     updatedAt: { __type: 'Payment_updatedAt_operator' },
   },
@@ -6654,7 +6654,7 @@ export const generatedSchema = {
     createdBy: { __type: 'Payment_createdBy_operator' },
     id: { __type: 'Payment_id_operator' },
     payTo: { __type: 'Payment_payTo_operator' },
-    renting__renting: { __type: 'Payment_renting__renting_operator' },
+    renting__relation: { __type: 'Payment_renting__relation_operator' },
     type: { __type: 'Payment_type_operator' },
     updatedAt: { __type: 'Payment_updatedAt_operator' },
   },
@@ -10264,14 +10264,14 @@ export const generatedSchema = {
     price: { __type: 'Float' },
     startDate: { __type: 'String' },
   },
-  mutationPaymentUpdate_RentingInput: { renting: { __type: 'Int' } },
+  mutationPaymentUpdate_RentingInput: { relation: { __type: 'Int' } },
   mutationPayment_AdvertiseInput: {
     endDate: { __type: 'String' },
     item: { __type: 'Int' },
     price: { __type: 'Float' },
     startDate: { __type: 'String' },
   },
-  mutationPayment_RentingInput: { renting: { __type: 'Int' } },
+  mutationPayment_RentingInput: { relation: { __type: 'Int' } },
   mutationRentingInput: {
     createdAt: { __type: 'String' },
     createdBy: { __type: 'Int' },
@@ -14517,7 +14517,7 @@ export interface PaymentDocAccessFields_renting_Delete {
 
 export interface PaymentDocAccessFields_renting_Fields {
   __typename?: 'PaymentDocAccessFields_renting_Fields'
-  renting?: Maybe<PaymentDocAccessFields_renting_renting>
+  relation?: Maybe<PaymentDocAccessFields_renting_relation>
 }
 
 export interface PaymentDocAccessFields_renting_Read {
@@ -14530,31 +14530,31 @@ export interface PaymentDocAccessFields_renting_Update {
   permission: ScalarsEnums['Boolean']
 }
 
-export interface PaymentDocAccessFields_renting_renting {
-  __typename?: 'PaymentDocAccessFields_renting_renting'
-  create?: Maybe<PaymentDocAccessFields_renting_renting_Create>
-  delete?: Maybe<PaymentDocAccessFields_renting_renting_Delete>
-  read?: Maybe<PaymentDocAccessFields_renting_renting_Read>
-  update?: Maybe<PaymentDocAccessFields_renting_renting_Update>
+export interface PaymentDocAccessFields_renting_relation {
+  __typename?: 'PaymentDocAccessFields_renting_relation'
+  create?: Maybe<PaymentDocAccessFields_renting_relation_Create>
+  delete?: Maybe<PaymentDocAccessFields_renting_relation_Delete>
+  read?: Maybe<PaymentDocAccessFields_renting_relation_Read>
+  update?: Maybe<PaymentDocAccessFields_renting_relation_Update>
 }
 
-export interface PaymentDocAccessFields_renting_renting_Create {
-  __typename?: 'PaymentDocAccessFields_renting_renting_Create'
+export interface PaymentDocAccessFields_renting_relation_Create {
+  __typename?: 'PaymentDocAccessFields_renting_relation_Create'
   permission: ScalarsEnums['Boolean']
 }
 
-export interface PaymentDocAccessFields_renting_renting_Delete {
-  __typename?: 'PaymentDocAccessFields_renting_renting_Delete'
+export interface PaymentDocAccessFields_renting_relation_Delete {
+  __typename?: 'PaymentDocAccessFields_renting_relation_Delete'
   permission: ScalarsEnums['Boolean']
 }
 
-export interface PaymentDocAccessFields_renting_renting_Read {
-  __typename?: 'PaymentDocAccessFields_renting_renting_Read'
+export interface PaymentDocAccessFields_renting_relation_Read {
+  __typename?: 'PaymentDocAccessFields_renting_relation_Read'
   permission: ScalarsEnums['Boolean']
 }
 
-export interface PaymentDocAccessFields_renting_renting_Update {
-  __typename?: 'PaymentDocAccessFields_renting_renting_Update'
+export interface PaymentDocAccessFields_renting_relation_Update {
+  __typename?: 'PaymentDocAccessFields_renting_relation_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -14879,7 +14879,7 @@ export interface PaymentFields_renting_Delete {
 
 export interface PaymentFields_renting_Fields {
   __typename?: 'PaymentFields_renting_Fields'
-  renting?: Maybe<PaymentFields_renting_renting>
+  relation?: Maybe<PaymentFields_renting_relation>
 }
 
 export interface PaymentFields_renting_Read {
@@ -14892,31 +14892,31 @@ export interface PaymentFields_renting_Update {
   permission: ScalarsEnums['Boolean']
 }
 
-export interface PaymentFields_renting_renting {
-  __typename?: 'PaymentFields_renting_renting'
-  create?: Maybe<PaymentFields_renting_renting_Create>
-  delete?: Maybe<PaymentFields_renting_renting_Delete>
-  read?: Maybe<PaymentFields_renting_renting_Read>
-  update?: Maybe<PaymentFields_renting_renting_Update>
+export interface PaymentFields_renting_relation {
+  __typename?: 'PaymentFields_renting_relation'
+  create?: Maybe<PaymentFields_renting_relation_Create>
+  delete?: Maybe<PaymentFields_renting_relation_Delete>
+  read?: Maybe<PaymentFields_renting_relation_Read>
+  update?: Maybe<PaymentFields_renting_relation_Update>
 }
 
-export interface PaymentFields_renting_renting_Create {
-  __typename?: 'PaymentFields_renting_renting_Create'
+export interface PaymentFields_renting_relation_Create {
+  __typename?: 'PaymentFields_renting_relation_Create'
   permission: ScalarsEnums['Boolean']
 }
 
-export interface PaymentFields_renting_renting_Delete {
-  __typename?: 'PaymentFields_renting_renting_Delete'
+export interface PaymentFields_renting_relation_Delete {
+  __typename?: 'PaymentFields_renting_relation_Delete'
   permission: ScalarsEnums['Boolean']
 }
 
-export interface PaymentFields_renting_renting_Read {
-  __typename?: 'PaymentFields_renting_renting_Read'
+export interface PaymentFields_renting_relation_Read {
+  __typename?: 'PaymentFields_renting_relation_Read'
   permission: ScalarsEnums['Boolean']
 }
 
-export interface PaymentFields_renting_renting_Update {
-  __typename?: 'PaymentFields_renting_renting_Update'
+export interface PaymentFields_renting_relation_Update {
+  __typename?: 'PaymentFields_renting_relation_Update'
   permission: ScalarsEnums['Boolean']
 }
 
@@ -15010,7 +15010,7 @@ export interface Payment_Advertise {
 
 export interface Payment_Renting {
   __typename?: 'Payment_Renting'
-  renting?: Maybe<Renting>
+  relation?: Maybe<Renting>
 }
 
 export interface Payments {

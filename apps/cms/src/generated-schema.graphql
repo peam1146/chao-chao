@@ -4582,7 +4582,7 @@ type Payment {
 }
 
 type Payment_Renting {
-  renting: Renting
+  relation: Renting
 }
 
 type Payment_Advertise {
@@ -4612,7 +4612,7 @@ type Payments {
 }
 
 input Payment_where {
-  renting__renting: Payment_renting__renting_operator
+  renting__relation: Payment_renting__relation_operator
   advertise__item: Payment_advertise__item_operator
   advertise__startDate: Payment_advertise__startDate_operator
   advertise__endDate: Payment_advertise__endDate_operator
@@ -4627,7 +4627,7 @@ input Payment_where {
   OR: [Payment_where_or]
 }
 
-input Payment_renting__renting_operator {
+input Payment_renting__relation_operator {
   equals: JSON
   not_equals: JSON
   in: [JSON]
@@ -4741,7 +4741,7 @@ input Payment_id_operator {
 }
 
 input Payment_where_and {
-  renting__renting: Payment_renting__renting_operator
+  renting__relation: Payment_renting__relation_operator
   advertise__item: Payment_advertise__item_operator
   advertise__startDate: Payment_advertise__startDate_operator
   advertise__endDate: Payment_advertise__endDate_operator
@@ -4755,7 +4755,7 @@ input Payment_where_and {
 }
 
 input Payment_where_or {
-  renting__renting: Payment_renting__renting_operator
+  renting__relation: Payment_renting__relation_operator
   advertise__item: Payment_advertise__item_operator
   advertise__startDate: Payment_advertise__startDate_operator
   advertise__endDate: Payment_advertise__endDate_operator
@@ -4811,29 +4811,29 @@ type PaymentDocAccessFields_renting_Delete {
 }
 
 type PaymentDocAccessFields_renting_Fields {
-  renting: PaymentDocAccessFields_renting_renting
+  relation: PaymentDocAccessFields_renting_relation
 }
 
-type PaymentDocAccessFields_renting_renting {
-  create: PaymentDocAccessFields_renting_renting_Create
-  read: PaymentDocAccessFields_renting_renting_Read
-  update: PaymentDocAccessFields_renting_renting_Update
-  delete: PaymentDocAccessFields_renting_renting_Delete
+type PaymentDocAccessFields_renting_relation {
+  create: PaymentDocAccessFields_renting_relation_Create
+  read: PaymentDocAccessFields_renting_relation_Read
+  update: PaymentDocAccessFields_renting_relation_Update
+  delete: PaymentDocAccessFields_renting_relation_Delete
 }
 
-type PaymentDocAccessFields_renting_renting_Create {
+type PaymentDocAccessFields_renting_relation_Create {
   permission: Boolean!
 }
 
-type PaymentDocAccessFields_renting_renting_Read {
+type PaymentDocAccessFields_renting_relation_Read {
   permission: Boolean!
 }
 
-type PaymentDocAccessFields_renting_renting_Update {
+type PaymentDocAccessFields_renting_relation_Update {
   permission: Boolean!
 }
 
-type PaymentDocAccessFields_renting_renting_Delete {
+type PaymentDocAccessFields_renting_relation_Delete {
   permission: Boolean!
 }
 
@@ -7868,29 +7868,29 @@ type PaymentFields_renting_Delete {
 }
 
 type PaymentFields_renting_Fields {
-  renting: PaymentFields_renting_renting
+  relation: PaymentFields_renting_relation
 }
 
-type PaymentFields_renting_renting {
-  create: PaymentFields_renting_renting_Create
-  read: PaymentFields_renting_renting_Read
-  update: PaymentFields_renting_renting_Update
-  delete: PaymentFields_renting_renting_Delete
+type PaymentFields_renting_relation {
+  create: PaymentFields_renting_relation_Create
+  read: PaymentFields_renting_relation_Read
+  update: PaymentFields_renting_relation_Update
+  delete: PaymentFields_renting_relation_Delete
 }
 
-type PaymentFields_renting_renting_Create {
+type PaymentFields_renting_relation_Create {
   permission: Boolean!
 }
 
-type PaymentFields_renting_renting_Read {
+type PaymentFields_renting_relation_Read {
   permission: Boolean!
 }
 
-type PaymentFields_renting_renting_Update {
+type PaymentFields_renting_relation_Update {
   permission: Boolean!
 }
 
-type PaymentFields_renting_renting_Delete {
+type PaymentFields_renting_relation_Delete {
   permission: Boolean!
 }
 
@@ -8734,7 +8734,7 @@ input mutationPaymentInput {
 }
 
 input mutationPayment_RentingInput {
-  renting: Int
+  relation: Int
 }
 
 input mutationPayment_AdvertiseInput {
@@ -8760,7 +8760,7 @@ input mutationPaymentUpdateInput {
 }
 
 input mutationPaymentUpdate_RentingInput {
-  renting: Int
+  relation: Int
 }
 
 input mutationPaymentUpdate_AdvertiseInput {

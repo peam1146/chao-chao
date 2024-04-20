@@ -1,7 +1,5 @@
 'use client'
 
-import { useEffect } from 'react'
-
 import { Spinner } from '@/components/ui/spinner'
 import { useUserToken } from '@/providers/User'
 import { addDays } from 'date-fns'
@@ -15,7 +13,7 @@ export default function ExpensesContainer() {
     fetchPolicy: 'cache-and-network',
   })
 
-  const { userId } = useUserToken()
+  const { userId, loadData } = useUserToken()
 
   const toPay = query
     .Rentings({
@@ -49,11 +47,9 @@ export default function ExpensesContainer() {
 
     const stripeData = await result.json()
 
-    useEffect(() => {
-      if (stripeData.id) {
-        window.location.href = stripeData.url
-      }
-    }, [stripeData.id])
+    if (stripeData.id) {
+      window.location = stripeData.url
+    }
   }
 
   if (query.$state.isLoading || query.$state.error) {

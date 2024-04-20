@@ -23,7 +23,7 @@ export default function RequestReceivedContainer() {
   const [open, setOpen] = useState(false)
 
   const query = useQuery({
-    fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'network-only',
   })
 
   const requestReceived = query.meUser?.user?.requestsReceived

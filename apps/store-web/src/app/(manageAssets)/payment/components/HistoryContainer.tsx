@@ -90,22 +90,22 @@ export default function HistoryContainer() {
       {payRenting?.map((renting) => (
         <PaymentCard>
           <PaymentCardContainer
-            title={renting?.renting?.renting?.rentedTo?.item?.name ?? ''}
-            assetFrom={renting?.renting?.renting?.rentedTo?.user?.firstName ?? ''}
+            title={renting?.renting?.relation?.rentedTo?.item?.name ?? ''}
+            assetFrom={renting?.renting?.relation?.rentedTo?.user?.firstName ?? ''}
             thumbnail={
-              renting?.renting?.renting?.rentedTo?.item?.image?.length
-                ? renting?.renting?.renting?.rentedTo?.item?.image[0].url ?? ''
+              renting?.renting?.relation?.rentedTo?.item?.image?.length
+                ? renting?.renting?.relation?.rentedTo?.item?.image[0].url ?? ''
                 : ''
             }
-            startDate={new Date(renting?.renting?.renting?.startDate ?? new Date())}
-            endDate={new Date(renting?.renting?.renting?.endDate ?? new Date())}
-            insuranceFee={Number(renting?.renting?.renting?.insuranceFee)}
-            deliveryFee={Number(renting?.renting?.renting?.deliveryFee)}
-            rentalFee={Number(renting?.renting?.renting?.rentalFee)}
+            startDate={new Date(renting?.renting?.relation?.startDate ?? new Date())}
+            endDate={new Date(renting?.renting?.relation?.endDate ?? new Date())}
+            insuranceFee={Number(renting?.renting?.relation?.insuranceFee)}
+            deliveryFee={Number(renting?.renting?.relation?.deliveryFee)}
+            rentalFee={Number(renting?.renting?.relation?.rentalFee)}
             totalFee={
-              Number(renting?.renting?.renting?.insuranceFee) +
-              Number(renting?.renting?.renting?.deliveryFee) +
-              Number(renting?.renting?.renting?.rentalFee)
+              Number(renting?.renting?.relation?.insuranceFee) +
+              Number(renting?.renting?.relation?.deliveryFee) +
+              Number(renting?.renting?.relation?.rentalFee)
             }
             variant="expenses"
           />
@@ -113,16 +113,16 @@ export default function HistoryContainer() {
             <div className="flex xl:flex-col max-xl:flex-row-reverse max-xl:w-full gap-2 xl:w-max items-center justify-center">
               <Typography variant="h6" className="text-unavailable w-full text-center">
                 - ฿
-                {Number(renting?.renting?.renting?.insuranceFee) +
-                  Number(renting?.renting?.renting?.deliveryFee) +
-                  Number(renting?.renting?.renting?.rentalFee)}
+                {Number(renting?.renting?.relation?.insuranceFee) +
+                  Number(renting?.renting?.relation?.deliveryFee) +
+                  Number(renting?.renting?.relation?.rentalFee)}
               </Typography>
               <Button
                 variant="default"
                 className="flex gap-2 w-full"
                 onClick={() => {
-                  setReviewToLessorId(Number(renting?.renting?.renting?.rentedTo?.user?.id))
-                  setReviewToItemId(Number(renting?.renting?.renting?.rentedTo?.item?.id))
+                  setReviewToLessorId(Number(renting?.renting?.relation?.rentedTo?.user?.id))
+                  setReviewToItemId(Number(renting?.renting?.relation?.rentedTo?.item?.id))
                   setOpenRenterReviewModal(true)
                 }}
               >
@@ -135,22 +135,22 @@ export default function HistoryContainer() {
       {receiveRenting?.map((renting) => (
         <PaymentCard>
           <PaymentCardContainer
-            title={renting?.renting?.renting?.rentedTo?.item?.name ?? ''}
-            assetFrom={renting?.renting?.renting?.rentedBy?.user?.firstName ?? ''}
+            title={renting?.renting?.relation?.rentedTo?.item?.name ?? ''}
+            assetFrom={renting?.renting?.relation?.rentedBy?.user?.firstName ?? ''}
             thumbnail={
-              renting?.renting?.renting?.rentedTo?.item?.image?.length
-                ? renting?.renting?.renting?.rentedTo?.item?.image[0].url ?? ''
+              renting?.renting?.relation?.rentedTo?.item?.image?.length
+                ? renting?.renting?.relation?.rentedTo?.item?.image[0].url ?? ''
                 : ''
             }
-            startDate={new Date(renting?.renting?.renting?.startDate ?? new Date())}
-            endDate={new Date(renting?.renting?.renting?.endDate ?? new Date())}
-            insuranceFee={Number(renting?.renting?.renting?.insuranceFee)}
-            deliveryFee={Number(renting?.renting?.renting?.deliveryFee)}
-            rentalFee={Number(renting?.renting?.renting?.rentalFee)}
+            startDate={new Date(renting?.renting?.relation?.startDate ?? new Date())}
+            endDate={new Date(renting?.renting?.relation?.endDate ?? new Date())}
+            insuranceFee={Number(renting?.renting?.relation?.insuranceFee)}
+            deliveryFee={Number(renting?.renting?.relation?.deliveryFee)}
+            rentalFee={Number(renting?.renting?.relation?.rentalFee)}
             totalFee={
-              Number(renting?.renting?.renting?.insuranceFee) +
-              Number(renting?.renting?.renting?.deliveryFee) +
-              Number(renting?.renting?.renting?.rentalFee)
+              Number(renting?.renting?.relation?.insuranceFee) +
+              Number(renting?.renting?.relation?.deliveryFee) +
+              Number(renting?.renting?.relation?.rentalFee)
             }
             variant="receivable"
           />
@@ -158,15 +158,15 @@ export default function HistoryContainer() {
             <div className="flex xl:flex-col max-xl:flex-row-reverse max-xl:w-full gap-2 xl:w-max items-center justify-center">
               <Typography variant="h6" className="text-available w-full text-center">
                 + ฿
-                {Number(renting?.renting?.renting?.insuranceFee) +
-                  Number(renting?.renting?.renting?.deliveryFee) +
-                  Number(renting?.renting?.renting?.rentalFee)}
+                {Number(renting?.renting?.relation?.insuranceFee) +
+                  Number(renting?.renting?.relation?.deliveryFee) +
+                  Number(renting?.renting?.relation?.rentalFee)}
               </Typography>
               <Button
                 variant="default"
                 className="flex gap-2 w-full"
                 onClick={() => {
-                  setReviewToRentorId(Number(renting?.renting?.renting?.rentedBy?.user?.id))
+                  setReviewToRentorId(Number(renting?.renting?.relation?.rentedBy?.user?.id))
                   SetOpenLessorReviewModal(true)
                 }}
               >

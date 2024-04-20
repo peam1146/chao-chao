@@ -58,7 +58,7 @@ export function SelectAssetDateModal(props: SelectAssetDateModalProps) {
     const stripeData = await result.json()
 
     if (stripeData.id) {
-      window.location.href = stripeData.url
+      window.location = stripeData.url
     }
   }
 

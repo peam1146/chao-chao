@@ -153,7 +153,7 @@ export interface Report {
 export interface Payment {
   id: string;
   renting?: {
-    renting?: string | Renting;
+    relation?: string | Renting;
   };
   advertise?: {
     item?: string | Item;

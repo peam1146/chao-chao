@@ -15,28 +15,28 @@ export const webhook: PayloadHandler = async (req: PayloadRequest, res) => {
             status: 'COMPLETED',
           },
         })
-        await req.payload
-          .findByID({
-            collection: 'renting',
-            id: event.data.object.metadata.rentingId,
-          })
-          .then((renting) => {
-            req.payload.create({
-              collection: 'payment',
-              data: {
-                type: 'RENTING',
-                createdBy:
-                  typeof renting.createdBy === 'object' ? renting.createdBy.id : renting.createdBy,
-                payTo:
-                  typeof renting.rentedTo.user === 'object'
-                    ? renting.rentedTo.user.id
-                    : renting.rentedTo.user,
-                renting: {
-                  renting: event.data.object.metadata.rentingId,
-                },
-              },
-            })
-          })
+        const renting = await req.payload.findByID({
+          collection: 'renting',
+          id: event.data.object.metadata.rentingId,
+        })
+
+        console.log(renting)
+
+        await req.payload.create({
+          collection: 'payment',
+          data: {
+            type: 'RENTING',
+            createdBy:
+              typeof renting.createdBy === 'object' ? renting.createdBy.id : renting.createdBy,
+            payTo:
+              typeof renting.rentedTo.user === 'object'
+                ? renting.rentedTo.user.id
+                : renting.rentedTo.user,
+            renting: {
+              relation: renting.id,
+            },
+          },
+        })
       } else if (event.data.object.metadata.option === 'advertise') {
         await req.payload.update({
           collection: 'items',

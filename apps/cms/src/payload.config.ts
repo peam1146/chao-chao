@@ -48,9 +48,6 @@ export default buildConfig({
           alias: {
             ...config.resolve.alias,
             [path.resolve(__dirname, './endpoints')]: mockModulePath,
-            [path.resolve(__dirname, 'collections/User/hooks/createStripeCustomer')]:
-              mockModulePath,
-            [path.resolve(__dirname, 'collections/Item/hooks/beforeChange')]: mockModulePath,
             [path.resolve(__dirname, 'collections/User/hooks/afterChange')]: mockModulePath,
           },
         },

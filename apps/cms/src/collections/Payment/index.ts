@@ -23,7 +23,7 @@ export const Payment: CollectionConfig = {
         {
           type: 'relationship',
           relationTo: 'renting',
-          name: 'renting',
+          name: 'relation',
           maxDepth: 3,
         },
       ],

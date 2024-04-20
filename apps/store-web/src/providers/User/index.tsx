@@ -1,8 +1,8 @@
 'use client'
 
-import { ReactNode, createContext, useContext, useEffect, useMemo } from 'react'
+import { ReactNode, createContext, useContext, useMemo } from 'react'
 
-import { useLazyQuery } from '../../../gqty'
+import { useLazyQuery, useQuery } from '../../../gqty'
 
 interface UserTokenContextType {
   userToken: string
@@ -22,14 +22,20 @@ export const UserTokenProvider = ({ children }: { children: ReactNode }) => {
     token: query.meUser?.token,
   }))
 
+  const query = useQuery({
+    fetchPolicy: 'no-cache',
+  })
+
   if (!isLoading && data && !error) {
     userToken = data.token ?? ''
     userId = data.id?.toString() ?? ''
-  }
+  } else {
+    const token = query.meUser?.token
+    const id = query.meUser?.user?.id
 
-  useEffect(() => {
-    loadData()
-  }, [])
+    userToken = token ?? ''
+    userId = id?.toString() ?? ''
+  }
 
   const value = useMemo(() => ({ userToken, userId, loadData }), [userToken, userId, loadData])
 

@@ -21,13 +21,13 @@ export function PromoteCard({
 }) {
   return (
     <main className="flex flex-col lg:flex-row w-full bg-card rounded-md items-start lg:items-center justify-center lg:gap-x-8 p-4 gap-2 ">
-      <div className="flex lg:w-1/2 lg:h-[306px] justify-center">
+      <div className="flex justify-center">
         <Image
-          src={image?.at(0)?.url ?? '/assets/images/placeholder.png'}
+          src={image?.at(0)?.url ?? ''}
           alt="Product picture"
-          width={0}
-          height={0}
-          className="rounded-md"
+          width={image?.at(0)?.width ?? 500}
+          height={image?.at(0)?.height ?? 100}
+          className="rounded-md max-w-[300px] max-h-[300px] object-cover"
         />
       </div>
       <div className="flex flex-col w-full lg:w-1/2 lg:gap-8 gap-2">
