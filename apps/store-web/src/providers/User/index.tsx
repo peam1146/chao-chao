@@ -2,7 +2,9 @@
 
 import { ReactNode, createContext, useContext, useMemo } from 'react'
 
-import { useLazyQuery, useQuery } from '../../../gqty'
+import { Spinner } from '@/components/ui/spinner'
+
+import { useLazyQuery, useTransactionQuery } from '../../../gqty'
 
 interface UserTokenContextType {
   userToken: string
@@ -22,22 +24,33 @@ export const UserTokenProvider = ({ children }: { children: ReactNode }) => {
     token: query.meUser?.token,
   }))
 
-  const query = useQuery({
-    fetchPolicy: 'cache-and-network',
-  })
+  const { data: dataMe, isLoading: isLoadingMe } = useTransactionQuery(
+    (query) => ({
+      id: query.meUser?.user?.id,
+      token: query.meUser?.token,
+    }),
+    {
+      skip: false,
+    }
+  )
 
   if (!isLoading && data && !error) {
     userToken = data.token ?? ''
     userId = data.id?.toString() ?? ''
-  } else {
-    const token = query.meUser?.token
-    const id = query.meUser?.user?.id
-
-    userToken = token ?? ''
-    userId = id?.toString() ?? ''
+  } else if (!isLoadingMe && dataMe) {
+    userToken = dataMe.token ?? ''
+    userId = dataMe.id?.toString() ?? ''
   }
 
   const value = useMemo(() => ({ userToken, userId, loadData }), [userToken, userId, loadData])
 
+  if (isLoading || isLoadingMe)
+    return (
+      <div className="min-h-screen max-w-screen flex flex-col bg-background">
+        <div className="flex-1 flex-col flex relative w-full justify-center items-center">
+          <Spinner size="lg" className="flex justify-center items-center" />
+        </div>
+      </div>
+    )
   return <UserTokenContext.Provider value={value}>{children}</UserTokenContext.Provider>
 }
