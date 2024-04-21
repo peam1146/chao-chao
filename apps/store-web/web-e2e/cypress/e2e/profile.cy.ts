@@ -6,10 +6,11 @@ describe('profile', () => {
     cy.get('input[name="email"]').type('fortest@gmail.com')
     cy.get('input[name="password"]').type('ForTest123')
     cy.get('button[type="submit"]').contains('Sign in').click()
-    cy.wait(1000)
-    cy.reload()
-    cy.wait(1000)
-    cy.visit('http://localhost:3000/profile/edit', { failOnStatusCode: false })
+    cy.wait(2000)
+    cy.get('button[id = "profile-toggle"]').click()
+    cy.get('a').contains('My Profile').click()
+    cy.wait(1500)
+    cy.get('button').contains('Edit Profile').click()
     cy.wait(2000)
     cy.get('input[name="lastName"]').clear({ force: true })
     cy.get('input[name="firstName"]').clear({ force: true })
@@ -17,12 +18,10 @@ describe('profile', () => {
     cy.get('textarea[name="bio"]').clear({ force: true })
   })
   afterEach(() => {
-    cy.reload()
-    cy.get('button > svg').first().click()
+    cy.get('button[id = "profile-toggle"]').click()
     cy.wait(500)
     cy.get('button').contains('Log out').click()
     cy.wait(1000)
-    cy.reload()
   })
 
   it('TC2-1', () => {
@@ -43,7 +42,7 @@ describe('profile', () => {
     cy.get('button[type="submit"]').contains('Save').click()
     cy.wait(1000)
     expect(cy.get('p').contains('Profile updated successfully')).to.exist
-    cy.wait(5000)
+    cy.wait(3000)
   })
   it('TC2-3', () => {
     cy.get('input[name="firstName"]').type('Fahphon')
