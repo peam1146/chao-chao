@@ -1,16 +1,9 @@
 'use client'
 
 import { Reviews } from '@/components/layout/Reviews'
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb'
 import { Spinner } from '@/components/ui/spinner'
 import { useUserToken } from '@/providers/User'
+import { ArrowLeft } from '@phosphor-icons/react'
 import { useParams, useRouter } from 'next/navigation'
 
 import { useQuery } from '../../../../gqty'
@@ -61,17 +54,9 @@ export default function DetailPage() {
 
   return (
     <div className="container flex flex-col gap-y-4 py-4 lg:py-12">
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink onClick={() => router.back()}>Back</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>{item?.name}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+      <ArrowLeft onClick={() => router.back()} className="cursor-pointer w-8 h-5">
+        Back
+      </ArrowLeft>
       <div className="flex flex-col lg:flex-row p-6 gap-10 bg-card rounded-2xl justify-center">
         {query.$state.isLoading ? (
           <div className="flex justify-center items-center min-h-[500px]">

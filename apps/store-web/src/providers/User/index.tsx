@@ -23,7 +23,7 @@ export const UserTokenProvider = ({ children }: { children: ReactNode }) => {
   }))
 
   const query = useQuery({
-    fetchPolicy: 'no-cache',
+    fetchPolicy: 'cache-and-network',
   })
 
   if (!isLoading && data && !error) {

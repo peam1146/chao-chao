@@ -3,16 +3,19 @@
 import Typography from '@/components/ui/typography'
 import { Rating } from '@mui/material'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { Maybe, Media } from '../../../gqty'
 
 export function PromoteCard({
+  id,
   name,
   description,
   rating,
   price,
   image,
 }: {
+  id: number
   name: string
   description: string
   rating: number
@@ -20,7 +23,7 @@ export function PromoteCard({
   image?: Maybe<Media[]>
 }) {
   return (
-    <main className="flex flex-col lg:flex-row w-full bg-card rounded-md items-start lg:items-center justify-center lg:gap-x-8 p-4 gap-2 ">
+    <main className="flex flex-col lg:flex-row w-full bg-card rounded-md items-center justify-center lg:gap-x-8 p-4 gap-2 ">
       <div className="flex justify-center">
         <Image
           src={image?.at(0)?.url ?? ''}
@@ -32,9 +35,15 @@ export function PromoteCard({
       </div>
       <div className="flex flex-col w-full lg:w-1/2 lg:gap-8 gap-2">
         <div className="flex flex-col gap-2">
-          <Typography variant="h5" fontWeight="bold" className="lg:h3">
-            {name}
-          </Typography>
+          <Link href={`/detail/${id}`}>
+            <Typography
+              variant="h5"
+              fontWeight="bold"
+              className="lg:h3 hover:underline hover:cursor-pointer"
+            >
+              {name}
+            </Typography>
+          </Link>
           <div className="flex flex-row gap-0.5 ">
             <Rating
               name="read-only"

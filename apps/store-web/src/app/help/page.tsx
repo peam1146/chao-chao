@@ -114,8 +114,7 @@ export default function HelpPage() {
               <AccordionContent>
                 Users have the option to boost the visibility of their listed assets by purchasing
                 ad placements within our platform. Simply navigate to the advertising section in
-                your dashboard, choose your desired ad format (e.g., banner, sponsored listing), set
-                your budget, and target audience, and launch your ad campaign.
+                your dashboard, set your budget, and target audience, and launch your ad campaign.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
