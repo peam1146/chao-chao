@@ -22,7 +22,7 @@ export function ProfileToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button id="profile-toggle" variant="ghost" size="icon">
           <UserCircle className="h-6 w-6" />
         </Button>
       </DropdownMenuTrigger>
