@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+
 import chatDark from '@/assets/images/chatDark.png'
 import chatLight from '@/assets/images/chatLight.png'
 import Typography from '@/components/ui/typography'
@@ -14,10 +16,11 @@ export default function ChatPage() {
   const router = useRouter()
 
   const { userToken: me } = useUserToken()
-
-  if (me === '') {
-    router.push('/signin')
-  }
+  useEffect(() => {
+    if (me === '') {
+      router.push('/signin')
+    }
+  }, [me])
 
   return (
     <div className="h-full flex flex-col justify-center items-center gap-2.5">

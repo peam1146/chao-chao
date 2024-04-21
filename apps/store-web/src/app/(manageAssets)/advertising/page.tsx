@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+
 import { useUserToken } from '@/providers/User'
 import { useRouter } from 'next/navigation'
 
@@ -9,10 +11,11 @@ export default function Page() {
   const router = useRouter()
 
   const { userToken: me } = useUserToken()
-
-  if (me === '') {
-    router.push('/signin')
-    return
-  }
+  useEffect(() => {
+    if (me === '') {
+      router.push('/signin')
+      return
+    }
+  }, [me])
   return <AdvertisingContainer />
 }

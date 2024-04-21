@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -18,10 +20,11 @@ export default function AssetRegist() {
   const router = useRouter()
 
   const { userToken: me } = useUserToken()
-
-  if (me === '') {
-    router.push('/')
-  }
+  useEffect(() => {
+    if (me === '') {
+      router.push('/')
+    }
+  }, [me])
   return (
     <main className="container flex w-full bg-background h-full justify-center pb-4">
       <div className="flex flex-col w-full pt-5 ">

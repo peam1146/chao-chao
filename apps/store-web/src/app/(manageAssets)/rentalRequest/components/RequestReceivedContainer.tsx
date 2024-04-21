@@ -29,6 +29,20 @@ export default function RequestReceivedContainer() {
   const requestReceived = query.meUser?.user?.requestsReceived
   const [isLoading, setIsLoading] = useState(false)
 
+  const [requestId, setRequestId] = useState<number>()
+
+  const requestList = requestReceived?.filter(
+    (request) => request.status === Renting_status.PENDING
+  )
+
+  if (query.$state.isLoading) {
+    return (
+      <div className="flex justify-center">
+        <Spinner className="self-center" />
+      </div>
+    )
+  }
+
   async function onSubmitDecline(id: number) {
     setIsLoading(true)
     try {
@@ -59,21 +73,6 @@ export default function RequestReceivedContainer() {
       setIsLoading(false)
     }
   }
-
-  const [requestId, setRequestId] = useState<number>()
-
-  const requestList = requestReceived?.filter(
-    (request) => request.status === Renting_status.PENDING
-  )
-
-  if (query.$state.isLoading) {
-    return (
-      <div className="flex justify-center">
-        <Spinner className="self-center" />
-      </div>
-    )
-  }
-
   return (
     <>
       <div className="flex flex-col gap-4 w-full">

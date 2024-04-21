@@ -48,7 +48,7 @@ export default function ExpensesContainer() {
     const stripeData = await result.json()
 
     if (stripeData.id) {
-      window.location = stripeData.url
+      window.location.replace(stripeData.url)
     }
   }
 

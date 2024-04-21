@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+
 import { useUserToken } from '@/providers/User'
 import { useRouter } from 'next/navigation'
 
@@ -10,8 +12,10 @@ export default function RentalRequestPage() {
 
   const { userToken: me } = useUserToken()
 
-  if (me === '') {
-    router.push('/signin')
-  }
+  useEffect(() => {
+    if (me === '') {
+      router.push('/signin')
+    }
+  }, [me])
   return <RentalRequestContainer />
 }

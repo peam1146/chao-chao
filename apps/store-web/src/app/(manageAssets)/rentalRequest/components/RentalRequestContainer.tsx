@@ -3,9 +3,14 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Typography from '@/components/ui/typography'
 import { Envelope } from '@phosphor-icons/react'
+import dynamic from 'next/dynamic'
 
 import RequestMadeContainer from './RequestMadeContainer'
-import RequestReceivedContainer from './RequestReceivedContainer'
+
+const RequestReceivedContainer = dynamic(
+  () => import('./RequestReceivedContainer').then((module) => module.default) as any,
+  { ssr: false }
+) as any
 
 export function RentalRequestContainer() {
   return (
