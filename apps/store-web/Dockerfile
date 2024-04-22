@@ -33,4 +33,6 @@ RUN pnpm turbo run build --filter=store-web
 FROM base AS final
 WORKDIR /app
 COPY --from=runner /app/apps/store-web/.next .
+
+ENV HOSTNAME 0.0.0.0
 CMD [ "node", "./standalone/apps/store-web/server.js" ]
