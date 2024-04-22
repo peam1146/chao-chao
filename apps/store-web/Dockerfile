@@ -1,29 +1,26 @@
-FROM node:18-alpine AS base
- 
+FROM node:21-alpine3.18 AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
 FROM base AS builder
-RUN apk add --no-cache libc6-compat
-RUN apk update
-# Set working directory
 WORKDIR /app
-RUN yarn global add turbo
+RUN apk add --no-cache libc6-compat
+RUN pnpm install -g turbo
 COPY . .
 RUN turbo prune store-web --docker
- 
-# Add lockfile and package.json's of isolated subworkspace
-FROM base AS installer
+
+FROM base AS runner
 RUN apk add --no-cache libc6-compat
 RUN apk update
 WORKDIR /app
- 
-# First install the dependencies (as they change less often)
-COPY .gitignore .gitignore
+
 COPY --from=builder /app/out/json/ .
-COPY --from=builder /app/out/yarn.lock ./yarn.lock
-RUN yarn install
- 
+COPY --from=builder /app/out/pnpm-lock.yaml .
+RUN pnpm install
+
 # Build the project
 COPY --from=builder /app/out/full/ .
-RUN yarn turbo run build --filter=store-web
-
-
-CMD ["yarn","turbo","run","start","--filter=store-web"]
+RUN pnpm turbo run build --filter=store-web
+# RUN pnpm turbo run build --filter=store-web
+CMD [ "pnpm", "turbo", "run", "start", "--filter=store-web" ]

@@ -1,27 +1,23 @@
-FROM node:18.8-alpine as base
+FROM node:21 AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 
-FROM base as builder
-
-WORKDIR /home/node/app
-COPY package*.json ./
-
+FROM base AS builder
+WORKDIR /app
+RUN pnpm install -g turbo
 COPY . .
-RUN yarn install
-RUN yarn build
+RUN turbo prune cms --docker
 
-FROM base as runtime
+FROM base AS runner
+WORKDIR /app
 
-ENV NODE_ENV=production
-ENV PAYLOAD_CONFIG_PATH=dist/payload.config.js
+COPY --from=builder /app/out/json/ .
+COPY --from=builder /app/out/pnpm-lock.yaml .
+RUN pnpm install
 
-WORKDIR /home/node/app
-COPY package*.json  ./
-COPY yarn.lock ./
-
-RUN yarn install --production
-COPY --from=builder /home/node/app/dist ./dist
-COPY --from=builder /home/node/app/build ./build
-
-EXPOSE 3000
-
-CMD ["node", "dist/server.js"]
+# Build the project
+COPY --from=builder /app/out/full/ .
+RUN pnpm turbo run build --filter=cms
+# RUN pnpm turbo run build --filter=store-web
+CMD [ "pnpm", "turbo", "run", "start", "--filter=cms" ]
