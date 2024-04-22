@@ -144,7 +144,7 @@ export default function EditCard() {
           const formData = new FormData()
           const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
           formData.append('file', imageUrl[i])
-          const response = await fetch(`http://localhost:3001/api/medias`, {
+          const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/medias`, {
             method: 'POST',
             body: formData,
             headers: {

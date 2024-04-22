@@ -17,7 +17,11 @@ const io = new Server(server, {
   },
 })
 
-app.use(cors())
+app.use(
+  cors({
+    origin: '*',
+  })
+)
 
 // Redirect root to Admin panel
 app.get('/', (_, res) => {
