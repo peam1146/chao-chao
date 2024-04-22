@@ -15,7 +15,6 @@ import { buildConfig } from 'payload/config'
 import { Chatroom, Item, Media, Message, Payment, Renting, Tag, Users } from './collections'
 import { Report } from './collections/Report'
 import { Review } from './collections/Review'
-import { ACCESS_KEY_ID, REGION, SECRET_KEY_ID } from './common/env'
 import { Logo } from './components/Logo'
 import endpoints from './endpoints'
 
@@ -71,10 +70,10 @@ export default buildConfig({
     swaggerUI({}),
     s3Upload(
       new S3Client({
-        region: REGION,
+        region: process.env.PAYLOAD_PUBLIC_REGION,
         credentials: {
-          accessKeyId: ACCESS_KEY_ID,
-          secretAccessKey: SECRET_KEY_ID,
+          accessKeyId: process.env.PAYLOAD_PUBLIC_ACCESS_KEY_ID,
+          secretAccessKey: process.env.PAYLOAD_PUBLIC_SECRET_KEY_ID,
         },
       })
     ),

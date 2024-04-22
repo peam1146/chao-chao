@@ -1,21 +1,19 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
 import { S3UploadCollectionConfig } from 'payload-s3-upload'
 
-import { API_URL, BUCKET_NAME } from '../../common/env'
-
 export const Media: S3UploadCollectionConfig = {
   slug: 'medias',
   upload: {
-    staticURL: `${API_URL}/images`,
+    staticURL: `${process.env.PAYLOAD_PUBLIC_API_URL}/images`,
     disableLocalStorage: true,
     s3: {
-      bucket: BUCKET_NAME,
+      bucket: process.env.PAYLOAD_PUBLIC_BUCKET_NAME,
       prefix: 'images/',
       commandInput: {
         ACL: 'public-read',
       },
     },
-    adminThumbnail: ({ doc }) => `${API_URL}/images/${doc.filename}`,
+    adminThumbnail: ({ doc }) => `${process.env.PAYLOAD_PUBLIC_API_URL}/images/${doc.filename}`,
   },
   access: {
     read: () => true,
@@ -51,7 +49,9 @@ export const Media: S3UploadCollectionConfig = {
         disabled: true,
       },
       hooks: {
-        afterRead: [({ data: doc }) => `${API_URL}/images/${doc.filename}`],
+        afterRead: [
+          ({ data: doc }) => `${process.env.PAYLOAD_PUBLIC_API_URL}/images/${doc.filename}`,
+        ],
       },
     },
     {

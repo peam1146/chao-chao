@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -33,4 +37,4 @@ jobs:
         with:
           file: apps/${{ matrix.path }}/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository }}-${{ matrix.path }}:${{ github.sha }},ghcr.io/${{ github.repository }}-${{ matrix.path }}:latest
+          tags: ghcr.io/${{ github.repository }}:${{ matrix.path }}-${{ github.sha }}
