@@ -31,5 +31,6 @@ RUN pnpm turbo run build --filter=store-web
 # RUN pnpm turbo run build --filter=store-web
 
 FROM base AS final
-COPY --from=runner /app/apps/store-web/.next/standalone/apps/store-web .
-CMD [ "node", "server.js" ]
+WORKDIR /app
+COPY --from=runner /app/apps/store-web/.next .
+CMD [ "node", "./standalone/apps/store-web/server.js" ]
