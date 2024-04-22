@@ -22,6 +22,7 @@ export const syncCollections: AfterChangeHook<Review> = async ({ req, doc }) => 
       ]
 
       const rating = Math.ceil(
+        // @ts-ignore
         (review.reduce((acc, r) => acc + (typeof r === 'object' ? r.rating : 0), 0) + doc.rating) /
           (review.length + 1)
       )
@@ -61,6 +62,7 @@ export const syncCollections: AfterChangeHook<Review> = async ({ req, doc }) => 
       ]
 
       const rating = Math.ceil(
+        // @ts-ignore
         (review.reduce((acc, r) => acc + (typeof r === 'object' ? r.rating : 0), 0) + doc.rating) /
           (review.length + 1)
       )
