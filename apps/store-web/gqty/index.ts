@@ -31,7 +31,7 @@ const queryFetcher: QueryFetcher = async function (
   }
 
   // Modify "/api/graphql" if needed
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/graphql`, {
+  const response = await fetch(`https://api.chaochao.vishnu20.com/api/graphql`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
