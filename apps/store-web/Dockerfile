@@ -29,4 +29,7 @@ RUN pnpm install
 COPY --from=builder /app/out/full/ .
 RUN pnpm turbo run build --filter=store-web
 # RUN pnpm turbo run build --filter=store-web
-CMD [ "node", "/app/apps/store-web/.next/standalone/apps/store-web/server.js" ]
+
+FROM base AS final
+COPY --from=runner /app/apps/store-web/.next/standalone/apps/store-web .
+CMD [ "node", "server.js" ]
