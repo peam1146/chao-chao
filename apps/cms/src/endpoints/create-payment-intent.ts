@@ -53,8 +53,8 @@ export const createCheckoutSession: PayloadHandler = async (req: PayloadRequest,
       },
       payment_method_types: ['promptpay'],
       mode: 'payment',
-      success_url: `http://localhost:3000/payment/?success=true`,
-      cancel_url: `http://localhost:3000/payment/?canceled=true`,
+      success_url: `https://chaochao.vishnu20.com/payment/?success=true`,
+      cancel_url: `https://chaochao.vishnu20.com/payment/?canceled=true`,
     })
 
     res.send(session)
@@ -99,8 +99,8 @@ export const createCheckoutSession: PayloadHandler = async (req: PayloadRequest,
       },
       payment_method_types: ['promptpay'],
       mode: 'payment',
-      success_url: `http://localhost:3000/advertising/?success=true`,
-      cancel_url: `http://localhost:3000/advertising/?canceled=true`,
+      success_url: `https://chaochao.vishnu20.com/advertising/?success=true`,
+      cancel_url: `https://chaochao.vishnu20.com/advertising/?canceled=true`,
     })
 
     res.send(session)

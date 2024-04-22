@@ -40,7 +40,7 @@ export function SelectAssetDateModal(props: SelectAssetDateModalProps) {
       })
       return
     }
-    const result = await fetch('http://localhost:3001/api/stripe/checkout-session', {
+    const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/checkout-session`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -109,7 +109,7 @@ export default function ProfileEdit() {
         const data = new FormData()
         const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
         data.append('file', fileInputRef.current.files[0])
-        await fetch('http://localhost:3001/api/medias', {
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/medias`, {
           method: 'POST',
           body: data,
           headers: {

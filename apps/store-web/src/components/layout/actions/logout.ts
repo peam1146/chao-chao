@@ -4,7 +4,7 @@ import { cookies } from 'next/headers'
 
 export async function logout() {
   try {
-    const req = await fetch('http://localhost:3001/api/users/logout', {
+    const req = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/logout`, {
       method: 'POST',
       credentials: 'include',
       headers: {
