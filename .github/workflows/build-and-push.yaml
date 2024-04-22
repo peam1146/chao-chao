@@ -37,4 +37,4 @@ jobs:
         with:
           file: apps/${{ matrix.path }}/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository }}:${{ matrix.path }}-${{ github.sha }}
+          tags: ghcr.io/${{ github.repository }}:${{ matrix.path }}-${{ github.sha }}, ghcr.io/${{ github.repository }}:${{ matrix.path }}
