@@ -16,9 +16,14 @@ export const syncCollections: AfterChangeHook<Review> = async ({ req, doc }) => 
     const { review } = userReview
 
     if (review && review.length > 0) {
-      const reviewUserList = [...review.map((r) => (typeof r === 'object' ? r.id : r)), id]
+      const reviewUserList = [
+        ...review.map((r: string | Review) => (typeof r === 'object' ? r.id : r)),
+        id,
+      ]
+
       const rating = Math.ceil(
-        (review.reduce((acc, r: Review) => acc + r.rating, 0) + doc.rating) / (review.length + 1)
+        (review.reduce((acc, r) => acc + (typeof r === 'object' ? r.rating : 0), 0) + doc.rating) /
+          (review.length + 1)
       )
 
       await req.payload.update({
@@ -50,10 +55,14 @@ export const syncCollections: AfterChangeHook<Review> = async ({ req, doc }) => 
 
     const { review } = itemReview
     if (review && review.length > 0) {
-      const reviewItemList = [...review.map((r) => (typeof r === 'object' ? r.id : r)), id]
+      const reviewItemList = [
+        ...review.map((r: string | Review) => (typeof r === 'object' ? r.id : r)),
+        id,
+      ]
 
       const rating = Math.ceil(
-        (review.reduce((acc, r: Review) => acc + r.rating, 0) + doc.rating) / (review.length + 1)
+        (review.reduce((acc, r) => acc + (typeof r === 'object' ? r.rating : 0), 0) + doc.rating) /
+          (review.length + 1)
       )
 
       await req.payload.update({

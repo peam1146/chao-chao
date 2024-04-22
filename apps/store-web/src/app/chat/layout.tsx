@@ -85,7 +85,7 @@ export const ChatContext = createContext<ChatContextType>({} as ChatContextType)
 const ChatPage = ({ children }: { children: React.ReactNode }) => {
   const { chatId } = useParams<{ chatId: string }>()
 
-  const query = useQuery({ fetchPolicy: 'network-only' })
+  const query = useQuery({ fetchPolicy: 'cache-and-network' })
 
   const userId = query.meUser?.user?.id
 

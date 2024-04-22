@@ -173,7 +173,7 @@ export default function ChatRoom() {
             }
           },
           {
-            cachePolicy: 'no-store',
+            cachePolicy: 'force-cache',
           }
         )
         setCurrentRoom({
@@ -228,8 +228,9 @@ export default function ChatRoom() {
     if (!currentRoom) return
     if (chatId !== '') {
       socket.connect()
-      socket.emit('join_room', currentRoom?.id)
+      socket.emit('join_room', chatId)
     }
+    refetch()
     return () => {
       socket.disconnect()
     }
