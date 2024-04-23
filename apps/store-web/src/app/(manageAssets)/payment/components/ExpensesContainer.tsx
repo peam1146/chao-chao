@@ -32,7 +32,7 @@ export default function ExpensesContainer() {
     totalPrice: number,
     rentingId: number | undefined
   ) => {
-    const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stripe/checkout-session`, {
+    const result = await fetch(`https://api.chaochao.vishnu20.com/api/stripe/checkout-session`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
