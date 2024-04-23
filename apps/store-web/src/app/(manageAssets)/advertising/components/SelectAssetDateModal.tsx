@@ -45,6 +45,7 @@ export function SelectAssetDateModal(props: SelectAssetDateModalProps) {
       headers: {
         'Content-Type': 'application/json',
       },
+      mode: 'no-cors',
       body: JSON.stringify({
         option: 'advertise',
         productId: selectedAsset,

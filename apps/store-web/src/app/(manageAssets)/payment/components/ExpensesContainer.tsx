@@ -37,6 +37,8 @@ export default function ExpensesContainer() {
       headers: {
         'Content-Type': 'application/json',
       },
+      mode: 'no-cors',
+
       body: JSON.stringify({
         option: 'item',
         productId,
