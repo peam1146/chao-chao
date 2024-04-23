@@ -116,7 +116,7 @@ export default function RegisterCard() {
           const formData = new FormData()
           const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
           formData.append('file', imageUrl[i])
-          const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/medias`, {
+          const response = await fetch(`https://api.chaochao.vishnu20.com/api/medias`, {
             method: 'POST',
             body: formData,
             headers: {

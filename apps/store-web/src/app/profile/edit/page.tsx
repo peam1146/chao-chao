@@ -109,7 +109,7 @@ export default function ProfileEdit() {
         const data = new FormData()
         const token = Object.fromEntries(document.cookie.split('; ').map((c) => c.split('=')))
         data.append('file', fileInputRef.current.files[0])
-        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/medias`, {
+        await fetch(`https://api.chaochao.vishnu20.com/api/medias`, {
           method: 'POST',
           body: data,
           headers: {
