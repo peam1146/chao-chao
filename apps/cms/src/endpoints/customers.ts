@@ -24,7 +24,7 @@ export const customersProxy: PayloadHandler = async (req: PayloadRequest, res) =
     const customers = await stripe.customers.list({
       limit: 100,
     })
-
+    res.setHeader('Access-Control-Allow-Origin', '*')
     res.status(200).json(customers)
   } catch (error: unknown) {
     if (logs) req.payload.logger.error({ err: `Error using Stripe API: ${error}` })

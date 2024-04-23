@@ -102,6 +102,7 @@ export const createCheckoutSession: PayloadHandler = async (req: PayloadRequest,
       success_url: `https://chaochao.vishnu20.com/advertising/?success=true`,
       cancel_url: `https://chaochao.vishnu20.com/advertising/?canceled=true`,
     })
+    res.setHeader('Access-Control-Allow-Origin', '*')
 
     res.send(session)
   }
